@@ -1,0 +1,28 @@
+{
+  "$schema": "./node_modules/@stryker-mutator/core/schema/stryker-schema.json",
+  "_comment": "Mutation testing scoped to the pure, off-engine diffusion-logic modules covered by the harness suite (npm run test:js). The command runner re-runs the full suite per mutant; coverageAnalysis is off because the command runner has no per-test hooks. The ESM loader (tests/loader.mjs) maps /cultural-diffusion/ to the project root and stubs /core /base-standard, so Stryker's sandbox copy resolves to the mutated sandbox files - no inPlace needed.",
+  "testRunner": "command",
+  "commandRunner": {
+    "command": "npm run test:js"
+  },
+  "coverageAnalysis": "off",
+  "mutate": [
+    "ui/cd-pressure.js",
+    "ui/cd-field.js",
+    "ui/cd-cpi.js",
+    "ui/cd-civ-tuning.js",
+    "ui/cd-calibration.js",
+    "ui/cd-state.js"
+  ],
+  "reporters": ["clear-text", "json"],
+  "jsonReporter": {
+    "fileName": "reports/mutation/mutation.json"
+  },
+  "concurrency": 4,
+  "timeoutMS": 30000,
+  "thresholds": {
+    "high": 75,
+    "low": 60,
+    "break": null
+  }
+}

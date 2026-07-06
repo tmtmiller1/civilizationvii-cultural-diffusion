@@ -1,0 +1,153 @@
+// cd-polity.js
+//
+// Per-settlement cultural signals the pressure model reads: net culture yield,
+// net happiness, wonder count, and celebration (Golden Age) state. Every read is
+// defensive - an unreadable value degrades to a neutral default and never throws.
+// Mirrors the read patterns used in emigration-cities.js / emigration-polity.js.
+
+/**
+ * @param {()=>*} fn Thunk. @param {*} fallback Fallback. @returns {*} fn() or fallback.
+ */
+function safe(fn, fallback) {
+  try {
+    return fn();
+  } catch (_) {
+    return fallback;
+  }
+}
+
+/**
+ * Resolve a YieldTypes enum value by key.
+ * @param {string} key e.g. "YIELD_CULTURE".
+ * @returns {*} The enum value, or undefined.
+ */
+function yEnum(key) {
+  return safe(() => (typeof YieldTypes !== "undefined" ? YieldTypes[key] : undefined), undefined);
+}
+
+/**
+ * Read one NET yield off a city (prefer getNetYield, fall back to gross getYield).
+ * @param {*} city City object. @param {string} key Yield enum key.
+ * @returns {number} The yield, or 0.
+ */
+function readYield(city, key) {
+  return safe(() => {
+    const y = city && city.Yields;
+    if (!y) return 0;
+    const e = yEnum(key);
+    let v = typeof y.getNetYield === "function" ? y.getNetYield(e) : undefined;
+    if (typeof v !== "number" || !isFinite(v)) {
+      v = typeof y.getYield === "function" ? y.getYield(e) : 0;
+    }
+    return typeof v === "number" && isFinite(v) ? v : 0;
+  }, 0);
+}
+
+/**
+ * A city's net culture yield per turn.
+ * @param {*} city City object.
+ * @returns {number} Culture yield (>= 0).
+ */
+export function cultureOf(city) {
+  return Math.max(0, readYield(city, "YIELD_CULTURE"));
+}
+
+/**
+ * A city's net happiness per turn (prefer the Happiness subsystem).
+ * @param {*} city City object.
+ * @returns {number} Net happiness (may be negative).
+ */
+export function happinessOf(city) {
+  const h = safe(() => city?.Happiness?.netHappinessPerTurn, undefined);
+  if (typeof h === "number" && isFinite(h)) return h;
+  return readYield(city, "YIELD_HAPPINESS");
+}
+
+/** The wonders list from whichever component exposes it, or null. */
+function wondersList(city) {
+  return city?.Constructibles?.getWonders?.() ?? city?.Wonders?.getWonders?.();
+}
+
+/**
+ * The number of Wonders built in a city (best-effort; 0 if unreadable).
+ * @param {*} city City object.
+ * @returns {number} Wonder count.
+ */
+export function wonderCountOf(city) {
+  return safe(() => {
+    const wonders = wondersList(city);
+    if (Array.isArray(wonders)) return wonders.length;
+    const n = city?.Constructibles?.getNumWonders?.();
+    return typeof n === "number" && isFinite(n) ? n : 0;
+  }, 0);
+}
+/**
+ * A settlement's POSITIVE prosperity/vitality magnitude - a "thriving society" score in
+ * roughly culture-comparable units (happiness + food/growth + production + a little gold/
+ * science). This is the aggregate the injection base geometrically blends with culture, so a
+ * lone +culture or +happiness ability is one concave term instead of the linear driver (it
+ * also self-normalizes across ages, since all these yields scale up together). Base-game reads
+ * only. @param {*} city City object. @returns {number} Vitality magnitude (>= 0).
+ */
+export function vitalityOf(city) {
+  const happ = Math.max(0, happinessOf(city));
+  const food = Math.max(0, readYield(city, "YIELD_FOOD"));
+  const prod = Math.max(0, readYield(city, "YIELD_PRODUCTION"));
+  const gold = Math.max(0, readYield(city, "YIELD_GOLD"));
+  const sci = Math.max(0, readYield(city, "YIELD_SCIENCE"));
+  const v = happ * 0.5 + food * 0.35 + prod * 0.3 + gold * 0.15 + sci * 0.15;
+  return v > 0 && isFinite(v) ? v : 0;
+}
+
+/**
+ * A settlement's normalized prosperity signal in [-1,1] (0 = neutral) for the 3.1a
+ * term-B projection multiplier: a prosperous, growing, happy city beams culture farther;
+ * a struggling one contracts. Built from base-game reads only (net happiness + food/
+ * production growth), so it works standalone; the emigration mod enriches the ETHNIC
+ * layer rather than this one. Squashed with tanh so extremes saturate gently.
+ * @param {*} city City object.
+ * @returns {number} Prosperity in [-1,1].
+ */
+export function prosperityOf(city) {
+  const happ = happinessOf(city);
+  const food = Math.max(0, readYield(city, "YIELD_FOOD"));
+  const prod = Math.max(0, readYield(city, "YIELD_PRODUCTION"));
+  const score = happ * 0.4 + food * 0.08 + prod * 0.04;
+  const p = Math.tanh(score / 5);
+  return isFinite(p) ? p : 0;
+}
+
+/**
+ * Whether a city's owner is currently celebrating (Golden Age), which amplifies
+ * cultural projection.
+ * @param {number} owner Owner player id.
+ * @returns {boolean} True when celebrating.
+ */
+export function isCelebrating(owner) {
+  return safe(() => {
+    const p = Players?.get?.(owner);
+    const happ = p?.Happiness;
+    if (!happ) return false;
+    if (typeof happ.isInGoldenAge === "function") return !!happ.isInGoldenAge();
+    if (typeof happ.getGoldenAgeTurnsRemaining === "function") {
+      return happ.getGoldenAgeTurnsRemaining() > 0;
+    }
+    return false;
+  }, false);
+}
+
+/**
+ * The current age key for per-age tuning: "ANTIQUITY" | "EXPLORATION" | "MODERN".
+ * Defaults to "ANTIQUITY" when unreadable.
+ * @returns {"ANTIQUITY"|"EXPLORATION"|"MODERN"} Age key.
+ */
+export function currentAgeKey() {
+  return safe(() => {
+    const age = Game?.age ?? GameContext?.age;
+    if (typeof age === "string") {
+      if (age.includes("MODERN")) return "MODERN";
+      if (age.includes("EXPLORATION")) return "EXPLORATION";
+    }
+    return "ANTIQUITY";
+  }, "ANTIQUITY");
+}

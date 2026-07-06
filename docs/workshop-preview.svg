@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Workshop / identity emblem for the Cultural Diffusion mod. Matches the Tower-mods
+     family look (dark ground, gold frame, parchment art, serif wordmark). Motif: a
+     source culture at the origin hex radiating outward across the hex grid as
+     concentric, fading hex rings with pressure "particles" crossing the frontier -
+     the mod's reaction-diffusion model made visual. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#243042"/>
+      <stop offset="100%" stop-color="#121821"/>
+    </linearGradient>
+    <linearGradient id="parchment" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f7eed1"/>
+      <stop offset="100%" stop-color="#e7d4a3"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#e7d4a3" stop-opacity="0.34"/>
+      <stop offset="100%" stop-color="#e7d4a3" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1024" height="1024" fill="url(#bg)"/>
+  <!-- Gold frame to echo the in-game parchment/gold palette -->
+  <rect x="26" y="26" width="972" height="972" rx="30" fill="none" stroke="#c9a24c" stroke-width="4" opacity="0.5"/>
+
+  <!-- Culture aura behind the origin -->
+  <circle cx="512" cy="446" r="360" fill="url(#glow)"/>
+
+  <!-- Diffusion: concentric hex rings fading outward from the origin -->
+  <polygon points="650.0,446.0 581.0,565.5 443.0,565.5 374.0,446.0 443.0,326.5 581.0,326.5" fill="none" stroke="url(#parchment)" stroke-width="7" stroke-linejoin="round" opacity="0.9"/>
+  <polygon points="720.0,446.0 616.0,626.1 408.0,626.1 304.0,446.0 408.0,265.9 616.0,265.9" fill="none" stroke="url(#parchment)" stroke-width="7" stroke-linejoin="round" opacity="0.62"/>
+  <polygon points="790.0,446.0 651.0,686.8 373.0,686.8 234.0,446.0 373.0,205.2 651.0,205.2" fill="none" stroke="url(#parchment)" stroke-width="7" stroke-linejoin="round" opacity="0.4"/>
+  <polygon points="860.0,446.0 686.0,747.4 338.0,747.4 164.0,446.0 338.0,144.6 686.0,144.6" fill="none" stroke="url(#parchment)" stroke-width="7" stroke-linejoin="round" opacity="0.24"/>
+
+  <!-- Pressure particles marching out along the six hex directions -->
+  <circle cx="685.0" cy="446.0" r="9" fill="url(#parchment)" opacity="0.9"/>
+  <circle cx="755.0" cy="446.0" r="7" fill="url(#parchment)" opacity="0.62"/>
+  <circle cx="825.0" cy="446.0" r="5" fill="url(#parchment)" opacity="0.4"/>
+  <circle cx="598.5" cy="595.8" r="9" fill="url(#parchment)" opacity="0.9"/>
+  <circle cx="633.5" cy="656.4" r="7" fill="url(#parchment)" opacity="0.62"/>
+  <circle cx="668.5" cy="717.1" r="5" fill="url(#parchment)" opacity="0.4"/>
+  <circle cx="425.5" cy="595.8" r="9" fill="url(#parchment)" opacity="0.9"/>
+  <circle cx="390.5" cy="656.4" r="7" fill="url(#parchment)" opacity="0.62"/>
+  <circle cx="355.5" cy="717.1" r="5" fill="url(#parchment)" opacity="0.4"/>
+  <circle cx="339.0" cy="446.0" r="9" fill="url(#parchment)" opacity="0.9"/>
+  <circle cx="269.0" cy="446.0" r="7" fill="url(#parchment)" opacity="0.62"/>
+  <circle cx="199.0" cy="446.0" r="5" fill="url(#parchment)" opacity="0.4"/>
+  <circle cx="425.5" cy="296.2" r="9" fill="url(#parchment)" opacity="0.9"/>
+  <circle cx="390.5" cy="235.6" r="7" fill="url(#parchment)" opacity="0.62"/>
+  <circle cx="355.5" cy="174.9" r="5" fill="url(#parchment)" opacity="0.4"/>
+  <circle cx="598.5" cy="296.2" r="9" fill="url(#parchment)" opacity="0.9"/>
+  <circle cx="633.5" cy="235.6" r="7" fill="url(#parchment)" opacity="0.62"/>
+  <circle cx="668.5" cy="174.9" r="5" fill="url(#parchment)" opacity="0.4"/>
+
+  <!-- Solid origin hex: the source culture -->
+  <polygon points="596.0,446.0 554.0,518.7 470.0,518.7 428.0,446.0 470.0,373.3 554.0,373.3" fill="url(#parchment)" stroke="#c9a24c" stroke-width="3" stroke-linejoin="round"/>
+
+  <!-- Wordmark (two lines; the full title is too wide for one) -->
+  <text x="512" y="838" text-anchor="middle"
+        font-family="Georgia, 'Times New Roman', serif" font-size="82"
+        font-weight="bold" fill="#e7d4a3" letter-spacing="3">CULTURAL</text>
+  <text x="512" y="924" text-anchor="middle"
+        font-family="Georgia, 'Times New Roman', serif" font-size="82"
+        font-weight="bold" fill="#e7d4a3" letter-spacing="3">DIFFUSION</text>
+</svg>

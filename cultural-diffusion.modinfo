@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Mod id="cultural-diffusion" version="1" xmlns="ModInfo">
+    <Properties>
+        <Name>LOC_MOD_CULTURAL_DIFFUSION_NAME</Name>
+        <Description>LOC_MOD_CULTURAL_DIFFUSION_DESCRIPTION</Description>
+        <Authors>Tower</Authors>
+        <SpecialThanks>Gedemon's "Cultural Diffusion" mod for Civilization V (v18), whose reaction-diffusion culture model is the core layer this mod builds on and extends.</SpecialThanks>
+        <Package>CulturalDiffusionMod</Package>
+        <PackageSortIndex>1000</PackageSortIndex>
+        <Version>1.0.2</Version>
+    </Properties>
+    <Dependencies>
+        <Mod id="base-standard" title="LOC_MODULE_BASE_STANDARD_NAME" />
+    </Dependencies>
+    <ActionCriteria>
+        <Criteria id="always">
+            <AlwaysMet></AlwaysMet>
+        </Criteria>
+    </ActionCriteria>
+    <ActionGroups>
+        <ActionGroup id="cultural-diffusion-shell" scope="shell" criteria="always">
+            <Properties>
+                <LoadOrder>60</LoadOrder>
+            </Properties>
+            <Actions>
+                <UpdateText>
+                    <Item>text/en_us/ModText.xml</Item>
+                </UpdateText>
+                <UIScripts>
+                    <Item>ui/cd-config.js</Item>
+                    <Item>ui/cd-settings.js</Item>
+                    <Item>ui/cd-options.js</Item>
+                </UIScripts>
+            </Actions>
+        </ActionGroup>
+        <ActionGroup id="cultural-diffusion-game" scope="game" criteria="always">
+            <Properties>
+                <LoadOrder>60</LoadOrder>
+            </Properties>
+            <Actions>
+                <UpdateText>
+                    <Item>text/en_us/ModText.xml</Item>
+                </UpdateText>
+                <UIScripts>
+                    <Item>ui/cd-bootstrap.js</Item>
+                    <Item>ui/cd-settings.js</Item>
+                    <Item>ui/cd-options.js</Item>
+                </UIScripts>
+                <ImportFiles>
+                    <Item>ui/cd-log.js</Item>
+                    <Item>ui/cd-config.js</Item>
+                    <Item>ui/cd-state.js</Item>
+                    <Item>ui/cd-plots.js</Item>
+                    <Item>ui/cd-polity.js</Item>
+                    <Item>ui/cd-pressure.js</Item>
+                    <Item>ui/cd-field.js</Item>
+                    <Item>ui/cd-terrain.js</Item>
+                    <Item>ui/cd-cpi.js</Item>
+                    <Item>ui/cd-emigration.js</Item>
+                    <Item>ui/cd-metrics.js</Item>
+                    <Item>ui/cd-ethnicity.js</Item>
+                    <Item>ui/cd-civ-roster.js</Item>
+                    <Item>ui/cd-civ-tuning.js</Item>
+                    <Item>ui/cd-calibration.js</Item>
+                    <Item>ui/cd-borders.js</Item>
+                    <Item>ui/cd-ownership.js</Item>
+                    <Item>ui/cd-pass.js</Item>
+                    <Item>ui/cd-notifications.js</Item>
+                </ImportFiles>
+            </Actions>
+        </ActionGroup>
+    </ActionGroups>
+</Mod>

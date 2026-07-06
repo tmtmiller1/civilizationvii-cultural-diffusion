@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Mod id="cultural-diffusion-probe" version="1" xmlns="ModInfo">
+    <Properties>
+        <Name>Cultural Diffusion Probe</Name>
+        <Description>Feasibility probe for the Cultural Diffusion mod. Runs automatically (no dev console needed): emits read-only diagnostics, auto-flips distinct empty frontier tiles via setOwnership and purchasePlot, then auto-reads whether a bare setOwnership tile is INTEGRATED buildable city land (Q-INTEGRATE / Q-CODEX: can the Han build a science building there and Shi-codex it?) vs an inert ORPHAN, and after a save/reload auto-reports persistence. Emits to UI.log with the [Civ7Probe] fence; parse with the modding-probe extract_dump.js. Single-player only; never writes GameConfiguration.</Description>
+        <Authors>Tower</Authors>
+        <Package>CulturalDiffusionProbe</Package>
+        <PackageSortIndex>9999</PackageSortIndex>
+        <Version>0.3.0</Version>
+    </Properties>
+    <Dependencies>
+        <Mod id="base-standard" title="LOC_MODULE_BASE_STANDARD_NAME" />
+    </Dependencies>
+    <ActionCriteria>
+        <Criteria id="always">
+            <AlwaysMet></AlwaysMet>
+        </Criteria>
+    </ActionCriteria>
+    <ActionGroups>
+        <ActionGroup id="cultural-diffusion-probe-game" scope="game" criteria="always">
+            <Properties>
+                <LoadOrder>9000</LoadOrder>
+            </Properties>
+            <Actions>
+                <UIScripts>
+                    <Item>ui/cd-probe-bootstrap.js</Item>
+                </UIScripts>
+                <ImportFiles>
+                    <Item>ui/cd-probe-hud.js</Item>
+                    <Item>ui/cd-probe-emit.js</Item>
+                    <Item>ui/cd-probe-api.js</Item>
+                    <Item>ui/cd-probe-store.js</Item>
+                    <Item>ui/cd-probe-runner.js</Item>
+                </ImportFiles>
+            </Actions>
+        </ActionGroup>
+    </ActionGroups>
+</Mod>

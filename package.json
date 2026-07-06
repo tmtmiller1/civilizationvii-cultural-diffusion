@@ -1,0 +1,31 @@
+{
+  "name": "cultural-diffusion-mod-dev",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Dev-only tooling for the Cultural Diffusion Civ VII mod (lint + syntax + ESM integrity + unit tests + coverage + mutation). Not shipped.",
+  "type": "module",
+  "scripts": {
+    "lint": "eslint ui",
+    "check:syntax": "for f in ui/*.js; do node --check \"$f\" || exit 1; done",
+    "check:esm": "node ./scripts/check-esm.mjs",
+    "test:pressure": "node --loader ./tests/loader.mjs ./tests/pressure.mjs",
+    "test:state": "node --loader ./tests/loader.mjs ./tests/state.mjs",
+    "test:config": "node --loader ./tests/loader.mjs ./tests/config.mjs",
+    "test:cpi": "node --loader ./tests/loader.mjs ./tests/cpi.mjs",
+    "test:field": "node --loader ./tests/loader.mjs ./tests/field.mjs",
+    "test:civtuning": "node --loader ./tests/loader.mjs ./tests/civ-tuning.mjs",
+    "test:calibration": "node --loader ./tests/loader.mjs ./tests/calibration.mjs",
+    "test": "npm run test:pressure && npm run test:state && npm run test:config && npm run test:cpi && npm run test:field && npm run test:civtuning && npm run test:calibration",
+    "test:js": "npm test",
+    "coverage": "c8 npm run test:js",
+    "hotspots": "node scripts/hotspot-score.mjs",
+    "inventory": "node scripts/inventory.mjs --md",
+    "mutation": "stryker run",
+    "verify": "npm run lint && npm run check:syntax && npm run check:esm && npm test"
+  },
+  "devDependencies": {
+    "@stryker-mutator/core": "^9.6.1",
+    "c8": "^11.0.0",
+    "eslint": "^9.0.0"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "all": true,
+  "src": ["ui"],
+  "include": [
+    "ui/cd-pressure.js",
+    "ui/cd-state.js",
+    "ui/cd-config.js",
+    "ui/cd-cpi.js",
+    "ui/cd-field.js",
+    "ui/cd-civ-tuning.js",
+    "ui/cd-calibration.js"
+  ],
+  "exclude": [
+    "tests/**",
+    "scripts/**",
+    "**/*.d.ts"
+  ],
+  "reporter": ["text", "text-summary", "json-summary"],
+  "report-dir": "coverage",
+  "clean": true,
+  "skip-full": false
+}

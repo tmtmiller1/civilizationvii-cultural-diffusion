@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database>
+    <EnglishText>
+        <Row Tag="LOC_MOD_CULTURAL_DIFFUSION_NAME">
+            <Text>Cultural Diffusion</Text>
+        </Row>
+        <Row Tag="LOC_MOD_CULTURAL_DIFFUSION_DESCRIPTION">
+            <Text>Culture becomes a living field that spreads from your cities tile by tile. A strong, established culture slowly grows its borders beyond the normal city footprint, seeps into open land, and can flip a rival's frontier tiles once your culture there decisively wins - a systemic answer to AI forward-settling. Growth is slow and organic: borders creep outward over the game and flow back when a culture weakens; an overwhelming culture reaches farther. A reimagining and extension of the Civ V mod Cultural Diffusion, rebuilt for Civ VII, with a deeper cultural-power model and optional Emigration integration. Single-player, tunable (Low/Medium/High), reversible. Works standalone, and reads diaspora data from the Emigration mod when it is installed.</Text>
+        </Row>
+
+        <Row Tag="LOC_OPTIONS_CD_PRESET">
+            <Text>Cultural Diffusion - intensity</Text>
+        </Row>
+        <Row Tag="LOC_OPTIONS_CD_PRESET_DESCRIPTION">
+            <Text>How aggressively culture spreads your borders. Low nudges into empty land only; Medium contests rival frontier tiles; High spreads farther and flips faster.</Text>
+        </Row>
+        <Row Tag="LOC_CD_PRESET_CUSTOM"><Text>Custom</Text></Row>
+        <Row Tag="LOC_CD_PRESET_LOW"><Text>Low</Text></Row>
+        <Row Tag="LOC_CD_PRESET_MEDIUM"><Text>Medium</Text></Row>
+        <Row Tag="LOC_CD_PRESET_HIGH"><Text>High</Text></Row>
+
+        <Row Tag="LOC_OPTIONS_CD_ENABLED">
+            <Text>Cultural Diffusion - enabled</Text>
+        </Row>
+        <Row Tag="LOC_OPTIONS_CD_ENABLED_DESCRIPTION">
+            <Text>Master switch. When off, borders behave exactly as in the base game.</Text>
+        </Row>
+
+        <Row Tag="LOC_OPTIONS_CD_CLAIM_ONLY">
+            <Text>Cultural Diffusion - claim empty land only</Text>
+        </Row>
+        <Row Tag="LOC_OPTIONS_CD_CLAIM_ONLY_DESCRIPTION">
+            <Text>Safety mode. Diffusion claims only unowned frontier plots and never flips a tile owned by another civilization.</Text>
+        </Row>
+
+        <Row Tag="LOC_OPTIONS_CD_VERB">
+            <Text>Cultural Diffusion - how tiles are claimed</Text>
+        </Row>
+        <Row Tag="LOC_OPTIONS_CD_VERB_DESCRIPTION">
+            <Text>Free territory grants the plot at no cost (you develop it through normal growth). Buy with gold instantly integrates the plot into the nearest city, spending gold.</Text>
+        </Row>
+        <Row Tag="LOC_OPTIONS_CD_VERB_FREE"><Text>Free territory (recommended)</Text></Row>
+        <Row Tag="LOC_OPTIONS_CD_VERB_GOLD"><Text>Buy with gold (instant, integrated)</Text></Row>
+
+        <Row Tag="LOC_OPTIONS_CD_FUSED">
+            <Text>Cultural Diffusion - rich cultural model</Text>
+        </Row>
+        <Row Tag="LOC_OPTIONS_CD_FUSED_DESCRIPTION">
+            <Text>Drive border spread with a civilization's whole cultural power - wonders, culture, influence, happiness, prosperity, traditions - not culture-per-turn alone. A stronger culture pushes its borders farther. Off = the simple settlement-culture model.</Text>
+        </Row>
+
+        <Row Tag="LOC_OPTIONS_CD_EMIGRATION">
+            <Text>Cultural Diffusion - follow diaspora (Emigration mod)</Text>
+        </Row>
+        <Row Tag="LOC_OPTIONS_CD_EMIGRATION_DESCRIPTION">
+            <Text>When the Emigration mod is installed, let a frontier tile settled by your people feel your pull - borders follow diaspora. No effect if Emigration is absent. Requires the rich cultural model.</Text>
+        </Row>
+
+        <Row Tag="LOC_OPTIONS_CD_DEBUG">
+            <Text>Cultural Diffusion - debug logging</Text>
+        </Row>
+        <Row Tag="LOC_OPTIONS_CD_DEBUG_DESCRIPTION">
+            <Text>Write detailed per-pass diagnostics to UI.log (for tuning and troubleshooting).</Text>
+        </Row>
+    </EnglishText>
+</Database>
