@@ -6,18 +6,6 @@ All notable changes to Cultural Diffusion are recorded here. The format follows
 
 ## [Unreleased]
 
-### Fixed
-- **No more phantom territory claims.** A tile flip is now recorded only after confirming the
-  tile actually changed owner. Previously a flip attempt that silently did nothing (the default
-  verb no-ops on rival-owned land) was still booked as a success — consuming the settlement's
-  claim budget, locking the tile on cooldown, and firing a "claimed territory" toast while the
-  rival kept the tile. (The permanent fix — switching the claim verb — remains the redesign
-  plan's Phase 1.)
-
-### Removed
-- Two unused, unwired config flags (`preventForwardSettle`, `minimalOwnedCulture`); anti-forward-
-  settling is an emergent property of the diffusion field, not a discrete toggle.
-
 ### Probe (v0.8.0 — Phase 0, `probe/`)
 
 - **Q-VERB — the flip-verb decision gate** (redesign-plan §2). For a distinct tile per
@@ -218,6 +206,25 @@ the paint while the log confirms `setOwnership` didn't re-orphan the tile. If bo
 the free + integrated + visible verb for Phase 1; if the tile reads ORPHAN, the next thing to try
 is the reverse order or an explicit border-refresh call. Configurable via `AUTO.DEMO_UNOWNED_VERB`
 (`stack` | `setOwnership` | `purchasePlot`).
+
+## [1.0.5] - 2026-07-11
+
+### Fixed
+- **Mod now shows its name in Additional Content.** The mods browser listed the mod as the raw
+  `LOC_MOD_CULTURAL_DIFFUSION_NAME` tag (and its description as a tag) because the name/description
+  strings were only loaded into the in-game text database by an ActionGroup, which the frontend
+  reads too late. Added a top-level `<LocalizedText>` block so the name and description resolve at
+  mod-discovery time — the mod now reads as **Cultural Diffusion**.
+- **No more phantom territory claims.** A tile flip is now recorded only after confirming the
+  tile actually changed owner. Previously a flip attempt that silently did nothing (the default
+  verb no-ops on rival-owned land) was still booked as a success — consuming the settlement's
+  claim budget, locking the tile on cooldown, and firing a "claimed territory" toast while the
+  rival kept the tile. (The permanent fix — switching the claim verb — remains the redesign
+  plan's Phase 1.)
+
+### Removed
+- Two unused, unwired config flags (`preventForwardSettle`, `minimalOwnedCulture`);
+  anti-forward-settling is an emergent property of the diffusion field, not a discrete toggle.
 
 ## [1.0.4] - 2026-07-10
 

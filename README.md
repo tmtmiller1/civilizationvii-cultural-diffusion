@@ -126,11 +126,10 @@ sooner.
 
 ### Full tunables (`ui/cd-config.js`, all overridable)
 - **Pacing / safety:** `turnInterval`, `fieldRadius`, `maxDiffusionPlots`,
-  `maxFlipsPerTurn`, `flipCooldownTurns`, `coreProtectRadius`, `requireAdjacency`,
-  `preventForwardSettle`.
+  `maxFlipsPerTurn`, `flipCooldownTurns`, `coreProtectRadius`, `requireAdjacency`.
 - **Field:** `cultureThreshold`, `diffusionRate`, `decayRate`, `decayFlat`,
   `normalMax`, `maxPercent`, `injectBase`, `injectRatio`, `cityCapFactor`,
-  `minimumOwner`, `flipRatio`, `flipMaxDistance`, `minimalOwnedCulture`.
+  `minimumOwner`, `flipRatio`, `flipMaxDistance`.
 - **Terrain:** `roadBonus`/`roadMax`, `riverFollowBonus`/`riverFollowMax`, and a
   `{ malus, max, threshold }` entry per terrain (`terrainForest` ... `terrainMountain`).
 - **Injection shaping (fused):** `fusedModel`, `useEmigration`, `cultureWeight`,
