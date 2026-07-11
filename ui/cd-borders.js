@@ -8,7 +8,7 @@
 // Pure helpers (isCoreProtected) are unit-testable; the war
 // read is engine-guarded.
 
-import { plotsInRadius, owningCityIdAt, cityLoc, cityIdOf } from "/cultural-diffusion/ui/cd-plots.js";
+import { plotsInRadius, cityLoc, cityIdOf } from "/cultural-diffusion/ui/cd-plots.js";
 
 /**
  * @param {()=>*} fn Thunk. @param {*} fallback Fallback. @returns {*} fn() or fallback.
@@ -22,26 +22,18 @@ function safe(fn, fallback) {
 }
 
 /**
- * Whether a plot sits on the protected core ring (distance 1) of ANY city - no
- * civilization loses its downtown to culture.
+ * Whether a plot sits within `radius` rings of a protected city CENTER - i.e. inside the
+ * "downtown" shield that never flips. radius 1 = center + ring-1 (the classic downtown);
+ * radius 0 = only the city-center plot itself (culture may bite ring-1 inward);
+ * radius < 0 = nothing protected (even the center is flippable).
  * @param {{x:number,y:number}} plot Target plot.
  * @param {number} protectOwner Owner id whose core to protect (-1 = protect every owner's core).
+ * @param {number} [radius] Protection radius in rings (default 1).
  * @returns {boolean} True when the plot is core-protected.
  */
-export function isCoreProtected(plot, protectOwner) {
-  return safe(() => {
-    const ring = plotsInRadius(plot, 1);
-    for (const p of ring) {
-      // A city center sits on an owned plot; if any adjacent plot is a city center of
-      // the protected owner, this plot is on that city's core ring.
-      const cityId = owningCityIdAt(p);
-      if (cityId < 0) continue;
-      // The plot itself being a city center is the strongest signal.
-    }
-    // Cheaper, robust check: is the plot adjacent to a city CENTER? We approximate
-    // by asking whether any settlement center is within distance 1.
-    return _adjacentToAnyCityCenter(plot, protectOwner);
-  }, false);
+export function isCoreProtected(plot, protectOwner, radius = 1) {
+  if (typeof radius === "number" && radius < 0) return false;
+  return _cityCenterWithin(plot, protectOwner, Math.max(0, radius || 0));
 }
 
 /**
@@ -66,19 +58,19 @@ function _playerCenterOnRing(player, protectOwner, ringKeys) {
 }
 
 /**
- * Whether any city center is within distance 1 of the plot (optionally limited to
- * one owner). Uses the owning-city read at each ring plot: a plot whose owning city
- * is centered on it is a city center.
+ * Whether any (optionally owner-filtered) city center sits within `radius` rings of the
+ * plot. radius 0 = only the plot itself must be a center.
  * @param {{x:number,y:number}} plot Target plot.
  * @param {number} protectOwner Owner filter (-1 = any).
- * @returns {boolean} True when adjacent to a city center.
+ * @param {number} radius Rings to search.
+ * @returns {boolean} True when a matching city center is within radius.
  * @private
  */
-function _adjacentToAnyCityCenter(plot, protectOwner) {
+function _cityCenterWithin(plot, protectOwner, radius) {
   return safe(() => {
     const alive = Players?.getAlive?.();
     if (!Array.isArray(alive)) return false;
-    const ring = plotsInRadius(plot, 1);
+    const ring = plotsInRadius(plot, radius);
     const ringKeys = new Set(ring.map((p) => `${p.x},${p.y}`));
     ringKeys.add(`${plot.x},${plot.y}`);
     for (const player of alive) {

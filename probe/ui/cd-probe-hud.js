@@ -14,7 +14,12 @@ const MAX_LINES = 28;
 let _panel = null;
 let _body = null;
 let _lines = [];
-let _verdict = "";
+// Multiple pinned headlines, keyed so independent stages (codex vs outer-tiles) each keep
+// their own line instead of clobbering one another. Insertion order preserved.
+let _verdicts = {};
+// Last toasted text per key, so re-running a stage every turn only toasts when the verdict
+// actually CHANGES (no per-turn notification spam).
+let _lastToast = {};
 
 function raf(fn) {
   try {
@@ -67,7 +72,6 @@ function ensurePanel() {
 
     _panel = panel;
     _body = body;
-    _verdict = _verdict || "";
     return body;
   } catch (_) {
     return null;
@@ -79,7 +83,10 @@ function render() {
   if (!body) { raf(render); return; }
   try {
     const v = document.getElementById("cd-probe-hud-verdict");
-    if (v) v.textContent = _verdict ? ("★ " + _verdict) : "running…";
+    if (v) {
+      const pinned = Object.keys(_verdicts).map((k) => "★ " + _verdicts[k]);
+      v.textContent = pinned.length ? pinned.join("\n") : "running…";
+    }
     body.textContent = _lines.join("\n");
   } catch (_) { /* ignore */ }
 }
@@ -103,11 +110,16 @@ export function hud(line) {
   } catch (_) { /* ignore */ }
 }
 
-// Pin a headline verdict at the top of the panel AND fire a toast.
-export function hudVerdict(line) {
+// Pin a headline verdict at the top of the panel AND fire a toast. `key` lets independent
+// stages keep separate headlines (default "main" preserves single-line callers).
+export function hudVerdict(line, key) {
   try {
-    _verdict = String(line);
+    const k = key || "main";
+    const text = String(line);
+    _verdicts[k] = text;
     render();
-    toast(_verdict);
+    // Only toast when THIS key's verdict changed - the panel updates every turn, but a
+    // notification should only pop on a real change (avoids per-turn spam from refreshes).
+    if (_lastToast[k] !== text) { _lastToast[k] = text; toast(text); }
   } catch (_) { /* ignore */ }
 }

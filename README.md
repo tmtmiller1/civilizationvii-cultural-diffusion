@@ -47,9 +47,12 @@ weakens or is lost.
 A tile becomes yours once **your** culture there is the largest, passes an absolute
 floor (`minimumOwner`, 300), and - if you're taking it from a rival - beats their
 culture on that tile by a decisive ratio (`flipRatio`, 0.65). It must also be within
-`flipMaxDistance` (6) of one of your cities and **adjacent to land you already own**,
-so borders grow contiguously. Freshly claimed tiles are locked briefly
-(`flipCooldownTurns`) to prevent flicker. A rival's **downtown ring is never taken**.
+`flipMaxDistance` (6) of one of your cities and — while `requireAdjacency` is on (default)
+— **adjacent to land you already own**, so borders grow contiguously. Freshly claimed tiles
+are locked briefly (`flipCooldownTurns`) to prevent flicker. By default a rival's
+**city-center plot is never taken** (culture may press inward through the surrounding tiles
+ring by ring); the full downtown ring can still be shielded via the *rival city protection*
+option (`coreProtectRadius`).
 
 ### Why growth is slow and organic
 Because culture must physically build up **ring by ring against decay**, reach is an
@@ -123,7 +126,8 @@ sooner.
 
 ### Full tunables (`ui/cd-config.js`, all overridable)
 - **Pacing / safety:** `turnInterval`, `fieldRadius`, `maxDiffusionPlots`,
-  `maxFlipsPerTurn`, `flipCooldownTurns`, `cityCoreProtection`, `preventForwardSettle`.
+  `maxFlipsPerTurn`, `flipCooldownTurns`, `coreProtectRadius`, `requireAdjacency`,
+  `preventForwardSettle`.
 - **Field:** `cultureThreshold`, `diffusionRate`, `decayRate`, `decayFlat`,
   `normalMax`, `maxPercent`, `injectBase`, `injectRatio`, `cityCapFactor`,
   `minimumOwner`, `flipRatio`, `flipMaxDistance`, `minimalOwnedCulture`.

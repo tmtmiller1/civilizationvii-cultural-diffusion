@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Phase 5 probe: a HIDDEN, zero-cost marker constructible bound to the CD_MARKER_CITY_REVOLT
+     modifier. Placing it on a settlement's city-center (via CREATE_ELEMENT, incl. enemy cities)
+     applies the base-game CityRevolt effect, which fires the base-game loyalty petition. The
+     LOYALTY001/LOYALTY002 narrative stories are FirstOnly by default (fire once per game), so we
+     UN-GATE them (AllowDuplicates) below - otherwise the petition never fires a second time and no
+     revolt happens. LOYALTY* story ids are base-game identifiers. -->
+<Database>
+    <Types>
+        <Row Type="BUILDING_CD_REVOLT_MARKER" Kind="KIND_CONSTRUCTIBLE"/>
+    </Types>
+    <ConstructibleClasses>
+        <Row ConstructibleClassType="CD_HIDDEN" Name="LOC_CD_HIDDEN_CLASS_NAME" Description="LOC_CD_HIDDEN_CLASS_DESC"/>
+    </ConstructibleClasses>
+    <Constructibles>
+        <Row ConstructibleType="BUILDING_CD_REVOLT_MARKER" Name="LOC_BUILDING_CD_REVOLT_MARKER_NAME" Description="LOC_BUILDING_CD_REVOLT_MARKER_DESC" Tooltip="LOC_BUILDING_CD_REVOLT_MARKER_TOOLTIP" ConstructibleClass="CD_HIDDEN" Cost="0" Population="0" RequiresUnlock="true" ImmuneDamage="true" Repairable="false" CanBeHidden="true" ExistingDistrictOnly="true"/>
+    </Constructibles>
+    <TypeTags>
+        <Row Type="BUILDING_CD_REVOLT_MARKER" Tag="IGNORE_DISTRICT_PLACEMENT_CAP"/>
+    </TypeTags>
+    <Constructible_ValidDistricts>
+        <Row ConstructibleType="BUILDING_CD_REVOLT_MARKER" DistrictType="DISTRICT_CITY_CENTER"/>
+        <Row ConstructibleType="BUILDING_CD_REVOLT_MARKER" DistrictType="DISTRICT_URBAN"/>
+    </Constructible_ValidDistricts>
+    <ConstructibleModifiers>
+        <Row ConstructibleType="BUILDING_CD_REVOLT_MARKER" ModifierId="CD_MARKER_CITY_REVOLT"/>
+        <Row ConstructibleType="BUILDING_CD_REVOLT_MARKER" ModifierId="CD_MARKER_HAPPINESS_CRASH"/>
+    </ConstructibleModifiers>
+    <!-- Make the base-game loyalty petition repeatable so the revolt can actually fire. -->
+    <NarrativeStories>
+        <Update>
+            <Where NarrativeStoryType="LOYALTY001A"/>
+            <Set FirstOnly="FALSE" AllowDuplicates="TRUE"/>
+        </Update>
+        <Update>
+            <Where NarrativeStoryType="LOYALTY001B"/>
+            <Set AllowDuplicates="TRUE"/>
+        </Update>
+        <Update>
+            <Where NarrativeStoryType="LOYALTY001C"/>
+            <Set AllowDuplicates="TRUE"/>
+        </Update>
+        <Update>
+            <Where NarrativeStoryType="LOYALTY001D"/>
+            <Set AllowDuplicates="TRUE"/>
+        </Update>
+        <Update>
+            <Where NarrativeStoryType="LOYALTY002A"/>
+            <Set AllowDuplicates="TRUE"/>
+        </Update>
+        <Update>
+            <Where NarrativeStoryType="LOYALTY002B"/>
+            <Set FirstOnly="FALSE" AllowDuplicates="TRUE"/>
+        </Update>
+        <Update>
+            <Where NarrativeStoryType="LOYALTY002C"/>
+            <Set AllowDuplicates="TRUE"/>
+        </Update>
+        <Update>
+            <Where NarrativeStoryType="LOYALTY002D"/>
+            <Set AllowDuplicates="TRUE"/>
+        </Update>
+    </NarrativeStories>
+    <!-- THE CRITICAL PIECE: the base-game CityRevolt unhappiness effect has a built-in DURATION -
+         a revolt countdown scaled by game speed. Left at default, our marker only STARTS a revolt
+         timer that ticks for many turns and never resolves in a short window (owner never changes,
+         unrest reads false). Forcing Duration=0 makes the revolt resolve the SAME turn the marker
+         lands, so the settlement actually defects. StandardCityRevolt is a base-game identifier. -->
+    <UnhappinessEffects>
+        <Update>
+            <Where ID="StandardCityRevolt"/>
+            <Set Duration="0" ScaleBySpeed="false"/>
+        </Update>
+    </UnhappinessEffects>
+</Database>

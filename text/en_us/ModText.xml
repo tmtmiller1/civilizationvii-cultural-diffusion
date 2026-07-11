@@ -4,6 +4,9 @@
         <Row Tag="LOC_MOD_CULTURAL_DIFFUSION_NAME">
             <Text>Cultural Diffusion</Text>
         </Row>
+        <Row Tag="LOC_OPTIONS_GROUP_CULTURAL_DIFFUSION">
+            <Text>Cultural Diffusion</Text>
+        </Row>
         <Row Tag="LOC_MOD_CULTURAL_DIFFUSION_DESCRIPTION">
             <Text>Culture becomes a living field that spreads from your cities tile by tile. A strong, established culture slowly grows its borders beyond the normal city footprint, seeps into open land, and can flip a rival's frontier tiles once your culture there decisively wins - a systemic answer to AI forward-settling. Growth is slow and organic: borders creep outward over the game and flow back when a culture weakens; an overwhelming culture reaches farther. A reimagining and extension of the Civ V mod Cultural Diffusion, rebuilt for Civ VII, with a deeper cultural-power model and optional Emigration integration. Single-player, tunable (Low/Medium/High), reversible. Works standalone, and reads diaspora data from the Emigration mod when it is installed.</Text>
         </Row>
@@ -41,6 +44,23 @@
         </Row>
         <Row Tag="LOC_OPTIONS_CD_VERB_FREE"><Text>Free territory (recommended)</Text></Row>
         <Row Tag="LOC_OPTIONS_CD_VERB_GOLD"><Text>Buy with gold (instant, integrated)</Text></Row>
+
+        <Row Tag="LOC_OPTIONS_CD_CORE">
+            <Text>Cultural Diffusion - rival city protection</Text>
+        </Row>
+        <Row Tag="LOC_OPTIONS_CD_CORE_DESCRIPTION">
+            <Text>How deep culture may push into a rival's city. Full downtown ring keeps their center and its inner ring safe. Center only protects just the city-center tile, letting culture take the tiles around it. None lets even the center flip.</Text>
+        </Row>
+        <Row Tag="LOC_OPTIONS_CD_CORE_FULL"><Text>Protect full downtown ring</Text></Row>
+        <Row Tag="LOC_OPTIONS_CD_CORE_CENTER"><Text>Protect city center only (take inner tiles)</Text></Row>
+        <Row Tag="LOC_OPTIONS_CD_CORE_NONE"><Text>Protect nothing</Text></Row>
+
+        <Row Tag="LOC_OPTIONS_CD_ADJACENCY">
+            <Text>Cultural Diffusion - contiguous border only</Text>
+        </Row>
+        <Row Tag="LOC_OPTIONS_CD_ADJACENCY_DESCRIPTION">
+            <Text>On (recommended): culture only claims tiles touching your land, so a rival's territory is taken from the outside in. Off: culture may claim any tile it dominates, including a disconnected pocket inside another civilization.</Text>
+        </Row>
 
         <Row Tag="LOC_OPTIONS_CD_FUSED">
             <Text>Cultural Diffusion - rich cultural model</Text>

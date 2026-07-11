@@ -29,8 +29,13 @@
  * @property {number}  maxDiffusionPlots Per-city cap on diffusion-claimed plots (safety).
  * @property {number}  maxFlipsPerTurn Global per-pass ceiling on ownership flips (pacing/safety).
  * @property {number}  flipCooldownTurns Turns a freshly flipped tile is locked from re-flipping.
- * @property {boolean} cityCoreProtection Tiles adjacent to a rival city center never flip.
- * @property {boolean} preventForwardSettle Prioritize claiming open buffer plots between rivals.
+ * @property {number}  coreProtectRadius Rings around a rival city CENTER that never flip:
+ *   1 = protect the center + its ring-1 (old "downtown" shield); 0 = protect only the
+ *   city-center plot itself (culture can bite ring-1 inward); -1 = protect nothing (even the
+ *   center is flippable). Lower = diffusion pushes deeper into a rival's worked footprint.
+ * @property {boolean} requireAdjacency Only flip a tile that TOUCHES your existing land
+ *   (the organic contiguous front - takes a rival's rings from the outside in). Off = flip
+ *   any tile your culture field dominates, even a disconnected pocket inside their territory.
  *
  * -- reaction-diffusion field (Civ V model) --
  * @property {number}  cultureThreshold Min culture on a tile before it diffuses to neighbours.
@@ -45,7 +50,6 @@
  * @property {number}  minimumOwner Culture a civ needs on a tile before it can own it.
  * @property {number}  flipRatio A flip needs newOwnerCulture x flipRatio > incumbentCulture (0.65 = decisive lead).
  * @property {number}  flipMaxDistance Max tiles from a city a plot may be claimed.
- * @property {number}  minimalOwnedCulture Culture floor kept for the owner on an owned tile.
  * @property {number}  roadBonus / roadMax / riverFollowBonus / riverFollowMax Road/river follow
  *   bonus + cap multipliers.
  * @property {CrossMod} terrainHills / terrainMountain Terrain (elevation) crossing modifiers.
@@ -90,8 +94,11 @@ export const CONFIG = {
   maxFlipsPerTurn: 8,    // per-pass ceiling on flips (the field paces growth; this is a safety net)
   flipCooldownTurns: 15, // a freshly claimed/conquered tile is locked this long
 
-  cityCoreProtection: true,
-  preventForwardSettle: true,
+  // Take tiles INSIDE a rival's ring by default - protect only the enemy city-center plot
+  // itself (0), not its whole ring-1. Set 1 for the old downtown shield, -1 to allow even
+  // the center to flip. Diffusion still reaches inner tiles organically via requireAdjacency.
+  coreProtectRadius: 0,
+  requireAdjacency: true,
 
   // -- reaction-diffusion field (the SLOW, organic reach - Civ V model) --
   // Culture is a persisted per-tile stock. A tile diffuses 5.5% of its value to each
@@ -111,7 +118,6 @@ export const CONFIG = {
   minimumOwner: 300,
   flipRatio: 0.65,
   flipMaxDistance: 6,
-  minimalOwnedCulture: 1,
 
   // Terrain: culture follows roads/rivers and is slowed crossing rough ground. `max` is the
   // neighbour cap x normalMax; `malus` slows the rate; `threshold` (x cultureThreshold) gates

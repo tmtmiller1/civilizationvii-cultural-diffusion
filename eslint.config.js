@@ -87,10 +87,5 @@ export default [
       // Match the engine's own `== null` undefined-check idiom.
       eqeqeq: ["error", "always", { null: "ignore" }]
     }
-  },
-  {
-    // The tunable settings catalog is data, not logic; exempt from the length gate.
-    files: ["ui/cd-config.js"],
-    rules: { "max-lines-per-function": "off", "max-lines": "off" }
   }
 ];

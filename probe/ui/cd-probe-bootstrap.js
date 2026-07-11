@@ -46,6 +46,20 @@ if (eng && typeof eng.on === "function") {
       emitLine(`event: PlotOwnershipChanged (${x},${y}) owner=${d?.owner ?? "?"}`);
     });
   } catch (_) {}
+  // Phase 5 independent confirmation: the engine fires CityTransfered when a settlement changes
+  // owner. Record every one into globalThis so the revolt watch can match it to OUR exact target
+  // (fromPlayer + cityID), instead of guessing from a laggy plot-owner read.
+  try {
+    eng.on("CityTransfered", (d) => {
+      emitLine(`event: CityTransfered ${JSON.stringify(d || {})}`);
+      try {
+        const g = (typeof globalThis !== "undefined") ? globalThis : {};
+        if (!g.__cdTransfers) g.__cdTransfers = [];
+        g.__cdTransfers.push(d || {});
+        while (g.__cdTransfers.length > 50) g.__cdTransfers.shift();
+      } catch (_) {}
+    });
+  } catch (_) {}
 }
 // Kick off shortly after attach in case a turn is already active.
 try { setTimeout(() => tick("timeout"), 6000); } catch (_) {}

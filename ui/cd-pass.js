@@ -319,9 +319,13 @@ function flipEligible(cand, owner, me, claimCount) {
   if (owner >= 0) {
     if (CONFIG.claimOnlyUnowned) return false;          // safety mode: empty land only
     if (atWar(me, owner)) return false;                 // no peaceful diffusion across an active front
-    if (CONFIG.cityCoreProtection && isCoreProtected(loc, owner)) return false; // never a rival downtown
+    // Protect only within coreProtectRadius rings of the rival's city center (0 = just the
+    // center plot, so culture bites their ring-1+ inward; -1 = protect nothing).
+    if (isCoreProtected(loc, owner, CONFIG.coreProtectRadius)) return false;
   }
-  if (!adjacentToMe(loc, me)) return false;             // must touch our existing land (Civ V rule)
+  // The organic contiguous front: only flip a tile touching our land, so a rival's rings are
+  // taken from the outside in. Off = flip any tile our culture field dominates (enclaves ok).
+  if (CONFIG.requireAdjacency && !adjacentToMe(loc, me)) return false;
   if ((claimCount.get(near.id) || 0) >= Math.max(0, CONFIG.maxDiffusionPlots)) {
     dlog(`skip flip ${k}: city ${near.id} at maxDiffusionPlots`);
     return false;
@@ -334,8 +338,16 @@ function commitFlip(cand, owner, verdict, fx) {
   const { state, next, me, ageCfg, claimCount } = fx;
   const { k, loc, near } = cand;
   const res = performFlip({ playerId: me, city: near.city, loc, verb: CONFIG.flipVerb });
-  if (!res.ok) {
-    dlog(`flip ${k} FAILED reason=${res.reason} verb=${res.verb}`);
+  // Interim guard: verify the tile actually changed owner before recording anything. The
+  // default setOwnership verb is proven to no-op on rival-owned land (redesign-plan.md, Phase
+  // 0 probe: 102/102 no-change), yet performFlip only reports "didn't throw". Without this
+  // check every silent no-op was booked as a win — consuming the city's maxDiffusionPlots
+  // budget, locking the tile for flipCooldownTurns, seeding a phantom stock, and firing a
+  // false "claimed territory" toast while the rival kept the tile. (Does NOT fix the
+  // orphan-on-empty-land case where ownerAt === me but the tile is unworkable; that needs the
+  // redesign-plan Phase 1 verb switch to purchasePlot/claimPlot.)
+  if (!res.ok || ownerAt(loc) !== me) {
+    dlog(`flip ${k} NOT APPLIED reason=${res.reason || "no-change"} verb=${res.verb}`);
     return false;
   }
   claimCount.set(near.id, (claimCount.get(near.id) || 0) + 1);

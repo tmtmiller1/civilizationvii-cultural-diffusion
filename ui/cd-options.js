@@ -26,6 +26,10 @@ import {
   setFusedModel,
   getUseEmigration,
   setUseEmigration,
+  getCoreProtectIndex,
+  setCoreProtectIndex,
+  getRequireAdjacency,
+  setRequireAdjacency,
   getDebug,
   setDebug
 } from "/cultural-diffusion/ui/cd-settings.js";
@@ -40,12 +44,20 @@ if (!CategoryData[CategoryType.Mods]) {
   };
 }
 
-const GROUP = "cultural-diffusion";
+// Underscore token: the engine derives the group header LOC key as
+// `LOC_OPTIONS_GROUP_${group.toUpperCase()}`, so this must match the tag
+// defined in text/*/ModText.xml (LOC_OPTIONS_GROUP_CULTURAL_DIFFUSION).
+const GROUP = "cultural_diffusion";
 
 const PRESET_ITEMS = PRESET_NAMES.map((n) => ({ label: "LOC_CD_PRESET_" + n.toUpperCase() }));
 const VERB_ITEMS = [
   { label: "LOC_OPTIONS_CD_VERB_FREE" },
   { label: "LOC_OPTIONS_CD_VERB_GOLD" }
+];
+const CORE_ITEMS = [
+  { label: "LOC_OPTIONS_CD_CORE_FULL" },   // protect the rival's whole downtown ring
+  { label: "LOC_OPTIONS_CD_CORE_CENTER" }, // protect only the city-center plot (bite ring-1 inward)
+  { label: "LOC_OPTIONS_CD_CORE_NONE" }    // protect nothing (even the center can flip)
 ];
 
 /** Register the intensity preset dropdown. */
@@ -106,6 +118,35 @@ function registerVerb() {
   });
 }
 
+/** Register the core-protection dropdown (how deep into a rival's rings culture may bite). */
+function registerCoreProtect() {
+  Options.addOption({
+    category: CategoryType.Mods,
+    group: GROUP,
+    type: OptionType.Dropdown,
+    id: "cd-core-protect",
+    initListener: (/** @type {*} */ info) => (info.selectedItemIndex = getCoreProtectIndex()),
+    updateListener: (/** @type {*} */ _i, /** @type {number} */ v) => setCoreProtectIndex(v),
+    label: "LOC_OPTIONS_CD_CORE",
+    description: "LOC_OPTIONS_CD_CORE_DESCRIPTION",
+    dropdownItems: CORE_ITEMS
+  });
+}
+
+/** Register the require-adjacency checkbox (organic contiguous front vs. enclave flips). */
+function registerAdjacency() {
+  Options.addOption({
+    category: CategoryType.Mods,
+    group: GROUP,
+    type: OptionType.Checkbox,
+    id: "cd-require-adjacency",
+    initListener: (/** @type {*} */ info) => (info.currentValue = getRequireAdjacency()),
+    updateListener: (/** @type {*} */ _i, /** @type {boolean} */ v) => setRequireAdjacency(v),
+    label: "LOC_OPTIONS_CD_ADJACENCY",
+    description: "LOC_OPTIONS_CD_ADJACENCY_DESCRIPTION"
+  });
+}
+
 /** Register the fused-model checkbox. */
 function registerFused() {
   Options.addOption({
@@ -153,6 +194,8 @@ try {
   registerEnabled();
   registerClaimOnly();
   registerVerb();
+  registerCoreProtect();
+  registerAdjacency();
   registerFused();
   registerEmigration();
   registerDebug();

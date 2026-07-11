@@ -19,8 +19,12 @@ const OPT_VERB = "flipVerb"; // 0 = setOwnership, 1 = purchasePlot
 const OPT_FUSED = "fusedModel";
 const OPT_EMIGRATION = "useEmigration";
 const OPT_DEBUG = "debug";
+const OPT_CORE = "coreProtect";      // 0 = Full downtown ring, 1 = Center only, 2 = None
+const OPT_ADJACENCY = "requireAdjacency";
 
 const VERB_BY_INDEX = ["setOwnership", "purchasePlot"];
+// Core-protection dropdown index -> ring radius that never flips (see cd-config coreProtectRadius).
+const CORE_RADIUS_BY_INDEX = [1, 0, -1];
 
 /**
  * Cascade-safe per-mod settings store over a single shared "modSettings" localStorage
@@ -172,6 +176,32 @@ export function setDebug(on) {
   ModOptions.save(MOD_ID, OPT_DEBUG, on ? 1 : 0);
 }
 
+/**
+ * Core-protection dropdown index (0 = Full downtown ring, 1 = Center only, 2 = None).
+ * Defaults to the index whose radius matches the shipped `coreProtectRadius` default.
+ * @returns {number} Dropdown index.
+ */
+export function getCoreProtectIndex() {
+  const v = ModOptions.load(MOD_ID, OPT_CORE);
+  if (typeof v === "number" && v >= 0 && v < CORE_RADIUS_BY_INDEX.length) return v;
+  const def = CORE_RADIUS_BY_INDEX.indexOf(CONFIG_DEFAULTS.coreProtectRadius);
+  return def >= 0 ? def : 1;
+}
+/** @param {number} index Dropdown index. */
+export function setCoreProtectIndex(index) {
+  const i = typeof index === "number" && index >= 0 && index < CORE_RADIUS_BY_INDEX.length ? index : 1;
+  ModOptions.save(MOD_ID, OPT_CORE, i);
+}
+
+/** @returns {boolean} Whether the organic contiguous front (adjacency) is required. */
+export function getRequireAdjacency() {
+  return loadBool(OPT_ADJACENCY, CONFIG_DEFAULTS.requireAdjacency);
+}
+/** @param {boolean} on Adjacency flag. */
+export function setRequireAdjacency(on) {
+  ModOptions.save(MOD_ID, OPT_ADJACENCY, on ? 1 : 0);
+}
+
 // -- apply to live CONFIG -------------------------------------------
 
 /**
@@ -204,6 +234,8 @@ export function applyTunableOverrides() {
   CONFIG.flipVerb = VERB_BY_INDEX[getFlipVerbIndex()] || "setOwnership";
   CONFIG.fusedModel = getFusedModel();
   CONFIG.useEmigration = getUseEmigration();
+  CONFIG.coreProtectRadius = CORE_RADIUS_BY_INDEX[getCoreProtectIndex()];
+  CONFIG.requireAdjacency = getRequireAdjacency();
   CONFIG.debug = getDebug();
 }
 

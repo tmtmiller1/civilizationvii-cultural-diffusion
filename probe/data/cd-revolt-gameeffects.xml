@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Phase 5 (cultural city capture) probe: the base-game CityRevolt unhappiness effect, wrapped in
+     a modifier we attach to a settlement via a hidden marker constructible. Attaching it triggers
+     the base-game loyalty petition (the LOYALTY001 narrative story chain - see cd-revolt-marker.xml),
+     which offers the settlement to a neighbouring major civ and transfers it. Uses only base-game
+     effect identifiers. -->
+<GameEffects xmlns="GameEffects">
+    <!-- Apply the base-game CityRevolt unhappiness effect ONCE. It must NOT be permanent/run-once=false:
+         re-applying it every turn re-arms the revolt countdown, so it never resolves. A single
+         application + Duration=0 (see cd-revolt-marker.xml) resolves the revolt the same turn. -->
+    <Modifier id="CD_MARKER_CITY_REVOLT" collection="COLLECTION_OWNER_CITY" effect="EFFECT_CITY_ADJUST_UNHAPPINESS_EFFECT" run-once="true">
+        <Argument name="UnhappinessEffect">CityRevolt</Argument>
+    </Modifier>
+    <!-- PROBE-ONLY forcing function: the CityRevolt effect above is a CONSEQUENCE of the unhappy/angry
+         band, so it stays inert on a happy city. Drain the city's happiness every turn to push it into
+         that band over a few end-turns, then observe whether the revolt engages. NOT part of the final
+         mod design - it exists only to test whether an unhappy city actually revolts. -->
+    <Modifier id="CD_MARKER_HAPPINESS_CRASH" collection="COLLECTION_OWNER_CITY" effect="EFFECT_CITY_ADJUST_YIELD" run-once="false" permanent="true">
+        <Argument name="YieldType">YIELD_HAPPINESS</Argument>
+        <Argument name="Amount">-9999</Argument>
+    </Modifier>
+</GameEffects>
