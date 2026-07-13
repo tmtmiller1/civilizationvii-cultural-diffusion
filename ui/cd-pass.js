@@ -103,6 +103,23 @@ function nearestCity(plot, cities) {
   return best ? { ...best, d: bestD } : null;
 }
 
+/**
+ * True when a plot lies within any LOCAL city's base-game natural growth ring (baseGrowthRadius).
+ * These inner rings belong ENTIRELY to the base game, which assigns each tile to the city that can
+ * actually WORK it. The mod must never own or reassign them: force-buying an inner tile to the
+ * geometrically nearest city (which may not be the city whose ring it sits in, or may be too far to
+ * work it) leaves the tile owned-but-unworkable - the "can't work some tiles in my 3-ring"
+ * regression. The mod only ever claims the FRONTIER beyond this ring (the anti-forward-settle buffer).
+ * @param {{x:number,y:number}} loc Plot.
+ * @param {{city:*, id:number, loc:{x:number,y:number}}[]} cities Local cities.
+ * @returns {boolean} True when the base game, not the mod, should own this tile.
+ */
+function withinOwnNaturalRing(loc, cities) {
+  const r = Math.max(1, Math.floor(CONFIG.baseGrowthRadius));
+  for (const c of cities) if (hexDistance(c.loc, loc) <= r) return true;
+  return false;
+}
+
 /** The set of player ids that currently have living settlements (+ the local player). */
 function aliveOwners(me) {
   const set = new Set();
@@ -361,6 +378,7 @@ function flipCandidates(region, next, cities, maxDist) {
   for (const k of region) {
     if (!next[k]) continue;
     const loc = unkey(k);
+    if (withinOwnNaturalRing(loc, cities)) continue; // base game owns/works your inner rings - never claim them
     const near = nearestCity(loc, cities);
     if (!near || near.d > maxDist) continue;
     candidates.push({ k, loc, near });
@@ -514,6 +532,7 @@ function bufferTarget(n, devLoc, state, ctx) {
   if (ownerAt(n) >= 0) return null;                 // UNOWNED only - never take a tile another player owns
   if (state.locked[key(n.x, n.y)] > 0) return null; // anti-flicker cooldown
   if (distantLandsGated(n, ctx.me)) return null;    // no distant-lands claims before Exploration
+  if (withinOwnNaturalRing(n, ctx.cities)) return null; // base game owns inner rings; buffer only BEYOND them
   const nc = nearestCity(n, ctx.cities);
   return (nc && nc.d <= ctx.maxR) ? nc : null;
 }
@@ -536,23 +555,70 @@ function repairOrphans(state, region, cities, me) {
     const loc = unkey(k);
     if (ownerAt(loc) !== me) continue;       // only our own tiles
     if (owningCityIdAt(loc) >= 0) continue;  // already a real city tile - not an orphan
-    const near = nearestCity(loc, cities);
-    if (!near) continue;
-    // Release first, then re-buy: purchasePlot is proven on UNOWNED land, so releasing makes the
-    // re-claim take the proven path. A purchasePlot'd tile is attached to the buying city, so
-    // ownerAt === me afterwards means it re-integrated.
-    unclaim(loc);
-    const res = performFlip({ playerId: me, city: near.city, loc, verb: "purchasePlot", refund: CONFIG.refundGold });
-    if (res.ok && ownerAt(loc) === me) {
-      state.claims[k] = { by: me, city: near.id, turn: state.monoTurn };
-    } else {
-      delete state.claims[k];  // gave it back to the map so base-game growth can take it
-      delete state.locked[k];
-      dlog(`repair ${k}: released orphan (re-integrate failed reason=${res.reason})`);
+    // An orphan inside our own natural ring goes BACK to the base game, not re-bought to the nearest
+    // city: re-buying attaches it to whichever city center is closest, which may not be the city
+    // whose ring it sits in (or may be too far to work it) - the "can't work some inner tiles"
+    // regression. Releasing it lets the base game re-acquire it and assign it to the city that works it.
+    if (withinOwnNaturalRing(loc, cities)) {
+      unclaim(loc);
+      forgetClaim(state, k);
+      healed++;
+    } else if (reintegrateOrphan(state, k, loc, cities, me)) {
+      healed++;
     }
-    healed++;
   }
   return healed;
+}
+
+/** Drop a tile's claim + lock bookkeeping (used when a tile is handed back to the base game). */
+function forgetClaim(state, k) {
+  delete state.claims[k];
+  delete state.locked[k];
+}
+
+/**
+ * Re-integrate a FRONTIER orphan (beyond the base-game natural ring) into its nearest city: release
+ * it, then re-buy via the integrated verb (purchasePlot is proven on UNOWNED land, so releasing
+ * makes the re-claim take the proven path). On failure the tile stays released so the base game can
+ * grow into it. @returns {boolean} True when the orphan was processed (false = no city to attach to).
+ */
+function reintegrateOrphan(state, k, loc, cities, me) {
+  const near = nearestCity(loc, cities);
+  if (!near) return false;
+  unclaim(loc);
+  const res = performFlip({ playerId: me, city: near.city, loc, verb: "purchasePlot", refund: CONFIG.refundGold });
+  if (res.ok && ownerAt(loc) === me) {
+    state.claims[k] = { by: me, city: near.id, turn: state.monoTurn };
+  } else {
+    forgetClaim(state, k);
+    dlog(`repair ${k}: released orphan (re-integrate failed reason=${res.reason})`);
+  }
+  return true;
+}
+
+/**
+ * Release any MOD-CLAIMED tile that sits within a local city's base-game natural ring back to the
+ * base game, so it re-acquires the tile and assigns it to the city that can actually WORK it. Heals
+ * saves already damaged by the 1.0.6 build, where inner-ring tiles were force-bought to the
+ * geometrically nearest city (often the wrong one), leaving them owned-but-unworkable. Unlike
+ * repairOrphans (which only sees owner-me/no-owning-city orphans), this reconciles tiles that DID
+ * attach to a city - just the wrong one. One-shot per damaged tile: the claim record is dropped, so
+ * once the base game re-owns the tile it is no longer tracked and never released again.
+ * @param {*} state Persisted state (mutated). @param {*} cities Local cities. @param {number} me Local player id.
+ * @returns {number} Inner claims released this pass.
+ */
+function releaseInnerClaims(state, cities, me) {
+  let released = 0;
+  for (const k of Object.keys(state.claims)) {
+    const c = state.claims[k];
+    if (!c || c.by !== me) continue;
+    const loc = unkey(k);
+    if (!withinOwnNaturalRing(loc, cities)) continue;
+    if (ownerAt(loc) === me) unclaim(loc); // hand it back; the base game re-grows + re-assigns it to the right city
+    forgetClaim(state, k);
+    released++;
+  }
+  return released;
 }
 
 /** Prune far/empty field tiles to bound persisted size (keeps a 2-tile skirt past the region). */
@@ -620,19 +686,21 @@ export function runPass() {
 
   const { state, region, radius, injectors, threshold, ethCtx, ageCfg, pace } = preparePass(cities);
   const healed = repairOrphans(state, region, cities, me);
+  const released = releaseInnerClaims(state, cities, me);
   const next = updateField(state, region, injectors, { threshold, ethCtx, ageCfg, pace });
   const { flips, tiles } = resolveOwnership({ state, region, next, cities, me, ageCfg });
 
   pruneFarField(state, region, cities, radius);
   pruneState(state);
   saveState(state);
-  if (flips > 0 || healed > 0 || CONFIG.debug) {
-    log(`pass: ${flips} flip(s), ${healed} orphan(s) healed, ${Object.keys(state.field).length} active field tile(s)`);
+  if (flips > 0 || healed > 0 || released > 0 || CONFIG.debug) {
+    log(`pass: ${flips} flip(s), ${healed} orphan(s) healed, ${released} inner tile(s) released to base game, ${Object.keys(state.field).length} active field tile(s)`);
   }
-  return { flips, tiles, healed };
+  return { flips, tiles, healed, released };
 }
 
 /** Test/introspection helpers (pure). */
 export const __test = {
-  nearestCity, adjacentToMe, repairOrphans, claimBufferAt, commitBuffer, easeCrossing, effectiveWaterEase
+  nearestCity, adjacentToMe, withinOwnNaturalRing, repairOrphans, releaseInnerClaims,
+  claimBufferAt, commitBuffer, easeCrossing, effectiveWaterEase
 };

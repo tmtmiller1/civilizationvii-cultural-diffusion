@@ -6,6 +6,31 @@ All notable changes to Cultural Diffusion are recorded here. The format follows
 
 ## [Unreleased]
 
+## [1.0.7] - 2026-07-13
+
+### Fixed
+
+- **The mod no longer locks tiles inside your own city's 3-ring (regression from 1.0.6).** After
+  1.0.6 switched the claim verb to `purchasePlot`, the diffusion pass, the +1 buffer, and the
+  orphan-repair were force-buying *unowned tiles inside your own natural rings* and attaching each
+  to the **geometrically nearest** of your cities. When two of your cities sit close together, a
+  tile in **City A's** workable ring that happens to be a hair closer to **City B** was deeded to
+  B — so A could no longer work it, and if B was too far, nobody could. This is the reported
+  *"restricting me from working some, but not all, tiles within the 3-ring of my city centre."*
+- **The base game now owns and allocates your inner rings, always.** Rings within
+  `baseGrowthRadius` (3) of any of your cities are ceded entirely to the base game, which assigns
+  each tile to the city that can actually **work** it. The mod only ever claims the **frontier
+  beyond** that ring — the anti-forward-settling buffer, which was always its purpose. The
+  diffusion flip (`flipCandidates`) and the +1 buffer (`bufferTarget`) now skip any tile within a
+  local city's natural ring.
+- **Existing damaged saves self-heal.** A new per-pass reconciliation (`releaseInnerClaims`)
+  releases any tile the 1.0.6 build already force-bought inside your natural rings back to the base
+  game, which re-acquires it and re-assigns it to the workable city. Orphan-repair
+  (`repairOrphans`) likewise now **releases** inner-ring orphans instead of re-buying them to the
+  nearest city (it still re-integrates true *frontier* orphans). Healing is one-shot per tile and
+  logged as `N inner tile(s) released to base game`. So a save broken by today's earlier update
+  repairs itself within a turn or two of loading 1.0.7 — every 3-ring tile becomes workable again.
+
 ## [1.0.6] - 2026-07-13
 
 ### Added
