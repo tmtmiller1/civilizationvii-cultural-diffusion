@@ -34,6 +34,20 @@ function readMaxTurns() {
 }
 
 /**
+ * Progress through the CURRENT age in [0,1] - the same `Game.turn / Game.maxTurns` the radial menu
+ * shows as age progress. 0 when unreadable (treated as the start of the age).
+ * @returns {number} Age-progress fraction.
+ */
+export function ageProgress() {
+  return safe(() => {
+    const maxTurns = readMaxTurns();
+    if (!maxTurns) return 0;
+    const turn = typeof Game !== "undefined" && typeof Game.turn === "number" ? Game.turn : 0;
+    return Math.min(1, Math.max(0, turn / maxTurns));
+  }, 0);
+}
+
+/**
  * The per-turn pace multiplier from the current age's length (game speed). `< 1` on long-age
  * speeds (Marathon) slows the field so borders don't finish growing in the first fraction of
  * the age; `> 1` on short ages (Quick) speeds it up. Clamped; 1 when unreadable/disabled.

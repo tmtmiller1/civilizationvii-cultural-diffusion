@@ -116,8 +116,6 @@ sooner.
 ### Options toggles
 - **Enabled** - master switch (off = vanilla borders).
 - **Claim empty land only** - safety mode; never flip a tile owned by another civ.
-- **How tiles are claimed** - *Free territory* (default; you develop it normally) or
-  *Buy with gold* (instantly integrated into the nearest city).
 - **Rich cultural model** - fold CPI + prosperity into a city's cultural power. Off =
   raw culture only.
 - **Follow diaspora (Emigration mod)** - read Emigration for ethnic-affinity

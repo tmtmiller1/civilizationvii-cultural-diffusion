@@ -15,14 +15,12 @@ const MOD_ID = "cultural-diffusion";
 const OPT_PRESET = "preset"; // 0 = Custom, then Low/Medium/High
 const OPT_ENABLED = "diffusionEnabled";
 const OPT_CLAIM_ONLY = "claimOnlyUnowned";
-const OPT_VERB = "flipVerb"; // 0 = setOwnership, 1 = purchasePlot
 const OPT_FUSED = "fusedModel";
 const OPT_EMIGRATION = "useEmigration";
 const OPT_DEBUG = "debug";
 const OPT_CORE = "coreProtect";      // 0 = Full downtown ring, 1 = Center only, 2 = None
 const OPT_ADJACENCY = "requireAdjacency";
 
-const VERB_BY_INDEX = ["setOwnership", "purchasePlot"];
 // Core-protection dropdown index -> ring radius that never flips (see cd-config coreProtectRadius).
 const CORE_RADIUS_BY_INDEX = [1, 0, -1];
 
@@ -139,16 +137,6 @@ export function setClaimOnlyUnowned(on) {
   ModOptions.save(MOD_ID, OPT_CLAIM_ONLY, on ? 1 : 0);
 }
 
-/** @returns {number} Flip-verb index (0 = setOwnership, 1 = purchasePlot). */
-export function getFlipVerbIndex() {
-  const v = ModOptions.load(MOD_ID, OPT_VERB);
-  return v === 1 ? 1 : 0;
-}
-/** @param {number} index Verb index. */
-export function setFlipVerbIndex(index) {
-  ModOptions.save(MOD_ID, OPT_VERB, index === 1 ? 1 : 0);
-}
-
 /** @returns {boolean} Whether the fused 3.1a cultural model is on. */
 export function getFusedModel() {
   return loadBool(OPT_FUSED, CONFIG_DEFAULTS.fusedModel);
@@ -231,7 +219,9 @@ export function applyTunableOverrides() {
   }
   CONFIG.diffusionEnabled = getDiffusionEnabled();
   CONFIG.claimOnlyUnowned = getClaimOnlyUnowned();
-  CONFIG.flipVerb = VERB_BY_INDEX[getFlipVerbIndex()] || "setOwnership";
+  // flipVerb is intentionally NOT overridden from settings: it stays at its CONFIG default
+  // ("purchasePlot", integrated). Any stale stored verb from an older version is ignored, so
+  // everyone gets the integrated verb. Change it only in code (cd-config.js) for testing.
   CONFIG.fusedModel = getFusedModel();
   CONFIG.useEmigration = getUseEmigration();
   CONFIG.coreProtectRadius = CORE_RADIUS_BY_INDEX[getCoreProtectIndex()];
@@ -239,4 +229,4 @@ export function applyTunableOverrides() {
   CONFIG.debug = getDebug();
 }
 
-export { MOD_ID, VERB_BY_INDEX };
+export { MOD_ID };

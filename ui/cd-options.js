@@ -8,8 +8,11 @@
 //   - Intensity preset (Custom / Low / Medium / High) - the simple knob.
 //   - Enable diffusion (master switch).
 //   - Claim only unowned land (safety mode).
-//   - Flip verb (Free territory / Buy with gold).
 //   - Debug logging.
+//
+// The flip verb is NOT exposed here: claimed tiles are always integrated into the nearest
+// city (CONFIG.flipVerb = "purchasePlot", refunded to net-free). The legacy free-but-orphan
+// setOwnership path remains a code-only escape hatch in cd-config.js / cd-ownership.js.
 
 import { CategoryType, OptionType, Options } from "/core/ui/options/model-options.js";
 import { CategoryData } from "/core/ui/options/options-helpers.js";
@@ -20,8 +23,6 @@ import {
   setDiffusionEnabled,
   getClaimOnlyUnowned,
   setClaimOnlyUnowned,
-  getFlipVerbIndex,
-  setFlipVerbIndex,
   getFusedModel,
   setFusedModel,
   getUseEmigration,
@@ -50,10 +51,6 @@ if (!CategoryData[CategoryType.Mods]) {
 const GROUP = "cultural_diffusion";
 
 const PRESET_ITEMS = PRESET_NAMES.map((n) => ({ label: "LOC_CD_PRESET_" + n.toUpperCase() }));
-const VERB_ITEMS = [
-  { label: "LOC_OPTIONS_CD_VERB_FREE" },
-  { label: "LOC_OPTIONS_CD_VERB_GOLD" }
-];
 const CORE_ITEMS = [
   { label: "LOC_OPTIONS_CD_CORE_FULL" },   // protect the rival's whole downtown ring
   { label: "LOC_OPTIONS_CD_CORE_CENTER" }, // protect only the city-center plot (bite ring-1 inward)
@@ -100,21 +97,6 @@ function registerClaimOnly() {
     updateListener: (/** @type {*} */ _i, /** @type {boolean} */ v) => setClaimOnlyUnowned(v),
     label: "LOC_OPTIONS_CD_CLAIM_ONLY",
     description: "LOC_OPTIONS_CD_CLAIM_ONLY_DESCRIPTION"
-  });
-}
-
-/** Register the flip-verb dropdown. */
-function registerVerb() {
-  Options.addOption({
-    category: CategoryType.Mods,
-    group: GROUP,
-    type: OptionType.Dropdown,
-    id: "cd-verb",
-    initListener: (/** @type {*} */ info) => (info.selectedItemIndex = getFlipVerbIndex()),
-    updateListener: (/** @type {*} */ _i, /** @type {number} */ v) => setFlipVerbIndex(v),
-    label: "LOC_OPTIONS_CD_VERB",
-    description: "LOC_OPTIONS_CD_VERB_DESCRIPTION",
-    dropdownItems: VERB_ITEMS
   });
 }
 
@@ -193,7 +175,6 @@ try {
   registerPreset();
   registerEnabled();
   registerClaimOnly();
-  registerVerb();
   registerCoreProtect();
   registerAdjacency();
   registerFused();

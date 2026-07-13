@@ -23,7 +23,14 @@
  * @typedef {Object} CdConfig
  * @property {boolean} diffusionEnabled Master switch.
  * @property {boolean} claimOnlyUnowned Safety mode: only claim empty land, never flip owned tiles.
- * @property {string}  flipVerb "setOwnership" (free territory) | "purchasePlot" (gold, integrated).
+ * @property {string}  flipVerb "purchasePlot" (integrated, default) | "setOwnership" (free but orphan).
+ * @property {boolean} refundGold Restore purchasePlot's gold cost the same tick (net-free integrated claims).
+ * @property {boolean} repairOrphans Re-integrate legacy orphan tiles each pass so they stop blocking base-game growth.
+ * @property {boolean} growthBuffer On rural growth, claim the unowned tiles adjacent to the developed tile (+1 buffer).
+ * @property {number}  baseGrowthRadius Base-game max city ring; buffer claims are capped to this + 1 rings out.
+ * @property {boolean} diffuseAcrossWater Let the reaction-diffusion field spread across water (with a crossing malus).
+ * @property {boolean} blockDistantLandsBeforeExploration Forbid claiming Distant-Lands tiles until the Exploration age.
+ * @property {boolean} waterEaseRamp Ramp waterEase continuously across each age (toward the next age's value).
  * @property {number}  turnInterval Run the diffusion pass every N local-player turns.
  * @property {number}  fieldRadius Rings around each local city that the culture field is simulated (compute bound).
  * @property {number}  maxDiffusionPlots Per-city cap on diffusion-claimed plots (safety).
@@ -85,7 +92,45 @@ export const CONFIG = {
   // -- master / safety ----------------------------------------------
   diffusionEnabled: true,
   claimOnlyUnowned: false,
-  flipVerb: "setOwnership",
+  // The INTEGRATED verb (redesign-plan Phase 1). `purchasePlot` attaches the flipped tile to
+  // the nearest city (owningCity set, inCityPlots true), so the tile is a real, workable city
+  // plot - NOT the orphan that `setOwnership` produces (owner set but no owning city), which
+  // blocks the base game's own population/border growth from ever acquiring that tile. This is
+  // now CODE-ONLY (no Options dropdown): every player gets the integrated verb. `setOwnership`
+  // survives only for `unclaim` and as a testing escape hatch (set this to "setOwnership").
+  // Probe-proven (2026-07-09): purchasePlot integrates, and is effectively free on contiguous
+  // frontier tiles - refundGold nets any cost to zero regardless.
+  flipVerb: "purchasePlot",
+  // Net-zero the gold purchasePlot spends by restoring the balance the same tick via
+  // Treasury.changeGoldBalance (invisible to the player and to the demographics gold metrics).
+  // The proven "free + integrated" ideal. Turn off to let claims actually cost gold.
+  refundGold: true,
+  // Each pass, re-integrate any ORPHAN tile (owner === me but no owning city) left by an older
+  // setOwnership build or a pre-fix save: release it, then re-claim it via the integrated verb so
+  // it becomes a real city tile and stops blocking the base game's own inner-ring border growth.
+  // Off = leave legacy orphans as-is.
+  repairOrphans: true,
+
+  // Event-driven "+1 ring" cultural buffer. When the local player completes a RURAL improvement on
+  // a tile (a manual rural-growth event: "we improved a resource/tile"), claim only the UNOWNED
+  // land tiles ADJACENT to that developed tile (not the whole ring) for the nearest city, via the
+  // integrated verb - so developing a frontier tile pushes your cultural border one tile past it,
+  // organically, paced to your own development. Claims adjacent UNOWNED land AND water (coastal
+  // borders); it NEVER takes a tile owned by another player (peaceful rival capture is left to the
+  // slow diffusion pass). Off = borders come only from the reaction-diffusion field.
+  growthBuffer: true,
+  baseGrowthRadius: 3, // base-game max city ring; buffer tiles are capped to this + 1 rings out
+
+  // Let the slow reaction-diffusion field spread ACROSS water (not just the +1 buffer). Culture
+  // crosses water slowly and only once strong enough (see terrainCoast/terrainOcean) - so an
+  // established coastal culture can island-hop and claim SOME land across the sea, while a weak one
+  // stays landlocked. Off = the field is land-only (legacy) and only the buffer touches water.
+  diffuseAcrossWater: true,
+  // Before the Exploration age you may NOT culturally claim tiles in your DISTANT LANDS (the far
+  // hemisphere) - matching the base game gating ocean crossing to Exploration. Home-hemisphere
+  // islands across nearby water are still claimable. Applies to BOTH the diffusion flip and the +1
+  // buffer. From Exploration on, distant-lands tiles can be claimed (still subject to the water malus).
+  blockDistantLandsBeforeExploration: true,
 
   // -- pacing / scope -----------------------------------------------
   turnInterval: 1,
@@ -133,6 +178,11 @@ export const CONFIG = {
   terrainForest:   { malus: 0.10, max: 0.80, threshold: 1.25 }, // FEATURE_FOREST / FEATURE_TAIGA
   terrainJungle:   { malus: 0.60, max: 0.20, threshold: 4.50 }, // FEATURE_RAINFOREST
   terrainMarsh:    { malus: 0.65, max: 0.20, threshold: 5.00 }, // FEATURE_MARSH / bog / mangrove
+  // Water crossing (only when diffuseAcrossWater). Coast (shallow) is crossable by an established
+  // culture - island hopping; deep ocean is near-impassable, only an overwhelming culture spans it.
+  // The high thresholds are what make "SOME land across water" reachable but rare.
+  terrainCoast:    { malus: 0.55, max: 0.30, threshold: 3.50 }, // TERRAIN_COAST (shallow water)
+  terrainOcean:    { malus: 0.80, max: 0.12, threshold: 6.50 }, // TERRAIN_OCEAN (deep water)
 
   // -- injection strength shaping (fused 3.1a) ---------------------
   // These decide how hard each city PUMPS culture into its own tile (the diffusion source).
@@ -165,11 +215,22 @@ export const CONFIG = {
   // would runaway-paint the map at a fixed injection. So injection is DAMPED and the ownership
   // bar RAISED per age - keeping a single city's reach roughly comparable across ages while
   // letting the bigger late-game empire (more cities) cover more ground. Keyed by age.
+  //
+  // waterEase [0..1] shrinks the water crossing gates as sea travel matures: 0 keeps the full
+  // coast/ocean malus (Antiquity - deep ocean near-impassable), a partial value drastically eases
+  // it (Exploration - ocean-going ships), and 1 removes the water penalty entirely (Modern - blue-
+  // water culture spreads across oceans like open land). Applied to terrainCoast + terrainOcean.
   byAge: {
-    ANTIQUITY:   { injectionScale: 1.0,  ownerBar: 1.0 },
-    EXPLORATION: { injectionScale: 0.8,  ownerBar: 1.25 },
-    MODERN:      { injectionScale: 0.65, ownerBar: 1.6 }
+    ANTIQUITY:   { injectionScale: 1.0,  ownerBar: 1.0,  waterEase: 0.0 },
+    EXPLORATION: { injectionScale: 0.8,  ownerBar: 1.25, waterEase: 0.65 },
+    MODERN:      { injectionScale: 0.65, ownerBar: 1.6,  waterEase: 1.0 }
   },
+  // Ramp waterEase CONTINUOUSLY across each age instead of stepping at the boundary: within an age
+  // it interpolates from that age's waterEase toward the NEXT age's, by progress through the age
+  // (Game.turn / Game.maxTurns). So Exploration eases from 0.65 up to ~1.0 over its course, and
+  // Antiquity eases from 0.0 up to ~0.65 (deep ocean stays near-impassable early, softening late).
+  // Off = flat per-age steps.
+  waterEaseRamp: true,
 
   // -- per-leader / civ / memento variance (cd-civ-tuning.js) -------
   // Bounded injection nudges for the culture/wonder/celebration/suzerainty outliers and the

@@ -10,7 +10,7 @@
 import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
 import { setDebug as setLogDebug, log, dlog } from "/cultural-diffusion/ui/cd-log.js";
 import { applyTunableOverrides } from "/cultural-diffusion/ui/cd-settings.js";
-import { runPass } from "/cultural-diffusion/ui/cd-pass.js";
+import { runPass, claimBufferAt } from "/cultural-diffusion/ui/cd-pass.js";
 import { loadState, saveState } from "/cultural-diffusion/ui/cd-state.js";
 
 let _lastLocalTurnRun = -999;
@@ -21,23 +21,68 @@ let _lastLocalTurnRun = -999;
 // event bus that every mod shares.
 /** @type {((data:*)=>void)|null} */
 let _turnHandlerRef = null;
+/** @type {((data:*)=>void)|null} */
+let _constructibleHandlerRef = null;
 
 // Kill switch: if our per-turn pass throws repeatedly, unsubscribe so a broken build stops
 // running - and stops spamming errors - on every turn for the rest of the session.
 let _passErrors = 0;
 const KILL_THRESHOLD = 3;
 
-/** Drain our own engine subscription. Idempotent; safe to call any time. */
+/** Drain our own engine subscriptions. Idempotent; safe to call any time. */
 function teardown() {
   try {
     const eng = typeof engine !== "undefined" ? engine : null;
-    if (eng && typeof eng.off === "function" && _turnHandlerRef) {
-      eng.off("PlayerTurnActivated", _turnHandlerRef);
+    if (eng && typeof eng.off === "function") {
+      if (_turnHandlerRef) eng.off("PlayerTurnActivated", _turnHandlerRef);
+      if (_constructibleHandlerRef) eng.off("ConstructibleAddedToMap", _constructibleHandlerRef);
     }
   } catch (_) {
     /* ignore */
   }
   _turnHandlerRef = null;
+  _constructibleHandlerRef = null;
+}
+
+/**
+ * True when a constructible type is a RURAL development (a worked improvement or the rural
+ * district) rather than a city-centre building/wonder - i.e. a "we improved a tile" growth event.
+ * @param {*} typeId The event's constructibleType id.
+ * @returns {boolean} Whether it counts as rural growth.
+ */
+function isRuralConstructible(typeId) {
+  const row = lookupConstructible(typeId);
+  if (!row) return false;
+  const t = String(row.ConstructibleType || "");
+  return t === "DISTRICT_RURAL" || String(row.ConstructibleClass || "") === "IMPROVEMENT" || t.indexOf("IMPROVEMENT") === 0;
+}
+
+/** @param {*} typeId Constructible id. @returns {*} The GameInfo row, or null. */
+function lookupConstructible(typeId) {
+  try {
+    if (typeof GameInfo === "undefined") return null;
+    return GameInfo?.Constructibles?.lookup?.(typeId) || null;
+  } catch (_) {
+    return null;
+  }
+}
+
+/**
+ * ConstructibleAddedToMap handler: when the local player finishes a rural improvement, push the
+ * "+1 ring" cultural buffer onto the unowned tiles adjacent to it. Fully guarded.
+ * @param {*} data Event payload: { location:{x,y}, constructibleType, percentComplete }.
+ */
+function onConstructibleAdded(data) {
+  try {
+    if (!CONFIG.growthBuffer) return;
+    const loc = data && data.location;
+    if (!loc || typeof loc.x !== "number" || typeof loc.y !== "number") return;
+    if (data.percentComplete != null && data.percentComplete !== 100) return; // only completed builds
+    if (!isRuralConstructible(data.constructibleType)) return;                 // rural growth only
+    claimBufferAt({ x: loc.x, y: loc.y });
+  } catch (e) {
+    dlog(`onConstructibleAdded threw ${String(e)}`);
+  }
 }
 
 /** @returns {number} Game.turn or 0. */
@@ -138,6 +183,8 @@ function boot() {
       teardown(); // drain any prior subscription so a re-boot never stacks a 2nd handler
       _turnHandlerRef = onTurnActivated;
       eng.on("PlayerTurnActivated", _turnHandlerRef);
+      _constructibleHandlerRef = onConstructibleAdded;
+      eng.on("ConstructibleAddedToMap", _constructibleHandlerRef);
     } catch (e) {
       log(`turn hook failed ${String(e)}`);
     }

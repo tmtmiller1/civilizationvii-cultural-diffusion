@@ -7,7 +7,7 @@
         <SpecialThanks>Gedemon's "Cultural Diffusion" mod for Civilization V (v18), whose reaction-diffusion culture model is the core layer this mod builds on and extends.</SpecialThanks>
         <Package>CulturalDiffusionMod</Package>
         <PackageSortIndex>1000</PackageSortIndex>
-        <Version>1.0.5</Version>
+        <Version>1.0.6</Version>
     </Properties>
     <Dependencies>
         <Mod id="base-standard" title="LOC_MODULE_BASE_STANDARD_NAME" />

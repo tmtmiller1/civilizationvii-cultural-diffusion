@@ -6,6 +6,76 @@ All notable changes to Cultural Diffusion are recorded here. The format follows
 
 ## [Unreleased]
 
+## [1.0.6] - 2026-07-13
+
+### Added
+
+- **The reaction-diffusion field now spreads across water (`diffuseAcrossWater`, on by default).**
+  Previously the slow diffusion form was land-only (water was excluded from the region and hard-
+  blocked as a diffusion destination). Culture now crosses water, but slowly and only once strong
+  enough: shallow **coast** has a lower crossing gate (`terrainCoast`) than deep **ocean**
+  (`terrainOcean`, near-impassable), so an established coastal culture can island-hop and claim
+  **some** land across the sea while a weak one stays landlocked.
+- **Water crossing eases across the ages (`byAge[...].waterEase`).** As sea travel matures the
+  crossing gates shrink: **Antiquity** keeps the full malus (deep ocean near-impassable),
+  **Exploration** drastically eases it (`waterEase 0.65` — ocean-going ships), and **Modern**
+  removes the water penalty entirely (`waterEase 1.0` — blue-water culture spreads across oceans
+  like open land). Applied to both coast and ocean gates.
+- **waterEase ramps continuously *within* each age (`waterEaseRamp`, on by default).** Rather than
+  stepping at the age boundary, the crossing difficulty interpolates from the current age's anchor
+  toward the next age's, by progress through the age (`Game.turn / Game.maxTurns`). So over the
+  Exploration age ocean crossing eases smoothly from `0.65` up to ~`1.0` (near-free by the age's
+  end), and late Antiquity softens from full-malus toward Exploration levels — an organic ramp that
+  models maritime capability growing during an age. Set `waterEaseRamp: false` for flat per-age steps.
+- **Distant Lands are off-limits until the Exploration age (`blockDistantLandsBeforeExploration`,
+  on by default).** Culture may claim home-hemisphere islands across nearby water anytime, but it
+  cannot claim tiles in your **Distant Lands** (the far hemisphere) before the Exploration age —
+  matching the base game gating ocean crossing to Exploration. Applies to both the diffusion flip
+  and the +1 buffer. Uses the base-game `player.isDistantLands({x,y})` check.
+- **Event-driven "+1 ring" cultural buffer (`growthBuffer`, on by default).** When the local player
+  **completes a rural improvement** on a tile (a manual rural-growth event — "we improved a
+  resource/tile", via the `ConstructibleAddedToMap` engine event), the mod claims only the
+  **unowned tiles adjacent to that developed tile** — not the whole ring — attaching them to the
+  nearest city as integrated, workable tiles. So developing a frontier tile pushes your cultural
+  border one tile past it, organically, paced to your own development. It claims adjacent **unowned
+  land and water** (coastal borders) and **never** takes a tile owned by another player (peaceful
+  rival capture stays with the slow reaction-diffusion pass); claims are capped to
+  `baseGrowthRadius + 1` rings from the city so the buffer can't creep. Logged as
+  `buffer: +N tile(s) adjacent to rural growth at x,y`.
+
+### Fixed
+
+- **Heals legacy orphan tiles baked into existing saves (`repairOrphans`, on by default).** A save
+  played under an older `setOwnership` build has orphan tiles (owner = you, no owning city) around
+  your cities; those block the base game's own inner-ring population/border growth from ever
+  acquiring them — a city "won't expand" into a tile it should. Each pass now finds these orphans
+  in-region and re-integrates them into their nearest city via the integrated verb (releasing any
+  it can't re-buy, so the base game can grow into them). The inner rings again fill through normal
+  base-game growth **and** cultural diffusion, with no orphan blocking either. The pass logs
+  `N orphan(s) healed` whenever it heals a tile (visible without debug logging).
+- **Claimed tiles are now integrated city tiles, not orphans (Phase 1 verb switch).** The
+  shipping flip verb is now `purchasePlot`, which attaches each claimed plot to your nearest
+  city as a real, workable tile (`owningCity` set, `inCityPlots` true). The previous default,
+  `setOwnership`, made the plot yours but attached it to **no** city — an orphan that could not
+  be worked **and blocked the base game's own population/border growth from ever acquiring that
+  tile** (the reported "some tiles won't expand" bug). The integrated verb was proven by the
+  Phase 0 probe (2026-07-09) but had never been promoted from `probe/` into the mod.
+- **Gold cost is refunded the same tick (`refundGold`, default on).** `purchasePlot`'s cost is
+  restored via `Treasury.changeGoldBalance` the same frame, so integrated claims net zero gold
+  and never touch the demographics gold-per-turn metric. Contiguous frontier claims were already
+  effectively free; the refund makes every claim free regardless.
+- **A failed purchase no longer falls back to `setOwnership`.** The old fallback silently
+  re-created the orphan tile on any purchase failure. A failed claim now simply skips the tile
+  for the turn; the culture field keeps it and the pass retries.
+### Changed
+
+- **Removed the "how tiles are claimed" (flip-verb) option from the Options screen.** With the
+  integrated verb now free, the legacy *Free territory* choice had no upside and only produced
+  unworkable orphan tiles that block city growth, so it is no longer a user-facing footgun.
+  Every player now gets the integrated verb; any stale saved verb choice from an older version
+  is ignored. The `setOwnership` path remains in code (used by `unclaim`, and as a
+  `cd-config.js` testing escape hatch).
+
 ### Probe (v0.8.0 — Phase 0, `probe/`)
 
 - **Q-VERB — the flip-verb decision gate** (redesign-plan §2). For a distinct tile per

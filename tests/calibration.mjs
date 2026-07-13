@@ -3,11 +3,12 @@ import assert from "node:assert/strict";
 
 // Stubs (mutated per case).
 let maxTurns = 90;
+let turn = 0;
 let mapSizeName = "MAPSIZE_STANDARD";
-globalThis.Game = { get maxTurns() { return maxTurns; } };
+globalThis.Game = { get maxTurns() { return maxTurns; }, get turn() { return turn; } };
 globalThis.Configuration = { getMap: () => ({ mapSizeTypeName: mapSizeName }) };
 
-const { agePace, mapSizeScale } = await import("/cultural-diffusion/ui/cd-calibration.js");
+const { agePace, mapSizeScale, ageProgress } = await import("/cultural-diffusion/ui/cd-calibration.js");
 const { CONFIG } = await import("/cultural-diffusion/ui/cd-config.js");
 
 // Age pace: normalizes to referenceTurns. A long age (Marathon) slows the field (< 1); a short
@@ -46,5 +47,15 @@ maxTurns = 300; mapSizeName = "MAPSIZE_TINY";
 assert.equal(agePace(), 1, "disabled -> neutral pace");
 assert.equal(mapSizeScale(), 1, "disabled -> neutral map scale");
 CONFIG.calibrateToGameSettings = true;
+
+// Age progress: Game.turn / Game.maxTurns, clamped to [0,1]; 0 when unreadable.
+maxTurns = 100;
+turn = 0;   assert.equal(ageProgress(), 0, "start of age -> 0");
+turn = 50;  assert.equal(ageProgress(), 0.5, "half the age budget -> 0.5");
+turn = 100; assert.equal(ageProgress(), 1, "end of age -> 1");
+turn = 130; assert.equal(ageProgress(), 1, "past budget clamps to 1");
+maxTurns = 0; turn = 40;
+assert.equal(ageProgress(), 0, "unreadable age length -> 0");
+maxTurns = 90; turn = 0;
 
 console.log("calibration.mjs OK");

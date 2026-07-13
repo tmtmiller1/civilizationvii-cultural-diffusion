@@ -96,6 +96,22 @@ function featureMod(x, y, cfg) {
  * @param {import("/cultural-diffusion/ui/cd-config.js").CdConfig} cfg
  * @returns {import("/cultural-diffusion/ui/cd-config.js").CrossMod[]} Applicable modifiers.
  */
+/**
+ * Crossing result for a WATER destination (only reached when diffuseAcrossWater): deep ocean uses
+ * the near-impassable terrainOcean gate, shallow water the easier terrainCoast gate. Below the
+ * gate, culture cannot cross yet - so only an established/overwhelming culture spans open water.
+ * @param {{x:number,y:number}} dst @param {number} sourceValue
+ * @param {import("/cultural-diffusion/ui/cd-config.js").CdConfig} cfg
+ * @returns {{blocked:boolean, bonus:number, malus:number, maxFactor:number}} Step result.
+ */
+function waterStep(dst, sourceValue, cfg) {
+  const wm = terrainType(dst.x, dst.y).includes("OCEAN") ? cfg.terrainOcean : cfg.terrainCoast;
+  const gate = Math.max(0, cfg.cultureThreshold) * Math.max(0, wm.threshold);
+  if (sourceValue <= gate) return { blocked: true, bonus: 0, malus: 0, maxFactor: 0 };
+  return { blocked: false, bonus: 0, malus: Math.max(0, wm.malus), maxFactor: Math.max(0, wm.max) };
+}
+
+/** The crossing modifiers that apply to the DESTINATION land tile (terrain + biome + feature). */
 function crossingMods(x, y, cfg) {
   if (safe(() => !!GameplayMap?.isMountain?.(x, y), false)) return [cfg.terrainMountain];
   const terr = terrainType(x, y);
@@ -118,21 +134,20 @@ function crossingMods(x, y, cfg) {
  * @returns {import("/cultural-diffusion/ui/cd-field.js").StepMods} Modifiers for cd-field.diffusionDelivered.
  */
 export function stepMods(src, dst, sourceValue, cfg) {
-  if (isWater(dst)) return { blocked: true, bonus: 0, malus: 0, maxFactor: 0 };
+  if (isWater(dst)) {
+    if (!cfg.diffuseAcrossWater) return { blocked: true, bonus: 0, malus: 0, maxFactor: 0 };
+    return waterStep(dst, sourceValue, cfg);
+  }
+  return landStep(src, dst, sourceValue, cfg);
+}
 
-  let bonus = 0;
-  let malus = 0;
-  let maxFactor = 1;
-
+/** Crossing result for a LAND destination: road/river carry-bonus, then stacked terrain gates. */
+function landStep(src, dst, sourceValue, cfg) {
   // Culture carries much farther along roads and river valleys.
-  if (hasRoute(src.x, src.y) && hasRoute(dst.x, dst.y)) {
-    bonus += Math.max(0, cfg.roadBonus);
-    maxFactor *= Math.max(1, cfg.roadMax);
-  }
-  if (onRiver(dst.x, dst.y)) {
-    bonus += Math.max(0, cfg.riverFollowBonus);
-    maxFactor *= Math.max(1, cfg.riverFollowMax);
-  }
+  const carry = routeRiverBonus(src, dst, cfg);
+  let bonus = carry.bonus;
+  let malus = 0;
+  let maxFactor = carry.maxFactor;
 
   const gateBase = Math.max(0, cfg.cultureThreshold);
   for (const mod of crossingMods(dst.x, dst.y, cfg)) {
@@ -143,6 +158,20 @@ export function stepMods(src, dst, sourceValue, cfg) {
     malus += Math.max(0, mod.malus);
     maxFactor *= Math.max(0, mod.max);
   }
-
   return { blocked: false, bonus, malus, maxFactor };
+}
+
+/** Road/river carry bonus for a land step: culture travels farther along routes and river valleys. */
+function routeRiverBonus(src, dst, cfg) {
+  let bonus = 0;
+  let maxFactor = 1;
+  if (hasRoute(src.x, src.y) && hasRoute(dst.x, dst.y)) {
+    bonus += Math.max(0, cfg.roadBonus);
+    maxFactor *= Math.max(1, cfg.roadMax);
+  }
+  if (onRiver(dst.x, dst.y)) {
+    bonus += Math.max(0, cfg.riverFollowBonus);
+    maxFactor *= Math.max(1, cfg.riverFollowMax);
+  }
+  return { bonus, maxFactor };
 }

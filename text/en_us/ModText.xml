@@ -36,15 +36,6 @@
             <Text>Safety mode. Diffusion claims only unowned frontier plots and never flips a tile owned by another civilization.</Text>
         </Row>
 
-        <Row Tag="LOC_OPTIONS_CD_VERB">
-            <Text>Cultural Diffusion - how tiles are claimed</Text>
-        </Row>
-        <Row Tag="LOC_OPTIONS_CD_VERB_DESCRIPTION">
-            <Text>Free territory grants the plot at no cost (you develop it through normal growth). Buy with gold instantly integrates the plot into the nearest city, spending gold.</Text>
-        </Row>
-        <Row Tag="LOC_OPTIONS_CD_VERB_FREE"><Text>Free territory (recommended)</Text></Row>
-        <Row Tag="LOC_OPTIONS_CD_VERB_GOLD"><Text>Buy with gold (instant, integrated)</Text></Row>
-
         <Row Tag="LOC_OPTIONS_CD_CORE">
             <Text>Cultural Diffusion - rival city protection</Text>
         </Row>

@@ -95,6 +95,21 @@ export function isWater(loc) {
 }
 
 /**
+ * True when a plot lies in the given player's DISTANT LANDS (the far hemisphere - only reachable
+ * from the Exploration age). Base-game Player method: Players.get(pid).isDistantLands({x,y}).
+ * Fails OPEN (false = treat as home lands) when unreadable, so a missing API never over-blocks.
+ * @param {number} playerId Player id.
+ * @param {{x:number,y:number}} loc Plot.
+ * @returns {boolean} Whether the plot is distant lands for that player.
+ */
+export function isDistantLands(playerId, loc) {
+  return safe(() => {
+    const p = Players?.get?.(playerId);
+    return !!(p && typeof p.isDistantLands === "function" && p.isDistantLands({ x: loc.x, y: loc.y }));
+  }, false);
+}
+
+/**
  * The plots within hex-radius `r` of a center, as {x,y} locations.
  * @param {{x:number,y:number}} center Center plot.
  * @param {number} r Radius in rings.

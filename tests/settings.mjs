@@ -23,8 +23,6 @@ const {
   setDiffusionEnabled,
   getClaimOnlyUnowned,
   setClaimOnlyUnowned,
-  getFlipVerbIndex,
-  setFlipVerbIndex,
   getFusedModel,
   setFusedModel,
   getUseEmigration,
@@ -59,12 +57,10 @@ assert.equal(backing.get("modSettings"), "{bad-json");
 // Restore valid root and verify toggle getters/setters normalization.
 backing.set("modSettings", JSON.stringify({}));
 setClaimOnlyUnowned(true);
-setFlipVerbIndex(1);
 setFusedModel(false);
 setUseEmigration(false);
 setDebug(true);
 assert.equal(getClaimOnlyUnowned(), true);
-assert.equal(getFlipVerbIndex(), 1);
 assert.equal(getFusedModel(), false);
 assert.equal(getUseEmigration(), false);
 assert.equal(getDebug(), true);
@@ -73,7 +69,6 @@ assert.equal(getDebug(), true);
 setPresetIndex(PRESET_NAMES.indexOf("High"));
 setDiffusionEnabled(false);
 setClaimOnlyUnowned(true); // toggle should override High profile value (false)
-setFlipVerbIndex(1);
 setFusedModel(false);
 setUseEmigration(false);
 setDebug(true);
@@ -93,7 +88,9 @@ assert.equal(CONFIG.minimumOwner, PRESETS.High.minimumOwner);
 assert.equal(CONFIG.maxDiffusionPlots, PRESETS.High.maxDiffusionPlots);
 assert.equal(CONFIG.diffusionEnabled, false);
 assert.equal(CONFIG.claimOnlyUnowned, true);
-assert.equal(CONFIG.flipVerb, "purchasePlot");
+// flipVerb is no longer settings-driven: applyTunableOverrides must NOT touch it (it stays
+// whatever the code set it to - here the "setOwnership" we forced above).
+assert.equal(CONFIG.flipVerb, "setOwnership");
 assert.equal(CONFIG.fusedModel, false);
 assert.equal(CONFIG.useEmigration, false);
 assert.equal(CONFIG.debug, true);
@@ -102,7 +99,6 @@ assert.equal(CONFIG.debug, true);
 setPresetIndex(0);
 setClaimOnlyUnowned(false);
 setDiffusionEnabled(CONFIG_DEFAULTS.diffusionEnabled);
-setFlipVerbIndex(0);
 setFusedModel(CONFIG_DEFAULTS.fusedModel);
 setUseEmigration(CONFIG_DEFAULTS.useEmigration);
 setDebug(CONFIG_DEFAULTS.debug);

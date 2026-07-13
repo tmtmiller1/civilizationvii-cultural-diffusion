@@ -17,7 +17,8 @@
 import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
 import { dlog, log } from "/cultural-diffusion/ui/cd-log.js";
 import {
-  localPlayerId, mapDims, allSettlements, plotsInRadius, cityLoc, cityIdOf, ownerAt, isWater
+  localPlayerId, mapDims, allSettlements, plotsInRadius, cityLoc, cityIdOf,
+  ownerAt, owningCityIdAt, isWater, isDistantLands
 } from "/cultural-diffusion/ui/cd-plots.js";
 import { cultureOf, happinessOf, wonderCountOf, isCelebrating, currentAgeKey, prosperityOf, vitalityOf } from "/cultural-diffusion/ui/cd-polity.js";
 import { projectionOf, hexDistance, ethnicFactor } from "/cultural-diffusion/ui/cd-pressure.js";
@@ -25,11 +26,11 @@ import { gatherCivMetrics } from "/cultural-diffusion/ui/cd-metrics.js";
 import { powerMultipliers } from "/cultural-diffusion/ui/cd-cpi.js";
 import { buildEthnicContext } from "/cultural-diffusion/ui/cd-ethnicity.js";
 import { civTuning } from "/cultural-diffusion/ui/cd-civ-tuning.js";
-import { agePace, mapSizeScale } from "/cultural-diffusion/ui/cd-calibration.js";
+import { agePace, mapSizeScale, ageProgress } from "/cultural-diffusion/ui/cd-calibration.js";
 import { stepMods } from "/cultural-diffusion/ui/cd-terrain.js";
 import { injectionAmount, cityCultureCap, decayValue, diffusionDelivered, resolveOwner } from "/cultural-diffusion/ui/cd-field.js";
 import { isCoreProtected, atWar } from "/cultural-diffusion/ui/cd-borders.js";
-import { performFlip } from "/cultural-diffusion/ui/cd-ownership.js";
+import { performFlip, unclaim } from "/cultural-diffusion/ui/cd-ownership.js";
 import { loadState, saveState, prepareState, pruneState } from "/cultural-diffusion/ui/cd-state.js";
 import { notifyFlip } from "/cultural-diffusion/ui/cd-notifications.js";
 
@@ -110,6 +111,17 @@ function aliveOwners(me) {
   return set;
 }
 
+/**
+ * True when claiming this plot is forbidden because it is in the local player's DISTANT LANDS and
+ * we are still before the Exploration age. Culture may reach home-hemisphere islands across nearby
+ * water anytime, but the far hemisphere is off-limits until Exploration (base-game ocean gating).
+ */
+function distantLandsGated(loc, me) {
+  if (!CONFIG.blockDistantLandsBeforeExploration) return false;
+  if (currentAgeKey() !== "ANTIQUITY") return false; // Exploration+ may claim distant lands
+  return isDistantLands(me, loc);
+}
+
 /** True when any neighbour of the plot is owned by `me` (Civ V IsAdjacentToOwner). */
 function adjacentToMe(plot, me) {
   for (const n of plotsInRadius(plot, 1)) {
@@ -131,10 +143,36 @@ function buildRegion(cities, radius, inBounds) {
   const region = new Set();
   for (const c of cities) {
     for (const p of plotsInRadius(c.loc, radius)) {
-      if (inBounds(p) && !isWater(p)) region.add(key(p.x, p.y));
+      // Water is in the region only when culture is allowed to cross it; otherwise land-only.
+      if (inBounds(p) && (CONFIG.diffuseAcrossWater || !isWater(p))) region.add(key(p.x, p.y));
     }
   }
   return region;
+}
+
+const AGE_ORDER = ["ANTIQUITY", "EXPLORATION", "MODERN"];
+
+/** The configured waterEase anchor for an age (0 when unset). */
+function ageWaterEase(ageKey) {
+  const a = CONFIG.byAge && CONFIG.byAge[ageKey];
+  return a && a.waterEase != null ? a.waterEase : 0;
+}
+
+/**
+ * The waterEase to use right now: this age's anchor, optionally ramped CONTINUOUSLY toward the
+ * NEXT age's anchor by progress through the current age (Game.turn / Game.maxTurns). So water
+ * crossing improves smoothly across an age instead of stepping at the boundary.
+ * @param {string} ageKey Current age key.
+ * @returns {number} Effective waterEase in [0,1].
+ */
+function effectiveWaterEase(ageKey) {
+  const cur = ageWaterEase(ageKey);
+  if (!CONFIG.waterEaseRamp) return cur;
+  const idx = AGE_ORDER.indexOf(ageKey);
+  const nextKey = (idx >= 0 && idx < AGE_ORDER.length - 1) ? AGE_ORDER[idx + 1] : ageKey;
+  const nxt = ageWaterEase(nextKey);
+  const t = Math.min(1, Math.max(0, ageProgress()));
+  return cur + (nxt - cur) * t;
 }
 
 /**
@@ -148,14 +186,35 @@ function ageContext() {
   const pace = agePace();
   const mapScale = mapSizeScale();
   const ageInject = Math.max(0, age.injectionScale != null ? age.injectionScale : 1) * mapScale;
+  const waterEase = effectiveWaterEase(ageKey);
   const ageCfg = {
     ...CONFIG,
     minimumOwner: CONFIG.minimumOwner * Math.max(0.1, age.ownerBar != null ? age.ownerBar : 1),
     diffusionRate: CONFIG.diffusionRate * pace,
     decayRate: CONFIG.decayRate * pace,
-    decayFlat: CONFIG.decayFlat * pace
+    decayFlat: CONFIG.decayFlat * pace,
+    // Water crossing eases as sea travel matures (0 = full malus, 1 = no water penalty).
+    terrainCoast: easeCrossing(CONFIG.terrainCoast, waterEase),
+    terrainOcean: easeCrossing(CONFIG.terrainOcean, waterEase)
   };
   return { ageInject, pace, ageCfg };
+}
+
+/**
+ * Ease a water crossing modifier toward "free" by `ease` in [0,1]: 0 returns the modifier
+ * unchanged (full malus), 1 returns {malus:0, max:1, threshold:0} (no water penalty at all).
+ * @param {import("/cultural-diffusion/ui/cd-config.js").CrossMod} m Base crossing modifier.
+ * @param {number} ease Easing fraction.
+ * @returns {import("/cultural-diffusion/ui/cd-config.js").CrossMod} Eased modifier.
+ */
+function easeCrossing(m, ease) {
+  const e = Math.max(0, Math.min(1, ease));
+  if (!m) return m;
+  return {
+    malus: m.malus * (1 - e),
+    max: m.max + (1 - m.max) * e,   // toward 1.0 = no neighbour-cap reduction
+    threshold: m.threshold * (1 - e) // toward 0 = culture crosses at any strength
+  };
 }
 
 /**
@@ -205,7 +264,7 @@ function diffuseToNeighbour(src, nb, ctx) {
   if (nb.x === srcLoc.x && nb.y === srcLoc.y) return;
   const nk = key(nb.x, nb.y);
   if (!region.has(nk)) return;
-  const mods = stepMods(srcLoc, nb, srcVal, CONFIG);
+  const mods = stepMods(srcLoc, nb, srcVal, ageCfg); // ageCfg carries the per-age water easing
   if (ethCtx && !mods.blocked) {
     const aff = ethCtx.affinity(civId, nb);
     if (aff > 0) mods.bonus += ethnicFactor(aff, CONFIG.ethnicWeight) - 1; // diaspora accelerates the front
@@ -316,6 +375,7 @@ function flipCandidates(region, next, cities, maxDist) {
  */
 function flipEligible(cand, owner, me, claimCount) {
   const { k, loc, near } = cand;
+  if (distantLandsGated(loc, me)) return false;         // no distant-lands claims before Exploration
   if (owner >= 0) {
     if (CONFIG.claimOnlyUnowned) return false;          // safety mode: empty land only
     if (atWar(me, owner)) return false;                 // no peaceful diffusion across an active front
@@ -337,15 +397,15 @@ function flipEligible(cand, owner, me, claimCount) {
 function commitFlip(cand, owner, verdict, fx) {
   const { state, next, me, ageCfg, claimCount } = fx;
   const { k, loc, near } = cand;
-  const res = performFlip({ playerId: me, city: near.city, loc, verb: CONFIG.flipVerb });
-  // Interim guard: verify the tile actually changed owner before recording anything. The
-  // default setOwnership verb is proven to no-op on rival-owned land (redesign-plan.md, Phase
-  // 0 probe: 102/102 no-change), yet performFlip only reports "didn't throw". Without this
-  // check every silent no-op was booked as a win — consuming the city's maxDiffusionPlots
-  // budget, locking the tile for flipCooldownTurns, seeding a phantom stock, and firing a
-  // false "claimed territory" toast while the rival kept the tile. (Does NOT fix the
-  // orphan-on-empty-land case where ownerAt === me but the tile is unworkable; that needs the
-  // redesign-plan Phase 1 verb switch to purchasePlot/claimPlot.)
+  const res = performFlip({ playerId: me, city: near.city, loc, verb: CONFIG.flipVerb, refund: CONFIG.refundGold });
+  // Guard: verify the tile actually changed owner before recording anything. performFlip only
+  // reports "didn't throw", but a claim can silently no-op (e.g. purchasePlot fails, or the
+  // legacy setOwnership verb no-ops on rival land - redesign-plan.md Phase 0 probe: 102/102
+  // no-change). Without this check every silent no-op was booked as a win — consuming the city's
+  // maxDiffusionPlots budget, locking the tile for flipCooldownTurns, seeding a phantom stock,
+  // and firing a false "claimed territory" toast. The default integrated verb (purchasePlot)
+  // now attaches the tile to near.city, so a real owner change here also means an integrated,
+  // workable plot — no orphan, and no conflict with the base game's own border growth.
   if (!res.ok || ownerAt(loc) !== me) {
     dlog(`flip ${k} NOT APPLIED reason=${res.reason || "no-change"} verb=${res.verb}`);
     return false;
@@ -395,6 +455,104 @@ function resolveOwnership({ state, region, next, cities, me, ageCfg }) {
     if (tryFlipCandidate(cand, fx)) flips++;
   }
   return { flips, tiles };
+}
+
+/** Commit one buffer claim (integrated verb + claim/lock/seed bookkeeping). @returns {boolean} */
+function commitBuffer(state, c, T, me) {
+  const res = performFlip({ playerId: me, city: c.city, loc: T, verb: CONFIG.flipVerb, refund: CONFIG.refundGold });
+  if (!res.ok || ownerAt(T) !== me) {
+    dlog(`buffer ${key(T.x, T.y)} NOT APPLIED reason=${res.reason || "no-change"}`);
+    return false;
+  }
+  const k = key(T.x, T.y);
+  state.claims[k] = { by: me, city: c.id, turn: state.monoTurn };
+  state.locked[k] = Math.max(0, Math.floor(CONFIG.flipCooldownTurns));
+  if (!state.field[k]) state.field[k] = {};
+  state.field[k][String(me)] = Math.max(state.field[k][String(me)] || 0, CONFIG.minimumOwner);
+  notifyFlip({ x: T.x, y: T.y, wasOwner: -1, newOwner: me });
+  return true;
+}
+
+/**
+ * Event-driven "+1 ring" cultural buffer. Called when the LOCAL player completes a rural
+ * improvement on `devLoc` (a manual rural-growth event): claim only the UNOWNED land tiles
+ * ADJACENT to that developed tile (not the whole ring) for the nearest city, via the integrated
+ * verb. So developing a frontier tile pushes your cultural border one tile past it - organically,
+ * paced to your own development. Only ever takes UNOWNED land; it never takes another player's
+ * tile (peaceful rival capture stays with the slow diffusion pass). A +1 cap (baseGrowthRadius+1
+ * rings from the nearest city centre) keeps the buffer from creeping past a single ring.
+ * @param {{x:number,y:number}} devLoc The just-developed tile.
+ * @returns {number} Buffer tiles claimed.
+ */
+export function claimBufferAt(devLoc) {
+  if (!CONFIG.growthBuffer) return 0;
+  const me = localPlayerId();
+  if (me < 0 || ownerAt(devLoc) !== me) return 0;   // only OUR own development
+  const cities = localCityList();
+  if (!cities.length) return 0;
+  const ctx = { me, cities, maxR: Math.max(1, Math.floor(CONFIG.baseGrowthRadius)) + 1 };
+  const state = loadState();
+  let claimed = 0;
+  for (const n of plotsInRadius(devLoc, 1)) {
+    const nc = bufferTarget(n, devLoc, state, ctx);
+    if (nc && commitBuffer(state, nc, n, me)) claimed++;
+  }
+  if (claimed > 0) {
+    saveState(state);
+    log(`buffer: +${claimed} tile(s) adjacent to rural growth at ${devLoc.x},${devLoc.y}`);
+  }
+  return claimed;
+}
+
+/**
+ * The nearest local city an UNOWNED neighbour tile should attach to as a +1 buffer, or null when
+ * ineligible (the dev tile itself, already-owned, cooldown-locked, or past the +1 ring cap). Unlike
+ * the land-only diffusion field, the buffer claims adjacent UNOWNED water too (coastal borders).
+ */
+function bufferTarget(n, devLoc, state, ctx) {
+  if (n.x === devLoc.x && n.y === devLoc.y) return null;
+  if (ownerAt(n) >= 0) return null;                 // UNOWNED only - never take a tile another player owns
+  if (state.locked[key(n.x, n.y)] > 0) return null; // anti-flicker cooldown
+  if (distantLandsGated(n, ctx.me)) return null;    // no distant-lands claims before Exploration
+  const nc = nearestCity(n, ctx.cities);
+  return (nc && nc.d <= ctx.maxR) ? nc : null;
+}
+
+/**
+ * Heal ORPHAN tiles - a tile owned by the local player but attached to NO city (owner === me,
+ * owningCity < 0). Orphans are produced by the legacy setOwnership verb (older builds, or a
+ * pre-fix save): they are not workable AND they block the base game's own population/border
+ * growth from ever acquiring that tile - the "inner ring won't expand" bug. For each orphan in
+ * the region we RELEASE it (unclaim), then re-acquire it through the integrated verb so it
+ * becomes a real city tile that base-game growth flows around normally; if the re-buy doesn't
+ * take, the tile stays released so the base game can simply grow into it. Idempotent: once a
+ * tile is integrated (or released) it is no longer an orphan, so later passes find nothing.
+ * @returns {number} Orphan tiles healed this pass.
+ */
+function repairOrphans(state, region, cities, me) {
+  if (!CONFIG.repairOrphans) return 0;
+  let healed = 0;
+  for (const k of region) {
+    const loc = unkey(k);
+    if (ownerAt(loc) !== me) continue;       // only our own tiles
+    if (owningCityIdAt(loc) >= 0) continue;  // already a real city tile - not an orphan
+    const near = nearestCity(loc, cities);
+    if (!near) continue;
+    // Release first, then re-buy: purchasePlot is proven on UNOWNED land, so releasing makes the
+    // re-claim take the proven path. A purchasePlot'd tile is attached to the buying city, so
+    // ownerAt === me afterwards means it re-integrated.
+    unclaim(loc);
+    const res = performFlip({ playerId: me, city: near.city, loc, verb: "purchasePlot", refund: CONFIG.refundGold });
+    if (res.ok && ownerAt(loc) === me) {
+      state.claims[k] = { by: me, city: near.id, turn: state.monoTurn };
+    } else {
+      delete state.claims[k];  // gave it back to the map so base-game growth can take it
+      delete state.locked[k];
+      dlog(`repair ${k}: released orphan (re-integrate failed reason=${res.reason})`);
+    }
+    healed++;
+  }
+  return healed;
 }
 
 /** Prune far/empty field tiles to bound persisted size (keeps a 2-tile skirt past the region). */
@@ -461,15 +619,20 @@ export function runPass() {
   if (!cities.length) return { flips: 0, tiles: 0 };
 
   const { state, region, radius, injectors, threshold, ethCtx, ageCfg, pace } = preparePass(cities);
+  const healed = repairOrphans(state, region, cities, me);
   const next = updateField(state, region, injectors, { threshold, ethCtx, ageCfg, pace });
   const { flips, tiles } = resolveOwnership({ state, region, next, cities, me, ageCfg });
 
   pruneFarField(state, region, cities, radius);
   pruneState(state);
   saveState(state);
-  if (flips > 0 || CONFIG.debug) log(`pass: ${flips} flip(s), ${Object.keys(state.field).length} active field tile(s)`);
-  return { flips, tiles };
+  if (flips > 0 || healed > 0 || CONFIG.debug) {
+    log(`pass: ${flips} flip(s), ${healed} orphan(s) healed, ${Object.keys(state.field).length} active field tile(s)`);
+  }
+  return { flips, tiles, healed };
 }
 
 /** Test/introspection helpers (pure). */
-export const __test = { nearestCity, adjacentToMe };
+export const __test = {
+  nearestCity, adjacentToMe, repairOrphans, claimBufferAt, commitBuffer, easeCrossing, effectiveWaterEase
+};
