@@ -46,13 +46,12 @@ function normalizeFieldRow(v) {
   if (!v || typeof v !== "object") return null;
   /** @type {Record<string, number>} */
   const out = {};
-  let n = 0;
   for (const key of Object.keys(v)) {
     if (!/^-?\d+$/.test(key)) continue; // civ ids only
     const val = num(v[key], 0);
-    if (val > 0) { out[key] = val; n++; }
+    if (val > 0) out[key] = val;
   }
-  return n ? out : null;
+  return Object.keys(out).length ? out : null;
 }
 
 /**
@@ -81,7 +80,7 @@ function normalizeMap(src, fn, cap) {
   let n = 0;
   for (const [key, value] of Object.entries(src)) {
     if (n >= cap) break;
-    if (typeof key !== "string" || !key.length) continue;
+    if (!key.length) continue; // Object.entries always yields string keys, so only "" can fail here
     const row = fn(value);
     if (row == null) continue;
     out[key] = row;

@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@stryker-mutator/core/schema/stryker-schema.json",
-  "_comment": "Mutation testing scoped to the pure, off-engine diffusion-logic modules covered by the harness suite (npm run test:js). The command runner re-runs the full suite per mutant; coverageAnalysis is off because the command runner has no per-test hooks. The ESM loader (tests/loader.mjs) maps /cultural-diffusion/ to the project root and stubs /core /base-standard, so Stryker's sandbox copy resolves to the mutated sandbox files - no inPlace needed.",
+  "_comment": "Mutation testing scoped to the off-engine-testable modules: the pure diffusion-logic modules plus cd-pass.js, the pass orchestrator (added 2026-07-16 once tests/pass.mjs gave it a stub-engine harness). The command runner re-runs the full suite per mutant; coverageAnalysis is off because the command runner has no per-test hooks. The ESM loader (tests/loader.mjs) maps /cultural-diffusion/ to the project root and stubs /core /base-standard, so Stryker's sandbox copy resolves to the mutated sandbox files - no inPlace needed.",
   "testRunner": "command",
   "commandRunner": {
     "command": "npm run test:js"
@@ -12,9 +12,13 @@
     "ui/cd-cpi.js",
     "ui/cd-civ-tuning.js",
     "ui/cd-calibration.js",
-    "ui/cd-state.js"
+    "ui/cd-state.js",
+    "ui/cd-pass.js"
   ],
-  "reporters": ["clear-text", "json"],
+  "reporters": [
+    "clear-text",
+    "json"
+  ],
   "jsonReporter": {
     "fileName": "reports/mutation/mutation.json"
   },

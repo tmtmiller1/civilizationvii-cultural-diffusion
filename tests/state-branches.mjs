@@ -86,6 +86,27 @@ saveState({ monoTurn: 10, field: { "3,4": { "0": 550.5 } }, claims: {}, locked: 
 assert.ok(KV[__test.STATE_KEY], "saveState writes to the game config store");
 assert.equal(loadState().field["3,4"]["0"], 550.5, "loadState restores the persisted stock");
 
+// --- the persistence catch guards: a corrupt or hostile store must never throw into the pass ---
+// (cd-state.js header: "a corrupt blob can never throw into the pass")
+KV[__test.STATE_KEY] = "{not-valid-json{{";
+assert.doesNotThrow(() => loadState(), "a corrupt persisted blob does not throw out of loadState");
+assert.deepEqual(loadState(), __test.defaultState(), "a corrupt blob loads as a clean default state");
+KV[__test.STATE_KEY] = '"a bare string"';
+assert.deepEqual(loadState(), __test.defaultState(), "valid JSON of the wrong shape -> default state");
+delete KV[__test.STATE_KEY];
+assert.deepEqual(loadState(), __test.defaultState(), "an absent key -> default state");
+
+const savedConfiguration = globalThis.Configuration;
+globalThis.Configuration = { getGame: () => { throw new Error("boom"); }, editGame: () => { throw new Error("boom"); } };
+assert.doesNotThrow(() => loadState(), "a throwing Configuration.getGame is caught by readStateRaw");
+assert.deepEqual(loadState(), __test.defaultState(), "...and yields a default state");
+assert.doesNotThrow(() => saveState({ monoTurn: 1 }), "a throwing Configuration.editGame is caught by saveState");
+// A store with no usable accessors is guarded by the typeof checks, not just the catch.
+globalThis.Configuration = { getGame: () => ({}), editGame: () => ({}) };
+assert.deepEqual(loadState(), __test.defaultState(), "a store with no getValue -> default state");
+assert.doesNotThrow(() => saveState({ monoTurn: 1 }), "a store with no setValue is skipped, not called");
+globalThis.Configuration = savedConfiguration;
+
 // --- gameTurn(): the '&& typeof turn === number' guard and the catch ---
 // prepareState uses max(monoTurn+1, gameTurn()). A non-number Game.turn must read as 0, not poison it.
 gameImpl = { turn: "not-a-number" };
@@ -104,8 +125,14 @@ const stC = normalizeState({ monoTurn: 5 });
 prepareState(stC);
 assert.equal(stC.monoTurn, 6, "monoTurn advances by +1 when gameTurn is low");
 assert.doesNotThrow(() => prepareState({ monoTurn: 1 }), "a state with no locked map is guarded (locked = {})");
-// Lock cooldowns tick down and expire.
+// A READABLE Game.turn ahead of monoTurn wins the max() - this is the only assertion that proves
+// gameTurn() returns the real turn rather than its 0 fallback (every other case here reads 0).
 gameImpl = { turn: 42 };
+const stD = normalizeState({ monoTurn: 5 });
+prepareState(stD);
+assert.equal(stD.monoTurn, 42, "a live Game.turn ahead of monoTurn wins max(monoTurn+1, gameTurn())");
+
+// Lock cooldowns tick down and expire.
 const stLock = normalizeState({ monoTurn: 5, locked: { keep: 3, expire: 1 } });
 prepareState(stLock);
 assert.equal(stLock.locked.keep, 2, "lock cooldown ticks down by 1");

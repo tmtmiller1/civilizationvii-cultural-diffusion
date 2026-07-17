@@ -16,7 +16,7 @@ let gameInfoImpl = null;
 globalThis.GameInfo = new Proxy({}, { get: (_t, k) => (gameInfoImpl ? gameInfoImpl[k] : undefined) });
 globalThis.GameplayMap = { getMapSize: () => 7 };
 
-const { agePace, mapSizeScale } = await import("/cultural-diffusion/ui/cd-calibration.js");
+const { agePace, mapSizeScale, ageProgress } = await import("/cultural-diffusion/ui/cd-calibration.js");
 const { CONFIG } = await import("/cultural-diffusion/ui/cd-config.js");
 
 // --- safe() catch returns the fallback when the engine read throws ---
@@ -99,6 +99,36 @@ assert.equal(mapSizeScale(), 1, "a negative table value is rejected -> neutral 1
 CONFIG.mapSizeScale = { MAPSIZE_HUGE: "1.5" };
 assert.equal(mapSizeScale(), 1, "a numeric-string table value is rejected by the typeof guard -> neutral 1");
 CONFIG.mapSizeScale = savedTable;
+
+// --- the `typeof Game !== "undefined"` guards: the mod must load before Game exists ---
+// (UI modules are imported at load time, so an engine read can genuinely precede the Game global.)
+const savedGame = globalThis.Game;
+globalThis.Game = undefined;
+assert.equal(agePace(), 1, "no Game global -> readMaxTurns 0 -> neutral pace (typeof guard, not a throw)");
+assert.equal(ageProgress(), 0, "no Game global -> age progress 0 (start of age)");
+globalThis.Game = savedGame;
+
+// ageProgress(): a non-number Game.turn reads as turn 0, it must not poison the ratio with NaN.
+maxTurnsValue = 100;
+globalThis.Game = { get maxTurns() { return maxTurnsValue; }, get turn() { return "not-a-number"; } };
+assert.equal(ageProgress(), 0, "a non-number Game.turn -> 0 (typeof guard), not NaN");
+globalThis.Game = savedGame;
+maxTurnsValue = 90;
+
+// --- the `|| fallback` literals on the config reads ---
+CONFIG.paceReferenceTurns = 0; // falsy -> the 90 fallback is used as the numerator
+maxTurnsValue = 90;
+assert.ok(Math.abs(agePace() - 1) < 1e-9, "a falsy paceReferenceTurns falls back to 90 (90/90 = 1)");
+maxTurnsValue = 180;
+assert.ok(Math.abs(agePace() - 0.5) < 1e-9, "...and the 90 fallback is the real numerator (90/180 = 0.5)");
+CONFIG.paceReferenceTurns = 90;
+maxTurnsValue = 90;
+
+const savedScaleTable = CONFIG.mapSizeScale;
+CONFIG.mapSizeScale = null; // falsy -> the {} fallback -> every size is unknown -> neutral
+configImpl = { getMap: () => ({ mapSizeTypeName: "MAPSIZE_HUGE" }) };
+assert.equal(mapSizeScale(), 1, "a missing mapSizeScale table falls back to {} -> neutral 1 (no throw)");
+CONFIG.mapSizeScale = savedScaleTable;
 
 // --- master toggle short-circuits both reads ---
 CONFIG.calibrateToGameSettings = false;

@@ -1,8 +1,9 @@
 // tests/civ-tuning-branches.mjs - branch/edge hardening for the per-civ tuning layer.
-// Focuses on the genuinely observable branches: the UNTUNED_* roster filters, the flatten()
-// compression, and the shared-NEUTRAL identity return. (The memento pipeline is deliberately
-// dead weight - BY_MEMENTO ships empty by design - so its mutants are equivalent and are
-// documented as such in docs/mutation-analysis.md rather than killed with a fake entry.)
+// Focuses on the branches observable through the PUBLIC civTuning() API: the UNTUNED_* roster
+// filters, the flatten() compression, and the shared-NEUTRAL identity return.
+// The memento pipeline is not reachable from here (BY_MEMENTO ships empty by design), but its
+// internals are real, live code with real contracts - they are pinned directly, via the __test
+// handles, in tests/civ-tuning-internals.mjs.
 import assert from "node:assert/strict";
 
 const players = new Map();

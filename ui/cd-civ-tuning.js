@@ -160,5 +160,13 @@ export function civTuning(pid) {
   return flattened === 1 ? NEUTRAL : { injectionScale: flattened };
 }
 
-/** Test/introspection helpers (pure). */
-export const __test = { clamp, flatten, mementoScale, CIVLEADER_BOUNDS, MEMENTO_BOUNDS, FINAL_BOUNDS };
+/**
+ * Test/introspection helpers (pure). The memento/name resolvers are exposed because the public
+ * `civTuning` path cannot observe them while BY_MEMENTO ships empty: their contracts (engine shape
+ * tolerance, `_ALT` normalization, dedup, the `mem` multiplier) only become reachable when a
+ * memento entry is added, so they are pinned directly instead.
+ */
+export const __test = {
+  clamp, flatten, mementoScale, leaderName, civName, mementoIdOf, equippedMementos, baseTimesMemento,
+  CIVLEADER_BOUNDS, MEMENTO_BOUNDS, FINAL_BOUNDS
+};

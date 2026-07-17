@@ -99,3 +99,154 @@ that must also remove their tests.
   settling is an emergent property of the diffusion pass, not a discrete mechanic.
 **Verify:** grep confirms zero read sites for each removed symbol; the mod's field pass and
 options screen build/behave identically after removal (pure dead-code deletion).
+
+## 2026-07-13 full hostile audit addendum
+
+Findings from the post-1.0.7 "anything could be wrong" sweep. Verification baseline was green
+(`npm run verify` passed), so items below are runtime-risk and behavior-consistency findings,
+not syntax/lint/test breakage.
+
+## [Medium · High] Buffer trigger can silently miss valid completion events
+
+**Sites:** [ui/cd-bootstrap.js](../ui/cd-bootstrap.js) (onConstructibleAdded, around lines 75-82)
+**Symptom:** the growth-buffer event gate accepts completion only when `percentComplete === 100`
+when the field is present.
+**Failure scenario:** if the engine emits completion as `1`, `1.0`, or another normalized value
+in some contexts, the handler returns early and no buffer claim runs despite a real completion.
+**Impact:** intermittent "buffer did nothing" behavior with no hard error.
+**Fix:** normalize completion semantics (accept 100 and 1 forms, and/or treat missing field as
+already-finalized), then add test coverage for event payload variants.
+**Verify:** simulate/observe `ConstructibleAddedToMap` payload variants and confirm
+`claimBufferAt(...)` runs once for each completed rural improvement.
+
+## [Medium · Medium] Per-turn pass depends on narrow `PlayerTurnActivated` payload shape
+
+**Sites:** [ui/cd-bootstrap.js](../ui/cd-bootstrap.js) (onTurnActivated, lines around 134-142)
+**Symptom:** pass execution is gated on `data.player ?? data.Player` matching local id exactly.
+**Failure scenario:** if payload shape drifts (missing field, wrapped object, different key/name),
+the guard rejects all turn events and the mod appears loaded but inert unless manually run from
+console.
+**Impact:** hard behavior regression with no obvious crash signal.
+**Fix:** harden player extraction (support known alternate shapes), and add a conservative fallback
+path that still honors single-player/local-turn constraints.
+**Verify:** replay with synthetic payload variants and confirm exactly one pass per local turn.
+
+## [Medium · Medium] 1.0.7 inner-ring self-heal is claim-record dependent
+
+**Sites:** [ui/cd-pass.js](../ui/cd-pass.js) (`releaseInnerClaims`),
+[ui/cd-state.js](../ui/cd-state.js) (claim normalization/caps)
+**Symptom:** release/reconciliation iterates tracked `state.claims` entries only.
+**Failure scenario:** damaged tiles from 1.0.6 that are integrated to the wrong city but absent
+from `state.claims` (cap truncation, stale/missing state, prior state loss) are not revisited by
+`releaseInnerClaims` and may remain misassigned.
+**Impact:** rare "1.0.7 did not fully heal this save" reports.
+**Fix:** add a secondary map-scan reconciliation for owned inner-ring tiles that does not rely
+solely on claim bookkeeping, or explicitly document this as a best-effort constraint.
+**Verify:** load crafted state with missing claim records and confirm inner-ring tiles still
+release/recover.
+
+## [Low · Confirmed] Internal docs/comments disagree on buffer land-vs-water rule
+
+**Sites:** [ui/cd-pass.js](../ui/cd-pass.js) (`claimBufferAt`/`bufferTarget` comments),
+[tests/buffer.mjs](../tests/buffer.mjs)
+**Symptom:** comments near `claimBufferAt` say "UNOWNED land" only, while behavior and tests
+explicitly allow adjacent UNOWNED water claims.
+**Impact:** maintenance confusion; easy future regression if someone "fixes" to the wrong doc.
+**Fix:** make wording consistent everywhere (CHANGELOG/docs/code comments/tests).
+**Verify:** docs and comments align with tested behavior.
+
+## [Low · Medium] Core-protection check is potentially expensive inside hot candidate loop
+
+**Sites:** [ui/cd-borders.js](../ui/cd-borders.js) (`isCoreProtected`/`_cityCenterWithin`),
+[ui/cd-pass.js](../ui/cd-pass.js) (`flipEligible`)
+**Symptom:** for rival-owned candidates, core protection builds radius sets and scans alive
+players/cities per tile.
+**Failure scenario:** late-game/high-city maps can pay this repeatedly per pass on a hot path.
+**Impact:** possible turn-time spikes without correctness failure.
+**Fix:** precompute/memoize protected-center influence per pass (or owner-scoped cache), then
+query O(1)-ish in `flipEligible`.
+**Verify:** profile pass time before/after on a large late-game save.
+
+## [Low · Confirmed] Test harness gap around bootstrap/event wiring
+
+**Sites:** [package.json](../package.json) (test scripts), [tests/](../tests)
+**Symptom:** strong unit coverage exists for pure/near-pure modules, but no dedicated harness for
+turn-hook/event payload compatibility in `cd-bootstrap`.
+**Impact:** event-shape regressions can ship despite green test suite.
+**Fix:** add bootstrap-focused tests for `PlayerTurnActivated` and `ConstructibleAddedToMap`
+payload variants.
+**Verify:** new tests fail on brittle extraction/completion assumptions and pass after hardening.
+**2026-07-16 update:** PARTIALLY ADDRESSED for the pass itself — `tests/pass.mjs` now covers
+`runPass` orchestration against a stub engine (guards, step order, flip gates, bookkeeping, state
+bounds), and `cd-pass.js` joined the c8 and Stryker scopes. `cd-bootstrap`'s event wiring remains
+uncovered, so this item stays open as originally written.
+
+## 2026-07-16 addendum (found while building `tests/pass.mjs`)
+
+## [Low · Confirmed] `commitFlip`'s post-flip "seed stock" line is a provable no-op
+
+**Site:** [ui/cd-pass.js](../ui/cd-pass.js) (`commitFlip`, the line
+`next[k][String(me)] = Math.max(next[k][String(me)] || 0, ageCfg.minimumOwner);`)
+**Symptom:** the comment says it seeds "a stable stock so the tile doesn't immediately fail the
+ownership test", but the `Math.max` can never raise anything. `tryFlipCandidate` only reaches
+`commitFlip` when `resolveOwner` returned `flip:true`, which requires `value > ageCfg.minimumOwner`
+— and when `verdict.owner === me`, that `value` IS `next[k][String(me)]`. So the operand is already
+strictly greater than the floor being applied.
+**Evidence:** instrumented across the whole `tests/pass.mjs` suite — 14 flips, 14 no-ops, 0 raises.
+Stocks at flip time ranged 379–5000 against a bar of 300.
+**Impact:** none at runtime; it is dead code in the hot flip path that reads as load-bearing. It
+also can't be pinned by any test, so it will keep surfacing as an unkillable mutant.
+**Fix:** either delete the line, or — if the intent was a floor for a path that does NOT come
+through `resolveOwner` (e.g. a future direct-claim route, or protection against `resolveOwner`'s
+bar changing independently) — keep it and correct the comment to say so.
+**Deliberately NOT auto-removed:** unlike the dead constructs cleaned out of `cd-state.js` on the
+same day, this sits in the flip path and turns on design intent. Author's call.
+**Verify:** the instrumentation above; or delete the line and confirm `tests/pass.mjs` still passes
+(it does — which is the point).
+
+## [Low · Confirmed] `commitBuffer` repeats the same dead seed-stock line
+
+**Site:** [ui/cd-pass.js](../ui/cd-pass.js) (`commitBuffer`:
+`state.field[k][String(me)] = Math.max(state.field[k][String(me)] || 0, CONFIG.minimumOwner);`)
+**Symptom:** the twin of the `commitFlip` item above, reached by the buffer path instead. Here the
+tile is freshly claimed and usually has NO prior stock, so the `Math.max` collapses to
+`= CONFIG.minimumOwner` — i.e. the `|| 0` and the `Math.max` are both doing nothing. Whatever is
+decided for `commitFlip`'s line should be applied here for consistency.
+**Impact:** none at runtime; dead-ish code in the buffer claim path.
+**Fix:** resolve alongside the `commitFlip` item; they are the same decision.
+
+## [Low · Confirmed] `tests/buffer.mjs` asserts tiles but never state
+
+**Sites:** [tests/buffer.mjs](../tests/buffer.mjs), [ui/cd-pass.js](../ui/cd-pass.js)
+(`commitBuffer` / `claimBufferAt`)
+**Symptom:** `buffer.mjs` asserts tile ownership after `claimBufferAt`, but never the persisted
+state it writes (`claims`, `locked`, `field` seed) and never the FAILURE path
+(`if (!res.ok || ownerAt(T) !== me)` — the silent-no-op guard, the buffer's copy of the one
+`tests/pass.mjs` pins for flips).
+**Evidence:** with `cd-pass.js` in the Stryker scope (2026-07-16), ~13 of its 189 survivors sit on
+those buffer lines (L481, L489, L518) — the only cd-pass survivors attributable to a suite other
+than `pass.mjs`.
+**Fix:** extend `buffer.mjs` with a `purchaseNoOps`-style stub (copy the pattern from
+`tests/pass.mjs`) plus claim/lock/field assertions after a successful buffer claim.
+**Verify:** those survivors die; buffer-path mutation stops trailing the rest of `cd-pass.js`.
+
+## [Low · Confirmed] `runPass`'s JSDoc claims a multiplayer bail it does not do
+
+**Site:** [ui/cd-pass.js](../ui/cd-pass.js) (`runPass` doc comment: "bails cleanly when disabled,
+in multiplayer, or with no local cities")
+**Symptom:** `runPass` checks `CONFIG.diffusionEnabled`, `me < 0`, and `cities.length` — there is no
+multiplayer check. MP safety is real but comes from elsewhere: `cd-ownership`'s `guardSP()` blocks
+every mutating verb, so a MP pass runs the whole field simulation, attempts flips, fails them all,
+and still writes state each turn.
+**Impact:** cosmetic/doc accuracy, plus wasted per-turn work in MP. No incorrect ownership occurs —
+`tests/pass.mjs` pins that safety property directly.
+**Fix:** either add an early `if (isMultiplayer()) return { flips: 0, tiles: 0 };` to `runPass`
+(cheap, and makes the doc true), or reword the comment to say the guard lives in the verbs.
+
+## Suggested implementation order
+
+1. Harden `cd-bootstrap` event parsing (`percentComplete` + turn payload extraction).
+2. Add bootstrap/event compatibility tests so those regressions cannot re-ship.
+3. Add state-independent inner-ring reconciliation fallback (or downgrade release claim wording).
+4. Align docs/comments on buffer water behavior.
+5. Optimize/memoize core-protection checks if profiling confirms measurable cost.
