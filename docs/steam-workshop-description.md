@@ -4,7 +4,7 @@
 
 [i]A quick note on terms: "cultural pressure" is this mod's own quantity — a per-tile stock your cities build up over the game. It is [b]not[/b] the base game's Culture yield. The Culture yield is one of several inputs that feed cultural pressure, alongside a city's prosperity and your civilization's Cultural Power Index.[/i]
 
-A reimagining and extension of Gedemon's [b]Cultural Diffusion[/b] mod for Civilization V, rebuilt for Civ VII with a deeper cultural-power model and optional [b]Emigration[/b] integration. Single-player, tunable, reversible. It works fully standalone, and reads diaspora data from the [b]Emigration[/b] mod when that is also installed.
+A reimagining and extension of Gedemon's [b]Cultural Diffusion[/b] mod for Civilization V, rebuilt for Civ VII with a deeper cultural-power model and optional [b]Emigration[/b] integration. It runs in single-player only, is fully tunable, and can be switched off at any time. It works fully standalone, and reads diaspora data from the [b]Emigration[/b] mod when that is also installed.
 
 Like its companion [b]Emigration[/b], this mod is a work in progress. Balance is still being tuned, more is planned (see the roadmap below), and nearly every system can be adjusted through the Options panel. Feedback on how borders feel at each intensity is very welcome.
 
@@ -17,22 +17,22 @@ Because pressure must physically build up ring by ring against decay, reach is a
 [b]What Cultural Diffusion does[/b]
 
 [list]
-[*][b]A reaction-diffusion pressure field.[/b] Cities pump cultural pressure into a persisted per-tile stock that diffuses to neighbours and decays each turn, so borders grow as a slow, organic travelling wave rather than snapping to a radius.
-[*][b]Terrain shapes the spread.[/b] Cultural pressure follows roads and river valleys and is slowed or blocked crossing hills, mountains, tundra and desert biomes, and forest, jungle, and marsh features.
-[*][b]An answer to AI forward-settling.[/b] A confident civilization claims the buffer around your cities and can reclaim a rival's frontier tiles where your cultural pressure clearly wins there — growing your border is the deterrent.
-[*][b]Cultural power, not raw Culture yield.[/b] A city's injection strength is a geometric blend of its Culture yield with a prosperity/vitality aggregate, a per-civilization Cultural Power Index (wonders, great works, Culture, Influence, city-state suzerainties, happiness, golden ages, traditions, age), and a celebration bonus — so a happy, prosperous, entrenched city reaches farther, while a lone +Culture or +happiness spike is diluted rather than a runaway multiplier.
-[*][b]Borders follow people (with Emigration).[/b] Optional ethnic-affinity diffusion reads the Emigration mod's diaspora data so your cultural pressure flows toward tiles your people settled. Standalone-safe: simply neutral when Emigration is absent.
-[*][b]Paced for Civ VII.[/b] Per-age tuning for the three ages plus game-settings calibration re-times the field to the current age length and nudges injection by map size, so the border arc stays consistent across game speeds and cramped maps aren't steamrolled.
-[*][b]Bounded balance layer.[/b] A per-leader, civilization, and memento tuning table damps territory-redundant kits (e.g. Culture-on-capture) and gently lifts Culture-poor civs, so no single kit snowballs.
+[*]Cities pump cultural pressure into a persisted per-tile stock (a reaction-diffusion field) that diffuses to neighbours and decays each turn, so borders grow as a slow, organic travelling wave rather than snapping to a radius.
+[*]Terrain shapes the spread: cultural pressure follows roads and river valleys and is slowed or blocked crossing hills, mountains, tundra and desert biomes, and forest, jungle, and marsh features.
+[*]It answers AI forward-settling. A confident civilization claims the buffer around your cities and can reclaim a rival's frontier tiles where your cultural pressure clearly wins there, so growing your border is the deterrent.
+[*]Reach comes from cultural power, not raw Culture yield. A city's injection strength is a geometric blend of its Culture yield with a prosperity/vitality aggregate, a per-civilization Cultural Power Index (wonders, great works, Culture, Influence, city-state suzerainties, happiness, golden ages, traditions, age), and a celebration bonus, so a happy, prosperous, entrenched city reaches farther while a lone +Culture or +happiness spike is diluted rather than a runaway multiplier.
+[*]With Emigration installed, optional ethnic-affinity diffusion reads its diaspora data so your cultural pressure flows toward tiles your people settled; it is simply neutral when Emigration is absent, so the mod stays standalone-safe.
+[*]Per-age tuning for the three ages plus game-settings calibration re-times the field to the current age length and nudges injection by map size, so the border arc stays consistent across game speeds and cramped maps aren't steamrolled.
+[*]A per-leader, civilization, and memento tuning table damps territory-redundant kits (e.g. Culture-on-capture) and gently lifts Culture-poor civs, so no single kit snowballs.
 [/list]
 
 [i]Full formulas, tunables, and per-leader tuning are documented in the README.[/i]
 
 [b]Tuning[/b]
 
-One intensity knob — [b]Low[/b] (a gentle nudge into empty land only), [b]Medium[/b] (default; contests rival frontier tiles), and [b]High[/b] (assertive; spreads farther and flips faster) — plus toggles for the master enable, a claim-empty-land-only safety mode, free-territory vs. buy-with-gold claiming, the rich cultural-power model, follow-diaspora, and debug logging. Every underlying field, terrain, injection, calibration, and per-age value is overridable.
+One intensity knob: [b]Low[/b] (a gentle nudge into empty land only), [b]Medium[/b] (default; contests rival frontier tiles), and [b]High[/b] (assertive; spreads farther and flips faster), plus toggles for the master enable, a claim-empty-land-only safety mode, free-territory vs. buy-with-gold claiming, the rich cultural-power model, follow-diaspora, and debug logging. Every underlying field, terrain, injection, calibration, and per-age value is overridable.
 
-[b]A gameplay mod, not just UI[/b]
+[b]It changes real tile ownership[/b]
 
 Tile ownership physically changes through real gameplay writes each turn. Yields are earned through normal population and building growth on the land your cultural pressure claims — this is not a UI overlay.
 

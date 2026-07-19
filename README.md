@@ -7,7 +7,7 @@ normal city footprint into open land, and can take a rival's frontier tiles wher
 culture clearly wins there. This is a systemic answer to AI forward-settling: growing
 your cultural border is the deterrent.
 
-Single-player, flag-gated, reversible. It works standalone, and reads extra data from
+It runs in single-player, sits behind an enable flag, and is fully reversible. It works standalone, and reads extra data from
 the [Emigration](../emigration/) mod when that is also installed.
 
 ---
@@ -47,8 +47,8 @@ weakens or is lost.
 A tile becomes yours once **your** culture there is the largest, passes an absolute
 floor (`minimumOwner`, 300), and - if you're taking it from a rival - beats their
 culture on that tile by a decisive ratio (`flipRatio`, 0.65). It must also be within
-`flipMaxDistance` (6) of one of your cities and — while `requireAdjacency` is on (default)
-— **adjacent to land you already own**, so borders grow contiguously. Freshly claimed tiles
+`flipMaxDistance` (6) of one of your cities and, while `requireAdjacency` is on (default),
+**adjacent to land you already own**, so borders grow contiguously. Freshly claimed tiles
 are locked briefly (`flipCooldownTurns`) to prevent flicker. By default a rival's
 **city-center plot is never taken** (culture may press inward through the surrounding tiles
 ring by ring); the full downtown ring can still be shielded via the *rival city protection*
