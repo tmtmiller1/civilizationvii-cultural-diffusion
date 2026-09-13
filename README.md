@@ -7,8 +7,10 @@ normal city footprint into open land, and can take a rival's frontier tiles wher
 culture clearly wins there. This is a systemic answer to AI forward-settling: growing
 your cultural border is the deterrent.
 
-It runs in single-player, sits behind an enable flag, and is fully reversible. It works standalone, and reads extra data from
-the [Emigration](../emigration/) mod when that is also installed.
+It runs in single-player only and sits behind an enable flag. Turning it off stops all new
+claims, but tiles it already claimed stay yours, because the game cannot hand a city's tile
+back to no one. It works standalone, and reads extra data from the
+[Emigration](../emigration/) mod when that is also installed.
 
 ---
 
@@ -37,12 +39,17 @@ threshold" the source must exceed before culture leaks across at all. If the
 [Emigration](../emigration/) mod is present, diffusion is accelerated toward tiles
 where your diaspora lives, so borders follow people.
 
+Culture also crosses water, slowly and only once it is strong. Coast is easier to cross than
+open ocean, and crossings ease through the ages (`diffuseAcrossWater`, `byAge[...].waterEase`,
+`waterEaseRamp`). Tiles in your Distant Lands cannot be claimed before the Exploration age
+(`blockDistantLandsBeforeExploration`).
+
 ### 3. Decay - every tile slowly loses culture
 Each tile sheds `decayRate` (5%) + a flat point per turn. Decay is the constant brake
 that the diffusion has to keep pushing against - it's what gives the border a stable
 equilibrium, keeps growth slow, and lets culture ebb when the source city weakens or is
-lost. With the opt-in **borders recede** option, that ebb also costs you claimed tiles
-(see step 5).
+lost. With the opt-in **borders recede** option, a rival whose culture overtakes yours on a
+claimed tile can take it (see step 5).
 
 ### 4. Flip - ownership is read off the stock
 A tile becomes yours once **your** culture there is the largest, passes an absolute
@@ -54,6 +61,14 @@ are locked briefly (`flipCooldownTurns`) to prevent flicker. By default a rival'
 **city-center plot is never taken** (culture may press inward through the surrounding tiles
 ring by ring); the full downtown ring can still be shielded via the *rival city protection*
 option (`coreProtectRadius`).
+
+The game applies an ownership change a moment after the mod asks for it. Each flip is therefore
+recorded as pending and confirmed from the map at the start of the next pass, before it counts
+as a claim.
+
+With the opt-in **+1 ring buffer** (`growthBuffer`, off by default), finishing a rural
+improvement near your border also claims the unowned tiles right next to it, one ring past
+your city's normal reach.
 
 ### 5. Recede (opt-in) - claimed tiles can be lost again
 Off by default (`recedeBorders`). When on, each pass re-checks only the tiles this mod
@@ -73,8 +88,9 @@ Because culture must physically build up **ring by ring against decay**, reach i
 | Ring 4 | The first ring the mod claims, once a city's culture stock is large enough |
 | Ring 5+ | Only a mature, entrenched culture |
 
-The exact turn ring 4 is first claimed has not been re-measured since 1.0.7 ceded rings 1-3
-to the base game; the debug `frontier` log line reports it per city.
+In test games on a mature save, the strongest city made its first ring-4 claim 18 turns after
+the mod started from an empty field. The mod held 29 claims after 45 turns, across an age
+change, and a town with little culture never came close.
 
 An **overwhelming** culture injects a far bigger stock, so it pushes the *same* front
 out **faster and farther** - organically, without any artificial "you're the leader"
@@ -147,20 +163,24 @@ sooner.
   raw culture only.
 - **Follow diaspora (Emigration mod)** - read Emigration for ethnic-affinity
   diffusion. No effect if Emigration is absent.
-- **Pressure lens** - a read-only map lens shading contested frontier tiles.
+- **Pressure lens** - on by default; a read-only map lens (Shift+C) shading contested frontier
+  tiles, with a hover readout. Not yet watched on screen.
 - **Debug logging** - per-pass diagnostics to `UI.log`: every injector's strength and
   city-tile stock (`inject`), each city's best ring-4 stock against the ownership bar
   (`frontier`), and the persisted state size and pass time (`state bytes=`).
 
 ### Full tunables (`ui/cd-config.js`, all overridable)
+- **Claiming:** `diffusionEnabled`, `claimOnlyUnowned`, `flipVerb` (`purchasePlot`, code-only),
+  `refundGold`, `repairOrphans`, `growthBuffer`, `baseGrowthRadius`, `recedeBorders`.
 - **Pacing / safety:** `turnInterval`, `fieldRadius`, `maxDiffusionPlots`,
-  `maxFlipsPerTurn`, `flipCooldownTurns`, `coreProtectRadius`, `requireAdjacency`,
-  `recedeBorders`.
+  `maxFlipsPerTurn`, `flipCooldownTurns`, `coreProtectRadius`, `requireAdjacency`.
 - **Field:** `cultureThreshold`, `diffusionRate`, `decayRate`, `decayFlat`,
   `normalMax`, `maxPercent`, `injectBase`, `injectRatio`, `cityCapFactor`,
   `minimumOwner`, `flipRatio`, `flipMaxDistance`.
-- **Terrain:** `roadBonus`/`roadMax`, `riverFollowBonus`/`riverFollowMax`, and a
-  `{ malus, max, threshold }` entry per terrain (`terrainForest` ... `terrainMountain`).
+- **Terrain and water:** `roadBonus`, `riverFollowBonus`, and a `{ malus, max, threshold }`
+  entry per terrain (`terrainHills`, `terrainMountain`, `terrainTundra`, `terrainDesert`,
+  `terrainForest`, `terrainJungle`, `terrainMarsh`, `terrainCoast`, `terrainOcean`), plus
+  `diffuseAcrossWater`, `blockDistantLandsBeforeExploration` and `waterEaseRamp`.
 - **Injection shaping (fused):** `fusedModel`, `useEmigration`, `cultureWeight`,
   `cultureExponent` (the geometric-blend alpha that dilutes lone culture spikes),
   `happinessAmp`, `wonderBonus`, `ageFactor`, `prosperityAmp`,
@@ -170,7 +190,7 @@ sooner.
   `paceBounds`, `mapSizeScale` - re-times the field to the current age's length
   (`Game.maxTurns`) so the border arc is consistent across game speeds, and nudges
   injection by map size so cramped maps aren't steamrolled.
-- **Per-age balance:** `byAge` - `{ injectionScale, ownerBar }` for
+- **Per-age balance:** `byAge` - `{ injectionScale, ownerBar, waterEase }` for
   `ANTIQUITY`/`EXPLORATION`/`MODERN`. Later ages have ~8x the cities and ~3x the
   culture, so injection is damped and the ownership bar raised so a single city's reach
   stays comparable across ages.
@@ -179,6 +199,7 @@ sooner.
   celebration/suzerainty snowball kits and territory-redundant civs (e.g. Xerxes'
   culture-on-capture), and gently lifts culture-poor ones. See
   [`mods_research_and_analysis/cultural-diffusion-leader-civ-memento-and-age-tuning.md`](../../mods_research_and_analysis/cultural-diffusion-leader-civ-memento-and-age-tuning.md).
+- **Diagnostics:** `debug`, which turns on the per-pass log lines listed under Options.
 
 ---
 
@@ -188,9 +209,10 @@ The runtime is a set of small, single-responsibility UI-script modules (`ui/`):
 
 | Module | Responsibility |
 | --- | --- |
-| `cd-bootstrap.js` | Boots the engine, runs one pass per local-player turn, console surface. |
-| `cd-pass.js` | The per-turn simulation: inject -> diffuse -> decay -> flip -> recede. |
-| `cd-recede.js` | Opt-in recede step: cede a claimed tile to a decisive rival, or release a faded one. |
+| `cd-bootstrap.js` | Boots the engine, runs one pass per local-player turn, console surface, the +1 ring buffer trigger. |
+| `cd-pass.js` | The per-turn simulation: confirm pending -> inject -> diffuse -> decay -> flip -> recede. |
+| `cd-pending.js` | Records ownership changes that have not landed yet and confirms them from the map next pass. |
+| `cd-recede.js` | Opt-in recede step: cede a claimed tile to a rival whose culture decisively won it. |
 | `cd-diagnostics.js` | Debug-only injector, frontier-ring, and state-size log lines. |
 | `cd-field.js` | **Pure** field math (injection, decay, diffusion, ownership resolution). |
 | `cd-terrain.js` | Per-step terrain diffusion modifiers (roads, rivers, rough ground). |
@@ -205,17 +227,20 @@ The runtime is a set of small, single-responsibility UI-script modules (`ui/`):
 | `cd-calibration.js` | Age-length (field pace) + map-size (injection) calibration from game settings. |
 | `cd-plots.js` | GameplayMap reads (owners, radii, water, dimensions). |
 | `cd-borders.js` | City-core protection + war checks. |
-| `cd-ownership.js` | The one place that mutates ownership (`setOwnership` / `purchasePlot`). |
-| `cd-state.js` | Persisted culture field (v2 schema), save/reload, pruning. |
+| `cd-ownership.js` | The one place that mutates ownership (refunded `purchasePlot`; `setOwnership` only to un-claim). |
+| `cd-state.js` | Persisted culture field, claims, locks and pending changes (v2 schema), save/reload, pruning. |
 | `cd-config.js` | Default tunables + intensity presets. |
-| `cd-settings.js` / `cd-options.js` | Options-screen bridge + registration. |
+| `cd-settings.js` / `cd-options.js` | Options-screen bridge + registration, through `Options.addInitCallback` so settings survive the Settings screen's rebuild. |
+| `cd-pressure-lens.js` / `cd-pressure-tooltip.js` | The Cultural Pressure map lens (Shift+C) and its hover readout. |
+| `cd-lens-colors.js` | Readable civilization colours for the lens. |
 | `cd-notifications.js` | Throttled flip notifications. |
 | `cd-log.js` | Logging. |
 
 The pure modules (`cd-field`, `cd-pressure`, `cd-cpi`) carry the algorithm and are
-unit-tested in Node with no engine - `npm run verify` runs syntax, ESM-integrity, and
-the test suites (`tests/field.mjs` locks the slow travelling-wave pacing as a
-regression guard).
+unit-tested in Node with no engine, and `tests/pass.mjs` drives the whole pass against a stub
+engine, including ownership that lands a pass late. `npm run verify` runs lint, syntax,
+ESM-integrity, and the test suites. Engine behaviour is checked in real games with the
+hands-free harness in [`devtools/harness/`](devtools/harness/).
 
 ---
 
@@ -248,7 +273,7 @@ This mod is a reimagining and extension of Gedemon's work, not a straight port.
   - the **per-leader / civilization / memento** balance-tuning layer and the
     **per-age** damping for Civ VII's three-age structure;
   - the **game-settings calibration** (age length, map size) reworked for Civ VII;
-  - the Civ VII engine adaptation: terrain/biome/feature reads, `setOwnership`
+  - the Civ VII engine adaptation: terrain/biome/feature reads, `purchasePlot`
     integration, bounded-region simulation, persistence, the Options screen, and
     notifications.
 - Per-turn pass structure, plot reads, persistence envelope, options screen, and
@@ -257,7 +282,8 @@ This mod is a reimagining and extension of Gedemon's work, not a straight port.
 ## Notes & limitations
 
 - Terrain (roads, river valleys, hills/mountains, tundra/desert biomes, forest/
-  rainforest/marsh features) is read against the **shipped Civ VII 1.4.1 map API**
+  rainforest/marsh features) is read with the **Civ VII 1.4.1 map API**, and the pass has
+  since run cleanly on 1.4.2
   (`GameplayMap.getTerrainType`/`getBiomeType`/`getFeatureType`/`isMountain`/
   `getRiverType`/`getRouteType`, via the `GameInfo.Terrains`/`Biomes`/`Features`
   lookups). Civ VII splits terrain (flat/hill/mountain) from biome (tundra/desert/...)
