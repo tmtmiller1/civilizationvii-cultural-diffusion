@@ -1,7 +1,7 @@
 // cd-terrain.js
 //
-// Terrain modifiers for one source->neighbour diffusion step (docs/cultural-diffusion-spec.md
-// 3b, ported from Civ V DiffuseCulture): culture follows roads/rivers and is slowed - or
+// Terrain modifiers for one source->neighbour diffusion step (docs/current-model.md
+// §2, ported from Civ V DiffuseCulture): culture follows roads/rivers and is slowed - or
 // stopped - crossing rough ground. Built against the SHIPPED Civ VII 1.4.1 map API (verified
 // in Resources/Base/modules/base-standard, e.g. ui-next/tooltips/plot-tooltip/helpers.js):
 //

@@ -1,7 +1,7 @@
 // cd-calibration.js
 //
-// Calibrates the field's per-turn pace to the GAME SETTINGS (docs/cultural-diffusion-spec.md
-// 3d) - the Civ V mod's SetDiffusionFactorFromGameSetting, redone for Civ VII's structure.
+// Calibrates the field's per-turn pace to the GAME SETTINGS (docs/current-model.md
+// §2) - the Civ V mod's SetDiffusionFactorFromGameSetting, redone for Civ VII's structure.
 //
 // Civ VII differs from Civ V: instead of one continuous ~500-turn game, it plays THREE discrete
 // ages, and `Game.maxTurns` is the CURRENT AGE's turn budget (the radial menu shows

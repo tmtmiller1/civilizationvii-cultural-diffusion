@@ -1,7 +1,7 @@
 // cd-probe-runner.js
 //
 // Orchestrates the Cultural Diffusion feasibility probe. It answers the four open
-// questions from docs/cultural-diffusion-spec.md 2:
+// questions from docs/probe-history.md §1:
 //   Q-FLIP       - does setOwnership actually reassign a plot + redraw borders?
 //   Q-YIELD      - is a flipped tile integrated (worked/yields) or cosmetic?
 //   Q-PERSIST    - does a flip survive save -> reload?
@@ -26,16 +26,17 @@ import {
   isCityCenterAt, cityAt, playerKind, reflectNames, enumMatch, cityTransferCanStart, cityTransferSend,
   districtTypeNameAt, diplomacyDealsPresence, cityCedeItem, sendCityCession, allPlayerIds, suzerainOf,
   isAtWarWith, diplomacyActionOps, declareWar, occupyOps,
-  constructibleIndexByType, createCityMarker, cityHappiness,
+  constructibleIndexByType, createCityMarker, cityHappiness, plotDistanceXY,
 } from "./cd-probe-api.js";
 import {
   recordFlip, readFlips, clearFlips, readMeta, writeMeta, clearAll, readWork, recordWork,
   readVerb, recordVerb, updateVerb,
 } from "./cd-probe-store.js";
+import { runLensProbe } from "./cd-probe-lens.js";
 
-const PROBE_VERSION = "0.9.27"; // cache-bust marker: log must read 0.9.27
+const PROBE_VERSION = "0.9.30"; // cache-bust marker: log must read 0.9.30
 const RINGS = 6;               // search out to 6 rings so we can test tiles BEYOND the normal 3-ring footprint
-const SCHEMA = "v9-revolt19";    // re-arm token: if stored meta.schema differs, the probe clears + re-runs the new tests
+const SCHEMA = "v10-outer-yield"; // re-arm token: if stored meta.schema differs, the probe clears + re-runs the new tests
 // How long to wait for an async ownership/district write to settle before the FIRST verb
 // classify. The 2026-07-09 run proved 2.5s is too short (every tile read no-change/FAILS then,
 // yet was owned/integrated post-reload), so the seed read waits longer AND every turn-refresh
@@ -63,6 +64,9 @@ const AUTO = {
   // CONFIRM the read - destructive, so OFF by default (start a fresh game after enabling).
   WORK_READ: true,
   WORK_MUTATE: false,
+  // Q-OUTER-YIELD (read-only): confirm the mod's BEYOND-RING-3 owned tiles are not merely
+  // workable (Q-WORK) but ACTUALLY worked and BEARING yields. Non-mutating; on by default.
+  YIELD_READ: true,
   // Q-VERB (Phase 0 gate): claim a DISTINCT tile per candidate verb (Growth.claimPlot,
   // CREATE_ELEMENT DISTRICT_RURAL) and classify FREE-INTEGRATED / COSTS-GOLD / FAILS. This
   // MUTATES (claims tiles / creates rural districts) - on by default because deciding the
@@ -81,7 +85,7 @@ const AUTO = {
   // Verb for UNOWNED front tiles:
   //   "purchasePlot" = visible AND integrated (real City plot-acquisition path). Spends gold, but
   //                    DEMO_REFUND_GOLD grants the cost back so it nets ZERO - visible + integrated
-  //                    + no treasury drain, the redesign-plan 2/3.6 ideal. DEFAULT.
+  //                    + no treasury drain, the current-model.md §4 ideal. DEFAULT.
   //   "setOwnership" = free + player-owned + repaints, but ORPHAN (no owning city, not workable).
   //   "stack"        = setOwnership+DISTRICT_RURAL - PROVEN not to integrate: both orders orphan
   //                    the tile (the two ownership models are mutually exclusive). Kept for ref.
@@ -100,6 +104,10 @@ const AUTO = {
   // owned). This measures purchasePlot's cost on a CONTIGUOUS vs a DISCONNECTED tile to decide the
   // rule: contiguity-required / contiguity-gated-pricing / unconditionally-free. Self-refunds.
   COST_PROBE: true,
+  // Q-RECEDE (one-shot per session): the mod's opt-in recedeBorders needs two verbs nobody has watched -
+  // a RIVAL city's purchasePlot on a tile WE own beyond ring 3 (cede), and setOwnership(NO_PLAYER) on an
+  // INTEGRATED tile of ours (release). Moves one tile each, reads the result, then buys both back (refunded).
+  RECEDE_PROBE: true,
   // Phase 5 (one-shot DISCOVERY): taking a rival/minor CITY-CENTER tile should ANNEX/ABSORB the
   // whole settlement, but there's no known runtime cede API. This reflects the API surface for a
   // city-transfer op + canStart-tests it READ-ONLY on a target city center. Non-destructive by
@@ -476,7 +484,7 @@ export function runIntegration(trigger) {
 
 // --- Q-VERB (Phase 0): FREE-INTEGRATED / COSTS-GOLD / FAILS per candidate verb ---
 //
-// The gate for the whole redesign (redesign-plan 2). setOwnership is retired (proven to
+// The gate for the whole redesign (probe-history.md §2). setOwnership is retired (proven to
 // orphan / fail on rival), purchasePlot works but spends gold. This test claims a DISTINCT
 // tile per candidate free verb - Growth.claimPlot and CREATE_ELEMENT DISTRICT_RURAL - reads
 // the player's gold SYNCHRONOUSLY around the call (a cost is deducted at call time), and,
@@ -493,7 +501,7 @@ const VERB_TESTS = [
 ];
 
 // Deferred integration read for a verb-claimed tile (owner + real owning city + inCityPlots
-// / rural district). INTEGRATED is the redesign-plan 1 success signal (owningCity set,
+// / rural district). INTEGRATED is the current-model.md §4 success signal (owningCity set,
 // inCityPlots true), with a rural district as the DISTRICT_RURAL verb's own success signal.
 function verbIntegration(loc) {
   const me = localPlayerId();
@@ -579,7 +587,7 @@ function verbSummary(byKind) {
   }).join(" | ");
 }
 
-// The redesign-plan §2 / §9.8 decision tree, driven by the FRONTIER (beyond-ring-3) verdict.
+// The probe-history.md §2 / reference-and-conventions.md §9 decision tree, driven by the FRONTIER (beyond-ring-3) verdict.
 function verbDecision(byKind) {
   const claim = frontierVerdict(byKind.growthClaimPlot);
   const rural = frontierVerdict(byKind.districtRural);
@@ -759,6 +767,17 @@ function demoThrottled() {
   const now = (typeof Date !== "undefined" && Date.now) ? Date.now() : 0;
   if (g.__cdLastDemo && now - g.__cdLastDemo < (AUTO.DEMO_MIN_MS || 2500)) return true;
   g.__cdLastDemo = now;
+  return false;
+}
+
+// Q-OUTER-YIELD scans a radius around every city, so - unlike the cheap flip-record reads in
+// runWork - it must NOT run on every ~7x/sec PlayerTurnActivated. Throttle the turn-refresh scan
+// to at most once per ~2.5s. Explicit post-flip / reload / manual runs are one-shot, never throttled.
+function yieldThrottled() {
+  const g = (typeof globalThis !== "undefined") ? globalThis : {};
+  const now = (typeof Date !== "undefined" && Date.now) ? Date.now() : 0;
+  if (g.__cdLastYield && now - g.__cdLastYield < 2500) return true;
+  g.__cdLastYield = now;
   return false;
 }
 
@@ -1577,6 +1596,122 @@ export function runWork(trigger) {
   return rows;
 }
 
+// --- Q-OUTER-YIELD: do BEYOND-RING-3 owned tiles ACTUALLY bear yields? ---------
+//
+// Q-WORK proves a far tile is WORKABLE (the engine would accept a worker). This proves the
+// stronger, player-visible claim the mod actually makes: an outer-ring tile it claimed is
+// WORKED and CONTRIBUTES yields to its city. All reads here are non-mutating.
+//
+// "Bears yields" needs TWO signals together, because getYieldsWithCity ALONE is a hypothetical
+// "if-worked" value (>0 for almost any land tile), so it can't distinguish worked from idle:
+//   (1) WORKED  - a rural improvement sits on the tile (constructiblesAt), or a worker is
+//                 actually placed (tilePlacement.numWorkers > 0) - NOT merely workable.
+//   (2) YIELD>0 - getYieldsWithCity, as worked by the OWNING city, is positive.
+// Scans the local player's OWN beyond-ring-3 owned+attached tiles around every city (not just
+// probe claims), so it confirms the MOD's real in-game result regardless of how a tile was got.
+const YIELD_MAX_RINGS = 6; // scan rings 4..6 (beyond the 3-ring footprint) around each city
+
+function myOuterOwnedTiles(maxRings) {
+  const me = localPlayerId();
+  const cities = localCities();
+  const near3 = new Set();
+  for (const c of cities) {
+    const loc = cityLoc(c);
+    if (loc) for (const p of plotsInRadius(loc, 3)) near3.add(`${p.x},${p.y}`);
+  }
+  const seen = new Set();
+  const out = [];
+  for (const c of cities) {
+    const loc = cityLoc(c);
+    if (!loc) continue;
+    for (const p of plotsInRadius(loc, maxRings)) {
+      const k = `${p.x},${p.y}`;
+      if (seen.has(k)) continue;
+      seen.add(k);
+      if (near3.has(k)) continue;               // beyond ring 3 of EVERY local city
+      if (isWaterAt(p)) continue;               // culture claims land, not ocean
+      if (owningPlayerIdAt(p) !== me) continue; // owned by the local player
+      out.push({ x: p.x, y: p.y });
+    }
+  }
+  return out;
+}
+
+function yieldSnapshot(loc) {
+  const idx = plotIndexXY(loc);
+  const { city, buildCID, owns } = cityForPlot(loc);
+  const cons = constructiblesAt(loc);
+  const dist = districtAt(loc);
+  const place = tilePlacement(city, idx);
+  const yld = yieldsWithCity(loc, buildCID);
+  const yieldTotal = yld ? yld.total : null;
+  const ruralPresent = cons.length > 0;
+  const numWorkers = place ? place.numWorkers : null;
+  const worked = ruralPresent || (typeof numWorkers === "number" && numWorkers > 0);
+  const yielding = worked && typeof yieldTotal === "number" && yieldTotal > 0;
+  const verdict = !owns ? "OWNED-NO-CITY"
+    : yielding ? "YIELDING"
+    : worked ? "WORKED-NO-YIELD"
+    : "OWNED-UNWORKED";
+  return { loc, ownedByCity: owns, ruralPresent, numWorkers, districtType: dist.type, yieldTotal, verdict };
+}
+
+export function runYield(trigger) {
+  const runId = newRunId();
+  const rows = myOuterOwnedTiles(YIELD_MAX_RINGS).map(yieldSnapshot);
+  emitLine(`RUN_START outer-yield ${runId} trigger=${trigger} outerOwned=${rows.length}`);
+
+  const yielding = rows.filter((r) => r.verdict === "YIELDING");
+  const workedNoYield = rows.filter((r) => r.verdict === "WORKED-NO-YIELD");
+  const unworked = rows.filter((r) => r.verdict === "OWNED-UNWORKED");
+  const orphans = rows.filter((r) => r.verdict === "OWNED-NO-CITY");
+
+  for (const r of rows.slice(0, 12)) {
+    emitLine(`Q-OUTER-YIELD loc=${r.loc.x},${r.loc.y} owns=${r.ownedByCity} `
+      + `rural=${r.ruralPresent} workers=${r.numWorkers} district=${r.districtType} `
+      + `yield=${r.yieldTotal} => ${r.verdict}`);
+  }
+
+  let verdict, human;
+  if (!rows.length) {
+    verdict = "NONE";
+    human = "no beyond-ring-3 owned tile yet - play toward the frontier (the mod claims land past your 3-ring)";
+  } else if (yielding.length) {
+    verdict = "CONFIRMED";
+    human = `CONFIRMED - ${yielding.length}/${rows.length} outer tile(s) are WORKED and BEAR YIELDS `
+      + `(e.g. ${yielding.slice(0, 3).map((r) => `${r.loc.x},${r.loc.y}=${r.yieldTotal}`).join(" ")})`;
+  } else if (orphans.length && !workedNoYield.length && !unworked.length) {
+    verdict = "ORPHAN";
+    human = `ORPHAN - ${orphans.length} outer tile(s) owned by the player but attached to NO city (not workable). `
+      + `Expected only under the retired setOwnership verb - a REGRESSION if seen with purchasePlot.`;
+  } else {
+    verdict = "PENDING";
+    human = `PENDING - ${rows.length} outer tile(s) owned+attached but not developed yet `
+      + `(${unworked.length} unworked, ${workedNoYield.length} worked-but-0-yield). The city has not grown a `
+      + `rural improvement onto them yet - let it develop (or set AUTO.WORK_MUTATE to force one) and re-run cd_probe.yield().`;
+  }
+  hudVerdict(`OUTER-YIELDS: ${human}`, "yield");
+  emitLine(`Q-OUTER-YIELD-ROLLUP: beyond-ring-3 owned tiles => ${verdict} `
+    + `(yielding=${yielding.length}, unworked=${unworked.length}, workedNoYield=${workedNoYield.length}, `
+    + `orphan=${orphans.length}, total=${rows.length}). `
+    + `CONFIRMED => the outer ring is genuinely usable: claimed far tiles are worked city plots that produce yields.`);
+
+  emitSection(runId, "cd_outer_yield", {
+    probe_version: PROBE_VERSION, trigger,
+    rows: rows.map((r) => ({
+      x: r.loc.x, y: r.loc.y, verdict: r.verdict,
+      worked: r.ruralPresent || (typeof r.numWorkers === "number" && r.numWorkers > 0),
+      numWorkers: r.numWorkers, districtType: r.districtType, yieldTotal: r.yieldTotal, ownedByCity: r.ownedByCity,
+    })),
+    rollup: {
+      verdict, yielding: yielding.length, unworked: unworked.length,
+      workedNoYield: workedNoYield.length, orphan: orphans.length, total: rows.length,
+    },
+  });
+  emitLine(`RUN_END outer-yield ${runId}`);
+  return { verdict, rows };
+}
+
 // --- Q-CAPTURE (D): does capturing a DEVELOPED rival tile bring the improvement across? --
 export function runCapture(trigger) {
   const runId = newRunId();
@@ -1627,6 +1762,145 @@ export function runCapture(trigger) {
   emitSection(runId, "cd_capture", { probe_version: PROBE_VERSION, trigger, rows });
   emitLine(`RUN_END capture ${runId}`);
   return rows;
+}
+
+// --- Q-RECEDE: can recedeBorders' verbs actually move a tile AWAY from us? ----------------------
+// ui/cd-pass.js recedeOwnership cedes a claimed tile to a rival via the RIVAL city's purchasePlot, and
+// releases a faded claim via setOwnership(NO_PLAYER). Neither has been watched on an integrated tile we own
+// beyond ring 3. This moves one tile each way, reads the owner INLINE (what the pass checks) and again after
+// the write settles, then buys both tiles back with our own purchasePlot. Gold is refunded both ways.
+
+function safeCities(pid) {
+  try { return Players.get(pid)?.Cities?.getCities?.() || []; } catch (_) { return []; }
+}
+
+// Our owned, city-attached land tiles beyond ring 3 of every one of our cities.
+function farOwnedTiles(me) {
+  const centres = localCities().map(cityLoc).filter(Boolean);
+  const seen = new Set();
+  const out = [];
+  for (const c of centres) {
+    for (const p of plotsInRadius(c, RINGS)) {
+      const k = `${p.x},${p.y}`;
+      if (seen.has(k)) continue;
+      seen.add(k);
+      if (owningPlayerIdAt(p) !== me || owningCityIdAt(p) < 0 || isCityCenterAt(p) || isWaterAt(p)) continue;
+      if (centres.every((cl) => plotDistanceXY(cl, p) > 3)) out.push({ x: p.x, y: p.y });
+    }
+  }
+  return out;
+}
+
+function rivalMajorCities(me) {
+  const out = [];
+  for (const pid of allPlayerIds()) {
+    if (pid === me || playerKind(pid) !== "major") continue;
+    for (const city of safeCities(pid)) {
+      const loc = cityLoc(city);
+      if (loc) out.push({ pid, city, loc });
+    }
+  }
+  return out;
+}
+
+// The far tile a rival could most plausibly buy: touching that rival's land first, then nearest its city.
+function pickCedeTarget(far, rivals) {
+  let best = null;
+  for (const t of far) {
+    for (const r of rivals) {
+      const adj = plotsInRadius(t, 1).some((n) => owningPlayerIdAt(n) === r.pid);
+      const d = plotDistanceXY(r.loc, t);
+      const score = (adj ? 0 : 1000) + d;
+      if (!best || score < best.score) best = { t, r, d, adj, score };
+    }
+  }
+  return best;
+}
+
+function nearestOwnCity(loc) {
+  let bc = null;
+  let bd = Infinity;
+  for (const c of localCities()) {
+    const cl = cityLoc(c);
+    const d = cl ? plotDistanceXY(cl, loc) : Infinity;
+    if (d < bd) { bd = d; bc = c; }
+  }
+  return bc;
+}
+
+// purchasePlot for `pid`'s city with the same-tick balance refund the mod uses.
+function refundedBuy(pid, city, loc) {
+  const g0 = playerGold(pid);
+  const res = flipViaPurchasePlot(city, loc);
+  const g1 = playerGold(pid);
+  const spent = (g0 != null && g1 != null) ? Math.max(0, g0 - g1) : 0;
+  if (spent > 0) grantGold(pid, spent);
+  return { reason: res.reason, spent };
+}
+
+function recedeVerdicts(me, cede, release) {
+  const cedeNow = plotSnapshot(cede.loc);
+  const cedeVerdict = (cedeNow.owner === cede.pid && cedeNow.owningCity >= 0) ? "CEDE-WORKS"
+    : (cedeNow.owner === me ? "CEDE-FAILS" : `CEDE-ODD(owner=${cedeNow.owner},city=${cedeNow.owningCity})`);
+  emitLine(`Q-RECEDE-CEDE loc=${cede.loc.x},${cede.loc.y} rival=${cede.pid} dist=${cede.d} adjacentToRival=${cede.adj} `
+    + `call=${cede.call} rivalGoldSpent=${cede.spent} before=${cede.before.owner}/${cede.before.owningCity} `
+    + `inlineOwner=${cede.inline} now=${cedeNow.owner}/${cedeNow.owningCity} => ${cedeVerdict}`);
+  let relVerdict = "N/A(no second far tile)";
+  if (release) {
+    const relNow = plotSnapshot(release.loc);
+    relVerdict = relNow.owner < 0 ? "RELEASE-WORKS" : (relNow.owner === me ? "RELEASE-FAILS" : `RELEASE-ODD(owner=${relNow.owner})`);
+    emitLine(`Q-RECEDE-RELEASE loc=${release.loc.x},${release.loc.y} call=${release.call} `
+      + `before=${release.before.owner}/${release.before.owningCity} inlineOwner=${release.inline} `
+      + `now=${relNow.owner}/${relNow.owningCity} => ${relVerdict}`);
+  }
+  return { cedeVerdict, relVerdict };
+}
+
+export function runRecedeProbe(trigger) {
+  const g = (typeof globalThis !== "undefined") ? globalThis : {};
+  if (g.__cdRecedeDone || !guardSP()) return null;
+  const me = localPlayerId();
+  const far = farOwnedTiles(me);
+  const rivals = rivalMajorCities(me);
+  if (far.length === 0 || rivals.length === 0) {
+    hudVerdict(`RECEDE: pending (far owned tiles=${far.length}, rival major cities=${rivals.length})`, "recede");
+    return null;
+  }
+  g.__cdRecedeDone = true;
+  const runId = newRunId();
+  emitLine(`RUN_START recede ${runId} trigger=${trigger} far=${far.length} rivals=${rivals.length}`);
+  const pick = pickCedeTarget(far, rivals);
+  const cedeLoc = { x: pick.t.x, y: pick.t.y };
+  const cede = { loc: cedeLoc, pid: pick.r.pid, d: pick.d, adj: pick.adj, before: plotSnapshot(cedeLoc) };
+  const buy = refundedBuy(pick.r.pid, pick.r.city, cedeLoc);
+  cede.call = buy.reason;
+  cede.spent = buy.spent;
+  cede.inline = owningPlayerIdAt(cedeLoc);
+  const relTile = far.find((t) => t.x !== cedeLoc.x || t.y !== cedeLoc.y);
+  let release = null;
+  if (relTile) {
+    const loc = { x: relTile.x, y: relTile.y };
+    release = { loc, before: plotSnapshot(loc) };
+    release.call = unclaim(loc).reason;
+    release.inline = owningPlayerIdAt(loc);
+  }
+  const finish = () => {
+    const { cedeVerdict, relVerdict } = recedeVerdicts(me, cede, release);
+    hudVerdict(`RECEDE: cede => ${cedeVerdict}; release => ${relVerdict}`, "recede");
+    emitLine(`Q-RECEDE-ROLLUP cede=${cedeVerdict} release=${relVerdict} inlineCede=${cede.inline === cede.pid} `
+      + `inlineRelease=${release ? release.inline < 0 : "n/a"}. WORKS on both => recedeBorders' verbs are real; `
+      + `WORKS but inline=false => the pass's same-tick read-back would book nothing.`);
+    for (const loc of [cedeLoc, release && release.loc].filter(Boolean)) {
+      if (owningPlayerIdAt(loc) === me) continue;
+      const c = nearestOwnCity(loc);
+      const back = c ? refundedBuy(me, c, loc) : { reason: "no-city", spent: 0 };
+      emitLine(`Q-RECEDE-RESTORE loc=${loc.x},${loc.y} call=${back.reason} goldRefunded=${back.spent}`);
+    }
+    emitSection(runId, "cd_recede", { probe_version: PROBE_VERSION, trigger, cede, release, cedeVerdict, relVerdict });
+    emitLine(`RUN_END recede ${runId}`);
+  };
+  try { setTimeout(finish, 2500); } catch (_) { finish(); }
+  return { cede: cedeLoc, release: release && release.loc };
 }
 
 // --- Q-FOUND (1a-found): can the owner found a NEW settlement on an owned outer tile? -----
@@ -1713,7 +1987,7 @@ export function runSwap(trigger) {
 
 // Once-per-isolate re-arm guard. Even with the globalThis-mirrored store, if a mirror miss
 // ever let meta read stale, this stops a SECOND destructive clearAll in the same session (the
-// per-tick thrash the redesign-plan Phase 0 calls out) - we re-arm at most once per isolate.
+// per-tick thrash the probe-history.md §2 calls out) - we re-arm at most once per isolate.
 function armReset() {
   const g = (typeof globalThis !== "undefined") ? globalThis : {};
   if (g.__cdProbeArmed === SCHEMA) return false; // already re-armed this session
@@ -1747,7 +2021,13 @@ export function autoRun(trigger) {
   // any flips recorded in a prior session).
   const diag = runDiagnostics(trigger);
 
-  // "Waiting" HUD line (redesign-plan Phase 0): PENDING verb/capture verdicts are EXPECTED on
+  // Cultural Pressure lens feasibility (docs section 1), READ-ONLY: can this HUD-context UIScript read
+  // the persisted culture field the lens paints from (H1), and does the verdict math + colour/name
+  // resolution look sane on real data (H2)? Runs every tick so the CD-LENS headline stays live as the
+  // real mod's pass populates the field. Never mutates - independent of the flip phase machine below.
+  try { runLensProbe(trigger); } catch (e) { emitLine(`lens-probe failed ${String(e)}`); }
+
+  // "Waiting" HUD line (probe-history.md §2): PENDING verb/capture verdicts are EXPECTED on
   // a fresh/interior map with no rival or beyond-ring-3 tiles - say so on screen so PENDING
   // isn't mistaken for broken.
   const counts = (diag.candidates && diag.candidates.counts) || {};
@@ -1771,6 +2051,7 @@ export function autoRun(trigger) {
     runCapture("turn-refresh");
     runFound("turn-refresh");
   }
+  if (AUTO.YIELD_READ && !yieldThrottled()) runYield("turn-refresh"); // radius scan; throttled ~1/2.5s
   if (AUTO.VERB_PROBE && readVerb().length) runVerbRead("turn-refresh");
 
   // One-shot cost rule: measure purchasePlot on a contiguous vs a disconnected tile (self-guards).
@@ -1780,6 +2061,8 @@ export function autoRun(trigger) {
   // Phase 5 REAL path: place a loyalty revolt marker (one-shot) + watch the recipient each turn.
   if (AUTO.REVOLT_MARKER && trigger !== "retry") runRevoltMarker(trigger);
   runRevoltWatch(trigger);
+  // recedeBorders verb check (one-shot per session; waits until a far owned tile + a rival major city exist).
+  if (AUTO.RECEDE_PROBE && trigger !== "retry") runRecedeProbe(trigger);
 
   // Visible, contiguous border growth (+ rival capture on contact) every turn - independent of
   // the one-shot Q-* tests. Skipped on the fast "retry" ticks so it advances ~once per turn.
@@ -1806,6 +2089,7 @@ export function autoRun(trigger) {
       if (AUTO.WORK_MUTATE) runWorkMutate(tag);   // destructive confirm (records persistence markers)
       if (AUTO.WORK_MUTATE) runSwap(tag);         // 1b: destructive re-parent test between your cities
       if (AUTO.WORK_READ) runWork(tag);           // reads the (post-mutation) work verdict
+      if (AUTO.YIELD_READ) runYield(tag);         // do the owned outer tiles actually bear yields?
       runCapture(tag);                            // D: did developed rival tiles transfer?
       runFound(tag);                              // 1a-found: opportunistic settle check
     };
@@ -1830,6 +2114,7 @@ export function autoRun(trigger) {
       runIntegration("reload");
       if (AUTO.VERB_PROBE) runVerbRead("reload"); // Q-VERB-PERSIST: did the FREE-INTEGRATED claim survive?
       if (AUTO.WORK_READ) runWork("reload");     // includes Q-WORK-PERSIST from prior-session markers
+      if (AUTO.YIELD_READ) runYield("reload");   // do outer tiles still bear yields after a reload?
       runCapture("reload");
       writeMeta({ phase: "done", schema: SCHEMA, flippedSession: meta.flippedSession, verifiedSession: session, ts: new Date().toISOString() });
       return { phase: "done", survived, total: flips.length };
@@ -1846,6 +2131,7 @@ export const api = {
   version: PROBE_VERSION,
   auto: () => autoRun("manual"),
   diag: () => runDiagnostics("manual"),
+  lens: () => runLensProbe("manual"),
   integrate: () => runIntegration("manual"),
   verb: () => runVerbProbe("manual"),
   verbRead: () => runVerbRead("manual"),
@@ -1854,8 +2140,10 @@ export const api = {
   cityXfer: () => { const g = (typeof globalThis !== "undefined") ? globalThis : {}; g.__cdXferDone = false; return runCityTransfer("manual"); },
   revolt: () => { const g = (typeof globalThis !== "undefined") ? globalThis : {}; g.__cdRevoltDone = false; return runRevoltMarker("manual"); },
   revoltWatch: () => runRevoltWatch("manual"),
+  recede: () => { const g = (typeof globalThis !== "undefined") ? globalThis : {}; g.__cdRecedeDone = false; return runRecedeProbe("manual"); },
   work: () => runWork("manual"),
   workMutate: () => runWorkMutate("manual"),
+  yield: () => runYield("manual"),
   capture: () => runCapture("manual"),
   found: () => runFound("manual"),
   swap: () => runSwap("manual"),

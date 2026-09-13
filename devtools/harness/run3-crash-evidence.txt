@@ -1,0 +1,13 @@
+Run 3 crash evidence (game 1.4.2, 2026-09-12)
+Crash report: ~/Library/Logs/DiagnosticReports/CivilizationVII-2026-09-12-220239.ips
+EXC_BAD_ACCESS SIGSEGV KERN_INVALID_ADDRESS at 0x2a8, faulting thread 14 AsyncWorker1 (unsymbolicated CivilizationVII frames 0x8fa9c0 0x12549f8 0x992ee8 0xa03458 0x9ae00c)
+--- AppStateLoadGame (age transition unload/load)
+[2026-09-12 22:01:46]	AppStateUnloadGame::Begin()
+[2026-09-12 22:01:46]	SetNextStage, currStage:0, nextStage:1
+[2026-09-12 22:01:46]	UpdateCurrentStage:1
+[2026-09-12 22:01:46]	SetNextStage, currStage:1, nextStage:2
+[2026-09-12 22:02:09]	LOADSTATE_FINISHED(11.3s)
+[2026-09-12 22:02:09]	AppStateLoadGame::End()
+--- Modding.log criteria at the reload
+935:[2026-09-12 22:01:47]	 * age-exploration-current
+1002:[2026-09-12 22:01:47]	 * age-exploration-current

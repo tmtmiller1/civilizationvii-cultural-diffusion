@@ -1,6 +1,6 @@
 // cd-pressure.js
 //
-// The PURE injection-strength math (docs/cultural-diffusion-spec.md 3b). No engine reads
+// The PURE injection-strength math (docs/current-model.md §3). No engine reads
 // live here, so it is fully unit-testable in Node. cd-pass.js gathers the raw per-settlement
 // signals (via cd-polity) and feeds them through `projectionOf` to get how hard each city
 // PUMPS culture into its own tile - the source strength of the reaction-diffusion field.

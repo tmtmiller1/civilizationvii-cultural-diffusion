@@ -2,11 +2,11 @@
 <Mod id="cultural-diffusion-probe" version="1" xmlns="ModInfo">
     <Properties>
         <Name>Cultural Diffusion Probe</Name>
-        <Description>Feasibility probe for the Cultural Diffusion mod. Runs automatically (no dev console needed): emits read-only diagnostics, auto-flips distinct empty frontier tiles via setOwnership and purchasePlot, then auto-reads whether a bare setOwnership tile is INTEGRATED buildable city land (Q-INTEGRATE / Q-CODEX: can the Han build a science building there and Shi-codex it?) vs an inert ORPHAN. Phase 0 adds Q-VERB: claims a distinct tile via Growth.claimPlot and CREATE_ELEMENT DISTRICT_RURAL and classifies each FREE-INTEGRATED / COSTS-GOLD / FAILS (gold read before/after) to decide the flip verb. After a save/reload auto-reports persistence. Emits to UI.log with the [Civ7Probe] fence; parse with the modding-probe extract_dump.js. Single-player only; never writes GameConfiguration.</Description>
+        <Description>Feasibility probe for the Cultural Diffusion mod. Runs automatically (no dev console needed): emits read-only diagnostics, auto-flips distinct empty frontier tiles via setOwnership and purchasePlot, then auto-reads whether a bare setOwnership tile is INTEGRATED buildable city land (Q-INTEGRATE / Q-CODEX: can the Han build a science building there and Shi-codex it?) vs an inert ORPHAN. Phase 0 adds Q-VERB: claims a distinct tile via Growth.claimPlot and CREATE_ELEMENT DISTRICT_RURAL and classifies each FREE-INTEGRATED / COSTS-GOLD / FAILS (gold read before/after) to decide the flip verb. Q-OUTER-YIELD (read-only) scans the local player's own beyond-ring-3 owned tiles each turn and confirms they are not just workable but ACTUALLY worked and BEARING yields (rural improvement present + getYieldsWithCity > 0), verdict CONFIRMED / PENDING / ORPHAN / NONE. After a save/reload auto-reports persistence. Emits to UI.log with the [Civ7Probe] fence; parse with the modding-probe extract_dump.js. Single-player only; never writes GameConfiguration.</Description>
         <Authors>Tower</Authors>
         <Package>CulturalDiffusionProbe</Package>
         <PackageSortIndex>9999</PackageSortIndex>
-        <Version>0.9.27</Version>
+        <Version>0.9.29</Version>
     </Properties>
     <Dependencies>
         <Mod id="base-standard" title="LOC_MODULE_BASE_STANDARD_NAME" />
@@ -49,6 +49,7 @@
                     <Item>ui/cd-probe-emit.js</Item>
                     <Item>ui/cd-probe-api.js</Item>
                     <Item>ui/cd-probe-store.js</Item>
+                    <Item>ui/cd-probe-lens.js</Item>
                     <Item>ui/cd-probe-runner.js</Item>
                 </ImportFiles>
             </Actions>

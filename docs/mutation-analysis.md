@@ -136,7 +136,7 @@ The 30 that remain ARE equivalent: `mementoScale()`'s `if (t)` body (`L116–L11
 unreachable while the table is empty, and the `L78–L88` engine reads are try/catch-masked
 (category 3 above). The table still ships empty on purpose — every culture/happiness memento's
 magnitude is already flattened by the composite injection base (module header,
-`docs/cultural-diffusion-spec.md`).
+`docs/current-model.md`).
 
 **The lesson worth keeping:** "these mutants are equivalent" is a claim that decays. It was written
 when the only handle on that code was the public API, and it silently stopped being true the moment

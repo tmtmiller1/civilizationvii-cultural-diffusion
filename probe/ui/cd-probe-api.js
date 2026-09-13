@@ -231,7 +231,7 @@ export function buildablePlots(cityCID, constructibleIdx) {
 // The deciding rules live in native C++ (no JS/DB work-range constant), so the only way
 // to know is to ASK the engine at runtime. canStart(...) is READ-ONLY - it returns
 // {Success, Plots, ...} without mutating - so most of Q-WORK is answered safely, before
-// any destructive placement. See docs/future-features.md 3.
+// any destructive placement. See docs/potential-future-features.md §3.
 
 // Plot index for a {x,y} via the XY converter (the shape GetTilePlacementInfo wants).
 export function plotIndexXY(loc) {

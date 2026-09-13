@@ -67,11 +67,61 @@
             <Text>When the Emigration mod is installed, let a frontier tile settled by your people feel your pull - borders follow diaspora. No effect if Emigration is absent. Requires the rich cultural model.</Text>
         </Row>
 
+        <Row Tag="LOC_OPTIONS_CD_BUFFER">
+            <Text>Cultural Diffusion - claim land beside new improvements (+1 ring)</Text>
+        </Row>
+        <Row Tag="LOC_OPTIONS_CD_BUFFER_DESCRIPTION">
+            <Text>Off by default. When on, finishing a rural improvement near your border also claims the unowned tiles right next to it, one ring past your city's normal reach. When off, your borders grow only from the culture field.</Text>
+        </Row>
+
+        <Row Tag="LOC_OPTIONS_CD_RECEDE">
+            <Text>Cultural Diffusion - borders recede (experimental)</Text>
+        </Row>
+        <Row Tag="LOC_OPTIONS_CD_RECEDE_DESCRIPTION">
+            <Text>Off by default. Tiles your culture claimed can be lost again: if a rival's culture decisively overtakes yours on one, it passes to that rival's nearest city. Tiles your cities gained through normal growth are never affected.</Text>
+        </Row>
+
         <Row Tag="LOC_OPTIONS_CD_DEBUG">
             <Text>Cultural Diffusion - debug logging</Text>
         </Row>
         <Row Tag="LOC_OPTIONS_CD_DEBUG_DESCRIPTION">
             <Text>Write detailed per-pass diagnostics to UI.log (for tuning and troubleshooting).</Text>
+        </Row>
+
+        <Row Tag="LOC_OPTIONS_CD_PRESSURE_LENS">
+            <Text>Cultural Diffusion - pressure lens</Text>
+        </Row>
+        <Row Tag="LOC_OPTIONS_CD_PRESSURE_LENS_DESCRIPTION">
+            <Text>Add a read-only "Cultural Pressure" map lens (and Shift+C hotkey) that shades contested frontier tiles by how close your - or a rival's - culture is to claiming them. Shows information only; it changes nothing about how borders move.</Text>
+        </Row>
+
+        <!-- Cultural Pressure lens + hover tooltip (potential-future-features.md section 1). -->
+        <Row Tag="LOC_CD_LENS_PRESSURE">
+            <Text>Cultural Pressure</Text>
+        </Row>
+        <Row Tag="LOC_CD_PRESSURE_TITLE">
+            <Text>Cultural Pressure</Text>
+        </Row>
+        <Row Tag="LOC_CD_PRESSURE_PROGRESS">
+            <Text>Capture progress</Text>
+        </Row>
+        <Row Tag="LOC_CD_PRESSURE_TURNS">
+            <Text>At current pace</Text>
+        </Row>
+        <Row Tag="LOC_CD_PRESSURE_TURNS_APPROX">
+            <Text>~</Text>
+        </Row>
+        <Row Tag="LOC_CD_PRESSURE_TURNS_UNIT">
+            <Text>turns</Text>
+        </Row>
+        <Row Tag="LOC_CD_PRESSURE_READY">
+            <Text>ready to flip</Text>
+        </Row>
+        <Row Tag="LOC_CD_PRESSURE_STALLED">
+            <Text>stalled</Text>
+        </Row>
+        <Row Tag="LOC_CD_PRESSURE_OWNER_SUFFIX">
+            <Text> (owner)</Text>
         </Row>
     </EnglishText>
 </Database>

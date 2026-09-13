@@ -1,18 +1,16 @@
 // cd-options.js
 //
-// Registers Cultural Diffusion's settings under the shared "Mods" tab of the
-// Options screen, in BOTH shell and game scopes. Kept separate from cd-settings.js
-// so the gameplay loop never depends on the Options-screen chunk loading.
+// Registers Cultural Diffusion's settings under the shared "Mods" tab of the Options screen, in BOTH shell and game
+// scopes. Kept separate from cd-settings.js so the gameplay loop never depends on the Options-screen chunk loading.
 //
-// Controls:
-//   - Intensity preset (Custom / Low / Medium / High) - the simple knob.
-//   - Enable diffusion (master switch).
-//   - Claim only unowned land (safety mode).
-//   - Debug logging.
+// Registration goes through Options.addInitCallback, never a bare addOption at load. The base OptionsModel rebuilds its
+// whole option list from its init callbacks whenever reInitOptions() runs: it clears the map, and it runs on the
+// engine's GraphicsOptionsChanged event, for example when the Settings screen applies or closes. Options added only at
+// load were wiped by that rebuild and did not come back until the game restarted, which is the reported "the mod's
+// options disappear after closing Settings". The Emigration mod already registers through the callback.
 //
-// The flip verb is NOT exposed here: claimed tiles are always integrated into the nearest
-// city (CONFIG.flipVerb = "purchasePlot", refunded to net-free). The legacy free-but-orphan
-// setOwnership path remains a code-only escape hatch in cd-config.js / cd-ownership.js.
+// The flip verb is NOT exposed here: claimed tiles are always integrated into the nearest city (CONFIG.flipVerb =
+// "purchasePlot", refunded to net-free). The legacy setOwnership path remains a code-only escape hatch.
 
 import { CategoryType, OptionType, Options } from "/core/ui/options/model-options.js";
 import { CategoryData } from "/core/ui/options/options-helpers.js";
@@ -31,6 +29,12 @@ import {
   setCoreProtectIndex,
   getRequireAdjacency,
   setRequireAdjacency,
+  getGrowthBuffer,
+  setGrowthBuffer,
+  getRecedeBorders,
+  setRecedeBorders,
+  getPressureLensEnabled,
+  setPressureLensEnabled,
   getDebug,
   setDebug
 } from "/cultural-diffusion/ui/cd-settings.js";
@@ -57,6 +61,24 @@ const CORE_ITEMS = [
   { label: "LOC_OPTIONS_CD_CORE_NONE" }    // protect nothing (even the center can flip)
 ];
 
+/**
+ * One checkbox row in the shared Mods category.
+ * @param {string} id Option id. @param {()=>boolean} get Getter. @param {(v:boolean)=>void} set Setter.
+ * @param {string} loc LOC key stem (label = stem, description = stem + "_DESCRIPTION").
+ */
+function addCheckbox(id, get, set, loc) {
+  Options.addOption({
+    category: CategoryType.Mods,
+    group: GROUP,
+    type: OptionType.Checkbox,
+    id,
+    initListener: (/** @type {*} */ info) => (info.currentValue = get()),
+    updateListener: (/** @type {*} */ _i, /** @type {boolean} */ v) => set(!!v),
+    label: loc,
+    description: loc + "_DESCRIPTION"
+  });
+}
+
 /** Register the intensity preset dropdown. */
 function registerPreset() {
   Options.addOption({
@@ -69,34 +91,6 @@ function registerPreset() {
     label: "LOC_OPTIONS_CD_PRESET",
     description: "LOC_OPTIONS_CD_PRESET_DESCRIPTION",
     dropdownItems: PRESET_ITEMS
-  });
-}
-
-/** Register the master enable checkbox. */
-function registerEnabled() {
-  Options.addOption({
-    category: CategoryType.Mods,
-    group: GROUP,
-    type: OptionType.Checkbox,
-    id: "cd-enabled",
-    initListener: (/** @type {*} */ info) => (info.currentValue = getDiffusionEnabled()),
-    updateListener: (/** @type {*} */ _i, /** @type {boolean} */ v) => setDiffusionEnabled(v),
-    label: "LOC_OPTIONS_CD_ENABLED",
-    description: "LOC_OPTIONS_CD_ENABLED_DESCRIPTION"
-  });
-}
-
-/** Register the "claim only unowned land" safety checkbox. */
-function registerClaimOnly() {
-  Options.addOption({
-    category: CategoryType.Mods,
-    group: GROUP,
-    type: OptionType.Checkbox,
-    id: "cd-claim-only",
-    initListener: (/** @type {*} */ info) => (info.currentValue = getClaimOnlyUnowned()),
-    updateListener: (/** @type {*} */ _i, /** @type {boolean} */ v) => setClaimOnlyUnowned(v),
-    label: "LOC_OPTIONS_CD_CLAIM_ONLY",
-    description: "LOC_OPTIONS_CD_CLAIM_ONLY_DESCRIPTION"
   });
 }
 
@@ -115,71 +109,42 @@ function registerCoreProtect() {
   });
 }
 
-/** Register the require-adjacency checkbox (organic contiguous front vs. enclave flips). */
-function registerAdjacency() {
-  Options.addOption({
-    category: CategoryType.Mods,
-    group: GROUP,
-    type: OptionType.Checkbox,
-    id: "cd-require-adjacency",
-    initListener: (/** @type {*} */ info) => (info.currentValue = getRequireAdjacency()),
-    updateListener: (/** @type {*} */ _i, /** @type {boolean} */ v) => setRequireAdjacency(v),
-    label: "LOC_OPTIONS_CD_ADJACENCY",
-    description: "LOC_OPTIONS_CD_ADJACENCY_DESCRIPTION"
-  });
-}
-
-/** Register the fused-model checkbox. */
-function registerFused() {
-  Options.addOption({
-    category: CategoryType.Mods,
-    group: GROUP,
-    type: OptionType.Checkbox,
-    id: "cd-fused",
-    initListener: (/** @type {*} */ info) => (info.currentValue = getFusedModel()),
-    updateListener: (/** @type {*} */ _i, /** @type {boolean} */ v) => setFusedModel(v),
-    label: "LOC_OPTIONS_CD_FUSED",
-    description: "LOC_OPTIONS_CD_FUSED_DESCRIPTION"
-  });
-}
-
-/** Register the use-emigration checkbox. */
-function registerEmigration() {
-  Options.addOption({
-    category: CategoryType.Mods,
-    group: GROUP,
-    type: OptionType.Checkbox,
-    id: "cd-emigration",
-    initListener: (/** @type {*} */ info) => (info.currentValue = getUseEmigration()),
-    updateListener: (/** @type {*} */ _i, /** @type {boolean} */ v) => setUseEmigration(v),
-    label: "LOC_OPTIONS_CD_EMIGRATION",
-    description: "LOC_OPTIONS_CD_EMIGRATION_DESCRIPTION"
-  });
-}
-
-/** Register the debug-logging checkbox. */
-function registerDebug() {
-  Options.addOption({
-    category: CategoryType.Mods,
-    group: GROUP,
-    type: OptionType.Checkbox,
-    id: "cd-debug",
-    initListener: (/** @type {*} */ info) => (info.currentValue = getDebug()),
-    updateListener: (/** @type {*} */ _i, /** @type {boolean} */ v) => setDebug(v),
-    label: "LOC_OPTIONS_CD_DEBUG",
-    description: "LOC_OPTIONS_CD_DEBUG_DESCRIPTION"
-  });
-}
-
-try {
+/** Every Cultural Diffusion option, in display order. Runs on every Options rebuild. */
+export function registerAll() {
   registerPreset();
-  registerEnabled();
-  registerClaimOnly();
+  addCheckbox("cd-enabled", getDiffusionEnabled, setDiffusionEnabled, "LOC_OPTIONS_CD_ENABLED");
+  addCheckbox("cd-claim-only", getClaimOnlyUnowned, setClaimOnlyUnowned, "LOC_OPTIONS_CD_CLAIM_ONLY");
   registerCoreProtect();
-  registerAdjacency();
-  registerFused();
-  registerEmigration();
-  registerDebug();
-} catch (_) {
-  /* Options screen not available in this context - ignore. */
+  addCheckbox("cd-require-adjacency", getRequireAdjacency, setRequireAdjacency, "LOC_OPTIONS_CD_ADJACENCY");
+  addCheckbox("cd-growth-buffer", getGrowthBuffer, setGrowthBuffer, "LOC_OPTIONS_CD_BUFFER");
+  addCheckbox("cd-recede", getRecedeBorders, setRecedeBorders, "LOC_OPTIONS_CD_RECEDE");
+  addCheckbox("cd-fused", getFusedModel, setFusedModel, "LOC_OPTIONS_CD_FUSED");
+  addCheckbox("cd-emigration", getUseEmigration, setUseEmigration, "LOC_OPTIONS_CD_EMIGRATION");
+  addCheckbox("cd-pressure-lens", getPressureLensEnabled, setPressureLensEnabled, "LOC_OPTIONS_CD_PRESSURE_LENS");
+  addCheckbox("cd-debug", getDebug, setDebug, "LOC_OPTIONS_CD_DEBUG");
 }
+
+/**
+ * Hook registerAll into an Options model so the options survive every reInitOptions() rebuild. addInitCallback throws
+ * when the model has already initialized in this context with no callbacks pending; then register now and append to
+ * the model's re-init list directly, so the next rebuild still includes these options.
+ * @param {*} model The Options model.
+ * @returns {"callback"|"late"|"unavailable"} Which path registered the options.
+ */
+export function installOptions(model) {
+  try {
+    model.addInitCallback(registerAll);
+    return "callback";
+  } catch (_) {
+    try {
+      registerAll();
+      const reinit = model.optionsReInitCallbacks;
+      if (Array.isArray(reinit) && reinit.indexOf(registerAll) < 0) reinit.push(registerAll);
+      return "late";
+    } catch (_e) {
+      return "unavailable"; // Options screen not available in this context
+    }
+  }
+}
+
+installOptions(Options);

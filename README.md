@@ -40,8 +40,9 @@ where your diaspora lives, so borders follow people.
 ### 3. Decay - every tile slowly loses culture
 Each tile sheds `decayRate` (5%) + a flat point per turn. Decay is the constant brake
 that the diffusion has to keep pushing against - it's what gives the border a stable
-equilibrium, keeps growth slow, and lets a border **flow back** when the source city
-weakens or is lost.
+equilibrium, keeps growth slow, and lets culture ebb when the source city weakens or is
+lost. With the opt-in **borders recede** option, that ebb also costs you claimed tiles
+(see step 5).
 
 ### 4. Flip - ownership is read off the stock
 A tile becomes yours once **your** culture there is the largest, passes an absolute
@@ -54,21 +55,40 @@ are locked briefly (`flipCooldownTurns`) to prevent flicker. By default a rival'
 ring by ring); the full downtown ring can still be shielded via the *rival city protection*
 option (`coreProtectRadius`).
 
+### 5. Recede (opt-in) - claimed tiles can be lost again
+Off by default (`recedeBorders`). When on, each pass re-checks only the tiles this mod
+claimed. If a rival's culture now beats yours there by the same decisive margin a claim
+needs, the tile passes to that rival's nearest city. Tiles your cities grew are never touched.
+A claim whose own culture fades simply stays yours: the engine will not release a tile that
+is attached to a city, so there is no way to hand one back to no one. It stays off until the
+hand-over has been watched working against a rival you are at peace with.
+
 ### Why growth is slow and organic
 Because culture must physically build up **ring by ring against decay**, reach is an
 **emergent traveling wave**, not a distance formula. In practice:
 
-| Distance from city | Roughly when it's claimed |
+| Distance from city | Who owns it |
 | --- | --- |
-| Ring 1-2 | Early game, once a city has some culture |
-| Ring 3 | Mid game (~turn 20-30 for a healthy city) |
-| Ring 5+ | Late game, and only for a mature, entrenched culture |
+| Ring 1-3 | Always the base game - the mod never claims or reassigns your inner rings |
+| Ring 4 | The first ring the mod claims, once a city's culture stock is large enough |
+| Ring 5+ | Only a mature, entrenched culture |
+
+The exact turn ring 4 is first claimed has not been re-measured since 1.0.7 ceded rings 1-3
+to the base game; the debug `frontier` log line reports it per city.
 
 An **overwhelming** culture injects a far bigger stock, so it pushes the *same* front
 out **faster and farther** - organically, without any artificial "you're the leader"
-switch. A weak or stagnant culture barely creeps past its border, and if a strong
-neighbor out-cultures you, your border recedes. This is the slow, living,
-back-and-forth feel of the Civ V original.
+switch. A weak or stagnant culture barely creeps past its border.
+
+### What claimed land is - and is not
+Civilization VII lets a city work and develop tiles only within three rings of its centre,
+and that limit lives in the engine, not in any data a mod can change (see
+[`docs/civ7-tile-range-investigation.md`](docs/civ7-tile-range-investigation.md)). Every tile
+this mod claims lies beyond ring 3, so it is **territory, not yield**: it is attached to your
+nearest city and shows as yours, but no citizen can work it and nothing can be built on it.
+Its value is strategic - a buffer against rivals settling next to you, and frontier tiles
+taken from a rival. The buffer is real: in a test game a settler could found on an empty
+plot but not on the plot beside it once another civilization owned it.
 
 ---
 
@@ -116,15 +136,26 @@ sooner.
 ### Options toggles
 - **Enabled** - master switch (off = vanilla borders).
 - **Claim empty land only** - safety mode; never flip a tile owned by another civ.
+- **Rival city protection** - how deep culture may push into a rival's city (full downtown
+  ring, centre tile only, or nothing).
+- **Contiguous border only** - only claim tiles touching your land.
+- **Claim land beside new improvements (+1 ring)** - off by default; when on, finishing a rural
+  improvement near your border also claims the unowned tiles right next to it.
+- **Borders recede (experimental)** - off by default; claimed tiles can be ceded to a rival
+  whose culture overtakes yours (step 5 above).
 - **Rich cultural model** - fold CPI + prosperity into a city's cultural power. Off =
   raw culture only.
 - **Follow diaspora (Emigration mod)** - read Emigration for ethnic-affinity
   diffusion. No effect if Emigration is absent.
-- **Debug logging** - per-pass diagnostics to `UI.log`.
+- **Pressure lens** - a read-only map lens shading contested frontier tiles.
+- **Debug logging** - per-pass diagnostics to `UI.log`: every injector's strength and
+  city-tile stock (`inject`), each city's best ring-4 stock against the ownership bar
+  (`frontier`), and the persisted state size and pass time (`state bytes=`).
 
 ### Full tunables (`ui/cd-config.js`, all overridable)
 - **Pacing / safety:** `turnInterval`, `fieldRadius`, `maxDiffusionPlots`,
-  `maxFlipsPerTurn`, `flipCooldownTurns`, `coreProtectRadius`, `requireAdjacency`.
+  `maxFlipsPerTurn`, `flipCooldownTurns`, `coreProtectRadius`, `requireAdjacency`,
+  `recedeBorders`.
 - **Field:** `cultureThreshold`, `diffusionRate`, `decayRate`, `decayFlat`,
   `normalMax`, `maxPercent`, `injectBase`, `injectRatio`, `cityCapFactor`,
   `minimumOwner`, `flipRatio`, `flipMaxDistance`.
@@ -158,7 +189,9 @@ The runtime is a set of small, single-responsibility UI-script modules (`ui/`):
 | Module | Responsibility |
 | --- | --- |
 | `cd-bootstrap.js` | Boots the engine, runs one pass per local-player turn, console surface. |
-| `cd-pass.js` | The per-turn simulation: inject -> diffuse -> decay -> flip. |
+| `cd-pass.js` | The per-turn simulation: inject -> diffuse -> decay -> flip -> recede. |
+| `cd-recede.js` | Opt-in recede step: cede a claimed tile to a decisive rival, or release a faded one. |
+| `cd-diagnostics.js` | Debug-only injector, frontier-ring, and state-size log lines. |
 | `cd-field.js` | **Pure** field math (injection, decay, diffusion, ownership resolution). |
 | `cd-terrain.js` | Per-step terrain diffusion modifiers (roads, rivers, rough ground). |
 | `cd-pressure.js` | **Pure** injection-strength math (`projectionOf` + factors). |
@@ -232,7 +265,13 @@ This mod is a reimagining and extension of Gedemon's work, not a straight port.
   anything unreadable simply omits that modifier.
 - Civ V swept the whole map each turn; Gameface can't, so the field is simulated in a
   bounded `fieldRadius` region around your cities.
+- Claimed tiles are beyond ring 3 and so cannot be worked or developed - a native engine
+  limit, not a mod setting. See "What claimed land is - and is not" above.
+- The flip verbs were last watched on game 1.4.2 with the in-game harness
+  (`devtools/harness/`). Ownership changes land a moment after the call, so a claim shows up
+  in the mod's state one turn after the tile changes colour. Debug logging's
+  `pending ... NOT APPLIED` lines are the tell if a patch breaks the verbs.
 - Game-scope scripts bind at game **load** - test on a **new** game (or enable, then
   save + reload), and redeploy by overwriting the folder in place rather than deleting
-  it. See [`docs/cultural-diffusion-spec.md`](docs/cultural-diffusion-spec.md) 3b for
-  the full model write-up and [`probe/`](probe/) for the original feasibility probe.
+  it. See [`docs/current-model.md`](docs/current-model.md) §2 for the full model write-up
+  and [`docs/probe-history.md`](docs/probe-history.md) / [`probe/`](probe/) for the feasibility probe.

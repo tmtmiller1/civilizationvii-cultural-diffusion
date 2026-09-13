@@ -7,7 +7,7 @@
         <SpecialThanks>Gedemon's "Cultural Diffusion" mod for Civilization V (v18), whose reaction-diffusion culture model is the core layer this mod builds on and extends.</SpecialThanks>
         <Package>CulturalDiffusionMod</Package>
         <PackageSortIndex>1000</PackageSortIndex>
-        <Version>1.0.7</Version>
+        <Version>1.1.0</Version>
     </Properties>
     <Dependencies>
         <Mod id="base-standard" title="LOC_MODULE_BASE_STANDARD_NAME" />
@@ -45,10 +45,13 @@
                     <Item>ui/cd-bootstrap.js</Item>
                     <Item>ui/cd-settings.js</Item>
                     <Item>ui/cd-options.js</Item>
+                    <Item>ui/cd-pressure-lens.js</Item>
+                    <Item>ui/cd-pressure-tooltip.js</Item>
                 </UIScripts>
                 <ImportFiles>
                     <Item>ui/cd-log.js</Item>
                     <Item>ui/cd-config.js</Item>
+                    <Item>ui/cd-lens-colors.js</Item>
                     <Item>ui/cd-state.js</Item>
                     <Item>ui/cd-plots.js</Item>
                     <Item>ui/cd-polity.js</Item>
@@ -64,6 +67,9 @@
                     <Item>ui/cd-calibration.js</Item>
                     <Item>ui/cd-borders.js</Item>
                     <Item>ui/cd-ownership.js</Item>
+                    <Item>ui/cd-pending.js</Item>
+                    <Item>ui/cd-diagnostics.js</Item>
+                    <Item>ui/cd-recede.js</Item>
                     <Item>ui/cd-pass.js</Item>
                     <Item>ui/cd-notifications.js</Item>
                 </ImportFiles>

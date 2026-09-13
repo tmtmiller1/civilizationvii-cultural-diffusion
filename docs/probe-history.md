@@ -1,0 +1,167 @@
+# Cultural Diffusion — Probe History (feasibility record)
+
+The chronological record of what the in-game probe (`../probe/`) confirmed, corrected, and left open. This is *ground
+truth* — the currency for this mod is isolation: which verb, on which tile, reproduces or not. When a design question
+turns on engine behaviour, the answer lives here, not in theory. Current behaviour is in
+[`current-model.md`](current-model.md); the outstanding work these findings gate is in
+[`potential-future-features.md`](potential-future-features.md).
+
+Deploy/run gotchas that cost real time (now team memory): Gameface caches modules (full restart to clear); never `rm
+-rf` a deployed mod folder (orphans the `Mods.sqlite` `Disabled` flag → vanishes from Additional Content);
+`scope="game"` attaches only at game load and the mod set is bound to the save — **test on a NEW game, not an old
+save**. All ownership writes are **async** — success is read on a deferred re-read (~2s later / next pass), never
+inline.
+
+---
+
+## 1. Original feasibility probe (v0.3.0, 2026-07-03) — and its false positive
+
+The first probe asked whether tiles can flip at all. Results (in `UI.log` under `[Civ7Probe]`):
+
+| Question | Original verdict | Note |
+| --- | --- | --- |
+| **Q-FLIP** — does a write reassign the plot & redraw? | GREEN | ownership reassigns; `PlotOwnershipChanged` fires |
+| **Q-YIELD** — integrated or cosmetic? | Integrated | flipped tiles read `cityNow=65536` (city-attached); `purchasePlot` is the integrated verb |
+| **Q-BEYOND-CAP** — claim outside the 3-ring footprint? | GREEN | every confirmed flip was beyond every city's normal footprint |
+| **Q-RIVAL** — take a rival's tile? | ~~GREEN~~ **FALSE POSITIVE** | see below |
+| **Q-PERSIST** — survive save→reload? | GREEN (unowned) | unowned flips survived; rival/far persistence deferred |
+
+**The Q-RIVAL false positive.** The v0.3 run reported rival capture GREEN, and the mod shipped with
+`flipVerb:"setOwnership"` on that basis. The 2026-07-08 re-run (below) proved this wrong: `setOwnership` had only ever
+"flipped" tiles the player **already owned** (they trivially re-read as owner 0). This is the exact "isolation is the
+only currency" lesson — a plausible GREEN that a cheap re-test disproved.
+
+---
+
+## 2. Verb ground truth (v0.7.0, 2026-07-08, ~600 logged flips + `PlotOwnershipChanged`)
+
+The load-bearing finding: **the shipped default flip verb did not do what the mod needs.**
+
+| Flip verb | Empty (unowned) land | Rival-owned land | Beyond ring 3 | Verdict |
+| --- | --- | --- | --- | --- |
+| **`WorldBuilder.MapPlots.setOwnership`** | becomes yours but **ORPHAN** (`owningCity=NONE`, not workable/buildable) | **FAILS — 102/102 `no-change`**, tile stays the rival's | orphan only | ✗ broken for our purpose |
+| **`city.purchasePlot`** | **INTEGRATED** (`owningCity` set, `inCityPlots=true`) | **WORKS** — captured rival tiles incl. **ring-1** (`ringDepth=1`, fired `owner=0`) | **INTEGRATED beyond ring 3** | ✓ works, but spends gold |
+| **`city.Growth.claimPlot`** | present in API; UNTESTED | untested | untested | ? |
+| **`CREATE_ELEMENT DISTRICT_RURAL`** | present in API; UNTESTED | untested | untested | ? |
+
+Corollaries proven this run:
+- **Inner-ring capture is real** — the user watched a rival's ring-1 tiles change colour; the log confirms
+  `purchasePlot` captures at `ringDepth=1`. The earlier "`setOwnership` is god-mode, no ring restriction" claim was
+  wrong and is retracted.
+- `buildable[...]=n` even on INTEGRATED tiles is expected — they are worked **rural** tiles (yields), not urban-district
+  plots. "Integrated + `inCityPlots`" is the success signal, not building placement.
+
+**Resolution (how the verb question was actually closed).** Rather than adopt `purchasePlot` with a gold cost (against
+the "don't drain the treasury" rule) or chase the untested free verbs, the mod ships **`purchasePlot` + a same-tick gold
+refund** — net-zero gold, integrated ([`current-model.md`](current-model.md) §4). So `setOwnership` is retired to
+`unclaim` only, the `Growth.claimPlot` / `DISTRICT_RURAL` fork was never needed, and no gold cap is required — all three
+recorded in [`wont-build-with-justifications.md`](wont-build-with-justifications.md).
+
+Two operational issues seen (fix if the probe is revived): **no candidates on a fresh game** (turn-1 maps have no rival
+/ beyond-ring-3 tiles → every verdict PENDING; needs a mid-game bordering an AI), and **state-machine thrash** (the
+probe's persisted phase did not survive between ticks — localStorage not persisting across the game-scope isolate —
+which breaks the save/reload flow).
+
+---
+
+## 3. Outer-tile probe stages (built: v0.6 `v6-work-capture-found` → v0.7 `v7-deep`)
+
+The probe was extended with read-only, on-screen stages that re-run every turn (no console, no clickable UI — past
+Gameface button issues are why). These test the outer-ring / capture features tracked in
+[`potential-future-features.md`](potential-future-features.md):
+
+1. **Q-WORK (read-only) — the 1a/1c gate.** For each beyond-ring-3 owned tile: `canStart(ASSIGN_WORKER, {Location,
+   Amount:1})`, owning-city `canStart(EXPAND).Plots`, `GetTilePlacementInfo(idx).IsBlocked`, `getYieldsWithCity`. Rigor
+   guards: a near (ring 1-2) control (so a far BLOCKED isn't a false-negative from "no worker/pop pending") and per-verb
+   pairing. 3-state verdict: **WORKABLE via [verb] / BLOCKED / INCONCLUSIVE**.
+2. **Q-WORK-MUTATE / -PERSIST + worker-cap** (opt-in `AUTO.WORK_MUTATE`, throwaway save). Places a worker +
+   `DISTRICT_RURAL` + `Growth.claimPlot`; records `NumWorkers` / `getCityWorkerCap` before/after (does working the tile
+   consume the cap?) + a persistence marker for whether the **worked state** (not just ownership) survives reload.
+3. **Q-CAPTURE.** Prefers a **developed** rival tile; captures `constructibleCount` / `districtOwner` at flip time;
+   reports **TRANSFERRED** (you inherit the improvement) vs **STRIPPED** (reverts to bare land) — the "steal developed
+   tiles organically" question.
+4. **Q-FOUND.** Opportunistic: VII has no settler-free settle-validity read, so it reads a local settler's legal
+   found-plots and reports whether an owned outer tile is foundable (not-foundable beside your own cities is expected —
+   base min-city-range). A true test needs a settler moved next to an isolated claimed tile (`cd_probe.found()`).
+
+Also in v0.7: **Q-DEEP** (inside-ring flip, ring-depth classified). Read-only stages fire from `PlayerTurnActivated` /
+`LoadComplete`; the destructive Q-WORK-MUTATE stage is behind the `AUTO.WORK_MUTATE` code flag (like the existing
+`AUTO.FLIP_RIVAL`).
+
+**Verdict → build.** WORKABLE ⇒ (1c) buildable via the passing verb; BLOCKED ⇒ ship (1a) territory + capture only.
+Q-CAPTURE TRANSFERRED strengthens capture; STRIPPED means captured tiles arrive bare. These map to config defaults in
+[`reference-and-conventions.md`](reference-and-conventions.md) §9.
+
+---
+
+## 4. Historical decision matrix (superseded)
+
+The original spec's probe→decision matrix chose `setOwnership` from the first-row "Q-FLIP green, Q-PERSIST green,
+Q-YIELD integrated → `flipVerb = setOwnership` (free)". That row's premise was the Q-RIVAL false positive (§1); the
+2026-07-08 ground truth (§2) overturned it. Retained only so the reasoning trail is legible — the current verb decision
+is `purchasePlot` + refund ([`current-model.md`](current-model.md) §4).
+
+---
+
+## 5. In-game harness run 1 (game 1.4.2, 2026-09-12) — watched verdicts
+
+The first hands-free run against the real engine ([`../devtools/harness/`](../devtools/harness/), log
+`run1-antiquity-turn136-UI.log`), on the AugustusAnt136 save with the mod attached through `AffectsSavedGames=0`.
+
+| Question | Verdict |
+| --- | --- |
+| Does our city's `purchasePlot` take unowned land beyond ring 3? | Yes, free. The write lands after the call: the same-tick owner read still shows the old owner, and the new owner appears within about three seconds |
+| Does it take a rival's tile touching our land? | Yes, free, with the same deferred landing |
+| Can a rival's city take that tile back (the cede verb)? | Yes, with the same deferred landing |
+| Does `setOwnership(NO_PLAYER)` release a city-attached tile? | No. The tile was still ours after three seconds and twelve turns later |
+| Does owned territory block founding? | Yes. A settler could found on an unowned plot four tiles from any settlement, and could not found on the rival-owned plot beside it |
+| Can a script place an improvement on a ring-4 claimed tile? | Inconclusive, because the ring-2 control failed too |
+| Is `Game.age` a string? | No, a numeric hash |
+| Does the mod's pass run and read real yields? | Yes, every turn, with nonzero city strengths. No flips in twelve turns: ring 4 needs roughly 12,000 at the city centre, and London's stock was 364 after three passes |
+
+Two bugs followed directly. The pass booked flips on the same-tick read, so it never recorded a real one, and every
+age read as Antiquity. Both are fixed; see the changelog.
+
+### Run 2 (same save and build, fixed mod deployed)
+
+Log `run2-antiquity-turn136-UI.log`.
+
+| Question | Verdict |
+| --- | --- |
+| Does the age fix resolve the real hash? | Yes. `Game.age` 2077444219 resolved to `AGE_ANTIQUITY` through `GameInfo.Ages.lookup` |
+| Does the pending fix record a real flip end to end? | Yes. With a mature stock seeded on a frontier tile, the mod's own pass sent the flip and recorded it as pending. The tile was ours within five seconds, and the next pass logged `pending 89,29 claim confirmed`, booking the claim with a 15-turn lock |
+| Does real diffusion then claim on its own? | Yes. In that same next pass the seeded culture had crossed the bar on the neighbouring tile, and the mod sent and later confirmed that flip too |
+| Can any variant release a city-attached tile? | No. Setting ownership to ourselves first, clearing a tile with no district on it, and a plain clear all left the tile owned and attached after ten seconds |
+| Does script-creating an improvement work at all? | Yes, as a control: London's ring-1 camp was destroyed and recreated. The far-tile half did not run, because the test used up the frontier tiles first; retried in run 3 |
+
+### Run 3 (same save, fixed mod, recede and debug on)
+
+Log `run3-antiquity-turn136-UI.log`, crash evidence `run3-crash-evidence.txt`.
+
+| Question | Verdict |
+| --- | --- |
+| Can a script place a citizen on a claimed tile beyond ring 3? | No. After `addRuralPopulation(+1)` the engine offered 13 plots, none beyond ring 3. `CityCommands.sendRequest(EXPAND)` on a ring-4 claimed tile returned true, placed nothing, and left the citizen pending. The same citizen then placed a fishing boat on an offered ring-1 plot |
+| Can a script create an improvement on a claimed tile beyond ring 3? | No. Four attempts on two ring-4 tiles placed nothing: a mine, a woodcutter, and two copies of the town's Potkop. The same call recreated that Potkop on ring 3 |
+| Does the +1 growth buffer work? | Yes. Recreating the Potkop sent claims on its two unowned neighbours, and the next pass confirmed both |
+| How fast does the mod claim on its own from an empty field? | London's first ring-4 claim was sent on pass 18. By pass 24 the mod had sent nine flips, two of them tiles taken from player 3. Seven were confirmed and two were still in flight when the run ended |
+| Is the saved state or pass time a problem? | No: 8.9 KB of state and at most 21 ms per pass after 24 passes |
+| Did the old release branch loop, as predicted? | Yes. Once the buffer claims' cooldowns ran out, the deployed pre-removal code sent a release on both every pass and dropped it the next, sixteen times |
+| Does the mod's own cession work? | Not tested. The only candidate rival was read as at war, and the seeded tile sat inside Megiddo's ring 3, so the inner-ring rule dropped the claim first |
+
+Two loose ends. The harness read player 3 as at war on turn 136, yet the mod took two of player 3's tiles on turns 155
+and 156, which it only does at peace. And the run ended in a native crash. Autoplay had played each local turn since
+about turn 154, and at turn 160 it drove the Antiquity to Exploration transition. About thirty seconds into the new age
+the game segfaulted with `EXC_BAD_ACCESS` at `0x2a8` on `AsyncWorker1`, the thread and small-offset signature of the
+archived Emigration enclave crash. The cause is not isolated; the disproof plan is in [`BACKLOG.md`](BACKLOG.md).
+
+### Run 5 (2026-09-13, current build) — crash disproof across the age change
+
+Log `run5-antiquity-to-exploration-UI.log`. A replay of run 3's route from AugustusAnt136 with run 3's settings (debug,
+recede and buffer on), ending turns as run 3 did and running no harness test actions.
+
+| Question | Verdict |
+| --- | --- |
+| Does crossing into Exploration with the mod enabled crash? | No. The new age reached GameStarted six seconds after the scripts reloaded, and the game ran 194 seconds and 21 Exploration turns with no crash report. Run 3's crash did not reproduce |
+| Does the mod keep working across an age change? | Yes. It sent 29 flips across both ages and confirmed all 29 on the next pass, none dropped. The growth buffer claimed tiles in the new age. State reached 14.7 KB and passes took at most 19 ms |
+| Is the pace the same as run 3? | Yes. The first organic flip came on turn 154, as in run 3 |
+| Does the Options rebuild fix hold against the real model in game? | Yes. The mod's options appeared on init, vanished on `reInitOptions()`, and came back on the next init |

@@ -3,18 +3,148 @@
 Open items not yet addressed. Findings from the 2026-07-10 corpus bug-hunt audit unless
 noted. Each carries [severity · confidence] and enough context to pick up cold.
 
+> **Closed decisions have moved out of this backlog.** Items that were *decided* rather than
+> *pending* now live in their own files, cross-referenced from the entries below:
+> - The `commitFlip` / `commitBuffer` seed-stock no-op lines and the kept tested-but-unwired
+>   `*Factor` helpers → [`wont-fix-with-justifications.md`](wont-fix-with-justifications.md)
+>   (deliberately left as-is).
+> - The removed `preventForwardSettle` / `minimalOwnedCulture` targeting flags →
+>   [`wont-build-with-justifications.md`](wont-build-with-justifications.md) (won't build as a
+>   discrete mechanic).
+>
+> The detailed findings remain below for reference; the **verdicts** are canonical in those files.
+
+## 2026-09-12 in-game harness findings
+
+Watched on game 1.4.2 with `devtools/harness/` ([`probe-history.md`](probe-history.md) §5). The unrecorded-flip and
+age-hash bugs it found are already fixed (changelog); these two stay open.
+
+## [High · Cause unconfirmed] Native crash after an age transition in harness run 3
+
+**Evidence:** `devtools/harness/run3-crash-evidence.txt` and the macOS report
+`CivilizationVII-2026-09-12-220239.ips`. The game hit `EXC_BAD_ACCESS` at `0x2a8` on `AsyncWorker1`, about thirty
+seconds after Autoplay drove AugustusAnt136 from Antiquity into Exploration at turn 160. The mod held nine claims beyond
+ring 3 at the time, two of them captured from player 3. The signature matches the archived Emigration enclave crash, an
+AI constructible-broker fault on the same thread.
+**Hypothesis to disprove first:** the mod's claimed tiles beyond ring 3 make the new age's AI fault.
+**Cheapest disproof:** load `Saves/Single/auto/AutoSave_01_0001`, the Exploration start with the claims already on the
+map, with Cultural Diffusion disabled and no harness, and end one turn by hand. A crash there means the mod's code is not
+needed for it, though its tiles still are. If that survives, load it again with the mod enabled. If both survive, repeat
+the transition from `AutoSave_00_0160` with and without the mod. Autoplay is a separate suspect, because the harness had
+handed every local turn to it since about turn 154.
+**First disproof, run by the Emigration session the same evening:** it loaded `AutoSave_00_0158` with the nine claims
+baked in, Cultural Diffusion disabled, Emigration enabled and no Cultural Diffusion harness. Autoplay ran through the
+turn-160 transition to Exploration turn 11, and the game then idled about twelve minutes. There was no crash and no new
+`.ips`. So the baked-in tiles plus Autoplay through the transition do not crash on their own. The hypothesis moves to
+code that ran at the start of the new age.
+**Correction (2026-09-13), from the saved run-3 log:** nothing from the harness or the mod logged between the mod's
+new-age boot at 22:02:10 and the crash at 22:02:39. In every other load the harness logged `LOAD GameStarted` about
+five seconds after attaching, and the mod logs every pass with debug on. So the new age never reached GameStarted. The
+crash hit during startup, before the harness's first-turn actions and before the mod's first pass, which rules both out.
+What did run in that window: the mod's game-scope scripts loading (bootstrap, pressure lens, tooltip, options), the
+harness pressing Begin with `UI.notifyUIReady()`, and whatever state the transition carried over. The Emigration probe
+pressed Begin the same way and survived, but it ran with Cultural Diffusion disabled.
+**Next disproof (harness run 5):** load `AutoSave_00_0160` with the mod enabled. Run one mod pass through its console,
+as run 3's last pass did, then play exactly one Autoplay turn so the age ends, and after the transition only press
+Begin. A crash implicates the mod's presence across the transition. No crash means run 3 needed something this replay
+lacks, such as that night's deployed build, which still sent releases, or the 24 turns of live play before it.
+**Run 5 (2026-09-13): not reproduced.** The replay loaded AugustusAnt136 with the current build, set as in run 3
+(debug, recede and buffer on), and ended turns exactly as run 3 did, with no harness test actions. Run 3's autosaves had
+rotated out, so it started from turn 136. It crossed into Exploration at turn 160. The new age reached GameStarted six
+seconds after the scripts reloaded, and the game ran 194 seconds and 21 Exploration turns with no crash and no new crash
+report. The mod sent 29 flips across both ages and confirmed all 29. So Cultural Diffusion being present across the
+transition does not crash the game on its own.
+**What run 3 had that run 5 did not:**
+- That night's build, whose recede step sent `setOwnership(NO_PLAYER)` on two claimed, city-attached tiles every pass
+  through the final Antiquity turns. The current build no longer sends it.
+- Run 3's first-turn harness tests on turn 136: buying a rival tile and ceding it back, a spawned settler, a pending
+  citizen placed by script, and improvements destroyed and recreated by script.
+- Chance. One faithful replay not reproducing a single crash does not rule out a nondeterministic fault.
+**Status:** the shipped build already removes the first difference. Going further means reinstating the old release
+calls, or replaying run 3's first-turn tests, on the same route. Neither has been run.
+**Superseded suspect list (written before the log check):**
+- **The harness.** An age transition reloads every game-scope UI script. In run 3 the harness re-attached at 22:02:09
+  and would have re-run its first-turn actions: `addRuralPopulation`, `EXPAND` orders, `DESTROY_ELEMENT` and
+  `CREATE_ELEMENT` improvements, and a `purchasePlot`. Those fall inside the 30 seconds before the 22:02:39 crash. No
+  `[CDH] S0` line was logged after the re-attach, but a segfault may not flush the log.
+- **The mod's first Exploration pass.** It confirms the pending claims carried over and sends new `purchasePlot` flips
+  and `setOwnership` releases, during new-age startup.
+**Narrowed by the same run:** the Emigration probe also re-attached on Exploration turn 1 and repeated its own engine
+writes there. A `CREATE_ELEMENT` rural district and improvement on an empty London plot silently did not take, and a
+`DESTROY_ELEMENT` plus `CREATE_ELEMENT` replacing an enclave on Paris did take. The game still ran to turn 11. So
+destroying and creating constructibles on the first Exploration turn is not fatal on its own. The harness suspect
+narrows to its `addRuralPopulation`, `EXPAND` orders and `purchasePlot` calls, alongside the mod's first pass, which
+also calls `purchasePlot`.
+**Superseded plan:** load `AutoSave_01_0001`, the Exploration start, with Cultural Diffusion enabled in its debug
+copy and a harness that only presses Begin and does nothing else. A crash implicates the mod's first pass. No crash
+points at the harness re-running its destructive actions.
+
+## [Low · Confirmed] The debug `frontier` line over-reports claimable tiles
+
+**Symptom:** `logFrontier` (`ui/cd-diagnostics.js`) scans every ring-4 tile of a city. That includes tiles inside
+another of our cities' first three rings, and neighbouring city centres, which the pass can never claim, so `best` and
+`over` run high. In run 3 London showed tiles over the bar from pass 8, but its first claim came on pass 18.
+**Fix:** skip tiles within `baseGrowthRadius` of any local city, matching `flipCandidates`.
+
+## [Low · Unconfirmed] War reads disagreed in harness run 3
+
+**Symptom:** the harness read player 3 as at war on turn 136 through `Diplomacy.isAtWarWith`. Yet on turns 155 and 156
+the mod took two of player 3's tiles, which `flipEligible` blocks at war. Either peace was made in between, or the
+mod's `atWar` read in `ui/cd-borders.js` fails open, which would also let flips and cessions cross an active front.
+**Verify:** log `atWar(me, owner)` in the flip path against a rival known to be at war.
+
+## [High · Confirmed] No known verb releases a city-attached tile
+
+**Sites:** [ui/cd-recede.js](../ui/cd-recede.js) (`releaseToNoOne`), [ui/cd-pass.js](../ui/cd-pass.js)
+(`releaseInnerClaims`, `repairOrphans`)
+**Symptom:** `WorldBuilder.MapPlots.setOwnership(NO_PLAYER, loc)` does nothing to a tile attached to a city. In harness
+run 1 the tile was still owned three seconds and twelve turns later. `releaseInnerClaims`, the 1.0.7 self-heal, calls it
+and then forgets the claim regardless, so that heal most likely never worked on the real engine. Recede's release
+branch sends the call, stays pending, and is dropped.
+**Run 2 (2026-09-12):** three more variants all failed. Setting ownership to ourselves first and then clearing it,
+clearing a tile after checking for a district (none existed), and a plain clear each left the tile owned and attached
+after ten seconds. No other ownership-writing call exists in the base game's scripts.
+**Done (2026-09-12):** the release branch is removed from `recedeOwnership`, and cession is documented as the only way
+a claimed tile leaves ([`wont-build-with-justifications.md`](wont-build-with-justifications.md)).
+**Still open:** `releaseInnerClaims` still calls `unclaim` on inner-ring claims and then forgets them. On the real
+engine the call does nothing (harness run 3 dropped a ring-3 claim this way while the tile stayed attached), so it
+cannot heal a save damaged by 1.0.6. A heal needs a different verb, for example re-buying the tile with the city whose
+ring it sits in; that re-parent between our own cities is untested.
+
+## [Medium · Confirmed] Ring 4 takes a very long time to reach the ownership bar
+
+**Symptom:** since 1.0.7 the mod claims only ring 4 and beyond. Each ring holds at most 40% of the ring inside it, so a
+ring-4 tile reaches the default bar of 300 only once the city centre holds roughly 12,000. In harness run 1 London
+(culture 40, strength 84) reached 364 after three passes, and no ring-4 tile had any stock after twelve turns.
+**Offline estimate (2026-09-12):** a hex-grid replay of the pass's own field functions, on open terrain with one city
+and the ~0.8 pace implied by London's logged stocks, gives the turn of the first claim on rings 4, 5 and 6. Terrain
+and rivals are ignored, so the real game will be slower.
+
+| City strength | Default bar 300 | Bar 150 and `normalMax` 0.55 |
+| --- | --- | --- |
+| 6 (Megiddo-like town) | never | ring 4 at turn 74 |
+| 30 (Leeds-like) | 39 / 73 / never | 30 / 38 / 46 |
+| 84 (London-like) | 25 / 32 / 42 | 22 / 28 / 34 |
+| 150 | 21 / 27 / 34 | 19 / 24 / 30 |
+
+**In-game (harness run 3):** from an empty field on turn 136, London's first organic ring-4 claim was sent on pass 18,
+sooner than the estimate, likely because its culture rose during the run and roads and rivers speed diffusion. By pass
+24 the mod had sent nine flips, two of them rival tiles. Megiddo, at strength 7, never came close.
+**Decision:** strong and mid-size cities pace acceptably, so no retune for now. Revisit only if weak towns are meant to
+claim at all, for example with the lower bar and wider ring share from the table above.
+
 ## [High · Confirmed] Default flip verb `setOwnership` records phantom claims
 
 **Sites:** [ui/cd-ownership.js:40-49](../ui/cd-ownership.js) (`flipViaSetOwnership`),
 [ui/cd-pass.js:337-353](../ui/cd-pass.js) (`commitFlip`)
-**Overlaps existing plan:** this is the problem the author's own
-[redesign-plan.md](redesign-plan.md) Phase 1 already targets (switch primary verb to
-`purchasePlot`/`claimPlot`, retire `setOwnership` to `unclaim` only). Filed here so the
-correctness angle isn't lost while the redesign is pending.
+**Overlaps existing plan:** this is the problem the verb switch already targeted (switch primary verb
+to `purchasePlot`/`claimPlot`, retire `setOwnership` to `unclaim` only) — now **shipped** (default is
+`purchasePlot`, [CHANGELOG](../CHANGELOG.md) 1.0.6/1.0.7), so the default-path phantom-claim is moot;
+the note stands for the still-selectable `setOwnership` option.
 **Symptom:** `flipViaSetOwnership` returns `{ok:true}` whenever
 `WorldBuilder.MapPlots.setOwnership(...)` doesn't throw; `commitFlip` acts on `res.ok`
 alone and never re-reads `ownerAt(loc)` to confirm the tile actually changed owner. The
-author's own probe (redesign-plan.md:31) proves `setOwnership` on rival land **FAILS —
+author's own probe (probe-history.md §2) proves `setOwnership` on rival land **FAILS —
 102/102 no-change** (returns without error, tile stays the rival's), and on empty land
 produces an **orphan** tile (`owningCity=NONE`, not workable/buildable).
 **Failure scenario:** with shipping defaults (`flipVerb:"setOwnership"`, Medium preset →
@@ -25,7 +155,7 @@ that city's `maxDiffusionPlots`=80 budget on tiles it never took), `state.locked
 fired — while the rival still owns the tile.
 **Fix (interim, code-level):** in `commitFlip`, after `performFlip`, verify
 `ownerAt(loc) === me` before recording claim/lock/seed/notify. Full fix = the
-redesign-plan Phase 1 verb switch.
+verb switch (shipped, [CHANGELOG](../CHANGELOG.md) 1.0.6/1.0.7).
 
 **Design (interim guard):** in `commitFlip` (`cd-pass.js:336-353`), gate ALL five
 side-effects behind a post-flip ownership read. `ownerAt` (`cd-plots.js:53`) is already
@@ -46,8 +176,8 @@ Effect: on the proven 102/102 rival-land no-change case, nothing is recorded —
 where it sets owner=me but yields an unworkable **orphan** (`owningCity=NONE`) — there
 `ownerAt(loc) === me` passes, so the guard still records it. That case needs the permanent
 verb switch. So this guard is strictly an interim stop-loss for the rival-land phantom;
-the real fix remains [redesign-plan.md](redesign-plan.md) Phase 1 (`:116-126`) switching the
-primary verb to `purchasePlot`/`claimPlot`.
+the real fix was the verb switch to `purchasePlot`/`claimPlot` (shipped,
+[CHANGELOG](../CHANGELOG.md) 1.0.6/1.0.7).
 **Verify:** with shipping defaults, drive the pass against a rival's tile and confirm (via
 `dlog`/state inspection) that no claim, lock, seed, or toast is recorded when
 `GameplayMap.getOwner` still returns the rival after the attempt.

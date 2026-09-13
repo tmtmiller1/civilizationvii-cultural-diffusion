@@ -13,7 +13,10 @@
     "ui/cd-civ-tuning.js",
     "ui/cd-calibration.js",
     "ui/cd-state.js",
-    "ui/cd-pass.js"
+    "ui/cd-pass.js",
+    "ui/cd-recede.js",
+    "ui/cd-diagnostics.js",
+    "ui/cd-pending.js"
   ],
   "reporters": [
     "clear-text",

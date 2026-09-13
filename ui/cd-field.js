@@ -1,6 +1,6 @@
 // cd-field.js
 //
-// The PURE reaction-diffusion math for the culture field (docs/cultural-diffusion-spec.md 3b -
+// The PURE reaction-diffusion math for the culture field (docs/current-model.md §2 -
 // the core adapted from the Civ V "Cultural Diffusion" model). No engine reads live here, so the
 // whole propagation can be unit-tested in Node. cd-pass.js owns the persisted field and the
 // engine reads (terrain, ownership); it feeds those through these functions.
@@ -143,5 +143,86 @@ export function resolveOwner(civMap, currentOwner, deadOwners, cfg) {
   return { owner, value, incumbent, flip };
 }
 
+/**
+ * A READ-ONLY view of the flip pressure on a tile, for the Cultural Pressure lens + hover tooltip
+ * (docs/potential-future-features.md §1). Same gates as resolveOwner, re-expressed as a capture
+ * PROGRESS in [0,1] toward the leader taking the tile from its current owner, plus the raw stocks and
+ * the target the leader must reach, so a tooltip can show the arithmetic. Pure - no engine reads - so
+ * it is unit-tested right alongside resolveOwner and the two can never drift.
+ * @param {Record<string, number>} civMap civId -> culture value on the tile.
+ * @param {number} currentOwner Current owner player id (-1 = unowned).
+ * @param {number[]} deadOwners Player ids to ignore (dead civs).
+ * @param {import("/cultural-diffusion/ui/cd-config.js").CdConfig} cfg Live config (age-adjusted bar).
+ * @returns {{leader:number, leaderValue:number, incumbent:number, incumbentOwner:number,
+ *   target:number, progress:number, willFlip:boolean}} Pressure verdict.
+ */
+export function pressureVerdict(civMap, currentOwner, deadOwners, cfg) {
+  const { owner, value } = strongestCulture(civMap || {}, deadOwners || []);
+  const minOwner = Math.max(0, num(cfg.minimumOwner, 300));
+  const ratio = Math.max(0, num(cfg.flipRatio, 0.65));
+  const incumbent = currentOwner >= 0 ? num(civMap && civMap[String(currentOwner)]) : 0;
+  const target = flipTarget(currentOwner, incumbent, minOwner, ratio);
+  const pending = owner >= 0 && owner !== currentOwner; // the leader is not the current owner
+  const progress = pending && target > 0 ? clamp01(value / target) : 0;
+  const willFlip = pending && clearsFlipGates(value, currentOwner, incumbent, minOwner, ratio);
+  return { leader: owner, leaderValue: value, incumbent, incumbentOwner: currentOwner, target, progress, willFlip };
+}
+
+/**
+ * Whether a leader's stock clears both flip gates: past the absolute floor AND (on owned land)
+ * decisively over the incumbent. Empty land needs only the floor.
+ * @param {number} value Leader stock. @param {number} currentOwner Current owner (-1 = unowned).
+ * @param {number} incumbent Incumbent stock. @param {number} minOwner Floor. @param {number} ratio flipRatio.
+ * @returns {boolean} True when a flip is warranted.
+ */
+function clearsFlipGates(value, currentOwner, incumbent, minOwner, ratio) {
+  if (value <= minOwner) return false;
+  return currentOwner < 0 || value * ratio > incumbent;
+}
+
+/**
+ * The stock the leader must reach to TAKE a tile: past the absolute floor AND (on owned land)
+ * decisively over the incumbent (value*ratio > incumbent  <=>  value > incumbent/ratio). On empty
+ * land only the floor applies. Mirrors resolveOwner's two gates exactly.
+ * @param {number} currentOwner Current owner (-1 = unowned). @param {number} incumbent Incumbent stock.
+ * @param {number} minOwner Absolute ownership floor. @param {number} ratio flipRatio.
+ * @returns {number} The target stock.
+ */
+function flipTarget(currentOwner, incumbent, minOwner, ratio) {
+  if (currentOwner < 0) return minOwner;
+  return Math.max(minOwner, ratio > 0 ? incumbent / ratio : minOwner);
+}
+
+/** Clamp to [0,1] (non-finite/negative -> 0). @param {number} v @returns {number} */
+function clamp01(v) {
+  if (!(v > 0)) return 0;
+  return v > 1 ? 1 : v;
+}
+
+/**
+ * A rough ONE-STEP-AHEAD estimate of how many turns until a tile flips to its leader, from a single
+ * field snapshot (the Civ VI growth-hex "next-turn" model, adapted). Net gain next turn = the
+ * diffusion the leader would receive from its strongest neighbour on OPEN ground minus this tile's
+ * decay. Deterministic and honest-but-approximate: it deliberately ignores terrain crossing mods,
+ * city injection, and the sigmoid approach to the cap, so it is an "at the current pace" figure, not
+ * a promise. Pure. Returns null when there is no pending flip, 0 when already over the bar, and
+ * Infinity when the front is stalled or receding (net gain <= 0).
+ * @param {{leader:number, leaderValue:number, target:number, willFlip:boolean}} verdict A pressureVerdict.
+ * @param {number} strongestNeighbourLeaderStock The leader's largest stock among the tile's neighbours.
+ * @param {import("/cultural-diffusion/ui/cd-config.js").CdConfig} cfg Live config.
+ * @returns {number|null} Estimated turns, 0 (ready), Infinity (stalled), or null (no pending flip).
+ */
+export function estimateTurnsToFlip(verdict, strongestNeighbourLeaderStock, cfg) {
+  if (!verdict || verdict.leader < 0 || verdict.leader === verdict.incumbentOwner) return null;
+  const remaining = verdict.target - verdict.leaderValue;
+  if (verdict.willFlip || remaining <= 0) return 0;
+  const open = { blocked: false, bonus: 0, malus: 0, maxFactor: 1 };
+  const delivered = diffusionDelivered(Math.max(0, num(strongestNeighbourLeaderStock)), verdict.leaderValue, open, cfg);
+  const decayLoss = verdict.leaderValue - decayValue(verdict.leaderValue, cfg);
+  const net = delivered - decayLoss;
+  if (net <= 0) return Infinity;
+  return Math.ceil(remaining / net);
+}
+
 /** Test/introspection helpers. */
-export const __test = { num };
+export const __test = { num, strongestCulture };

@@ -20,6 +20,9 @@ const OPT_EMIGRATION = "useEmigration";
 const OPT_DEBUG = "debug";
 const OPT_CORE = "coreProtect";      // 0 = Full downtown ring, 1 = Center only, 2 = None
 const OPT_ADJACENCY = "requireAdjacency";
+const OPT_PRESSURE_LENS = "pressureLens"; // read-only Cultural Pressure map lens (UI only)
+const OPT_RECEDE = "recedeBorders";        // opt-in: claimed tiles can be ceded to a rival
+const OPT_BUFFER = "growthBuffer";         // +1 ring: claim unowned tiles beside a newly finished rural improvement
 
 // Core-protection dropdown index -> ring radius that never flips (see cd-config coreProtectRadius).
 const CORE_RADIUS_BY_INDEX = [1, 0, -1];
@@ -190,6 +193,46 @@ export function setRequireAdjacency(on) {
   ModOptions.save(MOD_ID, OPT_ADJACENCY, on ? 1 : 0);
 }
 
+/**
+ * Whether the read-only Cultural Pressure map lens registers its lens-panel button + hotkey. Default
+ * ON. This is a pure UI toggle (the lens changes nothing about the sim), so - unlike the territory
+ * toggles - it does NOT feed into CONFIG or the pass; the lens UIScript reads it directly.
+ * @returns {boolean} Whether the pressure lens is enabled.
+ */
+export function getPressureLensEnabled() {
+  return loadBool(OPT_PRESSURE_LENS, true);
+}
+/** @param {boolean} on Pressure-lens flag. */
+export function setPressureLensEnabled(on) {
+  ModOptions.save(MOD_ID, OPT_PRESSURE_LENS, on ? 1 : 0);
+}
+
+/**
+ * Whether claimed tiles can be lost again (ceded to a decisive rival, or released when our culture
+ * fades). Opt-in and OFF by default until the two verbs it uses are watched in-game.
+ * @returns {boolean} Whether borders recede.
+ */
+export function getRecedeBorders() {
+  return loadBool(OPT_RECEDE, CONFIG_DEFAULTS.recedeBorders);
+}
+/** @param {boolean} on Recede flag. */
+export function setRecedeBorders(on) {
+  ModOptions.save(MOD_ID, OPT_RECEDE, on ? 1 : 0);
+}
+
+/**
+ * Whether finishing a rural improvement also claims the unowned tiles right beside it (the "+1 ring" buffer). Defaults
+ * to the shipped CONFIG value; players asked for a way to turn it off.
+ * @returns {boolean} Whether the growth buffer is on.
+ */
+export function getGrowthBuffer() {
+  return loadBool(OPT_BUFFER, CONFIG_DEFAULTS.growthBuffer);
+}
+/** @param {boolean} on Growth-buffer flag. */
+export function setGrowthBuffer(on) {
+  ModOptions.save(MOD_ID, OPT_BUFFER, on ? 1 : 0);
+}
+
 // -- apply to live CONFIG -------------------------------------------
 
 /**
@@ -226,6 +269,8 @@ export function applyTunableOverrides() {
   CONFIG.useEmigration = getUseEmigration();
   CONFIG.coreProtectRadius = CORE_RADIUS_BY_INDEX[getCoreProtectIndex()];
   CONFIG.requireAdjacency = getRequireAdjacency();
+  CONFIG.recedeBorders = getRecedeBorders();
+  CONFIG.growthBuffer = getGrowthBuffer();
   CONFIG.debug = getDebug();
 }
 

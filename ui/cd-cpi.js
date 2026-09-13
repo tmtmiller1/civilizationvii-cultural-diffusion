@@ -1,6 +1,6 @@
 // cd-cpi.js
 //
-// The PURE Cultural Power Index math (docs/cultural-diffusion-spec.md 3.1a, term A).
+// The PURE Cultural Power Index math (docs/current-model.md §3, term A).
 // No engine reads live here, so the CPI/power math is fully unit-testable in Node.
 // cd-metrics.js gathers the raw per-civ dimensions from the live engine and feeds
 // them through these functions; cd-pass.js turns the result into the per-civ pressure

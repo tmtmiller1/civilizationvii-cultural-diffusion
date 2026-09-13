@@ -1,7 +1,7 @@
 // cd-ownership.js
 //
 // The ONE place that MUTATES plot ownership. Every flip is single-player-guarded
-// and routed through the configured verb (docs/cultural-diffusion-spec.md 3.6):
+// and routed through the configured verb (docs/current-model.md §4):
 //   - purchasePlot - the INTEGRATED, city-attached path (default). Attaches the tile to the
 //     nearest city so it becomes a real, workable city plot. Probe-proven to be effectively
 //     free on contiguous frontier tiles; refundGold nets any cost to zero regardless.

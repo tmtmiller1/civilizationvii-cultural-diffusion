@@ -33,6 +33,9 @@ import { isCoreProtected, atWar } from "/cultural-diffusion/ui/cd-borders.js";
 import { performFlip, unclaim } from "/cultural-diffusion/ui/cd-ownership.js";
 import { loadState, saveState, prepareState, pruneState } from "/cultural-diffusion/ui/cd-state.js";
 import { notifyFlip } from "/cultural-diffusion/ui/cd-notifications.js";
+import { recedeOwnership } from "/cultural-diffusion/ui/cd-recede.js";
+import { logFieldDiagnostics, logStateSize } from "/cultural-diffusion/ui/cd-diagnostics.js";
+import { markPending, isPending, confirmPending } from "/cultural-diffusion/ui/cd-pending.js";
 
 /** @param {number} x @param {number} y @returns {string} Plot key. */
 function key(x, y) {
@@ -366,8 +369,13 @@ function findDeadOwners(region, next, alive) {
 function claimCountsFor(state, me) {
   /** @type {Map<number, number>} */
   const claimCount = new Map();
+  const bump = (city) => claimCount.set(city, (claimCount.get(city) || 0) + 1);
   for (const c of Object.values(state.claims)) {
-    if (c && c.by === me) claimCount.set(c.city, (claimCount.get(c.city) || 0) + 1);
+    if (c && c.by === me) bump(c.city);
+  }
+  // A claim still landing (cd-pending.js) spends the budget too, so a city can't over-claim mid-write.
+  for (const p of Object.values(state.pending || {})) {
+    if (p && p.kind === "claim" && p.by === me) bump(p.city);
   }
   return claimCount;
 }
@@ -418,15 +426,24 @@ function commitFlip(cand, owner, verdict, fx) {
   const res = performFlip({ playerId: me, city: near.city, loc, verb: CONFIG.flipVerb, refund: CONFIG.refundGold });
   // Guard: verify the tile actually changed owner before recording anything. performFlip only
   // reports "didn't throw", but a claim can silently no-op (e.g. purchasePlot fails, or the
-  // legacy setOwnership verb no-ops on rival land - redesign-plan.md Phase 0 probe: 102/102
+  // legacy setOwnership verb no-ops on rival land - probe-history.md §2: 102/102
   // no-change). Without this check every silent no-op was booked as a win — consuming the city's
   // maxDiffusionPlots budget, locking the tile for flipCooldownTurns, seeding a phantom stock,
   // and firing a false "claimed territory" toast. The default integrated verb (purchasePlot)
   // now attaches the tile to near.city, so a real owner change here also means an integrated,
   // workable plot — no orphan, and no conflict with the base game's own border growth.
-  if (!res.ok || ownerAt(loc) !== me) {
-    dlog(`flip ${k} NOT APPLIED reason=${res.reason || "no-change"} verb=${res.verb}`);
+  if (!res.ok) {
+    dlog(`flip ${k} NOT APPLIED reason=${res.reason || "call-failed"} verb=${res.verb}`);
     return false;
+  }
+  if (ownerAt(loc) !== me) {
+    // The engine applies ownership AFTER the call (watched in-game on 1.4.2, devtools/harness run 1), so the
+    // same-tick read is still the old owner. Book it next pass from the live map (cd-pending.js); it counts
+    // toward the per-city budget and the per-turn cap now, so a runaway can't happen while writes are in flight.
+    markPending(state, k, { kind: "claim", by: me, city: near.id, was: owner });
+    claimCount.set(near.id, (claimCount.get(near.id) || 0) + 1);
+    dlog(`flip ${k} -> player ${me} via ${res.verb} sent; pending confirmation next pass (was owner ${owner})`);
+    return "pending";
   }
   claimCount.set(near.id, (claimCount.get(near.id) || 0) + 1);
   state.claims[k] = { by: me, city: near.id, turn: state.monoTurn };
@@ -435,7 +452,7 @@ function commitFlip(cand, owner, verdict, fx) {
   next[k][String(me)] = Math.max(next[k][String(me)] || 0, ageCfg.minimumOwner);
   dlog(`flip ${k} -> player ${me} via ${res.verb} (was owner ${owner}, culture ${Math.round(verdict.value)})`);
   notifyFlip({ x: loc.x, y: loc.y, wasOwner: owner, newOwner: me });
-  return true;
+  return "booked";
 }
 
 /** Resolve a single candidate tile: gate, then flip. Returns true when a flip was committed. */
@@ -444,6 +461,7 @@ function tryFlipCandidate(cand, fx) {
   const owner = ownerAt(cand.loc);
   if (owner === me) return false;                       // already ours
   if (state.locked[cand.k] > 0) return false;           // anti-flicker cooldown
+  if (isPending(state, cand.k)) return false;           // a verb on this tile is still landing
   const verdict = resolveOwner(next[cand.k], owner, deadOwners, ageCfg);
   if (!verdict.flip || verdict.owner !== me) return false; // only claim tiles OUR culture has won
   if (!flipEligible(cand, owner, me, claimCount)) return false;
@@ -466,23 +484,31 @@ function resolveOwnership({ state, region, next, cities, me, ageCfg }) {
   const fx = { state, next, me, ageCfg, claimCount, deadOwners };
 
   let flips = 0;
+  let pending = 0;
   let tiles = 0;
   for (const cand of candidates) {
-    if (flips >= maxFlips) break;
+    if (flips + pending >= maxFlips) break;
     tiles++;
-    if (tryFlipCandidate(cand, fx)) flips++;
+    const result = tryFlipCandidate(cand, fx);
+    if (result === "booked") flips++;
+    else if (result === "pending") pending++;
   }
-  return { flips, tiles };
+  return { flips, pending, tiles, deadOwners };
 }
 
 /** Commit one buffer claim (integrated verb + claim/lock/seed bookkeeping). @returns {boolean} */
 function commitBuffer(state, c, T, me) {
   const res = performFlip({ playerId: me, city: c.city, loc: T, verb: CONFIG.flipVerb, refund: CONFIG.refundGold });
-  if (!res.ok || ownerAt(T) !== me) {
-    dlog(`buffer ${key(T.x, T.y)} NOT APPLIED reason=${res.reason || "no-change"}`);
+  const k = key(T.x, T.y);
+  if (!res.ok) {
+    dlog(`buffer ${k} NOT APPLIED reason=${res.reason || "call-failed"}`);
     return false;
   }
-  const k = key(T.x, T.y);
+  if (ownerAt(T) !== me) {
+    markPending(state, k, { kind: "claim", by: me, city: c.id, was: -1 }); // lands after the call; next pass books it
+    dlog(`buffer ${k} sent; pending confirmation next pass`);
+    return true;
+  }
   state.claims[k] = { by: me, city: c.id, turn: state.monoTurn };
   state.locked[k] = Math.max(0, Math.floor(CONFIG.flipCooldownTurns));
   if (!state.field[k]) state.field[k] = {};
@@ -531,6 +557,7 @@ function bufferTarget(n, devLoc, state, ctx) {
   if (n.x === devLoc.x && n.y === devLoc.y) return null;
   if (ownerAt(n) >= 0) return null;                 // UNOWNED only - never take a tile another player owns
   if (state.locked[key(n.x, n.y)] > 0) return null; // anti-flicker cooldown
+  if (isPending(state, key(n.x, n.y))) return null; // a verb on this tile is still landing
   if (distantLandsGated(n, ctx.me)) return null;    // no distant-lands claims before Exploration
   if (withinOwnNaturalRing(n, ctx.cities)) return null; // base game owns inner rings; buffer only BEYOND them
   const nc = nearestCity(n, ctx.cities);
@@ -640,13 +667,35 @@ function pruneFarField(state, region, cities, radius) {
  * @returns {Map<string, {civ:number, strength:number}>} Injectors by plot key.
  */
 function buildInjectors(settlements, region, strengthOf) {
-  /** @type {Map<string, {civ:number, strength:number}>} */
+  /** @type {Map<string, {civ:number, strength:number, culture:number, vitality:number}>} */
   const injectors = new Map();
   for (const s of settlements) {
     const k = key(s.loc.x, s.loc.y);
-    if (region.has(k)) injectors.set(k, { civ: s.owner, strength: strengthOf(s) });
+    if (!region.has(k)) continue;
+    // culture/vitality ride along only for the debug injector line (logInjectors); the field ignores them.
+    injectors.set(k, { civ: s.owner, strength: strengthOf(s), culture: s.culture, vitality: s.vitality });
   }
   return injectors;
+}
+
+/** Prune, persist, and report the state size + pass time (the last step of every pass). */
+function finishPass(state, region, cities, radius, t0) {
+  pruneFarField(state, region, cities, radius);
+  pruneState(state);
+  const bytes = saveState(state);
+  logStateSize(state, bytes, Date.now() - t0);
+}
+
+/** The per-pass summary line: logged whenever anything changed or is in flight, and every pass in debug. */
+function logPassSummary(state, c) {
+  const done = c.confirmed;
+  const busy = c.flips + c.pending + c.ceded + c.cedePending + c.healed + c.released
+    + done.claim + done.cede + done.dropped;
+  if (busy === 0 && !CONFIG.debug) return;
+  log(`pass: ${c.flips} flip(s), ${c.pending} pending, ${c.ceded} ceded (${c.cedePending} pending), `
+    + `confirmed ${done.claim} claim/${done.cede} cede (${done.dropped} dropped), `
+    + `${c.healed} orphan(s) healed, ${c.released} inner tile(s) released to base game, `
+    + `${Object.keys(state.field).length} active field tile(s)`);
 }
 
 /**
@@ -658,6 +707,7 @@ function buildInjectors(settlements, region, strengthOf) {
 function preparePass(cities) {
   const state = loadState();
   prepareState(state);
+  const confirmed = confirmPending(state); // book last pass's in-flight verbs from the live map before anything else
 
   const { w, h } = mapDims();
   const inBounds = (p) => (!w || (p.x >= 0 && p.x < w)) && (!h || (p.y >= 0 && p.y < h));
@@ -669,7 +719,7 @@ function preparePass(cities) {
   const { strengthOf, ethCtx } = injectionModel(settlements, ageInject);
   const injectors = buildInjectors(settlements, region, strengthOf);
   const threshold = Math.max(0, CONFIG.cultureThreshold);
-  return { state, region, radius, injectors, threshold, ethCtx, ageCfg, pace };
+  return { state, region, radius, injectors, threshold, ethCtx, ageCfg, pace, confirmed };
 }
 
 /**
@@ -684,19 +734,21 @@ export function runPass() {
   const cities = localCityList();
   if (!cities.length) return { flips: 0, tiles: 0 };
 
-  const { state, region, radius, injectors, threshold, ethCtx, ageCfg, pace } = preparePass(cities);
+  const t0 = Date.now();
+  const { state, region, radius, injectors, threshold, ethCtx, ageCfg, pace, confirmed } = preparePass(cities);
   const healed = repairOrphans(state, region, cities, me);
   const released = releaseInnerClaims(state, cities, me);
   const next = updateField(state, region, injectors, { threshold, ethCtx, ageCfg, pace });
-  const { flips, tiles } = resolveOwnership({ state, region, next, cities, me, ageCfg });
+  logFieldDiagnostics(injectors, cities, next, me, ageCfg);
+  const { flips, pending, tiles, deadOwners } = resolveOwnership({ state, region, next, cities, me, ageCfg });
+  const { ceded, pending: cedePending } = recedeOwnership({ state, region, next, me, ageCfg, deadOwners });
 
-  pruneFarField(state, region, cities, radius);
-  pruneState(state);
-  saveState(state);
-  if (flips > 0 || healed > 0 || released > 0 || CONFIG.debug) {
-    log(`pass: ${flips} flip(s), ${healed} orphan(s) healed, ${released} inner tile(s) released to base game, ${Object.keys(state.field).length} active field tile(s)`);
-  }
-  return { flips, tiles, healed, released };
+  finishPass(state, region, cities, radius, t0);
+  logPassSummary(state, { flips, pending, ceded, cedePending, healed, released, confirmed });
+  return {
+    flips, pending, tiles, healed, released, ceded, cedePending,
+    confirmed: confirmed.claim, confirmedCede: confirmed.cede
+  };
 }
 
 /** Test/introspection helpers (pure). */

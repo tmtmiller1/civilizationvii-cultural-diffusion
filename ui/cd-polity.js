@@ -137,17 +137,38 @@ export function isCelebrating(owner) {
 }
 
 /**
+ * The current age's type name ("AGE_ANTIQUITY" / "AGE_EXPLORATION" / "AGE_MODERN"), or "" when unreadable.
+ * In the shipped engine `Game.age` is a numeric HASH, not a string (watched in-game on 1.4.2), so it is
+ * resolved through `GameInfo.Ages.lookup(Game.age).AgeType` - the conversion the base game itself uses. A
+ * string is accepted as-is (test stubs, and any build that exposes the name directly).
+ * @returns {string} Age type name, or "".
+ */
+export function currentAgeType() {
+  const age = rawAge();
+  if (typeof age === "string") return age;
+  const row = ageRow(age);
+  return row && typeof row.AgeType === "string" ? row.AgeType : "";
+}
+
+/** @returns {*} The engine's raw current-age value (a hash on the shipped engine), or undefined. */
+function rawAge() {
+  return safe(() => Game?.age ?? GameContext?.age, undefined);
+}
+
+/** @param {*} age Raw age value. @returns {*} Its GameInfo.Ages row, or null. */
+function ageRow(age) {
+  return safe(() => (typeof GameInfo !== "undefined" ? GameInfo?.Ages?.lookup?.(age) : null), null);
+}
+
+/**
  * The current age key for per-age tuning: "ANTIQUITY" | "EXPLORATION" | "MODERN".
- * Defaults to "ANTIQUITY" when unreadable.
+ * Defaults to "ANTIQUITY" when unreadable. Before the hash fix this only ever read a string, so on the real
+ * engine every age reported ANTIQUITY (per-age scaling, water easing, and the Distant Lands gate never moved).
  * @returns {"ANTIQUITY"|"EXPLORATION"|"MODERN"} Age key.
  */
 export function currentAgeKey() {
-  return safe(() => {
-    const age = Game?.age ?? GameContext?.age;
-    if (typeof age === "string") {
-      if (age.includes("MODERN")) return "MODERN";
-      if (age.includes("EXPLORATION")) return "EXPLORATION";
-    }
-    return "ANTIQUITY";
-  }, "ANTIQUITY");
+  const age = currentAgeType();
+  if (age.includes("MODERN")) return "MODERN";
+  if (age.includes("EXPLORATION")) return "EXPLORATION";
+  return "ANTIQUITY";
 }

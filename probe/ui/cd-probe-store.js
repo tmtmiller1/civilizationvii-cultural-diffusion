@@ -12,7 +12,7 @@
 // itself is what we are testing for persistence; this store only remembers what to
 // re-check.
 //
-// THRASH FIX (redesign-plan Phase 0): the game-scope isolate's localStorage was
+// THRASH FIX (probe-history.md §2): the game-scope isolate's localStorage was
 // observed NOT to round-trip between ticks ("schema changed x107" - the state machine
 // reset every turn and destroyed the flip->reload flow). globalThis DOES survive
 // between ticks within a session (same isolate), so every write is cached there and

@@ -1,0 +1,98 @@
+[2026-09-12 21:41:49]	[CDH] shell attached 
+[2026-09-12 21:41:50]	[CDH] shell query complete 
+[2026-09-12 21:41:50]	[CDH] shell found AugustusAnt136.Civ7Save turn 136 age AGE_ANTIQUITY missingMods=0 unowned=0 
+[2026-09-12 21:41:50]	[CDH] shell handleLoadSave returned true 
+[2026-09-12 21:42:08]	[CDH] attached run2 
+[2026-09-12 21:42:08]	[CulturalDiffusion] boot (turnInterval 1, verb purchasePlot, enabled true) 
+[2026-09-12 21:42:13]	[CDH] LOAD GameStarted 
+[2026-09-12 21:42:21]	[CDH] R5 AGE raw=2077444219 type=AGE_ANTIQUITY turn=136 cdConsole=object 
+[2026-09-12 21:42:21]	[CDH] S1 frontier=25 cdState={"state":false} 
+[2026-09-12 21:42:21]	[CDH] R1 SEED loc=89,29 city=London d=4 write=set stateHadRaw=false now={"stock0":5000,"claim":null,"pending":null,"locked":0,"claims":0,"pendingN":0} where={"owner":-1,"city":-1} 
+[2026-09-12 21:42:25]	[CDH] S2 bought release=[{"k":"90,28","owner":0,"city":65536},{"k":"89,27","owner":0,"city":393220},{"k":"89,26","owner":0,"city":393220}] far=[] 
+[2026-09-12 21:42:27]	[CDH] R2 V1 after setOwnership(me) 90,28 {"owner":0,"city":65536} 
+[2026-09-12 21:42:27]	[CDH] R2 V2 district at 89,27 = {"owner":-1,"id":-1,"type":0} 
+[2026-09-12 21:42:33]	[CDH] R2 at 4s V1(set me -> none)={"owner":0,"city":65536} V2(destroy district -> none)={"owner":0,"city":393220} V3(none)={"owner":0,"city":393220} 
+[2026-09-12 21:42:39]	[CDH] R2 VERDICT at 10s V1=STILL-OWNED {"owner":0,"city":65536} V2=STILL-OWNED {"owner":0,"city":393220} V3=STILL-OWNED {"owner":0,"city":393220} 
+[2026-09-12 21:42:39]	[CDH] R3 skipped: no far tile of the main city 
+[2026-09-12 21:42:47]	[CDH] R4 CONTROL London 92,33 ring=1 IMPROVEMENT_CAMP terrain={"ter":"TERRAIN_FLAT","feat":"FEATURE_RAINFOREST","res":"RESOURCE_IVORY"} afterDestroy=[] afterRecreate=["IMPROVEMENT_CAMP"] 
+[2026-09-12 21:42:47]	[CDH] R4 skipped far: no far tile of ours 
+[2026-09-12 21:42:47]	[CDH] ACTIONS done; ending turns 
+[2026-09-12 21:43:06]	[CulturalDiffusion] inject 92,32 civ=0 culture=39.6 vitality=57.1 strength=83.83 stock=10 cap=167662.14 
+[2026-09-12 21:43:06]	[CulturalDiffusion] inject 87,32 civ=0 culture=13 vitality=33.85 strength=33.84 stock=10 cap=67689.75 
+[2026-09-12 21:43:06]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=24.1 strength=5.67 stock=10 cap=11345.41 
+[2026-09-12 21:43:06]	[CulturalDiffusion] inject 93,26 civ=0 culture=13 vitality=23.9 strength=29.96 stock=10 cap=59926.19 
+[2026-09-12 21:43:06]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=11.3 strength=0 stock=0 cap=0 
+[2026-09-12 21:43:06]	[CulturalDiffusion] inject 90,37 civ=3 culture=5 vitality=22.65 strength=10.86 stock=10 cap=21710.13 
+[2026-09-12 21:43:06]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=16.35 strength=9.68 stock=10 cap=19369.56 
+[2026-09-12 21:43:06]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=28.45 strength=15.96 stock=10 cap=31915.04 
+[2026-09-12 21:43:06]	[CulturalDiffusion] inject 80,31 civ=3 culture=3 vitality=13.85 strength=6.56 stock=10 cap=13112.77 
+[2026-09-12 21:43:06]	[CulturalDiffusion] frontier city=65536 ring=4 best=4749 bar=300 over=1/23 centre=10 
+[2026-09-12 21:43:06]	[CulturalDiffusion] frontier city=196609 ring=4 best=4749 bar=300 over=2/24 centre=10 
+[2026-09-12 21:43:06]	[CulturalDiffusion] frontier city=327683 ring=4 best=10 bar=300 over=0/24 centre=10 
+[2026-09-12 21:43:06]	[CulturalDiffusion] frontier city=393220 ring=4 best=275 bar=300 over=0/19 centre=10 
+[2026-09-12 21:43:06]	[CulturalDiffusion] frontier city=458757 ring=4 best=0 bar=300 over=0/24 centre=0 
+[2026-09-12 21:43:06]	[CulturalDiffusion] flip 89,29 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-12 21:43:06]	[CulturalDiffusion] state bytes=468 field=15 claims=0 locked=0 passMs=15 
+[2026-09-12 21:43:06]	[CulturalDiffusion] pass: 0 flip(s), 1 pending, 0 ceded, 0 receded, confirmed 0 claim/0 cede/0 release (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 15 active field tile(s) 
+[2026-09-12 21:43:06]	[CulturalDiffusion] pass (turn 137): flips=0 field tiles=7 
+[2026-09-12 21:43:11]	[CDH] TURN n=2 turn=137 seeded=89,29:{"owner":0,"city":65536,"cd":{"stock0":4749,"claim":null,"pending":{"kind":"claim","by":0,"city":65536,"turn":137,"was":-1},"locked":0,"claims":0,"pendingN":1}} watch=[{"k":"90,28","owner":0,"city":65536,"types":[]},{"k":"89,27","owner":0,"city":393220,"types":[]},{"k":"89,26","owner":0,"city":393220,"types":[]}] 
+[2026-09-12 21:43:33]	[CulturalDiffusion] notify: (89,29) unowned -> player 0 
+[2026-09-12 21:43:33]	[CulturalDiffusion] pending 89,29 claim confirmed on the live map 
+[2026-09-12 21:43:33]	[CulturalDiffusion] inject 92,32 civ=0 culture=39.6 vitality=58.33 strength=66.16 stock=99.53 cap=132314.46 
+[2026-09-12 21:43:33]	[CulturalDiffusion] inject 87,32 civ=0 culture=13 vitality=33.85 strength=26.51 stock=50.97 cap=53023.57 
+[2026-09-12 21:43:33]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=17.36 strength=3.96 stock=23.35 cap=7923.64 
+[2026-09-12 21:43:33]	[CulturalDiffusion] inject 93,26 civ=0 culture=13 vitality=25.13 strength=23.89 stock=47.75 cap=47770.58 
+[2026-09-12 21:43:33]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=11.3 strength=0 stock=0 cap=0 
+[2026-09-12 21:43:33]	[CulturalDiffusion] inject 90,37 civ=3 culture=5 vitality=22.65 strength=10.61 stock=31.5 cap=21228.59 
+[2026-09-12 21:43:33]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=16.35 strength=9.47 stock=30.1 cap=18939.93 
+[2026-09-12 21:43:33]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=28.45 strength=15.6 stock=37.61 cap=31207.14 
+[2026-09-12 21:43:33]	[CulturalDiffusion] inject 80,31 civ=3 culture=3 vitality=13.85 strength=6.41 stock=26.35 cap=12821.92 
+[2026-09-12 21:43:33]	[CulturalDiffusion] frontier city=65536 ring=4 best=4510.55 bar=300 over=3/23 centre=99.53 
+[2026-09-12 21:43:33]	[CulturalDiffusion] frontier city=196609 ring=4 best=4510.55 bar=300 over=3/24 centre=50.97 
+[2026-09-12 21:43:33]	[CulturalDiffusion] frontier city=327683 ring=4 best=50.97 bar=300 over=0/24 centre=23.35 
+[2026-09-12 21:43:33]	[CulturalDiffusion] frontier city=393220 ring=4 best=521.44 bar=300 over=2/19 centre=47.75 
+[2026-09-12 21:43:33]	[CulturalDiffusion] frontier city=458757 ring=4 best=0 bar=300 over=0/24 centre=0 
+[2026-09-12 21:43:33]	[CulturalDiffusion] flip 89,28 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-12 21:43:33]	[CulturalDiffusion] state bytes=882 field=23 claims=1 locked=1 passMs=13 
+[2026-09-12 21:43:33]	[CulturalDiffusion] pass: 0 flip(s), 1 pending, 0 ceded, 0 receded, confirmed 1 claim/0 cede/0 release (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 23 active field tile(s) 
+[2026-09-12 21:43:33]	[CulturalDiffusion] pass (turn 138): flips=0 field tiles=10 
+[2026-09-12 21:43:38]	[CDH] TURN n=3 turn=138 seeded=89,29:{"owner":0,"city":65536,"cd":{"stock0":4511,"claim":{"by":0,"city":65536,"turn":137},"pending":null,"locked":15,"claims":1,"pendingN":1}} watch=[{"k":"90,28","owner":0,"city":65536,"types":[]},{"k":"89,27","owner":0,"city":393220,"types":[]},{"k":"89,26","owner":0,"city":393220,"types":[]}] 
+[2026-09-12 21:43:57]	[CulturalDiffusion] notify: (89,28) unowned -> player 0 
+[2026-09-12 21:43:57]	[CulturalDiffusion] pending 89,28 claim confirmed on the live map 
+[2026-09-12 21:43:57]	[CulturalDiffusion] inject 92,32 civ=0 culture=41.8 vitality=57.59 strength=67.26 stock=363.44 cap=134527.79 
+[2026-09-12 21:43:57]	[CulturalDiffusion] inject 87,32 civ=0 culture=15 vitality=31.85 strength=28.08 stock=135.08 cap=56168.86 
+[2026-09-12 21:43:57]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=16.29 strength=3.82 stock=38.33 cap=7640.06 
+[2026-09-12 21:43:57]	[CulturalDiffusion] inject 93,26 civ=0 culture=13 vitality=26.78 strength=24.08 stock=118.82 cap=48163.33 
+[2026-09-12 21:43:57]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=10.87 strength=0 stock=0 cap=0 
+[2026-09-12 21:43:57]	[CulturalDiffusion] inject 90,37 civ=3 culture=5 vitality=22.65 strength=8.85 stock=58.16 cap=17693.77 
+[2026-09-12 21:43:57]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=17.35 strength=8.06 stock=54.72 cap=16117.64 
+[2026-09-12 21:43:57]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=29.45 strength=13.16 stock=76 cap=26327.18 
+[2026-09-12 21:43:57]	[CulturalDiffusion] inject 80,31 civ=3 culture=3 vitality=13.85 strength=5.34 stock=44.66 cap=10686.91 
+[2026-09-12 21:43:57]	[CulturalDiffusion] frontier city=65536 ring=4 best=4284.02 bar=300 over=3/23 centre=363.44 
+[2026-09-12 21:43:57]	[CulturalDiffusion] frontier city=196609 ring=4 best=4284.02 bar=300 over=3/24 centre=135.08 
+[2026-09-12 21:43:57]	[CulturalDiffusion] frontier city=327683 ring=4 best=135.08 bar=300 over=0/24 centre=38.33 
+[2026-09-12 21:43:57]	[CulturalDiffusion] frontier city=393220 ring=4 best=742.45 bar=300 over=2/19 centre=118.82 
+[2026-09-12 21:43:57]	[CulturalDiffusion] frontier city=458757 ring=4 best=0 bar=300 over=0/24 centre=0 
+[2026-09-12 21:43:57]	[CulturalDiffusion] state bytes=966 field=25 claims=2 locked=2 passMs=8 
+[2026-09-12 21:43:57]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded, 0 receded, confirmed 1 claim/0 cede/0 release (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 25 active field tile(s) 
+[2026-09-12 21:43:57]	[CulturalDiffusion] pass (turn 139): flips=0 field tiles=10 
+[2026-09-12 21:44:02]	[CDH] TURN n=4 turn=139 seeded=89,29:{"owner":0,"city":65536,"cd":{"stock0":4284,"claim":{"by":0,"city":65536,"turn":137},"pending":null,"locked":14,"claims":2,"pendingN":0}} watch=[{"k":"90,28","owner":0,"city":65536,"types":[]},{"k":"89,27","owner":0,"city":393220,"types":[]},{"k":"89,26","owner":0,"city":393220,"types":[]}] 
+[2026-09-12 21:44:24]	[CulturalDiffusion] inject 92,32 civ=0 culture=41.8 vitality=60.49 strength=67.1 stock=849.67 cap=134191.26 
+[2026-09-12 21:44:24]	[CulturalDiffusion] inject 87,32 civ=0 culture=15 vitality=31.85 strength=27.54 stock=261.27 cap=55073.16 
+[2026-09-12 21:44:24]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=16.29 strength=3.75 stock=54.4 cap=7491.03 
+[2026-09-12 21:44:24]	[CulturalDiffusion] inject 93,26 civ=0 culture=13 vitality=26.78 strength=23.61 stock=221.56 cap=47223.8 
+[2026-09-12 21:44:24]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=10.87 strength=0 stock=0 cap=0 
+[2026-09-12 21:44:24]	[CulturalDiffusion] inject 90,37 civ=3 culture=5 vitality=22.65 strength=8.85 stock=90.38 cap=17696.58 
+[2026-09-12 21:44:24]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=20.15 strength=8.49 stock=85.31 cap=16986.81 
+[2026-09-12 21:44:24]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=33.25 strength=13.74 stock=127.58 cap=27473.92 
+[2026-09-12 21:44:24]	[CulturalDiffusion] inject 80,31 civ=3 culture=4 vitality=14.85 strength=6.6 stock=68.51 cap=13204.69 
+[2026-09-12 21:44:24]	[CulturalDiffusion] frontier city=65536 ring=4 best=4068.82 bar=300 over=3/23 centre=849.67 
+[2026-09-12 21:44:24]	[CulturalDiffusion] frontier city=196609 ring=4 best=4068.82 bar=300 over=3/24 centre=261.27 
+[2026-09-12 21:44:24]	[CulturalDiffusion] frontier city=327683 ring=4 best=261.27 bar=300 over=0/24 centre=54.4 
+[2026-09-12 21:44:24]	[CulturalDiffusion] frontier city=393220 ring=4 best=939.95 bar=300 over=3/19 centre=221.56 
+[2026-09-12 21:44:24]	[CulturalDiffusion] frontier city=458757 ring=4 best=0 bar=300 over=0/24 centre=0 
+[2026-09-12 21:44:24]	[CulturalDiffusion] state bytes=1333 field=36 claims=2 locked=2 passMs=11 
+[2026-09-12 21:44:24]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded, 0 receded, confirmed 0 claim/0 cede/0 release (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 36 active field tile(s) 
+[2026-09-12 21:44:24]	[CulturalDiffusion] pass (turn 140): flips=0 field tiles=10 
+[2026-09-12 21:44:29]	[CDH] TURN n=5 turn=140 seeded=89,29:{"owner":0,"city":65536,"cd":{"stock0":4069,"claim":{"by":0,"city":65536,"turn":137},"pending":null,"locked":13,"claims":2,"pendingN":0}} watch=[{"k":"90,28","owner":0,"city":65536,"types":[]},{"k":"89,27","owner":0,"city":393220,"types":[]},{"k":"89,26","owner":0,"city":393220,"types":[]}] 
+[2026-09-12 21:44:30]	[CDH] DONE harness run2 finished 
