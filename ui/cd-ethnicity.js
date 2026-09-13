@@ -1,6 +1,6 @@
 // cd-ethnicity.js
 //
-// The ethnic-affinity layer (docs/cultural-diffusion-spec.md 3.1a term C): a frontier tile
+// The ethnic-affinity layer (docs/current-model.md §3, term C): a frontier tile
 // surrounded by a civ's diaspora feels that civ's pull even when its culture output is
 // modest - borders follow people. This reads emigration's per-settlement population
 // composition (via the import-free cd-emigration bridge) and turns it into an affinity

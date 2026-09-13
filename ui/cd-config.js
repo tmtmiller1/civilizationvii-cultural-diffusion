@@ -1,7 +1,7 @@
 // cd-config.js
 //
 // The DEFAULT VALUES of Cultural Diffusion's tunable settings (see
-// docs/cultural-diffusion-spec.md 3b). The settings/options layer
+// docs/current-model.md §2). The settings/options layer
 // (cd-settings.js / cd-options.js) overrides these at boot and on each pass via
 // applyTunableOverrides. Keep this file PURE: no engine reads, so the field/diffusion
 // math can be unit-tested in Node.
@@ -92,7 +92,7 @@ export const CONFIG = {
   // -- master / safety ----------------------------------------------
   diffusionEnabled: true,
   claimOnlyUnowned: false,
-  // The INTEGRATED verb (redesign-plan Phase 1). `purchasePlot` attaches the flipped tile to
+  // The INTEGRATED verb (current-model.md §4). `purchasePlot` attaches the flipped tile to
   // the nearest city (owningCity set, inCityPlots true), so the tile is a real, workable city
   // plot - NOT the orphan that `setOwnership` produces (owner set but no owning city), which
   // blocks the base game's own population/border growth from ever acquiring that tile. This is
@@ -118,7 +118,8 @@ export const CONFIG = {
   // organically, paced to your own development. Claims adjacent UNOWNED land AND water (coastal
   // borders); it NEVER takes a tile owned by another player (peaceful rival capture is left to the
   // slow diffusion pass). Off = borders come only from the reaction-diffusion field.
-  growthBuffer: true,
+  // Default OFF (house rule: territory-changing features are opt-in); players switch it on in Options.
+  growthBuffer: false,
   baseGrowthRadius: 3, // base-game max city ring; buffer tiles are capped to this + 1 rings out
 
   // Let the slow reaction-diffusion field spread ACROSS water (not just the +1 buffer). Culture
@@ -144,6 +145,13 @@ export const CONFIG = {
   // the center to flip. Diffusion still reaches inner tiles organically via requireAdjacency.
   coreProtectRadius: 0,
   requireAdjacency: true,
+
+  // Borders RECEDE (opt-in, experimental). A tile this mod CLAIMED can be lost again: if a rival's culture
+  // decisively wins it (the same resolveOwner gates a claim uses), it is ceded to that rival's nearest city via
+  // purchasePlot (refunded to the rival). Only tiles recorded in state.claims are ever touched. There is no
+  // release-to-no-one: setOwnership(NO_PLAYER) never un-owns a city-attached tile on game 1.4.2 (harness runs
+  // 1-2). Off by default until the mod's own cession path is watched against a peaceful rival.
+  recedeBorders: false,
 
   // -- reaction-diffusion field (the SLOW, organic reach - Civ V model) --
   // Culture is a persisted per-tile stock. A tile diffuses 5.5% of its value to each

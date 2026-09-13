@@ -1,7 +1,7 @@
 // cd-metrics.js
 //
-// Civilization-level cultural signals for the CPI (docs/cultural-diffusion-spec.md
-// 3.1a term A). Reads ONLY base-game engine surfaces (Player.Stats / Player.Happiness /
+// Civilization-level cultural signals for the CPI (docs/current-model.md
+// §3, term A). Reads ONLY base-game engine surfaces (Player.Stats / Player.Happiness /
 // Player.Culture / minor suzerainties), so the fused model's civ multiplier works with no
 // dependency on any other mod. Every read is defensive: an unreadable subsystem degrades
 // to 0 for that dimension, and cd-cpi drops any dimension that is 0 across all civs - so a
@@ -16,6 +16,7 @@
 //   identity  - traditions slotted + age depth
 
 import { NO_OWNER } from "/cultural-diffusion/ui/cd-plots.js";
+import { currentAgeKey } from "/cultural-diffusion/ui/cd-polity.js";
 
 /** @param {()=>*} fn @param {*} fallback @returns {*} */
 function safe(fn, fallback) {
@@ -116,16 +117,12 @@ function traditionsSlotted(player) {
   }, 0);
 }
 
-/** Ordinal age depth (antiquity 1 -> exploration 2 -> modern 3). */
+/** Ordinal age depth (antiquity 1 -> exploration 2 -> modern 3), via the hash-aware age reader. */
 function ageDepth() {
-  return safe(() => {
-    const age = Game?.age ?? GameContext?.age;
-    if (typeof age === "string") {
-      if (age.includes("MODERN")) return 3;
-      if (age.includes("EXPLORATION")) return 2;
-    }
-    return 1;
-  }, 1);
+  const key = currentAgeKey();
+  if (key === "MODERN") return 3;
+  if (key === "EXPLORATION") return 2;
+  return 1;
 }
 
 /**

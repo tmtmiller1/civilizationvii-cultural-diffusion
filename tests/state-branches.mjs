@@ -82,8 +82,9 @@ assert.equal(Object.keys(capped.field).length, 20000, "field entries are capped 
 
 // --- round-trip through Configuration KV ---
 delete KV[__test.STATE_KEY];
-saveState({ monoTurn: 10, field: { "3,4": { "0": 550.5 } }, claims: {}, locked: {} });
+const written = saveState({ monoTurn: 10, field: { "3,4": { "0": 550.5 } }, claims: {}, locked: {} });
 assert.ok(KV[__test.STATE_KEY], "saveState writes to the game config store");
+assert.equal(written, KV[__test.STATE_KEY].length, "saveState returns the length of the blob it wrote (the pass logs it)");
 assert.equal(loadState().field["3,4"]["0"], 550.5, "loadState restores the persisted stock");
 
 // --- the persistence catch guards: a corrupt or hostile store must never throw into the pass ---

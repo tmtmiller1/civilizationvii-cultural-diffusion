@@ -74,6 +74,7 @@ function lookupConstructible(typeId) {
  */
 function onConstructibleAdded(data) {
   try {
+    applyTunableOverrides(); // pick up an Options change made since the last pass, e.g. the buffer just switched off
     if (!CONFIG.growthBuffer) return;
     const loc = data && data.location;
     if (!loc || typeof loc.x !== "number" || typeof loc.y !== "number") return;

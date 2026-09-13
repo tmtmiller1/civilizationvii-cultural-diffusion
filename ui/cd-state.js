@@ -1,6 +1,6 @@
 // cd-state.js
 //
-// Persistence for the reaction-diffusion culture field (docs/cultural-diffusion-spec.md 3b).
+// Persistence for the reaction-diffusion culture field (docs/current-model.md §2).
 // State survives save/reload through GameConfiguration (the same store the emigration mod
 // uses), wrapped in a versioned `{ v, data }` envelope and fully sanitized on load so a
 // corrupt blob can never throw into the pass. The heavy per-tile MATH lives in cd-field.js
@@ -11,6 +11,8 @@ const STATE_SCHEMA_VERSION = 2;
 const MAX_FIELD_ENTRIES = 20000;
 const MAX_CLAIM_ENTRIES = 8192;
 const MAX_LOCK_ENTRIES = 8192;
+const MAX_PENDING_ENTRIES = 1024;
+const PENDING_KINDS = ["claim", "cede"];
 
 /**
  * @typedef {Object} ClaimEntry
@@ -20,16 +22,44 @@ const MAX_LOCK_ENTRIES = 8192;
  */
 
 /**
+ * @typedef {Object} PendingEntry An ownership verb whose result had not landed on the same tick (cd-pending.js).
+ * @property {"claim"|"cede"} kind What was asked for.
+ * @property {number} by The player the tile should end up with.
+ * @property {number} city City id the tile was attached to (claim), or -1.
+ * @property {number} turn Monotonic turn the verb was sent.
+ * @property {number} was Owner before the verb (for the claim notification), or -1.
+ */
+
+/**
  * @typedef {Object} CdState
  * @property {Record<string, Record<string, number>>} field Per-tile culture stock: "x,y" -> { civId -> value }.
  * @property {Record<string, ClaimEntry>} claims Plots this mod has claimed (soft halo), keyed "x,y".
  * @property {Record<string, number>} locked Anti-flicker cooldown: "x,y" -> turns remaining before it may flip again.
+ * @property {Record<string, PendingEntry>} pending Verbs awaiting confirmation on the next pass, keyed "x,y".
  * @property {number} monoTurn Monotonic turn (never resets at age boundaries).
  */
 
 /** @returns {CdState} A fresh empty state. */
 function defaultState() {
-  return { field: {}, claims: {}, locked: {}, monoTurn: 0 };
+  return { field: {}, claims: {}, locked: {}, pending: {}, monoTurn: 0 };
+}
+
+/**
+ * Normalize one pending row.
+ * @param {*} v Candidate.
+ * @returns {PendingEntry|null} Normalized row, or null if unusable.
+ */
+function normalizePending(v) {
+  if (!v || typeof v !== "object" || PENDING_KINDS.indexOf(v.kind) < 0) return null;
+  const by = Math.floor(num(v.by, Number.NaN));
+  if (!isFinite(by)) return null;
+  return {
+    kind: v.kind,
+    by,
+    city: Math.floor(num(v.city, -1)),
+    turn: Math.max(0, Math.floor(num(v.turn, 0))),
+    was: Math.floor(num(v.was, -1))
+  };
 }
 
 /** @param {*} v @param {number} fallback @returns {number} */
@@ -108,6 +138,7 @@ export function normalizeState(s) {
     (v) => { const n = Math.floor(num(v, 0)); return n > 0 ? n : null; },
     MAX_LOCK_ENTRIES
   );
+  out.pending = normalizeMap(payload.pending, normalizePending, MAX_PENDING_ENTRIES);
   return out;
 }
 
@@ -149,17 +180,22 @@ export function loadState() {
 /**
  * Persist diffusion state (versioned envelope, sanitized).
  * @param {*} state State object.
+ * @returns {number} Length of the persisted JSON string (0 when nothing was written), so the pass can
+ *   log how large the save blob has grown.
  */
 export function saveState(state) {
   try {
     const normalized = normalizeState(state);
+    const blob = JSON.stringify({ v: STATE_SCHEMA_VERSION, data: normalized });
     const e = Configuration?.editGame?.();
     if (e && typeof e.setValue === "function") {
-      e.setValue(STATE_KEY, JSON.stringify({ v: STATE_SCHEMA_VERSION, data: normalized }));
+      e.setValue(STATE_KEY, blob);
+      return blob.length;
     }
   } catch (_) {
     /* ignore */
   }
+  return 0;
 }
 
 /**

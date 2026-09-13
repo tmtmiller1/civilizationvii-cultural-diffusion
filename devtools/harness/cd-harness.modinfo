@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Mod id="cd-harness" version="1" xmlns="ModInfo">
+    <Properties>
+        <Name>Cultural Diffusion Harness (dev)</Name>
+        <Description>Throwaway dev harness. Auto-loads a save from the main menu, presses Begin Game, runs Cultural Diffusion verb/settle/development tests, then ends turns. Logs [CDH] to UI.log. Remove the folder afterwards: it hijacks every launch while installed.</Description>
+        <Authors>Tower</Authors>
+        <Package>CulturalDiffusionHarness</Package>
+        <PackageSortIndex>9999</PackageSortIndex>
+        <Version>0.0.1</Version>
+        <AffectsSavedGames>0</AffectsSavedGames>
+    </Properties>
+    <Dependencies>
+        <Mod id="base-standard" title="LOC_MODULE_BASE_STANDARD_NAME" />
+    </Dependencies>
+    <ActionCriteria>
+        <Criteria id="always"><AlwaysMet></AlwaysMet></Criteria>
+    </ActionCriteria>
+    <ActionGroups>
+        <ActionGroup id="cdh-shell" scope="shell" criteria="always">
+            <Properties><LoadOrder>9000</LoadOrder></Properties>
+            <Actions><UIScripts><Item>ui/cdh-shell.js</Item></UIScripts></Actions>
+        </ActionGroup>
+        <ActionGroup id="cdh-game" scope="game" criteria="always">
+            <Properties><LoadOrder>9000</LoadOrder></Properties>
+            <Actions><UIScripts><Item>ui/cdh-game.js</Item></UIScripts></Actions>
+        </ActionGroup>
+    </ActionGroups>
+</Mod>

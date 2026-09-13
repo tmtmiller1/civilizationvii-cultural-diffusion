@@ -107,6 +107,31 @@ assert.equal(CONFIG.maxDiffusionPlots, CONFIG_DEFAULTS.maxDiffusionPlots);
 assert.equal(CONFIG.minimumOwner, CONFIG_DEFAULTS.minimumOwner);
 assert.equal(CONFIG.diffusionRate, CONFIG_DEFAULTS.diffusionRate);
 
+// recedeBorders is opt-in: default OFF, and the stored toggle must actually reach the live CONFIG (the
+// first draft stored it but never applied it, so the Options checkbox did nothing).
+const { getRecedeBorders, setRecedeBorders } = await import("/cultural-diffusion/ui/cd-settings.js");
+assert.equal(getRecedeBorders(), false, "recedeBorders defaults OFF on a fresh profile");
+setRecedeBorders(true);
+CONFIG.recedeBorders = false;
+applyTunableOverrides();
+assert.equal(CONFIG.recedeBorders, true, "the stored recede toggle is applied to the live CONFIG");
+setRecedeBorders(false);
+applyTunableOverrides();
+assert.equal(CONFIG.recedeBorders, false, "...and switching it back off applies too");
+
+// growthBuffer (the "+1 ring" buffer) is player-switchable: the shipped default until a toggle is stored, and the stored
+// toggle reaches the live CONFIG (players asked for a way to turn it off).
+const { getGrowthBuffer, setGrowthBuffer } = await import("/cultural-diffusion/ui/cd-settings.js");
+assert.equal(CONFIG_DEFAULTS.growthBuffer, false, "the +1 ring buffer ships OFF (territory-changing features are opt-in)");
+assert.equal(getGrowthBuffer(), CONFIG_DEFAULTS.growthBuffer, "growthBuffer keeps the shipped default on a fresh profile");
+setGrowthBuffer(false);
+CONFIG.growthBuffer = true;
+applyTunableOverrides();
+assert.equal(CONFIG.growthBuffer, false, "turning the buffer off in Options reaches the live CONFIG");
+setGrowthBuffer(true);
+applyTunableOverrides();
+assert.equal(CONFIG.growthBuffer, true, "...and turning it back on applies too");
+
 if (originalLocalStorage === undefined) delete globalThis.localStorage;
 else globalThis.localStorage = originalLocalStorage;
 

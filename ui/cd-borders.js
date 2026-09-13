@@ -1,6 +1,6 @@
 // cd-borders.js
 //
-// Border resistance reads (docs/cultural-diffusion-spec.md 3.3): how strongly a
+// Border resistance reads (docs/current-model.md §5): how strongly a
 // plot resists flipping. Unowned land is cheapest; rival-owned land resists in
 // proportion to the rival's own pressure; a rival's city-core ring never flips;
 // and an active war pauses peaceful diffusion across the front.

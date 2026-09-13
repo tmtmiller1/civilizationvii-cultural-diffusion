@@ -18,6 +18,11 @@ const water = new Set();
 let savedState = null;
 let multiplayer = false;
 let purchaseNoOps = false; // simulate purchasePlot reporting ok but not actually changing owner
+// deferWrites = the REAL engine (watched in-game, 1.4.2): purchasePlot's owner change lands after the call, so the
+// same-tick read still shows the old owner. Queued writes apply when the test calls flushWrites().
+let deferWrites = false;
+const writeQueue = [];
+const flushWrites = () => { while (writeQueue.length) writeQueue.shift()(); };
 const tk = (x, y) => `${x},${y}`;
 const enc = (x, y) => (y + 100) * 1000 + (x + 100);
 const dec = (i) => ({ x: (i % 1000) - 100, y: Math.floor(i / 1000) - 100 });
@@ -80,8 +85,8 @@ function makeCity(id, location, owner, culture) {
     Constructibles: { getNumWonders: () => 0 },
     purchasePlot: (loc) => {
       if (purchaseNoOps) return; // reports nothing, changes nothing - the silent no-op case
-      const t = getTileMut(loc.x, loc.y);
-      t.owner = owner; t.city = id;
+      const apply = () => { const t = getTileMut(loc.x, loc.y); t.owner = owner; t.city = id; };
+      if (deferWrites) writeQueue.push(apply); else apply();
     }
   };
 }
@@ -136,6 +141,7 @@ assert.equal(hexDistance(CENTER, INNER), 2, "fixture: INNER is ring-2");
 function reset() {
   tiles.clear(); water.clear();
   savedState = null; multiplayer = false; purchaseNoOps = false;
+  deferWrites = false; writeQueue.length = 0;
   localId = ME; atWarWithRival = false; unclaimed = [];
   gridW = 200; gridH = 200;
   myCity = makeCity(CITY_ID, CENTER, ME, 40);
@@ -507,6 +513,19 @@ globalThis.Game = { age: "AGE_EXPLORATION", turn: 10, maxTurns: 90 };
 assert.equal(runPass().flips, 0, "the same stock does NOT clear EXPLORATION's raised bar (ownerBar 1.25)");
 assert.equal(getTile(TARGET.x, TARGET.y).owner, -1, "...so the tile stays unowned");
 
+// The real engine exposes Game.age as a numeric HASH (watched in-game, 1.4.2), resolved via
+// GameInfo.Ages.lookup(...).AgeType. A hashed EXPLORATION must raise the bar exactly like the string form -
+// before the fix every hashed age read as ANTIQUITY, so this stock flipped in every age.
+reset(); seedState({ field: { [tk(TARGET.x, TARGET.y)]: { [String(ME)]: MID } } });
+const AGE_HASH = 2077444219;
+globalThis.GameInfo = { Ages: { lookup: (h) => (h === AGE_HASH ? { AgeType: "AGE_EXPLORATION" } : null) } };
+globalThis.Game = { age: AGE_HASH, turn: 10, maxTurns: 90 };
+assert.equal(runPass().flips, 0, "a HASHED Exploration age (GameInfo.Ages lookup) raises the bar like the string form");
+reset(); seedState({ field: { [tk(TARGET.x, TARGET.y)]: { [String(ME)]: MID } } });
+globalThis.Game = { age: 987654321, turn: 10, maxTurns: 90 };
+assert.equal(runPass().flips, 1, "an unresolvable age hash falls back to ANTIQUITY (neutral bar), not a crash");
+delete globalThis.GameInfo;
+
 // A missing byAge table falls back to neutral (injectionScale 1, ownerBar 1), it does not crash or
 // zero the bar.
 const savedByAge = CONFIG.byAge;
@@ -625,5 +644,212 @@ assert.equal(second.released, 0, "...and nothing to release (it is beyond the na
 assert.equal(savedState.claims[tk(TARGET.x, TARGET.y)].turn, claimTurn,
   "...and the original claim record is not rewritten");
 CONFIG.diffusionRate = liveRates.d; CONFIG.decayRate = liveRates.r; CONFIG.decayFlat = liveRates.f;
+
+// ================================================================================
+// 16. Borders RECEDE (opt-in): a mod-claimed tile can be ceded to a rival.
+// ================================================================================
+// Only tiles recorded in state.claims are ever touched. A rival must beat our stock on the tile by the
+// same decisive margin a claim needs (resolveOwner), be at peace with us, have a city within
+// flipMaxDistance, and (with requireAdjacency) own land touching the tile. There is no release to no one:
+// setOwnership(NO_PLAYER) never un-owns a city-attached tile on the real engine (harness runs 1-2).
+const OUTPOST = { x: 18, y: 10 };    // a rival city 4 tiles from TARGET, inside our region
+const OUTPOST_ID = 88;
+const RIVAL_EDGE = { x: 15, y: 10 }; // rival land touching TARGET
+assert.equal(hexDistance(OUTPOST, TARGET), 4, "fixture: the rival outpost is within flipMaxDistance of TARGET");
+
+/** TARGET is our CLAIMED ring-4 tile; a rival outpost sits nearby with land touching it. */
+function seedRecede(fieldRow, extra = {}) {
+  reset();
+  rivalCity = makeCity(OUTPOST_ID, OUTPOST, RIVAL, 10);
+  const o = getTileMut(OUTPOST.x, OUTPOST.y); o.owner = RIVAL; o.city = OUTPOST_ID;
+  const e = getTileMut(RIVAL_EDGE.x, RIVAL_EDGE.y); e.owner = RIVAL; e.city = OUTPOST_ID;
+  const t = getTileMut(TARGET.x, TARGET.y); t.owner = ME; t.city = CITY_ID;
+  seedState({
+    field: { [tk(TARGET.x, TARGET.y)]: fieldRow },
+    claims: { [tk(TARGET.x, TARGET.y)]: { by: ME, city: CITY_ID, turn: 1 } },
+    ...extra
+  });
+}
+// The rival wins decisively; our own stock stays well above the release floor, so only cession can fire.
+const rivalWins = () => ({ [String(ME)]: 1000, [String(RIVAL)]: 5000 });
+const TK = tk(TARGET.x, TARGET.y);
+
+assert.equal(CONFIG.recedeBorders, false, "recedeBorders ships OFF (unobserved verbs)");
+seedRecede(rivalWins());
+r = runPass();
+assert.equal(getTile(TARGET.x, TARGET.y).owner, ME, "recedeBorders off -> a claimed tile is kept even when out-cultured");
+assert.equal(r.ceded, 0, "...and nothing is reported as ceded");
+
+CONFIG.recedeBorders = true;
+seedRecede(rivalWins());
+r = runPass();
+assert.equal(r.ceded, 1, "a claimed tile the rival decisively out-cultures is ceded");
+assert.deepEqual(getTile(TARGET.x, TARGET.y), { owner: RIVAL, city: OUTPOST_ID },
+  "...to the rival's nearest city (integrated, not an orphan)");
+assert.equal(savedState.claims[TK], undefined, "...its claim record is dropped");
+assert.equal(savedState.locked[TK], CONFIG.flipCooldownTurns, "...and it is locked against an immediate flip back");
+runPass();
+assert.equal(getTile(TARGET.x, TARGET.y).owner, RIVAL, "the lock holds the ceded tile on the next pass");
+
+seedRecede(rivalWins());
+atWarWithRival = true;
+r = runPass();
+assert.equal(r.ceded, 0, "at war -> no peaceful cession across an active front");
+assert.equal(getTile(TARGET.x, TARGET.y).owner, ME, "...we keep the tile");
+atWarWithRival = false;
+
+seedRecede({ [String(ME)]: 1000, [String(RIVAL)]: 1200 }); // the rival leads, but short of flipRatio
+r = runPass();
+assert.equal(r.ceded, 0, "a rival lead short of the decisive flipRatio margin does not cede the tile");
+assert.equal(getTile(TARGET.x, TARGET.y).owner, ME, "...we keep it");
+
+seedRecede(rivalWins());
+Object.assign(getTileMut(RIVAL_EDGE.x, RIVAL_EDGE.y), { owner: -1, city: -1 });
+runPass();
+assert.equal(getTile(TARGET.x, TARGET.y).owner, ME, "requireAdjacency: a rival with no land touching the tile cannot take it");
+seedRecede(rivalWins());
+Object.assign(getTileMut(RIVAL_EDGE.x, RIVAL_EDGE.y), { owner: -1, city: -1 });
+CONFIG.requireAdjacency = false;
+runPass();
+assert.equal(getTile(TARGET.x, TARGET.y).owner, RIVAL, "requireAdjacency off -> the same tile IS ceded");
+CONFIG.requireAdjacency = true;
+
+seedRecede(rivalWins());
+CONFIG.flipMaxDistance = 3;
+runPass();
+assert.equal(getTile(TARGET.x, TARGET.y).owner, ME, "a rival city beyond flipMaxDistance cannot take the tile");
+CONFIG.flipMaxDistance = 6;
+
+seedRecede(rivalWins());
+purchaseNoOps = true;
+r = runPass();
+assert.equal(r.ceded, 0, "a cession purchasePlot that silently no-ops is not counted");
+assert.ok(savedState.claims[TK], "...the claim is kept");
+assert.equal(savedState.locked[TK], undefined, "...and the tile is not locked");
+purchaseNoOps = false;
+
+// A claim whose own culture has faded, with no decisive rival, simply stays ours: no release verb exists.
+seedRecede({ [String(ME)]: 100 });
+r = runPass();
+assert.equal(getTile(TARGET.x, TARGET.y).owner, ME, "a faded claim with no decisive rival stays ours (no release verb)");
+assert.ok(savedState.claims[TK], "...its claim is kept");
+assert.equal(savedState.pending[TK], undefined, "...nothing is sent for it");
+assert.ok(!unclaimed.includes(TK), "...not even an unclaim attempt");
+
+seedRecede(rivalWins(), { locked: { [TK]: 3 } });
+runPass();
+assert.equal(getTile(TARGET.x, TARGET.y).owner, ME, "a cooldown-locked claim is not ceded, even when out-cultured");
+
+seedRecede(rivalWins());
+savedState.claims = {}; // the same out-cultured tile, but owned without ever being claimed by the mod
+r = runPass();
+assert.equal(r.ceded, 0, "a tile the mod never claimed is never ceded (base-game tiles are untouched)");
+assert.equal(getTile(TARGET.x, TARGET.y).owner, ME, "...still ours");
+
+// Cap: several out-cultured claims near the rival outpost, with rival land on every ring-5 tile.
+reset();
+rivalCity = makeCity(OUTPOST_ID, OUTPOST, RIVAL, 10);
+Object.assign(getTileMut(OUTPOST.x, OUTPOST.y), { owner: RIVAL, city: OUTPOST_ID });
+const cedeClaims = {};
+const cedeField = {};
+for (let y = 0; y <= 20; y++) {
+  for (let x = 0; x <= 24; x++) {
+    const d = hexDistance(CENTER, { x, y });
+    if (d >= 5) Object.assign(getTileMut(x, y), { owner: RIVAL, city: OUTPOST_ID });
+    if (d !== 4 || hexDistance(OUTPOST, { x, y }) > 6) continue;
+    Object.assign(getTileMut(x, y), { owner: ME, city: CITY_ID });
+    cedeClaims[tk(x, y)] = { by: ME, city: CITY_ID, turn: 1 };
+    cedeField[tk(x, y)] = { [String(ME)]: 1000, [String(RIVAL)]: 5000 };
+  }
+}
+assert.ok(Object.keys(cedeClaims).length > 2, "fixture: several out-cultured claims near the rival outpost");
+seedState({ field: cedeField, claims: cedeClaims });
+CONFIG.maxFlipsPerTurn = 2;
+r = runPass();
+assert.equal(r.ceded, 2, "cession is capped by maxFlipsPerTurn");
+CONFIG.maxFlipsPerTurn = 8;
+CONFIG.recedeBorders = false;
+
+// ================================================================================
+// 17. Debug diagnostics run on a live pass without disturbing it.
+// ================================================================================
+// In-game, cd-bootstrap mirrors CONFIG.debug into cd-log's own gate (setLogDebug) before each pass, so
+// both switches must be on here: CONFIG.debug gates the diagnostics work, cd-log gates the output.
+const { setDebug: setLogDebug } = await import("/cultural-diffusion/ui/cd-log.js");
+reset(); seedState({ field: { [TK]: mature() } });
+CONFIG.debug = true;
+setLogDebug(true);
+const quiet = console.error;
+const lines = [];
+console.error = (m) => lines.push(String(m));
+try {
+  r = runPass();
+} finally {
+  console.error = quiet;
+  CONFIG.debug = false;
+  setLogDebug(false);
+}
+assert.equal(r.flips, 1, "debug logging does not change the pass outcome");
+assert.ok(lines.some((l) => /inject 10,10 civ=0 .*strength=/.test(l)), "debug logs each injector's strength");
+assert.ok(lines.some((l) => /frontier city=42 ring=4 best=\S+ bar=300 over=\d+\/\d+/.test(l)),
+  "debug logs the first claimable ring's best stock against the bar");
+assert.ok(lines.some((l) => /state bytes=[1-9]\d* field=\d+ claims=1 locked=1 passMs=\d+/.test(l)),
+  "debug logs the persisted state size after the flip");
+
+// ================================================================================
+// 18. Deferred ownership writes - how the real engine behaves (watched in-game on 1.4.2).
+// ================================================================================
+// purchasePlot's owner change lands AFTER the call. Before cd-pending.js the pass booked a flip only on the
+// same-tick read, so every real flip was logged NOT APPLIED and nothing was ever recorded.
+reset(); seedState({ field: { [TK]: mature() } });
+deferWrites = true;
+r = runPass();
+assert.equal(getTile(TARGET.x, TARGET.y).owner, -1, "fixture: the engine has not applied the write on this tick");
+assert.equal(r.flips, 0, "a flip whose write has not landed is not booked as a flip on the same tick");
+assert.equal(r.pending, 1, "...it is recorded as pending instead");
+assert.equal(savedState.claims[TK], undefined, "...with no claim yet");
+assert.equal(savedState.pending[TK] && savedState.pending[TK].kind, "claim", "...and a persisted pending claim");
+flushWrites();
+r = runPass();
+assert.equal(r.confirmed, 1, "the next pass confirms the landed write from the live map");
+assert.equal(savedState.claims[TK] && savedState.claims[TK].by, ME, "...books the claim for us");
+assert.equal(savedState.claims[TK].city, CITY_ID, "...attached to the city that bought it");
+assert.equal(savedState.locked[TK], CONFIG.flipCooldownTurns, "...locks it for the cooldown");
+assert.equal(savedState.pending[TK], undefined, "...and clears the pending entry");
+
+// A pending claim the live map never shows is dropped, and the tile is simply retried.
+reset(); seedState({ field: { [TK]: mature() } });
+deferWrites = true;
+runPass();
+writeQueue.length = 0; // this write never lands
+r = runPass();
+assert.equal(r.confirmed, 0, "a pending claim the live map does not show is not confirmed");
+assert.equal(savedState.claims[TK], undefined, "...no claim is booked");
+assert.ok(savedState.pending[TK], "...and the still-dominated tile is sent again, pending once more");
+
+// Unconfirmed flips still count toward maxFlipsPerTurn - no runaway while writes are in flight.
+seedManyTargets();
+deferWrites = true;
+CONFIG.maxFlipsPerTurn = 2;
+r = runPass();
+assert.equal(r.flips + r.pending, 2, "pending flips count toward maxFlipsPerTurn");
+assert.equal(r.pending, 2, "...and on the deferred engine they are all pending");
+CONFIG.maxFlipsPerTurn = 8;
+
+// A deferred cession: pending first, then confirmed from the live map - and never also released.
+CONFIG.recedeBorders = true;
+seedRecede(rivalWins());
+deferWrites = true;
+r = runPass();
+assert.equal(r.ceded, 0, "a cession whose write has not landed is not booked on the same tick");
+assert.equal(savedState.pending[TK] && savedState.pending[TK].kind, "cede", "...it is pending");
+assert.ok(savedState.claims[TK], "...and our claim stays until the live map confirms");
+flushWrites();
+r = runPass();
+assert.equal(getTile(TARGET.x, TARGET.y).owner, RIVAL, "fixture: the cession landed");
+assert.equal(r.confirmedCede, 1, "the next pass confirms the cession");
+assert.equal(savedState.claims[TK], undefined, "...and drops our claim");
+assert.equal(savedState.locked[TK], CONFIG.flipCooldownTurns, "...locking the tile against an immediate flip back");
+CONFIG.recedeBorders = false;
 
 console.log("pass.mjs OK");

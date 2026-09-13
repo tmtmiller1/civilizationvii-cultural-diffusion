@@ -4,7 +4,58 @@ All notable changes to Cultural Diffusion are recorded here. The format follows
 [Keep a Changelog](https://keepachangelog.com/), and the mod uses
 [Semantic Versioning](https://semver.org/).
 
-## [Unreleased]
+## [1.1.0] - 2026-09-13
+
+### Added
+
+- **An Options toggle for the "+1 ring" growth buffer, now off by default.** Players asked how to turn it off. *Claim
+  land beside new improvements (+1 ring)* controls `growthBuffer`. It now defaults to off, following the rule that
+  territory-changing features are opt-in; since 1.0.6 it had been always on. Existing players get the new default,
+  because no earlier build stored a value for it. Switching it on or off takes effect at the next finished improvement.
+- **Borders can recede (opt-in `recedeBorders`, off by default).** The flow-back half of the Civ V model, which
+  the docs described but the pass never did. Each pass walks only the tiles this mod claimed. A claim a rival now
+  out-cultures by the same decisive margin a claim needs is ceded to that rival's nearest city (`purchasePlot`,
+  refunded to the rival). Peace, `flipMaxDistance`, `requireAdjacency`, the cooldown lock and `maxFlipsPerTurn` all
+  apply, and tiles your cities grew are never touched. There is no release to no one: harness runs 1 and 2 showed
+  `setOwnership(NO_PLAYER)` never un-owns a tile attached to a city, so that branch was removed. The rival-city
+  `purchasePlot` is watched working; the setting stays off by default until the mod's own cession is watched against
+  a rival at peace with you. New Options checkbox: *borders recede (experimental)*.
+- **Debug diagnostics for failures that are otherwise silent.** With debug logging on, each pass logs every
+  injector's culture, vitality, strength and city-tile stock against its cap (`inject ...`), each city's best stock
+  on the first ring the mod may claim against the ownership bar (`frontier ...`), and the persisted state size with
+  the pass time (`state bytes=...`). The state line is logged without debug once the blob passes 512 KB.
+- **Cultural Pressure lens and hover tooltip** (Phase 1: shading, civ split, turns-to-flip estimate). Code-complete
+  and unit-tested, not yet watched in-game.
+- **In-game test harness (`devtools/harness/`).** A dev-only mod that loads a save from the main menu, presses Begin
+  Game, runs scripted engine tests, and ends turns, all hands-free, logging `[CDH]` lines to `UI.log`. Run 1 on
+  AugustusAnt136 (game 1.4.2) produced the two fixes below and the watched verdicts in `docs/probe-history.md` §5.
+
+### Fixed
+
+- **The mod's settings disappeared after closing Settings, until the game restarted.** Reported by a player. The base
+  Options model rebuilds its option list from registered init callbacks whenever it re-initializes, for example when
+  graphics options change as Settings applies or closes. The mod added its options once at load without a callback,
+  so any rebuild wiped them. They now register through `Options.addInitCallback`, as the Emigration mod does, with a
+  fallback for a script that loads after the model has already initialized.
+- **Flips were never recorded in the real game.** Found by harness run 1 on game 1.4.2: `city.purchasePlot` changes
+  ownership after the call returns, so the same-tick owner read the pass used as its success check always showed
+  the old owner. Every real flip was logged `NOT APPLIED` and left no claim, no cooldown lock, no per-city budget and
+  no per-turn count, and the recede step never saw a claimed tile. A verb whose result has not landed is now
+  recorded as pending (`cd-pending.js`) and confirmed from the live map at the start of the next pass. Pending flips
+  count toward `maxFlipsPerTurn` and `maxDiffusionPlots` meanwhile. This covers diffusion flips, the +1 buffer, and
+  recede cessions. Watched working in-game: harness run 5 sent 29 flips across an age change and confirmed all 29.
+- **Every age read as Antiquity on the real engine.** `Game.age` is a numeric hash, but both age readers only
+  accepted strings. Per-age injection and ownership-bar scaling, water easing and the Distant Lands gate therefore
+  never changed after Antiquity. The age now resolves through `GameInfo.Ages.lookup(Game.age).AgeType`, the lookup
+  the base game uses.
+
+### Removed
+
+- **The work-radius `GlobalParameters` override (`data/cd-work-range.xml`) is withdrawn before release.** Its entry
+  here claimed `CITY_MIN_RANGE` went 3→6, but the file set it to 3, a no-op. The three parameters it did raise to 6
+  (`CITY_MAX_BUY_PLOT_RANGE`, `PLOT_INFLUENCE_MAX_ACQUIRE_DISTANCE`, `CITY_EXTENDED_CLAIM_RANGE`) were already shown
+  in-game not to move the ring-3 work wall, and they widened border reach for every civ, AI included. The work radius
+  is native and not moddable: see [`docs/civ7-tile-range-investigation.md`](docs/civ7-tile-range-investigation.md).
 
 ## [1.0.7] - 2026-07-13
 
@@ -103,7 +154,7 @@ All notable changes to Cultural Diffusion are recorded here. The format follows
 
 ### Probe (v0.8.0 — Phase 0, `probe/`)
 
-- **Q-VERB — the flip-verb decision gate** (redesign-plan §2). For a distinct tile per
+- **Q-VERB — the flip-verb decision gate** (probe-history.md §2). For a distinct tile per
   candidate verb (`Growth.claimPlot` and `CREATE_ELEMENT DISTRICT_RURAL`), the probe reads
   the player's gold synchronously around the call and, deferred, whether the tile
   **integrated** (owner=me, real owning city, `inCityPlots` / rural district). Verdict per
