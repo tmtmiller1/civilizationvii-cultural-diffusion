@@ -85,6 +85,10 @@ check never ran, because the save began loading before its eight-second timer fi
 `cdh-game-run4.js` is written but has not run. It tests a tile re-parent between two of our cities, and the mod's own
 cession against a rival at peace. Two cautions for any rerun on AugustusAnt136:
 - Keep `TURNS` short. Its Antiquity age ends around turn 160, and run 3 crashed right after that transition.
+- Drive turns one at a time: `Autoplay.setTurns(1)` per turn, or `GameContext.sendTurnComplete()`. A single multi-turn
+  `Autoplay.setTurns(N)` never hands control back between turns, so the local player's `PlayerTurnActivated` does not
+  fire and the mod's pass does not run at all. The Emigration session saw zero passes in 80 turns that way. One-turn
+  Autoplay fired the event and ran the pass every turn in run 5, including after the age transition.
 - An age transition reloads every game-scope UI script, so the game script attaches again in the new age and re-runs
   its first-turn actions from scratch. In run 3 that re-run overlapped the crash window, which makes it a suspect.
   Guard any future script against a second run, for example with a flag in `Configuration`, before crossing an age.
