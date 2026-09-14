@@ -25,7 +25,8 @@ All notable changes to Cultural Diffusion are recorded here. The format follows
   on the first ring the mod may claim against the ownership bar (`frontier ...`), and the persisted state size with
   the pass time (`state bytes=...`). The state line is logged without debug once the blob passes 512 KB.
 - **Cultural Pressure lens and hover tooltip** (Phase 1: shading, civ split, turns-to-flip estimate). Code-complete
-  and unit-tested, not yet watched in-game.
+  and unit-tested. Watched painting a contested tile in-game on 2026-09-13 (harness run 11); it also shades tiles an
+  AI's culture leads, which the pass never flips (`docs/BACKLOG.md`).
 - **In-game test harness (`devtools/harness/`).** A dev-only mod that loads a save from the main menu, presses Begin
   Game, runs scripted engine tests, and ends turns, all hands-free, logging `[CDH]` lines to `UI.log`. Run 1 on
   AugustusAnt136 (game 1.4.2) produced the two fixes below and the watched verdicts in `docs/probe-history.md` §5.

@@ -1,0 +1,19 @@
+Run 7 crash evidence (game 1.4.2, 2026-09-13)
+
+Route: AugustusAnt136, current build (1.1.0 code), debug + recede + buffer on as in run 3, run 3's first-turn harness
+tests repeated on turn 136 (R3 addRuralPopulation + EXPAND to a far tile, R4 destroy/recreate + far creates, R7 purchase
+of rival tile 83,32 inside Megiddo's ring 3 + seeded recede state), then 24 turns ended as run 3 did.
+
+Crash report: ~/Library/Logs/DiagnosticReports/CivilizationVII-2026-09-13-191007.ips (written ~18s after the exit)
+EXC_BAD_ACCESS SIGSEGV KERN_INVALID_ADDRESS at 0x308, faulting thread 13 AsyncWorker1
+Top frames (unsymbolicated CivilizationVII): 0xab9b8c 0xaf454c 0xb04308 0x18de84 0x197e9c 0x243824 0x1061304 0xa5b034
+
+Timing, same as run 3: the transition load finished at 19:09:40, the harness re-attached and the mod booted at 19:09:40,
+"Attempt to switch to an interface mode 'INTERFACEMODE_DEFAULT' before startup completed" at 19:09:43, no GameStarted,
+process gone by 19:09:49.
+
+Comparison with run 3 (CivilizationVII-2026-09-12-220239.ips): same thread class (AsyncWorker1), same moment (new-age
+startup before GameStarted), null-page address in both (0x2a8 there, 0x308 here), different top frames (run 3:
+0x8fa9c0 0x12549f8 0x992ee8 0xa03458 0x9ae00c). Same kind of fault at the same point, not an identical stack.
+
+Control: run 5 took the same route and settings without the harness tests and did not crash (194s into Exploration).
