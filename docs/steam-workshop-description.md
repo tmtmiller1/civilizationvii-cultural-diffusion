@@ -12,7 +12,7 @@ Like its companion [b]Emigration[/b], this mod is a work in progress. Balance is
 
 Every frontier tile remembers how much cultural pressure each civilization has deposited on it. Once per turn, over a bounded region around your cities, four things happen: cities [b]inject[/b] pressure into their own tile using a self-amplifying curve; that pressure [b]diffuses[/b] outward to neighboring tiles, following roads and river valleys and slowed or blocked by hills, mountains, and rough terrain; every tile slowly [b]decays[/b], the constant brake that keeps growth stable and lets pressure ebb when a city weakens; and ownership is read off the stock — a tile [b]flips[/b] to you once your pressure there is largest, clears an absolute floor, and (when taking it from a rival) beats theirs by a decisive ratio, while staying contiguous with land you already own. A rival's downtown ring is never taken.
 
-Because pressure must physically build up ring by ring against decay, reach is an emergent travelling wave, not a distance formula. Your cities' first three rings are left entirely to the base game; the mod only claims beyond them. In test games a strong, established city claimed its fourth ring about twenty turns after the mod started, and farther rings belong to a mature, entrenched civilization.
+Because pressure must physically build up ring by ring against decay, reach is an emergent travelling wave, not a distance formula. Your cities' first three rings are left entirely to the base game; the mod only claims beyond them. In test games a strong, established city claimed its fourth ring about twenty turns after the mod started, and farther rings belong to a mature, entrenched civilization. Early in a new game, expect nothing for a long while: in a 70-turn test game, a capital making 8 Culture claimed no tiles. The mod matters most from the mid-game onward, once your cities' cultural power has grown.
 
 [b]What Cultural Diffusion does[/b]
 
@@ -24,7 +24,7 @@ Because pressure must physically build up ring by ring against decay, reach is a
 [*]With Emigration installed, optional ethnic-affinity diffusion reads its diaspora data so your cultural pressure flows toward tiles your people settled; it is simply neutral when Emigration is absent, so the mod stays standalone-safe.
 [*]Per-age tuning for the three ages plus game-settings calibration re-times the field to the current age length and nudges injection by map size, so the border arc stays consistent across game speeds and cramped maps aren't steamrolled.
 [*]A per-leader, civilization, and memento tuning table damps territory-redundant kits (e.g. Culture-on-capture) and gently lifts Culture-poor civs, so no single kit snowballs.
-[*]A [b]Cultural Pressure lens[/b] (Shift+C) shades contested tiles by how close they are to changing hands, with a hover readout of each civilization's pressure and a turns-to-flip estimate. New in this version, and not yet fully tested in-game; it can be switched off in Options.
+[*]A [b]Cultural Pressure lens[/b] (Shift+C) shades contested tiles by how close they are to changing hands, with a hover readout of each civilization's pressure and a turns-to-flip estimate. New in this version and watched working in a test game. It also shades tiles where a rival's culture leads, although those never change hands, because the AI does not take land by culture. It can be switched off in Options.
 [/list]
 
 [i]Full formulas, tunables, and per-leader tuning are documented in the README.[/i]
@@ -41,13 +41,14 @@ Tile ownership physically changes through real gameplay writes each turn — thi
 
 [list]
 [*]No base-game files replaced.
-[*]No AI rewrite.
+[*]No AI rewrite, and culture gains land only for you. Nearby AI cities build cultural pressure too, which defends their tiles and slows yours, but the AI never takes land by culture (except, with recede on, tiles the mod claimed for you).
 [*]Single-player only, with an off switch for vanilla border growth. Tiles already claimed stay yours when you turn it off, because the game cannot hand a city's tile back to no one.
+[*]It cannot be added to a game already in progress. A save keeps the mods it was started with, so start a new game with Cultural Diffusion enabled.
 [/list]
 
 [b]Roadmap — what's still coming[/b]
 
-This is an early release and actively developed. Core systems are tested in real games with a hands-free test harness before release; the new pressure lens is the one piece still waiting for its on-screen check. On the way:
+This is an early release and actively developed. Core systems, including the new pressure lens, are tested in real games with a hands-free test harness before release. On the way:
 
 [list]
 [*][b]Tile ownership flip on conquest.[/b] An opt-in mode where plots your military units occupy during a war flip to your territory immediately, independent of cultural pressure — modelling land taken by force, resolved after diffusion and migration have settled for the turn.

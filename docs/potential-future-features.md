@@ -18,8 +18,11 @@ Status legend (marked per section below): **Outstanding** · **Probe-gated** · 
 
 ## 1. Cultural pressure lens + hover tooltip
 
-*Status: Phase 1 BUILT (shading + split + tooltip + turns estimate), written but NOT YET watched in-game — probe-gated.
-Arrows (Phase 2) still outstanding.*
+*Status: Phase 1 BUILT (shading + split + tooltip + turns estimate). Watched in-game on 2026-09-13 (harness runs 9-11,
+[`probe-history.md`](probe-history.md)): the lens paints a contested tile in the leading civ's colour, and the readout's
+data path reads the saved field and resolves civ names. The panel itself has not been hovered on screen. Open defect: it
+shades and counts down tiles an AI leads, which never flip ([`BACKLOG.md`](BACKLOG.md)). Arrows (Phase 2) still
+outstanding.*
 
 A map **lens** that shows *where the border is about to move next* — the civ-vs-civ culture split on contested tiles,
 shading that deepens as a tile nears capture — plus a **hover tooltip** that shows, per tile, how the capture

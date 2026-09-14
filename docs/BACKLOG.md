@@ -60,8 +60,17 @@ transition does not crash the game on its own.
 - Run 3's first-turn harness tests on turn 136: buying a rival tile and ceding it back, a spawned settler, a pending
   citizen placed by script, and improvements destroyed and recreated by script.
 - Chance. One faithful replay not reproducing a single crash does not rule out a nondeterministic fault.
-**Status:** the shipped build already removes the first difference. Going further means reinstating the old release
-calls, or replaying run 3's first-turn tests, on the same route. Neither has been run.
+**Run 7 (2026-09-13): reproduced with the harness tests.** The same route on the current build, with run 3's first-turn
+harness tests repeated, crashed at the same moment: during the new age's startup, before GameStarted. The tests were a
+citizen added by script and ordered onto a far tile, improvements destroyed and created by script, and a purchase of a
+rival tile inside our own ring 3 with a seeded recede state. The report `CivilizationVII-2026-09-13-191007.ips` is
+`EXC_BAD_ACCESS` at `0x308` on `AsyncWorker1`. Its top frames differ from run 3's, so it is the same kind of fault at the
+same point rather than an identical stack. Evidence: `devtools/harness/run7-crash-evidence.txt`.
+**Status:** with those harness tests the transition crashed twice (runs 3 and 7); without them it did not (run 5). The
+trigger is among the script-only engine writes above. The shipped mod performs none of them: it never adds or places
+citizens, never creates or destroys constructibles, and never buys a tile inside one of your own cities' first three
+rings. Which test triggers it is not isolated, and players are exposed only if some normal-play action reaches the same
+engine state.
 **Superseded suspect list (written before the log check):**
 - **The harness.** An age transition reloads every game-scope UI script. In run 3 the harness re-attached at 22:02:09
   and would have re-run its first-turn actions: `addRuralPopulation`, `EXPAND` orders, `DESTROY_ELEMENT` and
@@ -86,12 +95,14 @@ another of our cities' first three rings, and neighbouring city centres, which t
 `over` run high. In run 3 London showed tiles over the bar from pass 8, but its first claim came on pass 18.
 **Fix:** skip tiles within `baseGrowthRadius` of any local city, matching `flipCandidates`.
 
-## [Low · Unconfirmed] War reads disagreed in harness run 3
+## [Resolved] War reads disagreed in harness run 3 - it was a peace, not a bug
 
 **Symptom:** the harness read player 3 as at war on turn 136 through `Diplomacy.isAtWarWith`. Yet on turns 155 and 156
-the mod took two of player 3's tiles, which `flipEligible` blocks at war. Either peace was made in between, or the
-mod's `atWar` read in `ui/cd-borders.js` fails open, which would also let flips and cessions cross an active front.
-**Verify:** log `atWar(me, owner)` in the flip path against a rival known to be at war.
+the mod took two of player 3's tiles, which `flipEligible` blocks at war.
+**Resolution (harness run 7, 2026-09-13):** run 7 logged, every turn, the engine's `isAtWarWith` and the mod's own
+`atWar` from `ui/cd-borders.js` for every rival. Across 25 turns they never disagreed. Both read player 3 as at war on
+turn 136 and at peace from turn 137 on, and every capture of player 3's tiles came after that peace. The war gate works
+as designed.
 
 ## [High · Confirmed] No known verb releases a city-attached tile
 
@@ -130,8 +141,55 @@ and rivals are ignored, so the real game will be slower.
 **In-game (harness run 3):** from an empty field on turn 136, London's first organic ring-4 claim was sent on pass 18,
 sooner than the estimate, likely because its culture rose during the run and roads and rivers speed diffusion. By pass
 24 the mod had sent nine flips, two of them rival tiles. Megiddo, at strength 7, never came close.
-**Decision:** strong and mid-size cities pace acceptably, so no retune for now. Revisit only if weak towns are meant to
-claim at all, for example with the lower bar and wider ring share from the table above.
+**New game (harness run 8, 2026-09-13), which reopens the decision above:** a brand-new game started through Play Now
+at shipped defaults ran 70 turns with the pass running every turn and made no claim at all. The harness only ended
+turns, so we kept one city, with culture 8 and injection strength about 12. Its centre stock reached 3,810 by turn 50,
+and no culture reached ring 4. The simulator, which predicts 3,866 for that city, gives the first ring-4 claim on
+open terrain at pace 0.8 as:
+
+| City strength | First ring-4 claim |
+| --- | --- |
+| 12 or less | never (400 turns) |
+| 14 | turn 203 |
+| 16 | turn 102 |
+| 20 | turn 63 |
+| 30 | turn 39 |
+| 50 | turn 30 |
+
+Below a strength of about 13, injection and decay balance before the centre can push 300 out to ring 4, so a young
+empire's cities claim nothing until their culture grows. That is most of the early game.
+**Needs a decision:** retune so early cities claim something, or document that the mod starts working mid-game. Options
+include a lower ownership bar on the first ring the mod may claim, a higher `injectBase`, or a ring share (`normalMax`)
+that carries more culture outward.
+
+## [Medium · Confirmed] Culture never gains land for the AI
+
+**Symptom:** the mod is one-sided. Rival settlements near our cities do inject into the field (`buildInjectors`), so
+their culture defends their tiles and slows ours. But only the local player ever gains a tile: `tryFlipCandidate`
+returns unless the winning culture is ours (`cd-pass.js:466`). With recede on, a rival can win back a tile the mod
+claimed for us, and nothing more. AI civilizations never take land from us or from each other by culture, and the field
+is only simulated around our cities.
+**Not an engine limit:** a rival city's `purchasePlot` works (the cession in harness run 3, confirmed through
+`cd-pending.js`), so a flip can be sent on an AI's behalf.
+**Needs a decision:** an opt-in two-sided mode, off by default. Sketch: let a tile flip to any living major whose
+culture wins it by the flip ratio, sent through that civilization's nearest city with the cession path recede already
+uses. Keep every existing gate (peace, core protection, adjacency, caps, cooldown). The base game's rings 1-3 around our
+cities stay out of reach, as they are for our claims. Rival-to-rival flips need the region to cover rival cities, which
+grows the pass time, so leave them for a second step.
+
+## [Medium · Confirmed] The pressure lens and its readout show flips the pass will never make
+
+**Symptom:** the lens paints every tile whose leading culture is not its owner (`pressureTiles`,
+`cd-pressure-lens.js:118`). The hover readout adds capture progress and an "At current pace ~N turns" line for the same
+tiles (`cd-pressure-tooltip.js:222-230`). But the pass only flips a tile to the local player (`cd-pass.js:466`), and
+cedes to a rival only with recede on and only a tile the mod claimed. So a tile where an AI's culture leads, whether
+unowned land or our own land with recede off, is painted in the AI's colour with a countdown that never ends in a flip.
+**In-game (harness run 10, turn 151):** two of the five contested tiles were unowned tiles led by the Hawaiian Empire:
+84,24 at 22% and 79,30 at 15%.
+**Fix sketch:** shade tiles and count down only where the pass can act. That means our culture leading on unowned or
+rival land, or, with recede on, a rival leading on a tile the mod claimed for us. Put that test in one shared predicate
+in `cd-field.js` so the lens, the readout and the pass cannot drift. A rival-led tile can still show its stocks, without
+a progress or turns line.
 
 ## [High · Confirmed] Default flip verb `setOwnership` records phantom claims
 

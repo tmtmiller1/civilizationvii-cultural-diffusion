@@ -1,0 +1,9 @@
+[2026-09-13 18:55:16]	[CDH] shell attached run5 
+[2026-09-13 18:55:17]	[CDH] shell query complete 
+[2026-09-13 18:55:18]	[CDH] shell found AugustusAnt136.Civ7Save turn 136 age AGE_ANTIQUITY missingMods=0 unowned=0 
+[2026-09-13 18:55:18]	[CDH] shell handleLoadSave returned true 
+[2026-09-13 18:55:20]	Unhandled Promise Rejection: ReferenceError: WorldUI is not defined.  Re-run with inspector attached for callstack. 
+[2026-09-13 18:55:20]	Unhandled rejection error value: ReferenceError: WorldUI is not defined
+[2026-09-13 18:55:36]	[CDH] attached run6 cdConsole=undefined 
+[2026-09-13 18:55:49]	[CDH] R6 GameStarted turn=136 cdConsole=undefined verdict=SHIPPED-BUILD-NOT-LOADED-IN-OLD-SAVE 
+[2026-09-13 18:55:49]	[CDH] DONE run6 

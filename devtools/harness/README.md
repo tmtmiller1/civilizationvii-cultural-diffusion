@@ -94,3 +94,59 @@ cession against a rival at peace. Two cautions for any rerun on AugustusAnt136:
   Guard any future script against a second run, for example with a flag in `Configuration`, before crossing an age.
 - Launch through Steam with `open "steam://rungameid/1295660"`. A direct launch a few seconds after a `pkill` stalled
   on "Steam wants us to restart".
+
+## Run 6 - the shipped build on an existing save, 2026-09-13
+
+Scripts `cdh-shell-run5.js` and `cdh-game-run6.js`, with the exact `dist/` build enabled and no `AffectsSavedGames`
+override. The question: does the mod run inside a save that was made without it? Result, log
+`run6-shipped-build-existing-save-UI.log`: no. The Modding log's mod list for the load held only the harness, and the
+mod never booted. A save keeps the mod list it was started with.
+
+## Run 7 - run 3's tests on the current build, 2026-09-13
+
+Script `cdh-game-run7.js`: run 3's R3, R4 and R7 tests, then 25 turns that each log a `WAR` line comparing the engine's
+`isAtWarWith` with the mod's `atWar`. Result, log `run7-run3-tests-current-build-UI.log`:
+- The war check never disagreed with the engine. Player 3 was at war on turn 136 and at peace from turn 137.
+- The game crashed during the Exploration startup, as run 3 did (`run7-crash-evidence.txt`). Run 5 took the same
+  route without the tests and did not crash, so the tests' script-only engine writes are implicated. The shipped mod
+  makes none of those writes.
+
+## Run 8 - a new game at shipped defaults, 2026-09-13
+
+Scripts `cdh-shell-run8.js` and `cdh-game-run8.js`. The shell script starts a new single-player game the way Play Now
+does: `Configuration.editGame().reset(GameModeTypes.SINGLEPLAYER)`, then `engine.call("startGame")`. The turn-1 save
+AugustusAnt1 could not stand in, because it needs an uninstalled dev mod. The game script logs every settlement founded,
+the mod's claims, and a summary every ten turns, then switches the pressure lens on after 70 turns.
+
+Result, log `run8-new-game-pacing-UI.log`: no claims in 70 turns. The harness only ends turns, so our civilization kept
+one city at Culture 8, and the nearest rival major settled 14 tiles away. The lens became active with its layer on.
+Screenshots from `screencapture -x` catch whatever window is in front. Capture the game window by id instead:
+`screencapture -x -o -l <id>`. `swift cdh-winid.swift` prints the id: the game's layer-0 window taller than 600
+pixels in `CGWindowListCopyWindowInfo`.
+
+## Runs 9 and 10 - the pressure lens, 2026-09-13
+
+Scripts `cdh-game-run9.js` and `cdh-game-run10.js`, both on AugustusAnt136 via `cdh-shell-run5.js`. Run 9 ends 12
+turns, centres the camera on our largest city, and switches the lens on. Run 10 ends turns until the lens's own
+contested-tile list, rebuilt with the lens's imports, holds four tiles. Then it logs the readout for the top tiles and
+shoots with the lens off and on.
+
+Results, logs `run9-lens-no-contested-tiles-UI.log` and `run10-lens-popup-covered-UI.log`:
+- Switching the lens hides the yield icons and shows the hex grid. A background window capture lags: 8 seconds after
+  the switch it still showed the old view. Wait about 20 seconds before shooting.
+- Run 9 had nothing to paint. Run 10 reached five contested tiles on turn 151, and the readout named the civilizations
+  correctly.
+- `Camera.lookAtPlot(tile)` centres the tile, and a queued Civic Unlocked popup covers the screen centre, so the tile
+  was hidden. The second `lookAtPlot` with `{ zoom: 0.3 }` did not visibly zoom.
+- Two of the five tiles were led by an AI on unowned land. The lens shades them, but the pass never flips them.
+
+## Run 11 - the lens paints, 2026-09-13
+
+Script `cdh-game-run11.js`: run 10, plus closing queued tech and civic popups with
+`TechCivicPopupManager.closePopup()` (five were queued), aiming the camera four columns east of the target tile, and
+shooting 20 and 30 seconds after switching the lens on. Result, log `run11-lens-paints-UI.log` and image
+`run11-lens-off-vs-on.png`: both background captures still matched the lens-off view pixel for pixel. The "age will
+soon end" popup also appeared, and closing tech popups does not clear it. With the game brought to the front
+(`osascript -e 'tell application id "com.2k.civ7" to activate'`), the view redrew within 6 seconds. The Hawaiian-owned
+tile 89,35, which British culture led at 25%, was filled in faint British purple. The game does not redraw while its
+window is hidden, so bring it to the front before any capture, then give the editor focus back.

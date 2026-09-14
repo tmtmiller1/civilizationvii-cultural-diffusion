@@ -7,6 +7,10 @@ normal city footprint into open land, and can take a rival's frontier tiles wher
 culture clearly wins there. This is a systemic answer to AI forward-settling: growing
 your cultural border is the deterrent.
 
+Culture gains land only for you. Nearby AI cities add their own culture to the field, which
+defends their tiles and slows yours, but the AI never takes land by culture. The one
+exception is the opt-in recede mode, where a rival can win back a tile the mod claimed for you.
+
 It runs in single-player only and sits behind an enable flag. Turning it off stops all new
 claims, but tiles it already claimed stay yours, because the game cannot hand a city's tile
 back to no one. It works standalone, and reads extra data from the
@@ -92,6 +96,11 @@ In test games on a mature save, the strongest city made its first ring-4 claim 1
 the mod started from an empty field. The mod held 29 claims after 45 turns, across an age
 change, and a town with little culture never came close.
 
+Early in a new game, expect nothing for a long while. In a 70-turn test game at the default
+settings, a capital making 8 Culture claimed no tiles at all. At that strength, the pacing model
+puts ring 4 out of reach. The mod starts claiming once a city's cultural power grows, so it
+matters most from the mid-game onward.
+
 An **overwhelming** culture injects a far bigger stock, so it pushes the *same* front
 out **faster and farther** - organically, without any artificial "you're the leader"
 switch. A weak or stagnant culture barely creeps past its border.
@@ -164,7 +173,8 @@ sooner.
 - **Follow diaspora (Emigration mod)** - read Emigration for ethnic-affinity
   diffusion. No effect if Emigration is absent.
 - **Pressure lens** - on by default; a read-only map lens (Shift+C) shading contested frontier
-  tiles, with a hover readout. Not yet watched on screen.
+  tiles, with a hover readout. Watched painting contested tiles in a test game. It also
+  shades tiles where an AI's culture leads, which never change hands.
 - **Debug logging** - per-pass diagnostics to `UI.log`: every injector's strength and
   city-tile stock (`inject`), each city's best ring-4 stock against the ownership bar
   (`frontier`), and the persisted state size and pass time (`state bytes=`).
@@ -297,7 +307,8 @@ This mod is a reimagining and extension of Gedemon's work, not a straight port.
   (`devtools/harness/`). Ownership changes land a moment after the call, so a claim shows up
   in the mod's state one turn after the tile changes colour. Debug logging's
   `pending ... NOT APPLIED` lines are the tell if a patch breaks the verbs.
-- Game-scope scripts bind at game **load** - test on a **new** game (or enable, then
-  save + reload), and redeploy by overwriting the folder in place rather than deleting
-  it. See [`docs/current-model.md`](docs/current-model.md) §2 for the full model write-up
+- The mod must be enabled when a game **starts**. A save keeps the mod list it was started
+  with, so enabling the mod later has no effect on that save; tested in-game with the release
+  build. When developing, redeploy by overwriting the folder in place rather than deleting it.
+- See [`docs/current-model.md`](docs/current-model.md) §2 for the full model write-up
   and [`docs/probe-history.md`](docs/probe-history.md) / [`probe/`](probe/) for the feasibility probe.

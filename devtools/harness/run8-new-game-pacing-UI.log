@@ -1,0 +1,527 @@
+[2026-09-13 19:13:15]	[CDH] shell attached run8b 
+[2026-09-13 19:13:28]	[CDH] shell config reset to single player 
+[2026-09-13 19:13:28]	[CDH] shell startGame called (Play Now) 
+[2026-09-13 19:13:30]	Unhandled Promise Rejection: ReferenceError: WorldUI is not defined.  Re-run with inspector attached for callstack. 
+[2026-09-13 19:13:30]	Unhandled rejection error value: ReferenceError: WorldUI is not defined
+[2026-09-13 19:13:40]	[CDH] attached run8 
+[2026-09-13 19:13:40]	[CulturalDiffusion] boot (turnInterval 1, verb purchasePlot, enabled true) 
+[2026-09-13 19:13:44]	[CulturalDiffusion] pass (turn 1): flips=0 field tiles=0 
+[2026-09-13 19:13:53]	[CDH] R8 start turn=1 ourCities=0 settlements=0 cd={"debug":true,"buffer":false,"recede":false,"enabled":true} 
+[2026-09-13 19:14:04]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:14:06]	[CulturalDiffusion] inject 18,6 civ=0 culture=0 vitality=5.75 strength=0 stock=0 cap=0 
+[2026-09-13 19:14:06]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=0 
+[2026-09-13 19:14:06]	[CulturalDiffusion] state bytes=77 field=0 claims=0 locked=0 passMs=4 
+[2026-09-13 19:14:06]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 0 active field tile(s) 
+[2026-09-13 19:14:06]	[CulturalDiffusion] pass (turn 2): flips=0 field tiles=0 
+[2026-09-13 19:14:11]	[CDH] CITY founded turn=2 owner=0 kind=ours town=false at=18,6 ourNearest=- ourCities=1 
+[2026-09-13 19:14:11]	[CDH] CITY founded turn=2 owner=1 kind=major town=false at=8,23 ourNearest=18 ourCities=1 
+[2026-09-13 19:14:11]	[CDH] CITY founded turn=2 owner=2 kind=major town=false at=60,11 ourNearest=34 ourCities=1 
+[2026-09-13 19:14:11]	[CDH] CITY founded turn=2 owner=5 kind=major town=false at=64,36 ourNearest=43 ourCities=1 
+[2026-09-13 19:14:11]	[CDH] TURN n=2 turn=2 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=1 
+[2026-09-13 19:14:22]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:14:23]	[CulturalDiffusion] inject 18,6 civ=0 culture=0 vitality=5.75 strength=0 stock=0 cap=0 
+[2026-09-13 19:14:23]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=0 
+[2026-09-13 19:14:23]	[CulturalDiffusion] state bytes=77 field=0 claims=0 locked=0 passMs=2 
+[2026-09-13 19:14:23]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 0 active field tile(s) 
+[2026-09-13 19:14:23]	[CulturalDiffusion] pass (turn 3): flips=0 field tiles=0 
+[2026-09-13 19:14:28]	[CDH] CITY founded turn=3 owner=3 kind=major town=false at=37,6 ourNearest=19 ourCities=1 
+[2026-09-13 19:14:28]	[CDH] CITY founded turn=3 owner=4 kind=major town=false at=37,36 ourNearest=34 ourCities=1 
+[2026-09-13 19:14:28]	[CDH] TURN n=3 turn=3 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=2 
+[2026-09-13 19:14:39]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:14:42]	[CulturalDiffusion] inject 18,6 civ=0 culture=1 vitality=7.8 strength=2.92 stock=10 cap=5839.73 
+[2026-09-13 19:14:42]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=10 
+[2026-09-13 19:14:42]	[CulturalDiffusion] state bytes=92 field=1 claims=0 locked=0 passMs=3 
+[2026-09-13 19:14:42]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 1 active field tile(s) 
+[2026-09-13 19:14:42]	[CulturalDiffusion] pass (turn 4): flips=0 field tiles=0 
+[2026-09-13 19:14:47]	[CDH] TURN n=4 turn=4 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=3 
+[2026-09-13 19:14:58]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:15:02]	[CulturalDiffusion] inject 18,6 civ=0 culture=1 vitality=7.8 strength=2.91 stock=22.06 cap=5819.55 
+[2026-09-13 19:15:02]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=22.06 
+[2026-09-13 19:15:02]	[CulturalDiffusion] state bytes=107 field=1 claims=0 locked=0 passMs=3 
+[2026-09-13 19:15:02]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 1 active field tile(s) 
+[2026-09-13 19:15:02]	[CulturalDiffusion] pass (turn 5): flips=0 field tiles=0 
+[2026-09-13 19:15:07]	[CDH] TURN n=5 turn=5 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=4 
+[2026-09-13 19:15:14]	[CulturalDiffusion] inject 18,6 civ=0 culture=1 vitality=7.8 strength=2.91 stock=35.25 cap=5819.55 
+[2026-09-13 19:15:14]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=35.25 
+[2026-09-13 19:15:14]	[CulturalDiffusion] state bytes=108 field=1 claims=0 locked=0 passMs=2 
+[2026-09-13 19:15:14]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 1 active field tile(s) 
+[2026-09-13 19:15:14]	[CulturalDiffusion] pass (turn 6): flips=0 field tiles=0 
+[2026-09-13 19:15:19]	[CDH] TURN n=6 turn=6 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=4 
+[2026-09-13 19:15:30]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:15:33]	[CulturalDiffusion] inject 18,6 civ=0 culture=1 vitality=7.8 strength=2.58 stock=48.42 cap=5152.13 
+[2026-09-13 19:15:33]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=48.42 
+[2026-09-13 19:15:33]	[CulturalDiffusion] state bytes=106 field=1 claims=0 locked=0 passMs=2 
+[2026-09-13 19:15:33]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 1 active field tile(s) 
+[2026-09-13 19:15:33]	[CulturalDiffusion] pass (turn 7): flips=0 field tiles=0 
+[2026-09-13 19:15:38]	[CDH] TURN n=7 turn=7 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=5 
+[2026-09-13 19:15:49]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:15:53]	[CulturalDiffusion] inject 18,6 civ=0 culture=2 vitality=8.95 strength=4.36 stock=66.76 cap=8728.91 
+[2026-09-13 19:15:53]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=66.76 
+[2026-09-13 19:15:53]	[CulturalDiffusion] state bytes=107 field=1 claims=0 locked=0 passMs=2 
+[2026-09-13 19:15:53]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 1 active field tile(s) 
+[2026-09-13 19:15:53]	[CulturalDiffusion] pass (turn 8): flips=0 field tiles=0 
+[2026-09-13 19:15:58]	[CDH] TURN n=8 turn=8 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=6 
+[2026-09-13 19:16:09]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:16:13]	[CulturalDiffusion] inject 18,6 civ=0 culture=2 vitality=8.95 strength=4.36 stock=86.23 cap=8728.91 
+[2026-09-13 19:16:13]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=86.23 
+[2026-09-13 19:16:13]	[CulturalDiffusion] state bytes=107 field=1 claims=0 locked=0 passMs=3 
+[2026-09-13 19:16:13]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 1 active field tile(s) 
+[2026-09-13 19:16:13]	[CulturalDiffusion] pass (turn 9): flips=0 field tiles=0 
+[2026-09-13 19:16:18]	[CDH] TURN n=9 turn=9 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=7 
+[2026-09-13 19:16:29]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:16:33]	[CulturalDiffusion] inject 18,6 civ=0 culture=2 vitality=8.95 strength=4.36 stock=106.61 cap=8728.91 
+[2026-09-13 19:16:33]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=106.61 
+[2026-09-13 19:16:33]	[CulturalDiffusion] state bytes=109 field=1 claims=0 locked=0 passMs=2 
+[2026-09-13 19:16:33]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 1 active field tile(s) 
+[2026-09-13 19:16:33]	[CulturalDiffusion] pass (turn 10): flips=0 field tiles=0 
+[2026-09-13 19:16:38]	[CDH] TURN n=10 turn=10 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=8 
+[2026-09-13 19:16:49]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:16:53]	[CulturalDiffusion] inject 18,6 civ=0 culture=3 vitality=9.4 strength=6.21 stock=135.13 cap=12427.52 
+[2026-09-13 19:16:53]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=135.13 
+[2026-09-13 19:16:53]	[CulturalDiffusion] state bytes=109 field=1 claims=0 locked=0 passMs=4 
+[2026-09-13 19:16:53]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 1 active field tile(s) 
+[2026-09-13 19:16:53]	[CulturalDiffusion] pass (turn 11): flips=0 field tiles=0 
+[2026-09-13 19:16:58]	[CDH] TURN n=11 turn=11 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=9 
+[2026-09-13 19:16:58]	[CDH] SUMMARY turn=11 elapsed=10 ourCities=1 rivalMajorsWithin6=0 [] cd={"claims":0,"pending":0} firstClaimTurn=null 
+[2026-09-13 19:17:09]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:17:13]	[CulturalDiffusion] inject 18,6 civ=0 culture=3 vitality=9.4 strength=6.08 stock=164.77 cap=12167.56 
+[2026-09-13 19:17:13]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=164.77 
+[2026-09-13 19:17:13]	[CulturalDiffusion] state bytes=140 field=2 claims=0 locked=0 passMs=3 
+[2026-09-13 19:17:13]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 2 active field tile(s) 
+[2026-09-13 19:17:13]	[CulturalDiffusion] pass (turn 12): flips=0 field tiles=0 
+[2026-09-13 19:17:18]	[CDH] TURN n=12 turn=12 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=10 
+[2026-09-13 19:17:29]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:17:33]	[CulturalDiffusion] inject 18,6 civ=0 culture=3 vitality=9.4 strength=6.08 stock=195.77 cap=12167.56 
+[2026-09-13 19:17:33]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=195.77 
+[2026-09-13 19:17:33]	[CulturalDiffusion] state bytes=140 field=2 claims=0 locked=0 passMs=3 
+[2026-09-13 19:17:33]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 2 active field tile(s) 
+[2026-09-13 19:17:33]	[CulturalDiffusion] pass (turn 13): flips=0 field tiles=0 
+[2026-09-13 19:17:38]	[CDH] TURN n=13 turn=13 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=11 
+[2026-09-13 19:17:49]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:17:52]	[CulturalDiffusion] inject 18,6 civ=0 culture=3 vitality=9.4 strength=6.08 stock=227.95 cap=12167.56 
+[2026-09-13 19:17:52]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=227.95 
+[2026-09-13 19:17:52]	[CulturalDiffusion] state bytes=139 field=2 claims=0 locked=0 passMs=2 
+[2026-09-13 19:17:52]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 2 active field tile(s) 
+[2026-09-13 19:17:52]	[CulturalDiffusion] pass (turn 14): flips=0 field tiles=0 
+[2026-09-13 19:17:57]	[CDH] TURN n=14 turn=14 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=12 
+[2026-09-13 19:18:09]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:18:12]	[CulturalDiffusion] inject 18,6 civ=0 culture=3 vitality=9.4 strength=6.08 stock=261.13 cap=12167.56 
+[2026-09-13 19:18:12]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=261.13 
+[2026-09-13 19:18:12]	[CulturalDiffusion] state bytes=139 field=2 claims=0 locked=0 passMs=2 
+[2026-09-13 19:18:12]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 2 active field tile(s) 
+[2026-09-13 19:18:12]	[CulturalDiffusion] pass (turn 15): flips=0 field tiles=0 
+[2026-09-13 19:18:17]	[CDH] TURN n=15 turn=15 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=13 
+[2026-09-13 19:18:28]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:18:32]	[CulturalDiffusion] inject 18,6 civ=0 culture=4 vitality=11.05 strength=7.99 stock=307.05 cap=15970.2 
+[2026-09-13 19:18:32]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=307.05 
+[2026-09-13 19:18:32]	[CulturalDiffusion] state bytes=235 field=5 claims=0 locked=0 passMs=3 
+[2026-09-13 19:18:32]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 5 active field tile(s) 
+[2026-09-13 19:18:32]	[CulturalDiffusion] pass (turn 16): flips=0 field tiles=0 
+[2026-09-13 19:18:37]	[CDH] TURN n=16 turn=16 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=14 
+[2026-09-13 19:18:48]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:18:56]	[CulturalDiffusion] inject 18,6 civ=0 culture=4 vitality=11.4 strength=8.09 stock=355.63 cap=16188.04 
+[2026-09-13 19:18:56]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=355.63 
+[2026-09-13 19:18:56]	[CulturalDiffusion] state bytes=233 field=5 claims=0 locked=0 passMs=2 
+[2026-09-13 19:18:56]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 5 active field tile(s) 
+[2026-09-13 19:18:56]	[CulturalDiffusion] pass (turn 17): flips=0 field tiles=0 
+[2026-09-13 19:19:01]	[CDH] TURN n=17 turn=17 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=15 
+[2026-09-13 19:19:12]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:19:20]	[CulturalDiffusion] inject 18,6 civ=0 culture=4 vitality=11.4 strength=8.09 stock=405.96 cap=16188.04 
+[2026-09-13 19:19:20]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=405.96 
+[2026-09-13 19:19:20]	[CulturalDiffusion] state bytes=263 field=6 claims=0 locked=0 passMs=3 
+[2026-09-13 19:19:20]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 6 active field tile(s) 
+[2026-09-13 19:19:20]	[CulturalDiffusion] pass (turn 18): flips=0 field tiles=0 
+[2026-09-13 19:19:25]	[CDH] TURN n=18 turn=18 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=16 
+[2026-09-13 19:19:37]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:19:47]	[CulturalDiffusion] inject 18,6 civ=0 culture=4 vitality=11.4 strength=7.58 stock=453.82 cap=15161.7 
+[2026-09-13 19:19:47]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=453.82 
+[2026-09-13 19:19:47]	[CulturalDiffusion] state bytes=262 field=6 claims=0 locked=0 passMs=2 
+[2026-09-13 19:19:47]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 6 active field tile(s) 
+[2026-09-13 19:19:47]	[CulturalDiffusion] pass (turn 19): flips=0 field tiles=0 
+[2026-09-13 19:19:52]	[CDH] TURN n=19 turn=19 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=17 
+[2026-09-13 19:20:03]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:20:06]	[CulturalDiffusion] inject 18,6 civ=0 culture=4 vitality=11.4 strength=7.8 stock=504.45 cap=15591.8 
+[2026-09-13 19:20:06]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=504.45 
+[2026-09-13 19:20:06]	[CulturalDiffusion] state bytes=264 field=6 claims=0 locked=0 passMs=1 
+[2026-09-13 19:20:06]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 6 active field tile(s) 
+[2026-09-13 19:20:06]	[CulturalDiffusion] pass (turn 20): flips=0 field tiles=0 
+[2026-09-13 19:20:11]	[CDH] TURN n=20 turn=20 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=18 
+[2026-09-13 19:20:22]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:20:26]	[CulturalDiffusion] inject 18,6 civ=0 culture=4 vitality=11.4 strength=7.8 stock=556.04 cap=15591.8 
+[2026-09-13 19:20:26]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=556.04 
+[2026-09-13 19:20:26]	[CulturalDiffusion] state bytes=296 field=7 claims=0 locked=0 passMs=2 
+[2026-09-13 19:20:26]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 7 active field tile(s) 
+[2026-09-13 19:20:26]	[CulturalDiffusion] pass (turn 21): flips=0 field tiles=0 
+[2026-09-13 19:20:31]	[CDH] TURN n=21 turn=21 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=19 
+[2026-09-13 19:20:31]	[CDH] SUMMARY turn=21 elapsed=20 ourCities=1 rivalMajorsWithin6=0 [] cd={"claims":0,"pending":0} firstClaimTurn=null 
+[2026-09-13 19:20:42]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:20:46]	[CulturalDiffusion] inject 18,6 civ=0 culture=4 vitality=11.4 strength=7.8 stock=608.44 cap=15591.8 
+[2026-09-13 19:20:46]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=608.44 
+[2026-09-13 19:20:46]	[CulturalDiffusion] state bytes=384 field=10 claims=0 locked=0 passMs=2 
+[2026-09-13 19:20:46]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 10 active field tile(s) 
+[2026-09-13 19:20:46]	[CulturalDiffusion] pass (turn 22): flips=0 field tiles=0 
+[2026-09-13 19:20:51]	[CDH] TURN n=22 turn=22 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=20 
+[2026-09-13 19:21:02]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:21:10]	[CulturalDiffusion] inject 18,6 civ=0 culture=4 vitality=11.15 strength=7.26 stock=656.35 cap=14515.66 
+[2026-09-13 19:21:10]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=656.35 
+[2026-09-13 19:21:10]	[CulturalDiffusion] state bytes=390 field=10 claims=0 locked=0 passMs=2 
+[2026-09-13 19:21:10]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 10 active field tile(s) 
+[2026-09-13 19:21:10]	[CulturalDiffusion] pass (turn 23): flips=0 field tiles=0 
+[2026-09-13 19:21:15]	[CDH] TURN n=23 turn=23 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=21 
+[2026-09-13 19:21:27]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:21:37]	[CulturalDiffusion] inject 18,6 civ=0 culture=4 vitality=11.15 strength=7.21 stock=704.06 cap=14417.88 
+[2026-09-13 19:21:37]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=704.06 
+[2026-09-13 19:21:37]	[CulturalDiffusion] state bytes=389 field=10 claims=0 locked=0 passMs=3 
+[2026-09-13 19:21:37]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 10 active field tile(s) 
+[2026-09-13 19:21:37]	[CulturalDiffusion] pass (turn 24): flips=0 field tiles=0 
+[2026-09-13 19:21:42]	[CDH] TURN n=24 turn=24 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=22 
+[2026-09-13 19:21:53]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:21:57]	[CulturalDiffusion] inject 18,6 civ=0 culture=4 vitality=11.15 strength=6.87 stock=748.43 cap=13733.95 
+[2026-09-13 19:21:57]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=748.43 
+[2026-09-13 19:21:57]	[CulturalDiffusion] state bytes=390 field=10 claims=0 locked=0 passMs=3 
+[2026-09-13 19:21:57]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 10 active field tile(s) 
+[2026-09-13 19:21:57]	[CulturalDiffusion] pass (turn 25): flips=0 field tiles=0 
+[2026-09-13 19:22:02]	[CDH] TURN n=25 turn=25 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=23 
+[2026-09-13 19:22:13]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:22:17]	[CulturalDiffusion] inject 18,6 civ=0 culture=4 vitality=11.15 strength=6.87 stock=792.77 cap=13733.95 
+[2026-09-13 19:22:17]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=792.77 
+[2026-09-13 19:22:17]	[CulturalDiffusion] state bytes=390 field=10 claims=0 locked=0 passMs=2 
+[2026-09-13 19:22:17]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 10 active field tile(s) 
+[2026-09-13 19:22:17]	[CulturalDiffusion] pass (turn 26): flips=0 field tiles=0 
+[2026-09-13 19:22:22]	[CDH] CITY founded turn=26 owner=1 kind=major town=true at=6,18 ourNearest=18 ourCities=1 
+[2026-09-13 19:22:22]	[CDH] TURN n=26 turn=26 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=24 
+[2026-09-13 19:22:33]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:22:36]	[CulturalDiffusion] inject 18,6 civ=0 culture=4 vitality=11.15 strength=6.74 stock=835.68 cap=13489.96 
+[2026-09-13 19:22:36]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=835.68 
+[2026-09-13 19:22:36]	[CulturalDiffusion] state bytes=391 field=10 claims=0 locked=0 passMs=2 
+[2026-09-13 19:22:36]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 10 active field tile(s) 
+[2026-09-13 19:22:36]	[CulturalDiffusion] pass (turn 27): flips=0 field tiles=0 
+[2026-09-13 19:22:41]	[CDH] TURN n=27 turn=27 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=25 
+[2026-09-13 19:22:53]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:22:56]	[CulturalDiffusion] inject 18,6 civ=0 culture=6 vitality=13.95 strength=12.9 stock=947.32 cap=25798.18 
+[2026-09-13 19:22:56]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=947.32 
+[2026-09-13 19:22:56]	[CulturalDiffusion] state bytes=391 field=10 claims=0 locked=0 passMs=4 
+[2026-09-13 19:22:56]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 10 active field tile(s) 
+[2026-09-13 19:22:56]	[CulturalDiffusion] pass (turn 28): flips=0 field tiles=0 
+[2026-09-13 19:23:01]	[CDH] CITY founded turn=28 owner=3 kind=major town=true at=32,6 ourNearest=14 ourCities=1 
+[2026-09-13 19:23:01]	[CDH] CITY founded turn=28 owner=5 kind=major town=true at=60,38 ourNearest=48 ourCities=1 
+[2026-09-13 19:23:01]	[CDH] TURN n=28 turn=28 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=26 
+[2026-09-13 19:23:13]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:23:16]	[CulturalDiffusion] inject 18,6 civ=0 culture=8 vitality=13.95 strength=15.93 stock=1098.89 cap=31866.89 
+[2026-09-13 19:23:16]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=1098.89 
+[2026-09-13 19:23:16]	[CulturalDiffusion] state bytes=388 field=10 claims=0 locked=0 passMs=2 
+[2026-09-13 19:23:16]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 10 active field tile(s) 
+[2026-09-13 19:23:16]	[CulturalDiffusion] pass (turn 29): flips=0 field tiles=0 
+[2026-09-13 19:23:21]	[CDH] TURN n=29 turn=29 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=27 
+[2026-09-13 19:23:33]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:23:37]	[CulturalDiffusion] inject 18,6 civ=0 culture=8 vitality=13.95 strength=15.9 stock=1257.05 cap=31796.14 
+[2026-09-13 19:23:37]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=1257.05 
+[2026-09-13 19:23:37]	[CulturalDiffusion] state bytes=391 field=10 claims=0 locked=0 passMs=2 
+[2026-09-13 19:23:37]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 10 active field tile(s) 
+[2026-09-13 19:23:37]	[CulturalDiffusion] pass (turn 30): flips=0 field tiles=0 
+[2026-09-13 19:23:42]	[CDH] CITY founded turn=30 owner=14 kind=minor town=true at=66,14 ourNearest=30 ourCities=1 
+[2026-09-13 19:23:42]	[CDH] TURN n=30 turn=30 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=28 
+[2026-09-13 19:23:53]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:23:57]	[CulturalDiffusion] inject 18,6 civ=0 culture=8 vitality=13.95 strength=15.64 stock=1418.02 cap=31288.96 
+[2026-09-13 19:23:57]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=1418.02 
+[2026-09-13 19:23:57]	[CulturalDiffusion] state bytes=387 field=10 claims=0 locked=0 passMs=2 
+[2026-09-13 19:23:57]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 10 active field tile(s) 
+[2026-09-13 19:23:57]	[CulturalDiffusion] pass (turn 31): flips=0 field tiles=0 
+[2026-09-13 19:24:02]	[CDH] TURN n=31 turn=31 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=29 
+[2026-09-13 19:24:02]	[CDH] SUMMARY turn=31 elapsed=30 ourCities=1 rivalMajorsWithin6=0 [] cd={"claims":0,"pending":0} firstClaimTurn=null 
+[2026-09-13 19:24:13]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:24:16]	[CulturalDiffusion] inject 18,6 civ=0 culture=8 vitality=13.95 strength=15.55 stock=1582.85 cap=31091.34 
+[2026-09-13 19:24:16]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=1582.85 
+[2026-09-13 19:24:16]	[CulturalDiffusion] state bytes=393 field=10 claims=0 locked=0 passMs=4 
+[2026-09-13 19:24:16]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 10 active field tile(s) 
+[2026-09-13 19:24:16]	[CulturalDiffusion] pass (turn 32): flips=0 field tiles=0 
+[2026-09-13 19:24:22]	[CDH] TURN n=32 turn=32 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=30 
+[2026-09-13 19:24:33]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:24:39]	[CulturalDiffusion] inject 18,6 civ=0 culture=8 vitality=13.95 strength=15.45 stock=1750.84 cap=30909.32 
+[2026-09-13 19:24:39]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=1750.84 
+[2026-09-13 19:24:39]	[CulturalDiffusion] state bytes=390 field=10 claims=0 locked=0 passMs=3 
+[2026-09-13 19:24:39]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 10 active field tile(s) 
+[2026-09-13 19:24:39]	[CulturalDiffusion] pass (turn 33): flips=0 field tiles=0 
+[2026-09-13 19:24:44]	[CDH] TURN n=33 turn=33 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=31 
+[2026-09-13 19:24:55]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:25:00]	[CulturalDiffusion] inject 18,6 civ=0 culture=7 vitality=12.8 strength=10.57 stock=1843.54 cap=21134.1 
+[2026-09-13 19:25:00]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=1843.54 
+[2026-09-13 19:25:00]	[CulturalDiffusion] state bytes=485 field=13 claims=0 locked=0 passMs=3 
+[2026-09-13 19:25:00]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 13 active field tile(s) 
+[2026-09-13 19:25:00]	[CulturalDiffusion] pass (turn 34): flips=0 field tiles=0 
+[2026-09-13 19:25:05]	[CDH] CITY founded turn=34 owner=11 kind=minor town=true at=7,37 ourNearest=31 ourCities=1 
+[2026-09-13 19:25:05]	[CDH] TURN n=34 turn=34 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=32 
+[2026-09-13 19:25:16]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:25:21]	[CulturalDiffusion] inject 18,6 civ=0 culture=7 vitality=14.25 strength=11.59 stock=1953.07 cap=23176.01 
+[2026-09-13 19:25:21]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=1953.07 
+[2026-09-13 19:25:21]	[CulturalDiffusion] state bytes=491 field=13 claims=0 locked=0 passMs=3 
+[2026-09-13 19:25:21]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 13 active field tile(s) 
+[2026-09-13 19:25:21]	[CulturalDiffusion] pass (turn 35): flips=0 field tiles=0 
+[2026-09-13 19:25:26]	[CDH] TURN n=35 turn=35 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=33 
+[2026-09-13 19:25:37]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:25:41]	[CulturalDiffusion] inject 18,6 civ=0 culture=7 vitality=14.25 strength=10.88 stock=2050.7 cap=21767.05 
+[2026-09-13 19:25:41]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=2050.7 
+[2026-09-13 19:25:41]	[CulturalDiffusion] state bytes=549 field=15 claims=0 locked=0 passMs=4 
+[2026-09-13 19:25:41]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 15 active field tile(s) 
+[2026-09-13 19:25:41]	[CulturalDiffusion] pass (turn 36): flips=0 field tiles=0 
+[2026-09-13 19:25:46]	[CDH] CITY founded turn=36 owner=1 kind=major town=true at=4,25 ourNearest=23 ourCities=1 
+[2026-09-13 19:25:46]	[CDH] CITY founded turn=36 owner=20 kind=minor town=true at=42,33 ourNearest=38 ourCities=1 
+[2026-09-13 19:25:46]	[CDH] TURN n=36 turn=36 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=34 
+[2026-09-13 19:25:57]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:26:01]	[CulturalDiffusion] inject 18,6 civ=0 culture=7 vitality=14.25 strength=10.82 stock=2146.89 cap=21634.92 
+[2026-09-13 19:26:01]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=2146.89 
+[2026-09-13 19:26:01]	[CulturalDiffusion] state bytes=544 field=15 claims=0 locked=0 passMs=3 
+[2026-09-13 19:26:01]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 15 active field tile(s) 
+[2026-09-13 19:26:01]	[CulturalDiffusion] pass (turn 37): flips=0 field tiles=0 
+[2026-09-13 19:26:06]	[CDH] TURN n=37 turn=37 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=35 
+[2026-09-13 19:26:17]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:26:21]	[CulturalDiffusion] inject 18,6 civ=0 culture=7 vitality=14.15 strength=10.62 stock=2239.13 cap=21241.62 
+[2026-09-13 19:26:21]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=2239.13 
+[2026-09-13 19:26:21]	[CulturalDiffusion] state bytes=544 field=15 claims=0 locked=0 passMs=3 
+[2026-09-13 19:26:21]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 15 active field tile(s) 
+[2026-09-13 19:26:21]	[CulturalDiffusion] pass (turn 38): flips=0 field tiles=0 
+[2026-09-13 19:26:26]	[CDH] CITY founded turn=38 owner=4 kind=major town=true at=32,37 ourNearest=31 ourCities=1 
+[2026-09-13 19:26:26]	[CDH] TURN n=38 turn=38 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=36 
+[2026-09-13 19:26:38]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:26:46]	[CulturalDiffusion] inject 18,6 civ=0 culture=7 vitality=14.15 strength=10.62 stock=2330.82 cap=21241.62 
+[2026-09-13 19:26:46]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=2330.82 
+[2026-09-13 19:26:46]	[CulturalDiffusion] state bytes=543 field=15 claims=0 locked=0 passMs=3 
+[2026-09-13 19:26:46]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 15 active field tile(s) 
+[2026-09-13 19:26:46]	[CulturalDiffusion] pass (turn 39): flips=0 field tiles=0 
+[2026-09-13 19:26:51]	[CDH] TURN n=39 turn=39 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=37 
+[2026-09-13 19:27:03]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:27:11]	[CulturalDiffusion] inject 18,6 civ=0 culture=7 vitality=14.15 strength=10.54 stock=2420.34 cap=21077.81 
+[2026-09-13 19:27:11]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=2420.34 
+[2026-09-13 19:27:11]	[CulturalDiffusion] state bytes=578 field=16 claims=0 locked=0 passMs=4 
+[2026-09-13 19:27:11]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 16 active field tile(s) 
+[2026-09-13 19:27:11]	[CulturalDiffusion] pass (turn 40): flips=0 field tiles=0 
+[2026-09-13 19:27:16]	[CDH] TURN n=40 turn=40 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=38 
+[2026-09-13 19:27:27]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:27:38]	[CulturalDiffusion] inject 18,6 civ=0 culture=8 vitality=15.25 strength=11.85 stock=2534.12 cap=23700.54 
+[2026-09-13 19:27:38]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=2534.12 
+[2026-09-13 19:27:38]	[CulturalDiffusion] state bytes=576 field=16 claims=0 locked=0 passMs=3 
+[2026-09-13 19:27:38]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 16 active field tile(s) 
+[2026-09-13 19:27:38]	[CulturalDiffusion] pass (turn 41): flips=0 field tiles=0 
+[2026-09-13 19:27:43]	[CDH] TURN n=41 turn=41 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=39 
+[2026-09-13 19:27:43]	[CDH] SUMMARY turn=41 elapsed=40 ourCities=1 rivalMajorsWithin6=0 [] cd={"claims":0,"pending":0} firstClaimTurn=null 
+[2026-09-13 19:27:54]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:28:02]	[CulturalDiffusion] inject 18,6 civ=0 culture=8 vitality=15.25 strength=11.97 stock=2649.79 cap=23939.93 
+[2026-09-13 19:28:02]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=2649.79 
+[2026-09-13 19:28:02]	[CulturalDiffusion] state bytes=575 field=16 claims=0 locked=0 passMs=3 
+[2026-09-13 19:28:02]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 16 active field tile(s) 
+[2026-09-13 19:28:02]	[CulturalDiffusion] pass (turn 42): flips=0 field tiles=0 
+[2026-09-13 19:28:07]	[CDH] CITY founded turn=42 owner=12 kind=minor town=true at=61,27 ourNearest=41 ourCities=1 
+[2026-09-13 19:28:07]	[CDH] TURN n=42 turn=42 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=40 
+[2026-09-13 19:28:18]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:28:29]	[CulturalDiffusion] inject 18,6 civ=0 culture=9 vitality=17.15 strength=13.65 stock=2798.41 cap=27297.46 
+[2026-09-13 19:28:29]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=2798.41 
+[2026-09-13 19:28:29]	[CulturalDiffusion] state bytes=581 field=16 claims=0 locked=0 passMs=2 
+[2026-09-13 19:28:29]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 16 active field tile(s) 
+[2026-09-13 19:28:29]	[CulturalDiffusion] pass (turn 43): flips=0 field tiles=0 
+[2026-09-13 19:28:34]	[CDH] TURN n=43 turn=43 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=41 
+[2026-09-13 19:28:46]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:28:49]	[CulturalDiffusion] inject 18,6 civ=0 culture=8 vitality=17.15 strength=12.61 stock=2925.93 cap=25229.05 
+[2026-09-13 19:28:49]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=2925.93 
+[2026-09-13 19:28:49]	[CulturalDiffusion] state bytes=576 field=16 claims=0 locked=0 passMs=2 
+[2026-09-13 19:28:49]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 16 active field tile(s) 
+[2026-09-13 19:28:49]	[CulturalDiffusion] pass (turn 44): flips=0 field tiles=0 
+[2026-09-13 19:28:55]	[CDH] CITY founded turn=44 owner=2 kind=major town=true at=69,11 ourNearest=25 ourCities=1 
+[2026-09-13 19:28:55]	[CDH] TURN n=44 turn=44 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=42 
+[2026-09-13 19:29:06]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:29:10]	[CulturalDiffusion] inject 18,6 civ=0 culture=8 vitality=17.15 strength=12.25 stock=3045.31 cap=24504.08 
+[2026-09-13 19:29:10]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=3045.31 
+[2026-09-13 19:29:10]	[CulturalDiffusion] state bytes=706 field=20 claims=0 locked=0 passMs=3 
+[2026-09-13 19:29:10]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 20 active field tile(s) 
+[2026-09-13 19:29:10]	[CulturalDiffusion] pass (turn 45): flips=0 field tiles=0 
+[2026-09-13 19:29:15]	[CDH] TURN n=45 turn=45 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=43 
+[2026-09-13 19:29:26]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:29:30]	[CulturalDiffusion] inject 18,6 civ=0 culture=8 vitality=17.15 strength=12.24 stock=3163.58 cap=24473.62 
+[2026-09-13 19:29:30]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=3163.58 
+[2026-09-13 19:29:30]	[CulturalDiffusion] state bytes=737 field=21 claims=0 locked=0 passMs=3 
+[2026-09-13 19:29:30]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 21 active field tile(s) 
+[2026-09-13 19:29:30]	[CulturalDiffusion] pass (turn 46): flips=0 field tiles=0 
+[2026-09-13 19:29:35]	[CDH] TURN n=46 turn=46 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=44 
+[2026-09-13 19:29:46]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:29:51]	[CulturalDiffusion] inject 18,6 civ=0 culture=8 vitality=17.15 strength=12.2 stock=3280.17 cap=24400.57 
+[2026-09-13 19:29:51]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=3280.17 
+[2026-09-13 19:29:51]	[CulturalDiffusion] state bytes=737 field=21 claims=0 locked=0 passMs=3 
+[2026-09-13 19:29:51]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 21 active field tile(s) 
+[2026-09-13 19:29:51]	[CulturalDiffusion] pass (turn 47): flips=0 field tiles=0 
+[2026-09-13 19:29:56]	[CDH] TURN n=47 turn=47 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=45 
+[2026-09-13 19:30:07]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:30:12]	[CulturalDiffusion] inject 18,6 civ=0 culture=8 vitality=17.15 strength=12.21 stock=3396.11 cap=24429.85 
+[2026-09-13 19:30:12]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=3396.11 
+[2026-09-13 19:30:12]	[CulturalDiffusion] state bytes=740 field=21 claims=0 locked=0 passMs=2 
+[2026-09-13 19:30:12]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 21 active field tile(s) 
+[2026-09-13 19:30:12]	[CulturalDiffusion] pass (turn 48): flips=0 field tiles=0 
+[2026-09-13 19:30:17]	[CDH] TURN n=48 turn=48 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=46 
+[2026-09-13 19:30:28]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:30:39]	[CulturalDiffusion] inject 18,6 civ=0 culture=8 vitality=17.15 strength=11.86 stock=3502.89 cap=23711.42 
+[2026-09-13 19:30:39]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=3502.89 
+[2026-09-13 19:30:39]	[CulturalDiffusion] state bytes=738 field=21 claims=0 locked=0 passMs=4 
+[2026-09-13 19:30:39]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 21 active field tile(s) 
+[2026-09-13 19:30:39]	[CulturalDiffusion] pass (turn 49): flips=0 field tiles=0 
+[2026-09-13 19:30:44]	[CDH] TURN n=49 turn=49 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=47 
+[2026-09-13 19:30:55]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:31:00]	[CulturalDiffusion] inject 18,6 civ=0 culture=8 vitality=17.15 strength=11.8 stock=3607.27 cap=23603.35 
+[2026-09-13 19:31:00]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=3607.27 
+[2026-09-13 19:31:00]	[CulturalDiffusion] state bytes=739 field=21 claims=0 locked=0 passMs=2 
+[2026-09-13 19:31:00]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 21 active field tile(s) 
+[2026-09-13 19:31:00]	[CulturalDiffusion] pass (turn 50): flips=0 field tiles=0 
+[2026-09-13 19:31:05]	[CDH] TURN n=50 turn=50 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=48 
+[2026-09-13 19:31:16]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:31:20]	[CulturalDiffusion] inject 18,6 civ=0 culture=8 vitality=17.15 strength=11.8 stock=3710.43 cap=23603.35 
+[2026-09-13 19:31:20]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=3710.43 
+[2026-09-13 19:31:20]	[CulturalDiffusion] state bytes=739 field=21 claims=0 locked=0 passMs=4 
+[2026-09-13 19:31:20]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 21 active field tile(s) 
+[2026-09-13 19:31:20]	[CulturalDiffusion] pass (turn 51): flips=0 field tiles=0 
+[2026-09-13 19:31:25]	[CDH] CITY founded turn=51 owner=9 kind=minor town=true at=25,8 ourNearest=8 ourCities=1 
+[2026-09-13 19:31:25]	[CDH] TURN n=51 turn=51 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=49 
+[2026-09-13 19:31:25]	[CDH] SUMMARY turn=51 elapsed=50 ourCities=1 rivalMajorsWithin6=0 [] cd={"claims":0,"pending":0} firstClaimTurn=null 
+[2026-09-13 19:31:36]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:31:41]	[CulturalDiffusion] inject 18,6 civ=0 culture=8 vitality=17.15 strength=11.71 stock=3810.05 cap=23410.63 
+[2026-09-13 19:31:41]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=3810.05 
+[2026-09-13 19:31:41]	[CulturalDiffusion] state bytes=740 field=21 claims=0 locked=0 passMs=3 
+[2026-09-13 19:31:41]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 21 active field tile(s) 
+[2026-09-13 19:31:41]	[CulturalDiffusion] pass (turn 52): flips=0 field tiles=0 
+[2026-09-13 19:31:46]	[CDH] CITY founded turn=52 owner=2 kind=major town=true at=70,6 ourNearest=22 ourCities=1 
+[2026-09-13 19:31:46]	[CDH] TURN n=52 turn=52 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=50 
+[2026-09-13 19:31:57]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:32:01]	[CulturalDiffusion] inject 18,6 civ=0 culture=8 vitality=17.15 strength=11.73 stock=3908.98 cap=23460.67 
+[2026-09-13 19:32:01]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=3908.98 
+[2026-09-13 19:32:01]	[CulturalDiffusion] state bytes=734 field=21 claims=0 locked=0 passMs=3 
+[2026-09-13 19:32:01]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 21 active field tile(s) 
+[2026-09-13 19:32:01]	[CulturalDiffusion] pass (turn 53): flips=0 field tiles=0 
+[2026-09-13 19:32:06]	[CDH] TURN n=53 turn=53 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=51 
+[2026-09-13 19:32:17]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:32:21]	[CulturalDiffusion] inject 18,6 civ=0 culture=8 vitality=17.15 strength=11.77 stock=4007.45 cap=23532.77 
+[2026-09-13 19:32:21]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=4007.45 
+[2026-09-13 19:32:21]	[CulturalDiffusion] state bytes=739 field=21 claims=0 locked=0 passMs=2 
+[2026-09-13 19:32:21]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 21 active field tile(s) 
+[2026-09-13 19:32:21]	[CulturalDiffusion] pass (turn 54): flips=0 field tiles=0 
+[2026-09-13 19:32:26]	[CDH] TURN n=54 turn=54 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=52 
+[2026-09-13 19:32:37]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:32:42]	[CulturalDiffusion] inject 18,6 civ=0 culture=8 vitality=17.15 strength=11.71 stock=4103.17 cap=23419.61 
+[2026-09-13 19:32:42]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=4103.17 
+[2026-09-13 19:32:42]	[CulturalDiffusion] state bytes=734 field=21 claims=0 locked=0 passMs=3 
+[2026-09-13 19:32:42]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 21 active field tile(s) 
+[2026-09-13 19:32:42]	[CulturalDiffusion] pass (turn 55): flips=0 field tiles=0 
+[2026-09-13 19:32:47]	[CDH] TURN n=55 turn=55 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=53 
+[2026-09-13 19:32:58]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:33:03]	[CulturalDiffusion] inject 18,6 civ=0 culture=8 vitality=17.15 strength=11.5 stock=4192.27 cap=22995.86 
+[2026-09-13 19:33:03]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=4192.27 
+[2026-09-13 19:33:03]	[CulturalDiffusion] state bytes=732 field=21 claims=0 locked=0 passMs=3 
+[2026-09-13 19:33:03]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 21 active field tile(s) 
+[2026-09-13 19:33:03]	[CulturalDiffusion] pass (turn 56): flips=0 field tiles=0 
+[2026-09-13 19:33:08]	[CDH] TURN n=56 turn=56 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=54 
+[2026-09-13 19:33:19]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:33:23]	[CulturalDiffusion] inject 18,6 civ=0 culture=8 vitality=17.15 strength=11.57 stock=4281.71 cap=23133.56 
+[2026-09-13 19:33:23]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=4281.71 
+[2026-09-13 19:33:23]	[CulturalDiffusion] state bytes=736 field=21 claims=0 locked=0 passMs=3 
+[2026-09-13 19:33:23]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 21 active field tile(s) 
+[2026-09-13 19:33:23]	[CulturalDiffusion] pass (turn 57): flips=0 field tiles=0 
+[2026-09-13 19:33:28]	[CDH] TURN n=57 turn=57 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=55 
+[2026-09-13 19:33:39]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:33:44]	[CulturalDiffusion] inject 18,6 civ=0 culture=8 vitality=17.15 strength=11.48 stock=4367.6 cap=22963.02 
+[2026-09-13 19:33:44]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=4367.6 
+[2026-09-13 19:33:44]	[CulturalDiffusion] state bytes=735 field=21 claims=0 locked=0 passMs=2 
+[2026-09-13 19:33:44]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 21 active field tile(s) 
+[2026-09-13 19:33:44]	[CulturalDiffusion] pass (turn 58): flips=0 field tiles=0 
+[2026-09-13 19:33:49]	[CDH] TURN n=58 turn=58 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=56 
+[2026-09-13 19:34:00]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:34:07]	[CulturalDiffusion] inject 18,6 civ=0 culture=8 vitality=17.35 strength=11.17 stock=4444.16 cap=22343.23 
+[2026-09-13 19:34:07]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=4444.16 
+[2026-09-13 19:34:07]	[CulturalDiffusion] state bytes=736 field=21 claims=0 locked=0 passMs=2 
+[2026-09-13 19:34:07]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 21 active field tile(s) 
+[2026-09-13 19:34:07]	[CulturalDiffusion] pass (turn 59): flips=0 field tiles=0 
+[2026-09-13 19:34:12]	[CDH] TURN n=59 turn=59 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=57 
+[2026-09-13 19:34:23]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:34:31]	[CulturalDiffusion] inject 18,6 civ=0 culture=8 vitality=20.55 strength=11.88 stock=4537.67 cap=23758.73 
+[2026-09-13 19:34:31]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=4537.67 
+[2026-09-13 19:34:31]	[CulturalDiffusion] state bytes=736 field=21 claims=0 locked=0 passMs=6 
+[2026-09-13 19:34:31]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 21 active field tile(s) 
+[2026-09-13 19:34:31]	[CulturalDiffusion] pass (turn 60): flips=0 field tiles=0 
+[2026-09-13 19:34:36]	[CDH] TURN n=60 turn=60 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=58 
+[2026-09-13 19:34:47]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:34:51]	[CulturalDiffusion] inject 18,6 civ=0 culture=8 vitality=20.55 strength=11.89 stock=4629.88 cap=23771.82 
+[2026-09-13 19:34:51]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=4629.88 
+[2026-09-13 19:34:51]	[CulturalDiffusion] state bytes=735 field=21 claims=0 locked=0 passMs=2 
+[2026-09-13 19:34:51]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 21 active field tile(s) 
+[2026-09-13 19:34:51]	[CulturalDiffusion] pass (turn 61): flips=0 field tiles=0 
+[2026-09-13 19:34:56]	[CDH] TURN n=61 turn=61 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=59 
+[2026-09-13 19:34:56]	[CDH] SUMMARY turn=61 elapsed=60 ourCities=1 rivalMajorsWithin6=0 [] cd={"claims":0,"pending":0} firstClaimTurn=null 
+[2026-09-13 19:35:07]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:35:11]	[CulturalDiffusion] inject 18,6 civ=0 culture=8 vitality=20.55 strength=11.58 stock=4712.63 cap=23165.46 
+[2026-09-13 19:35:11]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=4712.63 
+[2026-09-13 19:35:11]	[CulturalDiffusion] state bytes=734 field=21 claims=0 locked=0 passMs=3 
+[2026-09-13 19:35:11]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 21 active field tile(s) 
+[2026-09-13 19:35:11]	[CulturalDiffusion] pass (turn 62): flips=0 field tiles=0 
+[2026-09-13 19:35:16]	[CDH] TURN n=62 turn=62 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=60 
+[2026-09-13 19:35:27]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:35:40]	[CulturalDiffusion] inject 18,6 civ=0 culture=7 vitality=16.95 strength=9.44 stock=4737.05 cap=18884.96 
+[2026-09-13 19:35:40]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=4737.05 
+[2026-09-13 19:35:40]	[CulturalDiffusion] state bytes=732 field=21 claims=0 locked=0 passMs=3 
+[2026-09-13 19:35:40]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 21 active field tile(s) 
+[2026-09-13 19:35:40]	[CulturalDiffusion] pass (turn 63): flips=0 field tiles=0 
+[2026-09-13 19:35:45]	[CDH] CITY founded turn=63 owner=1 kind=major town=true at=9,28 ourNearest=22 ourCities=1 
+[2026-09-13 19:35:45]	[CDH] TURN n=63 turn=63 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=61 
+[2026-09-13 19:35:57]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:36:16]	[CulturalDiffusion] inject 18,6 civ=0 culture=8 vitality=19.65 strength=11.24 stock=4808.68 cap=22470.29 
+[2026-09-13 19:36:16]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=4808.68 
+[2026-09-13 19:36:16]	[CulturalDiffusion] state bytes=763 field=22 claims=0 locked=0 passMs=3 
+[2026-09-13 19:36:16]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 22 active field tile(s) 
+[2026-09-13 19:36:16]	[CulturalDiffusion] pass (turn 64): flips=0 field tiles=0 
+[2026-09-13 19:36:21]	[CDH] TURN n=64 turn=64 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=62 
+[2026-09-13 19:36:32]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:36:45]	[CulturalDiffusion] inject 18,6 civ=0 culture=8 vitality=19.3 strength=11.16 stock=4876.87 cap=22312.45 
+[2026-09-13 19:36:45]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=4876.87 
+[2026-09-13 19:36:45]	[CulturalDiffusion] state bytes=761 field=22 claims=0 locked=0 passMs=2 
+[2026-09-13 19:36:45]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 22 active field tile(s) 
+[2026-09-13 19:36:45]	[CulturalDiffusion] pass (turn 65): flips=0 field tiles=0 
+[2026-09-13 19:36:50]	[CDH] TURN n=65 turn=65 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=63 
+[2026-09-13 19:37:01]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:37:09]	[CulturalDiffusion] inject 18,6 civ=0 culture=8 vitality=19 strength=11.31 stock=4948.06 cap=22629.91 
+[2026-09-13 19:37:09]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=4948.06 
+[2026-09-13 19:37:09]	[CulturalDiffusion] state bytes=766 field=22 claims=0 locked=0 passMs=3 
+[2026-09-13 19:37:09]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 22 active field tile(s) 
+[2026-09-13 19:37:09]	[CulturalDiffusion] pass (turn 66): flips=0 field tiles=0 
+[2026-09-13 19:37:14]	[CDH] TURN n=66 turn=66 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=64 
+[2026-09-13 19:37:25]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:37:33]	[CulturalDiffusion] inject 18,6 civ=0 culture=8 vitality=19.3 strength=11.16 stock=5013.67 cap=22318 
+[2026-09-13 19:37:33]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=5013.67 
+[2026-09-13 19:37:33]	[CulturalDiffusion] state bytes=764 field=22 claims=0 locked=0 passMs=3 
+[2026-09-13 19:37:33]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 22 active field tile(s) 
+[2026-09-13 19:37:33]	[CulturalDiffusion] pass (turn 67): flips=0 field tiles=0 
+[2026-09-13 19:37:38]	[CDH] TURN n=67 turn=67 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=65 
+[2026-09-13 19:37:49]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:37:53]	[CulturalDiffusion] inject 18,6 civ=0 culture=8 vitality=19.3 strength=11.16 stock=5078.12 cap=22326.37 
+[2026-09-13 19:37:53]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=5078.12 
+[2026-09-13 19:37:53]	[CulturalDiffusion] state bytes=767 field=22 claims=0 locked=0 passMs=2 
+[2026-09-13 19:37:53]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 22 active field tile(s) 
+[2026-09-13 19:37:53]	[CulturalDiffusion] pass (turn 68): flips=0 field tiles=0 
+[2026-09-13 19:37:58]	[CDH] TURN n=68 turn=68 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=66 
+[2026-09-13 19:38:10]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:38:16]	[CulturalDiffusion] inject 18,6 civ=0 culture=10 vitality=19.65 strength=12.42 stock=5176.01 cap=24841.44 
+[2026-09-13 19:38:16]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=5176.01 
+[2026-09-13 19:38:16]	[CulturalDiffusion] state bytes=766 field=22 claims=0 locked=0 passMs=5 
+[2026-09-13 19:38:16]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 22 active field tile(s) 
+[2026-09-13 19:38:16]	[CulturalDiffusion] pass (turn 69): flips=0 field tiles=0 
+[2026-09-13 19:38:21]	[CDH] TURN n=69 turn=69 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=67 
+[2026-09-13 19:38:32]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:38:37]	[CulturalDiffusion] inject 18,6 civ=0 culture=10 vitality=19.65 strength=12.32 stock=5269.43 cap=24635.14 
+[2026-09-13 19:38:37]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=5269.43 
+[2026-09-13 19:38:37]	[CulturalDiffusion] state bytes=760 field=22 claims=0 locked=0 passMs=10 
+[2026-09-13 19:38:37]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 22 active field tile(s) 
+[2026-09-13 19:38:37]	[CulturalDiffusion] pass (turn 70): flips=0 field tiles=0 
+[2026-09-13 19:38:42]	[CDH] TURN n=70 turn=70 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=68 
+[2026-09-13 19:38:53]	Tutorial: Autoplay started, auto-marking complete any active items. 
+[2026-09-13 19:39:01]	[CulturalDiffusion] inject 18,6 civ=0 culture=10 vitality=19.35 strength=12.12 stock=5355.6 cap=24232.57 
+[2026-09-13 19:39:01]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/24 centre=5355.6 
+[2026-09-13 19:39:01]	[CulturalDiffusion] state bytes=767 field=22 claims=0 locked=0 passMs=4 
+[2026-09-13 19:39:01]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 22 active field tile(s) 
+[2026-09-13 19:39:01]	[CulturalDiffusion] pass (turn 71): flips=0 field tiles=0 
+[2026-09-13 19:39:06]	[CDH] TURN n=71 turn=71 cd={"claims":0,"pending":0} ourCities=1 autoplayTurns=69 
+[2026-09-13 19:39:06]	[CDH] SUMMARY turn=71 elapsed=70 ourCities=1 rivalMajorsWithin6=0 [] cd={"claims":0,"pending":0} firstClaimTurn=null 
+[2026-09-13 19:39:08]	[CDH] SUMMARY turn=71 elapsed=70 ourCities=1 rivalMajorsWithin6=0 [] cd={"claims":0,"pending":0} firstClaimTurn=null 
+[2026-09-13 19:39:08]	[CDH] DONE run8 
+[2026-09-13 19:39:12]	[CDH] LENS ACTIVE before=fxs-cinematic-lens set=called active=cd-pressure-lens layerEnabled=true cd={"claims":0,"pending":0} 

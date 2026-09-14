@@ -165,3 +165,42 @@ recede and buffer on), ending turns as run 3 did and running no harness test act
 | Does the mod keep working across an age change? | Yes. It sent 29 flips across both ages and confirmed all 29 on the next pass, none dropped. The growth buffer claimed tiles in the new age. State reached 14.7 KB and passes took at most 19 ms |
 | Is the pace the same as run 3? | Yes. The first organic flip came on turn 154, as in run 3 |
 | Does the Options rebuild fix hold against the real model in game? | Yes. The mod's options appeared on init, vanished on `reInitOptions()`, and came back on the next init |
+
+### Runs 6 and 7 (2026-09-13, current build)
+
+Logs `run6-shipped-build-existing-save-UI.log` and `run7-run3-tests-current-build-UI.log`; crash evidence
+`run7-crash-evidence.txt`.
+
+| Question | Verdict |
+| --- | --- |
+| Does the shipped build run inside a save made without it? | No. With the exact `dist/` build enabled, which has no `AffectsSavedGames` override, loading AugustusAnt136 did not activate the mod: the Modding log's list for that load held only the harness, and the mod never booted. Players need a new game, or a save started with the mod |
+| Does the mod's war check agree with the engine? | Yes. Over 25 turns the engine's `isAtWarWith` and the mod's `atWar` never disagreed for any rival. Player 3 was at war on turn 136 and at peace from turn 137, so run 3's later captures of player 3's tiles were legitimate |
+| Does run 3's crash come back with run 3's harness tests on the current build? | Yes. The game crashed during the Exploration startup, before GameStarted, the same moment as run 3: `EXC_BAD_ACCESS` at `0x308` on `AsyncWorker1`, with different top frames from run 3's. Run 5 took the same route without those tests and did not crash, so the tests' script-only engine writes are implicated |
+
+### Run 8 (2026-09-13, current build) — a new game at shipped defaults
+
+Log `devtools/harness/run8-new-game-pacing-UI.log`. A new single-player game started the way Play Now does, with the
+mod at its shipped defaults plus debug logging, driven 70 turns by the harness. Nobody played our civilization: the
+harness only ended turns, so it kept one city all game. A human player's culture would be higher, so treat the result
+as a floor.
+
+| Question | Verdict |
+| --- | --- |
+| Does a new game's capital claim anything early? | No. No claims in 70 turns. The capital's Culture yield was 8, its injection strength about 11.8, and its centre stock 3,810 at turn 50. The pacing simulator predicts 3,866 for that strength, so the simulator is calibrated. By the simulator a city at strength 12 or less never claims its fourth ring |
+| Did a rival settle near us? | Not closely. The nearest rival major settlement was a town 14 tiles away; the nearest settlement of any kind was a city-state town 8 tiles away on turn 51 |
+| Does the Cultural Pressure lens switch on in a real game? | Yes. `setActiveLens("cd-pressure-lens")` made it the active lens with `cd-pressure-layer` enabled. The game had no contested tiles to shade, and the screenshot caught the editor window instead of the game, so rendering was left to run 9 |
+
+### Runs 9 to 11 (2026-09-13, current build) — the pressure lens in a real game
+
+Logs `devtools/harness/run9-lens-no-contested-tiles-UI.log`, `run10-lens-popup-covered-UI.log` and
+`run11-lens-paints-UI.log`, and the image `run11-lens-off-vs-on.png`. Each loads AugustusAnt136 with debug on, ends
+turns, then switches the lens on and captures the game window.
+
+| Question | Verdict |
+| --- | --- |
+| Does the lens paint the contested tiles? | Yes, watched in run 11. With the game window in front, the Hawaiian-owned tile 89,35, where British culture led at 25%, was filled in faint British purple. With the lens off it had no fill. Captures taken while the game sat behind the editor never showed the lens view, in runs 10 and 11, because the game does not redraw a hidden window |
+| Does switching the lens on change the map view? | Yes. The yield icons and border lines give way to the lens's fills (runs 9 and 11, game in front) |
+| When does the lens first have tiles to paint on this save? | On turn 149, the 14th pass from an empty field. After 12 passes (run 9) none of our culture sat on a tile we do not own, so nothing was contested. Run 10 had 1 contested tile on turn 149, 3 on turn 150 and 5 on turn 151. The field's growth matched run 3 pass for pass |
+| Does the hover readout see the saved field and name the civilizations? | Yes, for the data it is built from. The harness rebuilt the readout with the lens's own imports: `loadState()` returned the field, and `civLabel` gave "British Empire" and "Hawaiian Empire", not `#id` fallbacks. The panel itself was not hovered |
+| Does the lens paint the contested tiles? | Not yet seen. In run 10 the top tile was centred under the Civic Unlocked popup and the others were off screen. Run 11 repeats it with the popup closed |
+| Does the lens show only flips that will happen? | No. Two of run 10's five contested tiles were unowned tiles led by the Hawaiian Empire, which the pass never flips for an AI. See [`BACKLOG.md`](BACKLOG.md) |
