@@ -3,7 +3,7 @@
 // resolveOwner's flip gates, so they are tested against the same constants and cross-checked.
 import assert from "node:assert/strict";
 import {
-  resolveOwner, pressureVerdict, estimateTurnsToFlip
+  resolveOwner, pressureVerdict, estimateTurnsToFlip, passCanAct
 } from "/cultural-diffusion/ui/cd-field.js";
 
 const cfg = {
@@ -88,6 +88,21 @@ const cfg = {
   // Null verdict guard.
   assert.equal(estimateTurnsToFlip(null, 100, cfg), null, "null verdict => null");
   assert.equal(estimateTurnsToFlip({ leader: -1 }, 100, cfg), null, "no leader => null");
+}
+
+// -- passCanAct: the lens, readout, pass and recede share one "can the pass act here" test ---------------
+{
+  const me = 0;
+  const ai = 3;
+  assert.equal(passCanAct(me, -1, me, false, false), true, "our culture leading on unowned land is claimable");
+  assert.equal(passCanAct(me, ai, me, false, false), true, "our culture leading on rival land is claimable");
+  assert.equal(passCanAct(ai, -1, me, false, true), false, "an AI leading on unowned land never flips (run 10: 84,24)");
+  assert.equal(passCanAct(ai, 5, me, false, true), false, "rival-to-rival flips are never made");
+  assert.equal(passCanAct(ai, me, me, true, false), false, "a claimed tile never recedes with recede off");
+  assert.equal(passCanAct(ai, me, me, false, true), false, "a tile the base game grew never recedes");
+  assert.equal(passCanAct(ai, me, me, true, true), true, "with recede on a rival can win back a claimed tile");
+  assert.equal(passCanAct(me, me, me, true, true), false, "the owner leading is no shift");
+  assert.equal(passCanAct(-1, -1, me, false, true), false, "no leader is no shift");
 }
 
 console.log("pressure-verdict.mjs OK");

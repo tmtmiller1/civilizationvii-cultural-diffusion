@@ -144,6 +144,21 @@ export function resolveOwner(civMap, currentOwner, deadOwners, cfg) {
 }
 
 /**
+ * Whether the pass can ever move a tile toward its culture leader. The pass flips only to the local player, and
+ * cedes back to a rival only with recede on and only a tile the mod claimed for us. The pass, the recede step, the
+ * lens and the hover readout all ask this one question so what they show and what they do cannot drift.
+ * @param {number} leader Leading culture's player id (-1 = none). @param {number} owner Current owner (-1 = unowned).
+ * @param {number} me Local player id. @param {boolean} claimedByMe Whether the mod claimed this tile for `me`.
+ * @param {boolean} recede CONFIG.recedeBorders.
+ * @returns {boolean} True when the pass can act on the leader's win.
+ */
+export function passCanAct(leader, owner, me, claimedByMe, recede) {
+  if (leader < 0 || leader === owner) return false;
+  if (leader === me) return true;
+  return !!recede && !!claimedByMe && owner === me;
+}
+
+/**
  * A READ-ONLY view of the flip pressure on a tile, for the Cultural Pressure lens + hover tooltip
  * (docs/potential-future-features.md §1). Same gates as resolveOwner, re-expressed as a capture
  * PROGRESS in [0,1] toward the leader taking the tile from its current owner, plus the raw stocks and

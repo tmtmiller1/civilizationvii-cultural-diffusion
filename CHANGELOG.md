@@ -4,7 +4,7 @@ All notable changes to Cultural Diffusion are recorded here. The format follows
 [Keep a Changelog](https://keepachangelog.com/), and the mod uses
 [Semantic Versioning](https://semver.org/).
 
-## [1.1.0] - 2026-09-13
+## [1.1.0] - 2026-09-18
 
 ### Added
 
@@ -18,21 +18,31 @@ All notable changes to Cultural Diffusion are recorded here. The format follows
   refunded to the rival). Peace, `flipMaxDistance`, `requireAdjacency`, the cooldown lock and `maxFlipsPerTurn` all
   apply, and tiles your cities grew are never touched. There is no release to no one: harness runs 1 and 2 showed
   `setOwnership(NO_PLAYER)` never un-owns a tile attached to a city, so that branch was removed. The rival-city
-  `purchasePlot` is watched working; the setting stays off by default until the mod's own cession is watched against
-  a rival at peace with you. New Options checkbox: *borders recede (experimental)*.
+  `purchasePlot` is watched working, and so is the mod's own cession: harness run 12 (2026-09-18) seeded a claim a
+  rival at peace out-cultured, and the recede step sent the cession, the tile landed with the rival's city, and the
+  next pass confirmed it and locked the tile. It stays off by default because territory-changing features are opt-in.
+  New Options checkbox: *borders recede (experimental)*.
 - **Debug diagnostics for failures that are otherwise silent.** With debug logging on, each pass logs every
   injector's culture, vitality, strength and city-tile stock against its cap (`inject ...`), each city's best stock
   on the first ring the mod may claim against the ownership bar (`frontier ...`), and the persisted state size with
   the pass time (`state bytes=...`). The state line is logged without debug once the blob passes 512 KB.
-- **Cultural Pressure lens and hover tooltip** (Phase 1: shading, civ split, turns-to-flip estimate). Code-complete
-  and unit-tested. Watched painting a contested tile in-game on 2026-09-13 (harness run 11); it also shades tiles an
-  AI's culture leads, which the pass never flips (`docs/BACKLOG.md`).
+- **Cultural Pressure lens and hover tooltip** (Phase 1: shading, civ split, turns-to-flip estimate). Watched painting
+  a contested tile in-game on 2026-09-13 (harness run 11). The lens shades, and the readout counts down, only tiles
+  the pass can act on: your culture leading on unowned or rival land, or with recede on, a rival leading on a tile the
+  mod claimed for you. A tile an AI's culture leads that the pass will never flip shows its stocks with no progress or
+  turns line. One predicate (`passCanAct` in `cd-field.js`) now gates the pass, the recede step, the lens and the
+  readout, so they cannot drift. Watched in harness run 12: every AI-led tile the earlier rule would have painted was
+  left unpainted with no progress line, and the seeded rival-led claim was painted with one.
 - **In-game test harness (`devtools/harness/`).** A dev-only mod that loads a save from the main menu, presses Begin
   Game, runs scripted engine tests, and ends turns, all hands-free, logging `[CDH]` lines to `UI.log`. Run 1 on
   AugustusAnt136 (game 1.4.2) produced the two fixes below and the watched verdicts in `docs/probe-history.md` §5.
 
 ### Fixed
 
+- **Saving an option could copy another mod's data into the shared settings key.** The game's `localStorage.getItem`
+  can return the value of a different key (watched 2026-09-16), so the settings read before a save could be another
+  mod's blob. It parsed as an object and was written back under `modSettings`, growing it without bound. The save now
+  declines unless every top-level value is a per-mod object, and never rewrites or deletes anything it did not write.
 - **The mod's settings disappeared after closing Settings, until the game restarted.** Reported by a player. The base
   Options model rebuilds its option list from registered init callbacks whenever it re-initializes, for example when
   graphics options change as Settings applies or closes. The mod added its options once at load without a callback,

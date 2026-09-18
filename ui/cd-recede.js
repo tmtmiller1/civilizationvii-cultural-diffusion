@@ -18,7 +18,7 @@ import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
 import { dlog } from "/cultural-diffusion/ui/cd-log.js";
 import { allSettlements, cityLoc, cityIdOf, ownerAt, plotsInRadius } from "/cultural-diffusion/ui/cd-plots.js";
 import { hexDistance } from "/cultural-diffusion/ui/cd-pressure.js";
-import { resolveOwner } from "/cultural-diffusion/ui/cd-field.js";
+import { resolveOwner, passCanAct } from "/cultural-diffusion/ui/cd-field.js";
 import { atWar } from "/cultural-diffusion/ui/cd-borders.js";
 import { performFlip } from "/cultural-diffusion/ui/cd-ownership.js";
 import { markPending, isPending } from "/cultural-diffusion/ui/cd-pending.js";
@@ -96,7 +96,8 @@ function recedeOne(state, k, row, ctx) {
   const loc = unkey(k);
   if (ownerAt(loc) !== me) return null;
   const verdict = resolveOwner(row, me, deadOwners, ageCfg);
-  return verdict.flip && verdict.owner !== me ? cedeToRival(state, k, loc, verdict.owner, ctx) : null;
+  const cede = verdict.flip && passCanAct(verdict.owner, me, me, true, CONFIG.recedeBorders);
+  return cede ? cedeToRival(state, k, loc, verdict.owner, ctx) : null;
 }
 
 /** @returns {boolean} Whether a claim is ours, in this pass's region, and free to recede (not locked or landing). */

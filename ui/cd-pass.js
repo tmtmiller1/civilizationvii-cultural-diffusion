@@ -28,7 +28,7 @@ import { buildEthnicContext } from "/cultural-diffusion/ui/cd-ethnicity.js";
 import { civTuning } from "/cultural-diffusion/ui/cd-civ-tuning.js";
 import { agePace, mapSizeScale, ageProgress } from "/cultural-diffusion/ui/cd-calibration.js";
 import { stepMods } from "/cultural-diffusion/ui/cd-terrain.js";
-import { injectionAmount, cityCultureCap, decayValue, diffusionDelivered, resolveOwner } from "/cultural-diffusion/ui/cd-field.js";
+import { injectionAmount, cityCultureCap, decayValue, diffusionDelivered, resolveOwner, passCanAct } from "/cultural-diffusion/ui/cd-field.js";
 import { isCoreProtected, atWar } from "/cultural-diffusion/ui/cd-borders.js";
 import { performFlip, unclaim } from "/cultural-diffusion/ui/cd-ownership.js";
 import { loadState, saveState, prepareState, pruneState } from "/cultural-diffusion/ui/cd-state.js";
@@ -463,7 +463,7 @@ function tryFlipCandidate(cand, fx) {
   if (state.locked[cand.k] > 0) return false;           // anti-flicker cooldown
   if (isPending(state, cand.k)) return false;           // a verb on this tile is still landing
   const verdict = resolveOwner(next[cand.k], owner, deadOwners, ageCfg);
-  if (!verdict.flip || verdict.owner !== me) return false; // only claim tiles OUR culture has won
+  if (!verdict.flip || !passCanAct(verdict.owner, owner, me, false, false)) return false; // only tiles OUR culture won
   if (!flipEligible(cand, owner, me, claimCount)) return false;
   return commitFlip(cand, owner, verdict, fx);
 }
