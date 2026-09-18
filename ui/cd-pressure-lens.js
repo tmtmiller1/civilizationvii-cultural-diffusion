@@ -20,8 +20,8 @@
 import LensManager from "/core/ui/lenses/lens-manager.js";
 import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
 import { loadState } from "/cultural-diffusion/ui/cd-state.js";
-import { pressureVerdict } from "/cultural-diffusion/ui/cd-field.js";
-import { ownerAt } from "/cultural-diffusion/ui/cd-plots.js";
+import { pressureVerdict, passCanAct } from "/cultural-diffusion/ui/cd-field.js";
+import { ownerAt, localPlayerId } from "/cultural-diffusion/ui/cd-plots.js";
 import { currentAgeKey } from "/cultural-diffusion/ui/cd-polity.js";
 import { applyTunableOverrides, getPressureLensEnabled } from "/cultural-diffusion/ui/cd-settings.js";
 import { civDisplayColor, hexToFloat4 } from "/cultural-diffusion/ui/cd-lens-colors.js";
@@ -92,22 +92,29 @@ function deadOwnersOf(field, alive) {
   return dead;
 }
 
+/** The persisted field and claims, or null when the state cannot be read. */
+function lensState() {
+  try {
+    const st = loadState();
+    return { field: st.field || {}, claims: st.claims || {} };
+  } catch (_) {
+    return null;
+  }
+}
+
 /**
- * Every simulated tile with a PENDING border shift: its leading culture differs from the current
- * owner and has non-trivial capture progress. Each entry carries the leader (for colour) and the
- * progress (for alpha).
+ * Every simulated tile with a border shift the pass can make (passCanAct: our culture leading, or with recede on a
+ * rival leading on a tile the mod claimed for us) and non-trivial capture progress. Each entry carries the leader
+ * (for colour) and the progress (for alpha).
  * @returns {{x:number, y:number, leader:number, progress:number}[]} Contested tiles.
  */
 function pressureTiles() {
-  let field = {};
-  try {
-    field = (loadState().field) || {};
-  } catch (_) {
-    return [];
-  }
+  const st = lensState();
+  if (!st) return [];
+  const { field, claims } = st;
   const cfg = ageAdjustedCfg();
-  const alive = aliveIds();
-  const dead = deadOwnersOf(field, alive);
+  const me = localPlayerId();
+  const dead = deadOwnersOf(field, aliveIds());
   /** @type {{x:number, y:number, leader:number, progress:number}[]} */
   const out = [];
   for (const k of Object.keys(field)) {
@@ -115,7 +122,7 @@ function pressureTiles() {
     if (!isFinite(loc.x) || !isFinite(loc.y)) continue;
     const owner = ownerAt(loc);
     const v = pressureVerdict(field[k], owner, dead, cfg);
-    if (v.leader < 0 || v.leader === owner) continue; // no pending shift on this tile
+    if (!passCanAct(v.leader, owner, me, claims[k]?.by === me, cfg.recedeBorders)) continue; // the pass never acts
     if (v.progress < MIN_PROGRESS) continue;
     out.push({ x: loc.x, y: loc.y, leader: v.leader, progress: v.progress });
   }
@@ -250,6 +257,9 @@ function toggleLens() {
     /* ignore */
   }
 }
+
+/** Introspection for the in-game harness (devtools/harness), which checks the shipped logic directly. */
+export const __test = { pressureTiles };
 
 // -- Self-registration (runs on UIScript load, in the HUD context) --------------------------
 try {

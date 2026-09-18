@@ -177,7 +177,7 @@ uses. Keep every existing gate (peace, core protection, adjacency, caps, cooldow
 cities stay out of reach, as they are for our claims. Rival-to-rival flips need the region to cover rival cities, which
 grows the pass time, so leave them for a second step.
 
-## [Medium · Confirmed] The pressure lens and its readout show flips the pass will never make
+## [Medium · Fixed] The pressure lens and its readout show flips the pass will never make
 
 **Symptom:** the lens paints every tile whose leading culture is not its owner (`pressureTiles`,
 `cd-pressure-lens.js:118`). The hover readout adds capture progress and an "At current pace ~N turns" line for the same
@@ -190,6 +190,10 @@ unowned land or our own land with recede off, is painted in the AI's colour with
 rival land, or, with recede on, a rival leading on a tile the mod claimed for us. Put that test in one shared predicate
 in `cd-field.js` so the lens, the readout and the pass cannot drift. A rival-led tile can still show its stocks, without
 a progress or turns line.
+**Done (2026-09-18):** `passCanAct` in `cd-field.js` now gates the pass, the recede step, the lens and the readout.
+Watched in harness run 12 (`devtools/harness/run12-cede-and-lens-UI.log`): over four turns the lens painted none of the
+seven AI-led tiles the old rule would have painted, and none showed a progress line. The seeded rival-led claim, with
+recede on, was painted and showed one.
 
 ## [High · Confirmed] Default flip verb `setOwnership` records phantom claims
 

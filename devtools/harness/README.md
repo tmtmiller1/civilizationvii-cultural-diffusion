@@ -150,3 +150,18 @@ soon end" popup also appeared, and closing tech popups does not clear it. With t
 (`osascript -e 'tell application id "com.2k.civ7" to activate'`), the view redrew within 6 seconds. The Hawaiian-owned
 tile 89,35, which British culture led at 25%, was filled in faint British purple. The game does not redraw while its
 window is hidden, so bring it to the front before any capture, then give the editor focus back.
+
+## Run 12 - the mod's own cession, and the lens gate, 2026-09-18
+
+Scripts `cdh-shell-run5.js` and `cdh-game-run12.js`, with recede and debug on. The script calls the shipped lens's
+`pressureTiles()` and the readout's `resolve()` through their `__test` exports, so the check runs the real code rather
+than a rebuilt copy. Log `run12-cede-and-lens-UI.log`.
+
+| Test | Verdict |
+| --- | --- |
+| R9: run 4's cession against a rival at peace | Works. On turn 137 (player 3 at peace from then, at war on 136) the harness bought 83,18, beyond ring 3 of Lāhainā and two tiles from Hilo, and seeded our claim with a dominant rival stock. The next pass's recede step sent the cession, the tile was owned by Hilo one turn later, and the pass after cleared the claim and set the 15-turn lock |
+| Lens after seeding | The seeded rival-led claim was painted, and its readout showed a progress row |
+| Lens over four turns | Seven AI-led tiles, unowned or ours but never claimed by the mod, met the 1.1.0 rule. None was painted and none showed a progress row. Nothing painted failed `passCanAct` |
+
+No mod errors in `UI.log` and no crash report. The game never approached the turn-160 age change.
+

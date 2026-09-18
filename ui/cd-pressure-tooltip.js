@@ -16,8 +16,8 @@ import LensManager from "/core/ui/lenses/lens-manager.js";
 import PlotCursor from "/core/ui/input/plot-cursor.js";
 import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
 import { loadState } from "/cultural-diffusion/ui/cd-state.js";
-import { pressureVerdict, estimateTurnsToFlip } from "/cultural-diffusion/ui/cd-field.js";
-import { ownerAt, plotsInRadius } from "/cultural-diffusion/ui/cd-plots.js";
+import { pressureVerdict, estimateTurnsToFlip, passCanAct } from "/cultural-diffusion/ui/cd-field.js";
+import { ownerAt, plotsInRadius, localPlayerId } from "/cultural-diffusion/ui/cd-plots.js";
 import { currentAgeKey } from "/cultural-diffusion/ui/cd-polity.js";
 import { applyTunableOverrides } from "/cultural-diffusion/ui/cd-settings.js";
 import { civDisplayColor, civLabel } from "/cultural-diffusion/ui/cd-lens-colors.js";
@@ -118,18 +118,21 @@ function deadOwnersOf(field, alive) {
   return dead;
 }
 
-/** The loaded field + age config + dead-owner set, cached on a short TTL (cheap on every mousemove). */
+/** The loaded field, claims, local player, age config and dead owners, cached on a short TTL (read per mousemove). */
 function snapshot() {
   const now = Date.now();
   if (_snap && now - _snap.at < FIELD_TTL) return _snap;
   let field = {};
+  let claims = {};
   try {
-    field = (loadState().field) || {};
+    const st = loadState();
+    field = st.field || {};
+    claims = st.claims || {};
   } catch (_) {
     field = {};
   }
   const cfg = ageAdjustedCfg();
-  _snap = { at: now, field, cfg, dead: deadOwnersOf(field, aliveIds()) };
+  _snap = { at: now, field, claims, me: localPlayerId(), cfg, dead: deadOwnersOf(field, aliveIds()) };
   return _snap;
 }
 
@@ -211,15 +214,18 @@ function contenderRows(row, owner, dead) {
  */
 function resolve(plot) {
   const snap = snapshot();
-  const row = snap.field[plot.x + "," + plot.y];
+  const k = plot.x + "," + plot.y;
+  const row = snap.field[k];
   if (!row) return null; // not a simulated tile
   const owner = ownerAt(plot);
   const v = pressureVerdict(row, owner, snap.dead, snap.cfg);
   if (v.leader < 0) return null; // no living culture on this tile
   const rows = contenderRows(row, owner, snap.dead);
   if (!rows.length) return null;
-  // Pending shift: add the target, capture progress, and turns rows.
-  if (v.leader !== owner && v.progress > 0) {
+  // A shift the pass will make: add the capture progress and turns rows. A leader the pass never acts for (an AI on
+  // unowned land, or on our land the mod did not claim or with recede off) shows its stocks only.
+  const actionable = passCanAct(v.leader, owner, snap.me, snap.claims[k]?.by === snap.me, snap.cfg.recedeBorders);
+  if (actionable && v.progress > 0) {
     rows.push({ __sep: true });
     rows.push({
       color: "transparent",
@@ -335,6 +341,9 @@ function wire() {
   window.addEventListener("cursor-updated", scheduleRender);
   window.addEventListener("plot-cursor-coords-updated", scheduleRender);
 }
+
+/** Introspection for the in-game harness (devtools/harness), which checks the shipped logic directly. */
+export const __test = { resolve };
 
 // -- Self-registration (runs on UIScript load, in the HUD context) ---------------------------
 try {

@@ -1,0 +1,39 @@
+[2026-09-18 12:54:47]	[CDH] shell attached run5 
+[2026-09-18 12:54:48]	[CDH] shell query complete 
+[2026-09-18 12:54:49]	[CDH] shell found AugustusAnt136.Civ7Save turn 136 age AGE_ANTIQUITY missingMods=0 unowned=0 
+[2026-09-18 12:54:49]	[CDH] shell handleLoadSave returned true 
+[2026-09-18 12:55:07]	[CDH] attached run12 
+[2026-09-18 12:55:12]	[CDH] LOAD GameStarted 
+[2026-09-18 12:55:20]	[CDH] S0 turn=136 recede=true debug=true 
+[2026-09-18 12:55:20]	[CDH] LENS start painted=0 notActionable=0 oldRuleTiles=0 dropped=0 seedPainted=null recede=true => LENS-OK 
+[2026-09-18 12:55:20]	[CDH] R9 majors=[{"id":1,"war":false},{"id":2,"war":false},{"id":3,"war":true},{"id":4,"war":false},{"id":5,"war":false},{"id":6,"war":false},{"id":7,"war":false},{"id":8,"war":false},{"id":9,"war":false}] 
+[2026-09-18 12:55:20]	[CDH] R9 skipped: no unowned beyond-ring-3 tile touching both our land and a peaceful rival (peaceful=[1,2,4,5,6,7,8,9]) 
+[2026-09-18 12:55:20]	[CDH] ACTIONS done; ending turns 
+[2026-09-18 12:55:44]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 8 active field tile(s) 
+[2026-09-18 12:55:52]	[CDH] TURN n=2 turn=137 cede=null 
+[2026-09-18 12:55:52]	[CDH] LENS turn2 painted=0 notActionable=0 oldRuleTiles=0 dropped=0 seedPainted=null recede=true => LENS-OK 
+[2026-09-18 12:55:52]	[CDH] R9 majors=[{"id":1,"war":false},{"id":2,"war":false},{"id":3,"war":false},{"id":4,"war":false},{"id":5,"war":false},{"id":6,"war":false},{"id":7,"war":false},{"id":8,"war":false},{"id":9,"war":false}] 
+[2026-09-18 12:55:56]	[CDH] R9 SEED 83,18 rival=3 war=false rivalCity=Hilo d=2 ourCity=Lāhainā ourRing=4 write=set where={"owner":0,"city":458757} 
+[2026-09-18 12:55:59]	[CDH] LENS after-seed painted=1 notActionable=0 oldRuleTiles=1 dropped=0 seedPainted=true recede=true => LENS-OK 
+[2026-09-18 12:55:59]	[CDH] LENS seed 83,18 painted=true tipRows=5 tipProgress=true => SEED-SHOWN 
+[2026-09-18 12:56:21]	[CulturalDiffusion] recede 83,18: cede to player 3 sent; pending confirmation next pass 
+[2026-09-18 12:56:21]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (1 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 15 active field tile(s) 
+[2026-09-18 12:56:29]	[CDH] TURN n=3 turn=138 cede={"k":"83,18","owner":3,"city":196610,"claim":{"by":0,"city":458757,"turn":137},"pending":{"kind":"cede","by":3,"city":-1,"turn":138,"was":-1},"locked":0} 
+[2026-09-18 12:56:29]	[CDH] LENS turn3 painted=0 notActionable=0 oldRuleTiles=2 dropped=2 seedPainted=false recede=true => LENS-OK 
+[2026-09-18 12:56:29]	[CDH] LENS dropped 83,17 owner=unowned leader=Hawaiian Empire progress=100% tipRows=2 tipProgress=false => TIP-OK 
+[2026-09-18 12:56:29]	[CDH] LENS dropped 84,18 owner=British Empire leader=Hawaiian Empire progress=100% tipRows=2 tipProgress=false => TIP-OK 
+[2026-09-18 12:56:54]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/1 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 25 active field tile(s) 
+[2026-09-18 12:57:02]	[CDH] TURN n=4 turn=139 cede={"k":"83,18","owner":3,"city":196610,"claim":null,"pending":null,"locked":15} 
+[2026-09-18 12:57:02]	[CDH] LENS turn4 painted=0 notActionable=0 oldRuleTiles=6 dropped=6 seedPainted=false recede=true => LENS-OK 
+[2026-09-18 12:57:02]	[CDH] LENS dropped 83,17 owner=unowned leader=Hawaiian Empire progress=100% tipRows=2 tipProgress=false => TIP-OK 
+[2026-09-18 12:57:02]	[CDH] LENS dropped 84,18 owner=British Empire leader=Hawaiian Empire progress=100% tipRows=2 tipProgress=false => TIP-OK 
+[2026-09-18 12:57:02]	[CDH] LENS dropped 84,20 owner=British Empire leader=Hawaiian Empire progress=10% tipRows=1 tipProgress=false => TIP-OK 
+[2026-09-18 12:57:02]	[CDH] LENS dropped 84,19 owner=unowned leader=Hawaiian Empire progress=12% tipRows=1 tipProgress=false => TIP-OK 
+[2026-09-18 12:57:24]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 33 active field tile(s) 
+[2026-09-18 12:57:32]	[CDH] TURN n=5 turn=140 cede={"k":"83,18","owner":3,"city":196610,"claim":null,"pending":null,"locked":14} 
+[2026-09-18 12:57:32]	[CDH] LENS turn5 painted=0 notActionable=0 oldRuleTiles=7 dropped=7 seedPainted=false recede=true => LENS-OK 
+[2026-09-18 12:57:32]	[CDH] LENS dropped 83,17 owner=unowned leader=Hawaiian Empire progress=100% tipRows=2 tipProgress=false => TIP-OK 
+[2026-09-18 12:57:32]	[CDH] LENS dropped 84,18 owner=British Empire leader=Hawaiian Empire progress=100% tipRows=2 tipProgress=false => TIP-OK 
+[2026-09-18 12:57:32]	[CDH] LENS dropped 84,20 owner=British Empire leader=Hawaiian Empire progress=26% tipRows=1 tipProgress=false => TIP-OK 
+[2026-09-18 12:57:32]	[CDH] LENS dropped 84,19 owner=unowned leader=Hawaiian Empire progress=22% tipRows=1 tipProgress=false => TIP-OK 
+[2026-09-18 12:57:35]	[CDH] DONE harness run12 finished seeded=true 

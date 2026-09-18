@@ -172,9 +172,9 @@ sooner.
   raw culture only.
 - **Follow diaspora (Emigration mod)** - read Emigration for ethnic-affinity
   diffusion. No effect if Emigration is absent.
-- **Pressure lens** - on by default; a read-only map lens (Shift+C) shading contested frontier
-  tiles, with a hover readout. Watched painting contested tiles in a test game. It also
-  shades tiles where an AI's culture leads, which never change hands.
+- **Pressure lens** - on by default; a read-only map lens (Shift+C) shading the frontier
+  tiles the mod is working toward changing hands, with a hover readout of each civilization's
+  stock. Watched painting contested tiles in a test game.
 - **Debug logging** - per-pass diagnostics to `UI.log`: every injector's strength and
   city-tile stock (`inject`), each city's best ring-4 stock against the ownership bar
   (`frontier`), and the persisted state size and pass time (`state bytes=`).

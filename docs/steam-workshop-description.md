@@ -24,7 +24,7 @@ Because pressure must physically build up ring by ring against decay, reach is a
 [*]With Emigration installed, optional ethnic-affinity diffusion reads its diaspora data so your cultural pressure flows toward tiles your people settled; it is simply neutral when Emigration is absent, so the mod stays standalone-safe.
 [*]Per-age tuning for the three ages plus game-settings calibration re-times the field to the current age length and nudges injection by map size, so the border arc stays consistent across game speeds and cramped maps aren't steamrolled.
 [*]A per-leader, civilization, and memento tuning table damps territory-redundant kits (e.g. Culture-on-capture) and gently lifts Culture-poor civs, so no single kit snowballs.
-[*]A [b]Cultural Pressure lens[/b] (Shift+C) shades contested tiles by how close they are to changing hands, with a hover readout of each civilization's pressure and a turns-to-flip estimate. New in this version and watched working in a test game. It also shades tiles where a rival's culture leads, although those never change hands, because the AI does not take land by culture. It can be switched off in Options.
+[*]A [b]Cultural Pressure lens[/b] (Shift+C) shades contested tiles by how close they are to changing hands, with a hover readout of each civilization's pressure and a turns-to-flip estimate. It shades only tiles that are actually on their way to changing hands; elsewhere the readout shows each civilization's pressure without a countdown. New in this version and watched working in a test game. It can be switched off in Options.
 [/list]
 
 [i]Full formulas, tunables, and per-leader tuning are documented in the README.[/i]
