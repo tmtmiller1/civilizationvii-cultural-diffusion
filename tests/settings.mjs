@@ -54,6 +54,21 @@ backing.set("modSettings", "{bad-json");
 setDebug(true);
 assert.equal(backing.get("modSettings"), "{bad-json");
 
+// Coherent's getItem() can hand back another key's value. A foreign blob parses as an object but carries scalars at
+// the top level; writing it back would copy it into the shared key, so the save must decline and leave it untouched.
+const foreign = JSON.stringify({ v: 2, updated: 178, turns: [1, 2] });
+backing.set("modSettings", foreign);
+setDebug(true);
+assert.equal(backing.get("modSettings"), foreign, "a foreign blob is never written back");
+const arraySlice = JSON.stringify({ sibling: [1, 2] });
+backing.set("modSettings", arraySlice);
+setDebug(true);
+assert.equal(backing.get("modSettings"), arraySlice, "an array at the top level is not a settings slice");
+const nullSlice = JSON.stringify({ sibling: null });
+backing.set("modSettings", nullSlice);
+setDebug(true);
+assert.equal(backing.get("modSettings"), nullSlice, "a null at the top level is not a settings slice");
+
 // Restore valid root and verify toggle getters/setters normalization.
 backing.set("modSettings", JSON.stringify({}));
 setClaimOnlyUnowned(true);
