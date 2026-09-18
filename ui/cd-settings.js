@@ -53,6 +53,19 @@ class ModOptionsStore {
       return { root: {}, safe: false };
     }
     if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return { root: {}, safe: false };
+    // Coherent's getItem() in this UI context IGNORES the key and returns the value of the FIRST
+    // key in the store (watched 2026-09-16), so this read routinely hands back some other mod's
+    // blob. Such a blob parses fine and is an object, so the checks above pass it through - and
+    // writing it back would copy that blob into the shared settings key and grow it without bound
+    // (three ~370KB copies of one history archive were found spread across "!chronicle", "htlData"
+    // and "modSettings" from exactly this). A real settings root is { "<modId>": {...}, ... }, so
+    // every top-level value is an object; the foreign blobs carry scalars (v: 2, updated: 178...).
+    // On a mismatch just decline to persist - never delete or rewrite anything.
+    const looksLikeSettingsRoot = Object.keys(parsed).every((k) => {
+      const v = parsed[k];
+      return !!v && typeof v === "object" && !Array.isArray(v);
+    });
+    if (!looksLikeSettingsRoot) return { root: {}, safe: false };
     return { root: parsed, safe: true };
   }
 
