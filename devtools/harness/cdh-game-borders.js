@@ -13,9 +13,10 @@
 // anything is photographed.
 //
 // Two things learned the hard way about getting a CLEAN map:
-//   * The Cultural Pressure layer paints whenever it is ENABLED - it is not gated on being the active lens. (Suite
-//     shot 01, taken before any lens call, already showed the paint; that is also why an earlier "lens off vs lens
-//     on" pair measured 1.47% and 1.44% coloured pixels.) So the layer is DISABLED here, not swapped.
+//   * The layer is DISABLED here rather than swapped away from. (This comment used to say the layer paints
+//     whenever it is ENABLED, on the strength of suite shot 01 showing paint before any lens call. That was
+//     wrong - cdh-game-lenscheck.js measured the gating as correct, and the paint came from the PREVIOUS run
+//     leaving cd-pressure-lens selected, since the active lens survives a restart. See the harness README.)
 //   * Never call `setActiveLens`. `fxs-default-lens` is the yield-icon view, and calling it is what put badges over
 //     three earlier attempts. Leaving the loaded view alone gives a clean map.
 
