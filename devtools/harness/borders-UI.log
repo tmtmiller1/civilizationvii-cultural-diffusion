@@ -1,0 +1,170 @@
+[2026-09-24 14:36:48]	[CDH] shell attached 
+[2026-09-24 14:36:49]	[CDH] shell query complete 
+[2026-09-24 14:36:50]	[CDH] shell found AugustusAnt136.Civ7Save turn 136 age AGE_ANTIQUITY missingMods=0 unowned=0 
+[2026-09-24 14:36:50]	[CDH] shell handleLoadSave returned true 
+[2026-09-24 14:37:07]	[CulturalDiffusion] boot (turnInterval 1, verb purchasePlot, enabled true) 
+[2026-09-24 14:37:07]	[CDH] attached borders 
+[2026-09-24 14:37:13]	[CDH] LOAD GameStarted 
+[2026-09-24 14:37:23]	[CDH] S0 borders city=Lāhainā at=86,20 claimable=14 ownedWithin6=33 
+[2026-09-24 14:37:23]	[CDH] POPUPS showing=? 
+[2026-09-24 14:37:23]	[CDH] CAMERA before at=86,20 zoom0.45 
+[2026-09-24 14:37:49]	[CDH] BEFORE ownedWithin6=33 
+[2026-09-24 14:37:49]	[CDH] SHOT 01-border-before 
+[2026-09-24 14:37:52]	[CulturalDiffusion] inject 92,32 civ=0 culture=38.5 vitality=55.06 strength=82.5 stock=10 cap=164993.15 
+[2026-09-24 14:37:52]	[CulturalDiffusion] inject 87,32 civ=0 culture=13 vitality=32.25 strength=33.78 stock=10 cap=67555.32 
+[2026-09-24 14:37:52]	[CulturalDiffusion] inject 90,37 civ=0 culture=1 vitality=19.9 strength=5.38 stock=10 cap=10769.85 
+[2026-09-24 14:37:52]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=23.4 strength=5.7 stock=10 cap=11398.21 
+[2026-09-24 14:37:52]	[CulturalDiffusion] inject 93,26 civ=0 culture=9 vitality=24.65 strength=24.21 stock=10 cap=48417.74 
+[2026-09-24 14:37:52]	[CulturalDiffusion] inject 86,20 civ=0 culture=1 vitality=10.03 strength=4.24 stock=10 cap=8473.01 
+[2026-09-24 14:37:52]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=21.5 strength=10.31 stock=10 cap=20616.29 
+[2026-09-24 14:37:52]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=33.35 strength=16.32 stock=10 cap=32630.11 
+[2026-09-24 14:37:52]	[CulturalDiffusion] inject 80,31 civ=3 culture=3 vitality=15.85 strength=6.65 stock=10 cap=13294.3 
+[2026-09-24 14:37:52]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/23 centre=10 
+[2026-09-24 14:37:52]	[CulturalDiffusion] frontier city=196609 ring=4 best=10 bar=300 over=0/24 centre=10 
+[2026-09-24 14:37:52]	[CulturalDiffusion] frontier city=262146 ring=4 best=0 bar=300 over=0/24 centre=10 
+[2026-09-24 14:37:52]	[CulturalDiffusion] frontier city=327683 ring=4 best=10 bar=300 over=0/24 centre=10 
+[2026-09-24 14:37:52]	[CulturalDiffusion] frontier city=393220 ring=4 best=8549 bar=300 over=7/19 centre=10 
+[2026-09-24 14:37:52]	[CulturalDiffusion] frontier city=458757 ring=4 best=8549 bar=300 over=13/24 centre=10 
+[2026-09-24 14:37:52]	[CulturalDiffusion] flip 89,27 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 14:37:52]	[CulturalDiffusion] flip 89,26 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 14:37:52]	[CulturalDiffusion] flip 89,25 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 14:37:52]	[CulturalDiffusion] flip 88,24 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 14:37:52]	[CulturalDiffusion] flip 90,24 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 14:37:52]	[CulturalDiffusion] flip 84,24 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 14:37:52]	[CulturalDiffusion] flip 85,24 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 14:37:52]	[CulturalDiffusion] flip 86,24 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 14:37:52]	[CulturalDiffusion] state bytes=2033 field=59 claims=0 locked=0 passMs=28 
+[2026-09-24 14:37:52]	[CulturalDiffusion] pass: 0 flip(s), 8 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 59 active field tile(s) 
+[2026-09-24 14:37:59]	[CDH] PASS 1 {"flips":0,"pending":8,"tiles":8,"healed":0,"released":0,"ceded":0,"cedePending":0,"confirmed":0,"confirmedCede":0} ownedWithin6=40 
+[2026-09-24 14:37:59]	[CulturalDiffusion] notify: (89,27) unowned -> player 0 
+[2026-09-24 14:37:59]	[CulturalDiffusion] pending 89,27 claim confirmed on the live map 
+[2026-09-24 14:37:59]	[CulturalDiffusion] notify: (89,26) unowned -> player 0 
+[2026-09-24 14:37:59]	[CulturalDiffusion] pending 89,26 claim confirmed on the live map 
+[2026-09-24 14:37:59]	[CulturalDiffusion] notify: (89,25) unowned -> player 0 
+[2026-09-24 14:37:59]	[CulturalDiffusion] pending 89,25 claim confirmed on the live map 
+[2026-09-24 14:37:59]	[CulturalDiffusion] notify: (88,24) unowned -> player 0 
+[2026-09-24 14:37:59]	[CulturalDiffusion] pending 88,24 claim confirmed on the live map 
+[2026-09-24 14:37:59]	[CulturalDiffusion] notify: (90,24) unowned -> player 0 
+[2026-09-24 14:37:59]	[CulturalDiffusion] pending 90,24 claim confirmed on the live map 
+[2026-09-24 14:37:59]	[CulturalDiffusion] notify: (84,24) unowned -> player 0 
+[2026-09-24 14:37:59]	[CulturalDiffusion] pending 84,24 claim confirmed on the live map 
+[2026-09-24 14:37:59]	[CulturalDiffusion] notify: (85,24) unowned -> player 0 
+[2026-09-24 14:37:59]	[CulturalDiffusion] pending 85,24 claim confirmed on the live map 
+[2026-09-24 14:37:59]	[CulturalDiffusion] notify: (86,24) unowned -> player 0 
+[2026-09-24 14:37:59]	[CulturalDiffusion] pending 86,24 claim confirmed on the live map 
+[2026-09-24 14:37:59]	[CulturalDiffusion] inject 92,32 civ=0 culture=38.5 vitality=55.06 strength=82.5 stock=119.54 cap=164993.15 
+[2026-09-24 14:37:59]	[CulturalDiffusion] inject 87,32 civ=0 culture=13 vitality=32.25 strength=33.78 stock=59.87 cap=67555.32 
+[2026-09-24 14:37:59]	[CulturalDiffusion] inject 90,37 civ=0 culture=1 vitality=19.9 strength=5.38 stock=25.1 cap=10769.85 
+[2026-09-24 14:37:59]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=23.4 strength=5.7 stock=25.48 cap=11398.21 
+[2026-09-24 14:37:59]	[CulturalDiffusion] inject 93,26 civ=0 culture=9 vitality=24.65 strength=24.21 stock=48.15 cap=48417.74 
+[2026-09-24 14:37:59]	[CulturalDiffusion] inject 86,20 civ=0 culture=1 vitality=10.03 strength=4.24 stock=23.69 cap=8473.01 
+[2026-09-24 14:37:59]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=21.5 strength=10.31 stock=31.12 cap=20616.29 
+[2026-09-24 14:37:59]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=33.35 strength=16.32 stock=38.48 cap=32630.11 
+[2026-09-24 14:37:59]	[CulturalDiffusion] inject 80,31 civ=3 culture=3 vitality=15.85 strength=6.65 stock=26.64 cap=13294.3 
+[2026-09-24 14:37:59]	[CulturalDiffusion] frontier city=65536 ring=4 best=17.02 bar=300 over=0/23 centre=119.54 
+[2026-09-24 14:37:59]	[CulturalDiffusion] frontier city=196609 ring=4 best=35.38 bar=300 over=0/24 centre=59.87 
+[2026-09-24 14:37:59]	[CulturalDiffusion] frontier city=262146 ring=4 best=0 bar=300 over=0/24 centre=25.1 
+[2026-09-24 14:37:59]	[CulturalDiffusion] frontier city=327683 ring=4 best=59.87 bar=300 over=0/24 centre=25.48 
+[2026-09-24 14:37:59]	[CulturalDiffusion] frontier city=393220 ring=4 best=8120.55 bar=300 over=7/19 centre=48.15 
+[2026-09-24 14:37:59]	[CulturalDiffusion] frontier city=458757 ring=4 best=8120.55 bar=300 over=13/24 centre=23.69 
+[2026-09-24 14:37:59]	[CulturalDiffusion] flip 87,24 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 14:37:59]	[CulturalDiffusion] flip 90,23 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 14:37:59]	[CulturalDiffusion] flip 91,22 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 14:37:59]	[CulturalDiffusion] flip 92,22 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 14:37:59]	[CulturalDiffusion] flip 88,23 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 14:37:59]	[CulturalDiffusion] flip 89,22 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 14:37:59]	[CulturalDiffusion] flip 89,21 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 14:37:59]	[CulturalDiffusion] flip 83,18 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 14:37:59]	[CulturalDiffusion] state bytes=3784 field=91 claims=8 locked=8 passMs=22 
+[2026-09-24 14:37:59]	[CulturalDiffusion] pass: 0 flip(s), 8 pending, 0 ceded (0 pending), confirmed 8 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 91 active field tile(s) 
+[2026-09-24 14:38:06]	[CDH] PASS 2 {"flips":0,"pending":8,"tiles":23,"healed":0,"released":0,"ceded":0,"cedePending":0,"confirmed":8,"confirmedCede":0} ownedWithin6=47 
+[2026-09-24 14:38:06]	[CulturalDiffusion] notify: (87,24) unowned -> player 0 
+[2026-09-24 14:38:06]	[CulturalDiffusion] pending 87,24 claim confirmed on the live map 
+[2026-09-24 14:38:06]	[CulturalDiffusion] notify: (90,23) unowned -> player 0 
+[2026-09-24 14:38:06]	[CulturalDiffusion] pending 90,23 claim confirmed on the live map 
+[2026-09-24 14:38:06]	[CulturalDiffusion] notify: (91,22) unowned -> player 0 
+[2026-09-24 14:38:06]	[CulturalDiffusion] pending 91,22 claim confirmed on the live map 
+[2026-09-24 14:38:06]	[CulturalDiffusion] notify: (92,22) unowned -> player 0 
+[2026-09-24 14:38:06]	[CulturalDiffusion] pending 92,22 claim confirmed on the live map 
+[2026-09-24 14:38:06]	[CulturalDiffusion] notify: (88,23) unowned -> player 0 
+[2026-09-24 14:38:06]	[CulturalDiffusion] pending 88,23 claim confirmed on the live map 
+[2026-09-24 14:38:06]	[CulturalDiffusion] notify: (89,22) unowned -> player 0 
+[2026-09-24 14:38:06]	[CulturalDiffusion] pending 89,22 claim confirmed on the live map 
+[2026-09-24 14:38:06]	[CulturalDiffusion] notify: (89,21) unowned -> player 0 
+[2026-09-24 14:38:06]	[CulturalDiffusion] pending 89,21 claim confirmed on the live map 
+[2026-09-24 14:38:06]	[CulturalDiffusion] notify: (83,18) unowned -> player 0 
+[2026-09-24 14:38:06]	[CulturalDiffusion] pending 83,18 claim confirmed on the live map 
+[2026-09-24 14:38:06]	[CulturalDiffusion] inject 92,32 civ=0 culture=38.5 vitality=55.06 strength=82.5 stock=471.89 cap=164993.15 
+[2026-09-24 14:38:06]	[CulturalDiffusion] inject 87,32 civ=0 culture=13 vitality=32.25 strength=33.78 stock=167.1 cap=67555.32 
+[2026-09-24 14:38:06]	[CulturalDiffusion] inject 90,37 civ=0 culture=1 vitality=19.9 strength=5.38 stock=43.29 cap=10769.85 
+[2026-09-24 14:38:06]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=23.4 strength=5.7 stock=44.35 cap=11398.21 
+[2026-09-24 14:38:06]	[CulturalDiffusion] inject 93,26 civ=0 culture=9 vitality=24.65 strength=24.21 stock=119.8 cap=48417.74 
+[2026-09-24 14:38:06]	[CulturalDiffusion] inject 86,20 civ=0 culture=1 vitality=10.03 strength=4.24 stock=39.49 cap=8473.01 
+[2026-09-24 14:38:06]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=21.5 strength=10.31 stock=60.84 cap=20616.29 
+[2026-09-24 14:38:06]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=33.35 strength=16.32 stock=84.76 cap=32630.11 
+[2026-09-24 14:38:06]	[CulturalDiffusion] inject 80,31 civ=3 culture=3 vitality=15.85 strength=6.65 stock=47.6 cap=13294.3 
+[2026-09-24 14:38:06]	[CulturalDiffusion] frontier city=65536 ring=4 best=47.44 bar=300 over=0/23 centre=471.89 
+[2026-09-24 14:38:06]	[CulturalDiffusion] frontier city=196609 ring=4 best=99.74 bar=300 over=0/24 centre=167.1 
+[2026-09-24 14:38:06]	[CulturalDiffusion] frontier city=262146 ring=4 best=0 bar=300 over=0/24 centre=43.29 
+[2026-09-24 14:38:06]	[CulturalDiffusion] frontier city=327683 ring=4 best=167.1 bar=300 over=0/24 centre=44.35 
+[2026-09-24 14:38:06]	[CulturalDiffusion] frontier city=393220 ring=4 best=7713.52 bar=300 over=7/19 centre=119.8 
+[2026-09-24 14:38:06]	[CulturalDiffusion] frontier city=458757 ring=4 best=7713.52 bar=300 over=13/24 centre=39.49 
+[2026-09-24 14:38:06]	[CulturalDiffusion] flip 83,17 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 14:38:06]	[CulturalDiffusion] flip 84,16 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 14:38:06]	[CulturalDiffusion] flip 88,27 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 14:38:06]	[CulturalDiffusion] flip 88,26 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 14:38:06]	[CulturalDiffusion] flip 88,25 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 14:38:06]	[CulturalDiffusion] flip 87,25 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 14:38:06]	[CulturalDiffusion] flip 89,24 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 14:38:06]	[CulturalDiffusion] flip 84,25 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 14:38:06]	[CulturalDiffusion] state bytes=4490 field=100 claims=16 locked=16 passMs=21 
+[2026-09-24 14:38:06]	[CulturalDiffusion] pass: 0 flip(s), 8 pending, 0 ceded (0 pending), confirmed 8 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 100 active field tile(s) 
+[2026-09-24 14:38:13]	[CDH] PASS 3 {"flips":0,"pending":8,"tiles":37,"healed":0,"released":0,"ceded":0,"cedePending":0,"confirmed":8,"confirmedCede":0} ownedWithin6=54 
+[2026-09-24 14:38:13]	[CulturalDiffusion] notify: (83,17) unowned -> player 0 
+[2026-09-24 14:38:13]	[CulturalDiffusion] pending 83,17 claim confirmed on the live map 
+[2026-09-24 14:38:13]	[CulturalDiffusion] notify: (84,16) unowned -> player 0 
+[2026-09-24 14:38:13]	[CulturalDiffusion] pending 84,16 claim confirmed on the live map 
+[2026-09-24 14:38:13]	[CulturalDiffusion] notify: (88,27) unowned -> player 0 
+[2026-09-24 14:38:13]	[CulturalDiffusion] pending 88,27 claim confirmed on the live map 
+[2026-09-24 14:38:13]	[CulturalDiffusion] notify: (88,26) unowned -> player 0 
+[2026-09-24 14:38:13]	[CulturalDiffusion] pending 88,26 claim confirmed on the live map 
+[2026-09-24 14:38:13]	[CulturalDiffusion] notify: (88,25) unowned -> player 0 
+[2026-09-24 14:38:13]	[CulturalDiffusion] pending 88,25 claim confirmed on the live map 
+[2026-09-24 14:38:13]	[CulturalDiffusion] notify: (87,25) unowned -> player 0 
+[2026-09-24 14:38:13]	[CulturalDiffusion] pending 87,25 claim confirmed on the live map 
+[2026-09-24 14:38:13]	[CulturalDiffusion] notify: (89,24) unowned -> player 0 
+[2026-09-24 14:38:13]	[CulturalDiffusion] pending 89,24 claim confirmed on the live map 
+[2026-09-24 14:38:13]	[CulturalDiffusion] notify: (84,25) unowned -> player 0 
+[2026-09-24 14:38:13]	[CulturalDiffusion] pending 84,25 claim confirmed on the live map 
+[2026-09-24 14:38:13]	[CulturalDiffusion] inject 92,32 civ=0 culture=38.5 vitality=55.06 strength=82.5 stock=1151.36 cap=164993.15 
+[2026-09-24 14:38:13]	[CulturalDiffusion] inject 87,32 civ=0 culture=13 vitality=32.25 strength=33.78 stock=336.85 cap=67555.32 
+[2026-09-24 14:38:13]	[CulturalDiffusion] inject 90,37 civ=0 culture=1 vitality=19.9 strength=5.38 stock=63.85 cap=10769.85 
+[2026-09-24 14:38:13]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=23.4 strength=5.7 stock=65.83 cap=11398.21 
+[2026-09-24 14:38:13]	[CulturalDiffusion] inject 93,26 civ=0 culture=9 vitality=24.65 strength=24.21 stock=225.44 cap=48417.74 
+[2026-09-24 14:38:13]	[CulturalDiffusion] inject 86,20 civ=0 culture=1 vitality=10.03 strength=4.24 stock=56.83 cap=8473.01 
+[2026-09-24 14:38:13]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=21.5 strength=10.31 stock=97.94 cap=20616.29 
+[2026-09-24 14:38:13]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=33.35 strength=16.32 stock=147.69 cap=32630.11 
+[2026-09-24 14:38:13]	[CulturalDiffusion] inject 80,31 civ=3 culture=3 vitality=15.85 strength=6.65 stock=71.98 cap=13294.3 
+[2026-09-24 14:38:13]	[CulturalDiffusion] frontier city=65536 ring=4 best=79.8 bar=300 over=0/23 centre=1151.36 
+[2026-09-24 14:38:13]	[CulturalDiffusion] frontier city=196609 ring=4 best=180.46 bar=300 over=0/24 centre=336.85 
+[2026-09-24 14:38:13]	[CulturalDiffusion] frontier city=262146 ring=4 best=32.44 bar=300 over=0/24 centre=63.85 
+[2026-09-24 14:38:13]	[CulturalDiffusion] frontier city=327683 ring=4 best=336.85 bar=300 over=1/24 centre=65.83 
+[2026-09-24 14:38:13]	[CulturalDiffusion] frontier city=393220 ring=4 best=7326.85 bar=300 over=7/19 centre=225.44 
+[2026-09-24 14:38:13]	[CulturalDiffusion] frontier city=458757 ring=4 best=7326.85 bar=300 over=13/24 centre=56.83 
+[2026-09-24 14:38:13]	[CulturalDiffusion] flip 85,25 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 14:38:13]	[CulturalDiffusion] flip 86,25 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 14:38:13]	[CulturalDiffusion] flip 89,23 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 14:38:13]	[CulturalDiffusion] flip 90,22 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 14:38:13]	[CulturalDiffusion] flip 90,21 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 14:38:13]	[CulturalDiffusion] flip 91,21 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 14:38:13]	[CulturalDiffusion] flip 83,16 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 14:38:13]	[CulturalDiffusion] flip 87,26 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 14:38:13]	[CulturalDiffusion] state bytes=5666 field=127 claims=24 locked=24 passMs=21 
+[2026-09-24 14:38:13]	[CulturalDiffusion] pass: 0 flip(s), 8 pending, 0 ceded (0 pending), confirmed 8 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 127 active field tile(s) 
+[2026-09-24 14:38:20]	[CDH] PASS 4 {"flips":0,"pending":8,"tiles":58,"healed":0,"released":0,"ceded":0,"cedePending":0,"confirmed":8,"confirmedCede":0} ownedWithin6=62 
+[2026-09-24 14:38:20]	[CDH] AFTER ownedWithin6=62 (was 62) 
+[2026-09-24 14:38:20]	[CDH] CAMERA after at=86,20 zoom0.45 
+[2026-09-24 14:38:30]	[CDH] SHOT 02-border-after 
+[2026-09-24 14:38:33]	[CDH] CAMERA edge at=86,20 zoom0.3 
+[2026-09-24 14:38:42]	[CDH] SHOT 03-border-edge 
+[2026-09-24 14:38:45]	[CDH] DONE harness borders finished 
