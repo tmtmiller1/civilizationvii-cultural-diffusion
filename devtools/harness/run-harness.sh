@@ -66,6 +66,16 @@ cp -R "$REPO/ui" "$DEST/"
 [ -d "$REPO/text" ] && cp -R "$REPO/text" "$DEST/"
 grep -q AffectsSavedGames "$MI" || sed -i '' -E 's#(<Version>[^<]+</Version>)#\1\n        <AffectsSavedGames>0</AffectsSavedGames>#' "$MI"
 sed -i '' -E 's/^([[:space:]]*)debug: false/\1debug: true/' "$DEST/ui/cd-config.js"
+# PATCH="<file>|<from>|<to>" edits ONE deployed file, never the repo. Used for defaults that do not live in
+# cd-config.js - e.g. the pressure lens, whose default is hardcoded in cd-settings.js, and which has to be off for
+# a clean border capture because touching LensManager to disable its layer redraws the yield-icon overlay.
+if [ -n "${PATCH:-}" ]; then
+  pf="${PATCH%%|*}"; rest="${PATCH#*|}"; pfrom="${rest%%|*}"; pto="${rest##*|}"
+  if [ -f "$DEST/$pf" ]; then
+    sed -i '' "s|$pfrom|$pto|g" "$DEST/$pf"
+    say "patched $pf: '$pfrom' -> '$pto' ($(grep -c "$pto" "$DEST/$pf") hit(s))"
+  else say "PATCH target $pf not found"; fi
+fi
 say "deployed mod: debug=$(grep -c 'debug: true' "$DEST/ui/cd-config.js") affectsSaves0=$(grep -c AffectsSavedGames "$MI")"
 if [ "${NO_MOD:-0}" = "1" ]; then
   sqlite3 "$DB" "update Mods set Disabled=1 where ModId='cultural-diffusion'"
