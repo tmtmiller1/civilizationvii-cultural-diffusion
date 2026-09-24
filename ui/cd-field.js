@@ -1,15 +1,9 @@
 // cd-field.js
 //
-// The PURE reaction-diffusion math for the culture field (docs/current-model.md §2 -
-// the core adapted from the Civ V "Cultural Diffusion" model). No engine reads live here, so the
-// whole propagation can be unit-tested in Node. cd-pass.js owns the persisted field and the
-// engine reads (terrain, ownership); it feeds those through these functions.
-//
-// The model is a cellular automaton over a persisted per-tile, per-civ culture STOCK. Each
-// turn a tile DECAYS, DIFFUSES a fraction of its stock to neighbours (capped, terrain- and
-// affinity-modified), and cities INJECT new culture into their own tile. Ownership is then a
-// read-out of the stock (most culture wins, past absolute + ratio thresholds). Reach is an
-// EMERGENT travelling wave - slow and organic - not a closed-form distance calculation.
+// The PURE reaction-diffusion math for the culture field (docs/current-model.md §2, adapted from
+// the Civ V "Cultural Diffusion" model). No engine reads live here, so it is unit-tested in Node;
+// cd-pass.js owns the persisted field and the engine reads and feeds them through these functions.
+// Each turn a tile DECAYS, DIFFUSES to neighbours and cities INJECT; ownership is a read-out of the stock.
 
 /** @param {*} v @param {number} [d] @returns {number} */
 function num(v, d = 0) {
@@ -17,10 +11,9 @@ function num(v, d = 0) {
 }
 
 /**
- * Culture a city injects into its OWN tile this turn (Civ V GetCityCulturalOutput, sqrt
- * variant). Self-amplifying: the more culture already present, the faster it grows - so a
- * city's stock climbs from `injectBase` toward its cap over many turns, which is what makes
- * a mature culture project a big stock (and thus reach far) only later in the game.
+ * Culture a city injects into its OWN tile this turn (Civ V GetCityCulturalOutput, sqrt variant).
+ * Self-amplifying: the stock climbs from `injectBase` toward its cap over many turns, so a mature
+ * culture projects a big stock only later in the game.
  * @param {number} strength The city's cultural output (fused projection: culture x CPI x prosperity x celebration).
  * @param {number} currentOwnCulture The owner's culture already on the city tile.
  * @param {import("/cultural-diffusion/ui/cd-config.js").CdConfig} cfg Live config.
@@ -47,10 +40,8 @@ export function cityCultureCap(strength, cfg) {
 }
 
 /**
- * Culture lost from a tile's stock this turn (Civ V DecayCulture): a percentage plus a flat
- * point, so small stocks fully dissipate and the front finds an equilibrium the diffusion
- * has to keep pushing against - the constant brake that keeps growth slow and lets borders
- * flow back when a source weakens.
+ * Culture lost from a tile's stock this turn (Civ V DecayCulture): a percentage plus a flat point,
+ * so small stocks fully dissipate and the front finds an equilibrium diffusion must keep pushing against.
  * @param {number} value Current culture value.
  * @param {import("/cultural-diffusion/ui/cd-config.js").CdConfig} cfg Live config.
  * @returns {number} The value after decay (>= 0).
@@ -72,9 +63,8 @@ export function decayValue(value, cfg) {
 
 /**
  * Culture DELIVERED from a source tile to one neighbour this turn (Civ V DiffuseCulture). The
- * neighbour asymptotes to at most `normalMax x maxFactor` (capped by `maxPercent`) of the
- * source, approached at the diffusion rate - so each ring fills over many turns and the wave
- * propagates ring by ring. Returns the ADD to the neighbour's stock (never lowers it).
+ * neighbour asymptotes to at most `normalMax x maxFactor` (capped by `maxPercent`) of the source,
+ * approached at the diffusion rate. Returns the ADD to the neighbour's stock (never lowers it).
  * @param {number} sourceValue The diffusing civ's culture on the source tile.
  * @param {number} prevTargetValue The same civ's culture already on the neighbour.
  * @param {StepMods} mods Terrain/affinity modifiers for this step.
@@ -120,10 +110,9 @@ function strongestCulture(civMap, dead) {
 }
 
 /**
- * Resolve who should own a tile from its per-civ culture stock (Civ V UpdatePlotOwnership,
- * the value test only - distance/adjacency/lock are the caller's engine checks). A tile goes
- * to the strongest culture, but only past an absolute floor and (when flipping an owned tile)
- * a decisive ratio over the incumbent - so ownership is stable, not flickery.
+ * Resolve who should own a tile from its per-civ culture stock (Civ V UpdatePlotOwnership, the value
+ * test only; distance/adjacency/lock are the caller's engine checks). The strongest culture wins, but
+ * only past an absolute floor and (on owned land) a decisive ratio over the incumbent.
  * @param {Record<string, number>} civMap civId -> culture value on the tile.
  * @param {number} currentOwner Current owner player id (-1 = unowned).
  * @param {number[]} deadOwners Player ids to ignore (dead civs).
@@ -159,11 +148,9 @@ export function passCanAct(leader, owner, me, claimedByMe, recede) {
 }
 
 /**
- * A READ-ONLY view of the flip pressure on a tile, for the Cultural Pressure lens + hover tooltip
- * (docs/potential-future-features.md §1). Same gates as resolveOwner, re-expressed as a capture
- * PROGRESS in [0,1] toward the leader taking the tile from its current owner, plus the raw stocks and
- * the target the leader must reach, so a tooltip can show the arithmetic. Pure - no engine reads - so
- * it is unit-tested right alongside resolveOwner and the two can never drift.
+ * A READ-ONLY view of the flip pressure on a tile, for the Cultural Pressure lens + hover tooltip.
+ * Same gates as resolveOwner, re-expressed as a capture PROGRESS in [0,1] plus the raw stocks and the
+ * target the leader must reach. Pure, so it is unit-tested alongside resolveOwner and cannot drift.
  * @param {Record<string, number>} civMap civId -> culture value on the tile.
  * @param {number} currentOwner Current owner player id (-1 = unowned).
  * @param {number[]} deadOwners Player ids to ignore (dead civs).
@@ -215,13 +202,10 @@ function clamp01(v) {
 }
 
 /**
- * A rough ONE-STEP-AHEAD estimate of how many turns until a tile flips to its leader, from a single
- * field snapshot (the Civ VI growth-hex "next-turn" model, adapted). Net gain next turn = the
- * diffusion the leader would receive from its strongest neighbour on OPEN ground minus this tile's
- * decay. Deterministic and honest-but-approximate: it deliberately ignores terrain crossing mods,
- * city injection, and the sigmoid approach to the cap, so it is an "at the current pace" figure, not
- * a promise. Pure. Returns null when there is no pending flip, 0 when already over the bar, and
- * Infinity when the front is stalled or receding (net gain <= 0).
+ * A rough ONE-STEP-AHEAD estimate of turns until a tile flips to its leader: net gain next turn =
+ * diffusion from the leader's strongest neighbour on OPEN ground minus this tile's decay (terrain
+ * mods, injection and the cap approach are ignored). Pure. Returns null when there is no pending
+ * flip, 0 when already over the bar, and Infinity when the front is stalled (net gain <= 0).
  * @param {{leader:number, leaderValue:number, target:number, willFlip:boolean}} verdict A pressureVerdict.
  * @param {number} strongestNeighbourLeaderStock The leader's largest stock among the tile's neighbours.
  * @param {import("/cultural-diffusion/ui/cd-config.js").CdConfig} cfg Live config.

@@ -1,11 +1,8 @@
 // cd-pressure.js
 //
-// The PURE injection-strength math (docs/current-model.md §3). No engine reads
-// live here, so it is fully unit-testable in Node. cd-pass.js gathers the raw per-settlement
-// signals (via cd-polity) and feeds them through `projectionOf` to get how hard each city
-// PUMPS culture into its own tile - the source strength of the reaction-diffusion field.
-// CPI (a per-civ multiplier) and ethnic affinity (a per-step diffusion accelerant) are
-// applied by the pass around this base.
+// The PURE injection-strength math (docs/current-model.md §3); no engine reads, unit-testable in
+// Node. cd-pass.js feeds per-settlement signals through `projectionOf` to get how hard each city
+// PUMPS culture into its own tile; CPI and ethnic affinity are applied by the pass around this base.
 
 /**
  * @typedef {Object} Settlement
@@ -74,7 +71,7 @@ export function prosperityFactor(prosperity, amp) {
 }
 
 /**
- * Ethnic-affinity factor (3.1a term C): diffusion into a tile saturated with a civ's diaspora
+ * Ethnic-affinity factor: diffusion into a tile saturated with a civ's diaspora
  * is accelerated - borders follow people. `affinity` is the diaspora share in [0,1]; null/NaN
  * (no emigration data) -> neutral 1.
  * @param {number|null|undefined} affinity Diaspora share in [0,1].
@@ -107,14 +104,10 @@ function fusedBase(culture, s, cfg) {
  * A settlement's cultural INJECTION strength - how hard it pumps culture into its own tile,
  * the source of the diffusion field.
  *
- * The fused base is a GEOMETRIC BLEND of culture with the settlement's prosperity/vitality
- * aggregate: `culture^alpha x vitality^(1-alpha)` (alpha = cultureWeight/`cultureExponent`). This is the
- * structural flattener - a lone +culture or +happiness ability is a single concave term
- * (`x1.5` culture -> `x1.5^alpha`), not the linear driver, so culture powerhouses lead without
- * running away, and it self-normalizes across ages (culture and the other yields scale up
- * together). Wonders and happiness are NOT separate multipliers here - wonders feed the CPI
- * (applied per-civ by the pass) and happiness lives inside `vitality`, avoiding double-counts.
- * With `fusedModel` off it degrades to plain culture (x celebration x age).
+ * The fused base is a GEOMETRIC BLEND `culture^alpha x vitality^(1-alpha)` (alpha = `cultureExponent`),
+ * so a lone +culture ability is a single concave term and powerhouses lead without running away.
+ * Wonders feed the CPI and happiness lives inside `vitality` (no double-counts); with `fusedModel`
+ * off it degrades to plain culture (x celebration x age).
  * @param {Settlement} s Settlement.
  * @param {import("/cultural-diffusion/ui/cd-config.js").CdConfig} cfg Live config.
  * @returns {number} Non-negative injection strength.

@@ -1,0 +1,9 @@
+[2026-09-24 11:33:21]	HTML Parser Error@:fs://game/root-game.html@1:2043: Premature end of file  Currently open tags: html, div, div..
+[2026-09-24 11:33:21]	HTML Parser Error@:fs://game/root-game.html@1:2043: Premature end of file  Currently open tags: html, div, div..
+[2026-09-24 11:33:36]	HTML Parser Error@:fs://game/root-game.html@49:43: Tokenizer error with an unimplemented error message.
+[2026-09-24 11:33:57]	HTML Parser Error@:fs://game/root-game.html@1:25: Premature end of file  Currently open tags: html, div..
+[2026-09-24 11:34:08]	Unhandled rejection error value: Timeout 5000ms exceeded for waitUntilValue on .
+[2026-09-24 11:34:08]	Unhandled rejection error value: Timeout 5000ms exceeded for waitUntilValue on .
+[2026-09-24 11:37:15]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags-independent-powers.js:463: TypeError: Cannot read properties of null (reading 'type')
+[2026-09-24 11:37:15]	JS Error (Line):     const unitDefinition = GameInfo.Units.lookup(this.unit.type);
+[2026-09-24 11:37:15]	JS Error (Stack): TypeError: Cannot read properties of null (reading 'type')

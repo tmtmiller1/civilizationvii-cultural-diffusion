@@ -1,0 +1,183 @@
+Steam Workshop change notes, one block per release, newest first.
+Generated from CHANGELOG.md by scripts/steam-changelog.mjs; release.sh uploads the block for the version it builds.
+To fix an old Workshop entry, paste the text under its ==== line into that entry's Edit box on the change-notes page.
+A block edited by hand is kept as-is. Delete a block to regenerate it from CHANGELOG.md.
+
+==== 1.2.0 | 2026-09-24 | src 3d9c549a4637 | gen 2cad4f6020ee ====
+[b]Version 1.2.0 · 24 September 2026[/b]
+Two anomalies a player reported turned out to be real and to be this mod’s doing. Both were reproduced in a test game before anything was changed, and both fixes were then watched working in one.
+
+[b]Fixed[/b]
+• [b]Another civilisation’s units could get stuck inside your borders.[/b] When cultural expansion claimed every tile around a foreign unit, it had nowhere legal to move and stayed put until war was declared — in the test game, five turns motionless after moving every turn before. Expansion now leaves such a unit a way out and takes the tile once it has moved on. Ships and embarked units are covered too, and only civilisations you are at peace with need it, since anyone at war with you crosses your land freely.
+• [b]City-states and villages were being stripped of their land.[/b] Only a settlement’s centre tile was protected from cultural pressure. That is fine against a large civilisation, but a city-state or village owns barely a ring, so it could be reduced to the one tile it stands on — which looks, on the map, like the settlement being swallowed. Minor settlements now keep a protected ring around their centre.
+• [b]Settlements that report no cities are protected as well.[/b] Independent Powers do not list their villages the way other players do, so the old check could not see one. Protection now reads the map.
+
+[b]Changed[/b]
+• [b]The Cultural Pressure lens shows only what will actually happen.[/b] The overlay and the hover readout used to shade tiles, and count down turns to capture, for flips other rules would have refused anyway — a rival’s city core, a war front, a tile out of range or still on cooldown. Every rule now lives in one place that the expansion pass, the lens and the readout all read from.
+
+[b]Internal[/b]
+• The claim rules moved into a single shared module, with a test suite that pins the lens and the pass to the same answer rule by rule, so the overlay cannot drift from what the mod does.
+• Turning off Cultural Diffusion does not return tiles it has already claimed: the game writes those ownership changes into your save itself.
+
+==== 1.1.0 | 2026-09-18 | src a726a531ed6c | gen 2b325efeec44 ====
+[b]Version 1.1.0 · 18 September 2026[/b]
+
+[b]Added[/b]
+• An Options toggle for the “+1 ring” growth buffer, now off by default
+• Borders can recede (opt-in recedeBorders, off by default)
+• Debug diagnostics for failures that are otherwise silent
+• Cultural Pressure lens and hover tooltip
+• In-game test harness (devtools/harness/)
+
+[b]Fixed[/b]
+• Saving an option could copy another mod's data into the shared settings key
+• The mod's settings disappeared after closing Settings, until the game restarted
+• Flips were never recorded in the real game
+• Every age read as Antiquity on the real engine
+
+[b]Removed[/b]
+• The work-radius GlobalParameters override (data/cd-work-range.xml) is withdrawn before release
+
+Details in the [url=https://github.com/tmtmiller1/civilizationvii-cultural-diffusion/blob/main/CHANGELOG.md]full changelog[/url].
+
+==== 1.0.7 | 2026-07-13 | src 36646229dcba | gen 129c8880ef5b ====
+[b]Version 1.0.7 · 13 July 2026[/b]
+
+[b]Fixed[/b]
+• [b]The mod no longer locks tiles inside your own city's 3-ring (regression from 1.0.6).[/b] After 1.0.6 switched the claim verb to purchasePlot, the diffusion pass, the +1 buffer, and the orphan-repair were force-buying [i]unowned tiles inside your own natural rings[/i] and attaching each to the [b]geometrically nearest[/b] of your cities. When two of your cities sit close together, a tile in [b]City A's[/b] workable ring that happens to be a hair closer to [b]City B[/b] was deeded to B — so A could no longer work it, and if B was too far, nobody could. This is the reported [i]“restricting me from working some, but not all, tiles within the 3-ring of my city centre.”[/i]
+• [b]The base game now owns and allocates your inner rings, always.[/b] Rings within baseGrowthRadius (3) of any of your cities are ceded entirely to the base game, which assigns each tile to the city that can actually [b]work[/b] it. The mod only ever claims the [b]frontier beyond[/b] that ring — the anti-forward-settling buffer, which was always its purpose. The diffusion flip (flipCandidates) and the +1 buffer (bufferTarget) now skip any tile within a local city's natural ring.
+• [b]Existing damaged saves self-heal.[/b] A new per-pass reconciliation (releaseInnerClaims) releases any tile the 1.0.6 build already force-bought inside your natural rings back to the base game, which re-acquires it and re-assigns it to the workable city. Orphan-repair (repairOrphans) likewise now [b]releases[/b] inner-ring orphans instead of re-buying them to the nearest city (it still re-integrates true [i]frontier[/i] orphans). Healing is one-shot per tile and logged as N inner tile(s) released to base game. So a save broken by today's earlier update repairs itself within a turn or two of loading 1.0.7 — every 3-ring tile becomes workable again.
+
+==== 1.0.6 | 2026-07-13 | src f5e09925b35f | gen 6a6724efa7bc ====
+[b]Version 1.0.6 · 13 July 2026[/b]
+
+[b]Added[/b]
+• The reaction-diffusion field now spreads across water (diffuseAcrossWater, on by default)
+• Water crossing eases across the ages (byAge[...].waterEase)
+• **waterEase ramps continuously [i]within[/i] each age (waterEaseRamp, on by default).** Rather than stepping at the age boundary, the crossi...
+• Distant Lands are off-limits until the Exploration age (blockDistantLandsBeforeExploration, on by default)
+• Event-driven “+1 ring” cultural buffer (growthBuffer, on by default)
+
+[b]Fixed[/b]
+• Heals legacy orphan tiles baked into existing saves (repairOrphans, on by default)
+• Claimed tiles are now integrated city tiles, not orphans (Phase 1 verb switch)
+• Gold cost is refunded the same tick (refundGold, default on)
+• A failed purchase no longer falls back to setOwnership
+
+[b]Changed[/b]
+• Removed the “how tiles are claimed” (flip-verb) option from the Options screen
+
+[b]Probe (v0.8.0 — Phase 0, probe/)[/b]
+• Q-VERB — the flip-verb decision gate
+• Fixed the state-machine thrash
+• “Waiting” HUD line
+
+[b]Probe (v0.8.1 — Phase 0 fixes from the 2026-07-09 in-game run)[/b]
+• Verdicts now settle over turns, not one short timer
+• Verb tiles are now excluded from the flip set
+• CREATE_ELEMENT success is read correctly
+• Clearer border messaging
+
+[b]Probe (v0.8.2 — visible-land claims + un-masked verb decision)[/b]
+• Claims now land on visible LAND, not ocean/fog
+• Verb decision is driven by the FAR (beyond-ring-3) verdict
+
+[b]Probe (v0.8.3 — visible contiguous border growth + rival capture demo)[/b]
+• Each turn it claims the [b]contiguous front[/b] — land tiles directly adjacent to your existing territory — so the colored border visibly cr...
+
+[b]Probe (v0.8.4 — the demo now uses a verb that actually repaints the border)[/b]
+• Demo unowned-tile verb switched to setOwnership
+• Throttled to once per turn
+
+[b]Probe (v0.9.2 — Phase 5 via Game.DiplomacyDeals, the real city-transfer path)[/b]
+
+[b]Probe (v0.9.9 — Phase 5 via the REVOLT MARKER: the real cultural city-capture)[/b]
+• Data
+• runRevoltMarker
+• runRevoltWatch
+
+[b]Probe (v0.9.1 — fixes from the first Phase-5 run)[/b]
+• District type resolved to a name
+• Q-COST retries
+• Phase 5 first result confirmed the design: Q-XFER-ROLLUP = [i]transfer-ish API names exist but none canStart on a city center[/i] — the city...
+
+[b]Probe (v0.9.0 — Q-COST, capture instrumentation, city-center exclusion, Phase 5 discovery)[/b]
+• Q-COST (one-shot)
+• Capture instrumentation (points 1 & 2)
+• City-center exclusion
+• Phase 5 — cultural city capture DISCOVERY
+
+[b]Probe (v0.8.9 — the refund is now player-invisible, not just metric-invisible)[/b]
+
+[b]Probe (v0.8.8 — refund is invisible to the demographics mod's metrics)[/b]
+
+[b]Probe (v0.8.7 — purchasePlot with silent gold refund: visible + integrated + net-free)[/b]
+
+[b]Probe (v0.8.6 — stack: test BOTH orders)[/b]
+
+[b]Probe (v0.8.5 — the “stack” verb: paint + integrate + free)[/b]
+
+Details in the [url=https://github.com/tmtmiller1/civilizationvii-cultural-diffusion/blob/main/CHANGELOG.md]full changelog[/url].
+
+==== 1.0.5 | 2026-07-11 | src 223626c1796e | gen 112c31239cc6 ====
+[b]Version 1.0.5 · 11 July 2026[/b]
+
+[b]Fixed[/b]
+• [b]Mod now shows its name in Additional Content.[/b] The mods browser listed the mod as the raw LOC_MOD_CULTURAL_DIFFUSION_NAME tag (and its description as a tag) because the name/description strings were only loaded into the in-game text database by an ActionGroup, which the frontend reads too late. Added a top-level <LocalizedText> block so the name and description resolve at mod-discovery time — the mod now reads as [b]Cultural Diffusion[/b].
+• [b]No more phantom territory claims.[/b] A tile flip is now recorded only after confirming the tile actually changed owner. Previously a flip attempt that silently did nothing (the default verb no-ops on rival-owned land) was still booked as a success — consuming the settlement's claim budget, locking the tile on cooldown, and firing a “claimed territory” toast while the rival kept the tile. (The permanent fix — switching the claim verb — remains the redesign plan's Phase 1.)
+
+[b]Removed[/b]
+• Two unused, unwired config flags (preventForwardSettle, minimalOwnedCulture); anti-forward-settling is an emergent property of the diffusion field, not a discrete toggle.
+
+==== 1.0.4 | 2026-07-10 | src 99fd41a5a72b | gen a3004ada61ce ====
+[b]Version 1.0.4 · 10 July 2026[/b]
+Cultural diffusion can now press [b]into[/b] a rival's territory instead of stopping at their frontier, with a new toggle to control how aggressively it does so. Defaults are conservative: culture still spreads from the outside in and never claims an enemy city-center plot.
+
+[b]Changed[/b]
+• [b]Diffusion can now take tiles INSIDE a rival's ring, not just their frontier.[/b] Rival city protection is now a radius, not an all-or-nothing shield: the new default protects only the enemy [b]city-center plot itself[/b] (culture may claim the tiles around it and push inward ring by ring), where before the whole ring-1 “downtown” was shielded. Configurable under [b]Options → Mods → Cultural Diffusion → rival city protection[/b] (Full downtown ring / Center only / Protect nothing). Replaces the boolean cityCoreProtection with coreProtectRadius (1 / 0 / -1).
+
+[b]Added[/b]
+• [b]“Contiguous border only” toggle[/b] (requireAdjacency, default on). On: culture claims only tiles touching your land, taking a rival's territory from the outside in. Off: culture may claim any tile its field dominates, including a disconnected pocket inside another civ.
+
+[b]Notes[/b]
+• [b]Safe by default.[/b] With requireAdjacency on and coreProtectRadius at Center-only (both defaults), culture claims a rival's tiles contiguously from the outside in and never the city-center plot — the same rival-tile capture the probe's capture stage exercised (developed tiles transfer and hold; tile-bound improvements survive). The disconnected-pocket behaviour (requireAdjacency off) reaches deep into a rival's worked footprint and is opt-in.
+
+==== 1.0.3 | 2026-07-06 | src e774d84e5103 | gen aff7fc776438 ====
+[b]Version 1.0.3 · 6 July 2026[/b]
+Test-quality hardening only. No gameplay, balance, or shipped-behaviour changes — the shipped ui/, text/, and modinfo content is identical to 1.0.2 apart from the version bump.
+
+[b]Added[/b]
+• Mutation-testing coverage for the six pure diffusion-logic modules (cd-pressure, cd-field, cd-cpi, cd-state, cd-calibration, cd-civ-tuning). Six new tests/*-branches.mjs harnesses raise the Stryker mutation score from [b]63.3% to 81.8%[/b] (580 of 709 mutants killed, up from 449), with the diffusion-math modules at 86–94%. Every kill is a genuine behavioural assertion — no mutant was suppressed and no scope narrowed to inflate the number; the surviving mutants are equivalent (dead defensive branches, boundary equalities, try/catch-masked engine reads, and the intentionally-empty memento pipeline in cd-civ-tuning). Full write-up in docs/mutation-analysis.md.
+• New npm run test:*-branches scripts, wired into npm test and npm run verify.
+
+==== 1.0.2 | 2026-07-06 | src ef3885edaec9 | gen 55647b040ae5 ====
+[b]Version 1.0.2 · 6 July 2026[/b]
+Options-screen localization fix. No gameplay or balance changes.
+
+[b]Fixed[/b]
+• The mod's controls under the shared “Mods” Options tab now show their proper localized names rather than a raw LOC_… tag. Every label, description, and dropdown item resolves to a defined, mod-prefixed key in text/en_us/ModText.xml.
+
+==== 1.0.1 | 2026-07-04 | src 65eb549d5829 | gen 6cab646cfdda ====
+[b]Version 1.0.1 · 4 July 2026[/b]
+Cross-mod compatibility and stability hardening so the mod coexists cleanly with other players' mods. No gameplay or balance changes.
+
+[b]Changed[/b]
+• Turn-hook registration is now idempotent: the per-turn engine subscription is drained before it is re-registered, guaranteeing exactly one diffusion pass per turn even if the game scope re-runs the script within a session, and never stacking a duplicate handler on the engine event bus that other mods also use.
+
+[b]Added[/b]
+• Safety cutoff: after repeated internal errors the mod unsubscribes its own turn hook instead of retrying (and logging) every turn, so a fault can never spam the shared event bus. New culturalDiffusion.stop() console helper to unsubscribe on demand.
+• Branded Workshop preview image.
+
+==== 1.0.0 | 2026-07-04 | src fc845b9b8c66 | gen c88239b63daa ====
+[b]Version 1.0.0 · 4 July 2026[/b]
+First public release. A reimagining and extension of the Civ V “Cultural Diffusion” mod for Civilization VII.
+
+[b]Added[/b]
+• Reaction-diffusion culture field: cities inject culture into a persisted per-tile stock that diffuses to neighbours and decays each turn, so borders grow as a slow, organic travelling wave (ring 3 is a mid-game event; ring 5+ is a mature culture).
+• Terrain shaping: culture follows roads and river valleys and is slowed or blocked crossing hills, mountains, tundra/desert biomes, and forest/jungle/marsh features.
+• Fused injection strength: a geometric blend of culture with a prosperity/vitality aggregate, a per-civilization Cultural Power Index (wonders, great works, culture, influence, city-state suzerainties, happiness, golden ages, traditions, age), and a celebration bonus.
+• Optional ethnic-affinity diffusion that reads the Emigration mod's diaspora data so borders follow people. Standalone-safe: neutral when Emigration is absent.
+• Per-age tuning for Civ VII's three ages and game-settings calibration that paces the field to the current age length and nudges injection by map size.
+• Bounded per-leader / civilization / memento balance layer for territory-redundant kits (e.g. culture-on-capture).
+• Options: intensity presets (Low / Medium / High), enable switch, claim-empty-land-only safety mode, free-territory vs buy-with-gold verb, rich-cultural-model and follow-diaspora toggles, and debug logging.
+• Single-player, flag-gated, reversible.

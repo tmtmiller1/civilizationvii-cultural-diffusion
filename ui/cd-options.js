@@ -3,14 +3,12 @@
 // Registers Cultural Diffusion's settings under the shared "Mods" tab of the Options screen, in BOTH shell and game
 // scopes. Kept separate from cd-settings.js so the gameplay loop never depends on the Options-screen chunk loading.
 //
-// Registration goes through Options.addInitCallback, never a bare addOption at load. The base OptionsModel rebuilds its
-// whole option list from its init callbacks whenever reInitOptions() runs: it clears the map, and it runs on the
-// engine's GraphicsOptionsChanged event, for example when the Settings screen applies or closes. Options added only at
-// load were wiped by that rebuild and did not come back until the game restarted, which is the reported "the mod's
-// options disappear after closing Settings". The Emigration mod already registers through the callback.
+// Registration goes through Options.addInitCallback, never a bare addOption at load: the base OptionsModel rebuilds
+// its whole option list from its init callbacks whenever reInitOptions() runs (e.g. when the Settings screen applies
+// or closes), so options added only at load are wiped by that rebuild.
 //
 // The flip verb is NOT exposed here: claimed tiles are always integrated into the nearest city (CONFIG.flipVerb =
-// "purchasePlot", refunded to net-free). The legacy setOwnership path remains a code-only escape hatch.
+// "purchasePlot", refunded to net-free). The setOwnership path remains a code-only escape hatch.
 
 import { CategoryType, OptionType, Options } from "/core/ui/options/model-options.js";
 import { CategoryData } from "/core/ui/options/options-helpers.js";

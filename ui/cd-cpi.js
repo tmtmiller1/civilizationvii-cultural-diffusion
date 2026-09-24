@@ -1,15 +1,9 @@
 // cd-cpi.js
 //
-// The PURE Cultural Power Index math (docs/current-model.md §3, term A).
-// No engine reads live here, so the CPI/power math is fully unit-testable in Node.
-// cd-metrics.js gathers the raw per-civ dimensions from the live engine and feeds
-// them through these functions; cd-pass.js turns the result into the per-civ pressure
-// multiplier the fused model applies.
-//
-// CPI is deliberately NOT culture-per-turn: it is a civ's *overall* cultural power,
-// built from several normalized dimensions - each expressed as this civ's share vs the
-// STRONGEST civ (so it measures dominance and scales across ages) - combined as a
-// geometric weighted mean so breadth beats a single-stat spike.
+// The PURE Cultural Power Index math (docs/current-model.md §3); no engine reads, unit-testable in
+// Node. cd-metrics.js gathers the raw per-civ dimensions and cd-pass.js applies the resulting
+// multiplier. CPI is a civ's overall cultural power: each dimension as a share vs the STRONGEST
+// civ, combined as a geometric weighted mean so breadth beats a single-stat spike.
 
 const EPS = 1e-6;
 
@@ -51,11 +45,9 @@ export function sharesVsMax(rawByOwner, dims = CPI_DIMENSIONS) {
 }
 
 /**
- * Geometric weighted mean of a civ's dimension shares -> its CPI in (0,1]. Geometric (not
- * arithmetic) so a civ that is broadly strong beats one spiking a single dimension, and a
- * near-zero dimension drags CPI down (breadth is rewarded). Weights are auto-normalized
- * over the live dimensions, and each share is floored by EPS so one empty dimension can't
- * collapse CPI to exactly 0.
+ * Geometric weighted mean of a civ's dimension shares -> its CPI in (0,1], so a broadly strong civ
+ * beats one spiking a single dimension. Weights are auto-normalized over the live dimensions, and
+ * each share is floored by EPS so one empty dimension can't collapse CPI to exactly 0.
  * @param {Record<string, number>} shares Dimension -> share in [0,1].
  * @param {Record<string, number>} weights Dimension -> weight (need not sum to 1).
  * @param {readonly string[]} dims Live dimension keys to combine.
@@ -77,11 +69,9 @@ export function computeCPI(shares, weights, dims) {
 }
 
 /**
- * Map a CPI in [0,1] into a bounded pressure multiplier: the cultural hegemon (CPI->1)
- * projects at cpiPowerMax, a culturally weak civ (CPI->0) at cpiPowerMin. Because this
- * multiplier also feeds the map-wide `refStrength` yardstick, its ABSOLUTE scale cancels
- * for the strongest civ - it is the SPREAD between civs (and thus their relative border
- * reach) that cpiPowerMin/Max control.
+ * Map a CPI in [0,1] into a bounded pressure multiplier: the cultural hegemon (CPI->1) projects
+ * at cpiPowerMax, a culturally weak civ (CPI->0) at cpiPowerMin. cpiPowerMin/Max control the
+ * SPREAD between civs (their relative border reach).
  * @param {number} cpi CPI in [0,1].
  * @param {import("/cultural-diffusion/ui/cd-config.js").CdConfig} cfg Live config.
  * @returns {number} Multiplier in [cpiPowerMin, cpiPowerMax].

@@ -1,22 +1,17 @@
 // cd-pressure-tooltip.js
 //
-// The Cultural Pressure lens's cursor panel (docs/potential-future-features.md §1): while the pressure
-// lens is active and the cursor is over a simulated tile, a small readout follows the cursor and shows
-// HOW the capture calculation is made for THAT tile - each contending culture's stock, the incumbent,
-// the target the leader must reach, the capture progress, and a rough "at current pace" turns-to-flip
-// (the Civ VI growth-hex idea, realized on this mod's field). The numbers come from the same
-// cd-field pressureVerdict the lens paints and the pass decides with, so panel and map always agree.
-//
-// Self-contained (its own DOM panel + cursor wiring, like emigration-lens-hover-panel.js), loaded as
-// its OWN <UIScripts> entry so it runs in the HUD context and can never break the gameplay pass. It is
-// PER-TILE (pressure is a property of a tile, not a settlement), so - unlike the Emigration panels - it
-// needs no plot->settlement index: it reads the hovered plot's field row directly. Reads only.
+// The Cultural Pressure lens's cursor panel: while the lens is active and the cursor is over a
+// simulated tile, a readout shows each contending culture's stock, the target the leader must reach,
+// the capture progress and a rough turns-to-flip, all from the same cd-field pressureVerdict the lens
+// and the pass use. Self-contained DOM panel + cursor wiring, loaded as its OWN <UIScripts> entry in
+// the HUD context; it reads the hovered plot's field row directly. Reads only.
 
 import LensManager from "/core/ui/lenses/lens-manager.js";
 import PlotCursor from "/core/ui/input/plot-cursor.js";
 import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
 import { loadState } from "/cultural-diffusion/ui/cd-state.js";
 import { pressureVerdict, estimateTurnsToFlip, passCanAct } from "/cultural-diffusion/ui/cd-field.js";
+import { localCityList, claimInScope, claimGateBlocked } from "/cultural-diffusion/ui/cd-eligibility.js";
 import { ownerAt, plotsInRadius, localPlayerId } from "/cultural-diffusion/ui/cd-plots.js";
 import { currentAgeKey } from "/cultural-diffusion/ui/cd-polity.js";
 import { applyTunableOverrides } from "/cultural-diffusion/ui/cd-settings.js";
@@ -26,7 +21,12 @@ import { LENS } from "/cultural-diffusion/ui/cd-pressure-lens.js";
 const PANEL_ID = "cd-pressure-panel";
 const STYLE_ID = "cd-pressure-panel-style";
 const CURSOR_OFFSET = 36; // px gap from the cursor so the panel clears the tile being read
-const FIELD_TTL = 1500;   // ms the loaded field snapshot is cached before a reload
+// ms the loaded field snapshot is cached before a reload. The snapshot carries the claim CONTEXT too
+// (cd-eligibility), so for up to this long the readout can still offer progress on a tile that has just gone
+// on cooldown or had a verb sent. Sub-second staleness in a hover panel is the deliberate trade for not
+// re-reading the whole field on every mouse move; `__test.clearSnapshot` exists so the parity suite can pin
+// the fresh behaviour rather than the cache.
+const FIELD_TTL = 1500;
 const MAX_CONTENDERS = 3; // cap the per-civ stock rows so the panel stays compact
 const FALLBACK_HEX = "#c9a24c";
 
@@ -124,15 +124,19 @@ function snapshot() {
   if (_snap && now - _snap.at < FIELD_TTL) return _snap;
   let field = {};
   let claims = {};
+  let state = null;
   try {
     const st = loadState();
     field = st.field || {};
     claims = st.claims || {};
+    state = st;
   } catch (_) {
     field = {};
   }
   const cfg = ageAdjustedCfg();
-  _snap = { at: now, field, claims, me: localPlayerId(), cfg, dead: deadOwnersOf(field, aliveIds()) };
+  const me = localPlayerId();
+  _snap = { at: now, field, claims, me, cfg, dead: deadOwnersOf(field, aliveIds()),
+    ctx: { me, cities: localCityList(me), state, cfg } };
   return _snap;
 }
 
@@ -208,6 +212,21 @@ function contenderRows(row, owner, dead) {
 }
 
 /**
+ * Whether the pass would really move this tile: `passCanAct` plus, for a tile our culture leads, every other
+ * claim gate (cd-eligibility.js). Without the second half the readout counted down turns to a flip that a
+ * protected core, a war front, range, a cooldown or a minor settlement's protected ring would refuse.
+ * @param {{x:number,y:number}} plot Hovered plot. @param {number} owner Current owner.
+ * @param {*} v Pressure verdict. @param {*} snap Tooltip snapshot. @param {string} k Plot key.
+ * @returns {boolean} True when the flip rows should be shown.
+ */
+function actionableHere(plot, owner, v, snap, k) {
+  if (!passCanAct(v.leader, owner, snap.me, snap.claims[k]?.by === snap.me, snap.cfg.recedeBorders)) return false;
+  if (v.leader !== snap.me) return true; // a recede cession: the recede step's business, not this gate's
+  if (!claimInScope(plot, snap.ctx)) return false;
+  return !claimGateBlocked(plot, owner, snap.me, snap.cfg, null);
+}
+
+/**
  * Turn the hovered plot into the panel's title + rows, or null when there is nothing to show.
  * @param {{x:number,y:number}} plot The hovered plot.
  * @returns {{title:string, rows:{color:string,name:string,value:string}[]}|null} Display, or null.
@@ -224,7 +243,7 @@ function resolve(plot) {
   if (!rows.length) return null;
   // A shift the pass will make: add the capture progress and turns rows. A leader the pass never acts for (an AI on
   // unowned land, or on our land the mod did not claim or with recede off) shows its stocks only.
-  const actionable = passCanAct(v.leader, owner, snap.me, snap.claims[k]?.by === snap.me, snap.cfg.recedeBorders);
+  const actionable = actionableHere(plot, owner, v, snap, k);
   if (actionable && v.progress > 0) {
     rows.push({ __sep: true });
     rows.push({
@@ -343,7 +362,7 @@ function wire() {
 }
 
 /** Introspection for the in-game harness (devtools/harness), which checks the shipped logic directly. */
-export const __test = { resolve };
+export const __test = { resolve, clearSnapshot: () => { _snap = null; } };
 
 // -- Self-registration (runs on UIScript load, in the HUD context) ---------------------------
 try {

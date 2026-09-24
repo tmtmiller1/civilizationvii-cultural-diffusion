@@ -1,12 +1,10 @@
 // cd-state.js
 //
-// Persistence for the reaction-diffusion culture field (docs/current-model.md §2).
-// State survives save/reload through GameConfiguration (the same store the emigration mod
-// uses), wrapped in a versioned `{ v, data }` envelope and fully sanitized on load so a
-// corrupt blob can never throw into the pass. The heavy per-tile MATH lives in cd-field.js
-// (pure); this file only stores and normalizes.
+// Persistence for the reaction-diffusion culture field (docs/current-model.md §2). State survives
+// save/reload through GameConfiguration, wrapped in a versioned `{ v, data }` envelope and fully
+// sanitized on load so a corrupt blob can never throw into the pass. The math lives in cd-field.js.
 
-const STATE_KEY = "CulturalDiffusionState_v2"; // v2 = culture-field model (v1 was the charge model)
+const STATE_KEY = "CulturalDiffusionState_v2"; // v2 = culture-field model
 const STATE_SCHEMA_VERSION = 2;
 const MAX_FIELD_ENTRIES = 20000;
 const MAX_CLAIM_ENTRIES = 8192;

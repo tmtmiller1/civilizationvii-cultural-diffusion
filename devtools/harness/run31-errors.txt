@@ -1,0 +1,20 @@
+[2026-09-24 12:43:53]	JS Error (Stack): TypeError: Cannot read properties of null (reading 'type')
+[2026-09-24 12:43:58]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags-independent-powers.js:463: TypeError: Cannot read properties of null (reading 'type')
+[2026-09-24 12:43:58]	JS Error (Line):     const unitDefinition = GameInfo.Units.lookup(this.unit.type);
+[2026-09-24 12:43:58]	JS Error (Stack): TypeError: Cannot read properties of null (reading 'type')
+[2026-09-24 12:43:58]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags-independent-powers.js:463: TypeError: Cannot read properties of null (reading 'type')
+[2026-09-24 12:43:58]	JS Error (Line):     const unitDefinition = GameInfo.Units.lookup(this.unit.type);
+[2026-09-24 12:43:58]	JS Error (Stack): TypeError: Cannot read properties of null (reading 'type')
+[2026-09-24 12:44:00]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags-independent-powers.js:463: TypeError: Cannot read properties of null (reading 'type')
+[2026-09-24 12:44:00]	JS Error (Line):     const unitDefinition = GameInfo.Units.lookup(this.unit.type);
+[2026-09-24 12:44:00]	JS Error (Stack): TypeError: Cannot read properties of null (reading 'type')
+[2026-09-24 12:44:32]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags-independent-powers.js:463: TypeError: Cannot read properties of null (reading 'type')
+[2026-09-24 12:44:32]	JS Error (Line):     const unitDefinition = GameInfo.Units.lookup(this.unit.type);
+[2026-09-24 12:44:32]	JS Error (Stack): TypeError: Cannot read properties of null (reading 'type')
+[2026-09-24 12:44:57]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags-independent-powers.js:463: TypeError: Cannot read properties of null (reading 'type')
+[2026-09-24 12:44:57]	JS Error (Line):     const unitDefinition = GameInfo.Units.lookup(this.unit.type);
+[2026-09-24 12:44:57]	JS Error (Stack): TypeError: Cannot read properties of null (reading 'type')
+[2026-09-24 12:48:54]	HTML Parser Error@:fs://game/root-game.html@49:43: Tokenizer error with an unimplemented error message.
+[2026-09-24 12:48:54]	Unhandled Promise Rejection: TypeError: Cannot read properties of null (reading 'cityId').  Re-run with inspector attached for callstack. 
+[2026-09-24 12:48:54]	Unhandled rejection error value: TypeError: Cannot read properties of null (reading 'cityId')
+[2026-09-24 12:49:45]	HTML Parser Error@:fs://game/root-game.html@1:25: Premature end of file  Currently open tags: html, div..
