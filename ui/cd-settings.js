@@ -1,9 +1,8 @@
 // cd-settings.js
 //
-// Runtime bridge between the Options screen and the live CONFIG. Reads/writes the
-// player's choices through a cascade-safe per-mod localStorage store and pushes
-// them into CONFIG at boot and at the start of every pass, so a change made in the
-// Options screen (a separate isolate that can only persist) takes effect next pass.
+// Runtime bridge between the Options screen and the live CONFIG. Reads/writes the player's
+// choices through a cascade-safe per-mod localStorage store and pushes them into CONFIG at boot
+// and at the start of every pass, so a change in the Options screen takes effect next pass.
 //
 // The store is INLINED here (not imported from a standalone file): GameFace's module
 // linker treats an import-less UIScript as a classic script and won't expose its
@@ -53,14 +52,9 @@ class ModOptionsStore {
       return { root: {}, safe: false };
     }
     if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return { root: {}, safe: false };
-    // Coherent's getItem() in this UI context IGNORES the key and returns the value of the FIRST
-    // key in the store (watched 2026-09-16), so this read routinely hands back some other mod's
-    // blob. Such a blob parses fine and is an object, so the checks above pass it through - and
-    // writing it back would copy that blob into the shared settings key and grow it without bound
-    // (three ~370KB copies of one history archive were found spread across "!chronicle", "htlData"
-    // and "modSettings" from exactly this). A real settings root is { "<modId>": {...}, ... }, so
-    // every top-level value is an object; the foreign blobs carry scalars (v: 2, updated: 178...).
-    // On a mismatch just decline to persist - never delete or rewrite anything.
+    // Coherent's getItem() in this UI context IGNORES the key and returns the FIRST key's value, so
+    // this read can hand back another mod's blob; writing that back would copy it into the shared key.
+    // A real settings root has only object values, so on a mismatch decline to persist - never rewrite.
     const looksLikeSettingsRoot = Object.keys(parsed).every((k) => {
       const v = parsed[k];
       return !!v && typeof v === "object" && !Array.isArray(v);
@@ -153,7 +147,7 @@ export function setClaimOnlyUnowned(on) {
   ModOptions.save(MOD_ID, OPT_CLAIM_ONLY, on ? 1 : 0);
 }
 
-/** @returns {boolean} Whether the fused 3.1a cultural model is on. */
+/** @returns {boolean} Whether the fused cultural model is on. */
 export function getFusedModel() {
   return loadBool(OPT_FUSED, CONFIG_DEFAULTS.fusedModel);
 }
@@ -221,8 +215,7 @@ export function setPressureLensEnabled(on) {
 }
 
 /**
- * Whether claimed tiles can be lost again (ceded to a decisive rival, or released when our culture
- * fades). Opt-in and OFF by default until the two verbs it uses are watched in-game.
+ * Whether claimed tiles can be lost again (ceded to a decisive rival). Opt-in, OFF by default.
  * @returns {boolean} Whether borders recede.
  */
 export function getRecedeBorders() {
@@ -234,8 +227,8 @@ export function setRecedeBorders(on) {
 }
 
 /**
- * Whether finishing a rural improvement also claims the unowned tiles right beside it (the "+1 ring" buffer). Defaults
- * to the shipped CONFIG value; players asked for a way to turn it off.
+ * Whether finishing a rural improvement also claims the unowned tiles right beside it (the "+1 ring" buffer).
+ * Defaults to the shipped CONFIG value.
  * @returns {boolean} Whether the growth buffer is on.
  */
 export function getGrowthBuffer() {
@@ -276,8 +269,7 @@ export function applyTunableOverrides() {
   CONFIG.diffusionEnabled = getDiffusionEnabled();
   CONFIG.claimOnlyUnowned = getClaimOnlyUnowned();
   // flipVerb is intentionally NOT overridden from settings: it stays at its CONFIG default
-  // ("purchasePlot", integrated). Any stale stored verb from an older version is ignored, so
-  // everyone gets the integrated verb. Change it only in code (cd-config.js) for testing.
+  // ("purchasePlot", integrated). Change it only in code (cd-config.js) for testing.
   CONFIG.fusedModel = getFusedModel();
   CONFIG.useEmigration = getUseEmigration();
   CONFIG.coreProtectRadius = CORE_RADIUS_BY_INDEX[getCoreProtectIndex()];

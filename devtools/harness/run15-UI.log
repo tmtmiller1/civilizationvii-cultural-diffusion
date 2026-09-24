@@ -1,0 +1,175 @@
+[2026-09-24 09:47:09]	[CDH] shell attached 
+[2026-09-24 09:47:10]	[CDH] shell query complete 
+[2026-09-24 09:47:11]	[CDH] shell found AugustusAnt136.Civ7Save turn 136 age AGE_ANTIQUITY missingMods=0 unowned=0 
+[2026-09-24 09:47:11]	[CDH] shell handleLoadSave returned true 
+[2026-09-24 09:47:28]	[CDH] attached run15 
+[2026-09-24 09:47:28]	[CulturalDiffusion] boot (turnInterval 1, verb purchasePlot, enabled true) 
+[2026-09-24 09:47:33]	[CDH] LOAD GameStarted 
+[2026-09-24 09:47:41]	[CDH] S0 run15 turn=136 local=0 gold=538.9609375 modPass=DISABLED 
+[2026-09-24 09:47:41]	[CDH] EV hooks attached: PlotOwnershipChanged, CityTransfered, CityAddedToMap, CityRemovedFromMap 
+[2026-09-24 09:47:41]	[CDH] MAP settlements n=80 [{"pid":0,"kind":"major","at":"92,32","name":"London"},{"pid":0,"kind":"major","at":"87,32","name":"Birmingham"},{"pid":0,"kind":"major","at":"90,37","name":"Glasgow"},{"pid":0,"kind":"major","at":"84,35","name":"Megiddo"},{"pid":0,"kind":"major","at":"93,26","name":"Leeds"},{"pid":0,"kind":"major","at":"86,20","name":"Lāhainā"},{"pid":1,"kind":"major","at":"64,14","name":"Athênai"},{"pid":1,"kind":"major","at":"64,19","name":"Alexandria Spártā"},{"pid":1,"kind":"major","at":"71,15","name":"Mykenē"},{"pid":1,"kind":"major","at":"78,13","name":"Phókaia"},{"pid":1,"kind":"major","at":"68,19","name":"Alexandria Taruga"},{"pid":1,"kind":"major","at":"72,10","name":"Kórinthos"},{"pid":1,"kind":"major","at":"59,14","name":"Mīlētos"},{"pid":2,"kind":"major","at":"70,54","name":"St. Petersburg"},{"pid":2,"kind":"major","at":"74,52","name":"Moscow"},{"pid":2,"kind":"major","at":"65,55","name":"Saratov"},{"pid":2,"kind":"major","at":"78,53","name":"Rostov on 
+[2026-09-24 09:47:41]	[CDH] A TARGETS [{"at":"87,28","ourRing":4,"foreignD":2},{"at":"88,29","ourRing":5,"foreignD":4},{"at":"91,22","ourRing":6,"foreignD":8}] 
+[2026-09-24 09:47:49]	[CDH] A BUY near-rival 87,28 ourCity=Birmingham ourRing=4 nearestForeign={"pid":18,"kind":"citystate","at":"85,27","name":"Seleucia","d":2} buy={"call":"called","spent":0} before={"owner":-1,"city":-1} reads=[{"owner":0,"city":196609},{"owner":0,"city":196609},{"owner":0,"city":196609}] => LANDED 
+[2026-09-24 09:47:58]	[CDH] A BUY mid 88,29 ourCity=London ourRing=5 nearestForeign={"pid":18,"kind":"citystate","at":"85,27","name":"Seleucia","d":4} buy={"call":"called","spent":0} before={"owner":-1,"city":-1} reads=[{"owner":0,"city":65536},{"owner":0,"city":65536},{"owner":0,"city":65536}] => LANDED 
+[2026-09-24 09:48:06]	[CDH] A BUY far-from-rival 91,22 ourCity=Lāhainā ourRing=6 nearestForeign={"pid":18,"kind":"citystate","at":"85,27","name":"Seleucia","d":8} buy={"call":"called","spent":0} before={"owner":-1,"city":-1} reads=[{"owner":0,"city":458757},{"owner":0,"city":458757},{"owner":0,"city":458757}] => LANDED 
+[2026-09-24 09:48:06]	[CDH] B CANDIDATES n=9 [{"at":"88,44","unit":"UNIT_ARCHER","owner":33,"ring":7},{"at":"93,41","unit":"UNIT_ARCHER","owner":33,"ring":5},{"at":"90,41","unit":"UNIT_SLINGER","owner":33,"ring":4},{"at":"86,42","unit":"UNIT_WARRIOR","owner":33,"ring":7},{"at":"90,44","unit":"UNIT_SPEARMAN","owner":33,"ring":7}] 
+[2026-09-24 09:48:06]	[CDH] B PEN target 79,33 unit=UNIT_SCOUT owner=43 ringLand=6 
+[2026-09-24 09:48:14]	[CDH] A BUY pen-centre 79,33 ourCity=Megiddo ourRing=6 nearestForeign={"pid":3,"kind":"major","at":"80,31","name":"‘Ewa","d":2} buy={"call":"called","spent":0} before={"owner":-1,"city":-1} reads=[{"owner":0,"city":327683},{"owner":0,"city":327683},{"owner":0,"city":327683}] => LANDED 
+[2026-09-24 09:48:22]	[CDH] A BUY pen-ring 80,34 ourCity=Megiddo ourRing=5 nearestForeign={"pid":3,"kind":"major","at":"80,31","name":"‘Ewa","d":3} buy={"call":"called","spent":0} before={"owner":-1,"city":-1} reads=[{"owner":0,"city":327683},{"owner":0,"city":327683},{"owner":0,"city":327683}] => LANDED 
+[2026-09-24 09:48:30]	[CDH] A BUY pen-ring 78,33 ourCity=Megiddo ourRing=7 nearestForeign={"pid":3,"kind":"major","at":"80,31","name":"‘Ewa","d":3} buy={"call":"called","spent":0} before={"owner":-1,"city":-1} reads=[{"owner":0,"city":327683},{"owner":0,"city":327683},{"owner":0,"city":327683}] => LANDED 
+[2026-09-24 09:48:38]	[CDH] A BUY pen-ring 79,32 ourCity=Megiddo ourRing=7 nearestForeign={"pid":3,"kind":"major","at":"80,31","name":"‘Ewa","d":2} buy={"call":"called","spent":0} before={"owner":-1,"city":-1} reads=[{"owner":0,"city":327683},{"owner":0,"city":327683},{"owner":0,"city":327683}] => LANDED 
+[2026-09-24 09:48:46]	[CDH] A BUY pen-ring 80,33 ourCity=Megiddo ourRing=5 nearestForeign={"pid":3,"kind":"major","at":"80,31","name":"‘Ewa","d":2} buy={"call":"called","spent":0} before={"owner":-1,"city":-1} reads=[{"owner":0,"city":327683},{"owner":0,"city":327683},{"owner":0,"city":327683}] => LANDED 
+[2026-09-24 09:48:54]	[CDH] A BUY pen-ring 79,34 ourCity=Megiddo ourRing=6 nearestForeign={"pid":3,"kind":"major","at":"80,31","name":"‘Ewa","d":3} buy={"call":"called","spent":0} before={"owner":-1,"city":-1} reads=[{"owner":0,"city":327683},{"owner":0,"city":327683},{"owner":0,"city":327683}] => LANDED 
+[2026-09-24 09:48:54]	[CDH] B PEN built 79,33 {"unitAt":"79,33","onCentre":true,"centreOwner":0,"ringOurs":5,"ringTotal":6,"nonOursNeighbours":1,"enclosed":false} 
+[2026-09-24 09:48:54]	[CDH] ACTIONS done; ending turns 
+[2026-09-24 09:49:20]	[CulturalDiffusion] inject 92,32 civ=0 culture=39.6 vitality=57.1 strength=83.83 stock=10 cap=167662.14 
+[2026-09-24 09:49:20]	[CulturalDiffusion] inject 87,32 civ=0 culture=13 vitality=33.85 strength=33.84 stock=10 cap=67689.75 
+[2026-09-24 09:49:20]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=24.1 strength=5.67 stock=10 cap=11345.41 
+[2026-09-24 09:49:20]	[CulturalDiffusion] inject 93,26 civ=0 culture=13 vitality=23.9 strength=29.96 stock=10 cap=59926.19 
+[2026-09-24 09:49:20]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=11.3 strength=0 stock=0 cap=0 
+[2026-09-24 09:49:20]	[CulturalDiffusion] inject 90,37 civ=3 culture=5 vitality=22.65 strength=10.86 stock=10 cap=21710.13 
+[2026-09-24 09:49:20]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=16.35 strength=9.68 stock=10 cap=19369.56 
+[2026-09-24 09:49:20]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=28.45 strength=15.96 stock=10 cap=31915.04 
+[2026-09-24 09:49:20]	[CulturalDiffusion] inject 80,31 civ=3 culture=3 vitality=13.85 strength=6.56 stock=10 cap=13112.77 
+[2026-09-24 09:49:20]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/23 centre=10 
+[2026-09-24 09:49:20]	[CulturalDiffusion] frontier city=196609 ring=4 best=10 bar=300 over=0/24 centre=10 
+[2026-09-24 09:49:20]	[CulturalDiffusion] frontier city=327683 ring=4 best=10 bar=300 over=0/24 centre=10 
+[2026-09-24 09:49:20]	[CulturalDiffusion] frontier city=393220 ring=4 best=0 bar=300 over=0/19 centre=10 
+[2026-09-24 09:49:20]	[CulturalDiffusion] frontier city=458757 ring=4 best=0 bar=300 over=0/24 centre=0 
+[2026-09-24 09:49:20]	[CulturalDiffusion] state bytes=214 field=8 claims=0 locked=0 passMs=10 
+[2026-09-24 09:49:20]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 8 active field tile(s) 
+[2026-09-24 09:49:20]	[CulturalDiffusion] pass (turn 137): flips=0 field tiles=4 
+[2026-09-24 09:49:28]	[CDH] TURN n=2 turn=137 events=72 
+[2026-09-24 09:49:28]	[CDH] A WATCH near-rival 87,28 {"n":2,"turn":137,"owner":0,"city":196609} 
+[2026-09-24 09:49:28]	[CDH] A WATCH mid 88,29 {"n":2,"turn":137,"owner":0,"city":65536} 
+[2026-09-24 09:49:28]	[CDH] A WATCH far-from-rival 91,22 {"n":2,"turn":137,"owner":0,"city":458757} 
+[2026-09-24 09:49:28]	[CDH] A WATCH pen-centre 79,33 {"n":2,"turn":137,"owner":0,"city":327683} 
+[2026-09-24 09:49:28]	[CDH] A WATCH pen-ring 80,34 {"n":2,"turn":137,"owner":0,"city":327683} 
+[2026-09-24 09:49:28]	[CDH] A WATCH pen-ring 78,33 {"n":2,"turn":137,"owner":0,"city":327683} 
+[2026-09-24 09:49:28]	[CDH] A WATCH pen-ring 79,32 {"n":2,"turn":137,"owner":0,"city":327683} 
+[2026-09-24 09:49:28]	[CDH] A WATCH pen-ring 80,33 {"n":2,"turn":137,"owner":0,"city":327683} 
+[2026-09-24 09:49:28]	[CDH] A WATCH pen-ring 79,34 {"n":2,"turn":137,"owner":0,"city":327683} 
+[2026-09-24 09:49:28]	[CDH] B WATCH n=2 {"unitAt":"81,32","onCentre":false,"centreOwner":0,"ringOurs":5,"ringTotal":6,"nonOursNeighbours":4,"enclosed":false} 
+[2026-09-24 09:49:57]	[CulturalDiffusion] inject 92,32 civ=0 culture=39.6 vitality=58.33 strength=65.84 stock=99.14 cap=131682.84 
+[2026-09-24 09:49:57]	[CulturalDiffusion] inject 87,32 civ=0 culture=13 vitality=33.85 strength=26.39 stock=50.82 cap=52770.46 
+[2026-09-24 09:49:57]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=17.36 strength=3.94 stock=23.33 cap=7885.81 
+[2026-09-24 09:49:57]	[CulturalDiffusion] inject 93,26 civ=0 culture=9 vitality=25.13 strength=18.72 stock=41.42 cap=37434.92 
+[2026-09-24 09:49:57]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=13.51 strength=0 stock=0 cap=0 
+[2026-09-24 09:49:57]	[CulturalDiffusion] inject 90,37 civ=3 culture=5 vitality=23.75 strength=10.79 stock=31.71 cap=21575.1 
+[2026-09-24 09:49:57]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=16.35 strength=9.47 stock=30.09 cap=18932.23 
+[2026-09-24 09:49:57]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=28.45 strength=15.6 stock=37.6 cap=31194.45 
+[2026-09-24 09:49:57]	[CulturalDiffusion] inject 80,31 civ=3 culture=3 vitality=13.85 strength=6.41 stock=26.35 cap=12816.7 
+[2026-09-24 09:49:57]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/23 centre=99.14 
+[2026-09-24 09:49:57]	[CulturalDiffusion] frontier city=196609 ring=4 best=23.33 bar=300 over=0/24 centre=50.82 
+[2026-09-24 09:49:57]	[CulturalDiffusion] frontier city=327683 ring=4 best=50.82 bar=300 over=0/24 centre=23.33 
+[2026-09-24 09:49:57]	[CulturalDiffusion] frontier city=393220 ring=4 best=0 bar=300 over=0/19 centre=41.42 
+[2026-09-24 09:49:57]	[CulturalDiffusion] frontier city=458757 ring=4 best=0 bar=300 over=0/24 centre=0 
+[2026-09-24 09:49:57]	[CulturalDiffusion] state bytes=337 field=8 claims=0 locked=0 passMs=9 
+[2026-09-24 09:49:57]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 8 active field tile(s) 
+[2026-09-24 09:49:57]	[CulturalDiffusion] pass (turn 138): flips=0 field tiles=4 
+[2026-09-24 09:50:05]	[CDH] TURN n=3 turn=138 events=83 
+[2026-09-24 09:50:05]	[CDH] A WATCH near-rival 87,28 {"n":3,"turn":138,"owner":0,"city":196609} 
+[2026-09-24 09:50:05]	[CDH] A WATCH mid 88,29 {"n":3,"turn":138,"owner":0,"city":65536} 
+[2026-09-24 09:50:05]	[CDH] A WATCH far-from-rival 91,22 {"n":3,"turn":138,"owner":0,"city":458757} 
+[2026-09-24 09:50:05]	[CDH] A WATCH pen-centre 79,33 {"n":3,"turn":138,"owner":0,"city":327683} 
+[2026-09-24 09:50:05]	[CDH] A WATCH pen-ring 80,34 {"n":3,"turn":138,"owner":0,"city":327683} 
+[2026-09-24 09:50:05]	[CDH] A WATCH pen-ring 78,33 {"n":3,"turn":138,"owner":0,"city":327683} 
+[2026-09-24 09:50:05]	[CDH] A WATCH pen-ring 79,32 {"n":3,"turn":138,"owner":0,"city":327683} 
+[2026-09-24 09:50:05]	[CDH] A WATCH pen-ring 80,33 {"n":3,"turn":138,"owner":0,"city":327683} 
+[2026-09-24 09:50:05]	[CDH] A WATCH pen-ring 79,34 {"n":3,"turn":138,"owner":0,"city":327683} 
+[2026-09-24 09:50:05]	[CDH] B WATCH n=3 {"unitAt":"82,30","onCentre":false,"centreOwner":0,"ringOurs":5,"ringTotal":6,"nonOursNeighbours":6,"enclosed":false} 
+[2026-09-24 09:50:29]	[CulturalDiffusion] inject 92,32 civ=0 culture=41.8 vitality=58.59 strength=67.14 stock=362.1 cap=134283.98 
+[2026-09-24 09:50:29]	[CulturalDiffusion] inject 87,32 civ=0 culture=15 vitality=29.95 strength=27.27 stock=132.57 cap=54543.33 
+[2026-09-24 09:50:29]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=14.61 strength=3.65 stock=37.99 cap=7297.88 
+[2026-09-24 09:50:29]	[CulturalDiffusion] inject 93,26 civ=0 culture=5 vitality=28.37 strength=13.1 stock=81.01 cap=26206.04 
+[2026-09-24 09:50:29]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=12.33 strength=0 stock=0 cap=0 
+[2026-09-24 09:50:29]	[CulturalDiffusion] inject 90,37 civ=3 culture=5 vitality=23.75 strength=9.01 stock=58.77 cap=18011.76 
+[2026-09-24 09:50:29]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=17.35 strength=8.07 stock=54.73 cap=16137.22 
+[2026-09-24 09:50:29]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=29.45 strength=13.18 stock=76.02 cap=26359.17 
+[2026-09-24 09:50:29]	[CulturalDiffusion] inject 80,31 civ=3 culture=3 vitality=13.85 strength=5.35 stock=44.67 cap=10699.9 
+[2026-09-24 09:50:29]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/23 centre=362.1 
+[2026-09-24 09:50:29]	[CulturalDiffusion] frontier city=196609 ring=4 best=37.99 bar=300 over=0/24 centre=132.57 
+[2026-09-24 09:50:29]	[CulturalDiffusion] frontier city=327683 ring=4 best=132.57 bar=300 over=0/24 centre=37.99 
+[2026-09-24 09:50:29]	[CulturalDiffusion] frontier city=393220 ring=4 best=0 bar=300 over=0/19 centre=81.01 
+[2026-09-24 09:50:29]	[CulturalDiffusion] frontier city=458757 ring=4 best=0 bar=300 over=0/24 centre=0 
+[2026-09-24 09:50:29]	[CulturalDiffusion] state bytes=338 field=8 claims=0 locked=0 passMs=8 
+[2026-09-24 09:50:29]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 8 active field tile(s) 
+[2026-09-24 09:50:29]	[CulturalDiffusion] pass (turn 139): flips=0 field tiles=4 
+[2026-09-24 09:50:37]	[CDH] TURN n=4 turn=139 events=95 
+[2026-09-24 09:50:37]	[CDH] A WATCH near-rival 87,28 {"n":4,"turn":139,"owner":0,"city":196609} 
+[2026-09-24 09:50:37]	[CDH] A WATCH mid 88,29 {"n":4,"turn":139,"owner":0,"city":65536} 
+[2026-09-24 09:50:37]	[CDH] A WATCH far-from-rival 91,22 {"n":4,"turn":139,"owner":0,"city":458757} 
+[2026-09-24 09:50:37]	[CDH] A WATCH pen-centre 79,33 {"n":4,"turn":139,"owner":0,"city":327683} 
+[2026-09-24 09:50:37]	[CDH] A WATCH pen-ring 80,34 {"n":4,"turn":139,"owner":0,"city":327683} 
+[2026-09-24 09:50:37]	[CDH] A WATCH pen-ring 78,33 {"n":4,"turn":139,"owner":0,"city":327683} 
+[2026-09-24 09:50:37]	[CDH] A WATCH pen-ring 79,32 {"n":4,"turn":139,"owner":0,"city":327683} 
+[2026-09-24 09:50:37]	[CDH] A WATCH pen-ring 80,33 {"n":4,"turn":139,"owner":0,"city":327683} 
+[2026-09-24 09:50:37]	[CDH] A WATCH pen-ring 79,34 {"n":4,"turn":139,"owner":0,"city":327683} 
+[2026-09-24 09:50:37]	[CDH] B WATCH n=4 {"unitAt":"83,29","onCentre":false,"centreOwner":0,"ringOurs":5,"ringTotal":6,"nonOursNeighbours":6,"enclosed":false} 
+[2026-09-24 09:51:01]	[CulturalDiffusion] inject 92,32 civ=0 culture=41.8 vitality=60.75 strength=66.64 stock=844.09 cap=133271.25 
+[2026-09-24 09:51:01]	[CulturalDiffusion] inject 87,32 civ=0 culture=15 vitality=29.95 strength=26.73 stock=254.12 cap=53451.55 
+[2026-09-24 09:51:01]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=13.54 strength=3.48 stock=53.4 cap=6963.07 
+[2026-09-24 09:51:01]	[CulturalDiffusion] inject 93,26 civ=0 culture=5 vitality=28.33 strength=12.83 stock=130.7 cap=25667.62 
+[2026-09-24 09:51:01]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=10.87 strength=0 stock=0 cap=0 
+[2026-09-24 09:51:01]	[CulturalDiffusion] inject 90,37 civ=3 culture=5 vitality=23.75 strength=9.01 stock=91.58 cap=18018.81 
+[2026-09-24 09:51:01]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=20.35 strength=8.54 stock=85.45 cap=17070.31 
+[2026-09-24 09:51:01]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=30.45 strength=13.34 stock=126.27 cap=26679.48 
+[2026-09-24 09:51:01]	[CulturalDiffusion] inject 80,31 civ=3 culture=4 vitality=14.85 strength=6.61 stock=68.55 cap=13223.81 
+[2026-09-24 09:51:01]	[CulturalDiffusion] frontier city=65536 ring=4 best=26.61 bar=300 over=0/23 centre=844.09 
+[2026-09-24 09:51:01]	[CulturalDiffusion] frontier city=196609 ring=4 best=59.75 bar=300 over=0/24 centre=254.12 
+[2026-09-24 09:51:01]	[CulturalDiffusion] frontier city=327683 ring=4 best=254.12 bar=300 over=0/24 centre=53.4 
+[2026-09-24 09:51:01]	[CulturalDiffusion] frontier city=393220 ring=4 best=0 bar=300 over=0/19 centre=130.7 
+[2026-09-24 09:51:01]	[CulturalDiffusion] frontier city=458757 ring=4 best=0 bar=300 over=0/24 centre=0 
+[2026-09-24 09:51:01]	[CulturalDiffusion] state bytes=594 field=16 claims=0 locked=0 passMs=9 
+[2026-09-24 09:51:01]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 16 active field tile(s) 
+[2026-09-24 09:51:01]	[CulturalDiffusion] pass (turn 140): flips=0 field tiles=4 
+[2026-09-24 09:51:09]	[CDH] TURN n=5 turn=140 events=104 
+[2026-09-24 09:51:09]	[CDH] A WATCH near-rival 87,28 {"n":5,"turn":140,"owner":0,"city":196609} 
+[2026-09-24 09:51:09]	[CDH] A WATCH mid 88,29 {"n":5,"turn":140,"owner":0,"city":65536} 
+[2026-09-24 09:51:09]	[CDH] A WATCH far-from-rival 91,22 {"n":5,"turn":140,"owner":0,"city":458757} 
+[2026-09-24 09:51:09]	[CDH] A WATCH pen-centre 79,33 {"n":5,"turn":140,"owner":0,"city":327683} 
+[2026-09-24 09:51:09]	[CDH] A WATCH pen-ring 80,34 {"n":5,"turn":140,"owner":0,"city":327683} 
+[2026-09-24 09:51:09]	[CDH] A WATCH pen-ring 78,33 {"n":5,"turn":140,"owner":0,"city":327683} 
+[2026-09-24 09:51:09]	[CDH] A WATCH pen-ring 79,32 {"n":5,"turn":140,"owner":0,"city":327683} 
+[2026-09-24 09:51:09]	[CDH] A WATCH pen-ring 80,33 {"n":5,"turn":140,"owner":0,"city":327683} 
+[2026-09-24 09:51:09]	[CDH] A WATCH pen-ring 79,34 {"n":5,"turn":140,"owner":0,"city":327683} 
+[2026-09-24 09:51:09]	[CDH] B WATCH n=5 {"unitAt":"81,29","onCentre":false,"centreOwner":0,"ringOurs":5,"ringTotal":6,"nonOursNeighbours":6,"enclosed":false} 
+[2026-09-24 09:51:34]	[CulturalDiffusion] inject 92,32 civ=0 culture=41.8 vitality=60.75 strength=65.99 stock=1553.4 cap=131976.23 
+[2026-09-24 09:51:34]	[CulturalDiffusion] inject 87,32 civ=0 culture=15 vitality=29.95 strength=26.47 stock=413.81 cap=52932.15 
+[2026-09-24 09:51:34]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=13.54 strength=3.45 stock=69.49 cap=6895.4 
+[2026-09-24 09:51:34]	[CulturalDiffusion] inject 93,26 civ=0 culture=5 vitality=28.33 strength=12.71 stock=189.44 cap=25418.2 
+[2026-09-24 09:51:34]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=9.35 strength=0 stock=0 cap=0 
+[2026-09-24 09:51:34]	[CulturalDiffusion] inject 90,37 civ=3 culture=5 vitality=23.75 strength=8.98 stock=129.29 cap=17964.32 
+[2026-09-24 09:51:34]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=20.35 strength=8.51 stock=120.64 cap=17018.69 
+[2026-09-24 09:51:34]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=30.45 strength=13.3 stock=186.84 cap=26598.81 
+[2026-09-24 09:51:34]	[CulturalDiffusion] inject 80,31 civ=3 culture=4 vitality=16.65 strength=6.86 stock=96.12 cap=13722.46 
+[2026-09-24 09:51:34]	[CulturalDiffusion] frontier city=65536 ring=4 best=74.06 bar=300 over=0/23 centre=1553.4 
+[2026-09-24 09:51:34]	[CulturalDiffusion] frontier city=196609 ring=4 best=195.03 bar=300 over=0/24 centre=413.81 
+[2026-09-24 09:51:34]	[CulturalDiffusion] frontier city=327683 ring=4 best=413.81 bar=300 over=1/24 centre=69.49 
+[2026-09-24 09:51:34]	[CulturalDiffusion] frontier city=393220 ring=4 best=0 bar=300 over=0/19 centre=189.44 
+[2026-09-24 09:51:34]	[CulturalDiffusion] frontier city=458757 ring=4 best=0 bar=300 over=0/24 centre=0 
+[2026-09-24 09:51:34]	[CulturalDiffusion] state bytes=722 field=20 claims=0 locked=0 passMs=8 
+[2026-09-24 09:51:34]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 20 active field tile(s) 
+[2026-09-24 09:51:34]	[CulturalDiffusion] pass (turn 141): flips=0 field tiles=8 
+[2026-09-24 09:51:42]	[CDH] TURN n=6 turn=141 events=115 
+[2026-09-24 09:51:42]	[CDH] A WATCH near-rival 87,28 {"n":6,"turn":141,"owner":0,"city":196609} 
+[2026-09-24 09:51:42]	[CDH] A WATCH mid 88,29 {"n":6,"turn":141,"owner":0,"city":65536} 
+[2026-09-24 09:51:42]	[CDH] A WATCH far-from-rival 91,22 {"n":6,"turn":141,"owner":0,"city":458757} 
+[2026-09-24 09:51:42]	[CDH] A WATCH pen-centre 79,33 {"n":6,"turn":141,"owner":0,"city":327683} 
+[2026-09-24 09:51:42]	[CDH] A WATCH pen-ring 80,34 {"n":6,"turn":141,"owner":0,"city":327683} 
+[2026-09-24 09:51:42]	[CDH] A WATCH pen-ring 78,33 {"n":6,"turn":141,"owner":0,"city":327683} 
+[2026-09-24 09:51:42]	[CDH] A WATCH pen-ring 79,32 {"n":6,"turn":141,"owner":0,"city":327683} 
+[2026-09-24 09:51:42]	[CDH] A WATCH pen-ring 80,33 {"n":6,"turn":141,"owner":0,"city":327683} 
+[2026-09-24 09:51:42]	[CDH] A WATCH pen-ring 79,34 {"n":6,"turn":141,"owner":0,"city":327683} 
+[2026-09-24 09:51:42]	[CDH] B WATCH n=6 {"unitAt":"82,30","onCentre":false,"centreOwner":0,"ringOurs":5,"ringTotal":6,"nonOursNeighbours":6,"enclosed":false} 
+[2026-09-24 09:51:42]	[CDH] A VERDICT near-rival 87,28 boughtTurn=136 nowOwner=0 nowCity=196609 turnsKept=5/5 history=[{"n":2,"turn":137,"owner":0,"city":196609},{"n":3,"turn":138,"owner":0,"city":196609},{"n":4,"turn":139,"owner":0,"city":196609},{"n":5,"turn":140,"owner":0,"city":196609},{"n":6,"turn":141,"owner":0,"city":196609}] => STAYED-OURS 
+[2026-09-24 09:51:42]	[CDH] A VERDICT mid 88,29 boughtTurn=136 nowOwner=0 nowCity=65536 turnsKept=5/5 history=[{"n":2,"turn":137,"owner":0,"city":65536},{"n":3,"turn":138,"owner":0,"city":65536},{"n":4,"turn":139,"owner":0,"city":65536},{"n":5,"turn":140,"owner":0,"city":65536},{"n":6,"turn":141,"owner":0,"city":65536}] => STAYED-OURS 
+[2026-09-24 09:51:42]	[CDH] A VERDICT far-from-rival 91,22 boughtTurn=136 nowOwner=0 nowCity=458757 turnsKept=5/5 history=[{"n":2,"turn":137,"owner":0,"city":458757},{"n":3,"turn":138,"owner":0,"city":458757},{"n":4,"turn":139,"owner":0,"city":458757},{"n":5,"turn":140,"owner":0,"city":458757},{"n":6,"turn":141,"owner":0,"city":458757}] => STAYED-OURS 
+[2026-09-24 09:51:42]	[CDH] A VERDICT pen-centre 79,33 boughtTurn=136 nowOwner=0 nowCity=327683 turnsKept=5/5 history=[{"n":2,"turn":137,"owner":0,"city":327683},{"n":3,"turn":138,"owner":0,"city":327683},{"n":4,"turn":139,"owner":0,"city":327683},{"n":5,"turn":140,"owner":0,"city":327683},{"n":6,"turn":141,"owner":0,"city":327683}] => STAYED-OURS 
+[2026-09-24 09:51:42]	[CDH] A VERDICT pen-ring 80,34 boughtTurn=136 nowOwner=0 nowCity=327683 turnsKept=5/5 history=[{"n":2,"turn":137,"owner":0,"city":327683},{"n":3,"turn":138,"owner":0,"city":327683},{"n":4,"turn":139,"owner":0,"city":327683},{"n":5,"turn":140,"owner":0,"city":327683},{"n":6,"turn":141,"owner":0,"city":327683}] => STAYED-OURS 
+[2026-09-24 09:51:42]	[CDH] A VERDICT pen-ring 78,33 boughtTurn=136 nowOwner=0 nowCity=327683 turnsKept=5/5 history=[{"n":2,"turn":137,"owner":0,"city":327683},{"n":3,"turn":138,"owner":0,"city":327683},{"n":4,"turn":139,"owner":0,"city":327683},{"n":5,"turn":140,"owner":0,"city":327683},{"n":6,"turn":141,"owner":0,"city":327683}] => STAYED-OURS 
+[2026-09-24 09:51:42]	[CDH] A VERDICT pen-ring 79,32 boughtTurn=136 nowOwner=0 nowCity=327683 turnsKept=5/5 history=[{"n":2,"turn":137,"owner":0,"city":327683},{"n":3,"turn":138,"owner":0,"city":327683},{"n":4,"turn":139,"owner":0,"city":327683},{"n":5,"turn":140,"owner":0,"city":327683},{"n":6,"turn":141,"owner":0,"city":327683}] => STAYED-OURS 
+[2026-09-24 09:51:42]	[CDH] A VERDICT pen-ring 80,33 boughtTurn=136 nowOwner=0 nowCity=327683 turnsKept=5/5 history=[{"n":2,"turn":137,"owner":0,"city":327683},{"n":3,"turn":138,"owner":0,"city":327683},{"n":4,"turn":139,"owner":0,"city":327683},{"n":5,"turn":140,"owner":0,"city":327683},{"n":6,"turn":141,"owner":0,"city":327683}] => STAYED-OURS 
+[2026-09-24 09:51:42]	[CDH] A VERDICT pen-ring 79,34 boughtTurn=136 nowOwner=0 nowCity=327683 turnsKept=5/5 history=[{"n":2,"turn":137,"owner":0,"city":327683},{"n":3,"turn":138,"owner":0,"city":327683},{"n":4,"turn":139,"owner":0,"city":327683},{"n":5,"turn":140,"owner":0,"city":327683},{"n":6,"turn":141,"owner":0,"city":327683}] => STAYED-OURS 
+[2026-09-24 09:51:42]	[CDH] B VERDICT centre=79,33 unit=UNIT_SCOUT owner=43 everEnclosed=false moved=true now={"unitAt":"82,30","onCentre":false,"centreOwner":0,"ringOurs":5,"ringTotal":6,"nonOursNeighbours":6,"enclosed":false} history=[{"n":2,"unitAt":"81,32","onCentre":false,"centreOwner":0,"ringOurs":5,"ringTotal":6,"nonOursNeighbours":4,"enclosed":false},{"n":3,"unitAt":"82,30","onCentre":false,"centreOwner":0,"ringOurs":5,"ringTotal":6,"nonOursNeighbours":6,"enclosed":false},{"n":4,"unitAt":"83,29","onCentre":false,"centreOwner":0,"ringOurs":5,"ringTotal":6,"nonOursNeighbours":6,"enclosed":false},{"n":5,"unitAt":"81,29","onCentre":false,"centreOwner":0,"ringOurs":5,"ringTotal":6,"nonOursNeighbours":6,"enclosed":false},{"n":6,"unitAt":"82,30","onCentre":false,"centreOwner":0,"ringOurs":5,"ringTotal":6,"nonOursNeighbours":6,"enclosed":false}] => ENCLOSURE-NEVER-HELD: plots reverted before the unit was ever surrounded by our land 
+[2026-09-24 09:51:45]	[CDH] DONE harness run15 finished 

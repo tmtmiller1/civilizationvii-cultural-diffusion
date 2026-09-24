@@ -1,11 +1,8 @@
 // cd-metrics.js
 //
-// Civilization-level cultural signals for the CPI (docs/current-model.md
-// §3, term A). Reads ONLY base-game engine surfaces (Player.Stats / Player.Happiness /
-// Player.Culture / minor suzerainties), so the fused model's civ multiplier works with no
-// dependency on any other mod. Every read is defensive: an unreadable subsystem degrades
-// to 0 for that dimension, and cd-cpi drops any dimension that is 0 across all civs - so a
-// missing API never zeroes a civ's power, it just stops counting.
+// Civilization-level cultural signals for the CPI (docs/current-model.md §3). Reads ONLY base-game
+// engine surfaces, so the civ multiplier needs no other mod. Every read is defensive: an unreadable
+// subsystem degrades to 0 for that dimension, and cd-cpi drops any dimension that is 0 across all civs.
 //
 // Dimensions (raw, un-normalized; cd-cpi turns them into shares vs the strongest civ):
 //   legacy    - wonders built + great works displayed (cultural stock)

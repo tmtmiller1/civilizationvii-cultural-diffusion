@@ -62,7 +62,7 @@ mkdir -p "$TARGET_DIR"
 
 echo "==> Mirroring ./ -> $TARGET_DIR/ (excluding dev cruft + the dev probe)"
 rsync -a \
-    --exclude='.git' --exclude='.gitignore' --exclude='.DS_Store' --exclude='dist' \
+    --exclude='CHANGELOG.steam.txt' --exclude='.git' --exclude='.gitignore' --exclude='.DS_Store' --exclude='dist' \
     --exclude='release.sh' --exclude='*.bak' --exclude='node_modules' \
     --exclude='tsconfig.json' --exclude='jsconfig.json' --exclude='types' --exclude='docs' \
     --exclude='eslint.config.js' --exclude='package.json' --exclude='package-lock.json' \
@@ -119,25 +119,16 @@ fi
 
 # -- Steam Workshop manifest (.vdf) -------------------------------------------
 VDF_PATH="$DIST_DIR/workshop_item.vdf"
+VDF_NO_PREVIEW_PATH="$DIST_DIR/workshop_item_no_preview.vdf"
 ABS_CONTENT="$(cd "$TARGET_DIR" && pwd)"
 
+# Change note: this release's block from CHANGELOG.steam.txt, which scripts/steam-changelog.mjs keeps in step with
+# CHANGELOG.md (that script documents Steam's change-note formatting rules). The block is VDF-safe: no straight
+# double quotes, no backslashes. Edit CHANGELOG.steam.txt to reword a note; a hand-edited block is kept.
 CHANGENOTE="Initial release."
-VERSION_RE="$(printf '%s' "$VERSION" | sed -E 's/[][(){}.^$*+?|\\]/\\&/g')"
-if [ -n "$PUBLISHED_FILE_ID" ] && [ -f "CHANGELOG.md" ]; then
-    BULLETS="$(awk -v verre="$VERSION_RE" '
-        function flush() { if (cur != "") { print cur; cur = "" } }
-        $0 ~ ("^## \\[" verre "\\]") { grab = 1; next }
-        grab && /^## / { flush(); exit }
-        !grab { next }
-        /^###/ { next }
-        /^[[:space:]]*[-*][[:space:]]+/ { flush(); line = $0; sub(/^[[:space:]]*[-*][[:space:]]+/, "", line); cur = line; next }
-        /^[[:space:]]*$/ { next }
-        cur != "" { line = $0; sub(/^[[:space:]]+/, "", line); cur = cur " " line }
-        END { flush() }
-    ' "CHANGELOG.md" | sed -E 's/^/[*]/; s/\*\*//g; s/`//g' | tr '\n' ' ')"
-    if [ -n "$BULLETS" ]; then
-        CHANGENOTE="$(printf '[b]v%s[/b] [list]%s[/list]' "$VERSION" "$BULLETS" | sed -E 's/\\/\\\\/g; s/"/\\"/g')"
-    fi
+if [ -n "$PUBLISHED_FILE_ID" ]; then
+    CHANGENOTE="$(node scripts/steam-changelog.mjs note "$VERSION")" \
+        || { echo "error: could not build the Steam change note (see above)"; exit 1; }
 fi
 
 {
@@ -154,7 +145,10 @@ fi
     echo '}'
 } > "$VDF_PATH"
 
+grep -v '"previewfile"' "$VDF_PATH" > "$VDF_NO_PREVIEW_PATH"
+
 echo "==> Workshop manifest written: $VDF_PATH"
+echo "==> No-preview fallback manifest written: $VDF_NO_PREVIEW_PATH"
 echo ""
 echo "Release built:  $ZIP_PATH  ($SIZE)"
 echo "  Version:      $VERSION"
@@ -169,3 +163,4 @@ echo ""
 echo "-- Upload (from Mac, needs steamcmd) --"
 echo "  ~/steamcmd/steamcmd.sh +login <yourSteamLogin> \\"
 echo "      +workshop_build_item $(cd "$DIST_DIR" && pwd)/workshop_item.vdf +quit"
+echo "  (If preview upload is denied, use workshop_item_no_preview.vdf.)"

@@ -1,10 +1,8 @@
 // cd-terrain.js
 //
-// Terrain modifiers for one source->neighbour diffusion step (docs/current-model.md
-// §2, ported from Civ V DiffuseCulture): culture follows roads/rivers and is slowed - or
-// stopped - crossing rough ground. Built against the SHIPPED Civ VII 1.4.1 map API (verified
-// in Resources/Base/modules/base-standard, e.g. ui-next/tooltips/plot-tooltip/helpers.js):
-//
+// Terrain modifiers for one source->neighbour diffusion step (docs/current-model.md §2, ported from
+// Civ V DiffuseCulture): culture follows roads/rivers and is slowed or stopped crossing rough ground.
+// Map API used:
 //   - GameplayMap.getTerrainType(x,y) -> GameInfo.Terrains.lookup(id).TerrainType   (TERRAIN_HILL / TERRAIN_MOUNTAIN)
 //   - GameplayMap.getBiomeType(x,y)   -> GameInfo.Biomes.lookup(id).BiomeType        (BIOME_TUNDRA / BIOME_DESERT)
 //   - GameplayMap.getFeatureType(x,y) -> GameInfo.Features.lookup(id).FeatureType
@@ -13,10 +11,9 @@
 //   - GameplayMap.getRiverType(x,y)   -> RiverTypes.NO_RIVER | RIVER_MINOR | RIVER_NAVIGABLE
 //   - GameplayMap.getRouteType(x,y)   -> route id (0 / none when absent)
 //
-// Civ VII cleanly splits TERRAIN (flat/hill/mountain/coast/ocean/navigable-river) from BIOME
-// (tundra/grassland/plains/tropical/desert/marine); there is NO "snow". Terrain, biome, and
-// feature modifiers on the destination tile STACK. Every read is defensive: an unreadable
-// value simply omits that modifier (or, for water, blocks) - the field still works.
+// Civ VII splits TERRAIN from BIOME (no "snow"); terrain, biome and feature modifiers on the
+// destination tile STACK. Every read is defensive: an unreadable value omits that modifier (or, for
+// water, blocks).
 
 import { isWater } from "/cultural-diffusion/ui/cd-plots.js";
 

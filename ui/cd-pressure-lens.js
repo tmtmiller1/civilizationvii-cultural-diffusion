@@ -1,21 +1,10 @@
 // cd-pressure-lens.js
 //
-// The CULTURAL PRESSURE lens (docs/potential-future-features.md §1): a read-only map overlay that
-// shows WHERE THE BORDER IS ABOUT TO MOVE NEXT. Every simulated frontier tile whose LEADING culture
-// differs from its current owner is tinted in the leader's banner colour, deepening (alpha ramps) as
-// the tile nears capture - so a glance reads "these tiles are contested, and the darker ones flip
-// soonest." Pairs with the hover tooltip (cd-pressure-tooltip.js), which shows the per-tile arithmetic.
-//
-// The pressure is read straight off the mod's own persisted culture field (cd-state loadState) and
-// scored with the SAME flip gates the pass uses (cd-field pressureVerdict), age-adjusted, so the map
-// and the sim agree. Prior art: Civ V drew borders engine-side with no "about to flip" state at all,
-// and Civ VI's only contested-frontier visual was the Loyalty pressure lens - this realizes that idea
-// on this mod's culture field. Read-only: it paints, it never touches ownership, so it cannot
-// destabilize the pass.
-//
-// Same self-registering pattern as the Emigration lenses: its OWN <UIScripts> entry so it runs in the
-// HUD context where LensManager/WorldUI live and a failure here can never break the gameplay pass. The
-// only base-game import is LensManager.
+// The CULTURAL PRESSURE lens: a read-only map overlay that tints every simulated frontier tile whose
+// LEADING culture differs from its owner in the leader's banner colour, deepening as the tile nears
+// capture. Pressure is read off the persisted culture field and scored with the SAME flip gates the
+// pass uses (cd-field pressureVerdict), age-adjusted, so the map and the sim agree. It never touches
+// ownership. Self-registers from its own <UIScripts> entry in the HUD context (LensManager/WorldUI).
 
 import LensManager from "/core/ui/lenses/lens-manager.js";
 import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
@@ -24,6 +13,7 @@ import { pressureVerdict, passCanAct } from "/cultural-diffusion/ui/cd-field.js"
 import { ownerAt, localPlayerId } from "/cultural-diffusion/ui/cd-plots.js";
 import { currentAgeKey } from "/cultural-diffusion/ui/cd-polity.js";
 import { applyTunableOverrides, getPressureLensEnabled } from "/cultural-diffusion/ui/cd-settings.js";
+import { localCityList, claimInScope, claimGateBlocked } from "/cultural-diffusion/ui/cd-eligibility.js";
 import { civDisplayColor, hexToFloat4 } from "/cultural-diffusion/ui/cd-lens-colors.js";
 
 export const LENS = "cd-pressure-lens";
@@ -44,9 +34,8 @@ function unkey(k) {
 
 /**
  * A COPY of CONFIG with the ownership bar raised for the current age, matching the pass's ageContext
- * (cd-pass.js): the later-age `ownerBar` multiplier scales minimumOwner. flipRatio is unaffected by
- * age, so the verdict the lens computes matches what the pass would decide this turn. Also pulls the
- * player's saved preset into CONFIG first (the HUD isolate boots CONFIG at its shipped defaults).
+ * (cd-pass.js), so the verdict the lens computes matches what the pass would decide this turn. Also
+ * pulls the player's saved preset into CONFIG first (the HUD isolate boots CONFIG at its shipped defaults).
  * @returns {import("/cultural-diffusion/ui/cd-config.js").CdConfig} Age-adjusted config.
  */
 function ageAdjustedCfg() {
@@ -96,7 +85,7 @@ function deadOwnersOf(field, alive) {
 function lensState() {
   try {
     const st = loadState();
-    return { field: st.field || {}, claims: st.claims || {} };
+    return { field: st.field || {}, claims: st.claims || {}, state: st };
   } catch (_) {
     return null;
   }
@@ -115,6 +104,7 @@ function pressureTiles() {
   const cfg = ageAdjustedCfg();
   const me = localPlayerId();
   const dead = deadOwnersOf(field, aliveIds());
+  const ctx = { me, cities: localCityList(me), state: st.state, cfg };
   /** @type {{x:number, y:number, leader:number, progress:number}[]} */
   const out = [];
   for (const k of Object.keys(field)) {
@@ -124,9 +114,23 @@ function pressureTiles() {
     const v = pressureVerdict(field[k], owner, dead, cfg);
     if (!passCanAct(v.leader, owner, me, claims[k]?.by === me, cfg.recedeBorders)) continue; // the pass never acts
     if (v.progress < MIN_PROGRESS) continue;
+    if (v.leader === me && !claimable(loc, owner, ctx)) continue; // ...nor on a tile every other gate refuses
     out.push({ x: loc.x, y: loc.y, leader: v.leader, progress: v.progress });
   }
   return out;
+}
+
+/**
+ * Whether the pass could actually TAKE this tile, asking cd-eligibility rather than a private copy of the
+ * rules - the lens used to tint a rival's protected core, a war front, a tile out of range or on cooldown,
+ * and (once minor settlements gained a protection floor) a city-state's ring-1 that would never resolve.
+ * Only asked for tiles our culture leads; a recede cession is the recede step's business, not this gate's.
+ * @param {{x:number,y:number}} loc Plot. @param {number} owner Current owner. @param {*} ctx Lens context.
+ * @returns {boolean} True when the pass could claim it.
+ */
+function claimable(loc, owner, ctx) {
+  if (!claimInScope(loc, ctx)) return false;
+  return !claimGateBlocked(loc, owner, ctx.me, ctx.cfg, null);
 }
 
 /** Quantize a leader + progress into a small key so near-identical fills share one addPlots batch. */

@@ -1,0 +1,87 @@
+[2026-09-24 12:23:40]	[CDH] shell attached 
+[2026-09-24 12:23:41]	[CDH] shell query complete 
+[2026-09-24 12:23:41]	[CDH] shell found AugustusExp44.Civ7Save turn 44 age AGE_EXPLORATION missingMods=0 unowned=0 
+[2026-09-24 12:23:41]	[CDH] shell handleLoadSave returned true 
+[2026-09-24 12:23:59]	[CDH] attached run29 
+[2026-09-24 12:23:59]	[CulturalDiffusion] boot (turnInterval 1, verb purchasePlot, enabled true) 
+[2026-09-24 12:24:04]	[CDH] LOAD GameStarted 
+[2026-09-24 12:24:12]	[CDH] S0 run29 turn=44 local=0 cities=22 
+[2026-09-24 12:24:12]	[CDH] A SURFACE Players.get(local).Diplomacy = ["getRelationshipLevel","getRelationshipLevelName","getRelationshipEnum","getPlayerRelationshipHistory","hasAllied","changeRelationshipLevel","hasAvailableTreatyActions"] 
+[2026-09-24 12:24:12]	[CDH] A SURFACE Players.get(local) = [] 
+[2026-09-24 12:24:12]	[CDH] A SURFACE DiplomacyPlayerRelationships = ["PLAYER_RELATIONSHIP_FRIENDLY","PLAYER_RELATIONSHIP_HELPFUL","PLAYER_RELATIONSHIP_HOSTILE","PLAYER_RELATIONSHIP_NEUTRAL","PLAYER_RELATIONSHIP_UNFRIENDLY","PLAYER_RELATIONSHIP_UNKNOWN"] 
+[2026-09-24 12:24:12]	[CDH] A SURFACE Game.Diplomacy = ["getRelationshipRange","getActionRelationshipDelta"] 
+[2026-09-24 12:24:12]	[CDH] A PAIRS peacefulMajor=2 hostileMajor=1 
+[2026-09-24 12:24:12]	[CDH] A TRY getRelationshipLevel(peaceful=2)=-87 getRelationshipLevel(hostile=1)=-90 getRelationshipLevel(self=0)=0 
+[2026-09-24 12:24:12]	[CDH] A TRY getRelationshipLevelName(peaceful=2)="LOC_PLAYER_RELATIONSHIP_HOSTILE" getRelationshipLevelName(hostile=1)="LOC_PLAYER_RELATIONSHIP_HOSTILE" getRelationshipLevelName(self=0)="LOC_PLAYER_RELATIONSHIP_NEUTRAL" 
+[2026-09-24 12:24:12]	[CDH] A TRY getRelationshipEnum(peaceful=2)=1522751684 getRelationshipEnum(hostile=1)=1522751684 getRelationshipEnum(self=0)=-876007104 
+[2026-09-24 12:24:12]	[CDH] A TRY getPlayerRelationshipHistory(peaceful=2)=[{"eventType":723361603,"eventGroupType":-1052699172,"amount":-25,"gameTurn":1,"triggeredBy":-1},{"eventType":1715635589,"eventGroupType":344160076,"amount":-6,"gameTurn":5,"triggeredBy":0},{"eventType":1462041601,"eventGroupType":-1052699172,"amount":2,"gameTurn":5,"triggeredBy":-1},{"eventType":1708185014,"eventGroupType":-1052699172,"amount":-46,"gameTurn":5,"triggeredBy":0},{"eventType":1715635589,"eventGroupType":344160076,"amount":-6,"gameTurn":6,"triggeredBy":0},{"eventType":1715635589,"eventGroupType":344160076,"amount":-6,"gameTurn":7,"triggeredBy":0},{"eventType":1715635589,"eventGroupType":344160076,"amount":-6,"gameTurn":8,"triggeredBy":0},{"eventType":-430876145,"eventGroupType":344160076,"amount":-10,"gameTurn":8,"triggeredBy":0},{"eventType":1715635589,"eventGroupType":344160076,"amount":-6,"gameTurn":9,"triggeredBy":0},{"eventType":1715635589,"eventGroupType":344160076,"amount":-6,"gameTurn":10,"triggeredBy":0},{"even
+[2026-09-24 12:24:12]	[CDH] A TRY hasAllied(peaceful=2)=false hasAllied(hostile=1)=false hasAllied(self=0)=false 
+[2026-09-24 12:24:12]	[CDH] A TRY changeRelationshipLevel(peaceful=2)=undefined changeRelationshipLevel(hostile=1)=undefined changeRelationshipLevel(self=0)=undefined 
+[2026-09-24 12:24:12]	[CDH] A TRY hasAvailableTreatyActions(peaceful=2)=false hasAvailableTreatyActions(hostile=1)=false hasAvailableTreatyActions(self=0)=false 
+[2026-09-24 12:24:12]	[CDH] A VERDICT => candidate names above - a name that separates the peaceful pair from the hostile one is the access read 
+[2026-09-24 12:24:12]	[CDH] N SHIPS n=33 nearest=[{"at":"93,37","type":"UNIT_KALAM","owner":8,"ring":3,"wet":6,"takeable":6},{"at":"1,30","type":"UNIT_KALAM","owner":8,"ring":6,"wet":6,"takeable":6},{"at":"58,19","type":"UNIT_FLEET_COMMANDER","owner":6,"ring":10,"wet":5,"takeable":5},{"at":"55,41","type":"UNIT_COG","owner":9,"ring":12,"wet":5,"takeable":5},{"at":"59,9","type":"UNIT_COG","owner":6,"ring":13,"wet":3,"takeable":3},{"at":"63,1","type":"UNIT_COG","owner":23,"ring":13,"wet":2,"takeable":2}] 
+[2026-09-24 12:24:12]	[CDH] N PEN centre=93,37 ship=UNIT_KALAM owner=8 ring=3 wet=6 gap=94,38 
+[2026-09-24 12:24:18]	[CDH] N RESULT ringNowOurs=5/5 strandableUnitsAt=[{"owner":8,"domain":"DOMAIN_SEA","water":true,"land":false}] exitsNow=1 exitsAfterClaim=0 wouldStrand=true 
+[2026-09-24 12:24:18]	[CDH] N VERDICT => CONFIRMED on a real ship: the guard sees it as sea-going and refuses the claim that takes its last water 
+[2026-09-24 12:24:18]	[CDH] ACTIONS done; ending turns 
+[2026-09-24 12:24:42]	[CulturalDiffusion] inject 92,32 civ=0 culture=94.9 vitality=99.63 strength=59.71 stock=10 cap=119416.69 
+[2026-09-24 12:24:42]	[CulturalDiffusion] inject 86,20 civ=0 culture=8.8 vitality=49.02 strength=9.93 stock=10 cap=19854.98 
+[2026-09-24 12:24:42]	[CulturalDiffusion] inject 77,21 civ=0 culture=0 vitality=28.15 strength=0 stock=0 cap=0 
+[2026-09-24 12:24:42]	[CulturalDiffusion] inject 82,23 civ=0 culture=1 vitality=28.75 strength=2 stock=10 cap=4008.12 
+[2026-09-24 12:24:42]	[CulturalDiffusion] inject 93,26 civ=0 culture=17 vitality=25.1 strength=12.05 stock=10 cap=24105.23 
+[2026-09-24 12:24:42]	[CulturalDiffusion] inject 80,31 civ=0 culture=2 vitality=28.95 strength=3.15 stock=10 cap=6304.69 
+[2026-09-24 12:24:42]	[CulturalDiffusion] inject 87,32 civ=0 culture=18 vitality=37.32 strength=14.37 stock=10 cap=28742.12 
+[2026-09-24 12:24:42]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=36.5 strength=2.18 stock=10 cap=4357.32 
+[2026-09-24 12:24:42]	[CulturalDiffusion] inject 90,37 civ=0 culture=1 vitality=26.65 strength=1.95 stock=10 cap=3903.11 
+[2026-09-24 12:24:42]	[CulturalDiffusion] inject 77,36 civ=0 culture=0 vitality=20.2 strength=0 stock=0 cap=0 
+[2026-09-24 12:24:42]	[CulturalDiffusion] inject 81,18 civ=0 culture=1 vitality=41.62 strength=2.28 stock=10 cap=4562.3 
+[2026-09-24 12:24:42]	[CulturalDiffusion] inject 79,39 civ=0 culture=0 vitality=25.2 strength=0 stock=0 cap=0 
+[2026-09-24 12:24:42]	[CulturalDiffusion] inject 78,13 civ=0 culture=1 vitality=20.4 strength=1.78 stock=10 cap=3554.58 
+[2026-09-24 12:24:42]	[CulturalDiffusion] inject 75,41 civ=0 culture=1 vitality=22.12 strength=1.83 stock=10 cap=3656.63 
+[2026-09-24 12:24:42]	[CulturalDiffusion] inject 75,14 civ=0 culture=0 vitality=18.25 strength=0 stock=0 cap=0 
+[2026-09-24 12:24:42]	[CulturalDiffusion] inject 71,44 civ=0 culture=1 vitality=33.02 strength=2.1 stock=10 cap=4207.3 
+[2026-09-24 12:24:42]	[CulturalDiffusion] inject 71,39 civ=0 culture=0 vitality=26.9 strength=0 stock=0 cap=0 
+[2026-09-24 12:24:42]	[CulturalDiffusion] inject 71,15 civ=0 culture=0 vitality=20.7 strength=0 stock=0 cap=0 
+[2026-09-24 12:24:42]	[CulturalDiffusion] inject 72,10 civ=0 culture=2 vitality=11.55 strength=2.29 stock=10 cap=4570.78 
+[2026-09-24 12:24:42]	[CulturalDiffusion] inject 68,19 civ=0 culture=4 vitality=34.56 strength=5.26 stock=10 cap=10525.99 
+[2026-09-24 12:24:42]	[CulturalDiffusion] inject 67,35 civ=0 culture=2 vitality=26.8 strength=3.07 stock=10 cap=6136.68 
+[2026-09-24 12:24:42]	[CulturalDiffusion] inject 67,41 civ=0 culture=9.66 vitality=36.68 strength=9.53 stock=10 cap=19058.41 
+[2026-09-24 12:24:42]	[CulturalDiffusion] inject 64,14 civ=1 culture=13.2 vitality=45.95 strength=11.98 stock=10 cap=23962.06 
+[2026-09-24 12:24:42]	[CulturalDiffusion] inject 64,19 civ=1 culture=6.83 vitality=13.29 strength=5.06 stock=10 cap=10114.45 
+[2026-09-24 12:24:42]	[CulturalDiffusion] inject 67,50 civ=2 culture=7.7 vitality=16.67 strength=9.41 stock=10 cap=18822.98 
+[2026-09-24 12:24:42]	[CulturalDiffusion] inject 74,52 civ=2 culture=66 vitality=60.09 strength=59.58 stock=10 cap=119156.82 
+[2026-09-24 12:24:42]	[CulturalDiffusion] inject 83,44 civ=4 culture=11 vitality=27.81 strength=16.72 stock=10 cap=33444.14 
+[2026-09-24 12:24:42]	[CulturalDiffusion] inject 79,47 civ=4 culture=11 vitality=32.78 strength=17.71 stock=10 cap=35427.59 
+[2026-09-24 12:24:42]	[CulturalDiffusion] inject 75,48 civ=4 culture=16.5 vitality=48.99 strength=26.54 stock=10 cap=53073.01 
+[2026-09-24 12:24:42]	[CulturalDiffusion] inject 64,26 civ=5 culture=1.24 vitality=9.88 strength=1.3 stock=10 cap=2599.13 
+[2026-09-24 12:24:42]	[CulturalDiffusion] inject 68,30 civ=5 culture=0 vitality=7.34 strength=0 stock=0 cap=0 
+[2026-09-24 12:24:42]	[CulturalDiffusion] inject 71,33 civ=5 culture=0 vitality=15.02 strength=0 stock=0 cap=0 
+[2026-09-24 12:24:42]	[CulturalDiffusion] inject 64,45 civ=5 culture=9.63 vitality=45.02 strength=8.36 stock=10 cap=16728.47 
+[2026-09-24 12:24:42]	[CulturalDiffusion] inject 62,32 civ=5 culture=0 vitality=5.33 strength=0 stock=0 cap=0 
+[2026-09-24 12:24:42]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=375 over=0/23 centre=10 
+[2026-09-24 12:24:42]	[CulturalDiffusion] frontier city=131073 ring=4 best=0 bar=375 over=0/24 centre=10 
+[2026-09-24 12:24:42]	[CulturalDiffusion] frontier city=196610 ring=4 best=0 bar=375 over=0/24 centre=0 
+[2026-09-24 12:24:42]	[CulturalDiffusion] frontier city=262147 ring=4 best=0 bar=375 over=0/24 centre=10 
+[2026-09-24 12:24:42]	[CulturalDiffusion] frontier city=327684 ring=4 best=0 bar=375 over=0/19 centre=10 
+[2026-09-24 12:24:42]	[CulturalDiffusion] frontier city=393221 ring=4 best=0 bar=375 over=0/24 centre=10 
+[2026-09-24 12:24:42]	[CulturalDiffusion] frontier city=458758 ring=4 best=10 bar=375 over=0/24 centre=10 
+[2026-09-24 12:24:42]	[CulturalDiffusion] frontier city=524295 ring=4 best=10 bar=375 over=0/24 centre=10 
+[2026-09-24 12:24:42]	[CulturalDiffusion] frontier city=589832 ring=4 best=0 bar=375 over=0/24 centre=10 
+[2026-09-24 12:24:42]	[CulturalDiffusion] frontier city=655369 ring=4 best=0 bar=375 over=0/24 centre=0 
+[2026-09-24 12:24:42]	[CulturalDiffusion] frontier city=720906 ring=4 best=0 bar=375 over=0/24 centre=10 
+[2026-09-24 12:24:42]	[CulturalDiffusion] frontier city=786443 ring=4 best=0 bar=375 over=0/24 centre=0 
+[2026-09-24 12:24:42]	[CulturalDiffusion] frontier city=851980 ring=4 best=0 bar=375 over=0/24 centre=10 
+[2026-09-24 12:24:42]	[CulturalDiffusion] frontier city=917517 ring=4 best=0 bar=375 over=0/24 centre=10 
+[2026-09-24 12:24:42]	[CulturalDiffusion] frontier city=983054 ring=4 best=10 bar=375 over=0/24 centre=0 
+[2026-09-24 12:24:42]	[CulturalDiffusion] frontier city=1048591 ring=4 best=0 bar=375 over=0/24 centre=10 
+[2026-09-24 12:24:42]	[CulturalDiffusion] frontier city=1114128 ring=4 best=0 bar=375 over=0/24 centre=0 
+[2026-09-24 12:24:42]	[CulturalDiffusion] frontier city=1179665 ring=4 best=0 bar=375 over=0/24 centre=0 
+[2026-09-24 12:24:42]	[CulturalDiffusion] frontier city=1245202 ring=4 best=0 bar=375 over=0/24 centre=10 
+[2026-09-24 12:24:42]	[CulturalDiffusion] frontier city=1310739 ring=4 best=0 bar=375 over=0/24 centre=10 
+[2026-09-24 12:24:42]	[CulturalDiffusion] frontier city=1376276 ring=4 best=0 bar=375 over=0/24 centre=10 
+[2026-09-24 12:24:42]	[CulturalDiffusion] frontier city=1441813 ring=4 best=0 bar=375 over=0/24 centre=10 
+[2026-09-24 12:24:42]	[CulturalDiffusion] state bytes=502 field=25 claims=0 locked=0 passMs=21 
+[2026-09-24 12:24:42]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 25 active field tile(s) 
+[2026-09-24 12:24:42]	[CulturalDiffusion] pass (turn 45): flips=0 field tiles=6 
+[2026-09-24 12:24:50]	[CDH] TURN n=2 turn=45 
+[2026-09-24 12:24:53]	[CDH] DONE harness run29 finished 

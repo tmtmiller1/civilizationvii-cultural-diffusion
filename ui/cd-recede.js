@@ -1,18 +1,11 @@
 // cd-recede.js
 //
-// Borders RECEDE (opt-in, CONFIG.recedeBorders): the flow-back half of the Civ V model. Once per pass, after the
-// flips, it walks only the tiles this mod CLAIMED (state.claims) - never a tile the base game grew - and CEDES a claim
-// to a rival whose culture beat ours there past resolveOwner's gates (the same decisive margin a claim needs), via that
-// rival's nearest city's refunded purchasePlot. Peace, flipMaxDistance, requireAdjacency, the cooldown lock and
-// maxFlipsPerTurn all apply.
-//
-// Cession is the ONLY way a claimed tile leaves. Releasing a faded claim to no one was built and removed: on game 1.4.2
-// setOwnership(NO_PLAYER) never un-owns a city-attached tile (harness runs 1-2, four variants; see
-// docs/wont-build-with-justifications.md). The rival city's purchasePlot does work, but lands after the call (watched
-// in-game), so an unlanded cession is recorded as pending and confirmed next pass (cd-pending.js).
-//
-// Kept out of cd-pass.js (file-size gate) and free of any import from it: a cycle between UIScript modules can take
-// down the whole module graph in GameFace, so the few geometry helpers it needs are local.
+// Borders RECEDE (opt-in, CONFIG.recedeBorders). Once per pass, after the flips, it walks only the tiles this mod
+// CLAIMED (state.claims) and CEDES a claim to a rival whose culture beat ours past resolveOwner's gates, via that
+// rival's nearest city's refunded purchasePlot; peace, flipMaxDistance, requireAdjacency, the cooldown lock and
+// maxFlipsPerTurn all apply. Cession is the ONLY way a claimed tile leaves (setOwnership(NO_PLAYER) never un-owns a
+// city-attached tile; see docs/wont-build-with-justifications.md); an unlanded cession is confirmed next pass.
+// Free of any import from cd-pass.js: a UIScript module cycle can take down the whole graph in GameFace.
 
 import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
 import { dlog } from "/cultural-diffusion/ui/cd-log.js";
@@ -65,7 +58,7 @@ function rivalCityRows(me) {
 
 /**
  * Cede one claimed tile to the rival whose culture decisively won it. The rival city's purchasePlot lands after the
- * call (watched in-game, 1.4.2), so an unlanded write is recorded as pending and confirmed next pass.
+ * call, so an unlanded write is recorded as pending and confirmed next pass.
  * @returns {"ceded"|"pending"|null} ceded now, sent and awaiting confirmation, or not attempted/failed.
  */
 function cedeToRival(state, k, loc, rival, ctx) {

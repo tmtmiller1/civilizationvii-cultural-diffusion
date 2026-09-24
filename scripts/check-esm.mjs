@@ -61,6 +61,19 @@ for (const f of files) {
   checkImports(src, `ui/${f}`);
 }
 
+// Every ui/*.js must be DECLARED in the modinfo, as a UIScript (an entry point) or an ImportFile (a
+// module something imports). The engine only serves declared files, so an undeclared module makes its
+// importer fail at load and takes the whole action group down with it - which looks like "the mod is
+// dead", not like a missing file. cd-units.js shipped undeclared until 2026-09-24.
+function checkModinfoCoverage() {
+  const mi = path.join(root, "cultural-diffusion.modinfo");
+  if (!fs.existsSync(mi)) { errors.push("modinfo not found"); return; }
+  const xml = fs.readFileSync(mi, "utf8");
+  const declared = new Set([...xml.matchAll(/<Item>(ui\/[^<]+\.js)<\/Item>/g)].map((m) => m[1]));
+  for (const f of files) if (!declared.has(`ui/${f}`)) errors.push(`ui/${f}: not declared in the modinfo`);
+}
+checkModinfoCoverage();
+
 if (errors.length) {
   console.error("ESM integrity check FAILED:");
   for (const e of errors) console.error("  - " + e);

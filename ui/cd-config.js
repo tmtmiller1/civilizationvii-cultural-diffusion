@@ -1,16 +1,9 @@
 // cd-config.js
 //
-// The DEFAULT VALUES of Cultural Diffusion's tunable settings (see
-// docs/current-model.md §2). The settings/options layer
-// (cd-settings.js / cd-options.js) overrides these at boot and on each pass via
-// applyTunableOverrides. Keep this file PURE: no engine reads, so the field/diffusion
-// math can be unit-tested in Node.
-//
-// The reach model is a Civ V-style REACTION-DIFFUSION over a persisted per-tile culture
-// stock (cd-field.js): cities INJECT culture, it DIFFUSES to neighbours (capped, terrain-
-// and affinity-modified) and DECAYS each turn, and ownership is read off the stock. Reach is
-// an emergent, slow travelling wave. The "fused" knobs (culture/CPI/prosperity/ethnic) shape
-// how hard each city INJECTS; the diffusion knobs shape how that stock spreads over time.
+// The DEFAULT VALUES of Cultural Diffusion's tunable settings (see docs/current-model.md §2).
+// cd-settings.js / cd-options.js override these at boot and on each pass via applyTunableOverrides.
+// Keep this file PURE (no engine reads) so the field math can be unit-tested in Node. The "fused"
+// knobs shape how hard each city INJECTS; the diffusion knobs shape how that stock spreads.
 
 /**
  * @typedef {Object} CrossMod Per-terrain diffusion modifier {malus, max, threshold}.
@@ -37,9 +30,17 @@
  * @property {number}  maxFlipsPerTurn Global per-pass ceiling on ownership flips (pacing/safety).
  * @property {number}  flipCooldownTurns Turns a freshly flipped tile is locked from re-flipping.
  * @property {number}  coreProtectRadius Rings around a rival city CENTER that never flip:
- *   1 = protect the center + its ring-1 (old "downtown" shield); 0 = protect only the
+ *   1 = protect the center + its ring-1 (full "downtown" shield); 0 = protect only the
  *   city-center plot itself (culture can bite ring-1 inward); -1 = protect nothing (even the
  *   center is flippable). Lower = diffusion pushes deeper into a rival's worked footprint.
+ * @property {boolean} protectTrappedUnits Never close the LAST way out on a foreign unit belonging to a
+ *   civ we are at PEACE with: trespass then leaves it with no legal move until a war ejects it
+ *   (watched, harness run 17). Refused only when this claim takes its LAST legal destination; a unit
+ *   that can still move, even inside a small pocket, is fine.
+ * @property {number}  minorProtectRadius Minimum rings of core protection around a MINOR settlement
+ *   (city-state or Independent Power) regardless of coreProtectRadius. A minor's whole territory is a
+ *   ring or two, so the major-civ default of 0 stripped it to its centre plot - which reads to the
+ *   player as the settlement being absorbed. -1 disables the floor.
  * @property {boolean} requireAdjacency Only flip a tile that TOUCHES your existing land
  *   (the organic contiguous front - takes a rival's rings from the outside in). Off = flip
  *   any tile your culture field dominates, even a disconnected pocket inside their territory.
@@ -63,7 +64,7 @@
  * @property {CrossMod} terrainTundra / terrainDesert Biome crossing modifiers.
  * @property {CrossMod} terrainForest / terrainJungle / terrainMarsh Feature crossing modifiers.
  *
- * -- injection strength shaping (fused 3.1a: culture + CPI + prosperity + ethnic affinity) --
+ * -- injection strength shaping (fused: culture + CPI + prosperity + ethnic affinity) --
  * @property {boolean} fusedModel Fold CPI + prosperity into a city's injection strength. Off = raw culture only.
  * @property {boolean} useEmigration Read the emigration mod for ethnic-affinity diffusion. Off = base-game only.
  * @property {number}  cultureWeight Weight on a settlement's culture output.
@@ -92,45 +93,39 @@ export const CONFIG = {
   // -- master / safety ----------------------------------------------
   diffusionEnabled: true,
   claimOnlyUnowned: false,
-  // The INTEGRATED verb (current-model.md §4). `purchasePlot` attaches the flipped tile to
-  // the nearest city (owningCity set, inCityPlots true), so the tile is a real, workable city
-  // plot - NOT the orphan that `setOwnership` produces (owner set but no owning city), which
-  // blocks the base game's own population/border growth from ever acquiring that tile. This is
-  // now CODE-ONLY (no Options dropdown): every player gets the integrated verb. `setOwnership`
-  // survives only for `unclaim` and as a testing escape hatch (set this to "setOwnership").
-  // Probe-proven (2026-07-09): purchasePlot integrates, and is effectively free on contiguous
-  // frontier tiles - refundGold nets any cost to zero regardless.
+  // WATCHED (harness run 17): our claims closed every exit around a peaceful major's Scout and it sat
+  // frozen for five turns. The engine exposes no way to move a unit we do not own, so the only lever is
+  // not to take the last plot. Units at war with us - which includes every Independent Power - cross our
+  // land freely and are never protected. A refused claim costs one frontier tile for one turn.
+  protectTrappedUnits: true,
+  // A minor settlement is a ring or two of territory in total, so coreProtectRadius 0 - fine against a
+  // major - takes everything a city-state or village has except the plot it stands on. Watched in harness
+  // run 13: the pass flipped 89,41 and 90,42, both ring-1 neighbours of city-state 33's centre at 89,42.
+  minorProtectRadius: 1,
+  // The INTEGRATED verb (current-model.md §4): `purchasePlot` attaches the flipped tile to the
+  // nearest city so it is a real, workable plot, not the orphan `setOwnership` produces (which blocks
+  // base-game border growth). Code-only; `setOwnership` survives for `unclaim` and as a testing escape hatch.
   flipVerb: "purchasePlot",
   // Net-zero the gold purchasePlot spends by restoring the balance the same tick via
-  // Treasury.changeGoldBalance (invisible to the player and to the demographics gold metrics).
-  // The proven "free + integrated" ideal. Turn off to let claims actually cost gold.
+  // Treasury.changeGoldBalance (invisible to the player). Turn off to let claims actually cost gold.
   refundGold: true,
-  // Each pass, re-integrate any ORPHAN tile (owner === me but no owning city) left by an older
-  // setOwnership build or a pre-fix save: release it, then re-claim it via the integrated verb so
-  // it becomes a real city tile and stops blocking the base game's own inner-ring border growth.
-  // Off = leave legacy orphans as-is.
+  // Each pass, re-integrate any ORPHAN tile (owner === me but no owning city): release it, then
+  // re-claim it via the integrated verb so it stops blocking base-game border growth. Off = leave orphans as-is.
   repairOrphans: true,
 
-  // Event-driven "+1 ring" cultural buffer. When the local player completes a RURAL improvement on
-  // a tile (a manual rural-growth event: "we improved a resource/tile"), claim only the UNOWNED
-  // land tiles ADJACENT to that developed tile (not the whole ring) for the nearest city, via the
-  // integrated verb - so developing a frontier tile pushes your cultural border one tile past it,
-  // organically, paced to your own development. Claims adjacent UNOWNED land AND water (coastal
-  // borders); it NEVER takes a tile owned by another player (peaceful rival capture is left to the
-  // slow diffusion pass). Off = borders come only from the reaction-diffusion field.
-  // Default OFF (house rule: territory-changing features are opt-in); players switch it on in Options.
+  // Event-driven "+1 ring" cultural buffer: when the local player completes a RURAL improvement, claim
+  // the UNOWNED tiles (land and water) ADJACENT to it for the nearest city via the integrated verb. It
+  // NEVER takes another player's tile. Default OFF (territory-changing features are opt-in).
   growthBuffer: false,
   baseGrowthRadius: 3, // base-game max city ring; buffer tiles are capped to this + 1 rings out
 
-  // Let the slow reaction-diffusion field spread ACROSS water (not just the +1 buffer). Culture
-  // crosses water slowly and only once strong enough (see terrainCoast/terrainOcean) - so an
-  // established coastal culture can island-hop and claim SOME land across the sea, while a weak one
-  // stays landlocked. Off = the field is land-only (legacy) and only the buffer touches water.
+  // Let the reaction-diffusion field spread ACROSS water. Culture crosses slowly and only once strong
+  // enough (see terrainCoast/terrainOcean), so an established coastal culture can island-hop while a
+  // weak one stays landlocked. Off = the field is land-only and only the buffer touches water.
   diffuseAcrossWater: true,
-  // Before the Exploration age you may NOT culturally claim tiles in your DISTANT LANDS (the far
-  // hemisphere) - matching the base game gating ocean crossing to Exploration. Home-hemisphere
-  // islands across nearby water are still claimable. Applies to BOTH the diffusion flip and the +1
-  // buffer. From Exploration on, distant-lands tiles can be claimed (still subject to the water malus).
+  // Before the Exploration age you may NOT culturally claim tiles in your DISTANT LANDS (matching the
+  // base game's ocean gating); home-hemisphere islands stay claimable. Applies to BOTH the diffusion
+  // flip and the +1 buffer.
   blockDistantLandsBeforeExploration: true,
 
   // -- pacing / scope -----------------------------------------------
@@ -141,24 +136,20 @@ export const CONFIG = {
   flipCooldownTurns: 15, // a freshly claimed/conquered tile is locked this long
 
   // Take tiles INSIDE a rival's ring by default - protect only the enemy city-center plot
-  // itself (0), not its whole ring-1. Set 1 for the old downtown shield, -1 to allow even
+  // itself (0), not its whole ring-1. Set 1 for the full downtown shield, -1 to allow even
   // the center to flip. Diffusion still reaches inner tiles organically via requireAdjacency.
   coreProtectRadius: 0,
   requireAdjacency: true,
 
-  // Borders RECEDE (opt-in, experimental). A tile this mod CLAIMED can be lost again: if a rival's culture
-  // decisively wins it (the same resolveOwner gates a claim uses), it is ceded to that rival's nearest city via
-  // purchasePlot (refunded to the rival). Only tiles recorded in state.claims are ever touched. There is no
-  // release-to-no-one: setOwnership(NO_PLAYER) never un-owns a city-attached tile on game 1.4.2 (harness runs
-  // 1-2). Off by default until the mod's own cession path is watched against a peaceful rival.
+  // Borders RECEDE (opt-in). A tile this mod CLAIMED can be lost again: if a rival's culture decisively
+  // wins it (the same resolveOwner gates a claim uses), it is ceded to that rival's nearest city via
+  // purchasePlot (refunded). Only tiles in state.claims are touched; there is no release-to-no-one.
   recedeBorders: false,
 
   // -- reaction-diffusion field (the SLOW, organic reach - Civ V model) --
-  // Culture is a persisted per-tile stock. A tile diffuses 5.5% of its value to each
-  // neighbour per turn (capped at 40% of the source, 75% along roads/rivers) and loses 5%+1
-  // to decay. A tile is owned once a civ's stock there passes `minimumOwner`. Because the
-  // stock must physically build up ring by ring against decay, reach is a creeping front
-  // that takes tens of turns - ring 3 is mid-game, ring 5+ is a mature, established culture.
+  // Culture is a persisted per-tile stock: a tile diffuses 5.5% to each neighbour per turn (capped at
+  // 40% of the source, 75% along roads/rivers) and loses 5%+1 to decay; a tile is owned once a civ's
+  // stock passes `minimumOwner`. Building up ring by ring against decay makes reach a creeping front.
   cultureThreshold: 100,
   diffusionRate: 0.055,
   decayRate: 0.05,
@@ -172,11 +163,9 @@ export const CONFIG = {
   flipRatio: 0.65,
   flipMaxDistance: 6,
 
-  // Terrain: culture follows roads/rivers and is slowed crossing rough ground. `max` is the
-  // neighbour cap x normalMax; `malus` slows the rate; `threshold` (x cultureThreshold) gates
-  // whether culture crosses at all. Modifiers for the DESTINATION tile's terrain (hill/
-  // mountain), biome (tundra/desert), and feature (forest/jungle/marsh) STACK (Civ VII has no
-  // "snow"; tundra is the cold biome, and mountains are a terrain type).
+  // Terrain: culture follows roads/rivers and is slowed crossing rough ground. `max` is the neighbour
+  // cap x normalMax; `malus` slows the rate; `threshold` (x cultureThreshold) gates whether culture
+  // crosses at all. Modifiers for the DESTINATION tile's terrain, biome and feature STACK.
   roadBonus: 1.0, roadMax: 2.5,
   riverFollowBonus: 0.65, riverFollowMax: 1.8,
   terrainHills:    { malus: 0.15, max: 0.60, threshold: 1.50 }, // TERRAIN_HILL
@@ -192,11 +181,10 @@ export const CONFIG = {
   terrainCoast:    { malus: 0.55, max: 0.30, threshold: 3.50 }, // TERRAIN_COAST (shallow water)
   terrainOcean:    { malus: 0.80, max: 0.12, threshold: 6.50 }, // TERRAIN_OCEAN (deep water)
 
-  // -- injection strength shaping (fused 3.1a) ---------------------
-  // These decide how hard each city PUMPS culture into its own tile (the diffusion source).
-  // CPI/prosperity/celebration make an established or overwhelming culture inject a bigger
-  // stock, which then diffuses farther/faster - the organic version of "overwhelming culture
-  // spreads fast". Ethnic affinity accelerates diffusion toward a civ's diaspora.
+  // -- injection strength shaping (fused) --------------------------
+  // These decide how hard each city PUMPS culture into its own tile (the diffusion source):
+  // CPI/prosperity/celebration make an established culture inject a bigger stock, which then
+  // diffuses farther/faster. Ethnic affinity accelerates diffusion toward a civ's diaspora.
   fusedModel: true,
   useEmigration: true,
   cultureWeight: 1.0,
@@ -218,26 +206,17 @@ export const CONFIG = {
   wIdentity: 0.15,
   ethnicWeight: 1.0,
 
-  // -- per-age tuning (3c) -----------------------------------------
-  // Settlement caps grow 1->5->8 and culture yields ~2x->~1.5x across the ages, so later ages
-  // would runaway-paint the map at a fixed injection. So injection is DAMPED and the ownership
-  // bar RAISED per age - keeping a single city's reach roughly comparable across ages while
-  // letting the bigger late-game empire (more cities) cover more ground. Keyed by age.
-  //
-  // waterEase [0..1] shrinks the water crossing gates as sea travel matures: 0 keeps the full
-  // coast/ocean malus (Antiquity - deep ocean near-impassable), a partial value drastically eases
-  // it (Exploration - ocean-going ships), and 1 removes the water penalty entirely (Modern - blue-
-  // water culture spreads across oceans like open land). Applied to terrainCoast + terrainOcean.
+  // -- per-age tuning ----------------------------------------------
+  // Settlement caps and culture yields grow across the ages, so injection is DAMPED and the ownership
+  // bar RAISED per age to keep a single city's reach comparable while a bigger empire covers more ground.
+  // waterEase [0..1] shrinks the coast/ocean crossing gates as sea travel matures (0 = full malus, 1 = none).
   byAge: {
     ANTIQUITY:   { injectionScale: 1.0,  ownerBar: 1.0,  waterEase: 0.0 },
     EXPLORATION: { injectionScale: 0.8,  ownerBar: 1.25, waterEase: 0.65 },
     MODERN:      { injectionScale: 0.65, ownerBar: 1.6,  waterEase: 1.0 }
   },
-  // Ramp waterEase CONTINUOUSLY across each age instead of stepping at the boundary: within an age
-  // it interpolates from that age's waterEase toward the NEXT age's, by progress through the age
-  // (Game.turn / Game.maxTurns). So Exploration eases from 0.65 up to ~1.0 over its course, and
-  // Antiquity eases from 0.0 up to ~0.65 (deep ocean stays near-impassable early, softening late).
-  // Off = flat per-age steps.
+  // Ramp waterEase CONTINUOUSLY across each age: interpolate from this age's value toward the NEXT
+  // age's by progress through the age (Game.turn / Game.maxTurns). Off = flat per-age steps.
   waterEaseRamp: true,
 
   // -- per-leader / civ / memento variance (cd-civ-tuning.js) -------
@@ -247,7 +226,7 @@ export const CONFIG = {
   civTuningEnabled: true,
   civTuningStrength: 1.0,
 
-  // -- game-settings calibration (3d - cd-calibration.js) ----------
+  // -- game-settings calibration (cd-calibration.js) ---------------
   // Normalize the field's per-turn pace to the CURRENT AGE's length (Game.maxTurns) so the
   // border arc spans the age consistently on any game speed, and nudge injection by map size so
   // a cramped map isn't steamrolled. Neutral (1) when unreadable - i.e. Standard-tuned.

@@ -1,24 +1,10 @@
 // cd-calibration.js
 //
-// Calibrates the field's per-turn pace to the GAME SETTINGS (docs/current-model.md
-// §2) - the Civ V mod's SetDiffusionFactorFromGameSetting, redone for Civ VII's structure.
-//
-// Civ VII differs from Civ V: instead of one continuous ~500-turn game, it plays THREE discrete
-// ages, and `Game.maxTurns` is the CURRENT AGE's turn budget (the radial menu shows
-// `Game.turn / Game.maxTurns` as age progress). That budget varies by game speed
-// (Standard ~80-120, Marathon ~280-320, Quick ~41-92 per age). So:
-//
-//   - AGE PACE - scale the per-turn field advance (diffusion + decay + injection) by
-//     `referenceTurns / Game.maxTurns`, so the border arc spans THIS age consistently no matter
-//     the speed (on Marathon it advances slower per turn; on Quick, faster) - same reach extent,
-//     just re-timed. (Scaling all three uniformly leaves the diffusion/decay equilibrium - and
-//     thus the reach extent - unchanged; only the speed of approach changes.)
-//   - MAP SIZE - a per-city culture field's reach is map-independent (unlike Civ V's whole-map
-//     sweep), so the diffusion RATE is NOT scaled by map size. Instead injection is nudged mildly
-//     by `GameInfo.Maps` size so a cramped Tiny map isn't steamrolled and a Huge map still grows.
-//
-// Reads confirmed against base-standard (maps/map-utilities.js, core/ui/save-load, radial-menu).
-// Fully defensive: unreadable settings -> neutral 1 (Standard-tuned behaviour).
+// Calibrates the field's per-turn pace to the GAME SETTINGS (docs/current-model.md §2).
+// `Game.maxTurns` is the CURRENT AGE's turn budget, which varies by game speed, so the per-turn
+// field advance (diffusion + decay + injection) is scaled by `referenceTurns / Game.maxTurns`:
+// same reach extent, re-timed to span the age. Map size does not scale the diffusion rate; it
+// only nudges injection mildly. Fully defensive: unreadable settings -> neutral 1.
 
 import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
 

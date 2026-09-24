@@ -1,15 +1,9 @@
 // cd-ownership.js
 //
-// The ONE place that MUTATES plot ownership. Every flip is single-player-guarded
-// and routed through the configured verb (docs/current-model.md §4):
-//   - purchasePlot - the INTEGRATED, city-attached path (default). Attaches the tile to the
-//     nearest city so it becomes a real, workable city plot. Probe-proven to be effectively
-//     free on contiguous frontier tiles; refundGold nets any cost to zero regardless.
-//   - setOwnership - free but ORPHAN: the player owns the tile yet no city does, so it is not
-//     workable/buildable AND it blocks the base game's own population/border growth from ever
-//     acquiring that tile. Retained only for the "Free territory" option and for `unclaim`.
-// Isolating the writes here keeps the pass readable and makes the safety guard
-// impossible to bypass.
+// The ONE place that MUTATES plot ownership. Every flip is single-player-guarded and routed
+// through the configured verb (docs/current-model.md §4): purchasePlot attaches the tile to the
+// nearest city (a real, workable plot; refundGold nets the cost to zero), while setOwnership
+// leaves an ORPHAN (owned but city-less, unworkable, blocks base-game growth) and serves `unclaim`.
 
 import { isMultiplayer } from "/cultural-diffusion/ui/cd-plots.js";
 import { log } from "/cultural-diffusion/ui/cd-log.js";
@@ -70,8 +64,7 @@ export function flipViaPurchasePlot(cityOrId, loc) {
 }
 
 /**
- * The player's current gold balance, or null when unreadable.
- * Accessor confirmed in game code + probe: Players.get(pid).Treasury.goldBalance.
+ * The player's current gold balance (Players.get(pid).Treasury.goldBalance), or null when unreadable.
  * @param {number} pid Player id.
  * @returns {number|null} Gold balance.
  */
@@ -86,11 +79,9 @@ export function playerGold(pid) {
 }
 
 /**
- * Grant (amount>0) or deduct (amount<0) gold to a player - the WRITE twin of playerGold.
- * PREFERS Treasury.changeGoldBalance (a BALANCE-only poke) over Players.grantYield: grantYield
- * injects into the net-gold YIELD stat (would spike the demographics "Gold Per Turn" metric),
- * whereas changeGoldBalance only moves the balance. So the refund is invisible to both the
- * balance (nets zero) and the yield-rate metric. grantYield is only a last-resort fallback.
+ * Grant (amount>0) or deduct (amount<0) gold to a player - the WRITE twin of playerGold. Prefers
+ * Treasury.changeGoldBalance (balance-only) over Players.grantYield, which would also spike the
+ * net-gold yield stat; grantYield is only a last-resort fallback.
  * @param {number} pid Player id. @param {number} amount Gold delta.
  * @returns {{ok:boolean, reason:string}} Result.
  */
@@ -123,7 +114,7 @@ function writeGold(pid, amount) {
 
 /**
  * purchasePlot with a same-tick gold refund, so an integrated claim nets zero gold. Measures the
- * balance around the buy and restores whatever was spent (proven net-free path, cd-probe-runner).
+ * balance around the buy and restores whatever was spent.
  * @param {number} playerId Player id (refund target).
  * @param {*} cityOrId Nearest owned city of the player.
  * @param {{x:number,y:number}} loc Plot.
@@ -160,10 +151,9 @@ export function unclaim(loc) {
 /**
  * Perform a diffusion flip using the configured verb.
  *
- * For the default integrated verb (`purchasePlot`) there is deliberately NO setOwnership
- * fallback: falling back would re-introduce the orphan tile this design exists to avoid (owner
- * set but no owning city, unworkable AND blocking the base game's own border growth). A failed
- * purchase simply skips the tile this turn - the culture field keeps it and the pass retries.
+ * For the default integrated verb (`purchasePlot`) there is deliberately NO setOwnership fallback,
+ * since that would re-introduce the orphan tile. A failed purchase simply skips the tile this turn
+ * and the pass retries.
  * @param {Object} args Flip arguments.
  * @param {number} args.playerId New owner.
  * @param {*} args.city Nearest owned city of the new owner (required for purchasePlot).

@@ -119,6 +119,24 @@ locked by the next pass, and an organic flip on the neighbouring tile followed t
   [`ui/cd-pass.js:394`](../ui/cd-pass.js)). Diffusion still reaches inner tiles organically. Proven in-game to ring-1.
 - **Adjacency** — `requireAdjacency` (default `true`): only flip a tile that touches your existing land, for an organic
   contiguous front rather than enclaves.
+- **Never strand a unit** — `protectTrappedUnits` (default on): a claim that would leave another civ's unit with no
+  legal move at all is refused, and the tile is taken later once the unit moves on
+  ([`ui/cd-units.js`](../ui/cd-units.js)). **Watched failing** first (harness run 17: claims closed every exit around a
+  peaceful major's Scout and it sat frozen for five turns), then **watched working** (run 23: the pass logged
+  `skip flip 79,37: would strand a foreign unit` and the Scout walked out through the plot it was left). The rule is
+  immobility, not confinement — a pocket is fine. Blocked means our land, impassable terrain (one `isImpassable` read
+  covers mountains, volcanoes, ice and the sixteen impassable natural wonders — measured, 0 missed), and the wrong
+  element: water for a land unit ashore, land for a ship, neither for an embarked unit (40 were on the test map).
+  Only civs at PEACE are protected (Independent Powers and anyone at war cross our land freely), only a claim that is
+  itself the cause counts, and claims already sent this pass count as ours because `purchasePlot` lands seconds late.
+  Every occupant of a stack is judged separately. Applies to
+  the +1 buffer, runs last in `flipEligible`, fails OPEN. Moving the unit instead is engine-closed (`engine-closed.md`).
+- **A minor's territory is not stripped** — `minorProtectRadius` (default 1) floors core protection for any non-major
+  owner. `coreProtectRadius: 0` protects only the centre plot, which is fine against a major but takes everything a
+  city-state or village has. Watched in run 13 (the pass flipped both ring-1 tiles of a city-state's centre) and the
+  floor confirmed by A/B in run 19. Centres are found by the city list AND by a map read
+  ([`ui/cd-plots.js`](../ui/cd-plots.js) `isCityCenterAt`), because `getCities()` reports nothing for an Independent
+  Power.
 - **War** — `atWar` tiles pause peaceful flips (borders don't diffuse across an active front).
 - **Beyond the city maximum** — diffusion is not gated on the pending-growth gate; a diffusion tile does not consume a
   growth event. Bounded by `fieldRadius` + `maxFlipsPerTurn` so a runaway leader can't paint the map.

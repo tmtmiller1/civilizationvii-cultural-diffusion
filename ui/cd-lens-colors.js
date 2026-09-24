@@ -1,13 +1,9 @@
 // cd-lens-colors.js
 //
-// Readable per-civ display colours + a float4 helper for the Cultural Pressure lens/tooltip. A trim of
-// the sibling Emigration mod's emigration-civ-colors.js so this mod stays standalone (no cross-mod
-// import): prefer a civ's PRIMARY banner colour, fall back to SECONDARY when the primary is a dark
-// grey/black, then lift any still-dark colour to a minimum lightness so it never vanishes on the dark
-// map canvas. Off-engine / unresolved civs fall back to the caller's hex.
-//
-// Import-less on purpose (like cd-config.js / emigration-civ-colors.js) so it can live in <ImportFiles>
-// and still expose its exports to the lens UIScripts that import it.
+// Readable per-civ display colours + a float4 helper for the Cultural Pressure lens/tooltip: prefer a
+// civ's PRIMARY banner colour, fall back to SECONDARY when the primary is a dark grey, then lift any
+// still-dark colour to a minimum lightness. Unresolved civs fall back to the caller's hex.
+// Import-less on purpose so it can live in <ImportFiles> and still expose its exports.
 
 const MIN_L_GREY = 0.65; // greys need more lift (no hue to aid readability)
 const MIN_L_SAT = 0.5;

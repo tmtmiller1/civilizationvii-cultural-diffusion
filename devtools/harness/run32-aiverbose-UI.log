@@ -1,0 +1,1408 @@
+[2026-09-24 13:32:46]	[CDH] shell attached 
+[2026-09-24 13:32:48]	[CDH] shell query complete 
+[2026-09-24 13:32:48]	[CDH] shell found AugustusAnt136.Civ7Save turn 136 age AGE_ANTIQUITY missingMods=0 unowned=0 
+[2026-09-24 13:32:48]	[CDH] shell handleLoadSave returned true 
+[2026-09-24 13:33:06]	[CDH] attached run30 
+[2026-09-24 13:33:06]	[CulturalDiffusion] boot (turnInterval 1, verb purchasePlot, enabled true) 
+[2026-09-24 13:33:11]	[CDH] LOAD GameStarted 
+[2026-09-24 13:33:19]	[CDH] S0 run30 turn=136 age=AGE_ANTIQUITY local=0 diffusion=true guard=true minorFloor=1 recede=false buffer=false 
+[2026-09-24 13:33:19]	[CDH] S0 state {"claims":0,"pending":0,"field":0,"locked":0} foreignUnitsOnOurLand=2 
+[2026-09-24 13:33:19]	[CDH] STRESS running; ending turns until the budget is spent or the game faults 
+[2026-09-24 13:33:42]	[CulturalDiffusion] inject 92,32 civ=0 culture=39.6 vitality=57.1 strength=83.83 stock=10 cap=167662.14 
+[2026-09-24 13:33:42]	[CulturalDiffusion] inject 87,32 civ=0 culture=13 vitality=33.85 strength=33.84 stock=10 cap=67689.75 
+[2026-09-24 13:33:42]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=24.1 strength=5.67 stock=10 cap=11345.41 
+[2026-09-24 13:33:42]	[CulturalDiffusion] inject 93,26 civ=0 culture=13 vitality=23.9 strength=29.96 stock=10 cap=59926.19 
+[2026-09-24 13:33:42]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=11.3 strength=0 stock=0 cap=0 
+[2026-09-24 13:33:42]	[CulturalDiffusion] inject 90,37 civ=3 culture=5 vitality=22.65 strength=10.86 stock=10 cap=21710.13 
+[2026-09-24 13:33:42]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=16.35 strength=9.68 stock=10 cap=19369.56 
+[2026-09-24 13:33:42]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=28.45 strength=15.96 stock=10 cap=31915.04 
+[2026-09-24 13:33:42]	[CulturalDiffusion] inject 80,31 civ=3 culture=3 vitality=13.85 strength=6.56 stock=10 cap=13112.77 
+[2026-09-24 13:33:42]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/23 centre=10 
+[2026-09-24 13:33:42]	[CulturalDiffusion] frontier city=196609 ring=4 best=10 bar=300 over=0/24 centre=10 
+[2026-09-24 13:33:42]	[CulturalDiffusion] frontier city=327683 ring=4 best=10 bar=300 over=0/24 centre=10 
+[2026-09-24 13:33:42]	[CulturalDiffusion] frontier city=393220 ring=4 best=0 bar=300 over=0/19 centre=10 
+[2026-09-24 13:33:42]	[CulturalDiffusion] frontier city=458757 ring=4 best=0 bar=300 over=0/24 centre=0 
+[2026-09-24 13:33:42]	[CulturalDiffusion] state bytes=214 field=8 claims=0 locked=0 passMs=10 
+[2026-09-24 13:33:42]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 8 active field tile(s) 
+[2026-09-24 13:33:42]	[CulturalDiffusion] pass (turn 137): flips=0 field tiles=4 
+[2026-09-24 13:33:48]	[CDH] TURN n=2 turn=137 age=AGE_ANTIQUITY state={"claims":0,"pending":0,"field":8,"locked":0} foreignUnitsOnOurLand=0 
+[2026-09-24 13:34:11]	[CulturalDiffusion] inject 92,32 civ=0 culture=39.6 vitality=58.33 strength=65.84 stock=99.14 cap=131682.84 
+[2026-09-24 13:34:11]	[CulturalDiffusion] inject 87,32 civ=0 culture=13 vitality=33.85 strength=26.39 stock=50.82 cap=52770.46 
+[2026-09-24 13:34:11]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=17.36 strength=3.94 stock=23.33 cap=7885.81 
+[2026-09-24 13:34:11]	[CulturalDiffusion] inject 93,26 civ=0 culture=9 vitality=25.13 strength=18.72 stock=41.42 cap=37434.92 
+[2026-09-24 13:34:11]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=13.51 strength=0 stock=0 cap=0 
+[2026-09-24 13:34:11]	[CulturalDiffusion] inject 90,37 civ=3 culture=5 vitality=23.75 strength=10.79 stock=31.71 cap=21575.1 
+[2026-09-24 13:34:11]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=16.35 strength=9.47 stock=30.09 cap=18932.23 
+[2026-09-24 13:34:11]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=28.45 strength=15.6 stock=37.6 cap=31194.45 
+[2026-09-24 13:34:11]	[CulturalDiffusion] inject 80,31 civ=3 culture=3 vitality=13.85 strength=6.41 stock=26.35 cap=12816.7 
+[2026-09-24 13:34:11]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/23 centre=99.14 
+[2026-09-24 13:34:11]	[CulturalDiffusion] frontier city=196609 ring=4 best=23.33 bar=300 over=0/24 centre=50.82 
+[2026-09-24 13:34:11]	[CulturalDiffusion] frontier city=327683 ring=4 best=50.82 bar=300 over=0/24 centre=23.33 
+[2026-09-24 13:34:11]	[CulturalDiffusion] frontier city=393220 ring=4 best=0 bar=300 over=0/19 centre=41.42 
+[2026-09-24 13:34:11]	[CulturalDiffusion] frontier city=458757 ring=4 best=0 bar=300 over=0/24 centre=0 
+[2026-09-24 13:34:11]	[CulturalDiffusion] state bytes=337 field=8 claims=0 locked=0 passMs=8 
+[2026-09-24 13:34:11]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 8 active field tile(s) 
+[2026-09-24 13:34:11]	[CulturalDiffusion] pass (turn 138): flips=0 field tiles=4 
+[2026-09-24 13:34:17]	[CDH] TURN n=3 turn=138 age=AGE_ANTIQUITY state={"claims":0,"pending":0,"field":8,"locked":0} foreignUnitsOnOurLand=0 
+[2026-09-24 13:34:38]	[CulturalDiffusion] inject 92,32 civ=0 culture=41.8 vitality=58.59 strength=67.14 stock=362.1 cap=134283.98 
+[2026-09-24 13:34:38]	[CulturalDiffusion] inject 87,32 civ=0 culture=15 vitality=29.95 strength=27.27 stock=132.57 cap=54543.33 
+[2026-09-24 13:34:38]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=14.61 strength=3.65 stock=37.99 cap=7297.88 
+[2026-09-24 13:34:38]	[CulturalDiffusion] inject 93,26 civ=0 culture=5 vitality=28.37 strength=13.1 stock=81.01 cap=26206.04 
+[2026-09-24 13:34:38]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=12.33 strength=0 stock=0 cap=0 
+[2026-09-24 13:34:38]	[CulturalDiffusion] inject 90,37 civ=3 culture=5 vitality=23.75 strength=9.01 stock=58.77 cap=18011.76 
+[2026-09-24 13:34:38]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=17.35 strength=8.07 stock=54.73 cap=16137.22 
+[2026-09-24 13:34:38]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=29.45 strength=13.18 stock=76.02 cap=26359.17 
+[2026-09-24 13:34:38]	[CulturalDiffusion] inject 80,31 civ=3 culture=3 vitality=13.85 strength=5.35 stock=44.67 cap=10699.9 
+[2026-09-24 13:34:38]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/23 centre=362.1 
+[2026-09-24 13:34:38]	[CulturalDiffusion] frontier city=196609 ring=4 best=37.99 bar=300 over=0/24 centre=132.57 
+[2026-09-24 13:34:38]	[CulturalDiffusion] frontier city=327683 ring=4 best=132.57 bar=300 over=0/24 centre=37.99 
+[2026-09-24 13:34:38]	[CulturalDiffusion] frontier city=393220 ring=4 best=0 bar=300 over=0/19 centre=81.01 
+[2026-09-24 13:34:38]	[CulturalDiffusion] frontier city=458757 ring=4 best=0 bar=300 over=0/24 centre=0 
+[2026-09-24 13:34:38]	[CulturalDiffusion] state bytes=338 field=8 claims=0 locked=0 passMs=8 
+[2026-09-24 13:34:38]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 8 active field tile(s) 
+[2026-09-24 13:34:38]	[CulturalDiffusion] pass (turn 139): flips=0 field tiles=4 
+[2026-09-24 13:34:44]	[CDH] TURN n=4 turn=139 age=AGE_ANTIQUITY state={"claims":0,"pending":0,"field":8,"locked":0} foreignUnitsOnOurLand=0 
+[2026-09-24 13:35:04]	[CulturalDiffusion] inject 92,32 civ=0 culture=41.8 vitality=60.79 strength=66.77 stock=845.09 cap=133543.5 
+[2026-09-24 13:35:04]	[CulturalDiffusion] inject 87,32 civ=0 culture=15 vitality=29.95 strength=26.77 stock=254.33 cap=53547.24 
+[2026-09-24 13:35:04]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=14.61 strength=3.58 stock=53.64 cap=7164.61 
+[2026-09-24 13:35:04]	[CulturalDiffusion] inject 93,26 civ=0 culture=5 vitality=28.37 strength=12.86 stock=130.81 cap=25727.46 
+[2026-09-24 13:35:04]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=10.87 strength=0 stock=0 cap=0 
+[2026-09-24 13:35:04]	[CulturalDiffusion] inject 90,37 civ=3 culture=5 vitality=23.75 strength=9.01 stock=91.58 cap=18018.81 
+[2026-09-24 13:35:04]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=20.35 strength=8.54 stock=85.45 cap=17070.31 
+[2026-09-24 13:35:04]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=30.45 strength=13.34 stock=126.27 cap=26679.48 
+[2026-09-24 13:35:04]	[CulturalDiffusion] inject 80,31 civ=3 culture=4 vitality=14.85 strength=6.61 stock=68.55 cap=13223.81 
+[2026-09-24 13:35:04]	[CulturalDiffusion] frontier city=65536 ring=4 best=26.61 bar=300 over=0/23 centre=845.09 
+[2026-09-24 13:35:04]	[CulturalDiffusion] frontier city=196609 ring=4 best=59.75 bar=300 over=0/24 centre=254.33 
+[2026-09-24 13:35:04]	[CulturalDiffusion] frontier city=327683 ring=4 best=254.33 bar=300 over=0/24 centre=53.64 
+[2026-09-24 13:35:04]	[CulturalDiffusion] frontier city=393220 ring=4 best=0 bar=300 over=0/19 centre=130.81 
+[2026-09-24 13:35:04]	[CulturalDiffusion] frontier city=458757 ring=4 best=0 bar=300 over=0/24 centre=0 
+[2026-09-24 13:35:04]	[CulturalDiffusion] state bytes=594 field=16 claims=0 locked=0 passMs=11 
+[2026-09-24 13:35:04]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 16 active field tile(s) 
+[2026-09-24 13:35:04]	[CulturalDiffusion] pass (turn 140): flips=0 field tiles=4 
+[2026-09-24 13:35:10]	[CDH] TURN n=5 turn=140 age=AGE_ANTIQUITY state={"claims":0,"pending":0,"field":16,"locked":0} foreignUnitsOnOurLand=0 
+[2026-09-24 13:35:31]	[CulturalDiffusion] inject 92,32 civ=0 culture=41.8 vitality=60.79 strength=66.12 stock=1556.31 cap=132245.26 
+[2026-09-24 13:35:31]	[CulturalDiffusion] inject 87,32 civ=0 culture=15 vitality=29.95 strength=26.51 stock=414.37 cap=53026.68 
+[2026-09-24 13:35:31]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=14.61 strength=3.55 stock=70.02 cap=7094.96 
+[2026-09-24 13:35:31]	[CulturalDiffusion] inject 93,26 civ=0 culture=5 vitality=28.37 strength=12.74 stock=189.69 cap=25477.35 
+[2026-09-24 13:35:31]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=9.35 strength=0 stock=0 cap=0 
+[2026-09-24 13:35:31]	[CulturalDiffusion] inject 90,37 civ=3 culture=5 vitality=23.75 strength=8.98 stock=129.28 cap=17959.24 
+[2026-09-24 13:35:31]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=20.35 strength=8.51 stock=120.63 cap=17013.88 
+[2026-09-24 13:35:31]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=30.45 strength=13.3 stock=186.82 cap=26591.28 
+[2026-09-24 13:35:31]	[CulturalDiffusion] inject 80,31 civ=3 culture=4 vitality=16.3 strength=6.81 stock=95.95 cap=13616.95 
+[2026-09-24 13:35:31]	[CulturalDiffusion] frontier city=65536 ring=4 best=74.03 bar=300 over=0/23 centre=1556.31 
+[2026-09-24 13:35:31]	[CulturalDiffusion] frontier city=196609 ring=4 best=195.2 bar=300 over=0/24 centre=414.37 
+[2026-09-24 13:35:31]	[CulturalDiffusion] frontier city=327683 ring=4 best=414.37 bar=300 over=1/24 centre=70.02 
+[2026-09-24 13:35:31]	[CulturalDiffusion] frontier city=393220 ring=4 best=0 bar=300 over=0/19 centre=189.69 
+[2026-09-24 13:35:31]	[CulturalDiffusion] frontier city=458757 ring=4 best=0 bar=300 over=0/24 centre=0 
+[2026-09-24 13:35:31]	[CulturalDiffusion] state bytes=727 field=20 claims=0 locked=0 passMs=8 
+[2026-09-24 13:35:31]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 20 active field tile(s) 
+[2026-09-24 13:35:31]	[CulturalDiffusion] pass (turn 141): flips=0 field tiles=8 
+[2026-09-24 13:35:37]	[CDH] TURN n=6 turn=141 age=AGE_ANTIQUITY state={"claims":0,"pending":0,"field":20,"locked":0} foreignUnitsOnOurLand=0 
+[2026-09-24 13:35:58]	[CulturalDiffusion] inject 92,32 civ=0 culture=51.7 vitality=59.49 strength=75.1 stock=2634.93 cap=150197.4 
+[2026-09-24 13:35:58]	[CulturalDiffusion] inject 87,32 civ=0 culture=15 vitality=29.95 strength=26.42 stock=610.99 cap=52849.58 
+[2026-09-24 13:35:58]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=14.61 strength=3.54 stock=86.98 cap=7071.26 
+[2026-09-24 13:35:58]	[CulturalDiffusion] inject 93,26 civ=0 culture=5 vitality=32.88 strength=13.37 stock=260.51 cap=26734.79 
+[2026-09-24 13:35:58]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=8.18 strength=0 stock=0 cap=0 
+[2026-09-24 13:35:58]	[CulturalDiffusion] inject 90,37 civ=3 culture=5 vitality=23.75 strength=8.92 stock=171.12 cap=17848.68 
+[2026-09-24 13:35:58]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=20.35 strength=8.45 stock=159.57 cap=16909.13 
+[2026-09-24 13:35:58]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=30.45 strength=13.21 stock=256.43 cap=26427.57 
+[2026-09-24 13:35:58]	[CulturalDiffusion] inject 80,31 civ=3 culture=4 vitality=18.65 strength=7.09 stock=127.07 cap=14186.32 
+[2026-09-24 13:35:58]	[CulturalDiffusion] frontier city=65536 ring=4 best=150.46 bar=300 over=0/23 centre=2634.93 
+[2026-09-24 13:35:58]	[CulturalDiffusion] frontier city=196609 ring=4 best=436.92 bar=300 over=1/24 centre=610.99 
+[2026-09-24 13:35:58]	[CulturalDiffusion] frontier city=327683 ring=4 best=610.99 bar=300 over=1/24 centre=86.98 
+[2026-09-24 13:35:58]	[CulturalDiffusion] frontier city=393220 ring=4 best=68.05 bar=300 over=0/19 centre=260.51 
+[2026-09-24 13:35:58]	[CulturalDiffusion] frontier city=458757 ring=4 best=0 bar=300 over=0/24 centre=0 
+[2026-09-24 13:35:58]	[CulturalDiffusion] state bytes=1121 field=32 claims=0 locked=0 passMs=9 
+[2026-09-24 13:35:58]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 32 active field tile(s) 
+[2026-09-24 13:35:58]	[CulturalDiffusion] pass (turn 142): flips=0 field tiles=20 
+[2026-09-24 13:36:04]	[CDH] TURN n=7 turn=142 age=AGE_ANTIQUITY state={"claims":0,"pending":0,"field":32,"locked":0} foreignUnitsOnOurLand=0 
+[2026-09-24 13:36:24]	[CulturalDiffusion] inject 92,32 civ=0 culture=51.7 vitality=59.02 strength=74.29 stock=3989.11 cap=148580.26 
+[2026-09-24 13:36:24]	[CulturalDiffusion] inject 87,32 civ=0 culture=15 vitality=29.95 strength=26.21 stock=840.37 cap=52424.24 
+[2026-09-24 13:36:24]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=14.61 strength=3.51 stock=104.3 cap=7014.35 
+[2026-09-24 13:36:24]	[CulturalDiffusion] inject 93,26 civ=0 culture=5 vitality=32.88 strength=13.26 stock=339.38 cap=26519.63 
+[2026-09-24 13:36:24]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=7.04 strength=0 stock=0 cap=0 
+[2026-09-24 13:36:24]	[CulturalDiffusion] inject 90,37 civ=3 culture=5 vitality=23.75 strength=8.91 stock=216.7 cap=17817.29 
+[2026-09-24 13:36:24]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=20.35 strength=8.44 stock=201.88 cap=16879.4 
+[2026-09-24 13:36:24]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=30.45 strength=13.19 stock=334.41 cap=26381.1 
+[2026-09-24 13:36:24]	[CulturalDiffusion] inject 80,31 civ=3 culture=4 vitality=18.65 strength=7.08 stock=160.62 cap=14161.38 
+[2026-09-24 13:36:24]	[CulturalDiffusion] frontier city=65536 ring=4 best=261.64 bar=300 over=0/23 centre=3989.11 
+[2026-09-24 13:36:24]	[CulturalDiffusion] frontier city=196609 ring=4 best=835.9 bar=300 over=1/24 centre=840.37 
+[2026-09-24 13:36:24]	[CulturalDiffusion] frontier city=327683 ring=4 best=840.37 bar=300 over=1/24 centre=104.3 
+[2026-09-24 13:36:24]	[CulturalDiffusion] frontier city=393220 ring=4 best=219.23 bar=300 over=0/19 centre=339.38 
+[2026-09-24 13:36:24]	[CulturalDiffusion] frontier city=458757 ring=4 best=0 bar=300 over=0/24 centre=0 
+[2026-09-24 13:36:24]	[CulturalDiffusion] state bytes=1666 field=49 claims=0 locked=0 passMs=9 
+[2026-09-24 13:36:24]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 49 active field tile(s) 
+[2026-09-24 13:36:24]	[CulturalDiffusion] pass (turn 143): flips=0 field tiles=24 
+[2026-09-24 13:36:30]	[CDH] TURN n=8 turn=143 age=AGE_ANTIQUITY state={"claims":0,"pending":0,"field":49,"locked":0} foreignUnitsOnOurLand=1 
+[2026-09-24 13:36:53]	[CulturalDiffusion] inject 92,32 civ=0 culture=51.7 vitality=67.08 strength=78.26 stock=5712.99 cap=156517.88 
+[2026-09-24 13:36:53]	[CulturalDiffusion] inject 87,32 civ=0 culture=15 vitality=29.95 strength=26.4 stock=1103.8 cap=52808.2 
+[2026-09-24 13:36:53]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=14.61 strength=3.53 stock=122.06 cap=7065.72 
+[2026-09-24 13:36:53]	[CulturalDiffusion] inject 93,26 civ=0 culture=5 vitality=29.88 strength=12.92 stock=423.57 cap=25833.99 
+[2026-09-24 13:36:53]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=6.28 strength=0 stock=0 cap=0 
+[2026-09-24 13:36:53]	[CulturalDiffusion] inject 90,37 civ=3 culture=5 vitality=23.75 strength=8.91 stock=265.67 cap=17825.04 
+[2026-09-24 13:36:53]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=20.35 strength=8.44 stock=247.25 cap=16886.74 
+[2026-09-24 13:36:53]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=30.45 strength=13.2 stock=420.16 cap=26392.57 
+[2026-09-24 13:36:53]	[CulturalDiffusion] inject 80,31 civ=3 culture=4 vitality=18.65 strength=7.08 stock=196.36 cap=14167.53 
+[2026-09-24 13:36:53]	[CulturalDiffusion] inject 79,39 civ=5 culture=1 vitality=5.2 strength=2.01 stock=10 cap=4010.09 
+[2026-09-24 13:36:53]	[CulturalDiffusion] frontier city=65536 ring=4 best=412.33 bar=300 over=1/23 centre=5712.99 
+[2026-09-24 13:36:53]	[CulturalDiffusion] frontier city=196609 ring=4 best=1424.99 bar=300 over=2/24 centre=1103.8 
+[2026-09-24 13:36:53]	[CulturalDiffusion] frontier city=327683 ring=4 best=1103.8 bar=300 over=3/24 centre=122.06 
+[2026-09-24 13:36:53]	[CulturalDiffusion] frontier city=393220 ring=4 best=449.4 bar=300 over=1/19 centre=423.57 
+[2026-09-24 13:36:53]	[CulturalDiffusion] frontier city=458757 ring=4 best=0 bar=300 over=0/24 centre=0 
+[2026-09-24 13:36:53]	[CulturalDiffusion] state bytes=2167 field=65 claims=0 locked=0 passMs=9 
+[2026-09-24 13:36:53]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 65 active field tile(s) 
+[2026-09-24 13:36:53]	[CulturalDiffusion] pass (turn 144): flips=0 field tiles=24 
+[2026-09-24 13:36:59]	[CDH] TURN n=9 turn=144 age=AGE_ANTIQUITY state={"claims":0,"pending":0,"field":65,"locked":0} foreignUnitsOnOurLand=1 
+[2026-09-24 13:37:24]	[CulturalDiffusion] inject 92,32 civ=0 culture=51.7 vitality=69.65 strength=77.62 stock=7708.66 cap=155246.73 
+[2026-09-24 13:37:24]	[CulturalDiffusion] inject 87,32 civ=0 culture=15 vitality=29.95 strength=25.85 stock=1390.19 cap=51693.23 
+[2026-09-24 13:37:24]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=24.1 strength=4.12 stock=142.58 cap=8240.27 
+[2026-09-24 13:37:24]	[CulturalDiffusion] inject 93,26 civ=0 culture=5 vitality=33.6 strength=13.18 stock=516.41 cap=26350.25 
+[2026-09-24 13:37:24]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=6.28 strength=0 stock=0 cap=0 
+[2026-09-24 13:37:24]	[CulturalDiffusion] inject 90,37 civ=3 culture=5 vitality=23.75 strength=8.76 stock=316.66 cap=17512.13 
+[2026-09-24 13:37:24]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=20.35 strength=8.3 stock=294.4 cap=16590.3 
+[2026-09-24 13:37:24]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=31.4 strength=13.1 stock=512.18 cap=26209.58 
+[2026-09-24 13:37:24]	[CulturalDiffusion] inject 80,31 civ=3 culture=4 vitality=18.65 strength=6.96 stock=233.32 cap=13918.83 
+[2026-09-24 13:37:24]	[CulturalDiffusion] inject 79,39 civ=5 culture=1 vitality=7.7 strength=2.27 stock=21.28 cap=4547.64 
+[2026-09-24 13:37:24]	[CulturalDiffusion] frontier city=65536 ring=4 best=605.62 bar=300 over=1/23 centre=7708.66 
+[2026-09-24 13:37:24]	[CulturalDiffusion] frontier city=196609 ring=4 best=2270.12 bar=300 over=2/24 centre=1390.19 
+[2026-09-24 13:37:24]	[CulturalDiffusion] frontier city=327683 ring=4 best=1390.19 bar=300 over=3/24 centre=142.58 
+[2026-09-24 13:37:24]	[CulturalDiffusion] frontier city=393220 ring=4 best=789.23 bar=300 over=2/19 centre=516.41 
+[2026-09-24 13:37:24]	[CulturalDiffusion] frontier city=458757 ring=4 best=0 bar=300 over=0/24 centre=0 
+[2026-09-24 13:37:24]	[CulturalDiffusion] state bytes=2532 field=76 claims=0 locked=0 passMs=9 
+[2026-09-24 13:37:24]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 76 active field tile(s) 
+[2026-09-24 13:37:24]	[CulturalDiffusion] pass (turn 145): flips=0 field tiles=24 
+[2026-09-24 13:37:30]	[CDH] TURN n=10 turn=145 age=AGE_ANTIQUITY state={"claims":0,"pending":0,"field":76,"locked":0} foreignUnitsOnOurLand=1 
+[2026-09-24 13:37:52]	[CulturalDiffusion] inject 92,32 civ=0 culture=51.7 vitality=69.65 strength=76.48 stock=9932.77 cap=152952.89 
+[2026-09-24 13:37:52]	[CulturalDiffusion] inject 87,32 civ=0 culture=15 vitality=29.95 strength=25.46 stock=1697.41 cap=50929.44 
+[2026-09-24 13:37:52]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=24.1 strength=4.06 stock=163.23 cap=8118.52 
+[2026-09-24 13:37:52]	[CulturalDiffusion] inject 93,26 civ=0 culture=5 vitality=34.2 strength=13.06 stock=614.54 cap=26122.24 
+[2026-09-24 13:37:52]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=12.37 strength=0 stock=0 cap=0 
+[2026-09-24 13:37:52]	[CulturalDiffusion] inject 90,37 civ=3 culture=5 vitality=24.05 strength=10.72 stock=383.71 cap=21439.23 
+[2026-09-24 13:37:52]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=21.35 strength=10.28 stock=357.01 cap=20564.03 
+[2026-09-24 13:37:52]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=32.4 strength=16.15 stock=637.13 cap=32298.89 
+[2026-09-24 13:37:52]	[CulturalDiffusion] inject 80,31 civ=3 culture=4 vitality=18.95 strength=8.53 stock=281.11 cap=17060.46 
+[2026-09-24 13:37:52]	[CulturalDiffusion] inject 79,39 civ=5 culture=1 vitality=7.7 strength=2.32 stock=33.36 cap=4633.48 
+[2026-09-24 13:37:52]	[CulturalDiffusion] frontier city=65536 ring=4 best=843.25 bar=300 over=1/23 centre=9932.77 
+[2026-09-24 13:37:52]	[CulturalDiffusion] frontier city=196609 ring=4 best=3394.48 bar=300 over=3/24 centre=1697.41 
+[2026-09-24 13:37:52]	[CulturalDiffusion] frontier city=327683 ring=4 best=1697.41 bar=300 over=3/24 centre=163.23 
+[2026-09-24 13:37:52]	[CulturalDiffusion] frontier city=393220 ring=4 best=1294.38 bar=300 over=3/19 centre=614.54 
+[2026-09-24 13:37:52]	[CulturalDiffusion] frontier city=458757 ring=4 best=0 bar=300 over=0/24 centre=0 
+[2026-09-24 13:37:52]	[CulturalDiffusion] state bytes=2835 field=85 claims=0 locked=0 passMs=11 
+[2026-09-24 13:37:52]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 85 active field tile(s) 
+[2026-09-24 13:37:52]	[CulturalDiffusion] pass (turn 146): flips=0 field tiles=27 
+[2026-09-24 13:37:58]	[CDH] TURN n=11 turn=146 age=AGE_ANTIQUITY state={"claims":0,"pending":0,"field":85,"locked":0} foreignUnitsOnOurLand=0 
+[2026-09-24 13:38:19]	[CulturalDiffusion] inject 92,32 civ=0 culture=51.7 vitality=69.65 strength=76.76 stock=12408.19 cap=153528.93 
+[2026-09-24 13:38:19]	[CulturalDiffusion] inject 87,32 civ=0 culture=15 vitality=29.95 strength=25.56 stock=2029.4 cap=51121.25 
+[2026-09-24 13:38:19]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=24.1 strength=4.07 stock=184.23 cap=8149.09 
+[2026-09-24 13:38:19]	[CulturalDiffusion] inject 93,26 civ=0 culture=5 vitality=34.2 strength=13.11 stock=718.69 cap=26220.62 
+[2026-09-24 13:38:19]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=12.37 strength=0 stock=0 cap=0 
+[2026-09-24 13:38:19]	[CulturalDiffusion] inject 90,37 civ=3 culture=5 vitality=23.35 strength=10.6 stock=453.91 cap=21192.19 
+[2026-09-24 13:38:19]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=20.65 strength=10.15 stock=422.44 cap=20300.07 
+[2026-09-24 13:38:19]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=31.7 strength=16.01 stock=770.75 cap=32012.84 
+[2026-09-24 13:38:19]	[CulturalDiffusion] inject 80,31 civ=3 culture=4 vitality=18.25 strength=8.41 stock=330.66 cap=16816.13 
+[2026-09-24 13:38:19]	[CulturalDiffusion] inject 79,39 civ=5 culture=1 vitality=9.55 strength=2.45 stock=46.17 cap=4895.02 
+[2026-09-24 13:38:19]	[CulturalDiffusion] frontier city=65536 ring=4 best=1128.8 bar=300 over=1/23 centre=12408.19 
+[2026-09-24 13:38:19]	[CulturalDiffusion] frontier city=196609 ring=4 best=4821.33 bar=300 over=5/24 centre=2029.4 
+[2026-09-24 13:38:19]	[CulturalDiffusion] frontier city=327683 ring=4 best=2029.4 bar=300 over=3/24 centre=184.23 
+[2026-09-24 13:38:19]	[CulturalDiffusion] frontier city=393220 ring=4 best=2044.85 bar=300 over=3/19 centre=718.69 
+[2026-09-24 13:38:19]	[CulturalDiffusion] frontier city=458757 ring=4 best=0 bar=300 over=0/24 centre=0 
+[2026-09-24 13:38:19]	[CulturalDiffusion] state bytes=3279 field=98 claims=0 locked=0 passMs=12 
+[2026-09-24 13:38:19]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 98 active field tile(s) 
+[2026-09-24 13:38:19]	[CulturalDiffusion] pass (turn 147): flips=0 field tiles=40 
+[2026-09-24 13:38:25]	[CDH] TURN n=12 turn=147 age=AGE_ANTIQUITY state={"claims":0,"pending":0,"field":98,"locked":0} foreignUnitsOnOurLand=0 
+[2026-09-24 13:38:46]	[CulturalDiffusion] inject 92,32 civ=0 culture=51.7 vitality=74.72 strength=80.71 stock=15278.87 cap=161424.82 
+[2026-09-24 13:38:46]	[CulturalDiffusion] inject 87,32 civ=0 culture=17 vitality=33 strength=29.43 stock=2450.34 cap=58852.42 
+[2026-09-24 13:38:46]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=24.1 strength=4.18 stock=205.99 cap=8359.85 
+[2026-09-24 13:38:46]	[CulturalDiffusion] inject 93,26 civ=0 culture=6 vitality=41.48 strength=16.2 stock=859.95 cap=32397.85 
+[2026-09-24 13:38:46]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=12.37 strength=0 stock=0 cap=0 
+[2026-09-24 13:38:46]	[CulturalDiffusion] inject 90,37 civ=3 culture=5 vitality=23.35 strength=10.53 stock=527.09 cap=21055.98 
+[2026-09-24 13:38:46]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=19.2 strength=9.83 stock=488.57 cap=19662.12 
+[2026-09-24 13:38:46]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=31.7 strength=15.9 stock=912.21 cap=31807.07 
+[2026-09-24 13:38:46]	[CulturalDiffusion] inject 80,31 civ=3 culture=4 vitality=18.25 strength=8.35 stock=381.96 cap=16708.04 
+[2026-09-24 13:38:46]	[CulturalDiffusion] inject 79,39 civ=5 culture=1 vitality=9.55 strength=2.47 stock=59.37 cap=4945.85 
+[2026-09-24 13:38:46]	[CulturalDiffusion] frontier city=65536 ring=4 best=1465.62 bar=300 over=1/23 centre=15278.87 
+[2026-09-24 13:38:46]	[CulturalDiffusion] frontier city=196609 ring=4 best=6576.53 bar=300 over=5/24 centre=2450.34 
+[2026-09-24 13:38:46]	[CulturalDiffusion] frontier city=327683 ring=4 best=2450.34 bar=300 over=3/24 centre=205.99 
+[2026-09-24 13:38:46]	[CulturalDiffusion] frontier city=393220 ring=4 best=3101.4 bar=300 over=3/19 centre=859.95 
+[2026-09-24 13:38:46]	[CulturalDiffusion] frontier city=458757 ring=4 best=0 bar=300 over=0/24 centre=0 
+[2026-09-24 13:38:46]	[CulturalDiffusion] state bytes=3892 field=114 claims=0 locked=0 passMs=18 
+[2026-09-24 13:38:46]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 114 active field tile(s) 
+[2026-09-24 13:38:46]	[CulturalDiffusion] pass (turn 148): flips=0 field tiles=42 
+[2026-09-24 13:38:52]	[CDH] TURN n=13 turn=148 age=AGE_ANTIQUITY state={"claims":0,"pending":0,"field":114,"locked":0} foreignUnitsOnOurLand=2 
+[2026-09-24 13:39:13]	[CulturalDiffusion] inject 92,32 civ=0 culture=51.7 vitality=74.72 strength=79.75 stock=18341.65 cap=159493.54 
+[2026-09-24 13:39:13]	[CulturalDiffusion] inject 87,32 civ=0 culture=17 vitality=33 strength=29.07 stock=2894.22 cap=58148.31 
+[2026-09-24 13:39:13]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=24.1 strength=4.13 stock=227.65 cap=8259.84 
+[2026-09-24 13:39:13]	[CulturalDiffusion] inject 93,26 civ=0 culture=6 vitality=41.48 strength=16.01 stock=1007.73 cap=32010.24 
+[2026-09-24 13:39:13]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=12.37 strength=0 stock=0 cap=0 
+[2026-09-24 13:39:13]	[CulturalDiffusion] inject 90,37 civ=3 culture=5 vitality=23.35 strength=10.65 stock=604.44 cap=21301.05 
+[2026-09-24 13:39:13]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=22.53 strength=10.52 stock=563.18 cap=21034.56 
+[2026-09-24 13:39:13]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=35.03 strength=16.66 stock=1070.48 cap=33320.46 
+[2026-09-24 13:39:13]	[CulturalDiffusion] inject 80,31 civ=3 culture=5 vitality=19.7 strength=10.04 stock=447.82 cap=20070.76 
+[2026-09-24 13:39:13]	[CulturalDiffusion] inject 79,39 civ=5 culture=1 vitality=9.55 strength=2.44 stock=72.67 cap=4871.09 
+[2026-09-24 13:39:13]	[CulturalDiffusion] frontier city=65536 ring=4 best=1837.75 bar=300 over=3/23 centre=18341.65 
+[2026-09-24 13:39:13]	[CulturalDiffusion] frontier city=196609 ring=4 best=8707.9 bar=300 over=5/24 centre=2894.22 
+[2026-09-24 13:39:13]	[CulturalDiffusion] frontier city=327683 ring=4 best=2894.22 bar=300 over=3/24 centre=227.65 
+[2026-09-24 13:39:13]	[CulturalDiffusion] frontier city=393220 ring=4 best=4528.07 bar=300 over=3/19 centre=1007.73 
+[2026-09-24 13:39:13]	[CulturalDiffusion] frontier city=458757 ring=4 best=0 bar=300 over=0/24 centre=0 
+[2026-09-24 13:39:13]	[CulturalDiffusion] state bytes=4242 field=125 claims=0 locked=0 passMs=11 
+[2026-09-24 13:39:13]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 125 active field tile(s) 
+[2026-09-24 13:39:13]	[CulturalDiffusion] pass (turn 149): flips=0 field tiles=45 
+[2026-09-24 13:39:19]	[CDH] TURN n=14 turn=149 age=AGE_ANTIQUITY state={"claims":0,"pending":0,"field":125,"locked":0} foreignUnitsOnOurLand=0 
+[2026-09-24 13:39:45]	[CulturalDiffusion] inject 92,32 civ=0 culture=51.7 vitality=74.72 strength=79.32 stock=21593.94 cap=158634.38 
+[2026-09-24 13:39:45]	[CulturalDiffusion] inject 87,32 civ=0 culture=17 vitality=33 strength=28.92 stock=3361.03 cap=57835.08 
+[2026-09-24 13:39:45]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=24.1 strength=4.11 stock=249.27 cap=8215.34 
+[2026-09-24 13:39:45]	[CulturalDiffusion] inject 93,26 civ=0 culture=6 vitality=41.48 strength=15.92 stock=1162.06 cap=31837.81 
+[2026-09-24 13:39:45]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=12.37 strength=0 stock=0 cap=0 
+[2026-09-24 13:39:45]	[CulturalDiffusion] inject 90,37 civ=3 culture=5 vitality=23.35 strength=10.68 stock=684.94 cap=21366.63 
+[2026-09-24 13:39:45]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=22.53 strength=10.55 stock=640.98 cap=21099.31 
+[2026-09-24 13:39:45]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=35.03 strength=16.71 stock=1237.72 cap=33423.03 
+[2026-09-24 13:39:45]	[CulturalDiffusion] inject 80,31 civ=3 culture=5 vitality=19.7 strength=10.07 stock=516.93 cap=20132.55 
+[2026-09-24 13:39:45]	[CulturalDiffusion] inject 79,39 civ=5 culture=1 vitality=9.55 strength=2.47 stock=86.18 cap=4936.92 
+[2026-09-24 13:39:45]	[CulturalDiffusion] frontier city=65536 ring=4 best=2170.66 bar=300 over=3/23 centre=21593.94 
+[2026-09-24 13:39:45]	[CulturalDiffusion] frontier city=196609 ring=4 best=11228.23 bar=300 over=5/24 centre=3361.03 
+[2026-09-24 13:39:45]	[CulturalDiffusion] frontier city=327683 ring=4 best=3361.03 bar=300 over=3/24 centre=249.27 
+[2026-09-24 13:39:45]	[CulturalDiffusion] frontier city=393220 ring=4 best=6397.28 bar=300 over=4/19 centre=1162.06 
+[2026-09-24 13:39:45]	[CulturalDiffusion] frontier city=458757 ring=4 best=0 bar=300 over=0/24 centre=0 
+[2026-09-24 13:39:45]	[CulturalDiffusion] state bytes=4446 field=130 claims=0 locked=0 passMs=17 
+[2026-09-24 13:39:45]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 130 active field tile(s) 
+[2026-09-24 13:39:45]	[CulturalDiffusion] pass (turn 150): flips=0 field tiles=53 
+[2026-09-24 13:39:51]	[CDH] TURN n=15 turn=150 age=AGE_ANTIQUITY state={"claims":0,"pending":0,"field":130,"locked":0} foreignUnitsOnOurLand=0 
+[2026-09-24 13:40:16]	[CulturalDiffusion] inject 92,32 civ=0 culture=51.7 vitality=74.72 strength=99.28 stock=26173.85 cap=198569.73 
+[2026-09-24 13:40:16]	[CulturalDiffusion] inject 87,32 civ=0 culture=17 vitality=33 strength=36.2 stock=4014.73 cap=72394.75 
+[2026-09-24 13:40:16]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=24.1 strength=5.14 stock=277.24 cap=10283.51 
+[2026-09-24 13:40:16]	[CulturalDiffusion] inject 93,26 civ=0 culture=9 vitality=42.23 strength=26.1 stock=1457.52 cap=52196.62 
+[2026-09-24 13:40:16]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=12.37 strength=0 stock=0 cap=0 
+[2026-09-24 13:40:16]	[CulturalDiffusion] inject 90,37 civ=3 culture=5 vitality=23.35 strength=10.79 stock=769.09 cap=21586.23 
+[2026-09-24 13:40:16]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=22.53 strength=10.66 stock=722.44 cap=21316.17 
+[2026-09-24 13:40:16]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=35.03 strength=16.88 stock=1414.88 cap=33766.56 
+[2026-09-24 13:40:16]	[CulturalDiffusion] inject 80,31 civ=3 culture=5 vitality=19.7 strength=10.17 stock=589.64 cap=20339.47 
+[2026-09-24 13:40:16]	[CulturalDiffusion] inject 79,39 civ=5 culture=1 vitality=9.55 strength=2.43 stock=99.61 cap=4859.11 
+[2026-09-24 13:40:16]	[CulturalDiffusion] frontier city=65536 ring=4 best=2520.77 bar=300 over=7/23 centre=26173.85 
+[2026-09-24 13:40:16]	[CulturalDiffusion] frontier city=196609 ring=4 best=14149.27 bar=300 over=6/24 centre=4014.73 
+[2026-09-24 13:40:16]	[CulturalDiffusion] frontier city=327683 ring=4 best=4014.73 bar=300 over=3/24 centre=277.24 
+[2026-09-24 13:40:16]	[CulturalDiffusion] frontier city=393220 ring=4 best=8781.05 bar=300 over=4/19 centre=1457.52 
+[2026-09-24 13:40:16]	[CulturalDiffusion] frontier city=458757 ring=4 best=0 bar=300 over=0/24 centre=0 
+[2026-09-24 13:40:16]	[CulturalDiffusion] flip 89,29 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 13:40:16]	[CulturalDiffusion] state bytes=4961 field=142 claims=0 locked=0 passMs=17 
+[2026-09-24 13:40:16]	[CulturalDiffusion] pass: 0 flip(s), 1 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 142 active field tile(s) 
+[2026-09-24 13:40:16]	[CulturalDiffusion] pass (turn 151): flips=0 field tiles=60 
+[2026-09-24 13:40:22]	[CDH] TURN n=16 turn=151 age=AGE_ANTIQUITY state={"claims":0,"pending":1,"field":142,"locked":0} foreignUnitsOnOurLand=1 
+[2026-09-24 13:40:46]	[CulturalDiffusion] notify: (89,29) unowned -> player 0 
+[2026-09-24 13:40:46]	[CulturalDiffusion] pending 89,29 claim confirmed on the live map 
+[2026-09-24 13:40:46]	[CulturalDiffusion] inject 92,32 civ=0 culture=51.7 vitality=75.77 strength=101.71 stock=31247.32 cap=203425.66 
+[2026-09-24 13:40:46]	[CulturalDiffusion] inject 87,32 civ=0 culture=17 vitality=34.05 strength=37.31 stock=4738.55 cap=74617.36 
+[2026-09-24 13:40:46]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=25.15 strength=5.32 stock=337.85 cap=10641.32 
+[2026-09-24 13:40:46]	[CulturalDiffusion] inject 93,26 civ=0 culture=9 vitality=43.28 strength=26.84 stock=1790.44 cap=53671.99 
+[2026-09-24 13:40:46]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=13.42 strength=0 stock=0 cap=0 
+[2026-09-24 13:40:46]	[CulturalDiffusion] inject 90,37 civ=3 culture=6 vitality=25.15 strength=12.57 stock=874.61 cap=25131.55 
+[2026-09-24 13:40:46]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=25.85 strength=11.27 stock=812.63 cap=22538.46 
+[2026-09-24 13:40:46]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=38.35 strength=17.56 stock=1608.96 cap=35120.36 
+[2026-09-24 13:40:46]	[CulturalDiffusion] inject 80,31 civ=3 culture=5 vitality=19.7 strength=10.25 stock=665.52 cap=20493.98 
+[2026-09-24 13:40:46]	[CulturalDiffusion] inject 79,39 civ=5 culture=1 vitality=11.5 strength=2.6 stock=113.69 cap=5206.55 
+[2026-09-24 13:40:46]	[CulturalDiffusion] frontier city=65536 ring=4 best=3011.05 bar=300 over=10/23 centre=31247.32 
+[2026-09-24 13:40:46]	[CulturalDiffusion] frontier city=196609 ring=4 best=17665.97 bar=300 over=8/24 centre=4738.55 
+[2026-09-24 13:40:46]	[CulturalDiffusion] frontier city=327683 ring=4 best=4738.55 bar=300 over=3/24 centre=337.85 
+[2026-09-24 13:40:46]	[CulturalDiffusion] frontier city=393220 ring=4 best=11534.36 bar=300 over=4/19 centre=1790.44 
+[2026-09-24 13:40:46]	[CulturalDiffusion] frontier city=458757 ring=4 best=0 bar=300 over=0/24 centre=0 
+[2026-09-24 13:40:46]	[CulturalDiffusion] flip 89,35 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner 3) 
+[2026-09-24 13:40:46]	[CulturalDiffusion] state bytes=5161 field=146 claims=1 locked=1 passMs=19 
+[2026-09-24 13:40:46]	[CulturalDiffusion] pass: 0 flip(s), 1 pending, 0 ceded (0 pending), confirmed 1 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 146 active field tile(s) 
+[2026-09-24 13:40:46]	[CulturalDiffusion] pass (turn 152): flips=0 field tiles=63 
+[2026-09-24 13:40:52]	[CDH] TURN n=17 turn=152 age=AGE_ANTIQUITY state={"claims":1,"pending":1,"field":146,"locked":1} foreignUnitsOnOurLand=2 
+[2026-09-24 13:41:19]	[CulturalDiffusion] notify: (89,35) player 3 -> player 0 
+[2026-09-24 13:41:19]	[CulturalDiffusion] pending 89,35 claim confirmed on the live map 
+[2026-09-24 13:41:19]	[CulturalDiffusion] inject 92,32 civ=0 culture=51.7 vitality=76.67 strength=102.57 stock=36716.26 cap=205143.57 
+[2026-09-24 13:41:19]	[CulturalDiffusion] inject 87,32 civ=0 culture=17 vitality=34.05 strength=37.47 stock=5509.56 cap=74937.7 
+[2026-09-24 13:41:19]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=25.15 strength=5.34 stock=444.01 cap=10687 
+[2026-09-24 13:41:19]	[CulturalDiffusion] inject 93,26 civ=0 culture=9 vitality=43.28 strength=26.95 stock=2151.6 cap=53902.41 
+[2026-09-24 13:41:19]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=13.42 strength=0 stock=0 cap=0 
+[2026-09-24 13:41:19]	[CulturalDiffusion] inject 90,37 civ=3 culture=6 vitality=25.15 strength=12.55 stock=983.6 cap=25096.75 
+[2026-09-24 13:41:19]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=24.85 strength=11.1 stock=903.54 cap=22198.6 
+[2026-09-24 13:41:19]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=38.25 strength=17.52 stock=1809.68 cap=35039.69 
+[2026-09-24 13:41:19]	[CulturalDiffusion] inject 80,31 civ=3 culture=5 vitality=19.7 strength=10.23 stock=743.49 cap=20465.6 
+[2026-09-24 13:41:19]	[CulturalDiffusion] inject 79,39 civ=5 culture=1 vitality=10.6 strength=2.49 stock=127.29 cap=4979.68 
+[2026-09-24 13:41:19]	[CulturalDiffusion] frontier city=65536 ring=4 best=3553.91 bar=300 over=11/23 centre=36716.26 
+[2026-09-24 13:41:19]	[CulturalDiffusion] frontier city=196609 ring=4 best=21829.17 bar=300 over=8/24 centre=5509.56 
+[2026-09-24 13:41:19]	[CulturalDiffusion] frontier city=327683 ring=4 best=5509.56 bar=300 over=3/24 centre=444.01 
+[2026-09-24 13:41:19]	[CulturalDiffusion] frontier city=393220 ring=4 best=14722.79 bar=300 over=4/19 centre=2151.6 
+[2026-09-24 13:41:19]	[CulturalDiffusion] frontier city=458757 ring=4 best=0 bar=300 over=0/24 centre=0 
+[2026-09-24 13:41:19]	[CulturalDiffusion] flip 92,36 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner 3) 
+[2026-09-24 13:41:19]	[CulturalDiffusion] state bytes=5715 field=161 claims=2 locked=2 passMs=14 
+[2026-09-24 13:41:19]	[CulturalDiffusion] pass: 0 flip(s), 1 pending, 0 ceded (0 pending), confirmed 1 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 161 active field tile(s) 
+[2026-09-24 13:41:19]	[CulturalDiffusion] pass (turn 153): flips=0 field tiles=70 
+[2026-09-24 13:41:25]	[CDH] TURN n=18 turn=153 age=AGE_ANTIQUITY state={"claims":2,"pending":1,"field":161,"locked":2} foreignUnitsOnOurLand=2 
+[2026-09-24 13:41:50]	[CulturalDiffusion] notify: (92,36) player 3 -> player 0 
+[2026-09-24 13:41:50]	[CulturalDiffusion] pending 92,36 claim confirmed on the live map 
+[2026-09-24 13:41:50]	[CulturalDiffusion] inject 92,32 civ=0 culture=52.8 vitality=80.06 strength=107.11 stock=42837.97 cap=214210.94 
+[2026-09-24 13:41:50]	[CulturalDiffusion] inject 87,32 civ=0 culture=17 vitality=34.05 strength=38.01 stock=6335.92 cap=76029.84 
+[2026-09-24 13:41:50]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=25.15 strength=5.42 stock=580.91 cap=10842.75 
+[2026-09-24 13:41:50]	[CulturalDiffusion] inject 93,26 civ=0 culture=10 vitality=58.13 strength=32.47 stock=2636.29 cap=64934.92 
+[2026-09-24 13:41:50]	[CulturalDiffusion] inject 86,20 civ=0 culture=3.4 vitality=15.6 strength=10.17 stock=10 cap=20332.61 
+[2026-09-24 13:41:50]	[CulturalDiffusion] inject 77,36 civ=2 culture=2 vitality=8.75 strength=3.82 stock=10 cap=7649.18 
+[2026-09-24 13:41:50]	[CulturalDiffusion] inject 90,37 civ=3 culture=6 vitality=23.5 strength=12.24 stock=1092.04 cap=24470.31 
+[2026-09-24 13:41:50]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=24.5 strength=11.03 stock=995.74 cap=22054.95 
+[2026-09-24 13:41:50]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=37.9 strength=17.44 stock=2015.49 cap=34873.83 
+[2026-09-24 13:41:50]	[CulturalDiffusion] inject 80,31 civ=3 culture=5 vitality=19.7 strength=10.22 stock=823.21 cap=20434.36 
+[2026-09-24 13:41:50]	[CulturalDiffusion] inject 79,39 civ=5 culture=1 vitality=10.6 strength=2.52 stock=140.94 cap=5042.32 
+[2026-09-24 13:41:50]	[CulturalDiffusion] frontier city=65536 ring=4 best=4132.17 bar=300 over=12/23 centre=42837.97 
+[2026-09-24 13:41:50]	[CulturalDiffusion] frontier city=196609 ring=4 best=26675.87 bar=300 over=8/24 centre=6335.92 
+[2026-09-24 13:41:50]	[CulturalDiffusion] frontier city=327683 ring=4 best=6335.92 bar=300 over=3/24 centre=580.91 
+[2026-09-24 13:41:50]	[CulturalDiffusion] frontier city=393220 ring=4 best=17576.62 bar=300 over=5/19 centre=2636.29 
+[2026-09-24 13:41:50]	[CulturalDiffusion] frontier city=458757 ring=4 best=0 bar=300 over=0/24 centre=10 
+[2026-09-24 13:41:50]	[CulturalDiffusion] flip 90,28 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 13:41:50]	[CulturalDiffusion] state bytes=6189 field=173 claims=3 locked=3 passMs=16 
+[2026-09-24 13:41:50]	[CulturalDiffusion] pass: 0 flip(s), 1 pending, 0 ceded (0 pending), confirmed 1 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 173 active field tile(s) 
+[2026-09-24 13:41:50]	[CulturalDiffusion] pass (turn 154): flips=0 field tiles=75 
+[2026-09-24 13:41:56]	[CDH] TURN n=19 turn=154 age=AGE_ANTIQUITY state={"claims":3,"pending":1,"field":173,"locked":3} foreignUnitsOnOurLand=1 
+[2026-09-24 13:42:20]	[CulturalDiffusion] notify: (90,28) unowned -> player 0 
+[2026-09-24 13:42:20]	[CulturalDiffusion] pending 90,28 claim confirmed on the live map 
+[2026-09-24 13:42:20]	[CulturalDiffusion] inject 92,32 civ=0 culture=56.1 vitality=79.51 strength=112.8 stock=49746.82 cap=225591.29 
+[2026-09-24 13:42:20]	[CulturalDiffusion] inject 87,32 civ=0 culture=17 vitality=34.05 strength=38.58 stock=7217.47 cap=77158.64 
+[2026-09-24 13:42:20]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=25.15 strength=5.5 stock=752.13 cap=11003.73 
+[2026-09-24 13:42:20]	[CulturalDiffusion] inject 93,26 civ=0 culture=10 vitality=59.18 strength=33.16 stock=3172.82 cap=66313.23 
+[2026-09-24 13:42:20]	[CulturalDiffusion] inject 86,20 civ=0 culture=3.4 vitality=15.6 strength=10.32 stock=31.14 cap=20634.48 
+[2026-09-24 13:42:20]	[CulturalDiffusion] inject 77,36 civ=2 culture=2 vitality=10.4 strength=4.07 stock=23.48 cap=8136.19 
+[2026-09-24 13:42:20]	[CulturalDiffusion] inject 90,37 civ=3 culture=6 vitality=23.5 strength=9.67 stock=1170.14 cap=19330.36 
+[2026-09-24 13:42:20]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=25.95 strength=8.89 stock=1063.58 cap=17776.51 
+[2026-09-24 13:42:20]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=37.9 strength=13.77 stock=2163.21 cap=27548.63 
+[2026-09-24 13:42:20]	[CulturalDiffusion] inject 80,31 civ=3 culture=5 vitality=19.7 strength=8.07 stock=880.74 cap=16142.15 
+[2026-09-24 13:42:20]	[CulturalDiffusion] inject 79,39 civ=5 culture=1 vitality=10.6 strength=2.53 stock=154.51 cap=5054.25 
+[2026-09-24 13:42:20]	[CulturalDiffusion] frontier city=65536 ring=4 best=4751.94 bar=300 over=12/23 centre=49746.82 
+[2026-09-24 13:42:20]	[CulturalDiffusion] frontier city=196609 ring=4 best=32128.48 bar=300 over=8/24 centre=7217.47 
+[2026-09-24 13:42:20]	[CulturalDiffusion] frontier city=327683 ring=4 best=7217.47 bar=300 over=3/24 centre=752.13 
+[2026-09-24 13:42:20]	[CulturalDiffusion] frontier city=393220 ring=4 best=20652.9 bar=300 over=6/19 centre=3172.82 
+[2026-09-24 13:42:20]	[CulturalDiffusion] frontier city=458757 ring=4 best=0 bar=300 over=0/24 centre=31.14 
+[2026-09-24 13:42:20]	[CulturalDiffusion] state bytes=6737 field=188 claims=4 locked=4 passMs=13 
+[2026-09-24 13:42:20]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 1 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 188 active field tile(s) 
+[2026-09-24 13:42:20]	[CulturalDiffusion] pass (turn 155): flips=0 field tiles=82 
+[2026-09-24 13:42:26]	[CDH] TURN n=20 turn=155 age=AGE_ANTIQUITY state={"claims":4,"pending":0,"field":188,"locked":4} foreignUnitsOnOurLand=0 
+[2026-09-24 13:42:50]	[CulturalDiffusion] inject 92,32 civ=0 culture=56.1 vitality=79.51 strength=112.63 stock=56997.55 cap=225254.12 
+[2026-09-24 13:42:50]	[CulturalDiffusion] inject 87,32 civ=0 culture=17 vitality=34.75 strength=38.8 stock=8142.13 cap=77593.39 
+[2026-09-24 13:42:50]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=25.15 strength=5.49 stock=964.61 cap=10987.29 
+[2026-09-24 13:42:50]	[CulturalDiffusion] inject 93,26 civ=0 culture=10 vitality=59.18 strength=33.11 stock=3745.43 cap=66214.11 
+[2026-09-24 13:42:50]	[CulturalDiffusion] inject 86,20 civ=0 culture=3.4 vitality=15.6 strength=10.3 stock=60.84 cap=20603.64 
+[2026-09-24 13:42:50]	[CulturalDiffusion] inject 77,36 civ=2 culture=2 vitality=10.4 strength=4.09 stock=38.98 cap=8174.47 
+[2026-09-24 13:42:50]	[CulturalDiffusion] inject 90,37 civ=3 culture=6 vitality=23.5 strength=9.65 stock=1248.52 cap=19306.2 
+[2026-09-24 13:42:50]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=25.95 strength=8.88 stock=1131.53 cap=17754.29 
+[2026-09-24 13:42:50]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=37.9 strength=13.76 stock=2311.86 cap=27514.21 
+[2026-09-24 13:42:50]	[CulturalDiffusion] inject 80,31 civ=3 culture=5 vitality=19.7 strength=8.06 stock=938.35 cap=16121.98 
+[2026-09-24 13:42:50]	[CulturalDiffusion] inject 79,39 civ=5 culture=1 vitality=10.6 strength=2.55 stock=168.07 cap=5100.69 
+[2026-09-24 13:42:50]	[CulturalDiffusion] frontier city=65536 ring=4 best=5413.1 bar=300 over=13/23 centre=56997.55 
+[2026-09-24 13:42:50]	[CulturalDiffusion] frontier city=196609 ring=4 best=37310.12 bar=300 over=11/24 centre=8142.13 
+[2026-09-24 13:42:50]	[CulturalDiffusion] frontier city=327683 ring=4 best=8142.13 bar=300 over=3/24 centre=964.61 
+[2026-09-24 13:42:50]	[CulturalDiffusion] frontier city=393220 ring=4 best=24096.36 bar=300 over=6/19 centre=3745.43 
+[2026-09-24 13:42:50]	[CulturalDiffusion] frontier city=458757 ring=4 best=0 bar=300 over=0/24 centre=60.84 
+[2026-09-24 13:42:50]	[CulturalDiffusion] flip 93,36 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 13:42:50]	[CulturalDiffusion] flip 91,36 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner 3) 
+[2026-09-24 13:42:50]	[CulturalDiffusion] flip 90,36 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner 3) 
+[2026-09-24 13:42:50]	[CulturalDiffusion] flip 89,28 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 13:42:50]	[CulturalDiffusion] state bytes=7169 field=192 claims=4 locked=4 passMs=19 
+[2026-09-24 13:42:50]	[CulturalDiffusion] pass: 0 flip(s), 4 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 192 active field tile(s) 
+[2026-09-24 13:42:50]	[CulturalDiffusion] pass (turn 156): flips=0 field tiles=83 
+[2026-09-24 13:42:56]	[CDH] TURN n=21 turn=156 age=AGE_ANTIQUITY state={"claims":4,"pending":4,"field":192,"locked":4} foreignUnitsOnOurLand=0 
+[2026-09-24 13:43:21]	[CulturalDiffusion] notify: (93,36) unowned -> player 0 
+[2026-09-24 13:43:21]	[CulturalDiffusion] pending 93,36 claim confirmed on the live map 
+[2026-09-24 13:43:21]	[CulturalDiffusion] notify: (91,36) player 3 -> player 0 
+[2026-09-24 13:43:21]	[CulturalDiffusion] pending 91,36 claim confirmed on the live map 
+[2026-09-24 13:43:21]	[CulturalDiffusion] notify: (90,36) player 3 -> player 0 
+[2026-09-24 13:43:21]	[CulturalDiffusion] pending 90,36 claim confirmed on the live map 
+[2026-09-24 13:43:21]	[CulturalDiffusion] notify: (89,28) unowned -> player 0 
+[2026-09-24 13:43:21]	[CulturalDiffusion] pending 89,28 claim confirmed on the live map 
+[2026-09-24 13:43:21]	[CulturalDiffusion] inject 92,32 civ=0 culture=56.1 vitality=77.94 strength=88.21 stock=62313.06 cap=176422.69 
+[2026-09-24 13:43:21]	[CulturalDiffusion] inject 87,32 civ=0 culture=17 vitality=33 strength=30.05 stock=8794.24 cap=60103.06 
+[2026-09-24 13:43:21]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=24.1 strength=4.27 stock=1212.49 cap=8537.5 
+[2026-09-24 13:43:21]	[CulturalDiffusion] inject 93,26 civ=0 culture=16 vitality=58.7 strength=35.34 stock=4404.87 cap=70684.83 
+[2026-09-24 13:43:21]	[CulturalDiffusion] inject 86,20 civ=0 culture=3.4 vitality=14.55 strength=7.93 stock=90.76 cap=15858.96 
+[2026-09-24 13:43:21]	[CulturalDiffusion] inject 77,36 civ=2 culture=2 vitality=10.55 strength=4.1 stock=55.95 cap=8208.09 
+[2026-09-24 13:43:21]	[CulturalDiffusion] inject 90,37 civ=3 culture=5 vitality=23.35 strength=8.54 stock=1312 cap=17085.37 
+[2026-09-24 13:43:21]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=25.95 strength=8.86 stock=1199.44 cap=17728.51 
+[2026-09-24 13:43:21]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=38.85 strength=13.86 stock=2463.31 cap=27713.34 
+[2026-09-24 13:43:21]	[CulturalDiffusion] inject 80,31 civ=3 culture=5 vitality=19.7 strength=8.05 stock=995.93 cap=16098.57 
+[2026-09-24 13:43:21]	[CulturalDiffusion] inject 79,39 civ=5 culture=1 vitality=10.75 strength=2.55 stock=181.47 cap=5101.46 
+[2026-09-24 13:43:21]	[CulturalDiffusion] frontier city=65536 ring=4 best=6925.81 bar=300 over=14/23 centre=62313.06 
+[2026-09-24 13:43:21]	[CulturalDiffusion] frontier city=196609 ring=4 best=42748.16 bar=300 over=12/24 centre=8794.24 
+[2026-09-24 13:43:21]	[CulturalDiffusion] frontier city=327683 ring=4 best=8794.24 bar=300 over=3/24 centre=1212.49 
+[2026-09-24 13:43:21]	[CulturalDiffusion] frontier city=393220 ring=4 best=27982.59 bar=300 over=6/19 centre=4404.87 
+[2026-09-24 13:43:21]	[CulturalDiffusion] frontier city=458757 ring=4 best=0 bar=300 over=0/24 centre=90.76 
+[2026-09-24 13:43:21]	[CulturalDiffusion] flip 89,36 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner 3) 
+[2026-09-24 13:43:21]	[CulturalDiffusion] state bytes=7383 field=198 claims=8 locked=8 passMs=16 
+[2026-09-24 13:43:21]	[CulturalDiffusion] pass: 0 flip(s), 1 pending, 0 ceded (0 pending), confirmed 4 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 198 active field tile(s) 
+[2026-09-24 13:43:21]	[CulturalDiffusion] pass (turn 157): flips=0 field tiles=89 
+[2026-09-24 13:43:27]	[CDH] TURN n=22 turn=157 age=AGE_ANTIQUITY state={"claims":8,"pending":1,"field":198,"locked":8} foreignUnitsOnOurLand=0 
+[2026-09-24 13:43:50]	[CulturalDiffusion] notify: (89,36) player 3 -> player 0 
+[2026-09-24 13:43:50]	[CulturalDiffusion] pending 89,36 claim confirmed on the live map 
+[2026-09-24 13:43:50]	[CulturalDiffusion] inject 92,32 civ=0 culture=55 vitality=77.94 strength=87.21 stock=67637.51 cap=174413.19 
+[2026-09-24 13:43:50]	[CulturalDiffusion] inject 87,32 civ=0 culture=17 vitality=33 strength=30.09 stock=9456.52 cap=60186.6 
+[2026-09-24 13:43:50]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=24.1 strength=4.27 stock=1518.61 cap=8549.37 
+[2026-09-24 13:43:50]	[CulturalDiffusion] inject 93,26 civ=0 culture=15 vitality=58.7 strength=33.94 stock=5065.98 cap=67875.14 
+[2026-09-24 13:43:50]	[CulturalDiffusion] inject 86,20 civ=0 culture=3.4 vitality=14.55 strength=7.94 stock=124.51 cap=15881 
+[2026-09-24 13:43:50]	[CulturalDiffusion] inject 77,36 civ=2 culture=2 vitality=9.55 strength=3.95 stock=73.6 cap=7900.12 
+[2026-09-24 13:43:50]	[CulturalDiffusion] inject 90,37 civ=3 culture=5 vitality=23.35 strength=8.54 stock=1375.24 cap=17084.75 
+[2026-09-24 13:43:50]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=25.95 strength=8.86 stock=1267.36 cap=17727.86 
+[2026-09-24 13:43:50]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=38.85 strength=13.86 stock=2615.49 cap=27712.33 
+[2026-09-24 13:43:50]	[CulturalDiffusion] inject 80,31 civ=3 culture=5 vitality=19.7 strength=8.05 stock=1053.51 cap=16097.98 
+[2026-09-24 13:43:50]	[CulturalDiffusion] inject 79,39 civ=5 culture=1 vitality=10.75 strength=3.38 stock=199.01 cap=6753.27 
+[2026-09-24 13:43:50]	[CulturalDiffusion] frontier city=65536 ring=4 best=8932.86 bar=300 over=14/23 centre=67637.51 
+[2026-09-24 13:43:50]	[CulturalDiffusion] frontier city=196609 ring=4 best=46734.8 bar=300 over=13/24 centre=9456.52 
+[2026-09-24 13:43:50]	[CulturalDiffusion] frontier city=327683 ring=4 best=9456.52 bar=300 over=3/24 centre=1518.61 
+[2026-09-24 13:43:50]	[CulturalDiffusion] frontier city=393220 ring=4 best=32061.12 bar=300 over=7/19 centre=5065.98 
+[2026-09-24 13:43:50]	[CulturalDiffusion] frontier city=458757 ring=4 best=0 bar=300 over=0/24 centre=124.51 
+[2026-09-24 13:43:50]	[CulturalDiffusion] flip 90,23 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 13:43:50]	[CulturalDiffusion] state bytes=7551 field=201 claims=9 locked=9 passMs=16 
+[2026-09-24 13:43:50]	[CulturalDiffusion] pass: 0 flip(s), 1 pending, 0 ceded (0 pending), confirmed 1 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 201 active field tile(s) 
+[2026-09-24 13:43:50]	[CulturalDiffusion] pass (turn 158): flips=0 field tiles=91 
+[2026-09-24 13:43:56]	[CDH] TURN n=23 turn=158 age=AGE_ANTIQUITY state={"claims":9,"pending":1,"field":201,"locked":9} foreignUnitsOnOurLand=0 
+[2026-09-24 13:44:20]	[CulturalDiffusion] notify: (90,23) unowned -> player 0 
+[2026-09-24 13:44:20]	[CulturalDiffusion] pending 90,23 claim confirmed on the live map 
+[2026-09-24 13:44:20]	[CulturalDiffusion] inject 92,32 civ=0 culture=55 vitality=77.94 strength=87.22 stock=73049.64 cap=174434.56 
+[2026-09-24 13:44:20]	[CulturalDiffusion] inject 87,32 civ=0 culture=17 vitality=33.7 strength=30.32 stock=10134.57 cap=60637.33 
+[2026-09-24 13:44:20]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=24.1 strength=4.28 stock=1892.49 cap=8550.42 
+[2026-09-24 13:44:20]	[CulturalDiffusion] inject 93,26 civ=0 culture=15 vitality=58.7 strength=33.94 stock=5757.33 cap=67883.46 
+[2026-09-24 13:44:20]	[CulturalDiffusion] inject 86,20 civ=0 culture=3.4 vitality=14.55 strength=7.94 stock=161.61 cap=15882.94 
+[2026-09-24 13:44:20]	[CulturalDiffusion] inject 77,36 civ=2 culture=2 vitality=9.55 strength=3.83 stock=91.65 cap=7661.82 
+[2026-09-24 13:44:20]	[CulturalDiffusion] inject 90,37 civ=3 culture=5 vitality=25.3 strength=8.74 stock=1441.05 cap=17487.04 
+[2026-09-24 13:44:20]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=26.3 strength=8.86 stock=1335.19 cap=17725.91 
+[2026-09-24 13:44:20]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=39.2 strength=13.83 stock=2767.71 cap=27666.37 
+[2026-09-24 13:44:20]	[CulturalDiffusion] inject 80,31 civ=3 culture=5 vitality=19.7 strength=8.01 stock=1110.54 cap=16020.91 
+[2026-09-24 13:44:20]	[CulturalDiffusion] inject 79,39 civ=5 culture=1 vitality=10.75 strength=3.36 stock=216.39 cap=6710.22 
+[2026-09-24 13:44:20]	[CulturalDiffusion] frontier city=65536 ring=4 best=11357.66 bar=300 over=15/23 centre=73049.64 
+[2026-09-24 13:44:20]	[CulturalDiffusion] frontier city=196609 ring=4 best=50728.13 bar=300 over=14/24 centre=10134.57 
+[2026-09-24 13:44:20]	[CulturalDiffusion] frontier city=327683 ring=4 best=10134.57 bar=300 over=3/24 centre=1892.49 
+[2026-09-24 13:44:20]	[CulturalDiffusion] frontier city=393220 ring=4 best=35051.1 bar=300 over=7/19 centre=5757.33 
+[2026-09-24 13:44:20]	[CulturalDiffusion] frontier city=458757 ring=4 best=0 bar=300 over=0/24 centre=161.61 
+[2026-09-24 13:44:20]	[CulturalDiffusion] flip 89,37 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner 3) 
+[2026-09-24 13:44:20]	[CulturalDiffusion] state bytes=8250 field=220 claims=10 locked=10 passMs=17 
+[2026-09-24 13:44:20]	[CulturalDiffusion] pass: 0 flip(s), 1 pending, 0 ceded (0 pending), confirmed 1 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 220 active field tile(s) 
+[2026-09-24 13:44:20]	[CulturalDiffusion] pass (turn 159): flips=0 field tiles=99 
+[2026-09-24 13:44:26]	[CDH] TURN n=24 turn=159 age=AGE_ANTIQUITY state={"claims":10,"pending":1,"field":220,"locked":10} foreignUnitsOnOurLand=0 
+[2026-09-24 13:44:50]	[CulturalDiffusion] notify: (89,37) player 3 -> player 0 
+[2026-09-24 13:44:50]	[CulturalDiffusion] pending 89,37 claim confirmed on the live map 
+[2026-09-24 13:44:50]	[CulturalDiffusion] inject 92,32 civ=0 culture=55 vitality=77.94 strength=87.43 stock=78558.52 cap=174867.17 
+[2026-09-24 13:44:50]	[CulturalDiffusion] inject 87,32 civ=0 culture=17 vitality=33.7 strength=30.39 stock=10821.89 cap=60787.72 
+[2026-09-24 13:44:50]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=24.1 strength=4.29 stock=2339.44 cap=8571.62 
+[2026-09-24 13:44:50]	[CulturalDiffusion] inject 93,26 civ=0 culture=15 vitality=58.7 strength=34.03 stock=6478.38 cap=68051.82 
+[2026-09-24 13:44:50]	[CulturalDiffusion] inject 86,20 civ=0 culture=3.4 vitality=14.55 strength=7.96 stock=201.73 cap=15922.34 
+[2026-09-24 13:44:50]	[CulturalDiffusion] inject 77,36 civ=2 culture=2 vitality=9.55 strength=3.84 stock=110.31 cap=7681.9 
+[2026-09-24 13:44:50]	[CulturalDiffusion] inject 90,37 civ=3 culture=5 vitality=26.5 strength=8.91 stock=1509 cap=17820.66 
+[2026-09-24 13:44:50]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=25.6 strength=8.8 stock=1402.02 cap=17606.45 
+[2026-09-24 13:44:50]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=38.5 strength=13.78 stock=2919.16 cap=27566.21 
+[2026-09-24 13:44:50]	[CulturalDiffusion] inject 80,31 civ=3 culture=5 vitality=19.7 strength=8.03 stock=1167.68 cap=16063.9 
+[2026-09-24 13:44:50]	[CulturalDiffusion] inject 79,39 civ=5 culture=1 vitality=12.7 strength=3.52 stock=234.65 cap=7046.44 
+[2026-09-24 13:44:50]	[CulturalDiffusion] frontier city=65536 ring=4 best=14069.58 bar=300 over=16/23 centre=78558.52 
+[2026-09-24 13:44:50]	[CulturalDiffusion] frontier city=196609 ring=4 best=54787.23 bar=300 over=14/24 centre=10821.89 
+[2026-09-24 13:44:50]	[CulturalDiffusion] frontier city=327683 ring=4 best=10821.89 bar=300 over=3/24 centre=2339.44 
+[2026-09-24 13:44:50]	[CulturalDiffusion] frontier city=393220 ring=4 best=38046.1 bar=300 over=8/19 centre=6478.38 
+[2026-09-24 13:44:50]	[CulturalDiffusion] frontier city=458757 ring=4 best=15.01 bar=300 over=0/24 centre=201.73 
+[2026-09-24 13:44:50]	[CulturalDiffusion] flip 90,24 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 13:44:50]	[CulturalDiffusion] flip 91,37 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner 3) 
+[2026-09-24 13:44:50]	[CulturalDiffusion] state bytes=8907 field=231 claims=11 locked=11 passMs=17 
+[2026-09-24 13:44:50]	[CulturalDiffusion] pass: 0 flip(s), 2 pending, 0 ceded (0 pending), confirmed 1 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 231 active field tile(s) 
+[2026-09-24 13:44:50]	[CulturalDiffusion] pass (turn 160): flips=0 field tiles=105 
+[2026-09-24 13:44:56]	[CDH] TURN n=25 turn=160 age=AGE_ANTIQUITY state={"claims":11,"pending":2,"field":231,"locked":11} foreignUnitsOnOurLand=0 
+[2026-09-24 13:45:35]	[CDH] attached run30 
+[2026-09-24 13:45:35]	[CulturalDiffusion] boot (turnInterval 1, verb purchasePlot, enabled true) 
+[2026-09-24 13:45:40]	[CDH] LOAD GameStarted 
+[2026-09-24 13:45:41]	[CulturalDiffusion] notify: (90,24) unowned -> player 0 
+[2026-09-24 13:45:41]	[CulturalDiffusion] pending 90,24 claim confirmed on the live map 
+[2026-09-24 13:45:41]	[CulturalDiffusion] notify: (91,37) player 3 -> player 0 
+[2026-09-24 13:45:41]	[CulturalDiffusion] pending 91,37 claim confirmed on the live map 
+[2026-09-24 13:45:41]	[CulturalDiffusion] inject 92,32 civ=0 culture=39.6 vitality=44.45 strength=40.88 stock=77831.59 cap=81760.51 
+[2026-09-24 13:45:41]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=20.26 strength=0 stock=190.64 cap=0 
+[2026-09-24 13:45:41]	[CulturalDiffusion] inject 93,26 civ=0 culture=7.7 vitality=54.27 strength=15.12 stock=6634.79 cap=30239.38 
+[2026-09-24 13:45:41]	[CulturalDiffusion] inject 87,32 civ=0 culture=13.2 vitality=39.13 strength=19.14 stock=11333.45 cap=38285.51 
+[2026-09-24 13:45:41]	[CulturalDiffusion] inject 84,35 civ=0 culture=1.1 vitality=26.3 strength=3.31 stock=2814.48 cap=6615.65 
+[2026-09-24 13:45:41]	[CulturalDiffusion] inject 77,36 civ=2 culture=2.2 vitality=12.9 strength=4.28 stock=131.22 cap=8567.15 
+[2026-09-24 13:45:41]	[CulturalDiffusion] inject 81,18 civ=3 culture=9.9 vitality=33.65 strength=12.2 stock=3037.48 cap=24398.85 
+[2026-09-24 13:45:41]	[CulturalDiffusion] inject 82,23 civ=3 culture=7.7 vitality=20.83 strength=8.76 stock=1467.95 cap=17519.9 
+[2026-09-24 13:45:41]	[CulturalDiffusion] inject 80,31 civ=3 culture=4.4 vitality=22.36 strength=6.24 stock=1200.89 cap=12482.3 
+[2026-09-24 13:45:41]	[CulturalDiffusion] inject 90,37 civ=3 culture=7.7 vitality=20.57 strength=8.72 stock=1573.78 cap=17444.56 
+[2026-09-24 13:45:41]	[CulturalDiffusion] inject 79,39 civ=5 culture=0 vitality=17.71 strength=0 stock=221.91 cap=0 
+[2026-09-24 13:45:41]	[CulturalDiffusion] frontier city=65536 ring=4 best=15772.99 bar=375 over=15/23 centre=77831.59 
+[2026-09-24 13:45:41]	[CulturalDiffusion] frontier city=131073 ring=4 best=39.34 bar=375 over=0/24 centre=190.64 
+[2026-09-24 13:45:41]	[CulturalDiffusion] frontier city=196610 ring=4 best=39446.81 bar=375 over=8/19 centre=6634.79 
+[2026-09-24 13:45:41]	[CulturalDiffusion] frontier city=262147 ring=4 best=58918.89 bar=375 over=14/24 centre=11333.45 
+[2026-09-24 13:45:41]	[CulturalDiffusion] frontier city=327684 ring=4 best=11333.45 bar=375 over=3/24 centre=2814.48 
+[2026-09-24 13:45:41]	[CulturalDiffusion] flip 92,37 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner 3) 
+[2026-09-24 13:45:41]	[CulturalDiffusion] state bytes=9958 field=262 claims=13 locked=13 passMs=39 
+[2026-09-24 13:45:41]	[CulturalDiffusion] pass: 0 flip(s), 1 pending, 0 ceded (0 pending), confirmed 2 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 262 active field tile(s) 
+[2026-09-24 13:45:41]	[CulturalDiffusion] pass (turn 1): flips=0 field tiles=107 
+[2026-09-24 13:45:48]	[CDH] S0 run30 turn=1 age=AGE_EXPLORATION local=0 diffusion=true guard=true minorFloor=1 recede=false buffer=false 
+[2026-09-24 13:45:48]	[CDH] S0 state {"claims":13,"pending":1,"field":262,"locked":13} foreignUnitsOnOurLand=0 
+[2026-09-24 13:45:48]	[CDH] STRESS running; ending turns until the budget is spent or the game faults 
+[2026-09-24 13:45:49]	[CulturalDiffusion] notify: (92,37) player 3 -> player 0 
+[2026-09-24 13:45:49]	[CulturalDiffusion] pending 92,37 claim confirmed on the live map 
+[2026-09-24 13:45:49]	[CulturalDiffusion] inject 92,32 civ=0 culture=39.6 vitality=45.57 strength=39.01 stock=74125.07 cap=78017.64 
+[2026-09-24 13:45:49]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=20.26 strength=0 stock=180.11 cap=0 
+[2026-09-24 13:45:49]	[CulturalDiffusion] inject 93,26 civ=0 culture=7.7 vitality=54.27 strength=14.3 stock=6763.27 cap=28606.05 
+[2026-09-24 13:45:49]	[CulturalDiffusion] inject 87,32 civ=0 culture=13.2 vitality=39.13 strength=18.11 stock=12586.39 cap=36217.57 
+[2026-09-24 13:45:49]	[CulturalDiffusion] inject 84,35 civ=0 culture=1.1 vitality=26.3 strength=3.13 stock=3066.4 cap=6258.31 
+[2026-09-24 13:45:49]	[CulturalDiffusion] inject 77,36 civ=2 culture=2.2 vitality=12.9 strength=4.45 stock=153.39 cap=8897.39 
+[2026-09-24 13:45:49]	[CulturalDiffusion] inject 81,18 civ=3 culture=10.8 vitality=76.2 strength=17.88 stock=3276.26 cap=35759.26 
+[2026-09-24 13:45:49]	[CulturalDiffusion] inject 82,23 civ=3 culture=7.7 vitality=24.32 strength=9.62 stock=1546.34 cap=19245.69 
+[2026-09-24 13:45:49]	[CulturalDiffusion] inject 80,31 civ=3 culture=4.4 vitality=22.11 strength=6.47 stock=1236.66 cap=12936.09 
+[2026-09-24 13:45:49]	[CulturalDiffusion] inject 90,37 civ=3 culture=7.7 vitality=22.2 strength=9.32 stock=1647.31 cap=18642.4 
+[2026-09-24 13:45:49]	[CulturalDiffusion] inject 79,39 civ=5 culture=0 vitality=17.34 strength=0 stock=209.82 cap=0 
+[2026-09-24 13:45:49]	[CulturalDiffusion] frontier city=65536 ring=4 best=17120.75 bar=375 over=16/23 centre=74125.07 
+[2026-09-24 13:45:49]	[CulturalDiffusion] frontier city=131073 ring=4 best=71.54 bar=375 over=0/24 centre=180.11 
+[2026-09-24 13:45:49]	[CulturalDiffusion] frontier city=196610 ring=4 best=40724.74 bar=375 over=9/19 centre=6763.27 
+[2026-09-24 13:45:49]	[CulturalDiffusion] frontier city=262147 ring=4 best=58373.69 bar=375 over=15/24 centre=12586.39 
+[2026-09-24 13:45:49]	[CulturalDiffusion] frontier city=327684 ring=4 best=12586.39 bar=375 over=4/24 centre=3066.4 
+[2026-09-24 13:45:49]	[CulturalDiffusion] flip 89,27 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 13:45:49]	[CulturalDiffusion] flip 88,28 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 13:45:49]	[CulturalDiffusion] flip 87,37 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner 3) 
+[2026-09-24 13:45:49]	[CulturalDiffusion] flip 88,37 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner 3) 
+[2026-09-24 13:45:49]	[CulturalDiffusion] state bytes=10551 field=273 claims=14 locked=14 passMs=27 
+[2026-09-24 13:45:49]	[CulturalDiffusion] pass: 0 flip(s), 4 pending, 0 ceded (0 pending), confirmed 1 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 273 active field tile(s) 
+[2026-09-24 13:45:49]	[CulturalDiffusion] pass (turn 2): flips=0 field tiles=112 
+[2026-09-24 13:45:55]	[CDH] TURN n=2 turn=2 age=AGE_EXPLORATION state={"claims":14,"pending":4,"field":273,"locked":14} foreignUnitsOnOurLand=0 
+[2026-09-24 13:45:55]	[CulturalDiffusion] notify: (89,27) unowned -> player 0 
+[2026-09-24 13:45:55]	[CulturalDiffusion] pending 89,27 claim confirmed on the live map 
+[2026-09-24 13:45:55]	[CulturalDiffusion] notify: (88,28) unowned -> player 0 
+[2026-09-24 13:45:55]	[CulturalDiffusion] pending 88,28 claim confirmed on the live map 
+[2026-09-24 13:45:55]	[CulturalDiffusion] notify: (87,37) player 3 -> player 0 
+[2026-09-24 13:45:55]	[CulturalDiffusion] pending 87,37 claim confirmed on the live map 
+[2026-09-24 13:45:55]	[CulturalDiffusion] notify: (88,37) player 3 -> player 0 
+[2026-09-24 13:45:55]	[CulturalDiffusion] pending 88,37 claim confirmed on the live map 
+[2026-09-24 13:45:55]	[CulturalDiffusion] inject 92,32 civ=0 culture=39.6 vitality=45.57 strength=38.03 stock=72355.92 cap=76063.17 
+[2026-09-24 13:45:55]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=20.26 strength=0 stock=170.1 cap=0 
+[2026-09-24 13:45:55]	[CulturalDiffusion] inject 93,26 civ=0 culture=7.7 vitality=54.27 strength=13.94 stock=6878.26 cap=27889.42 
+[2026-09-24 13:45:55]	[CulturalDiffusion] inject 87,32 civ=0 culture=13.2 vitality=39.13 strength=17.66 stock=13617.69 cap=35310.26 
+[2026-09-24 13:45:55]	[CulturalDiffusion] inject 84,35 civ=0 culture=1.1 vitality=26.3 strength=3.05 stock=3282.07 cap=6101.53 
+[2026-09-24 13:45:55]	[CulturalDiffusion] inject 77,36 civ=2 culture=2.2 vitality=12.9 strength=4.45 stock=176.05 cap=8892.7 
+[2026-09-24 13:45:55]	[CulturalDiffusion] inject 81,18 civ=3 culture=10.8 vitality=76.2 strength=17.87 stock=3517.65 cap=35745.35 
+[2026-09-24 13:45:55]	[CulturalDiffusion] inject 82,23 civ=3 culture=7.7 vitality=24.32 strength=9.62 stock=1624.53 cap=19238.2 
+[2026-09-24 13:45:55]	[CulturalDiffusion] inject 80,31 civ=3 culture=4.4 vitality=22.11 strength=6.47 stock=1271.88 cap=12931.06 
+[2026-09-24 13:45:55]	[CulturalDiffusion] inject 90,37 civ=3 culture=7.7 vitality=22.2 strength=9.32 stock=1720.41 cap=18635.15 
+[2026-09-24 13:45:55]	[CulturalDiffusion] inject 79,39 civ=5 culture=0 vitality=19.34 strength=0 stock=198.33 cap=0 
+[2026-09-24 13:45:55]	[CulturalDiffusion] frontier city=65536 ring=4 best=18490.69 bar=375 over=20/23 centre=72355.92 
+[2026-09-24 13:45:55]	[CulturalDiffusion] frontier city=131073 ring=4 best=85.56 bar=375 over=0/24 centre=170.1 
+[2026-09-24 13:45:55]	[CulturalDiffusion] frontier city=196610 ring=4 best=40347.9 bar=375 over=10/19 centre=6878.26 
+[2026-09-24 13:45:55]	[CulturalDiffusion] frontier city=262147 ring=4 best=55593.8 bar=375 over=15/24 centre=13617.69 
+[2026-09-24 13:45:55]	[CulturalDiffusion] frontier city=327684 ring=4 best=13617.69 bar=375 over=4/24 centre=3282.07 
+[2026-09-24 13:45:55]	[CulturalDiffusion] flip 94,36 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 13:45:55]	[CulturalDiffusion] flip 95,30 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 13:45:55]	[CulturalDiffusion] flip 94,35 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 13:45:55]	[CulturalDiffusion] state bytes=10975 field=281 claims=18 locked=18 passMs=20 
+[2026-09-24 13:45:55]	[CulturalDiffusion] pass: 0 flip(s), 3 pending, 0 ceded (0 pending), confirmed 4 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 281 active field tile(s) 
+[2026-09-24 13:45:55]	[CulturalDiffusion] pass (turn 3): flips=0 field tiles=115 
+[2026-09-24 13:46:01]	[CDH] TURN n=3 turn=3 age=AGE_EXPLORATION state={"claims":18,"pending":3,"field":281,"locked":18} foreignUnitsOnOurLand=1 
+[2026-09-24 13:46:05]	[CulturalDiffusion] notify: (94,36) unowned -> player 0 
+[2026-09-24 13:46:05]	[CulturalDiffusion] pending 94,36 claim confirmed on the live map 
+[2026-09-24 13:46:05]	[CulturalDiffusion] notify: (95,30) unowned -> player 0 
+[2026-09-24 13:46:05]	[CulturalDiffusion] pending 95,30 claim confirmed on the live map 
+[2026-09-24 13:46:05]	[CulturalDiffusion] notify: (94,35) unowned -> player 0 
+[2026-09-24 13:46:05]	[CulturalDiffusion] pending 94,35 claim confirmed on the live map 
+[2026-09-24 13:46:05]	[CulturalDiffusion] inject 92,32 civ=0 culture=39.6 vitality=45.57 strength=38.01 stock=72409.22 cap=76028.02 
+[2026-09-24 13:46:05]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=20.26 strength=0 stock=160.6 cap=0 
+[2026-09-24 13:46:05]	[CulturalDiffusion] inject 93,26 civ=0 culture=7.7 vitality=54.27 strength=13.94 stock=6991.05 cap=27876.53 
+[2026-09-24 13:46:05]	[CulturalDiffusion] inject 87,32 civ=0 culture=13.2 vitality=39.13 strength=17.65 stock=14675.59 cap=35293.94 
+[2026-09-24 13:46:05]	[CulturalDiffusion] inject 84,35 civ=0 culture=1.1 vitality=26.3 strength=3.05 stock=3501.77 cap=6098.71 
+[2026-09-24 13:46:05]	[CulturalDiffusion] inject 77,36 civ=2 culture=2.2 vitality=12.9 strength=4.46 stock=199.17 cap=8920.5 
+[2026-09-24 13:46:05]	[CulturalDiffusion] inject 81,18 civ=3 culture=10.8 vitality=76.2 strength=17.35 stock=3749.3 cap=34699.52 
+[2026-09-24 13:46:05]	[CulturalDiffusion] inject 82,23 civ=3 culture=7.7 vitality=24.32 strength=9.34 stock=1698.06 cap=18675.34 
+[2026-09-24 13:46:05]	[CulturalDiffusion] inject 80,31 civ=3 culture=4.4 vitality=22.11 strength=6.28 stock=1303.98 cap=12552.72 
+[2026-09-24 13:46:05]	[CulturalDiffusion] inject 90,37 civ=3 culture=7.7 vitality=22.2 strength=9.04 stock=1788.69 cap=18089.93 
+[2026-09-24 13:46:05]	[CulturalDiffusion] inject 79,39 civ=5 culture=0 vitality=19.34 strength=0 stock=187.41 cap=0 
+[2026-09-24 13:46:05]	[CulturalDiffusion] frontier city=65536 ring=4 best=19885.12 bar=375 over=20/23 centre=72409.22 
+[2026-09-24 13:46:05]	[CulturalDiffusion] frontier city=131073 ring=4 best=81.12 bar=375 over=0/24 centre=160.6 
+[2026-09-24 13:46:05]	[CulturalDiffusion] frontier city=196610 ring=4 best=38426.43 bar=375 over=10/19 centre=6991.05 
+[2026-09-24 13:46:05]	[CulturalDiffusion] frontier city=262147 ring=4 best=54266.94 bar=375 over=15/24 centre=14675.59 
+[2026-09-24 13:46:05]	[CulturalDiffusion] frontier city=327684 ring=4 best=14675.59 bar=375 over=4/24 centre=3501.77 
+[2026-09-24 13:46:05]	[CulturalDiffusion] flip 92,38 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner 3) 
+[2026-09-24 13:46:05]	[CulturalDiffusion] state bytes=11579 field=295 claims=21 locked=21 passMs=28 
+[2026-09-24 13:46:05]	[CulturalDiffusion] pass: 0 flip(s), 1 pending, 0 ceded (0 pending), confirmed 3 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 295 active field tile(s) 
+[2026-09-24 13:46:05]	[CulturalDiffusion] pass (turn 4): flips=0 field tiles=121 
+[2026-09-24 13:46:11]	[CDH] TURN n=4 turn=4 age=AGE_EXPLORATION state={"claims":21,"pending":1,"field":295,"locked":21} foreignUnitsOnOurLand=1 
+[2026-09-24 13:46:13]	[CulturalDiffusion] notify: (92,38) player 3 -> player 0 
+[2026-09-24 13:46:13]	[CulturalDiffusion] pending 92,38 claim confirmed on the live map 
+[2026-09-24 13:46:13]	[CulturalDiffusion] inject 92,32 civ=0 culture=39.6 vitality=48.87 strength=39.37 stock=72901.06 cap=78744.64 
+[2026-09-24 13:46:13]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=21.25 strength=0 stock=151.57 cap=0 
+[2026-09-24 13:46:13]	[CulturalDiffusion] inject 93,26 civ=0 culture=7.7 vitality=57.57 strength=14.38 stock=7116.22 cap=28762.86 
+[2026-09-24 13:46:13]	[CulturalDiffusion] inject 87,32 civ=0 culture=13.2 vitality=39.13 strength=17.84 stock=15760.67 cap=35671.7 
+[2026-09-24 13:46:13]	[CulturalDiffusion] inject 84,35 civ=0 culture=1.1 vitality=26.3 strength=3.08 stock=3666.61 cap=6163.99 
+[2026-09-24 13:46:13]	[CulturalDiffusion] inject 77,36 civ=2 culture=2.2 vitality=12.9 strength=4.39 stock=222.23 cap=8788.1 
+[2026-09-24 13:46:13]	[CulturalDiffusion] inject 81,18 civ=3 culture=10.8 vitality=75.85 strength=17.33 stock=3981.86 cap=34663.23 
+[2026-09-24 13:46:13]	[CulturalDiffusion] inject 82,23 civ=3 culture=7.7 vitality=24.32 strength=9.34 stock=1771.27 cap=18685.89 
+[2026-09-24 13:46:13]	[CulturalDiffusion] inject 80,31 civ=3 culture=4.4 vitality=25.15 strength=6.57 stock=1339.67 cap=13140.14 
+[2026-09-24 13:46:13]	[CulturalDiffusion] inject 90,37 civ=3 culture=7.7 vitality=25.55 strength=9.51 stock=1863.96 cap=19012.32 
+[2026-09-24 13:46:13]	[CulturalDiffusion] inject 79,39 civ=5 culture=0 vitality=19.34 strength=0 stock=177.04 cap=0 
+[2026-09-24 13:46:13]	[CulturalDiffusion] frontier city=65536 ring=4 best=19701.12 bar=375 over=20/23 centre=72901.06 
+[2026-09-24 13:46:13]	[CulturalDiffusion] frontier city=131073 ring=4 best=76.91 bar=375 over=0/24 centre=151.57 
+[2026-09-24 13:46:13]	[CulturalDiffusion] frontier city=196610 ring=4 best=37509.31 bar=375 over=10/19 centre=7116.22 
+[2026-09-24 13:46:13]	[CulturalDiffusion] frontier city=262147 ring=4 best=54306.92 bar=375 over=15/24 centre=15760.67 
+[2026-09-24 13:46:13]	[CulturalDiffusion] frontier city=327684 ring=4 best=15760.67 bar=375 over=4/24 centre=3666.61 
+[2026-09-24 13:46:13]	[CulturalDiffusion] flip 89,26 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 13:46:13]	[CulturalDiffusion] flip 93,37 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 13:46:13]	[CulturalDiffusion] flip 88,38 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner 3) 
+[2026-09-24 13:46:13]	[CulturalDiffusion] state bytes=12081 field=303 claims=22 locked=22 passMs=23 
+[2026-09-24 13:46:13]	[CulturalDiffusion] pass: 0 flip(s), 3 pending, 0 ceded (0 pending), confirmed 1 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 303 active field tile(s) 
+[2026-09-24 13:46:13]	[CulturalDiffusion] pass (turn 5): flips=0 field tiles=127 
+[2026-09-24 13:46:19]	[CDH] TURN n=5 turn=5 age=AGE_EXPLORATION state={"claims":22,"pending":3,"field":303,"locked":22} foreignUnitsOnOurLand=1 
+[2026-09-24 13:46:23]	[CulturalDiffusion] notify: (89,26) unowned -> player 0 
+[2026-09-24 13:46:23]	[CulturalDiffusion] pending 89,26 claim confirmed on the live map 
+[2026-09-24 13:46:23]	[CulturalDiffusion] notify: (93,37) unowned -> player 0 
+[2026-09-24 13:46:23]	[CulturalDiffusion] pending 93,37 claim confirmed on the live map 
+[2026-09-24 13:46:23]	[CulturalDiffusion] notify: (88,38) player 3 -> player 0 
+[2026-09-24 13:46:23]	[CulturalDiffusion] pending 88,38 claim confirmed on the live map 
+[2026-09-24 13:46:23]	[CulturalDiffusion] inject 92,32 civ=0 culture=40.8 vitality=50.58 strength=40.82 stock=73533.91 cap=81645.71 
+[2026-09-24 13:46:23]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=24.41 strength=0 stock=142.99 cap=0 
+[2026-09-24 13:46:23]	[CulturalDiffusion] inject 93,26 civ=0 culture=7.7 vitality=57.57 strength=14.45 stock=7241.49 cap=28898.51 
+[2026-09-24 13:46:23]	[CulturalDiffusion] inject 87,32 civ=0 culture=13.2 vitality=39.13 strength=17.92 stock=15852.94 cap=35839.94 
+[2026-09-24 13:46:23]	[CulturalDiffusion] inject 84,35 civ=0 culture=1.1 vitality=26.3 strength=3.1 stock=4065.03 cap=6193.06 
+[2026-09-24 13:46:23]	[CulturalDiffusion] inject 77,36 civ=2 culture=2.2 vitality=12.9 strength=4.4 stock=245.5 cap=8792.37 
+[2026-09-24 13:46:23]	[CulturalDiffusion] inject 81,18 civ=3 culture=10.8 vitality=75.85 strength=17.33 stock=4215.29 cap=34659.45 
+[2026-09-24 13:46:23]	[CulturalDiffusion] inject 82,23 civ=3 culture=7.7 vitality=24.32 strength=9.34 stock=1843.98 cap=18683.85 
+[2026-09-24 13:46:23]	[CulturalDiffusion] inject 80,31 civ=3 culture=4.4 vitality=25.15 strength=6.57 stock=1374.81 cap=13138.7 
+[2026-09-24 13:46:23]	[CulturalDiffusion] inject 90,37 civ=3 culture=7.7 vitality=25.55 strength=9.51 stock=1938.7 cap=19010.24 
+[2026-09-24 13:46:23]	[CulturalDiffusion] inject 79,39 civ=5 culture=0 vitality=21.95 strength=0 stock=167.19 cap=0 
+[2026-09-24 13:46:23]	[CulturalDiffusion] frontier city=65536 ring=4 best=18762.91 bar=375 over=21/23 centre=73533.91 
+[2026-09-24 13:46:23]	[CulturalDiffusion] frontier city=131073 ring=4 best=90.54 bar=375 over=0/24 centre=142.99 
+[2026-09-24 13:46:23]	[CulturalDiffusion] frontier city=196610 ring=4 best=37536.94 bar=375 over=11/19 centre=7241.49 
+[2026-09-24 13:46:23]	[CulturalDiffusion] frontier city=262147 ring=4 best=54675.8 bar=375 over=15/24 centre=15852.94 
+[2026-09-24 13:46:23]	[CulturalDiffusion] frontier city=327684 ring=4 best=15852.94 bar=375 over=4/24 centre=4065.03 
+[2026-09-24 13:46:23]	[CulturalDiffusion] flip 95,31 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 13:46:23]	[CulturalDiffusion] flip 95,29 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 13:46:23]	[CulturalDiffusion] flip 88,27 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 13:46:23]	[CulturalDiffusion] state bytes=12430 field=308 claims=25 locked=25 passMs=18 
+[2026-09-24 13:46:23]	[CulturalDiffusion] pass: 0 flip(s), 3 pending, 0 ceded (0 pending), confirmed 3 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 308 active field tile(s) 
+[2026-09-24 13:46:23]	[CulturalDiffusion] pass (turn 6): flips=0 field tiles=131 
+[2026-09-24 13:46:29]	[CDH] TURN n=6 turn=6 age=AGE_EXPLORATION state={"claims":25,"pending":3,"field":308,"locked":25} foreignUnitsOnOurLand=0 
+[2026-09-24 13:46:33]	[CulturalDiffusion] notify: (95,31) unowned -> player 0 
+[2026-09-24 13:46:33]	[CulturalDiffusion] pending 95,31 claim confirmed on the live map 
+[2026-09-24 13:46:33]	[CulturalDiffusion] notify: (95,29) unowned -> player 0 
+[2026-09-24 13:46:33]	[CulturalDiffusion] pending 95,29 claim confirmed on the live map 
+[2026-09-24 13:46:33]	[CulturalDiffusion] notify: (88,27) unowned -> player 0 
+[2026-09-24 13:46:33]	[CulturalDiffusion] pending 88,27 claim confirmed on the live map 
+[2026-09-24 13:46:33]	[CulturalDiffusion] inject 92,32 civ=0 culture=40.8 vitality=55.11 strength=41.52 stock=74226.93 cap=83042.02 
+[2026-09-24 13:46:33]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=24.41 strength=0 stock=134.84 cap=0 
+[2026-09-24 13:46:33]	[CulturalDiffusion] inject 93,26 civ=0 culture=7.7 vitality=54.52 strength=13.99 stock=7349.58 cap=27985.54 
+[2026-09-24 13:46:33]	[CulturalDiffusion] inject 87,32 civ=0 culture=13.2 vitality=36.87 strength=17.32 stock=15914 cap=34644.59 
+[2026-09-24 13:46:33]	[CulturalDiffusion] inject 84,35 civ=0 culture=1.1 vitality=26.3 strength=3.06 stock=4394.19 cap=6112.72 
+[2026-09-24 13:46:33]	[CulturalDiffusion] inject 77,36 civ=2 culture=2.2 vitality=12.9 strength=4.23 stock=267.89 cap=8459.81 
+[2026-09-24 13:46:33]	[CulturalDiffusion] inject 81,18 civ=3 culture=14.4 vitality=79.7 strength=27.34 stock=4701.08 cap=54686.04 
+[2026-09-24 13:46:33]	[CulturalDiffusion] inject 82,23 civ=3 culture=7.7 vitality=24.32 strength=12.01 stock=1960.59 cap=24028.52 
+[2026-09-24 13:46:33]	[CulturalDiffusion] inject 80,31 civ=3 culture=4.4 vitality=22.11 strength=8.08 stock=1431.04 cap=16150.89 
+[2026-09-24 13:46:33]	[CulturalDiffusion] inject 90,37 civ=3 culture=7.7 vitality=25.55 strength=12.22 stock=2059.22 cap=24448.27 
+[2026-09-24 13:46:33]	[CulturalDiffusion] inject 79,39 civ=5 culture=0 vitality=21.95 strength=0 stock=157.83 cap=0 
+[2026-09-24 13:46:33]	[CulturalDiffusion] frontier city=65536 ring=4 best=18315.09 bar=375 over=21/23 centre=74226.93 
+[2026-09-24 13:46:33]	[CulturalDiffusion] frontier city=131073 ring=4 best=118.47 bar=375 over=0/24 centre=134.84 
+[2026-09-24 13:46:33]	[CulturalDiffusion] frontier city=196610 ring=4 best=37791.91 bar=375 over=11/19 centre=7349.58 
+[2026-09-24 13:46:33]	[CulturalDiffusion] frontier city=262147 ring=4 best=55150.43 bar=375 over=15/24 centre=15914 
+[2026-09-24 13:46:33]	[CulturalDiffusion] frontier city=327684 ring=4 best=15914 bar=375 over=4/24 centre=4394.19 
+[2026-09-24 13:46:33]	[CulturalDiffusion] state bytes=12492 field=309 claims=28 locked=27 passMs=15 
+[2026-09-24 13:46:33]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 3 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 309 active field tile(s) 
+[2026-09-24 13:46:33]	[CulturalDiffusion] pass (turn 7): flips=0 field tiles=131 
+[2026-09-24 13:46:39]	[CDH] TURN n=7 turn=7 age=AGE_EXPLORATION state={"claims":28,"pending":0,"field":309,"locked":27} foreignUnitsOnOurLand=0 
+[2026-09-24 13:46:45]	[CulturalDiffusion] inject 92,32 civ=0 culture=40.8 vitality=54.06 strength=41.19 stock=74871.09 cap=82384.26 
+[2026-09-24 13:46:45]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=26.35 strength=0 stock=127.1 cap=0 
+[2026-09-24 13:46:45]	[CulturalDiffusion] inject 93,26 civ=0 culture=7.7 vitality=56.07 strength=14.11 stock=7459.73 cap=28227.89 
+[2026-09-24 13:46:45]	[CulturalDiffusion] inject 87,32 civ=0 culture=13.2 vitality=36.87 strength=17.3 stock=15972.6 cap=34602.35 
+[2026-09-24 13:46:45]	[CulturalDiffusion] inject 84,35 civ=0 culture=1.1 vitality=26.3 strength=3.05 stock=4731.82 cap=6105.27 
+[2026-09-24 13:46:45]	[CulturalDiffusion] inject 77,36 civ=2 culture=2.2 vitality=12.9 strength=4.22 stock=290.27 cap=8447.28 
+[2026-09-24 13:46:45]	[CulturalDiffusion] inject 81,18 civ=3 culture=14.4 vitality=79.7 strength=27.25 stock=5198.74 cap=54507.57 
+[2026-09-24 13:46:45]	[CulturalDiffusion] inject 82,23 civ=3 culture=7.7 vitality=24.32 strength=11.98 stock=2076.92 cap=23950.1 
+[2026-09-24 13:46:45]	[CulturalDiffusion] inject 80,31 civ=3 culture=4.4 vitality=22.11 strength=8.05 stock=1486.41 cap=16098.18 
+[2026-09-24 13:46:45]	[CulturalDiffusion] inject 90,37 civ=3 culture=7.7 vitality=25.55 strength=12.18 stock=2179.4 cap=24368.48 
+[2026-09-24 13:46:45]	[CulturalDiffusion] inject 79,39 civ=5 culture=0 vitality=21.95 strength=0 stock=148.94 cap=0 
+[2026-09-24 13:46:45]	[CulturalDiffusion] frontier city=65536 ring=4 best=18328.58 bar=375 over=21/23 centre=74871.09 
+[2026-09-24 13:46:45]	[CulturalDiffusion] frontier city=131073 ring=4 best=158.11 bar=375 over=0/24 centre=127.1 
+[2026-09-24 13:46:45]	[CulturalDiffusion] frontier city=196610 ring=4 best=38119.98 bar=375 over=10/19 centre=7459.73 
+[2026-09-24 13:46:45]	[CulturalDiffusion] frontier city=262147 ring=4 best=55670.19 bar=375 over=16/24 centre=15972.6 
+[2026-09-24 13:46:45]	[CulturalDiffusion] frontier city=327684 ring=4 best=15972.6 bar=375 over=4/24 centre=4731.82 
+[2026-09-24 13:46:45]	[CulturalDiffusion] flip 87,28 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 13:46:45]	[CulturalDiffusion] flip 87,27 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 13:46:45]	[CulturalDiffusion] flip 88,25 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 13:46:45]	[CulturalDiffusion] state bytes=12753 field=311 claims=28 locked=26 passMs=20 
+[2026-09-24 13:46:45]	[CulturalDiffusion] pass: 0 flip(s), 3 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 311 active field tile(s) 
+[2026-09-24 13:46:45]	[CulturalDiffusion] pass (turn 8): flips=0 field tiles=134 
+[2026-09-24 13:46:51]	[CDH] TURN n=8 turn=8 age=AGE_EXPLORATION state={"claims":28,"pending":3,"field":311,"locked":26} foreignUnitsOnOurLand=0 
+[2026-09-24 13:46:57]	[CulturalDiffusion] notify: (87,28) unowned -> player 0 
+[2026-09-24 13:46:57]	[CulturalDiffusion] pending 87,28 claim confirmed on the live map 
+[2026-09-24 13:46:57]	[CulturalDiffusion] notify: (87,27) unowned -> player 0 
+[2026-09-24 13:46:57]	[CulturalDiffusion] pending 87,27 claim confirmed on the live map 
+[2026-09-24 13:46:57]	[CulturalDiffusion] notify: (88,25) unowned -> player 0 
+[2026-09-24 13:46:57]	[CulturalDiffusion] pending 88,25 claim confirmed on the live map 
+[2026-09-24 13:46:57]	[CulturalDiffusion] inject 92,32 civ=0 culture=40.8 vitality=54.06 strength=41.21 stock=75504.21 cap=82428.52 
+[2026-09-24 13:46:57]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=26.35 strength=0 stock=119.74 cap=0 
+[2026-09-24 13:46:57]	[CulturalDiffusion] inject 93,26 civ=0 culture=7.7 vitality=56.07 strength=14.12 stock=7568.12 cap=28243.05 
+[2026-09-24 13:46:57]	[CulturalDiffusion] inject 87,32 civ=0 culture=13.2 vitality=36.87 strength=17.31 stock=16030.28 cap=34620.93 
+[2026-09-24 13:46:57]	[CulturalDiffusion] inject 84,35 civ=0 culture=1.1 vitality=26.3 strength=3.05 stock=5078.15 cap=6108.55 
+[2026-09-24 13:46:57]	[CulturalDiffusion] inject 77,36 civ=2 culture=2.2 vitality=12.9 strength=4.22 stock=312.58 cap=8433.86 
+[2026-09-24 13:46:57]	[CulturalDiffusion] inject 81,18 civ=3 culture=14.4 vitality=79.7 strength=27.26 stock=5709.1 cap=54524.19 
+[2026-09-24 13:46:57]	[CulturalDiffusion] inject 82,23 civ=3 culture=7.7 vitality=24.32 strength=11.98 stock=2193.51 cap=23957.4 
+[2026-09-24 13:46:57]	[CulturalDiffusion] inject 80,31 civ=3 culture=4.4 vitality=22.11 strength=8.05 stock=1541.32 cap=16103.09 
+[2026-09-24 13:46:57]	[CulturalDiffusion] inject 90,37 civ=3 culture=7.7 vitality=25.55 strength=12.19 stock=2299.8 cap=24375.91 
+[2026-09-24 13:46:57]	[CulturalDiffusion] inject 79,39 civ=5 culture=0 vitality=21.95 strength=0 stock=140.49 cap=0 
+[2026-09-24 13:46:57]	[CulturalDiffusion] frontier city=65536 ring=4 best=18453.08 bar=375 over=21/23 centre=75504.21 
+[2026-09-24 13:46:57]	[CulturalDiffusion] frontier city=131073 ring=4 best=214.68 bar=375 over=0/24 centre=119.74 
+[2026-09-24 13:46:57]	[CulturalDiffusion] frontier city=196610 ring=4 best=38479.24 bar=375 over=10/19 centre=7568.12 
+[2026-09-24 13:46:57]	[CulturalDiffusion] frontier city=262147 ring=4 best=56153.32 bar=375 over=16/24 centre=16030.28 
+[2026-09-24 13:46:57]	[CulturalDiffusion] frontier city=327684 ring=4 best=16030.28 bar=375 over=4/24 centre=5078.15 
+[2026-09-24 13:46:57]	[CulturalDiffusion] flip 89,25 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 13:46:57]	[CulturalDiffusion] state bytes=12923 field=312 claims=31 locked=28 passMs=17 
+[2026-09-24 13:46:57]	[CulturalDiffusion] pass: 0 flip(s), 1 pending, 0 ceded (0 pending), confirmed 3 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 312 active field tile(s) 
+[2026-09-24 13:46:57]	[CulturalDiffusion] pass (turn 9): flips=0 field tiles=136 
+[2026-09-24 13:47:03]	[CDH] TURN n=9 turn=9 age=AGE_EXPLORATION state={"claims":31,"pending":1,"field":312,"locked":28} foreignUnitsOnOurLand=0 
+[2026-09-24 13:47:09]	[CulturalDiffusion] notify: (89,25) unowned -> player 0 
+[2026-09-24 13:47:09]	[CulturalDiffusion] pending 89,25 claim confirmed on the live map 
+[2026-09-24 13:47:09]	[CulturalDiffusion] inject 92,32 civ=0 culture=40.8 vitality=54.06 strength=41.11 stock=76113.45 cap=82228.38 
+[2026-09-24 13:47:09]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=26.35 strength=0 stock=112.76 cap=0 
+[2026-09-24 13:47:09]	[CulturalDiffusion] inject 93,26 civ=0 culture=7.7 vitality=56.07 strength=14.09 stock=7673.35 cap=28174.48 
+[2026-09-24 13:47:09]	[CulturalDiffusion] inject 87,32 civ=0 culture=13.2 vitality=36.87 strength=17.27 stock=16084.55 cap=34536.88 
+[2026-09-24 13:47:09]	[CulturalDiffusion] inject 84,35 civ=0 culture=1.1 vitality=26.3 strength=3.05 stock=5110.06 cap=6093.71 
+[2026-09-24 13:47:09]	[CulturalDiffusion] inject 77,36 civ=2 culture=2.2 vitality=12.9 strength=4.22 stock=334.84 cap=8438.02 
+[2026-09-24 13:47:09]	[CulturalDiffusion] inject 81,18 civ=3 culture=14.4 vitality=79.7 strength=27.25 stock=6230.17 cap=54505.99 
+[2026-09-24 13:47:09]	[CulturalDiffusion] inject 82,23 civ=3 culture=7.7 vitality=24.32 strength=11.97 stock=2310.04 cap=23949.4 
+[2026-09-24 13:47:09]	[CulturalDiffusion] inject 80,31 civ=3 culture=4.4 vitality=22.11 strength=8.05 stock=1595.63 cap=16097.71 
+[2026-09-24 13:47:09]	[CulturalDiffusion] inject 90,37 civ=3 culture=7.7 vitality=25.55 strength=12.18 stock=2420.1 cap=24367.78 
+[2026-09-24 13:47:09]	[CulturalDiffusion] inject 79,39 civ=5 culture=0 vitality=21.95 strength=0 stock=132.47 cap=0 
+[2026-09-24 13:47:09]	[CulturalDiffusion] frontier city=65536 ring=4 best=18613.27 bar=375 over=21/23 centre=76113.45 
+[2026-09-24 13:47:09]	[CulturalDiffusion] frontier city=131073 ring=4 best=293.52 bar=375 over=0/24 centre=112.76 
+[2026-09-24 13:47:09]	[CulturalDiffusion] frontier city=196610 ring=4 best=38813.17 bar=375 over=10/19 centre=7673.35 
+[2026-09-24 13:47:09]	[CulturalDiffusion] frontier city=262147 ring=4 best=56628.16 bar=375 over=16/24 centre=16084.55 
+[2026-09-24 13:47:09]	[CulturalDiffusion] frontier city=327684 ring=4 best=16084.55 bar=375 over=4/24 centre=5110.06 
+[2026-09-24 13:47:09]	[CulturalDiffusion] flip 89,24 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 13:47:09]	[CulturalDiffusion] state bytes=13097 field=317 claims=32 locked=28 passMs=17 
+[2026-09-24 13:47:09]	[CulturalDiffusion] pass: 0 flip(s), 1 pending, 0 ceded (0 pending), confirmed 1 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 317 active field tile(s) 
+[2026-09-24 13:47:09]	[CulturalDiffusion] pass (turn 10): flips=0 field tiles=137 
+[2026-09-24 13:47:15]	[CDH] TURN n=10 turn=10 age=AGE_EXPLORATION state={"claims":32,"pending":1,"field":317,"locked":28} foreignUnitsOnOurLand=0 
+[2026-09-24 13:47:17]	[CulturalDiffusion] notify: (89,24) unowned -> player 0 
+[2026-09-24 13:47:17]	[CulturalDiffusion] pending 89,24 claim confirmed on the live map 
+[2026-09-24 13:47:17]	[CulturalDiffusion] inject 92,32 civ=0 culture=40.8 vitality=54.79 strength=53.07 stock=77987.27 cap=106138.81 
+[2026-09-24 13:47:17]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=26.68 strength=0 stock=106.12 cap=0 
+[2026-09-24 13:47:17]	[CulturalDiffusion] inject 93,26 civ=0 culture=8.8 vitality=59.77 strength=20.18 stock=7983.39 cap=40363.92 
+[2026-09-24 13:47:17]	[CulturalDiffusion] inject 87,32 civ=0 culture=13.2 vitality=37.2 strength=22.25 stock=16382.45 cap=44509.59 
+[2026-09-24 13:47:17]	[CulturalDiffusion] inject 84,35 civ=0 culture=1.1 vitality=26.63 strength=3.93 stock=5154.14 cap=7863.05 
+[2026-09-24 13:47:17]	[CulturalDiffusion] inject 77,36 civ=2 culture=2.2 vitality=12.9 strength=4.16 stock=356.58 cap=8318.11 
+[2026-09-24 13:47:17]	[CulturalDiffusion] inject 81,18 civ=3 culture=14.4 vitality=65.18 strength=25.47 stock=6706.19 cap=50933.82 
+[2026-09-24 13:47:17]	[CulturalDiffusion] inject 82,23 civ=3 culture=7.7 vitality=24.32 strength=12.01 stock=2427.03 cap=24012.5 
+[2026-09-24 13:47:17]	[CulturalDiffusion] inject 80,31 civ=3 culture=4.4 vitality=22.11 strength=8.07 stock=1649.7 cap=16140.12 
+[2026-09-24 13:47:17]	[CulturalDiffusion] inject 90,37 civ=3 culture=7.7 vitality=37.07 strength=13.91 stock=2573.22 cap=27829.78 
+[2026-09-24 13:47:17]	[CulturalDiffusion] inject 79,39 civ=5 culture=0 vitality=21.95 strength=0 stock=124.84 cap=0 
+[2026-09-24 13:47:17]	[CulturalDiffusion] frontier city=65536 ring=4 best=18788.69 bar=375 over=21/23 centre=77987.27 
+[2026-09-24 13:47:17]	[CulturalDiffusion] frontier city=131073 ring=4 best=398.97 bar=375 over=1/24 centre=106.12 
+[2026-09-24 13:47:17]	[CulturalDiffusion] frontier city=196610 ring=4 best=39141.38 bar=375 over=10/19 centre=7983.39 
+[2026-09-24 13:47:17]	[CulturalDiffusion] frontier city=262147 ring=4 best=57085.09 bar=375 over=16/24 centre=16382.45 
+[2026-09-24 13:47:17]	[CulturalDiffusion] frontier city=327684 ring=4 best=16382.45 bar=375 over=4/24 centre=5154.14 
+[2026-09-24 13:47:17]	[CulturalDiffusion] flip 88,24 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 13:47:17]	[CulturalDiffusion] flip 88,39 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner 3) 
+[2026-09-24 13:47:17]	[CulturalDiffusion] state bytes=13374 field=321 claims=33 locked=29 passMs=17 
+[2026-09-24 13:47:17]	[CulturalDiffusion] pass: 0 flip(s), 2 pending, 0 ceded (0 pending), confirmed 1 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 321 active field tile(s) 
+[2026-09-24 13:47:17]	[CulturalDiffusion] pass (turn 11): flips=0 field tiles=139 
+[2026-09-24 13:47:23]	[CDH] TURN n=11 turn=11 age=AGE_EXPLORATION state={"claims":33,"pending":2,"field":321,"locked":29} foreignUnitsOnOurLand=0 
+[2026-09-24 13:47:28]	[CulturalDiffusion] notify: (88,24) unowned -> player 0 
+[2026-09-24 13:47:28]	[CulturalDiffusion] pending 88,24 claim confirmed on the live map 
+[2026-09-24 13:47:28]	[CulturalDiffusion] notify: (88,39) player 3 -> player 0 
+[2026-09-24 13:47:28]	[CulturalDiffusion] pending 88,39 claim confirmed on the live map 
+[2026-09-24 13:47:28]	[CulturalDiffusion] inject 92,32 civ=0 culture=40.8 vitality=54.79 strength=52.92 stock=79820.93 cap=105845.95 
+[2026-09-24 13:47:28]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=26.68 strength=0 stock=99.81 cap=0 
+[2026-09-24 13:47:28]	[CulturalDiffusion] inject 93,26 civ=0 culture=8.8 vitality=59.77 strength=20.13 stock=8289.69 cap=40252.55 
+[2026-09-24 13:47:28]	[CulturalDiffusion] inject 87,32 civ=0 culture=13.2 vitality=37.2 strength=22.19 stock=16672.5 cap=44386.77 
+[2026-09-24 13:47:28]	[CulturalDiffusion] inject 84,35 civ=0 culture=1.1 vitality=26.63 strength=3.92 stock=5172.85 cap=7841.35 
+[2026-09-24 13:47:28]	[CulturalDiffusion] inject 77,36 civ=2 culture=2.2 vitality=12.9 strength=4.12 stock=377.88 cap=8241.17 
+[2026-09-24 13:47:28]	[CulturalDiffusion] inject 81,18 civ=3 culture=14.4 vitality=65.18 strength=25.41 stock=7185.73 cap=50816.31 
+[2026-09-24 13:47:28]	[CulturalDiffusion] inject 82,23 civ=3 culture=7.7 vitality=24.32 strength=11.98 stock=2543.23 cap=23957.1 
+[2026-09-24 13:47:28]	[CulturalDiffusion] inject 80,31 civ=3 culture=4.4 vitality=22.11 strength=8.05 stock=1702.87 cap=16102.89 
+[2026-09-24 13:47:28]	[CulturalDiffusion] inject 90,37 civ=3 culture=7.7 vitality=37.07 strength=13.88 stock=2726.31 cap=27765.58 
+[2026-09-24 13:47:28]	[CulturalDiffusion] inject 79,39 civ=5 culture=0 vitality=19.34 strength=0 stock=117.6 cap=0 
+[2026-09-24 13:47:28]	[CulturalDiffusion] frontier city=65536 ring=4 best=18951.74 bar=375 over=21/23 centre=79820.93 
+[2026-09-24 13:47:28]	[CulturalDiffusion] frontier city=131073 ring=4 best=528.99 bar=375 over=1/24 centre=99.81 
+[2026-09-24 13:47:28]	[CulturalDiffusion] frontier city=196610 ring=4 best=39457.21 bar=375 over=10/19 centre=8289.69 
+[2026-09-24 13:47:28]	[CulturalDiffusion] frontier city=262147 ring=4 best=58490.45 bar=375 over=16/24 centre=16672.5 
+[2026-09-24 13:47:28]	[CulturalDiffusion] frontier city=327684 ring=4 best=16672.5 bar=375 over=4/24 centre=5172.85 
+[2026-09-24 13:47:28]	[CulturalDiffusion] state bytes=13523 field=325 claims=35 locked=27 passMs=15 
+[2026-09-24 13:47:28]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 2 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 325 active field tile(s) 
+[2026-09-24 13:47:28]	[CulturalDiffusion] pass (turn 12): flips=0 field tiles=141 
+[2026-09-24 13:47:34]	[CDH] TURN n=12 turn=12 age=AGE_EXPLORATION state={"claims":35,"pending":0,"field":325,"locked":27} foreignUnitsOnOurLand=0 
+[2026-09-24 13:47:41]	[CulturalDiffusion] inject 92,32 civ=0 culture=40.8 vitality=54.79 strength=52.26 stock=81557.38 cap=104521.93 
+[2026-09-24 13:47:41]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=26.68 strength=0 stock=93.82 cap=0 
+[2026-09-24 13:47:41]	[CulturalDiffusion] inject 93,26 civ=0 culture=8.8 vitality=59.77 strength=19.87 stock=8585.03 cap=39749.04 
+[2026-09-24 13:47:41]	[CulturalDiffusion] inject 87,32 civ=0 culture=13.2 vitality=37.2 strength=21.92 stock=16943.85 cap=43831.54 
+[2026-09-24 13:47:41]	[CulturalDiffusion] inject 84,35 civ=0 culture=1.1 vitality=26.63 strength=3.87 stock=5189.93 cap=7743.27 
+[2026-09-24 13:47:41]	[CulturalDiffusion] inject 77,36 civ=2 culture=2.2 vitality=12.9 strength=5.47 stock=409.18 cap=10941.97 
+[2026-09-24 13:47:41]	[CulturalDiffusion] inject 81,18 civ=3 culture=14.4 vitality=66.83 strength=25.4 stock=7669.43 cap=50805.16 
+[2026-09-24 13:47:41]	[CulturalDiffusion] inject 82,23 civ=3 culture=7.7 vitality=24.32 strength=11.87 stock=2656.94 cap=23743.18 
+[2026-09-24 13:47:41]	[CulturalDiffusion] inject 80,31 civ=3 culture=4.4 vitality=22.11 strength=7.98 stock=1754.26 cap=15959.1 
+[2026-09-24 13:47:41]	[CulturalDiffusion] inject 90,37 civ=3 culture=7.7 vitality=37.07 strength=13.76 stock=2877.23 cap=27517.65 
+[2026-09-24 13:47:41]	[CulturalDiffusion] inject 79,39 civ=5 culture=0 vitality=19.34 strength=0 stock=110.72 cap=0 
+[2026-09-24 13:47:41]	[CulturalDiffusion] frontier city=65536 ring=4 best=19112 bar=375 over=21/23 centre=81557.38 
+[2026-09-24 13:47:41]	[CulturalDiffusion] frontier city=131073 ring=4 best=680.88 bar=375 over=1/24 centre=93.82 
+[2026-09-24 13:47:41]	[CulturalDiffusion] frontier city=196610 ring=4 best=40428.6 bar=375 over=11/19 centre=8585.03 
+[2026-09-24 13:47:41]	[CulturalDiffusion] frontier city=262147 ring=4 best=59865.7 bar=375 over=16/24 centre=16943.85 
+[2026-09-24 13:47:41]	[CulturalDiffusion] frontier city=327684 ring=4 best=16943.85 bar=375 over=4/24 centre=5189.93 
+[2026-09-24 13:47:41]	[CulturalDiffusion] flip 87,25 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 13:47:41]	[CulturalDiffusion] state bytes=13672 field=327 claims=35 locked=26 passMs=15 
+[2026-09-24 13:47:41]	[CulturalDiffusion] pass: 0 flip(s), 1 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 327 active field tile(s) 
+[2026-09-24 13:47:41]	[CulturalDiffusion] pass (turn 13): flips=0 field tiles=141 
+[2026-09-24 13:47:47]	[CulturalDiffusion] notify: (87,25) unowned -> player 0 
+[2026-09-24 13:47:47]	[CulturalDiffusion] pending 87,25 claim confirmed on the live map 
+[2026-09-24 13:47:47]	[CulturalDiffusion] inject 92,32 civ=0 culture=40.8 vitality=54.63 strength=52.13 stock=83254.42 cap=104260.71 
+[2026-09-24 13:47:47]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=26.68 strength=0 stock=88.13 cap=0 
+[2026-09-24 13:47:47]	[CulturalDiffusion] inject 93,26 civ=0 culture=8.8 vitality=59.93 strength=19.86 stock=8877.64 cap=39730 
+[2026-09-24 13:47:47]	[CulturalDiffusion] inject 87,32 civ=0 culture=13.2 vitality=37.2 strength=21.88 stock=17208.93 cap=43768.24 
+[2026-09-24 13:47:47]	[CulturalDiffusion] inject 84,35 civ=0 culture=1.1 vitality=26.63 strength=3.87 stock=5207.12 cap=7732.08 
+[2026-09-24 13:47:47]	[CulturalDiffusion] inject 77,36 civ=2 culture=2.2 vitality=12.9 strength=5.47 stock=440.57 cap=10938.05 
+[2026-09-24 13:47:47]	[CulturalDiffusion] inject 81,18 civ=3 culture=14.4 vitality=66.83 strength=25.46 stock=8158.42 cap=50914.62 
+[2026-09-24 13:47:47]	[CulturalDiffusion] inject 82,23 civ=3 culture=7.7 vitality=24.32 strength=11.9 stock=2770.6 cap=23794.33 
+[2026-09-24 13:47:47]	[CulturalDiffusion] inject 80,31 civ=3 culture=4.4 vitality=22.11 strength=8 stock=1805.27 cap=15993.48 
+[2026-09-24 13:47:47]	[CulturalDiffusion] inject 90,37 civ=3 culture=7.7 vitality=37.07 strength=13.79 stock=3028.82 cap=27576.94 
+[2026-09-24 13:47:47]	[CulturalDiffusion] inject 79,39 civ=5 culture=0 vitality=19.34 strength=0 stock=104.18 cap=0 
+[2026-09-24 13:47:47]	[CulturalDiffusion] frontier city=65536 ring=4 best=19266.22 bar=375 over=21/23 centre=83254.42 
+[2026-09-24 13:47:47]	[CulturalDiffusion] frontier city=131073 ring=4 best=826.51 bar=375 over=1/24 centre=88.13 
+[2026-09-24 13:47:47]	[CulturalDiffusion] frontier city=196610 ring=4 best=41379.17 bar=375 over=11/19 centre=8877.64 
+[2026-09-24 13:47:47]	[CulturalDiffusion] frontier city=262147 ring=4 best=61168.03 bar=375 over=16/24 centre=17208.93 
+[2026-09-24 13:47:47]	[CulturalDiffusion] frontier city=327684 ring=4 best=17208.93 bar=375 over=4/24 centre=5207.12 
+[2026-09-24 13:47:47]	[CulturalDiffusion] state bytes=13729 field=328 claims=36 locked=26 passMs=15 
+[2026-09-24 13:47:47]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 1 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 328 active field tile(s) 
+[2026-09-24 13:47:47]	[CulturalDiffusion] pass (turn 14): flips=0 field tiles=141 
+[2026-09-24 13:47:48]	[CDH] TURN n=14 turn=14 age=AGE_EXPLORATION state={"claims":36,"pending":0,"field":328,"locked":26} foreignUnitsOnOurLand=1 
+[2026-09-24 13:47:53]	[CDH] TURN n=14 turn=14 age=AGE_EXPLORATION state={"claims":36,"pending":0,"field":328,"locked":26} foreignUnitsOnOurLand=1 
+[2026-09-24 13:47:59]	[CulturalDiffusion] inject 92,32 civ=0 culture=40.8 vitality=54.63 strength=52.07 stock=84919.19 cap=104133.76 
+[2026-09-24 13:47:59]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=26.68 strength=0 stock=82.72 cap=0 
+[2026-09-24 13:47:59]	[CulturalDiffusion] inject 93,26 civ=0 culture=11 vitality=59.41 strength=22.87 stock=9277.44 cap=45746.34 
+[2026-09-24 13:47:59]	[CulturalDiffusion] inject 87,32 civ=0 culture=13.2 vitality=37.2 strength=21.86 stock=17467.99 cap=43714.95 
+[2026-09-24 13:47:59]	[CulturalDiffusion] inject 84,35 civ=0 culture=1.1 vitality=26.63 strength=3.86 stock=5301.43 cap=7722.67 
+[2026-09-24 13:47:59]	[CulturalDiffusion] inject 77,36 civ=2 culture=2.2 vitality=12.9 strength=5.46 stock=471.91 cap=10916.25 
+[2026-09-24 13:47:59]	[CulturalDiffusion] inject 81,18 civ=3 culture=14.4 vitality=66.83 strength=25.42 stock=8648.74 cap=50839.84 
+[2026-09-24 13:47:59]	[CulturalDiffusion] inject 82,23 civ=3 culture=7.7 vitality=24.32 strength=11.88 stock=2883.25 cap=23759.39 
+[2026-09-24 13:47:59]	[CulturalDiffusion] inject 80,31 civ=3 culture=4.4 vitality=22.11 strength=7.98 stock=1855.4 cap=15969.99 
+[2026-09-24 13:47:59]	[CulturalDiffusion] inject 90,37 civ=3 culture=7.7 vitality=37.07 strength=13.77 stock=3179.84 cap=27536.44 
+[2026-09-24 13:47:59]	[CulturalDiffusion] inject 79,39 civ=5 culture=0 vitality=19.34 strength=0 stock=97.98 cap=0 
+[2026-09-24 13:47:59]	[CulturalDiffusion] frontier city=65536 ring=4 best=19740.53 bar=375 over=19/23 centre=84919.19 
+[2026-09-24 13:47:59]	[CulturalDiffusion] frontier city=131073 ring=4 best=833.68 bar=375 over=1/24 centre=82.72 
+[2026-09-24 13:47:59]	[CulturalDiffusion] frontier city=196610 ring=4 best=42279.34 bar=375 over=11/19 centre=9277.44 
+[2026-09-24 13:47:59]	[CulturalDiffusion] frontier city=262147 ring=4 best=62440.81 bar=375 over=16/24 centre=17467.99 
+[2026-09-24 13:47:59]	[CulturalDiffusion] frontier city=327684 ring=4 best=17467.99 bar=375 over=4/24 centre=5301.43 
+[2026-09-24 13:47:59]	[CulturalDiffusion] state bytes=13773 field=329 claims=36 locked=25 passMs=15 
+[2026-09-24 13:47:59]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 329 active field tile(s) 
+[2026-09-24 13:47:59]	[CulturalDiffusion] pass (turn 15): flips=0 field tiles=141 
+[2026-09-24 13:48:05]	[CDH] TURN n=15 turn=15 age=AGE_EXPLORATION state={"claims":36,"pending":0,"field":329,"locked":25} foreignUnitsOnOurLand=1 
+[2026-09-24 13:48:07]	[CulturalDiffusion] inject 92,32 civ=0 culture=40.8 vitality=54.63 strength=51.16 stock=86455.79 cap=102311.5 
+[2026-09-24 13:48:07]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=26.68 strength=0 stock=77.59 cap=0 
+[2026-09-24 13:48:07]	[CulturalDiffusion] inject 93,26 civ=0 culture=11 vitality=59.41 strength=22.47 stock=9660.91 cap=44945.81 
+[2026-09-24 13:48:07]	[CulturalDiffusion] inject 87,32 civ=0 culture=13.2 vitality=37.2 strength=21.47 stock=17702.85 cap=42949.97 
+[2026-09-24 13:48:07]	[CulturalDiffusion] inject 84,35 civ=0 culture=1.1 vitality=26.63 strength=3.79 stock=5392.27 cap=7587.53 
+[2026-09-24 13:48:07]	[CulturalDiffusion] inject 77,36 civ=2 culture=2.2 vitality=12.9 strength=5.46 stock=503.22 cap=10913.07 
+[2026-09-24 13:48:07]	[CulturalDiffusion] inject 81,18 civ=3 culture=13.2 vitality=60.58 strength=18.15 stock=8878.98 cap=36296.87 
+[2026-09-24 13:48:07]	[CulturalDiffusion] inject 82,23 civ=3 culture=7.7 vitality=24.32 strength=9.29 stock=2941.26 cap=18576.93 
+[2026-09-24 13:48:07]	[CulturalDiffusion] inject 80,31 civ=3 culture=4.4 vitality=22.11 strength=6.24 stock=1875.79 cap=12486.58 
+[2026-09-24 13:48:07]	[CulturalDiffusion] inject 90,37 civ=3 culture=7.7 vitality=31.37 strength=10.15 stock=3251.61 cap=20307.77 
+[2026-09-24 13:48:07]	[CulturalDiffusion] inject 79,39 civ=5 culture=0 vitality=20.33 strength=0 stock=92.08 cap=0 
+[2026-09-24 13:48:07]	[CulturalDiffusion] frontier city=65536 ring=4 best=20204.67 bar=375 over=19/23 centre=86455.79 
+[2026-09-24 13:48:07]	[CulturalDiffusion] frontier city=131073 ring=4 best=841.54 bar=375 over=1/24 centre=77.59 
+[2026-09-24 13:48:07]	[CulturalDiffusion] frontier city=196610 ring=4 best=43159.09 bar=375 over=11/19 centre=9660.91 
+[2026-09-24 13:48:07]	[CulturalDiffusion] frontier city=262147 ring=4 best=63689.4 bar=375 over=16/24 centre=17702.85 
+[2026-09-24 13:48:07]	[CulturalDiffusion] frontier city=327684 ring=4 best=17702.85 bar=375 over=4/24 centre=5392.27 
+[2026-09-24 13:48:07]	[CulturalDiffusion] state bytes=13819 field=330 claims=36 locked=23 passMs=15 
+[2026-09-24 13:48:07]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 330 active field tile(s) 
+[2026-09-24 13:48:07]	[CulturalDiffusion] pass (turn 16): flips=0 field tiles=139 
+[2026-09-24 13:48:13]	[CDH] TURN n=16 turn=16 age=AGE_EXPLORATION state={"claims":36,"pending":0,"field":330,"locked":23} foreignUnitsOnOurLand=0 
+[2026-09-24 13:48:15]	[CulturalDiffusion] inject 92,32 civ=0 culture=40.8 vitality=54.63 strength=38.86 stock=82132 cap=77725.79 
+[2026-09-24 13:48:15]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=26.68 strength=0 stock=72.71 cap=0 
+[2026-09-24 13:48:15]	[CulturalDiffusion] inject 93,26 civ=0 culture=11 vitality=59.41 strength=17.07 stock=9836.77 cap=34145.22 
+[2026-09-24 13:48:15]	[CulturalDiffusion] inject 87,32 civ=0 culture=13.2 vitality=37.2 strength=16.31 stock=17667.41 cap=32628.98 
+[2026-09-24 13:48:15]	[CulturalDiffusion] inject 84,35 civ=0 culture=1.1 vitality=26.63 strength=2.88 stock=5453.11 cap=5764.23 
+[2026-09-24 13:48:15]	[CulturalDiffusion] inject 77,36 civ=2 culture=2.2 vitality=12.9 strength=5.37 stock=533.7 cap=10737.18 
+[2026-09-24 13:48:15]	[CulturalDiffusion] inject 81,18 civ=3 culture=18 vitality=68.58 strength=31.58 stock=9596.38 cap=63151.7 
+[2026-09-24 13:48:15]	[CulturalDiffusion] inject 82,23 civ=3 culture=7.7 vitality=25.42 strength=12.85 stock=3073.01 cap=25691.29 
+[2026-09-24 13:48:15]	[CulturalDiffusion] inject 80,31 civ=3 culture=4.4 vitality=23.21 strength=8.65 stock=1936.05 cap=17294.64 
+[2026-09-24 13:48:15]	[CulturalDiffusion] inject 90,37 civ=3 culture=7.7 vitality=32.47 strength=13.99 stock=3407.1 cap=27989.72 
+[2026-09-24 13:48:15]	[CulturalDiffusion] inject 79,39 civ=5 culture=0 vitality=20.33 strength=0 stock=86.47 cap=0 
+[2026-09-24 13:48:15]	[CulturalDiffusion] frontier city=65536 ring=4 best=20644.21 bar=375 over=19/23 centre=82132 
+[2026-09-24 13:48:15]	[CulturalDiffusion] frontier city=131073 ring=4 best=848.84 bar=375 over=1/24 centre=72.71 
+[2026-09-24 13:48:15]	[CulturalDiffusion] frontier city=196610 ring=4 best=44022.11 bar=375 over=11/19 centre=9836.77 
+[2026-09-24 13:48:15]	[CulturalDiffusion] frontier city=262147 ring=4 best=64841.84 bar=375 over=16/24 centre=17667.41 
+[2026-09-24 13:48:15]	[CulturalDiffusion] frontier city=327684 ring=4 best=17667.41 bar=375 over=4/24 centre=5453.11 
+[2026-09-24 13:48:15]	[CulturalDiffusion] state bytes=14051 field=336 claims=36 locked=22 passMs=14 
+[2026-09-24 13:48:15]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 336 active field tile(s) 
+[2026-09-24 13:48:15]	[CulturalDiffusion] pass (turn 17): flips=0 field tiles=140 
+[2026-09-24 13:48:21]	[CDH] TURN n=17 turn=17 age=AGE_EXPLORATION state={"claims":36,"pending":0,"field":336,"locked":22} foreignUnitsOnOurLand=1 
+[2026-09-24 13:48:28]	[CulturalDiffusion] inject 92,32 civ=0 culture=40.8 vitality=54.63 strength=37.8 stock=78024.4 cap=75594.96 
+[2026-09-24 13:48:28]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=26.64 strength=0 stock=86.77 cap=0 
+[2026-09-24 13:48:28]	[CulturalDiffusion] inject 93,26 civ=0 culture=11 vitality=59.07 strength=16.57 stock=9990.46 cap=33141.5 
+[2026-09-24 13:48:28]	[CulturalDiffusion] inject 87,32 civ=0 culture=13.2 vitality=37.2 strength=15.87 stock=17609.87 cap=31734.47 
+[2026-09-24 13:48:28]	[CulturalDiffusion] inject 84,35 civ=0 culture=1.1 vitality=26.63 strength=2.8 stock=5535.18 cap=5606.2 
+[2026-09-24 13:48:28]	[CulturalDiffusion] inject 77,36 civ=2 culture=2.2 vitality=13.88 strength=5.49 stock=565.18 cap=10988.69 
+[2026-09-24 13:48:28]	[CulturalDiffusion] inject 81,18 civ=3 culture=18 vitality=66.93 strength=30.88 stock=10297.15 cap=61760.26 
+[2026-09-24 13:48:28]	[CulturalDiffusion] inject 82,23 civ=3 culture=7.7 vitality=25.42 strength=12.67 stock=3200.39 cap=25340.36 
+[2026-09-24 13:48:28]	[CulturalDiffusion] inject 80,31 civ=3 culture=4.4 vitality=23.21 strength=8.53 stock=1993.59 cap=17058.4 
+[2026-09-24 13:48:28]	[CulturalDiffusion] inject 90,37 civ=3 culture=7.7 vitality=32.47 strength=13.8 stock=3557.8 cap=27607.4 
+[2026-09-24 13:48:28]	[CulturalDiffusion] inject 79,39 civ=5 culture=0 vitality=20.66 strength=0 stock=81.15 cap=0 
+[2026-09-24 13:48:28]	[CulturalDiffusion] frontier city=65536 ring=4 best=21073.77 bar=375 over=19/23 centre=78024.4 
+[2026-09-24 13:48:28]	[CulturalDiffusion] frontier city=131073 ring=4 best=856.02 bar=375 over=1/24 centre=86.77 
+[2026-09-24 13:48:28]	[CulturalDiffusion] frontier city=196610 ring=4 best=44818.68 bar=375 over=11/19 centre=9990.46 
+[2026-09-24 13:48:28]	[CulturalDiffusion] frontier city=262147 ring=4 best=61599 bar=375 over=16/24 centre=17609.87 
+[2026-09-24 13:48:28]	[CulturalDiffusion] frontier city=327684 ring=4 best=17609.87 bar=375 over=4/24 centre=5535.18 
+[2026-09-24 13:48:28]	[CulturalDiffusion] state bytes=14086 field=337 claims=36 locked=18 passMs=16 
+[2026-09-24 13:48:28]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 337 active field tile(s) 
+[2026-09-24 13:48:28]	[CulturalDiffusion] pass (turn 18): flips=0 field tiles=141 
+[2026-09-24 13:48:34]	[CDH] TURN n=18 turn=18 age=AGE_EXPLORATION state={"claims":36,"pending":0,"field":337,"locked":18} foreignUnitsOnOurLand=1 
+[2026-09-24 13:48:49]	[CulturalDiffusion] inject 92,32 civ=0 culture=40.8 vitality=47.26 strength=34.42 stock=74122.18 cap=68839.38 
+[2026-09-24 13:48:49]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=22.96 strength=0 stock=105.64 cap=0 
+[2026-09-24 13:48:49]	[CulturalDiffusion] inject 93,26 civ=0 culture=11 vitality=53.27 strength=15.31 stock=10092.62 cap=30620.5 
+[2026-09-24 13:48:49]	[CulturalDiffusion] inject 87,32 civ=0 culture=13.2 vitality=34.7 strength=14.83 stock=17500.81 cap=29669.36 
+[2026-09-24 13:48:49]	[CulturalDiffusion] inject 84,35 civ=0 culture=1.1 vitality=24.13 strength=2.59 stock=5526.98 cap=5188.42 
+[2026-09-24 13:48:49]	[CulturalDiffusion] inject 77,36 civ=2 culture=2.2 vitality=13.88 strength=4.43 stock=586.69 cap=8855.99 
+[2026-09-24 13:48:49]	[CulturalDiffusion] inject 81,18 civ=3 culture=18 vitality=68.5 strength=29.26 stock=10941.28 cap=58521.83 
+[2026-09-24 13:48:49]	[CulturalDiffusion] inject 82,23 civ=3 culture=8.8 vitality=26.53 strength=13.18 stock=3338.2 cap=26365.3 
+[2026-09-24 13:48:49]	[CulturalDiffusion] inject 80,31 civ=3 culture=4.4 vitality=23.21 strength=8.02 stock=2041.54 cap=16032.88 
+[2026-09-24 13:48:49]	[CulturalDiffusion] inject 90,37 civ=3 culture=7.7 vitality=31.77 strength=12.88 stock=3686.35 cap=25750.29 
+[2026-09-24 13:48:49]	[CulturalDiffusion] inject 79,39 civ=5 culture=0 vitality=24.7 strength=0 stock=76.09 cap=0 
+[2026-09-24 13:48:49]	[CulturalDiffusion] frontier city=65536 ring=4 best=21495.17 bar=375 over=19/23 centre=74122.18 
+[2026-09-24 13:48:49]	[CulturalDiffusion] frontier city=131073 ring=4 best=862.93 bar=375 over=1/24 centre=105.64 
+[2026-09-24 13:48:49]	[CulturalDiffusion] frontier city=196610 ring=4 best=42577.23 bar=375 over=11/19 centre=10092.62 
+[2026-09-24 13:48:49]	[CulturalDiffusion] frontier city=262147 ring=4 best=58518.3 bar=375 over=16/24 centre=17500.81 
+[2026-09-24 13:48:49]	[CulturalDiffusion] frontier city=327684 ring=4 best=17500.81 bar=375 over=4/24 centre=5526.98 
+[2026-09-24 13:48:49]	[CulturalDiffusion] state bytes=14118 field=338 claims=36 locked=15 passMs=16 
+[2026-09-24 13:48:49]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 338 active field tile(s) 
+[2026-09-24 13:48:49]	[CulturalDiffusion] pass (turn 19): flips=0 field tiles=141 
+[2026-09-24 13:48:55]	[CDH] TURN n=19 turn=19 age=AGE_EXPLORATION state={"claims":36,"pending":0,"field":338,"locked":15} foreignUnitsOnOurLand=2 
+[2026-09-24 13:49:13]	[CulturalDiffusion] inject 92,32 civ=0 culture=40.8 vitality=47.44 strength=34.44 stock=70415.07 cap=68877.59 
+[2026-09-24 13:49:13]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=22.96 strength=0 stock=130.5 cap=0 
+[2026-09-24 13:49:13]	[CulturalDiffusion] inject 93,26 civ=0 culture=11 vitality=53.44 strength=15.32 stock=10192.93 cap=30633.04 
+[2026-09-24 13:49:13]	[CulturalDiffusion] inject 87,32 civ=0 culture=13.2 vitality=34.7 strength=14.82 stock=17394.28 cap=29647.46 
+[2026-09-24 13:49:13]	[CulturalDiffusion] inject 84,35 civ=0 culture=1.1 vitality=24.94 strength=2.62 stock=5601.29 cap=5245.24 
+[2026-09-24 13:49:13]	[CulturalDiffusion] inject 77,36 civ=2 culture=2.2 vitality=13.88 strength=4.21 stock=605.86 cap=8423.14 
+[2026-09-24 13:49:13]	[CulturalDiffusion] inject 81,18 civ=3 culture=18 vitality=70.35 strength=29.61 stock=11602.72 cap=59217.45 
+[2026-09-24 13:49:13]	[CulturalDiffusion] inject 82,23 civ=3 culture=8.8 vitality=26.53 strength=13.22 stock=3476.01 cap=26430.92 
+[2026-09-24 13:49:13]	[CulturalDiffusion] inject 80,31 civ=3 culture=4.4 vitality=23.21 strength=8.04 stock=2089.1 cap=16072.78 
+[2026-09-24 13:49:13]	[CulturalDiffusion] inject 90,37 civ=3 culture=9.9 vitality=34.21 strength=15.6 stock=3877.78 cap=31193.29 
+[2026-09-24 13:49:13]	[CulturalDiffusion] inject 79,39 civ=5 culture=0 vitality=24.7 strength=0 stock=71.29 cap=0 
+[2026-09-24 13:49:13]	[CulturalDiffusion] frontier city=65536 ring=4 best=21884.12 bar=375 over=19/23 centre=70415.07 
+[2026-09-24 13:49:13]	[CulturalDiffusion] frontier city=131073 ring=4 best=884.17 bar=375 over=1/24 centre=130.5 
+[2026-09-24 13:49:13]	[CulturalDiffusion] frontier city=196610 ring=4 best=40447.85 bar=375 over=11/19 centre=10192.93 
+[2026-09-24 13:49:13]	[CulturalDiffusion] frontier city=262147 ring=4 best=55591.63 bar=375 over=16/24 centre=17394.28 
+[2026-09-24 13:49:13]	[CulturalDiffusion] frontier city=327684 ring=4 best=17394.28 bar=375 over=4/24 centre=5601.29 
+[2026-09-24 13:49:13]	[CulturalDiffusion] state bytes=14225 field=342 claims=36 locked=14 passMs=15 
+[2026-09-24 13:49:13]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 342 active field tile(s) 
+[2026-09-24 13:49:13]	[CulturalDiffusion] pass (turn 20): flips=0 field tiles=142 
+[2026-09-24 13:49:19]	[CDH] TURN n=20 turn=20 age=AGE_EXPLORATION state={"claims":36,"pending":0,"field":342,"locked":14} foreignUnitsOnOurLand=4 
+[2026-09-24 13:49:38]	[CulturalDiffusion] inject 92,32 civ=0 culture=40.8 vitality=47.44 strength=32.53 stock=66893.31 cap=65053.94 
+[2026-09-24 13:49:38]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=22.96 strength=0 stock=162.45 cap=0 
+[2026-09-24 13:49:38]	[CulturalDiffusion] inject 93,26 civ=0 culture=11 vitality=53.44 strength=14.47 stock=10257.94 cap=28932.49 
+[2026-09-24 13:49:38]	[CulturalDiffusion] inject 87,32 civ=0 culture=13.2 vitality=34.7 strength=14 stock=17248.72 cap=28001.62 
+[2026-09-24 13:49:38]	[CulturalDiffusion] inject 84,35 civ=0 culture=1.1 vitality=24.94 strength=2.48 stock=5590.08 cap=4954.06 
+[2026-09-24 13:49:38]	[CulturalDiffusion] inject 77,36 civ=2 culture=2.2 vitality=13.88 strength=4.2 stock=624.59 cap=8396.47 
+[2026-09-24 13:49:38]	[CulturalDiffusion] inject 81,18 civ=3 culture=18 vitality=70.35 strength=29.68 stock=12269.59 cap=59351.14 
+[2026-09-24 13:49:38]	[CulturalDiffusion] inject 82,23 civ=3 culture=8.8 vitality=26.53 strength=13.25 stock=3613.66 cap=26490.59 
+[2026-09-24 13:49:38]	[CulturalDiffusion] inject 80,31 civ=3 culture=4.4 vitality=23.21 strength=8.05 stock=2136.22 cap=16109.07 
+[2026-09-24 13:49:38]	[CulturalDiffusion] inject 90,37 civ=3 culture=9.9 vitality=34.21 strength=15.63 stock=4069.9 cap=31263.71 
+[2026-09-24 13:49:38]	[CulturalDiffusion] inject 79,39 civ=5 culture=0 vitality=24.7 strength=0 stock=66.72 cap=0 
+[2026-09-24 13:49:38]	[CulturalDiffusion] frontier city=65536 ring=4 best=20789.66 bar=375 over=19/23 centre=66893.31 
+[2026-09-24 13:49:38]	[CulturalDiffusion] frontier city=131073 ring=4 best=904.96 bar=375 over=2/24 centre=162.45 
+[2026-09-24 13:49:38]	[CulturalDiffusion] frontier city=196610 ring=4 best=38424.94 bar=375 over=12/19 centre=10257.94 
+[2026-09-24 13:49:38]	[CulturalDiffusion] frontier city=262147 ring=4 best=52811.3 bar=375 over=16/24 centre=17248.72 
+[2026-09-24 13:49:38]	[CulturalDiffusion] frontier city=327684 ring=4 best=17248.72 bar=375 over=4/24 centre=5590.08 
+[2026-09-24 13:49:38]	[CulturalDiffusion] flip 87,24 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 13:49:38]	[CulturalDiffusion] state bytes=14514 field=348 claims=36 locked=11 passMs=16 
+[2026-09-24 13:49:38]	[CulturalDiffusion] pass: 0 flip(s), 1 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 348 active field tile(s) 
+[2026-09-24 13:49:38]	[CulturalDiffusion] pass (turn 21): flips=0 field tiles=143 
+[2026-09-24 13:49:44]	[CDH] TURN n=21 turn=21 age=AGE_EXPLORATION state={"claims":36,"pending":1,"field":348,"locked":11} foreignUnitsOnOurLand=5 
+[2026-09-24 13:50:11]	[CulturalDiffusion] notify: (87,24) unowned -> player 0 
+[2026-09-24 13:50:11]	[CulturalDiffusion] pending 87,24 claim confirmed on the live map 
+[2026-09-24 13:50:11]	[CulturalDiffusion] inject 92,32 civ=0 culture=40.8 vitality=47.44 strength=32.53 stock=63547.65 cap=65066.74 
+[2026-09-24 13:50:11]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=22.96 strength=0 stock=201.48 cap=0 
+[2026-09-24 13:50:11]	[CulturalDiffusion] inject 93,26 civ=0 culture=11 vitality=53.44 strength=14.47 stock=10321.61 cap=28938.18 
+[2026-09-24 13:50:11]	[CulturalDiffusion] inject 87,32 civ=0 culture=13.2 vitality=34.7 strength=14 stock=17107.59 cap=28007.13 
+[2026-09-24 13:50:11]	[CulturalDiffusion] inject 84,35 civ=0 culture=1.1 vitality=24.94 strength=2.48 stock=5571.87 cap=4955.03 
+[2026-09-24 13:50:11]	[CulturalDiffusion] inject 77,36 civ=2 culture=2.2 vitality=13.88 strength=4.44 stock=645.31 cap=8873.47 
+[2026-09-24 13:50:11]	[CulturalDiffusion] inject 81,18 civ=3 culture=18 vitality=70.35 strength=20.27 stock=12534.84 cap=40546.45 
+[2026-09-24 13:50:11]	[CulturalDiffusion] inject 82,23 civ=3 culture=8.8 vitality=26.53 strength=9.05 stock=3652.65 cap=18097.37 
+[2026-09-24 13:50:11]	[CulturalDiffusion] inject 80,31 civ=3 culture=4.4 vitality=23.21 strength=5.5 stock=2136.91 cap=11005.11 
+[2026-09-24 13:50:11]	[CulturalDiffusion] inject 90,37 civ=3 culture=9.9 vitality=34.21 strength=10.68 stock=4139.26 cap=21358.19 
+[2026-09-24 13:50:11]	[CulturalDiffusion] inject 79,39 civ=5 culture=0 vitality=25.41 strength=0 stock=62.39 cap=0 
+[2026-09-24 13:50:11]	[CulturalDiffusion] frontier city=65536 ring=4 best=19749.93 bar=375 over=19/23 centre=63547.65 
+[2026-09-24 13:50:11]	[CulturalDiffusion] frontier city=131073 ring=4 best=924.65 bar=375 over=2/24 centre=201.48 
+[2026-09-24 13:50:11]	[CulturalDiffusion] frontier city=196610 ring=4 best=36503.17 bar=375 over=12/19 centre=10321.61 
+[2026-09-24 13:50:11]	[CulturalDiffusion] frontier city=262147 ring=4 best=50169.99 bar=375 over=16/24 centre=17107.59 
+[2026-09-24 13:50:11]	[CulturalDiffusion] frontier city=327684 ring=4 best=17107.59 bar=375 over=4/24 centre=5571.87 
+[2026-09-24 13:50:11]	[CulturalDiffusion] state bytes=14552 field=351 claims=37 locked=9 passMs=16 
+[2026-09-24 13:50:11]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 1 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 351 active field tile(s) 
+[2026-09-24 13:50:11]	[CulturalDiffusion] pass (turn 22): flips=0 field tiles=143 
+[2026-09-24 13:50:17]	[CDH] TURN n=22 turn=22 age=AGE_EXPLORATION state={"claims":37,"pending":0,"field":351,"locked":9} foreignUnitsOnOurLand=7 
+[2026-09-24 13:50:30]	[CulturalDiffusion] inject 92,32 civ=0 culture=40.8 vitality=48.21 strength=32.81 stock=62436.59 cap=65614.97 
+[2026-09-24 13:50:30]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=24.62 strength=0 stock=242.45 cap=0 
+[2026-09-24 13:50:30]	[CulturalDiffusion] inject 93,26 civ=0 culture=11 vitality=54.21 strength=14.58 stock=10388.29 cap=29163.67 
+[2026-09-24 13:50:30]	[CulturalDiffusion] inject 87,32 civ=0 culture=13.2 vitality=35.47 strength=14.15 stock=16978.02 cap=28300.79 
+[2026-09-24 13:50:30]	[CulturalDiffusion] inject 84,35 civ=0 culture=1.1 vitality=25.71 strength=2.51 stock=5537.37 cap=5021.85 
+[2026-09-24 13:50:30]	[CulturalDiffusion] inject 77,36 civ=2 culture=2.2 vitality=13.88 strength=4.44 stock=665.76 cap=8886.51 
+[2026-09-24 13:50:30]	[CulturalDiffusion] inject 81,18 civ=3 culture=18 vitality=72 strength=20.41 stock=12802.19 cap=40823.6 
+[2026-09-24 13:50:30]	[CulturalDiffusion] inject 82,23 civ=3 culture=8.8 vitality=25.6 strength=8.92 stock=3687.92 cap=17849.56 
+[2026-09-24 13:50:30]	[CulturalDiffusion] inject 80,31 civ=3 culture=4.4 vitality=23.21 strength=5.5 stock=2137.45 cap=10990.79 
+[2026-09-24 13:50:30]	[CulturalDiffusion] inject 90,37 civ=3 culture=9.9 vitality=34.21 strength=10.67 stock=4207.05 cap=21330.4 
+[2026-09-24 13:50:30]	[CulturalDiffusion] inject 79,39 civ=5 culture=0 vitality=25.41 strength=0 stock=58.27 cap=0 
+[2026-09-24 13:50:30]	[CulturalDiffusion] frontier city=65536 ring=4 best=18762.18 bar=375 over=19/23 centre=62436.59 
+[2026-09-24 13:50:30]	[CulturalDiffusion] frontier city=131073 ring=4 best=943.89 bar=375 over=2/24 centre=242.45 
+[2026-09-24 13:50:30]	[CulturalDiffusion] frontier city=196610 ring=4 best=34677.49 bar=375 over=12/19 centre=10388.29 
+[2026-09-24 13:50:30]	[CulturalDiffusion] frontier city=262147 ring=4 best=47660.74 bar=375 over=16/24 centre=16978.02 
+[2026-09-24 13:50:30]	[CulturalDiffusion] frontier city=327684 ring=4 best=16978.02 bar=375 over=4/24 centre=5537.37 
+[2026-09-24 13:50:30]	[CulturalDiffusion] state bytes=14749 field=355 claims=37 locked=9 passMs=18 
+[2026-09-24 13:50:30]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 355 active field tile(s) 
+[2026-09-24 13:50:30]	[CulturalDiffusion] pass (turn 23): flips=0 field tiles=143 
+[2026-09-24 13:50:36]	[CDH] TURN n=23 turn=23 age=AGE_EXPLORATION state={"claims":37,"pending":0,"field":355,"locked":9} foreignUnitsOnOurLand=7 
+[2026-09-24 13:50:56]	[CulturalDiffusion] inject 92,32 civ=0 culture=40.8 vitality=48.56 strength=32.89 stock=62506.23 cap=65770.23 
+[2026-09-24 13:50:56]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=24.62 strength=0 stock=279.76 cap=0 
+[2026-09-24 13:50:56]	[CulturalDiffusion] inject 93,26 civ=0 culture=11 vitality=54.56 strength=14.61 stock=10454.69 cap=29224.51 
+[2026-09-24 13:50:56]	[CulturalDiffusion] inject 87,32 civ=0 culture=13.2 vitality=38.31 strength=14.54 stock=16871.66 cap=29071.03 
+[2026-09-24 13:50:56]	[CulturalDiffusion] inject 84,35 civ=0 culture=1.1 vitality=26.53 strength=2.54 stock=5503.66 cap=5076.11 
+[2026-09-24 13:50:56]	[CulturalDiffusion] inject 77,36 civ=2 culture=2.2 vitality=13.88 strength=4.45 stock=685.95 cap=8902.4 
+[2026-09-24 13:50:56]	[CulturalDiffusion] inject 81,18 civ=3 culture=18 vitality=72 strength=20.61 stock=13074.05 cap=41211.36 
+[2026-09-24 13:50:56]	[CulturalDiffusion] inject 82,23 civ=3 culture=8.8 vitality=25.6 strength=9.01 stock=3724.43 cap=18019.1 
+[2026-09-24 13:50:56]	[CulturalDiffusion] inject 80,31 civ=3 culture=4.4 vitality=23.21 strength=5.55 stock=2138.91 cap=11095.19 
+[2026-09-24 13:50:56]	[CulturalDiffusion] inject 90,37 civ=3 culture=9.9 vitality=38.71 strength=11.24 stock=4288.12 cap=22484.55 
+[2026-09-24 13:50:56]	[CulturalDiffusion] inject 79,39 civ=5 culture=0 vitality=25.41 strength=0 stock=54.35 cap=0 
+[2026-09-24 13:50:56]	[CulturalDiffusion] frontier city=65536 ring=4 best=17823.81 bar=375 over=19/23 centre=62506.23 
+[2026-09-24 13:50:56]	[CulturalDiffusion] frontier city=131073 ring=4 best=962.76 bar=375 over=2/24 centre=279.76 
+[2026-09-24 13:50:56]	[CulturalDiffusion] frontier city=196610 ring=4 best=32943.1 bar=375 over=11/19 centre=10454.69 
+[2026-09-24 13:50:56]	[CulturalDiffusion] frontier city=262147 ring=4 best=46827.44 bar=375 over=16/24 centre=16871.66 
+[2026-09-24 13:50:56]	[CulturalDiffusion] frontier city=327684 ring=4 best=16871.66 bar=375 over=4/24 centre=5503.66 
+[2026-09-24 13:50:56]	[CulturalDiffusion] state bytes=14756 field=356 claims=37 locked=6 passMs=16 
+[2026-09-24 13:50:56]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 356 active field tile(s) 
+[2026-09-24 13:50:56]	[CulturalDiffusion] pass (turn 24): flips=0 field tiles=145 
+[2026-09-24 13:51:02]	[CDH] TURN n=24 turn=24 age=AGE_EXPLORATION state={"claims":37,"pending":0,"field":356,"locked":6} foreignUnitsOnOurLand=7 
+[2026-09-24 13:51:21]	[CulturalDiffusion] inject 92,32 civ=0 culture=40.8 vitality=48.73 strength=33.24 stock=62608.44 cap=66478.02 
+[2026-09-24 13:51:21]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=24.62 strength=0 stock=286.34 cap=0 
+[2026-09-24 13:51:21]	[CulturalDiffusion] inject 93,26 civ=0 culture=11 vitality=54.74 strength=14.77 stock=10525.75 cap=29534.93 
+[2026-09-24 13:51:21]	[CulturalDiffusion] inject 87,32 civ=0 culture=13.2 vitality=42.3 strength=15.19 stock=16801.29 cap=30382.24 
+[2026-09-24 13:51:21]	[CulturalDiffusion] inject 84,35 civ=0 culture=1.1 vitality=24.23 strength=2.48 stock=5457.6 cap=4964.48 
+[2026-09-24 13:51:21]	[CulturalDiffusion] inject 77,36 civ=2 culture=2.2 vitality=13.88 strength=4.46 stock=705.86 cap=8913.32 
+[2026-09-24 13:51:21]	[CulturalDiffusion] inject 81,18 civ=3 culture=18 vitality=73.65 strength=20.78 stock=13349.55 cap=41558.77 
+[2026-09-24 13:51:21]	[CulturalDiffusion] inject 82,23 civ=3 culture=8.8 vitality=25.6 strength=9.01 stock=3760.26 cap=18027.44 
+[2026-09-24 13:51:21]	[CulturalDiffusion] inject 80,31 civ=3 culture=4.4 vitality=23.21 strength=5.55 stock=2140.38 cap=11100.32 
+[2026-09-24 13:51:21]	[CulturalDiffusion] inject 90,37 civ=3 culture=12 vitality=40.26 strength=12.92 stock=4410.47 cap=25846.68 
+[2026-09-24 13:51:21]	[CulturalDiffusion] inject 79,39 civ=5 culture=0 vitality=25.41 strength=0 stock=50.64 cap=0 
+[2026-09-24 13:51:21]	[CulturalDiffusion] frontier city=65536 ring=4 best=16932.37 bar=375 over=19/23 centre=62608.44 
+[2026-09-24 13:51:21]	[CulturalDiffusion] frontier city=131073 ring=4 best=980.18 bar=375 over=2/24 centre=286.34 
+[2026-09-24 13:51:21]	[CulturalDiffusion] frontier city=196610 ring=4 best=32367.13 bar=375 over=11/19 centre=10525.75 
+[2026-09-24 13:51:21]	[CulturalDiffusion] frontier city=262147 ring=4 best=46879.68 bar=375 over=16/24 centre=16801.29 
+[2026-09-24 13:51:21]	[CulturalDiffusion] frontier city=327684 ring=4 best=16801.29 bar=375 over=4/24 centre=5457.6 
+[2026-09-24 13:51:21]	[CulturalDiffusion] state bytes=14869 field=357 claims=37 locked=5 passMs=16 
+[2026-09-24 13:51:21]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 357 active field tile(s) 
+[2026-09-24 13:51:21]	[CulturalDiffusion] pass (turn 25): flips=0 field tiles=146 
+[2026-09-24 13:51:27]	[CDH] TURN n=25 turn=25 age=AGE_EXPLORATION state={"claims":37,"pending":0,"field":357,"locked":5} foreignUnitsOnOurLand=6 
+[2026-09-24 13:51:38]	[CulturalDiffusion] inject 92,32 civ=0 culture=40.8 vitality=48.18 strength=31.1 stock=59477.01 cap=62193.33 
+[2026-09-24 13:51:38]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=18.81 strength=0 stock=292.56 cap=0 
+[2026-09-24 13:51:38]	[CulturalDiffusion] inject 93,26 civ=0 culture=17.6 vitality=50.42 strength=18.29 stock=10735.29 cap=36583.42 
+[2026-09-24 13:51:38]	[CulturalDiffusion] inject 87,32 civ=0 culture=13.2 vitality=36.11 strength=13.5 stock=16647.93 cap=26999.67 
+[2026-09-24 13:51:38]	[CulturalDiffusion] inject 84,35 civ=0 culture=1.1 vitality=23.13 strength=2.29 stock=5412.95 cap=4587.8 
+[2026-09-24 13:51:38]	[CulturalDiffusion] inject 77,36 civ=2 culture=2.2 vitality=13.88 strength=4.48 stock=725.62 cap=8950.94 
+[2026-09-24 13:51:38]	[CulturalDiffusion] inject 81,18 civ=3 culture=15.6 vitality=72.03 strength=14.99 stock=13362 cap=29986.69 
+[2026-09-24 13:51:38]	[CulturalDiffusion] inject 82,23 civ=3 culture=8.8 vitality=21.59 strength=6.78 stock=3742.22 cap=13556.31 
+[2026-09-24 13:51:38]	[CulturalDiffusion] inject 80,31 civ=3 culture=4.4 vitality=23.21 strength=4.43 stock=2121.74 cap=8859.93 
+[2026-09-24 13:51:38]	[CulturalDiffusion] inject 90,37 civ=3 culture=12 vitality=42.49 strength=10.51 stock=4469.3 cap=21021.86 
+[2026-09-24 13:51:38]	[CulturalDiffusion] inject 79,39 civ=5 culture=0 vitality=25.41 strength=0 stock=47.1 cap=0 
+[2026-09-24 13:51:38]	[CulturalDiffusion] frontier city=65536 ring=4 best=16085.5 bar=375 over=18/23 centre=59477.01 
+[2026-09-24 13:51:38]	[CulturalDiffusion] frontier city=131073 ring=4 best=931.16 bar=375 over=2/24 centre=292.56 
+[2026-09-24 13:51:38]	[CulturalDiffusion] frontier city=196610 ring=4 best=32403.23 bar=375 over=11/19 centre=10735.29 
+[2026-09-24 13:51:38]	[CulturalDiffusion] frontier city=262147 ring=4 best=46956.33 bar=375 over=16/24 centre=16647.93 
+[2026-09-24 13:51:38]	[CulturalDiffusion] frontier city=327684 ring=4 best=16647.93 bar=375 over=4/24 centre=5412.95 
+[2026-09-24 13:51:38]	[CulturalDiffusion] flip 89,23 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 13:51:38]	[CulturalDiffusion] state bytes=14910 field=357 claims=37 locked=4 passMs=16 
+[2026-09-24 13:51:38]	[CulturalDiffusion] pass: 0 flip(s), 1 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 357 active field tile(s) 
+[2026-09-24 13:51:38]	[CulturalDiffusion] pass (turn 26): flips=0 field tiles=146 
+[2026-09-24 13:51:44]	[CDH] TURN n=26 turn=26 age=AGE_EXPLORATION state={"claims":37,"pending":1,"field":357,"locked":4} foreignUnitsOnOurLand=5 
+[2026-09-24 13:51:54]	[CulturalDiffusion] notify: (89,23) unowned -> player 0 
+[2026-09-24 13:51:54]	[CulturalDiffusion] pending 89,23 claim confirmed on the live map 
+[2026-09-24 13:51:54]	[CulturalDiffusion] inject 92,32 civ=0 culture=50.4 vitality=44.68 strength=34.72 stock=59791.73 cap=69442.61 
+[2026-09-24 13:51:54]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=18.81 strength=0 stock=298.65 cap=0 
+[2026-09-24 13:51:54]	[CulturalDiffusion] inject 93,26 civ=0 culture=17.6 vitality=50.77 strength=18.32 stock=10942.79 cap=36645.53 
+[2026-09-24 13:51:54]	[CulturalDiffusion] inject 87,32 civ=0 culture=13.2 vitality=41.2 strength=14.13 stock=16530.51 cap=28254.75 
+[2026-09-24 13:51:54]	[CulturalDiffusion] inject 84,35 civ=0 culture=1.1 vitality=23.13 strength=2.29 stock=5371.95 cap=4584.48 
+[2026-09-24 13:51:54]	[CulturalDiffusion] inject 77,36 civ=2 culture=2.2 vitality=13.88 strength=4.25 stock=742.7 cap=8504.79 
+[2026-09-24 13:51:54]	[CulturalDiffusion] inject 81,18 civ=3 culture=15.6 vitality=72.03 strength=14.98 stock=13373.44 cap=29955.09 
+[2026-09-24 13:51:54]	[CulturalDiffusion] inject 82,23 civ=3 culture=8.8 vitality=21.59 strength=6.77 stock=3724.53 cap=13542.03 
+[2026-09-24 13:51:54]	[CulturalDiffusion] inject 80,31 civ=3 culture=4.4 vitality=23.21 strength=4.43 stock=2103.6 cap=8850.59 
+[2026-09-24 13:51:54]	[CulturalDiffusion] inject 90,37 civ=3 culture=12 vitality=42.49 strength=10.5 stock=4526.69 cap=20999.71 
+[2026-09-24 13:51:54]	[CulturalDiffusion] inject 79,39 civ=5 culture=0 vitality=25.08 strength=0 stock=43.75 cap=0 
+[2026-09-24 13:51:54]	[CulturalDiffusion] frontier city=65536 ring=4 best=15804.26 bar=375 over=18/23 centre=59791.73 
+[2026-09-24 13:51:54]	[CulturalDiffusion] frontier city=131073 ring=4 best=884.59 bar=375 over=2/24 centre=298.65 
+[2026-09-24 13:51:54]	[CulturalDiffusion] frontier city=196610 ring=4 best=32456.21 bar=375 over=11/19 centre=10942.79 
+[2026-09-24 13:51:54]	[CulturalDiffusion] frontier city=262147 ring=4 best=44607.76 bar=375 over=16/24 centre=16530.51 
+[2026-09-24 13:51:54]	[CulturalDiffusion] frontier city=327684 ring=4 best=16530.51 bar=375 over=4/24 centre=5371.95 
+[2026-09-24 13:51:54]	[CulturalDiffusion] state bytes=14993 field=358 claims=38 locked=3 passMs=18 
+[2026-09-24 13:51:54]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 1 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 358 active field tile(s) 
+[2026-09-24 13:51:54]	[CulturalDiffusion] pass (turn 27): flips=0 field tiles=146 
+[2026-09-24 13:52:00]	[CDH] TURN n=27 turn=27 age=AGE_EXPLORATION state={"claims":38,"pending":0,"field":358,"locked":3} foreignUnitsOnOurLand=4 
+[2026-09-24 13:52:19]	[CulturalDiffusion] inject 92,32 civ=0 culture=50.4 vitality=45.55 strength=35.5 stock=60173.11 cap=70999.94 
+[2026-09-24 13:52:19]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=19.3 strength=0 stock=304.62 cap=0 
+[2026-09-24 13:52:19]	[CulturalDiffusion] inject 93,26 civ=0 culture=28.6 vitality=52.4 strength=25.8 stock=11449.83 cap=51595.81 
+[2026-09-24 13:52:19]	[CulturalDiffusion] inject 87,32 civ=0 culture=13.2 vitality=41.72 strength=14.41 stock=16430.54 cap=28820.2 
+[2026-09-24 13:52:19]	[CulturalDiffusion] inject 84,35 civ=0 culture=1.1 vitality=23.9 strength=2.35 stock=5338.3 cap=4709.29 
+[2026-09-24 13:52:19]	[CulturalDiffusion] inject 77,36 civ=2 culture=2.2 vitality=13.88 strength=4.25 stock=759.42 cap=8498.7 
+[2026-09-24 13:52:19]	[CulturalDiffusion] inject 81,18 civ=3 culture=15.6 vitality=72.03 strength=14.99 stock=13385.24 cap=29984.13 
+[2026-09-24 13:52:19]	[CulturalDiffusion] inject 82,23 civ=3 culture=8.8 vitality=23.08 strength=6.94 stock=3711.27 cap=13874.34 
+[2026-09-24 13:52:19]	[CulturalDiffusion] inject 80,31 civ=3 culture=4.4 vitality=23.21 strength=4.43 stock=2086.1 cap=8859.17 
+[2026-09-24 13:52:19]	[CulturalDiffusion] inject 90,37 civ=3 culture=12 vitality=42.49 strength=10.51 stock=4583.23 cap=21020.06 
+[2026-09-24 13:52:19]	[CulturalDiffusion] inject 79,39 civ=5 culture=0 vitality=25.08 strength=0 stock=40.56 cap=0 
+[2026-09-24 13:52:19]	[CulturalDiffusion] frontier city=65536 ring=4 best=15821.89 bar=375 over=18/23 centre=60173.11 
+[2026-09-24 13:52:19]	[CulturalDiffusion] frontier city=131073 ring=4 best=840.35 bar=375 over=2/24 centre=304.62 
+[2026-09-24 13:52:19]	[CulturalDiffusion] frontier city=196610 ring=4 best=30832.88 bar=375 over=11/19 centre=11449.83 
+[2026-09-24 13:52:19]	[CulturalDiffusion] frontier city=262147 ring=4 best=44843.8 bar=375 over=16/24 centre=16430.54 
+[2026-09-24 13:52:19]	[CulturalDiffusion] frontier city=327684 ring=4 best=16430.54 bar=375 over=4/24 centre=5338.3 
+[2026-09-24 13:52:19]	[CulturalDiffusion] state bytes=15068 field=361 claims=38 locked=3 passMs=15 
+[2026-09-24 13:52:19]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 361 active field tile(s) 
+[2026-09-24 13:52:19]	[CulturalDiffusion] pass (turn 28): flips=0 field tiles=146 
+[2026-09-24 13:52:25]	[CDH] TURN n=28 turn=28 age=AGE_EXPLORATION state={"claims":38,"pending":0,"field":361,"locked":3} foreignUnitsOnOurLand=4 
+[2026-09-24 13:52:32]	[CulturalDiffusion] inject 92,32 civ=0 culture=50.4 vitality=43.05 strength=33.45 stock=60350.95 cap=66891.06 
+[2026-09-24 13:52:32]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=15.92 strength=0 stock=310.14 cap=0 
+[2026-09-24 13:52:32]	[CulturalDiffusion] inject 93,26 civ=0 culture=28.6 vitality=49.9 strength=24.37 stock=11896.27 cap=48738.82 
+[2026-09-24 13:52:32]	[CulturalDiffusion] inject 87,32 civ=0 culture=13.2 vitality=39.22 strength=13.55 stock=16290.74 cap=27101.59 
+[2026-09-24 13:52:32]	[CulturalDiffusion] inject 84,35 civ=0 culture=1.1 vitality=21.65 strength=2.19 stock=5316.03 cap=4371.36 
+[2026-09-24 13:52:32]	[CulturalDiffusion] inject 77,36 civ=2 culture=2.2 vitality=13.88 strength=4.21 stock=775.41 cap=8425.82 
+[2026-09-24 13:52:32]	[CulturalDiffusion] inject 81,18 civ=3 culture=18 vitality=78.73 strength=17.12 stock=13492.15 cap=34242.27 
+[2026-09-24 13:52:32]	[CulturalDiffusion] inject 82,23 civ=3 culture=8.8 vitality=23.78 strength=7.07 stock=3701.53 cap=14140.65 
+[2026-09-24 13:52:32]	[CulturalDiffusion] inject 80,31 civ=3 culture=4.4 vitality=23.21 strength=4.47 stock=2069.83 cap=8935.29 
+[2026-09-24 13:52:32]	[CulturalDiffusion] inject 90,37 civ=3 culture=14.4 vitality=47.94 strength=12.45 stock=4689.45 cap=24896.18 
+[2026-09-24 13:52:32]	[CulturalDiffusion] inject 79,39 civ=5 culture=0 vitality=27.14 strength=0 stock=37.53 cap=0 
+[2026-09-24 13:52:32]	[CulturalDiffusion] frontier city=65536 ring=4 best=15847.76 bar=375 over=18/23 centre=60350.95 
+[2026-09-24 13:52:32]	[CulturalDiffusion] frontier city=131073 ring=4 best=798.32 bar=375 over=1/24 centre=310.14 
+[2026-09-24 13:52:32]	[CulturalDiffusion] frontier city=196610 ring=4 best=30996.03 bar=375 over=11/19 centre=11896.27 
+[2026-09-24 13:52:32]	[CulturalDiffusion] frontier city=262147 ring=4 best=45129.84 bar=375 over=16/24 centre=16290.74 
+[2026-09-24 13:52:32]	[CulturalDiffusion] frontier city=327684 ring=4 best=16290.74 bar=375 over=4/24 centre=5316.03 
+[2026-09-24 13:52:32]	[CulturalDiffusion] state bytes=15100 field=361 claims=38 locked=2 passMs=15 
+[2026-09-24 13:52:32]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 361 active field tile(s) 
+[2026-09-24 13:52:32]	[CulturalDiffusion] pass (turn 29): flips=0 field tiles=146 
+[2026-09-24 13:52:38]	[CDH] TURN n=29 turn=29 age=AGE_EXPLORATION state={"claims":38,"pending":0,"field":361,"locked":2} foreignUnitsOnOurLand=4 
+[2026-09-24 13:52:42]	[CulturalDiffusion] inject 92,32 civ=0 culture=50.4 vitality=43.22 strength=33.43 stock=60523.12 cap=66860.02 
+[2026-09-24 13:52:42]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=14.2 strength=0 stock=294.63 cap=0 
+[2026-09-24 13:52:42]	[CulturalDiffusion] inject 93,26 civ=0 culture=28.6 vitality=48.86 strength=24.14 stock=12330.4 cap=48289.74 
+[2026-09-24 13:52:42]	[CulturalDiffusion] inject 87,32 civ=0 culture=13.2 vitality=41.21 strength=13.76 stock=16165.49 cap=27524.04 
+[2026-09-24 13:52:42]	[CulturalDiffusion] inject 84,35 civ=0 culture=1.1 vitality=21.65 strength=2.18 stock=5267.51 cap=4363.13 
+[2026-09-24 13:52:42]	[CulturalDiffusion] inject 77,36 civ=2 culture=2.2 vitality=14.21 strength=5.38 stock=803.63 cap=10753.06 
+[2026-09-24 13:52:42]	[CulturalDiffusion] inject 81,18 civ=3 culture=18 vitality=79.25 strength=26.25 stock=14007.45 cap=52500.07 
+[2026-09-24 13:52:42]	[CulturalDiffusion] inject 82,23 civ=3 culture=8.8 vitality=23.78 strength=10.82 stock=3780.29 cap=21630 
+[2026-09-24 13:52:42]	[CulturalDiffusion] inject 80,31 civ=3 culture=4.4 vitality=25.19 strength=7.03 stock=2099.25 cap=14064.99 
+[2026-09-24 13:52:42]	[CulturalDiffusion] inject 90,37 civ=3 culture=14.4 vitality=48.46 strength=19.11 stock=4970.92 cap=38227.45 
+[2026-09-24 13:52:42]	[CulturalDiffusion] inject 79,39 civ=5 culture=0 vitality=27.14 strength=0 stock=34.66 cap=0 
+[2026-09-24 13:52:42]	[CulturalDiffusion] frontier city=65536 ring=4 best=15055.12 bar=375 over=18/23 centre=60523.12 
+[2026-09-24 13:52:42]	[CulturalDiffusion] frontier city=131073 ring=4 best=758.4 bar=375 over=1/24 centre=294.63 
+[2026-09-24 13:52:42]	[CulturalDiffusion] frontier city=196610 ring=4 best=31193.74 bar=375 over=11/19 centre=12330.4 
+[2026-09-24 13:52:42]	[CulturalDiffusion] frontier city=262147 ring=4 best=45263.22 bar=375 over=16/24 centre=16165.49 
+[2026-09-24 13:52:42]	[CulturalDiffusion] frontier city=327684 ring=4 best=16165.49 bar=375 over=4/24 centre=5267.51 
+[2026-09-24 13:52:42]	[CulturalDiffusion] state bytes=15077 field=361 claims=38 locked=2 passMs=16 
+[2026-09-24 13:52:42]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 361 active field tile(s) 
+[2026-09-24 13:52:42]	[CulturalDiffusion] pass (turn 30): flips=0 field tiles=146 
+[2026-09-24 13:52:48]	[CDH] TURN n=30 turn=30 age=AGE_EXPLORATION state={"claims":38,"pending":0,"field":361,"locked":2} foreignUnitsOnOurLand=4 
+[2026-09-24 13:52:55]	[CulturalDiffusion] inject 92,32 civ=0 culture=50.4 vitality=47.6 strength=39.95 stock=61311.98 cap=79890.49 
+[2026-09-24 13:52:55]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=28.58 strength=0 stock=279.89 cap=0 
+[2026-09-24 13:52:55]	[CulturalDiffusion] inject 93,26 civ=0 culture=28.6 vitality=54.4 strength=28.96 stock=12968.41 cap=57923.05 
+[2026-09-24 13:52:55]	[CulturalDiffusion] inject 87,32 civ=0 culture=13.2 vitality=41.21 strength=15.9 stock=16149.1 cap=31796.92 
+[2026-09-24 13:52:55]	[CulturalDiffusion] inject 84,35 civ=0 culture=1.1 vitality=19.65 strength=2.44 stock=5230.36 cap=4872.74 
+[2026-09-24 13:52:55]	[CulturalDiffusion] inject 77,36 civ=2 culture=2.2 vitality=14.21 strength=5.36 stock=831.28 cap=10717.63 
+[2026-09-24 13:52:55]	[CulturalDiffusion] inject 81,18 civ=3 culture=20.4 vitality=80.68 strength=36.5 stock=14989.1 cap=72997.44 
+[2026-09-24 13:52:55]	[CulturalDiffusion] inject 82,23 civ=3 culture=8.8 vitality=24.11 strength=13.84 stock=3929.92 cap=27686.65 
+[2026-09-24 13:52:55]	[CulturalDiffusion] inject 80,31 civ=3 culture=4.4 vitality=25.52 strength=9 stock=2162.98 cap=17998.67 
+[2026-09-24 13:52:55]	[CulturalDiffusion] inject 90,37 civ=3 culture=15.6 vitality=49.34 strength=25.81 stock=5436.15 cap=51619.97 
+[2026-09-24 13:52:55]	[CulturalDiffusion] inject 79,39 civ=5 culture=0 vitality=27.14 strength=0 stock=31.92 cap=0 
+[2026-09-24 13:52:55]	[CulturalDiffusion] frontier city=65536 ring=4 best=15134.78 bar=375 over=18/23 centre=61311.98 
+[2026-09-24 13:52:55]	[CulturalDiffusion] frontier city=131073 ring=4 best=720.47 bar=375 over=1/24 centre=279.89 
+[2026-09-24 13:52:55]	[CulturalDiffusion] frontier city=196610 ring=4 best=31285.93 bar=375 over=11/19 centre=12968.41 
+[2026-09-24 13:52:55]	[CulturalDiffusion] frontier city=262147 ring=4 best=45392.34 bar=375 over=16/24 centre=16149.1 
+[2026-09-24 13:52:55]	[CulturalDiffusion] frontier city=327684 ring=4 best=16149.1 bar=375 over=4/24 centre=5230.36 
+[2026-09-24 13:52:55]	[CulturalDiffusion] state bytes=15178 field=361 claims=38 locked=2 passMs=17 
+[2026-09-24 13:52:55]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 361 active field tile(s) 
+[2026-09-24 13:52:55]	[CulturalDiffusion] pass (turn 31): flips=0 field tiles=146 
+[2026-09-24 13:53:01]	[CDH] TURN n=31 turn=31 age=AGE_EXPLORATION state={"claims":38,"pending":0,"field":361,"locked":2} foreignUnitsOnOurLand=4 
+[2026-09-24 13:53:04]	[CulturalDiffusion] inject 92,32 civ=0 culture=50.4 vitality=43.4 strength=38.13 stock=61911.92 cap=76257.38 
+[2026-09-24 13:53:04]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=27.43 strength=0 stock=265.89 cap=0 
+[2026-09-24 13:53:04]	[CulturalDiffusion] inject 93,26 civ=0 culture=28.6 vitality=50.2 strength=27.76 stock=13553.4 cap=55522.28 
+[2026-09-24 13:53:04]	[CulturalDiffusion] inject 87,32 civ=0 culture=13.2 vitality=41.21 strength=15.67 stock=16122.09 cap=31348.26 
+[2026-09-24 13:53:04]	[CulturalDiffusion] inject 84,35 civ=0 culture=1.1 vitality=14.89 strength=2.18 stock=5198.73 cap=4359.59 
+[2026-09-24 13:53:04]	[CulturalDiffusion] inject 77,36 civ=2 culture=2.2 vitality=14.21 strength=5.33 stock=858.18 cap=10650.21 
+[2026-09-24 13:53:04]	[CulturalDiffusion] inject 81,18 civ=3 culture=20.4 vitality=80.68 strength=40.54 stock=16170.78 cap=81073.59 
+[2026-09-24 13:53:04]	[CulturalDiffusion] inject 82,23 civ=3 culture=8.8 vitality=24.11 strength=15.37 stock=4115.72 cap=30749.79 
+[2026-09-24 13:53:04]	[CulturalDiffusion] inject 80,31 civ=3 culture=4.4 vitality=25.52 strength=9.99 stock=2243.87 cap=19989.97 
+[2026-09-24 13:53:04]	[CulturalDiffusion] inject 90,37 civ=3 culture=15.6 vitality=49.34 strength=28.67 stock=5991.9 cap=57331 
+[2026-09-24 13:53:04]	[CulturalDiffusion] inject 79,39 civ=5 culture=0 vitality=28.57 strength=0 stock=29.33 cap=0 
+[2026-09-24 13:53:04]	[CulturalDiffusion] frontier city=65536 ring=4 best=15231.32 bar=375 over=18/23 centre=61911.92 
+[2026-09-24 13:53:04]	[CulturalDiffusion] frontier city=131073 ring=4 best=707.87 bar=375 over=1/24 centre=265.89 
+[2026-09-24 13:53:04]	[CulturalDiffusion] frontier city=196610 ring=4 best=31375.18 bar=375 over=11/19 centre=13553.4 
+[2026-09-24 13:53:04]	[CulturalDiffusion] frontier city=262147 ring=4 best=45983.99 bar=375 over=16/24 centre=16122.09 
+[2026-09-24 13:53:04]	[CulturalDiffusion] frontier city=327684 ring=4 best=16122.09 bar=375 over=4/24 centre=5198.73 
+[2026-09-24 13:53:04]	[CulturalDiffusion] state bytes=15217 field=361 claims=38 locked=2 passMs=16 
+[2026-09-24 13:53:04]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 361 active field tile(s) 
+[2026-09-24 13:53:04]	[CulturalDiffusion] pass (turn 32): flips=0 field tiles=146 
+[2026-09-24 13:53:10]	[CDH] TURN n=32 turn=32 age=AGE_EXPLORATION state={"claims":38,"pending":0,"field":361,"locked":2} foreignUnitsOnOurLand=3 
+[2026-09-24 13:53:22]	[CulturalDiffusion] inject 92,32 civ=0 culture=50.4 vitality=47.55 strength=39.61 stock=62642.35 cap=79217.67 
+[2026-09-24 13:53:22]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=27.43 strength=0 stock=252.59 cap=0 
+[2026-09-24 13:53:22]	[CulturalDiffusion] inject 93,26 civ=0 culture=28.6 vitality=49.85 strength=27.86 stock=14141.05 cap=55726.08 
+[2026-09-24 13:53:22]	[CulturalDiffusion] inject 87,32 civ=0 culture=13.2 vitality=36.12 strength=15.06 stock=16065.54 cap=30118.63 
+[2026-09-24 13:53:22]	[CulturalDiffusion] inject 84,35 civ=0 culture=1.1 vitality=12.01 strength=2.03 stock=5154.49 cap=4068.67 
+[2026-09-24 13:53:22]	[CulturalDiffusion] inject 77,36 civ=2 culture=2.2 vitality=14.21 strength=5.35 stock=884.99 cap=10704.32 
+[2026-09-24 13:53:22]	[CulturalDiffusion] inject 81,18 civ=3 culture=20.4 vitality=79.28 strength=40.24 stock=17352.99 cap=80476.4 
+[2026-09-24 13:53:22]	[CulturalDiffusion] inject 82,23 civ=3 culture=8.8 vitality=24.11 strength=15.36 stock=4300.47 cap=30710.86 
+[2026-09-24 13:53:22]	[CulturalDiffusion] inject 80,31 civ=3 culture=4.4 vitality=25.52 strength=9.98 stock=2323.81 cap=19964.66 
+[2026-09-24 13:53:22]	[CulturalDiffusion] inject 90,37 civ=3 culture=15.6 vitality=47.94 strength=28.34 stock=6551 cap=56684.51 
+[2026-09-24 13:53:22]	[CulturalDiffusion] inject 79,39 civ=5 culture=0 vitality=31.68 strength=0 stock=26.86 cap=0 
+[2026-09-24 13:53:22]	[CulturalDiffusion] frontier city=65536 ring=4 best=15276.34 bar=375 over=18/23 centre=62642.35 
+[2026-09-24 13:53:22]	[CulturalDiffusion] frontier city=131073 ring=4 best=708.66 bar=375 over=1/24 centre=252.59 
+[2026-09-24 13:53:22]	[CulturalDiffusion] frontier city=196610 ring=4 best=31784.13 bar=375 over=11/19 centre=14141.05 
+[2026-09-24 13:53:22]	[CulturalDiffusion] frontier city=262147 ring=4 best=46433.94 bar=375 over=16/24 centre=16065.54 
+[2026-09-24 13:53:22]	[CulturalDiffusion] frontier city=327684 ring=4 best=16065.54 bar=375 over=4/24 centre=5154.49 
+[2026-09-24 13:53:22]	[CulturalDiffusion] state bytes=15193 field=361 claims=38 locked=2 passMs=15 
+[2026-09-24 13:53:22]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 361 active field tile(s) 
+[2026-09-24 13:53:22]	[CulturalDiffusion] pass (turn 33): flips=0 field tiles=146 
+[2026-09-24 13:53:28]	[CDH] TURN n=33 turn=33 age=AGE_EXPLORATION state={"claims":38,"pending":0,"field":361,"locked":2} foreignUnitsOnOurLand=4 
+[2026-09-24 13:53:31]	[CulturalDiffusion] inject 92,32 civ=0 culture=50.4 vitality=49.18 strength=39.71 stock=63368.78 cap=79425.41 
+[2026-09-24 13:53:31]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=27.43 strength=0 stock=239.96 cap=0 
+[2026-09-24 13:53:31]	[CulturalDiffusion] inject 93,26 civ=0 culture=28.6 vitality=49.85 strength=27.61 stock=14714.53 cap=55217.01 
+[2026-09-24 13:53:31]	[CulturalDiffusion] inject 87,32 civ=0 culture=13.2 vitality=36.12 strength=14.92 stock=16003.78 cap=29843.48 
+[2026-09-24 13:53:31]	[CulturalDiffusion] inject 84,35 civ=0 culture=1.1 vitality=12.01 strength=2.02 stock=5114.86 cap=4031.5 
+[2026-09-24 13:53:31]	[CulturalDiffusion] inject 77,36 civ=2 culture=2.2 vitality=14.21 strength=5.32 stock=911.01 cap=10633.94 
+[2026-09-24 13:53:31]	[CulturalDiffusion] inject 81,18 civ=3 culture=20.4 vitality=79.28 strength=39.94 stock=18531.81 cap=79871.02 
+[2026-09-24 13:53:31]	[CulturalDiffusion] inject 82,23 civ=3 culture=8.8 vitality=24.11 strength=15.24 stock=4481.51 cap=30479.84 
+[2026-09-24 13:53:31]	[CulturalDiffusion] inject 80,31 civ=3 culture=4.4 vitality=25.52 strength=9.91 stock=2401.59 cap=19814.48 
+[2026-09-24 13:53:31]	[CulturalDiffusion] inject 90,37 civ=3 culture=15.6 vitality=47.94 strength=28.13 stock=7114.22 cap=56258.1 
+[2026-09-24 13:53:31]	[CulturalDiffusion] inject 79,39 civ=5 culture=0 vitality=29.62 strength=0 stock=24.52 cap=0 
+[2026-09-24 13:53:31]	[CulturalDiffusion] frontier city=65536 ring=4 best=15319.91 bar=375 over=18/23 centre=63368.78 
+[2026-09-24 13:53:31]	[CulturalDiffusion] frontier city=131073 ring=4 best=709.82 bar=375 over=1/24 centre=239.96 
+[2026-09-24 13:53:31]	[CulturalDiffusion] frontier city=196610 ring=4 best=32095.14 bar=375 over=11/19 centre=14714.53 
+[2026-09-24 13:53:31]	[CulturalDiffusion] frontier city=262147 ring=4 best=46981.76 bar=375 over=16/24 centre=16003.78 
+[2026-09-24 13:53:31]	[CulturalDiffusion] frontier city=327684 ring=4 best=16003.78 bar=375 over=4/24 centre=5114.86 
+[2026-09-24 13:53:31]	[CulturalDiffusion] state bytes=15198 field=361 claims=38 locked=2 passMs=15 
+[2026-09-24 13:53:31]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 361 active field tile(s) 
+[2026-09-24 13:53:31]	[CulturalDiffusion] pass (turn 34): flips=0 field tiles=147 
+[2026-09-24 13:53:37]	[CDH] TURN n=34 turn=34 age=AGE_EXPLORATION state={"claims":38,"pending":0,"field":361,"locked":2} foreignUnitsOnOurLand=4 
+[2026-09-24 13:53:43]	[CulturalDiffusion] inject 92,32 civ=0 culture=50.4 vitality=49.39 strength=38.93 stock=64004.92 cap=77862 
+[2026-09-24 13:53:43]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=29.07 strength=0 stock=227.96 cap=0 
+[2026-09-24 13:53:43]	[CulturalDiffusion] inject 93,26 civ=0 culture=28.6 vitality=47.32 strength=26.53 stock=15234.42 cap=53069.29 
+[2026-09-24 13:53:43]	[CulturalDiffusion] inject 87,32 civ=0 culture=13.2 vitality=33.62 strength=14.24 stock=15910.46 cap=28487.25 
+[2026-09-24 13:53:43]	[CulturalDiffusion] inject 84,35 civ=0 culture=0.98 vitality=10.06 strength=1.72 stock=5109.68 cap=3437.45 
+[2026-09-24 13:53:43]	[CulturalDiffusion] inject 77,36 civ=2 culture=2.2 vitality=13.88 strength=5.23 stock=935.6 cap=10460.57 
+[2026-09-24 13:53:43]	[CulturalDiffusion] inject 81,18 civ=3 culture=20.4 vitality=79.85 strength=39.28 stock=19685.42 cap=78568.19 
+[2026-09-24 13:53:43]	[CulturalDiffusion] inject 82,23 civ=3 culture=8.8 vitality=23.78 strength=14.88 stock=4652.28 cap=29763.69 
+[2026-09-24 13:53:43]	[CulturalDiffusion] inject 80,31 civ=3 culture=4.4 vitality=25.19 strength=9.68 stock=2474.18 cap=19353.95 
+[2026-09-24 13:53:43]	[CulturalDiffusion] inject 90,37 civ=3 culture=15.6 vitality=48.51 strength=27.72 stock=7672.88 cap=55430.46 
+[2026-09-24 13:53:43]	[CulturalDiffusion] inject 79,39 civ=5 culture=0 vitality=29.62 strength=0 stock=22.29 cap=0 
+[2026-09-24 13:53:43]	[CulturalDiffusion] frontier city=65536 ring=4 best=15519.6 bar=375 over=18/23 centre=64004.92 
+[2026-09-24 13:53:43]	[CulturalDiffusion] frontier city=131073 ring=4 best=674.32 bar=375 over=1/24 centre=227.96 
+[2026-09-24 13:53:43]	[CulturalDiffusion] frontier city=196610 ring=4 best=32473.8 bar=375 over=11/19 centre=15234.42 
+[2026-09-24 13:53:43]	[CulturalDiffusion] frontier city=262147 ring=4 best=47526.58 bar=375 over=16/24 centre=15910.46 
+[2026-09-24 13:53:43]	[CulturalDiffusion] frontier city=327684 ring=4 best=15910.46 bar=375 over=4/24 centre=5109.68 
+[2026-09-24 13:53:43]	[CulturalDiffusion] state bytes=15336 field=363 claims=38 locked=2 passMs=15 
+[2026-09-24 13:53:43]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 363 active field tile(s) 
+[2026-09-24 13:53:43]	[CulturalDiffusion] pass (turn 35): flips=0 field tiles=147 
+[2026-09-24 13:53:49]	[CDH] TURN n=35 turn=35 age=AGE_EXPLORATION state={"claims":38,"pending":0,"field":363,"locked":2} foreignUnitsOnOurLand=3 
+[2026-09-24 13:53:53]	[CulturalDiffusion] inject 92,32 civ=0 culture=51.6 vitality=50.42 strength=41.1 stock=64840.95 cap=82203.26 
+[2026-09-24 13:53:53]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=30.5 strength=0 stock=223.97 cap=0 
+[2026-09-24 13:53:53]	[CulturalDiffusion] inject 93,26 civ=0 culture=29.7 vitality=47.85 strength=28.18 stock=15828.91 cap=56364.87 
+[2026-09-24 13:53:53]	[CulturalDiffusion] inject 87,32 civ=0 culture=13.2 vitality=34.89 strength=14.89 stock=15851.59 cap=29789.82 
+[2026-09-24 13:53:53]	[CulturalDiffusion] inject 84,35 civ=0 culture=1.08 vitality=11.22 strength=1.97 stock=5101.13 cap=3940.73 
+[2026-09-24 13:53:53]	[CulturalDiffusion] inject 77,36 civ=2 culture=2.2 vitality=13.88 strength=4.14 stock=946.84 cap=8277.35 
+[2026-09-24 13:53:53]	[CulturalDiffusion] inject 81,18 civ=3 culture=20.4 vitality=79.85 strength=39 stock=20829.33 cap=77997.43 
+[2026-09-24 13:53:53]	[CulturalDiffusion] inject 82,23 civ=3 culture=8.8 vitality=23.78 strength=14.77 stock=4818.94 cap=29547.48 
+[2026-09-24 13:53:53]	[CulturalDiffusion] inject 80,31 civ=3 culture=4.4 vitality=25.19 strength=9.61 stock=2544.54 cap=19213.36 
+[2026-09-24 13:53:53]	[CulturalDiffusion] inject 90,37 civ=3 culture=15.6 vitality=46.96 strength=27.2 stock=8221.1 cap=54405.62 
+[2026-09-24 13:53:53]	[CulturalDiffusion] inject 79,39 civ=5 culture=0 vitality=29.62 strength=0 stock=20.18 cap=0 
+[2026-09-24 13:53:53]	[CulturalDiffusion] frontier city=65536 ring=4 best=15671.46 bar=375 over=18/23 centre=64840.95 
+[2026-09-24 13:53:53]	[CulturalDiffusion] frontier city=131073 ring=4 best=677.88 bar=375 over=1/24 centre=223.97 
+[2026-09-24 13:53:53]	[CulturalDiffusion] frontier city=196610 ring=4 best=32850.37 bar=375 over=12/19 centre=15828.91 
+[2026-09-24 13:53:53]	[CulturalDiffusion] frontier city=262147 ring=4 best=48003.69 bar=375 over=16/24 centre=15851.59 
+[2026-09-24 13:53:53]	[CulturalDiffusion] frontier city=327684 ring=4 best=15851.59 bar=375 over=4/24 centre=5101.13 
+[2026-09-24 13:53:53]	[CulturalDiffusion] state bytes=15362 field=364 claims=38 locked=2 passMs=15 
+[2026-09-24 13:53:53]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 364 active field tile(s) 
+[2026-09-24 13:53:53]	[CulturalDiffusion] pass (turn 36): flips=0 field tiles=146 
+[2026-09-24 13:53:59]	[CDH] TURN n=36 turn=36 age=AGE_EXPLORATION state={"claims":38,"pending":0,"field":364,"locked":2} foreignUnitsOnOurLand=4 
+[2026-09-24 13:54:01]	[CulturalDiffusion] inject 92,32 civ=0 culture=51.6 vitality=50.42 strength=40.93 stock=65644.92 cap=81869 
+[2026-09-24 13:54:01]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=30.5 strength=0 stock=224.22 cap=0 
+[2026-09-24 13:54:01]	[CulturalDiffusion] inject 93,26 civ=0 culture=29.7 vitality=47.85 strength=28.07 stock=16414.13 cap=56135.68 
+[2026-09-24 13:54:01]	[CulturalDiffusion] inject 87,32 civ=0 culture=13.2 vitality=34.89 strength=14.83 stock=15791.37 cap=29668.69 
+[2026-09-24 13:54:01]	[CulturalDiffusion] inject 84,35 civ=0 culture=1.08 vitality=11.22 strength=1.96 stock=5083.24 cap=3924.7 
+[2026-09-24 13:54:01]	[CulturalDiffusion] inject 77,36 civ=2 culture=2.2 vitality=13.88 strength=3.56 stock=950.94 cap=7122.06 
+[2026-09-24 13:54:01]	[CulturalDiffusion] inject 81,18 civ=3 culture=16.8 vitality=78.84 strength=34.71 stock=21737.07 cap=69421.71 
+[2026-09-24 13:54:01]	[CulturalDiffusion] inject 82,23 civ=3 culture=8.8 vitality=23.78 strength=14.99 stock=4989.89 cap=29971.48 
+[2026-09-24 13:54:01]	[CulturalDiffusion] inject 80,31 civ=3 culture=4.4 vitality=25.19 strength=9.74 stock=2616.69 cap=19489.06 
+[2026-09-24 13:54:01]	[CulturalDiffusion] inject 90,37 civ=3 culture=15.6 vitality=46.61 strength=27.52 stock=8785.49 cap=55042.19 
+[2026-09-24 13:54:01]	[CulturalDiffusion] inject 79,39 civ=5 culture=0 vitality=29.62 strength=0 stock=18.17 cap=0 
+[2026-09-24 13:54:01]	[CulturalDiffusion] frontier city=65536 ring=4 best=15856.35 bar=375 over=18/23 centre=65644.92 
+[2026-09-24 13:54:01]	[CulturalDiffusion] frontier city=131073 ring=4 best=682.21 bar=375 over=1/24 centre=224.22 
+[2026-09-24 13:54:01]	[CulturalDiffusion] frontier city=196610 ring=4 best=33180.15 bar=375 over=12/19 centre=16414.13 
+[2026-09-24 13:54:01]	[CulturalDiffusion] frontier city=262147 ring=4 best=48630.72 bar=375 over=16/24 centre=15791.37 
+[2026-09-24 13:54:01]	[CulturalDiffusion] frontier city=327684 ring=4 best=15791.37 bar=375 over=4/24 centre=5083.24 
+[2026-09-24 13:54:01]	[CulturalDiffusion] state bytes=15537 field=364 claims=38 locked=1 passMs=15 
+[2026-09-24 13:54:01]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 364 active field tile(s) 
+[2026-09-24 13:54:01]	[CulturalDiffusion] pass (turn 37): flips=0 field tiles=148 
+[2026-09-24 13:54:07]	[CDH] TURN n=37 turn=37 age=AGE_EXPLORATION state={"claims":38,"pending":0,"field":364,"locked":1} foreignUnitsOnOurLand=4 
+[2026-09-24 13:54:11]	[CulturalDiffusion] inject 92,32 civ=0 culture=51.6 vitality=50.24 strength=39.1 stock=66251.15 cap=78191.15 
+[2026-09-24 13:54:11]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=30.5 strength=0 stock=224.59 cap=0 
+[2026-09-24 13:54:11]	[CulturalDiffusion] inject 93,26 civ=0 culture=31.9 vitality=45.35 strength=27.59 stock=16971.6 cap=55186.74 
+[2026-09-24 13:54:11]	[CulturalDiffusion] inject 87,32 civ=0 culture=9.9 vitality=30.1 strength=11.17 stock=15554.58 cap=22346.09 
+[2026-09-24 13:54:11]	[CulturalDiffusion] inject 84,35 civ=0 culture=1.03 vitality=9.17 strength=1.69 stock=5063.69 cap=3380.43 
+[2026-09-24 13:54:11]	[CulturalDiffusion] inject 77,36 civ=2 culture=2.2 vitality=13.88 strength=4.07 stock=960.95 cap=8130.79 
+[2026-09-24 13:54:11]	[CulturalDiffusion] inject 81,18 civ=3 culture=16.8 vitality=80.51 strength=34.99 stock=22657.19 cap=69979.92 
+[2026-09-24 13:54:11]	[CulturalDiffusion] inject 82,23 civ=3 culture=8.8 vitality=23.78 strength=15 stock=5159.67 cap=29992.42 
+[2026-09-24 13:54:11]	[CulturalDiffusion] inject 80,31 civ=3 culture=4.4 vitality=25.19 strength=9.75 stock=2688.04 cap=19502.68 
+[2026-09-24 13:54:11]	[CulturalDiffusion] inject 90,37 civ=3 culture=15.6 vitality=46.61 strength=27.54 stock=9354.98 cap=55080.66 
+[2026-09-24 13:54:11]	[CulturalDiffusion] inject 79,39 civ=5 culture=0 vitality=29.62 strength=0 stock=16.26 cap=0 
+[2026-09-24 13:54:11]	[CulturalDiffusion] frontier city=65536 ring=4 best=16040.22 bar=375 over=18/23 centre=66251.15 
+[2026-09-24 13:54:11]	[CulturalDiffusion] frontier city=131073 ring=4 best=684.22 bar=375 over=1/24 centre=224.59 
+[2026-09-24 13:54:11]	[CulturalDiffusion] frontier city=196610 ring=4 best=33613.55 bar=375 over=12/19 centre=16971.6 
+[2026-09-24 13:54:11]	[CulturalDiffusion] frontier city=262147 ring=4 best=49233.69 bar=375 over=16/24 centre=15554.58 
+[2026-09-24 13:54:11]	[CulturalDiffusion] frontier city=327684 ring=4 best=15554.58 bar=375 over=4/24 centre=5063.69 
+[2026-09-24 13:54:11]	[CulturalDiffusion] state bytes=15586 field=364 claims=38 locked=1 passMs=16 
+[2026-09-24 13:54:11]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 364 active field tile(s) 
+[2026-09-24 13:54:11]	[CulturalDiffusion] pass (turn 38): flips=0 field tiles=150 
+[2026-09-24 13:54:17]	[CDH] TURN n=38 turn=38 age=AGE_EXPLORATION state={"claims":38,"pending":0,"field":364,"locked":1} foreignUnitsOnOurLand=3 
+[2026-09-24 13:54:25]	[CulturalDiffusion] inject 92,32 civ=0 culture=51.6 vitality=47.18 strength=38.6 stock=66795.88 cap=77206.63 
+[2026-09-24 13:54:25]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=30.5 strength=0 stock=213.36 cap=0 
+[2026-09-24 13:54:25]	[CulturalDiffusion] inject 93,26 civ=0 culture=31.9 vitality=45 strength=27.78 stock=17533.55 cap=55555.06 
+[2026-09-24 13:54:25]	[CulturalDiffusion] inject 87,32 civ=0 culture=9.9 vitality=25.56 strength=10.65 stock=15300.33 cap=21302.15 
+[2026-09-24 13:54:25]	[CulturalDiffusion] inject 84,35 civ=0 culture=0.92 vitality=6.59 strength=1.42 stock=5034.17 cap=2833.79 
+[2026-09-24 13:54:25]	[CulturalDiffusion] inject 77,36 civ=2 culture=2.2 vitality=16.8 strength=4.36 stock=974.22 cap=8715.84 
+[2026-09-24 13:54:25]	[CulturalDiffusion] inject 81,18 civ=3 culture=16.8 vitality=80.51 strength=34.97 stock=23572.23 cap=69948.03 
+[2026-09-24 13:54:25]	[CulturalDiffusion] inject 82,23 civ=3 culture=8.8 vitality=23.78 strength=14.99 stock=5327.69 cap=29978.75 
+[2026-09-24 13:54:25]	[CulturalDiffusion] inject 80,31 civ=3 culture=4.4 vitality=25.19 strength=9.75 stock=2758.36 cap=19493.79 
+[2026-09-24 13:54:25]	[CulturalDiffusion] inject 90,37 civ=3 culture=15.6 vitality=46.61 strength=27.53 stock=9927.42 cap=55055.56 
+[2026-09-24 13:54:25]	[CulturalDiffusion] inject 79,39 civ=5 culture=0 vitality=29.62 strength=0 stock=14.45 cap=0 
+[2026-09-24 13:54:25]	[CulturalDiffusion] frontier city=65536 ring=4 best=16201.25 bar=375 over=18/23 centre=66795.88 
+[2026-09-24 13:54:25]	[CulturalDiffusion] frontier city=131073 ring=4 best=686.18 bar=375 over=1/24 centre=213.36 
+[2026-09-24 13:54:25]	[CulturalDiffusion] frontier city=196610 ring=4 best=34030.32 bar=375 over=12/19 centre=17533.55 
+[2026-09-24 13:54:25]	[CulturalDiffusion] frontier city=262147 ring=4 best=49688.36 bar=375 over=16/24 centre=15300.33 
+[2026-09-24 13:54:25]	[CulturalDiffusion] frontier city=327684 ring=4 best=15300.33 bar=375 over=4/24 centre=5034.17 
+[2026-09-24 13:54:25]	[CulturalDiffusion] state bytes=15601 field=363 claims=38 locked=1 passMs=15 
+[2026-09-24 13:54:25]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 363 active field tile(s) 
+[2026-09-24 13:54:25]	[CulturalDiffusion] pass (turn 39): flips=0 field tiles=150 
+[2026-09-24 13:54:31]	[CDH] TURN n=39 turn=39 age=AGE_EXPLORATION state={"claims":38,"pending":0,"field":363,"locked":1} foreignUnitsOnOurLand=3 
+[2026-09-24 13:54:34]	[CulturalDiffusion] inject 92,32 civ=0 culture=51.6 vitality=47 strength=38.14 stock=67282.64 cap=76277.17 
+[2026-09-24 13:54:34]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=30.5 strength=0 stock=214.49 cap=0 
+[2026-09-24 13:54:34]	[CulturalDiffusion] inject 93,26 civ=0 culture=31.9 vitality=44.83 strength=27.44 stock=18073.17 cap=54882.8 
+[2026-09-24 13:54:34]	[CulturalDiffusion] inject 87,32 civ=0 culture=6.6 vitality=20.23 strength=7.46 stock=14534.32 cap=14915.19 
+[2026-09-24 13:54:34]	[CulturalDiffusion] inject 84,35 civ=0 culture=0 vitality=5.43 strength=0 stock=5015.54 cap=0 
+[2026-09-24 13:54:34]	[CulturalDiffusion] inject 77,36 civ=2 culture=2.2 vitality=16.8 strength=4.3 stock=986.55 cap=8609.75 
+[2026-09-24 13:54:34]	[CulturalDiffusion] inject 81,18 civ=3 culture=14.4 vitality=79.41 strength=24.13 stock=23837.21 cap=48251.67 
+[2026-09-24 13:54:34]	[CulturalDiffusion] inject 82,23 civ=3 culture=8.8 vitality=23.78 strength=11.48 stock=5394.96 cap=22968.59 
+[2026-09-24 13:54:34]	[CulturalDiffusion] inject 80,31 civ=3 culture=4.4 vitality=26.67 strength=7.62 stock=2784.42 cap=15237.95 
+[2026-09-24 13:54:34]	[CulturalDiffusion] inject 90,37 civ=3 culture=14.4 vitality=45.21 strength=19.81 stock=10204.47 cap=39618.73 
+[2026-09-24 13:54:34]	[CulturalDiffusion] inject 79,39 civ=5 culture=0 vitality=29.62 strength=0 stock=12.73 cap=0 
+[2026-09-24 13:54:34]	[CulturalDiffusion] frontier city=65536 ring=4 best=16412.87 bar=375 over=18/23 centre=67282.64 
+[2026-09-24 13:54:34]	[CulturalDiffusion] frontier city=131073 ring=4 best=695.12 bar=375 over=1/24 centre=214.49 
+[2026-09-24 13:54:34]	[CulturalDiffusion] frontier city=196610 ring=4 best=34344.6 bar=375 over=12/19 centre=18073.17 
+[2026-09-24 13:54:34]	[CulturalDiffusion] frontier city=262147 ring=4 best=50096.91 bar=375 over=16/24 centre=14534.32 
+[2026-09-24 13:54:34]	[CulturalDiffusion] frontier city=327684 ring=4 best=14534.32 bar=375 over=4/24 centre=5015.54 
+[2026-09-24 13:54:34]	[CulturalDiffusion] state bytes=15611 field=363 claims=38 locked=1 passMs=16 
+[2026-09-24 13:54:34]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 363 active field tile(s) 
+[2026-09-24 13:54:34]	[CulturalDiffusion] pass (turn 40): flips=0 field tiles=150 
+[2026-09-24 13:54:40]	[CDH] TURN n=40 turn=40 age=AGE_EXPLORATION state={"claims":38,"pending":0,"field":363,"locked":1} foreignUnitsOnOurLand=3 
+[2026-09-24 13:54:40]	[CDH] STRESS SURVIVED 40 turns, final age AGE_EXPLORATION 
+[2026-09-24 13:54:43]	[CDH] DONE harness run30 finished 
+[2026-09-24 13:54:44]	[CulturalDiffusion] inject 92,32 civ=0 culture=52.8 vitality=49.16 strength=40.34 stock=67980.36 cap=80685.14 
+[2026-09-24 13:54:44]	[CulturalDiffusion] inject 86,20 civ=0 culture=12.1 vitality=32.16 strength=13.35 stock=301.55 cap=26691.07 
+[2026-09-24 13:54:44]	[CulturalDiffusion] inject 93,26 civ=0 culture=34.1 vitality=48.85 strength=30.3 stock=18755.96 cap=60592.98 
+[2026-09-24 13:54:44]	[CulturalDiffusion] inject 87,32 civ=0 culture=6.6 vitality=18.23 strength=7.38 stock=14027.58 cap=14755.3 
+[2026-09-24 13:54:44]	[CulturalDiffusion] inject 84,35 civ=0 culture=0 vitality=5.43 strength=0 stock=4996.49 cap=0 
+[2026-09-24 13:54:44]	[CulturalDiffusion] inject 77,36 civ=2 culture=2.2 vitality=16.8 strength=4.33 stock=998.88 cap=8656.82 
+[2026-09-24 13:54:44]	[CulturalDiffusion] inject 81,18 civ=3 culture=14.4 vitality=84.13 strength=24.81 stock=24138.03 cap=49624.7 
+[2026-09-24 13:54:44]	[CulturalDiffusion] inject 82,23 civ=3 culture=8.8 vitality=23.78 strength=11.57 stock=5463.48 cap=23149.1 
+[2026-09-24 13:54:44]	[CulturalDiffusion] inject 80,31 civ=3 culture=4.4 vitality=26.67 strength=7.68 stock=2811.13 cap=15357.7 
+[2026-09-24 13:54:44]	[CulturalDiffusion] inject 90,37 civ=3 culture=14.4 vitality=49.94 strength=20.67 stock=10512.01 cap=41343.68 
+[2026-09-24 13:54:44]	[CulturalDiffusion] inject 79,39 civ=5 culture=0 vitality=29.62 strength=0 stock=11.09 cap=0 
+[2026-09-24 13:54:44]	[CulturalDiffusion] frontier city=65536 ring=4 best=16616.37 bar=375 over=18/23 centre=67980.36 
+[2026-09-24 13:54:44]	[CulturalDiffusion] frontier city=131073 ring=4 best=701.92 bar=375 over=1/24 centre=301.55 
+[2026-09-24 13:54:44]	[CulturalDiffusion] frontier city=196610 ring=4 best=34626.98 bar=375 over=12/19 centre=18755.96 
+[2026-09-24 13:54:44]	[CulturalDiffusion] frontier city=262147 ring=4 best=50461.98 bar=375 over=16/24 centre=14027.58 
+[2026-09-24 13:54:44]	[CulturalDiffusion] frontier city=327684 ring=4 best=14027.58 bar=375 over=4/24 centre=4996.49 
+[2026-09-24 13:54:44]	[CulturalDiffusion] state bytes=15598 field=364 claims=38 locked=1 passMs=16 
+[2026-09-24 13:54:44]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 364 active field tile(s) 
+[2026-09-24 13:54:44]	[CulturalDiffusion] pass (turn 41): flips=0 field tiles=152 
+[2026-09-24 13:54:50]	[CDH] TURN n=41 turn=41 age=AGE_EXPLORATION state={"claims":38,"pending":0,"field":364,"locked":1} foreignUnitsOnOurLand=4 
+[2026-09-24 13:54:50]	[CDH] STRESS SURVIVED 41 turns, final age AGE_EXPLORATION 

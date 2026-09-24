@@ -4,6 +4,97 @@ All notable changes to Cultural Diffusion are recorded here. The format follows
 [Keep a Changelog](https://keepachangelog.com/), and the mod uses
 [Semantic Versioning](https://semver.org/).
 
+## [1.2.0] - 2026-09-24
+
+### Fixed
+
+- **The border no longer closes the last way out on another civ's unit.** A player reported an AI Settler stuck inside
+  their territory with no diplomatic access, freed only by declaring war. That is now **reproduced in game** and the
+  cause is this mod: harness run 17 (1.5.0, 2026-09-24) let the mod's claims take every plot around a peaceful major's
+  Scout, and the unit - which had moved every turn until then - sat frozen on the same plot for five consecutive turns.
+  A claim that would leave such a unit with no legal move is now refused, and the tile is taken later, once the unit has
+  moved on ([`ui/cd-units.js`](ui/cd-units.js), gated last in `flipEligible` so only a tile that has already won on
+  culture pays for the map reads; the same rule applies to the "+1 ring" growth buffer).
+  - **Only civs we are at PEACE with are protected.** Independent Powers and anyone at war cross our territory freely
+    (an Independent reads as at war by default), so their units never block a claim. Watched: the same pen around an
+    Independent's unit is harmless.
+  - **The test is IMMOBILITY, not confinement.** A unit that can still step somewhere legal is fine, even shut inside a
+    small pocket; the bug is a unit with NO legal destination.
+  - **What blocks a unit depends on which element it is in.** A land unit ashore is stopped by water, a SHIP by land,
+    and an EMBARKED land unit - measured on the map, 40 of them reading `DOMAIN_LAND` while standing on water - may use
+    both. Treating water as blocked for everyone meant no ship and no embarked unit was ever protected, although the
+    pass can own water (`diffuseAcrossWater` is on, and the +1 buffer claims unowned water). Every occupant of a stack
+    is judged separately.
+  - **Impassable terrain blocks everything, and one read covers it all.** `GameplayMap.isImpassable` was measured
+    against the DB (49 impassable-terrain plots, 7 impassable-feature plots, **0 missed**), so `TERRAIN_MOUNTAIN`,
+    `FEATURE_VOLCANO`, `FEATURE_ICE` and the sixteen impassable natural wonders need no special case.
+  - **Only OUR claim being the cause counts.** Comparative: could it move before, can it move after. A unit already
+    immobile does not block anything, and claiming the ground a unit stands on is never refused, because what it may
+    move to is its neighbours, which that claim does not change. Once the unit moves on, the tile is claimed normally.
+  - **Claims already sent this pass count as ours.** `purchasePlot` applies seconds after the call, so without this the
+    second claim in a pass re-counts an exit the mod has already taken - which is how a unit with two exits lost both
+    in one pass. The keys come from `cd-pending.js`.
+  - New code-only tunable: `protectTrappedUnits` (default on). The units reads fail open, so an unreadable API degrades
+    to the previous behaviour rather than stalling the pass.
+  - **Known limit, measured rather than assumed:** the guard counts any plot not ours as a destination, although a unit
+    of civ A also cannot always enter civ B's borders. Two readings settle why it stays that way. A census of 459
+    foreign units found 30 standing in a third party's territory, 9 of 10 sampled at PEACE with its owner, so access is
+    routinely granted and blocking third-party land outright would refuse claims along every shared frontier. And the
+    engine exposes no access read: the whole Diplomacy surface is relationship ATTITUDE
+    (`getRelationshipLevel`/`Name`/`Enum`, `hasAllied`, `hasAvailableTreatyActions`) and none of it separates an
+    at-peace major from an at-war one - both read `LOC_PLAYER_RELATIONSHIP_HOSTILE`, the same enum, `hasAllied` false.
+    So a unit wedged between our border and a third party's can still be stranded (7 such units on the test map, none
+    within `flipMaxDistance` of us). Recorded in `docs/BACKLOG.md`.
+  - **Watched working** (harness run 23): with a peaceful major's Scout down to one exit, the pass logged
+    `skip flip 79,37: would strand a foreign unit`, left the plot unowned, and the Scout walked out through it
+    (79,37 then 79,38 then 78,39). Three earlier drafts were watched FAILING in game while these same unit tests
+    passed - pocket semantics, deferred writes, and mountains-as-exits - each fixed only after being measured. The
+    naval case is **confirmed on a real ship** (run 29b): a `UNIT_KALAM` three rings from one of our cities had five of
+    its six water neighbours bought, and the guard read it as `{domain: DOMAIN_SEA, water: true, land: false}` with
+    `exitsNow=1 exitsAfterClaim=0 wouldStrand=true`. The embarked case rests on the same reads plus off-engine tests.
+
+### Investigated
+
+- **Moving the unit aside instead is engine-closed, not merely unbuilt.** Harness runs 13 and 16: against a rival
+  Settler, `UNITOPERATION_TELEPORT_TO`, `MOVE_TO`, `SWAP_UNITS` and `TELEPORT_TO_CITY` all returned `canStart` false and
+  moved nothing; none moved one of OUR units either; `MOVE_TO` on our own Scout returned `canStart` **true** while the
+  unit never moved; and `TELEPORT_TO` is absent from the runtime `UnitOperationTypes` enum despite being a row in the
+  compiled gameplay DB. `WorldBuilder` exposes no unit-placement member. A short-lived eviction built on that verb was
+  removed. The engine does not relocate the occupant when our claim lands either.
+- **Claims do not silently revert.** Nine plots bought at rings 4-7 from the buying city stayed ours for five turns,
+  including two rings from a rival major's city. Five plots bought at ring **8** were all released within one turn, so
+  claim durability tracks distance from the OWNING CITY - comfortably outside `flipMaxDistance` (6), which is why the
+  mod's own claims hold.
+- **A minor settlement was being stripped of its land, which is the reporter's "absorbed independent".** With
+  `coreProtectRadius: 0` - reasonable against a major - only the centre PLOT was protected, and a city-state or village
+  owns just a ring or two in total, so diffusion took everything else and left the settlement sitting alone inside our
+  territory. Watched in harness run 13: the pass flipped 89,41 and 90,42, both ring-1 of city-state 33's centre at
+  89,42. **Fixed** by `minorProtectRadius` (default 1), a floor on protection for any owner that is not a major.
+  Confirmed in game (run 19) by an A/B on three of a real city-state's ring-1 plots: `claimAllowedWithFloor=false`,
+  `withoutFloor=true`.
+- **Core protection can now see a settlement no city list reports.** `isCoreProtected` found centres only by walking
+  `Players.get(pid).Cities.getCities()`, which returns NOTHING for an Independent Power. It now also reads the map
+  (`isCityCenterAt`, via `Cities.getAtLocation`), so a village centre is protected regardless of owner kind. Validated
+  against the live engine in run 18: all six of our own centres detected, five minor-owned centres found where the
+  earlier district-type read found none, and the pass refused a centre carrying a 50,000 culture seed.
+- All four verdicts are recorded in `civilization_vii_mods/engine-closed.md`.
+- **A non-deterministic native crash turned up while stress-testing this build, and is PARKED rather than fixed.**
+  Two of four long unattended harness runs faulted, on different threads with different addresses; a third run with
+  the mod active then passed both crash points holding more claims than the run that died. 2 crashes / 3 runs with
+  the mod against 0 / 1 without is too weak to act on, and no code was changed on the strength of it. Full evidence,
+  including why a config bisect was not run and what it would cost, in
+  [`docs/potential-bug-native-crash.md`](docs/potential-bug-native-crash.md).
+
+### Added (dev only)
+
+- **`scripts/check-esm.mjs` now fails when a `ui/*.js` module is not declared in the modinfo.** The engine only serves
+  declared files, so an undeclared module makes its importer fail at load and takes the whole action group down - the
+  mod looks dead, not like a missing file. It caught exactly that on `cd-units.js` before a probe run.
+- **`devtools/harness/run-harness.sh`**, a hands-free runner: refuses to start if the game is running or another
+  session's probe is installed, preserves the shared `UI.log`, backs up autosaves, restores the mod registry **by
+  value** (redeploying mints a new `ModRowId`, so restoring by row id leaves the mod enabled), and collects the log plus
+  any crash report.
+
 ## [1.1.0] - 2026-09-18
 
 ### Added

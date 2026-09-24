@@ -1,0 +1,9 @@
+[2026-09-24 09:47:14]	HTML Parser Error@:fs://game/root-game.html@1:2043: Premature end of file  Currently open tags: html, div, div..
+[2026-09-24 09:47:14]	HTML Parser Error@:fs://game/root-game.html@1:2043: Premature end of file  Currently open tags: html, div, div..
+[2026-09-24 09:47:29]	HTML Parser Error@:fs://game/root-game.html@49:43: Tokenizer error with an unimplemented error message.
+[2026-09-24 09:48:54]	HTML Parser Error@:fs://game/root-game.html@1:25: Premature end of file  Currently open tags: html, div..
+[2026-09-24 09:49:13]	Unhandled rejection error value: Timeout 5000ms exceeded for waitUntilValue on .
+[2026-09-24 09:49:13]	Unhandled rejection error value: Timeout 5000ms exceeded for waitUntilValue on .
+[2026-09-24 09:51:25]	JS Error: fs://game/base-standard/ui-next/tooltips/plot-tooltip/helpers.js:297: TypeError: Cannot read properties of null (reading 'owner')
+[2026-09-24 09:51:25]	JS Error (Line):   const owningPlayer = Players.get(unit.owner);
+[2026-09-24 09:51:25]	JS Error (Stack): TypeError: Cannot read properties of null (reading 'owner')

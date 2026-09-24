@@ -1,9 +1,8 @@
 // cd-polity.js
 //
-// Per-settlement cultural signals the pressure model reads: net culture yield,
-// net happiness, wonder count, and celebration (Golden Age) state. Every read is
-// defensive - an unreadable value degrades to a neutral default and never throws.
-// Mirrors the read patterns used in emigration-cities.js / emigration-polity.js.
+// Per-settlement cultural signals the pressure model reads: net culture yield, net happiness,
+// wonder count, and celebration (Golden Age) state. Every read is defensive - an unreadable
+// value degrades to a neutral default and never throws.
 
 /**
  * @param {()=>*} fn Thunk. @param {*} fallback Fallback. @returns {*} fn() or fallback.
@@ -82,11 +81,9 @@ export function wonderCountOf(city) {
   }, 0);
 }
 /**
- * A settlement's POSITIVE prosperity/vitality magnitude - a "thriving society" score in
- * roughly culture-comparable units (happiness + food/growth + production + a little gold/
- * science). This is the aggregate the injection base geometrically blends with culture, so a
- * lone +culture or +happiness ability is one concave term instead of the linear driver (it
- * also self-normalizes across ages, since all these yields scale up together). Base-game reads
+ * A settlement's POSITIVE prosperity/vitality magnitude in roughly culture-comparable units
+ * (happiness + food + production + a little gold/science): the aggregate the injection base
+ * geometrically blends with culture so a lone +culture ability is one concave term. Base-game reads
  * only. @param {*} city City object. @returns {number} Vitality magnitude (>= 0).
  */
 export function vitalityOf(city) {
@@ -100,11 +97,9 @@ export function vitalityOf(city) {
 }
 
 /**
- * A settlement's normalized prosperity signal in [-1,1] (0 = neutral) for the 3.1a
- * term-B projection multiplier: a prosperous, growing, happy city beams culture farther;
- * a struggling one contracts. Built from base-game reads only (net happiness + food/
- * production growth), so it works standalone; the emigration mod enriches the ETHNIC
- * layer rather than this one. Squashed with tanh so extremes saturate gently.
+ * A settlement's normalized prosperity signal in [-1,1] (0 = neutral) for the projection
+ * multiplier: a prosperous, happy city beams culture farther; a struggling one contracts. Built
+ * from base-game reads only (net happiness + food/production), squashed with tanh.
  * @param {*} city City object.
  * @returns {number} Prosperity in [-1,1].
  */
@@ -138,9 +133,8 @@ export function isCelebrating(owner) {
 
 /**
  * The current age's type name ("AGE_ANTIQUITY" / "AGE_EXPLORATION" / "AGE_MODERN"), or "" when unreadable.
- * In the shipped engine `Game.age` is a numeric HASH, not a string (watched in-game on 1.4.2), so it is
- * resolved through `GameInfo.Ages.lookup(Game.age).AgeType` - the conversion the base game itself uses. A
- * string is accepted as-is (test stubs, and any build that exposes the name directly).
+ * In the shipped engine `Game.age` is a numeric HASH, so it is resolved through
+ * `GameInfo.Ages.lookup(Game.age).AgeType`; a string is accepted as-is (test stubs).
  * @returns {string} Age type name, or "".
  */
 export function currentAgeType() {
@@ -162,8 +156,7 @@ function ageRow(age) {
 
 /**
  * The current age key for per-age tuning: "ANTIQUITY" | "EXPLORATION" | "MODERN".
- * Defaults to "ANTIQUITY" when unreadable. Before the hash fix this only ever read a string, so on the real
- * engine every age reported ANTIQUITY (per-age scaling, water easing, and the Distant Lands gate never moved).
+ * Defaults to "ANTIQUITY" when unreadable.
  * @returns {"ANTIQUITY"|"EXPLORATION"|"MODERN"} Age key.
  */
 export function currentAgeKey() {

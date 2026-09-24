@@ -1,13 +1,8 @@
 // cd-plots.js
 //
-// All GameplayMap reads the diffusion engine needs: frontier enumeration, owner
-// lookups, radius plots, and settle-validity context. Every read is fully
-// defensive - an unreadable engine call degrades to a neutral value and never
-// throws into the pass. The verbs that MUTATE ownership live in cd-ownership.js;
-// this file only reads.
-//
-// Sentinels confirmed by the probe (v0.3.0, game 1.4.x): an UNOWNED plot returns
-// getOwner() === -1 and getOwningCityFromXY().id === -1 (NOT null).
+// All GameplayMap reads the diffusion engine needs. Every read is defensive: an unreadable engine
+// call degrades to a neutral value and never throws into the pass. The verbs that MUTATE ownership
+// live in cd-ownership.js. An UNOWNED plot returns getOwner() === -1 and getOwningCityFromXY().id === -1.
 
 const NO_OWNER = -1;
 
@@ -95,6 +90,19 @@ export function isWater(loc) {
 }
 
 /**
+ * True when a plot cannot be entered by a land unit at all (mountains and anything else the engine calls
+ * impassable). Water has its own read; this is the terrain that blocks movement without being sea.
+ * @param {{x:number,y:number}} loc Plot.
+ * @returns {boolean} Whether the plot is impassable.
+ */
+export function isImpassable(loc) {
+  return safe(() => {
+    if (typeof GameplayMap?.isImpassable === "function") return !!GameplayMap.isImpassable(loc.x, loc.y);
+    return !!GameplayMap?.isMountain?.(loc.x, loc.y);
+  }, false);
+}
+
+/**
  * True when a plot lies in the given player's DISTANT LANDS (the far hemisphere - only reachable
  * from the Exploration age). Base-game Player method: Players.get(pid).isDistantLands({x,y}).
  * Fails OPEN (false = treat as home lands) when unreadable, so a missing API never over-blocks.
@@ -107,6 +115,53 @@ export function isDistantLands(playerId, loc) {
     const p = Players?.get?.(playerId);
     return !!(p && typeof p.isDistantLands === "function" && p.isDistantLands({ x: loc.x, y: loc.y }));
   }, false);
+}
+
+/**
+ * The district type NAME at a plot ("DISTRICT_CITY_CENTER" / "DISTRICT_URBAN" / "DISTRICT_RURAL"), or
+ * null. `getDistrictType` returns a numeric enum, so it is resolved through GameInfo.Districts.
+ * @param {{x:number,y:number}} loc Plot.
+ * @returns {string|null} District type name, or null when unreadable.
+ */
+export function districtTypeNameAt(loc) {
+  return safe(() => {
+    const t = GameplayMap?.getDistrictType?.(loc.x, loc.y);
+    if (t == null) return null;
+    if (typeof t === "string") return t;
+    return GameInfo?.Districts?.lookup?.(t)?.DistrictType || null;
+  }, null);
+}
+
+/**
+ * Whether a SETTLEMENT CENTRE sits on this plot, read straight off the MAP rather than from a player's
+ * city list. That distinction matters: an Independent Power reports NO cities through
+ * `Players.get(pid).Cities.getCities()` (watched, harness runs 15-17), so anything that finds centres by
+ * walking a city list is blind to a village. Three routes, because none is available everywhere:
+ * `Cities.getAtLocation`, the owning city's own location, then the district type.
+ * @param {{x:number,y:number}} loc Plot.
+ * @returns {boolean} True when a settlement centre occupies the plot.
+ */
+export function isCityCenterAt(loc) {
+  if (safe(() => !!Cities?.getAtLocation?.(loc.x, loc.y), false)) return true;
+  const at = owningCityLocAt(loc);
+  if (at && at.x === loc.x && at.y === loc.y) return true;
+  return /CITY_CENTER/.test(districtTypeNameAt(loc) || "");
+}
+
+/**
+ * The location of the city that owns a plot, or null. Read through `Cities.get` when the map hands back
+ * a ComponentID rather than a city object.
+ * @param {{x:number,y:number}} loc Plot.
+ * @returns {{x:number,y:number}|null} The owning city's own plot.
+ */
+function owningCityLocAt(loc) {
+  return safe(() => {
+    const cid = GameplayMap?.getOwningCityFromXY?.(loc.x, loc.y);
+    if (!cid) return null;
+    const city = safe(() => Cities?.get?.(cid), null) || cid;
+    const at = city && city.location;
+    return at && typeof at.x === "number" ? { x: at.x, y: at.y } : null;
+  }, null);
 }
 
 /**
