@@ -38,6 +38,20 @@ restores it, deploys the REPO copy of the mod with `AffectsSavedGames=0` and `de
 files only, waits for `DONE`, writes `<label>-UI.log`, copies any `.ips` crash report, then quits and redeploys the
 unpatched copy.
 
+## Lens check - does the pressure layer paint under ANOTHER lens? NO (2026-09-24, game 1.5.0)
+
+Script `cdh-game-lenscheck.js`. Raised while assembling the release gallery: suite shot 01 showed pressure paint although the run had logged `lensAtStart=fxs-default-lens`, which reads like the layer painting without its lens being active - a player on the Continent lens seeing magenta over half the map.
+
+The script seeds one contested block (9 tiles, rival stock 210, centre 86,22), then captures three states, logging `LensManager.isLayerEnabled(LAYER)` and `pressureTiles().length` at each:
+
+| State | Active lens | `layerEnabled` | `wouldPaint` | Frame |
+| --- | --- | --- | --- | --- |
+| A - untouched | `fxs-default-lens` | false | 9 | Clean. No shading anywhere |
+| B - pressure active | `cd-pressure-lens` | true | 9 | Fully painted, the seeded band in magenta |
+| C - switched away | `fxs-default-lens` | false | 9 | Clean again - `removeLayer` clears the overlay |
+
+Verdict: **not a defect.** The layer is painted only while its own lens is active, and `wouldPaint=9` across all three states proves the clean frames are gating, not an empty field. The suite-01 observation was an artefact of the harness: the ACTIVE LENS PERSISTS ACROSS GAME SESSIONS, the run before it had left `cd-pressure-lens` selected, the game restored that selection after the script's early `getActiveLens()` read, and the frame was taken nine seconds later with the mod's lens genuinely on. Two lessons for capture runs - an early `getActiveLens()` is not the lens you will photograph, and a run should end on the default lens or it contaminates the next one.
+
 ## Run 13 - the eviction: can a mod move a unit it does not own? (RUN 2026-09-24, game 1.5.0)
 
 Script `cdh-game-run13.js`. Settles whether the 1.1.1 eviction (`ui/cd-units.js`) works at all, and what the engine
