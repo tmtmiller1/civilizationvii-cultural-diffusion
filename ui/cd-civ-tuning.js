@@ -1,22 +1,12 @@
 // cd-civ-tuning.js
 //
-// The per-leader / per-civilization / per-memento VARIANCE layer - a DELIBERATELY TINY, bounded
-// registry of nudges to a civ's cultural INJECTION STRENGTH. Its scope is only the cases the
-// injection MODEL can't flatten on its own:
-//
-//   - MAGNITUDE outliers (culture / wonder / celebration / happiness / suzerainty engines) are
-//     handled STRUCTURALLY, not here - the injection base is a geometric blend
-//     `culture^alpha x vitality^(1-alpha)` (cd-pressure.projectionOf), so a +culture or +happiness
-//     ability is one concave term, not a linear driver. So those civs are NOT listed.
-//   - This table is reserved for REDUNDANCY / double-dip: leaders/civs whose kit ALREADY grows
-//     territory (conquest, extra settlements, town conversion, frontier tiles) and would get
-//     border value twice - once from their ability, once from diffusion on the same cities.
-//     No score reweighting fixes that overlap, so a small bounded damp is the honest tool.
-//
-// Grounded in docs -> mods_research_and_analysis/cultural-diffusion-leader-civ-memento-and-age-tuning.md.
+// The per-leader / per-civilization / per-memento VARIANCE layer: a deliberately tiny, bounded
+// registry of nudges to a civ's cultural INJECTION STRENGTH. Magnitude outliers (culture / wonder /
+// celebration engines) are flattened structurally by the geometric injection base and are NOT listed;
+// this table is reserved for REDUNDANCY, i.e. kits that ALREADY grow territory and would double-dip.
+// Grounded in mods_research_and_analysis/cultural-diffusion-leader-civ-memento-and-age-tuning.md.
 // Keys are GameInfo string types: leaderType via GameInfo.Leaders.lookup(...).LeaderType
 // (persona `_ALT` normalized), civilizationType via GameInfo.Civilizations.lookup(...).CivilizationType.
-//
 // GATED by CONFIG.civTuningEnabled; compressed toward neutral by CONFIG.civTuningStrength.
 
 import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
@@ -145,10 +135,9 @@ function baseTimesMemento(pid, mem) {
 }
 
 /**
- * The injection-strength tuning for a player: its civ entry, overridden by its leader entry
- * (leader wins), multiplied by its equipped-memento stack, clamped, then compressed toward
- * neutral by CONFIG.civTuningStrength. Returns the shared NEUTRAL profile (touching no globals)
- * when the layer is disabled or nothing matches.
+ * The injection-strength tuning for a player: its civ entry, overridden by its leader entry, times
+ * its equipped-memento stack, clamped, then compressed toward neutral by CONFIG.civTuningStrength.
+ * Returns the shared NEUTRAL profile when the layer is disabled or nothing matches.
  * @param {number} pid Player id.
  * @returns {{injectionScale:number}} The resolved tuning.
  */
@@ -162,9 +151,7 @@ export function civTuning(pid) {
 
 /**
  * Test/introspection helpers (pure). The memento/name resolvers are exposed because the public
- * `civTuning` path cannot observe them while BY_MEMENTO ships empty: their contracts (engine shape
- * tolerance, `_ALT` normalization, dedup, the `mem` multiplier) only become reachable when a
- * memento entry is added, so they are pinned directly instead.
+ * `civTuning` path cannot observe them while BY_MEMENTO ships empty.
  */
 export const __test = {
   clamp, flatten, mementoScale, leaderName, civName, mementoIdOf, equippedMementos, baseTimesMemento,

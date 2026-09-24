@@ -1,0 +1,10 @@
+[12:21:12] autosaves backed up: 3
+[12:21:12] registry before: 1049=1  (restoring Disabled=1 afterwards)
+[12:21:12] deployed mod: debug=1 affectsSaves0=1
+[12:21:12] harness installed: cdh-game-run28.js on AugustusExp94.Civ7Save
+[12:21:12] previous UI.log kept at /Users/tylermiller/Library/Application Support/Civilization VII/cd-harness-backup/UI-before-run28b-20260924-122112.log (99 lines)
+[12:21:14] game pid 48520
+[12:21:19] result=loadfail after 4s
+[12:21:29] restored: registry 1051=1  harness present: no debugPatched: 0
+[12:21:29] autosaves changed during the run; putting the player's back
+[12:21:29] FINISHED result=loadfail  log: /Users/tylermiller/Repos/civilization_mods/civilization_vii_mods/tower_mods/cultural_diffusion/devtools/harness/run28b-UI.log

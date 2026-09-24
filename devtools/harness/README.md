@@ -23,6 +23,174 @@ engine probe's proven pattern (`../../../emigration/devtools/engine-probe/`). No
 
 Launching with `-autojson` and the base game's automation suites did not start a game on 1.4.2. Use this harness.
 
+## Running it hands-free
+
+`run-harness.sh` does the whole cycle, so step 2-5 below are only for a manual run:
+
+```
+zsh run-harness.sh cdh-game-run13.js AugustusAnt136.Civ7Save run13 1200
+```
+
+It refuses to start when Civ VII is already running or when another session's probe/harness mod is installed in
+`Mods/` (a second harness hijacks the launch and contaminates both runs). It backs up the player's autosaves and puts
+them back if the run churned the rotation, remembers every `cultural-diffusion` registry row's `Disabled` flag and
+restores it, deploys the REPO copy of the mod with `AffectsSavedGames=0` and `debug: true` patched into the DEPLOYED
+files only, waits for `DONE`, writes `<label>-UI.log`, copies any `.ips` crash report, then quits and redeploys the
+unpatched copy.
+
+## Run 13 - the eviction: can a mod move a unit it does not own? (RUN 2026-09-24, game 1.5.0)
+
+Script `cdh-game-run13.js`. Settles whether the 1.1.1 eviction (`ui/cd-units.js`) works at all, and what the engine
+does if it does not. It reads the UNIT'S LOCATION after each attempt rather than trusting `canStart`, because three
+things already recorded say that is the only trustworthy signal:
+
+- `engine-closed.md`: **an operation sent under another player's id is refused - `canStart` succeeds, `sendRequest`
+  returns false, nothing changes.** That is exactly the shape of driving a unit we do not own.
+- `engine-closed.md`: `canStart` checks request shape, not placement; confirm every write with a deferred re-read.
+- The emigration engine probe: `canStart(UNITOPERATION_TELEPORT_TO)` answered **false** for one of our own units
+  (`tower_mods/emigration/devtools/engine-probe/README.md`). Which unit and which destination is not fully pinned, so
+  the verb needs a clean control before it can be called dead.
+
+| Stage | What it does | What it settles |
+| --- | --- | --- |
+| S1 SURFACE | Read-only reflection of `Game.UnitOperations` / `UnitCommands` / `WorldBuilder` / `WorldBuilder.MapUnits` / `Units` for move/teleport/place names, plus the `UnitOperationTypes` members | What is even callable on this build (1.5.0, not the 1.4.2 the old notes came from), including whether a `WorldBuilder` unit-placement path exists that bypasses ownership |
+| S2 OWN | Bake-off against one of OUR units: for each of `TELEPORT_TO`, `MOVE_TO`, `SWAP_UNITS`, `TELEPORT_TO_CITY` - `canStart({})`, `canStart({X,Y})`, then `sendRequest` and re-read the unit's location at +3 s and +8 s | Whether each verb works AT ALL when we do own the unit. Without this control, a refusal on a foreign unit proves nothing |
+| S3 FOREIGN | The same bake-off against a FOREIGN unit (civilian preferred, nearest to our cities) | **The decisive stage.** Whether any verb moves a unit we do not own, and which verbs return `canStart` success while moving nothing |
+| S4 OVERRUN | With `bumpForeignUnits` OFF: seed our culture stock on the plot a real foreign unit is standing on and run one pass in the SAME tick (so it cannot wander off), then watch 3 turns | Whether the BASE GAME ejects a unit whose plot changes owner. If it does, the whole feature is unnecessary; if it does not, this reproduces the reported symptom in-game for the first time |
+| S5 MOD | The same fixture with `bumpForeignUnits` ON | Whether `cd-units.js` fires end to end: unit moved and tile claimed, or claim skipped, or - the silent failure - tile claimed with the unit still standing on it |
+
+S4/S5 relax `requireAdjacency` and `flipMaxDistance` so that whatever plot a real foreign unit happens to occupy can
+be claimed at all; nothing else about the claim path is changed. Each stage emits its own `VERDICT` line, so the log
+tail answers the question without reading the whole run.
+
+Prerequisite: no other probe mod in `Mods/`; move any out first (run 13 moved two demographics probes aside and put
+them back).
+
+### Result: NO. The eviction cannot work. Full log `run13-UI.log`.
+
+| Stage | Verdict |
+| --- | --- |
+| S1 surface | `UnitOperationTypes` has **no `TELEPORT_TO`** on 1.5.0 - only `MOVE_TO`, `MOVE_TO_UNIT`, `SWAP_UNITS`, `TELEPORT_TO_CITY` - although `UNITOPERATION_TELEPORT_TO` IS a row in the compiled `UnitOperations` table. `Game.UnitOperations`, `Game.UnitCommands`, `WorldBuilder` and `WorldBuilder.MapUnits` expose no move/teleport/place member at all; `Units` has only `Movement`, `getReachableMovement`, `restoreMovement` |
+| S2 own unit (control) | All four verbs moved our own Scout **nowhere**. `MOVE_TO` answered `canStart` **true** and the unit still never left its plot at +3 s or +8 s - the canStart-lies pattern, watched live on a unit we own |
+| S3 foreign unit | Rival Settler (player 3): all four verbs `canStart` **false**, nothing moved, no fault. `NO VERB MOVED A FOREIGN UNIT` |
+| S4 overrun, eviction off | Inconclusive as an overrun test: our `purchasePlot` on the Slinger's plot never landed (the plot read as player 3's next turn and our claim was dropped). But the unit walked away by itself every turn - 89,42 then 87,41 then 87,42 then 86,43 then 87,45 |
+| S5 mod path, eviction on | The wiring works end to end and hit exactly the documented fallback: `evict 80,36: engine offers nowhere legal for player 4's unit` then `skip flip 80,36`. The Scout had already stepped off the seeded plot, so 80,37 was claimed normally and the unit was at 80,34 by the end |
+
+Consequences:
+
+- `ui/cd-units.js` can never succeed on this engine. With `bumpForeignUnits` on, the shipped behaviour is **identical to
+  refusing the claim**, just with four wasted `canStart` calls and a ring scan first.
+- Recorded in `civilization_vii_mods/engine-closed.md` under "A mod cannot move a unit it does not own" and
+  "`UnitOperationTypes` does not expose every operation the gameplay DB defines".
+- Both AI units under test **walked off their plot within a turn or two unprompted**, which weakens the premise that
+  overrunning a unit's plot strands it. The reported Settler was most likely encircled (a pocket), not overrun.
+- No crash: sending four refused unit operations at a foreign unit did not fault on 1.5.0.
+- Two runner bugs this run exposed and fixed: it truncated the shared `UI.log` (now copied to
+  `cd-harness-backup/UI-before-<label>-*.log` first), and it restored the registry by the pre-run `ModRowId`, which
+  redeploying invalidates - row 639 became row 1015, so the mod was left ENABLED. It now restores by value.
+
+## Runs 30-31 + control40 - crash watch: TWO crashes, TWO different signatures (2026-09-24, game 1.5.0)
+
+Long unattended runs on AugustusAnt136 with everything active. Both crashed, and NOT in the same way - which is
+the whole point of reading the `.ips` rather than counting crashes.
+
+| Run | Mod state at the fault | Thread | Fault address | Top frame | Report |
+| --- | --- | --- | --- | --- | --- |
+| 30 | pass active, **0 claims**, Antiquity turn 150 | AppHost application | `0x0` | `CivilizationVII 0x21081fc` | `run30-crash.ips` |
+| 31 | pass active, **37 claims**, Exploration turn ~26, after the age transition | **AsyncWorker3** | **`0x2d8`** | `CivilizationVII 0xd90650` | `run31-crash.ips` |
+| archived run 3 | 9 claims beyond ring 3, just after an age transition | AsyncWorker1 | `0x2a8` | - | `run3-crash-evidence.txt` |
+| archived run 7 | - | AsyncWorker1 | `0x308` | - | `run7-crash-evidence.txt` |
+
+Reading:
+
+- **Run 30 is the known NON-mod signature.** `CivilizationVII+0x21081fc` on the AppHost thread at address 0 is the
+  load-transition SIGSEGV recorded as appearing with AND without mod code (`engine-closed.md`, 2026-09-17). It happened
+  with the mod holding NOTHING, and the base game's own `unit-flags-independent-powers.js:463` was throwing
+  `Cannot read properties of null (reading 'type')` in the seconds before.
+- **Run 31 is in the family of this mod's archived claim-associated crashes:** an AsyncWorker thread faulting on a small
+  struct offset (`0x2d8`, vs `0x2a8` and `0x308` in runs 3 and 7), after an age transition, with claims held. That
+  signature PREDATES this session's work, so it was not introduced by it - but that is not the same as harmless, and it
+  is the one to keep narrowing.
+- The mod's last pass before run 31's fault was unremarkable: `passMs=18`, `flips=0`, `confirmed 1 claim`, 38 claims.
+
+**Parked 2026-09-24.** Run 32 (`AI_VERBOSE=1`, mod on) then passed BOTH crash points - Exploration t41 holding 38
+claims, more than run 31 had when it died - without faulting, and the mod-off control ran 57 turns clean. That makes
+it 2 crashes / 3 runs with the mod and 0 / 1 without: non-deterministic, and too weak to bisect at one run per
+point. Full write-up, including the cost of doing it properly, in
+[`../../docs/potential-bug-native-crash.md`](../../docs/potential-bug-native-crash.md); split order in
+[`BISECT-PLAN.md`](BISECT-PLAN.md).
+
+Next steps if it is resumed, in order:
+
+1. `control40` (this folder, `cdh-game-control.js` with `NO_MOD=1`) - 40 turns on the same save with the mod DISABLED.
+   A crash there means long unattended runs destabilise this save regardless of the mod.
+2. `AI_VERBOSE=1`, so the `AI_ConstructibleBroker` CSV tail names the last-evaluated constructible - the evidence
+   CLAUDE.md calls for on AI-turn crashes, and absent from both reports here.
+3. If the mod is implicated, bisect by config rather than by code: `maxDiffusionPlots` low, then `flipMaxDistance` 4,
+   then claims beyond ring 3 disallowed entirely.
+
+**A harness trap this exposed:** a run cannot switch the mod off from script. `applyTunableOverrides()` pulls saved
+settings into `CONFIG` on every pass, so `CONFIG.diffusionEnabled = false` set by a harness is clobbered within a turn -
+run 31 was written as a control and finished holding 37 claims. `run-harness.sh` now takes `NO_MOD=1`, which leaves the
+mod disabled in the registry, and the control script imports nothing from the mod.
+
+## Runs 18-24 - both fixes CONFIRMED (RUN 2026-09-24, game 1.5.0)
+
+Scripts `cdh-game-run18.js` ... `run24.js`. These run with the mod's pass ENABLED (runs 14-17 disabled it to measure the
+engine). Every stage demands positive proof: the guard's own log line on the named plot, or an A/B where the same call
+is made with the knob on and off.
+
+| Run | Result |
+| --- | --- |
+| 18 | Map centre read validated live (all six of our centres; `Cities.getAtLocation` is the route that works - district type reads null). Five minor centres found where run 16-17's district read found none; the pass refused a centre carrying a 50,000 seed. Stage G was VOID: the gap it left was outside `flipMaxDistance`, so "left alone" proved nothing |
+| 19 | `minorProtectRadius` CONFIRMED by A/B on three of city-state 18's ring-1 plots (`withFloor=false, withoutFloor=true`). Strand guard FAILED: took the gap, unit frozen 4 turns |
+| 20 | Diagnosis: the unit list IS a real Array (`isArray=true`), so that theory was wrong. `hasStrandableUnit=true` but `wouldStrandForeignUnit=false` - the cap/region rule called a small pocket "already trapped" |
+| 21 | Second cause: `legalExitsNow=2 -> 1`, and the pass took BOTH exits in one pass because `purchasePlot` had not landed when the second claim was judged |
+| 22 | Third cause: `legalExitsNow` stayed 2 because a MOUNTAIN neighbour counted as a legal destination |
+| 23 | **HELD.** `legalExitsNow=1 legalExitsAfterClaim=0`, `skip flip 79,37: would strand a foreign unit`, gap left unowned, Scout walked out 79,37 / 79,38 / 78,39 |
+| 24 | Repeat with corrected verdict semantics: `refusedWhenPenned=true everImmobile=false distinctPositions=3 => HELD`, plus the minor floor and centre protection re-confirmed in the same run |
+
+Taking the tile LATER, once the unit has moved on, is correct and designed - run 23's first verdict logic scored that as
+a failure. Judge the guard on the seeded claim and on the unit never being left immobile.
+
+## Runs 15-17 - the reversion, and the trap REPRODUCED (RUN 2026-09-24, game 1.5.0)
+
+Scripts `cdh-game-run15.js` / `run16.js` / `run17.js`, logs `run15-UI.log` / `run16-UI.log` / `run17-UI.log`. Three runs
+because the first two answered method problems rather than the question.
+
+| Run | What it settled |
+| --- | --- |
+| 15 | **No general claim reversion.** Nine plots bought at rings 4-7, each confirmed, all stayed ours for five turns - including two rings from a city-state and two from a rival major's city. The pen half was void: one ring plot belonged to a third player and the unit left through the gap |
+| 16 | **Claim durability is distance from the OWNING CITY.** The pen was 8 rings out and the engine released all five plots at the turn roll, dissolving the cage in the same turn the unit moved - inconclusive again. Also: Independent Powers report `cities:0`, so `getCities()`-based centre protection is blind to villages |
+| 17 | **TRAPPED-BY-US.** Pen at ring 6 around player 4's Scout, a major at PEACE: `enclosedTurns=5/5`, `movedWhileEnclosed=false`. The unit had moved every turn before and never moved again. The reporter's symptom, reproduced, caused by the mod |
+
+Method notes, each earned by a wasted run:
+
+- A fixture must survive a turn roll; build inside `flipMaxDistance` (6) or the engine takes the plots back.
+- Independent Powers are hostile-by-default and walk through our borders, so they can never be the fixture for a
+  trespass question. Only a major at peace can.
+- `moves` / `reachable` read during OUR turn are always 0 for an AI unit. Movement between turns is the evidence.
+- Run 17's per-turn site rescan was necessary: the first two turns offered only ring-8 sites.
+
+## Run 14 - does the ENGINE bump the occupant when our claim lands? (RUN 2026-09-24, game 1.5.0)
+
+Script `cdh-game-run14.js`, log `run14-UI.log`. Run 13 answered only the script surface; it never observed an ownership
+change under a foreign unit, because its purchase never landed. This run refuses to conclude anything until the owner
+reads as US, and retries candidates and turns until one lands. The mod's own pass is disabled so it cannot race the
+harness for the plots.
+
+| Read | Result |
+| --- | --- |
+| Claim landed | Plot 90,41 (unowned, an Independent's Slinger standing on it): `purchasePlot` from Glasgow, 0 gold after refund, **owner read as us within 2 s**, `owningCity` 262146 |
+| Native bump within seconds | **No.** The Slinger stayed on the plot at +2 s, +5 s and +8 s |
+| Was it trapped? | **No.** It walked off on its own turns: 88,42 then 89,40 then 89,41 |
+| Mobility reads | Useless as written: `moves: 0, reachable: 0` on every turn, because the harness reads during OUR turn when the AI unit has already spent its movement. The movement between turns is the real evidence |
+| Our claim a turn later | **`owner=3`.** The plot was player 3's from turn 137 on, with `diffusionEnabled = false`, so nothing of the mod's touched it. Run 13 hit the same on the same plot |
+
+Consequences: trespass does not immobilise a unit that has somewhere to go, so an overrun plot resolves itself and the
+reported Settler was enclosed rather than overrun. The eviction was removed from the mod. The claim reverting to player
+3 is now the open question (`docs/BACKLOG.md`) and matters more to this mod than the eviction did.
+
 ## Run 1 - AugustusAnt136, game 1.4.2, 2026-09-12
 
 Full log: `run1-antiquity-turn136-UI.log`.

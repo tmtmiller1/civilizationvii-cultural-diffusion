@@ -1,0 +1,10 @@
+[09:02:48] autosaves backed up: 3
+[09:02:48] registry before: 639=1 
+[09:02:48] deployed mod: debug=1 affectsSaves0=1
+[09:02:48] harness installed: cdh-game-run13.js on AugustusAnt136.Civ7Save
+[09:02:48] previous UI.log kept at /Users/tylermiller/Library/Application Support/Civilization VII/cd-harness-backup/UI-before-run13-20260924-090248.log (676 lines)
+[09:02:50] game pid 65362
+[09:07:11] result=done after 244s
+[09:07:19] restored: registry 1015=0  harness present: no debugPatched: 0
+[09:07:19] autosaves changed during the run; putting the player's back
+[09:07:19] FINISHED result=done  log: /Users/tylermiller/Repos/civilization_mods/civilization_vii_mods/tower_mods/cultural_diffusion/devtools/harness/run13-UI.log

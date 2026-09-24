@@ -5,3 +5,7 @@ reports/
 .stryker-tmp/
 *.bak
 .DS_Store
+# Engine AI scoring dumps collected by the harness (AI_VERBOSE=1): multi-megabyte, regenerated on demand.
+# The crash reports (.ips) and the [CDH] logs ARE kept - they are the evidence a crash investigation rests on.
+devtools/harness/*AI_*.csv
+devtools/harness/*-Combat*.csv

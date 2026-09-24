@@ -1,0 +1,9 @@
+[13:32:42] AIVerboseLogging -> 1 (AppOptions.txt backed up)
+[13:32:42] autosaves backed up: 3
+[13:32:42] registry before: 1061=1  (restoring Disabled=1 afterwards)
+[13:32:42] deployed mod: debug=1 affectsSaves0=1
+[13:32:43] harness installed: cdh-game-run30.js on AugustusAnt136.Civ7Save
+[13:32:43] previous UI.log kept at /Users/tylermiller/Library/Application Support/Civilization VII/cd-harness-backup/UI-before-run32-aiverbose-20260924-133243.log (24072 lines)
+[13:32:45] game pid 88519
+[13:54:53] result=done after 1268s
+run-harness.sh:108: no matches found: /Users/tylermiller/Library/Application Support/Civilization VII/Logs/*onstructible*.log

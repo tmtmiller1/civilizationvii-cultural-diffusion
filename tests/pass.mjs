@@ -95,13 +95,16 @@ let myCity = makeCity(CITY_ID, CENTER, ME, 40);
 let rivalCity = makeCity(RIVAL_CITY_ID, RIVAL_CENTER, RIVAL, 30);
 let myCities = [myCity];
 
+const extraAlive = [];  // additional alive players a section needs (e.g. a city-state with a settlement)
 globalThis.Players = {
   getAlive: () => [
     { id: ME, isAlive: true, isMajor: true, Cities: { getCities: () => myCities } },
-    { id: RIVAL, isAlive: true, isMajor: true, Cities: { getCities: () => [rivalCity] } }
+    { id: RIVAL, isAlive: true, isMajor: true, Cities: { getCities: () => [rivalCity] } },
+    ...extraAlive
   ],
   get: (pid) => ({
     id: pid,
+    isMajor: !minorPlayers.has(pid),
     Treasury: { goldBalance: 100000, changeGoldBalance: () => {} },
     Happiness: { isInGoldenAge: () => false },
     Diplomacy: { isAtWarWith: (o) => atWarWithRival && ((pid === ME && o === RIVAL) || (pid === RIVAL && o === ME)) },
@@ -109,6 +112,14 @@ globalThis.Players = {
   })
 };
 globalThis.Game = { age: "AGE_ANTIQUITY", turn: 10, maxTurns: 90 };
+// The units surface the strand guard reads (cd-units.js). Defined from the start but empty, so every
+// section before 19 runs with no units on the map.
+const minorPlayers = new Set();   // player ids the stub reports as isMajor === false
+const centresOnMap = new Set(); // "x,y" of settlement centres the MAP reports (villages included)
+globalThis.Cities = { getAtLocation: (x, y) => (centresOnMap.has(tk(x, y)) ? { id: 55 } : null), get: () => null };
+const mapUnits = new Map(); // "x,y" -> [{owner}]
+globalThis.MapUnits = { getUnits: (x, y) => (mapUnits.get(tk(x, y)) || []).map((_u, i) => ({ x, y, i })) };
+globalThis.Units = { get: (cid) => (mapUnits.get(tk(cid.x, cid.y)) || [])[cid.i] };
 
 const { runPass } = await import("/cultural-diffusion/ui/cd-pass.js");
 const { CONFIG } = await import("/cultural-diffusion/ui/cd-config.js");
@@ -143,6 +154,7 @@ function reset() {
   savedState = null; multiplayer = false; purchaseNoOps = false;
   deferWrites = false; writeQueue.length = 0;
   localId = ME; atWarWithRival = false; unclaimed = [];
+  mapUnits.clear(); centresOnMap.clear(); minorPlayers.clear(); extraAlive.length = 0;
   gridW = 200; gridH = 200;
   myCity = makeCity(CITY_ID, CENTER, ME, 40);
   rivalCity = makeCity(RIVAL_CITY_ID, RIVAL_CENTER, RIVAL, 30);
@@ -281,6 +293,66 @@ seedState({ field: { [tk(NEAR_RIVAL.x, NEAR_RIVAL.y)]: { [String(ME)]: 5000, [St
 r = runPass();
 assert.equal(r.flips, 0, "a rival's city centre is core-protected and never flips");
 assert.equal(getTile(NEAR_RIVAL.x, NEAR_RIVAL.y).owner, RIVAL, "...the rival keeps their centre");
+
+// A VILLAGE centre is protected too, even though its owner reports no cities. Watched on 1.5.0 (harness
+// runs 15-17): an Independent Power reads `cities: 0` through Players.Cities.getCities(), so the
+// city-list route sees nothing and the MAP route is the only thing standing between diffusion and a
+// settlement core. Here the owner has NO city object at all, exactly as in game.
+reset();
+const VILLAGE = { x: 16, y: 10 };
+const INDEP = 33;
+rivalCity = makeCity(98, RIVAL_CENTER, RIVAL, 10);       // the rival's city is elsewhere
+const vt = getTileMut(VILLAGE.x, VILLAGE.y); vt.owner = INDEP; vt.city = 55;
+centresOnMap.add(tk(VILLAGE.x, VILLAGE.y));              // the map says a settlement centre sits here
+for (let x = 11; x <= 15; x++) { const t = getTileMut(x, 10); t.owner = ME; t.city = CITY_ID; }
+seedState({ field: { [tk(VILLAGE.x, VILLAGE.y)]: { [String(ME)]: 5000, [String(INDEP)]: 10 } } });
+r = runPass();
+assert.equal(r.flips, 0, "a village centre is core-protected even though its owner reports no cities");
+assert.equal(getTile(VILLAGE.x, VILLAGE.y).owner, INDEP, "...the independent keeps its settlement");
+// And with the map read blind (no centre reported) the same tile flips - so the test pins the MAP route,
+// not some other gate.
+reset();
+const vt2 = getTileMut(VILLAGE.x, VILLAGE.y); vt2.owner = INDEP; vt2.city = 55;
+for (let x = 11; x <= 15; x++) { const t = getTileMut(x, 10); t.owner = ME; t.city = CITY_ID; }
+seedState({ field: { [tk(VILLAGE.x, VILLAGE.y)]: { [String(ME)]: 5000, [String(INDEP)]: 10 } } });
+r = runPass();
+assert.equal(r.flips, 1, "without the map centre read the same village tile flips (pins the new route)");
+
+// A MINOR's ring-1 is protected too, not just its centre plot. Watched in harness run 13: with
+// coreProtectRadius 0 the pass took 89,41 and 90,42, both ring-1 of city-state 33's centre at 89,42,
+// which strips a minor to the single plot it stands on and reads as the settlement being absorbed.
+// minorProtectRadius (1) is the floor that stops it; a MAJOR's ring-1 is still claimable.
+const MINOR = 18;
+const MINOR_CENTRE = { x: 16, y: 10 };
+const MINOR_RING1 = { x: 15, y: 10 };                  // ring-1 of the minor centre, ring-5 of ours
+/** A live city-state holding MINOR_CENTRE + MINOR_RING1, with our land reaching it. */
+function seedMinorNeighbour(ownerId, isMajorFlag) {
+  reset();
+  const city = makeCity(97, MINOR_CENTRE, ownerId, 10);
+  if (!isMajorFlag) minorPlayers.add(ownerId);
+  extraAlive.push({ id: ownerId, isAlive: true, isMajor: isMajorFlag, Cities: { getCities: () => [city] } });
+  const mc = getTileMut(MINOR_CENTRE.x, MINOR_CENTRE.y); mc.owner = ownerId; mc.city = 97;
+  const mr = getTileMut(MINOR_RING1.x, MINOR_RING1.y); mr.owner = ownerId; mr.city = 97;
+  for (let x = 11; x <= 14; x++) { const t = getTileMut(x, 10); t.owner = ME; t.city = CITY_ID; }
+  seedState({ field: { [tk(MINOR_RING1.x, MINOR_RING1.y)]: { [String(ME)]: 5000, [String(ownerId)]: 10 } } });
+}
+
+seedMinorNeighbour(MINOR, false);
+r = runPass();
+assert.equal(r.flips, 0, "a minor's ring-1 tile is protected by minorProtectRadius");
+assert.equal(getTile(MINOR_RING1.x, MINOR_RING1.y).owner, MINOR, "...the city-state keeps its last land");
+
+// The same fixture with the floor off: the tile flips, so the test pins the floor and not another gate.
+seedMinorNeighbour(MINOR, false);
+CONFIG.minorProtectRadius = -1;
+r = runPass();
+assert.equal(r.flips, 1, "floor off -> the minor's ring-1 flips again (pins minorProtectRadius)");
+CONFIG.minorProtectRadius = 1;
+
+// A MAJOR's ring-1 is still claimable: the floor must not quietly protect everyone.
+seedMinorNeighbour(7, true);
+r = runPass();
+assert.equal(r.flips, 1, "a MAJOR's ring-1 still flips at coreProtectRadius 0");
 
 // requireAdjacency and flipMaxDistance must be pinned SEPARATELY. A tile that is both out of range
 // AND non-adjacent proves neither gate: each one masks the other's removal. (Found exactly that way
@@ -851,5 +923,55 @@ assert.equal(r.confirmedCede, 1, "the next pass confirms the cession");
 assert.equal(savedState.claims[TK], undefined, "...and drops our claim");
 assert.equal(savedState.locked[TK], CONFIG.flipCooldownTurns, "...locking the tile against an immediate flip back");
 CONFIG.recedeBorders = false;
+
+// ================================================================================
+// 19. The strand guard: the pass must not close the last way out on a peaceful civ's unit.
+// ================================================================================
+// Watched in game (harness run 17): claims closed every exit around a peaceful major's Scout and it sat
+// frozen for five turns. The engine cannot move a unit we do not own, so the claim is the only lever.
+const nbrs = (loc) => {
+  const out = [];
+  for (let y = loc.y - 1; y <= loc.y + 1; y++) {
+    for (let x = loc.x - 1; x <= loc.x + 1; x++) if (hexDistance(loc, { x, y }) === 1) out.push({ x, y });
+  }
+  return out;
+};
+/** A unit on a neighbour of TARGET whose only legal destination IS target. */
+function seedLastGap(unitOwner) {
+  reset(); seedState({ field: { [TK]: mature() } });
+  const pen = nbrs(TARGET).find((n) => hexDistance(CENTER, n) > CONFIG.baseGrowthRadius);
+  for (const p of nbrs(pen)) {
+    if (p.x === TARGET.x && p.y === TARGET.y) continue;
+    const t = getTileMut(p.x, p.y); t.owner = ME; t.city = CITY_ID;
+  }
+  mapUnits.set(tk(pen.x, pen.y), [{ owner: unitOwner }]);
+  return pen;
+}
+
+seedLastGap(RIVAL);                      // RIVAL is at peace in this fixture (atWarWithRival = false)
+r = runPass();
+assert.equal(r.flips, 0, "the claim that would close a peaceful civ's last way out is refused");
+assert.equal(getTile(TARGET.x, TARGET.y).owner, -1, "...the tile stays unowned");
+assert.equal(savedState.claims[TK], undefined, "...nothing is booked");
+assert.equal(savedState.locked[TK], undefined, "...and no cooldown is spent on a tile we did not take");
+
+// At war with that civ: its units cross our land freely, so the tile is claimable after all.
+seedLastGap(RIVAL);
+atWarWithRival = true;
+r = runPass();
+assert.equal(r.flips, 1, "a unit at war with us never blocks a claim");
+atWarWithRival = false;
+
+// Our own unit in the same spot is not a foreign unit.
+seedLastGap(ME);
+r = runPass();
+assert.equal(r.flips, 1, "our own unit does not block the claim");
+
+// The flag keeps it reversible.
+seedLastGap(RIVAL);
+CONFIG.protectTrappedUnits = false;
+r = runPass();
+assert.equal(r.flips, 1, "protectTrappedUnits off -> the claim goes ahead (pre-guard behaviour)");
+CONFIG.protectTrappedUnits = true;
 
 console.log("pass.mjs OK");

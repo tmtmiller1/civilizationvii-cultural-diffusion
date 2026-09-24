@@ -1,14 +1,10 @@
 // cd-emigration.js
 //
-// The OPTIONAL bridge to the emigration mod. Cultural Diffusion works fully standalone;
-// when emigration is also installed this reads its demographic data to enrich the fused
-// model (3.1a term C, ethnic affinity). The bridge is deliberately import-free and
-// coupling-free: emigration lives in a separate mod/isolate, so instead of importing it we
-// read the data it already PERSISTS to the shared game-config store, plus feature-detect
-// its runtime console surface. Every path degrades to null/neutral when emigration is
-// absent, disabled, or has not written yet - the caller then treats affinity as neutral.
+// The OPTIONAL bridge to the emigration mod, which enriches the fused model with ethnic affinity.
+// Import-free: it reads the data emigration PERSISTS to the shared game-config store and
+// feature-detects its console surface. Every path degrades to null/neutral when emigration is absent.
 //
-// Data channels (confirmed against emigration v1.4.x):
+// Data channels:
 //   - Configuration.getGame().getValue("EmigrationEthnos_v1")
 //       -> JSON { cities: { "x,y": { owner, byCiv: { <civId>: pts }, total, name } } }
 //       keyed by the city-centre plot "x,y" (emigration-composition.js locKey).

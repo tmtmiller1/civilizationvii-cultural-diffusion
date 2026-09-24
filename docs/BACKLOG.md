@@ -14,6 +14,131 @@ noted. Each carries [severity · confidence] and enough context to pick up cold.
 >
 > The detailed findings remain below for reference; the **verdicts** are canonical in those files.
 
+## 2026-09-24 player field report (v1.1.0)
+
+Three observations from one campaign, reported as observations rather than confirmed bugs. The trapped-unit half is
+fixed (changelog, `Unreleased`); these two stay open.
+
+## [High · Cause plausible, unconfirmed] An Independent Power was absorbed into the player's territory
+
+**Report:** an independent the player was befriending was absorbed into their territory. On a reload with the mod
+disabled the absorption did not happen, but the independent still ended up with no settlement instead of becoming a
+functioning city-state.
+
+**Why the mod is a candidate.** The shipped pass has no direct city-center guard. Its only protection for a
+settlement core is `isCoreProtected` ([`ui/cd-borders.js`](../ui/cd-borders.js)), which finds centers *indirectly* by
+walking `player.Cities.getCities()`. The probe has a direct plot read, `isCityCenterAt`
+([`probe/ui/cd-probe-api.js`](../probe/ui/cd-probe-api.js)), and refuses center plots with it, but the shipped pass
+never calls it. Two further facts make an Independent Power's land unusually cheap to take: injectors are built from
+`allSettlements(false)` (majors only), so an IP never accumulates culture stock, and `resolveOwner`'s decisive-margin
+test `value * flipRatio > incumbent` is therefore satisfied against an incumbent stock of 0. The mod's own Phase-5
+probe notes predicted the consequence of taking a center plot: it "should annex (major) or **absorb (minor)** the whole
+settlement".
+
+**What should have blocked it:** `atWar(me, owner)` — `Diplomacy.isAtWarWith` is true for *every* Independent Power
+(`civilization_vii_mods/engine-closed.md`), so every IP-owned plot should be vetoed. That is why "befriending" is the
+load-bearing word in the report.
+
+**Hypothesis to disprove first:** a befriended Independent Power stops reading as at-war, which opens the war gate on
+its plots, and its village center is not protected because `Cities.getCities()` does not enumerate villages.
+
+**Cheapest disproof (one read, no long game):** on any save with an IP village in view — (1)
+`isCoreProtected(villageCenter, ipId, 0)`; `true` kills the hypothesis outright. (2)
+`Players.get(ipId).Cities.getCities()` to see why. (3) `GameplayMap.getOwner(villageCenter)` — IP-owned (war gate
+applies) or unowned (no gate at all). (4) `isAtWarWith` across every IP, hostile vs. befriended.
+
+**Second, zero-game-cost route:** the mod persists `CulturalDiffusionState_v2` through `GameConfiguration`, and
+GameConfiguration sits uncompressed in `.Civ7Save`. Any autosave from the reporter's campaign can be grepped for
+`state.claims` to see directly whether the mod claimed plots at or around that village.
+
+**Note for any reply to a reporter:** disabling the mod cannot undo plots it already took. `purchasePlot` is a real
+engine mutation the save persists, so "it did not happen with the mod off" is weak evidence, and the village ending up
+with no settlement either way is consistent with it having already been crippled before the reload.
+
+**Also worth reading from the DB:** `UNITOPERATION_CONVERT_ADJACENT_INDEPENDENT_TO_CITYSTATE`,
+`UNITOPERATION_CONVERT_INDEPENDENTS` and `UNITOPERATION_DISPERSE_INDEPENDENT` exist, so "becomes a city-state" is an
+*adjacency-conditioned unit operation*. Whether our claims can change the plots that operation needs is unknown.
+
+## [FIXED + CONFIRMED 2026-09-24] The trapped unit, and the stripped minor settlement
+
+Both of the reporter's territory anomalies are the mod's doing, both are reproduced in game, and both fixes are watched
+working. Harness runs 13-24 on 1.5.0 (`devtools/harness/`).
+
+**1. The trapped Settler.** Run 17 reproduced it: the mod's claims took every plot around player 4's Scout - a major at
+PEACE - and the unit, which had moved every turn before, sat frozen for five consecutive turns (`enclosedTurns=5/5`).
+Moving the unit is engine-closed (runs 13, 16: no verb moves a unit we do not own, `UNITOPERATION_TELEPORT_TO` is not in
+the runtime enum), so the fix is to refuse the claim that takes its last legal destination. **Confirmed** in runs 23 and
+24: `skip flip 79,37: would strand a foreign unit`, the plot left unowned, and the Scout walked out through it
+(`refusedWhenPenned=true everImmobile=false distinctPositions=3`).
+
+**2. The "absorbed independent" is a stripped minor.** With `coreProtectRadius: 0` only the centre PLOT was protected,
+and a city-state or village owns a ring or two in total - so diffusion took the rest and left the settlement alone
+inside our territory. Watched in run 13 (89,41 and 90,42 flipped, both ring-1 of city-state 33's centre at 89,42).
+Fixed by `minorProtectRadius` (default 1). **Confirmed** by A/B in runs 19 and 24 on three real ring-1 plots:
+`claimAllowedWithFloor=false withoutFloor=true`. Core protection now also reads the MAP for centres
+(`isCityCenterAt`), because `getCities()` reports nothing for an Independent Power; validated in run 18 against our own
+six centres, and five minor centres were found where the earlier district-type read found none.
+
+**Four drafts of the strand guard were watched FAILING in game while the unit tests passed.** Each cause was a way the
+stub was kinder than the engine, and each is now a regression test:
+
+| Draft | Why it was a no-op in game |
+| --- | --- |
+| Region/cap ("can it reach more than N plots") | Any small pocket read as "already trapped", so the culpable claim was waved through. The rule is IMMOBILITY, not confinement - which is also what the user asked for: a pocket is fine, no legal move is not |
+| Live-ownership reads only | `purchasePlot` lands seconds after the call, so the second claim in a pass re-counted an exit already taken. Both of a unit's exits went in one pass. Fixed with `pendingClaimKeys` (`cd-pending.js`) |
+| Mountains traversable | A unit whose only remaining neighbour was impassable read as mobile. Blocked now means our land, water OR impassable |
+| (harness) verdict logic | Scored the designed behaviour - taking the tile later, after the unit moves on - as a failure |
+
+**Method notes that cost a run each:** a fixture must survive a turn roll (claims beyond ~7 rings from the owning city
+are released); Independent Powers are hostile-by-default so they can never be the fixture for a trespass question; and
+`moves`/`reachable` read during our own turn are always 0 for an AI unit.
+
+## [Medium · Known limit, recorded] A unit wedged against a THIRD party's border can still be stranded
+
+The strand guard counts any plot that is not ours as a destination. But a unit of civ A at peace with us also cannot
+enter civ B's borders, so a unit with our land on one side and a third party's on the other can still be immobilised by
+our claim. Judging it needs A-to-B diplomacy for every neighbour, which the mod cannot read cheaply, and guessing wrong
+in the permissive direction recreates the bug while guessing wrong in the strict direction refuses claims forever along
+any shared frontier.
+
+**Not speculative, but not observed either:** the geometry is common (three-way frontiers), the mechanism is the same
+one reproduced in run 17, and nothing in the guard covers it.
+
+**Cheapest disproof / next step:** from a probe, find a peaceful major's unit whose non-ours neighbours all belong to
+one other player, then read whether the engine offers that unit any move at all - `Units.getReachableMovement` during
+THAT player's turn, not ours (our-turn reads are always 0, see the method notes). If the engine reports no reachable
+plot, the case is real and the guard needs an "owned by anyone else" test; if it reports moves, third-party borders are
+passable for it and the current rule is right.
+
+## [Resolved 2026-09-24] Terrain and feature impassability: one read covers all of it
+
+Raised as "are there other terrain types like the mountain bug - coast, volcanoes, natural wonders?". The compiled DB
+splits impassability across two tables: `Terrains` has exactly one impassable row (`TERRAIN_MOUNTAIN`) while `Features`
+has eighteen - `FEATURE_VOLCANO`, `FEATURE_ICE` and sixteen natural wonders (Everest, Grand Canyon, Uluru, Mount Fuji,
+Thera, Kilimanjaro, Iguazu, Zhangjiajie, ...). If `GameplayMap.isImpassable` read TERRAIN only, the mountain bug would
+have had seventeen more flavours.
+
+**Measured (run 25, read-only): it covers features.** 49 impassable-terrain plots and 7 impassable-feature plots in
+range, **0 missed** by `isImpassable`. No special case needed, and `engine-closed.md` records it.
+
+The same question DID turn up two real gaps, both now fixed: ships (water is their element, not a wall) and embarked
+land units (40 on the test map, reading `DOMAIN_LAND` while afloat). Neither is watched end to end - no map offered a
+bay fixture - so they rest on off-engine tests plus direct reads against real ships.
+
+## [Open · parked 2026-09-24] Non-deterministic native crash in long unattended runs
+
+Two of four long harness runs crashed, on different threads with different fault addresses, and a mod-ON run then
+passed BOTH crash points holding more claims than the run that died. Scoreboard: 2 crashes / 3 runs with the mod,
+0 / 1 without - too weak to act on, and a config bisect at one run per point would be a coin toss dressed as a
+result. Parked with everything needed to resume, including why a bisect was NOT run and what it would cost:
+
+- **[`potential-bug-native-crash.md`](potential-bug-native-crash.md)** - the full evidence, what is and is not
+  established, and what would re-open it.
+- [`../devtools/harness/BISECT-PLAN.md`](../devtools/harness/BISECT-PLAN.md) - the split order if it is resumed.
+
+The reporter's own crash remains unattributable (they had it with the mod disabled and kept no artefacts). The
+reply asking for the `.ips` and log tails is drafted in `civilization_vii_mods/steam-comments/`.
+
 ## 2026-09-12 in-game harness findings
 
 Watched on game 1.4.2 with `devtools/harness/` ([`probe-history.md`](probe-history.md) §5). The unrecorded-flip and

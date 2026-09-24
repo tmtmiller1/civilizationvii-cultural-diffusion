@@ -1,0 +1,13 @@
+[12:35:26] autosaves backed up: 3
+[12:35:26] registry before: 1057=1  (restoring Disabled=1 afterwards)
+[12:35:26] deployed mod: debug=1 affectsSaves0=1
+[12:35:26] harness installed: cdh-game-run31.js on AugustusAnt136.Civ7Save
+[12:35:26] previous UI.log kept at /Users/tylermiller/Library/Application Support/Civilization VII/cd-harness-backup/UI-before-run31-20260924-123526.log (6999 lines)
+[12:35:28] game pid 61388
+[12:54:27] result=crashed after 1108s
+[12:54:28] waiting 60s for the crash report to land
+[12:55:28] crash report: CivilizationVII-2026-09-24-125432.ips
+[12:55:36] restored: registry 1059=1  harness present: no debugPatched: 0
+[12:55:36] autosaves changed during the run; putting the player's back
+[12:55:36] FINISHED result=crashed  log: /Users/tylermiller/Repos/civilization_mods/civilization_vii_mods/tower_mods/cultural_diffusion/devtools/harness/run31-UI.log
+run-harness.sh:114: unmatched '

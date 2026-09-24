@@ -1,0 +1,20 @@
+[2026-09-24 13:07:55]	HTML Parser Error@:fs://game/root-game.html@1:92: Premature end of file  Currently open tags: html, div..
+[2026-09-24 13:07:55]	HTML Parser Error@:fs://game/root-game.html@1:48: Premature end of file  Currently open tags: html, div..
+[2026-09-24 13:07:55]	HTML Parser Error@:fs://game/root-game.html@1:17: Premature end of file  Currently open tags: html, div..
+[2026-09-24 13:07:55]	HTML Parser Error@:fs://game/root-game.html@1:61: Premature end of file  Currently open tags: html, div..
+[2026-09-24 13:09:25]	HTML Parser Error@:fs://game/root-game.html@49:43: Tokenizer error with an unimplemented error message.
+[2026-09-24 13:12:01]	HTML Parser Error@:fs://game/root-game.html@1:25: Premature end of file  Currently open tags: html, div..
+[2026-09-24 13:12:27]	JS Error: fs://game/base-standard/ui-next/tooltips/plot-tooltip/helpers.js:297: TypeError: Cannot read properties of null (reading 'owner')
+[2026-09-24 13:12:27]	JS Error (Line):   const owningPlayer = Players.get(unit.owner);
+[2026-09-24 13:12:27]	JS Error (Stack): TypeError: Cannot read properties of null (reading 'owner')
+[2026-09-24 13:17:15]	HTML Parser Error@:fs://game/root-game.html@1:92: Premature end of file  Currently open tags: html, div..
+[2026-09-24 13:17:15]	HTML Parser Error@:fs://game/root-game.html@1:48: Premature end of file  Currently open tags: html, div..
+[2026-09-24 13:18:27]	JS Error: fs://game/base-standard/ui/unit-flags/privateer-flags.js:38: TypeError: Cannot read properties of null (reading 'Health')
+[2026-09-24 13:18:27]	JS Error (Line):     if (this.privateerContainer != void 0 && this.unit.Health) {
+[2026-09-24 13:18:27]	JS Error (Stack): TypeError: Cannot read properties of null (reading 'Health')
+[2026-09-24 13:18:27]	JS Error: fs://game/base-standard/ui/unit-flags/privateer-flags.js:38: TypeError: Cannot read properties of null (reading 'Health')
+[2026-09-24 13:18:27]	JS Error (Line):     if (this.privateerContainer != void 0 && this.unit.Health) {
+[2026-09-24 13:18:27]	JS Error (Stack): TypeError: Cannot read properties of null (reading 'Health')
+[2026-09-24 13:18:53]	JS Error: fs://game/base-standard/ui/unit-flags/privateer-flags.js:38: TypeError: Cannot read properties of null (reading 'Health')
+[2026-09-24 13:18:53]	JS Error (Line):     if (this.privateerContainer != void 0 && this.unit.Health) {
+[2026-09-24 13:18:53]	JS Error (Stack): TypeError: Cannot read properties of null (reading 'Health')

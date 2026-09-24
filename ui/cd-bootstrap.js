@@ -1,11 +1,8 @@
 // cd-bootstrap.js - game scope.
 //
-// Boot the Cultural Diffusion engine: run one diffusion pass per local-player turn
-// (honoring CONFIG.turnInterval), refresh settings from the Options screen before
-// each pass, and expose a small console surface for tuning/inspection. All engine
-// wiring is defensive so a missing API never aborts the load.
-//
-// Results reach UI.log under the [CulturalDiffusion] prefix.
+// Boot the Cultural Diffusion engine: run one diffusion pass per local-player turn (honoring
+// CONFIG.turnInterval), refresh settings before each pass, and expose a small console surface.
+// All engine wiring is defensive. Results reach UI.log under the [CulturalDiffusion] prefix.
 
 import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
 import { setDebug as setLogDebug, log, dlog } from "/cultural-diffusion/ui/cd-log.js";
@@ -15,10 +12,8 @@ import { loadState, saveState } from "/cultural-diffusion/ui/cd-state.js";
 
 let _lastLocalTurnRun = -999;
 
-// Engine-subscription hygiene (shared-bus good citizenship): keep a handle to our own
-// PlayerTurnActivated listener so a re-boot - e.g. a save/reload re-running this script -
-// can drain the previous subscription instead of stacking a second handler on the engine
-// event bus that every mod shares.
+// Keep handles to our own engine listeners so a re-boot (e.g. a save/reload re-running this
+// script) can drain the previous subscription instead of stacking a second handler.
 /** @type {((data:*)=>void)|null} */
 let _turnHandlerRef = null;
 /** @type {((data:*)=>void)|null} */

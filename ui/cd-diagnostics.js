@@ -1,13 +1,9 @@
 // cd-diagnostics.js
 //
-// Debug-only per-pass diagnostics for failures that are otherwise silent:
-//   - an injector whose engine reads come back 0 (every city injects the flat base, nothing ever
-//     flips, and no error is raised),
-//   - a first claimable ring whose stock never reaches the ownership bar (pacing after 1.0.7 ceded
-//     rings 1-3 to the base game),
-//   - a persisted state blob that keeps growing (save bloat / turn-time spikes).
-// Every line is a dlog, except the state-size WARNING, which is logged unconditionally once the blob
-// passes STATE_WARN_BYTES. Read-only: nothing here changes the field, ownership, or state.
+// Debug-only per-pass diagnostics for otherwise silent failures: an injector whose engine reads come
+// back 0, a first claimable ring whose stock never reaches the ownership bar, and a persisted state
+// blob that keeps growing. Every line is a dlog except the state-size WARNING, which is logged
+// unconditionally once the blob passes STATE_WARN_BYTES. Read-only.
 
 import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
 import { dlog, log } from "/cultural-diffusion/ui/cd-log.js";

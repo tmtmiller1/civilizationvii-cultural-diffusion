@@ -1,18 +1,12 @@
 // cd-pending.js
 //
-// Ownership writes land AFTER the call returns. Watched in-game on game 1.4.2 (devtools/harness run 1): after
-// city.purchasePlot - our city on unowned land, our city on a rival's tile, and a rival's city on ours - the owner
-// read on the same tick still showed the OLD owner, and the new owner appeared ~3s later. The pass used to book a
-// flip only on that same-tick read, so every real flip was logged "NOT APPLIED": no claim, no cooldown lock, no
-// per-city budget, no maxFlipsPerTurn count, and the recede step never saw the tile.
-//
-// This module is the deferred half of the fix. A verb whose same-tick read does not yet show the result is
-// recorded as PENDING; the next pass confirms every pending entry from the live map before anything else runs.
+// Ownership writes land AFTER the call returns: the same-tick owner read still shows the OLD owner.
+// A verb whose same-tick read does not yet show the result is recorded as PENDING; the next pass
+// confirms every pending entry from the live map before anything else runs.
 //   claim   - we asked for the tile (diffusion flip, +1 buffer, orphan re-integration): confirmed when owner === by
 //   cede    - a rival's city was asked to take our claimed tile: confirmed when owner === by (that rival)
-// (There is no release kind: setOwnership(NO_PLAYER) never un-owns a city-attached tile on 1.4.2.)
-// A pending tile is skipped by every candidate scan until it resolves. An entry the live map does not confirm is
-// dropped, so the tile is retried later exactly as a failed verb always was.
+// A pending tile is skipped by every candidate scan until it resolves; an unconfirmed entry is dropped
+// so the tile is retried later.
 
 import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
 import { dlog } from "/cultural-diffusion/ui/cd-log.js";
@@ -96,4 +90,23 @@ export function confirmPending(state) {
   }
   state.pending = {};
   return out;
+}
+
+/**
+ * Plot keys a caller must already treat as OURS although the live map does not show them yet: claims from
+ * an earlier pass still landing. `purchasePlot` applies seconds after the call, so a gate that reads only
+ * live ownership re-counts a plot the mod has already taken - watched in harness run 21, where both of a
+ * unit's escape plots were claimed in one pass because the first had not landed when the second was judged.
+ * @param {import("/cultural-diffusion/ui/cd-state.js").CdState} state Persisted state.
+ * @param {number} me Local player id.
+ * @returns {Set<string>} Plot keys with a claim in flight for `me`.
+ */
+export function pendingClaimKeys(state, me) {
+  const set = new Set();
+  const rows = (state && state.pending) || {};
+  for (const k of Object.keys(rows)) {
+    const p = rows[k];
+    if (p && p.kind === "claim" && p.by === me) set.add(k);
+  }
+  return set;
 }
