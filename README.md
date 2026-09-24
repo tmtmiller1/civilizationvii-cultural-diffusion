@@ -9,7 +9,7 @@ your cultural border is the deterrent.
 
 ![The Cultural Pressure lens over a contested frontier](gallery/01-cultural-pressure-lens.jpg)
 
-*The Cultural Pressure lens: shaded tiles are the ones your culture is winning. More in [gallery/](gallery/).*
+*The Cultural Pressure lens: the shaded band is the tiles your culture is winning. More in [gallery/](gallery/).*
 
 Culture gains land only for you. Nearby AI cities add their own culture to the field, which
 defends their tiles and slows yours, but the AI never takes land by culture. The one
