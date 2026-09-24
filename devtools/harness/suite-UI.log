@@ -1,0 +1,26 @@
+[2026-09-24 14:32:12]	[CDH] shell attached 
+[2026-09-24 14:32:13]	[CDH] shell query complete 
+[2026-09-24 14:32:13]	[CDH] shell found AugustusAnt136.Civ7Save turn 136 age AGE_ANTIQUITY missingMods=0 unowned=0 
+[2026-09-24 14:32:13]	[CDH] shell handleLoadSave returned true 
+[2026-09-24 14:32:31]	[CDH] attached suite 
+[2026-09-24 14:32:31]	[CulturalDiffusion] boot (turnInterval 1, verb purchasePlot, enabled true) 
+[2026-09-24 14:32:36]	[CDH] LOAD GameStarted 
+[2026-09-24 14:32:46]	[CDH] S0 suite turn=136 local=0 lensAtStart=fxs-default-lens 
+[2026-09-24 14:32:46]	[CDH] SEED city=Lāhainā tiles=9 stock=210 centre=86,22 
+[2026-09-24 14:32:48]	[CDH] LENS would paint 9 tile(s) after seeding 
+[2026-09-24 14:32:48]	[CDH] POPUPS showing=? 
+[2026-09-24 14:32:51]	[CDH] CAMERA hero at=86,20 zoom0.55 
+[2026-09-24 14:33:00]	[CDH] SHOT 01-hero-borders 
+[2026-09-24 14:33:02]	[CDH] LENS set=called active=cd-pressure-lens paints=9 
+[2026-09-24 14:33:02]	[CDH] CAMERA lens-close at=86,22 zoom0.3 
+[2026-09-24 14:33:16]	[CDH] SHOT 02-lens-contested 
+[2026-09-24 14:33:18]	[CDH] LENSPANEL throw 
+[2026-09-24 14:33:24]	[CDH] SHOT 03-lens-panel 
+[2026-09-24 14:33:26]	[CDH] FRONTIER {"at":"84,32","rival":3,"war":true} 
+[2026-09-24 14:33:26]	[CDH] CAMERA rival-frontier at=84,32 zoom0.35 
+[2026-09-24 14:33:35]	[CDH] SHOT 04-frontier-rival 
+[2026-09-24 14:33:37]	[CDH] OPTIONS throw 
+[2026-09-24 14:33:45]	[CDH] SHOT 05-options 
+[2026-09-24 14:33:50]	[CDH] CAMERA wide at=86,22 zoom0.6 
+[2026-09-24 14:33:59]	[CDH] SHOT 06-lens-wide 
+[2026-09-24 14:34:02]	[CDH] DONE harness suite finished paints=9 
