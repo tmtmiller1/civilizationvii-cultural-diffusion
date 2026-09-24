@@ -92,9 +92,26 @@ open steam://rungameid/1295660
 n=0; until pgrep -x CivilizationVII >/dev/null; do sleep 2; n=$((n+1)); [ $n -gt 90 ] && { say "GAME DID NOT START"; break; }; done
 say "game pid $(pgrep -x CivilizationVII | head -1)"
 
-t=0; result=timeout
+mkdir -p "$HERE/shots"
+t=0; result=timeout; typeset -A shot
 while [ $t -lt $TIMEOUT ]; do
   sleep 4; t=$((t+4))
+  # Captures: the game script emits "SHOT <name>" when a view is ready. Grab the game WINDOW by id - never the
+  # whole display. A full-screen grab once caught the user's Messages window (2026-09-14), so if no game window is
+  # listed the shot is SKIPPED and said so, rather than falling back to the screen.
+  setopt local_options null_glob
+  for name in $(grep -oE "\[CDH\] SHOT [A-Za-z0-9_-]+" "$LOG" 2>/dev/null | awk '{print $3}'); do
+    [ -n "${shot[$name]:-}" ] && continue
+    shot[$name]=1
+    winid=$(swift "$HERE/cdh-winid.swift" 2>/dev/null | awk '$3 > 600' | sort -k3 -n -r | head -1 | awk '{print $1}')
+    out="$HERE/shots/$LABEL-$name.png"
+    if [ -n "$winid" ]; then
+      screencapture -x -o -l "$winid" "$out"
+      say "shot $name -> $(ls -la "$out" 2>/dev/null | awk '{print $5}') bytes"
+    else
+      say "shot $name SKIPPED: no game window listed (refusing a full-display capture)"
+    fi
+  done
   # Match any harness completion line, not just "run N": the control script emits "DONE harness control
   # finished" and the first version of this grep missed it, leaving a finished game idling until timeout.
   if grep -q "DONE harness " "$LOG" 2>/dev/null; then result=done; sleep 6; break; fi
