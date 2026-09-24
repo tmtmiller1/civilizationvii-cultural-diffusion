@@ -54,6 +54,11 @@ and because disabling the layer through `LensManager` instead redraws the yield-
   tooltips visible in some frames are whatever the pointer happened to rest on.
 - The two headline fixes in 1.2.0 are close to unphotographable: a unit that is NOT trapped and a city-state that
   KEEPS its ring both look like an ordinary map. The border pair is the closest thing to showing what the mod DOES.
-- **The Cultural Pressure layer paints whenever it is enabled, not only when its lens is the active one.** Suite shot
-  01 showed the paint before any lens call. Worth checking against shipped behaviour: a player with another lens
-  selected may still see the shading.
+- **Do not trust an early `LensManager.getActiveLens()` read, and remember the active lens SURVIVES a restart.**
+  Suite shot 01 showed pressure paint while the run logged `lensAtStart=fxs-default-lens`, which read like the layer
+  painting without its lens. It was not: the preceding run had left `cd-pressure-lens` active, the game restored it
+  after the early read, and the frame was taken nine seconds later with the mod's lens genuinely on. Measured
+  directly by `cdh-game-lenscheck.js` - untouched `layerEnabled=false` and a clean frame, lens active
+  `layerEnabled=true` and a fully painted frame, switched away `layerEnabled=false` and a clean frame again, with
+  `wouldPaint=9` throughout. The gating is correct; end a capture run on the default lens or the next one inherits
+  yours.
