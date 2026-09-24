@@ -1,0 +1,46 @@
+[2026-09-24 14:11:30]	[CDH] shell attached 
+[2026-09-24 14:11:31]	[CDH] shell query complete 
+[2026-09-24 14:11:31]	[CDH] shell found AugustusAnt136.Civ7Save turn 136 age AGE_ANTIQUITY missingMods=0 unowned=0 
+[2026-09-24 14:11:31]	[CDH] shell handleLoadSave returned true 
+[2026-09-24 14:11:49]	[CulturalDiffusion] boot (turnInterval 1, verb purchasePlot, enabled true) 
+[2026-09-24 14:11:49]	[CDH] attached shots 
+[2026-09-24 14:11:54]	[CDH] LOAD GameStarted 
+[2026-09-24 14:12:04]	[CDH] S0 shots turn=136 local=0 cities=6 
+[2026-09-24 14:12:04]	[CDH] SEED city=Megiddo at=84,35 ring=35 stock=9000 
+[2026-09-24 14:12:04]	[CulturalDiffusion] inject 92,32 civ=0 culture=38.5 vitality=55.06 strength=82.5 stock=10 cap=164993.15 
+[2026-09-24 14:12:04]	[CulturalDiffusion] inject 87,32 civ=0 culture=13 vitality=32.25 strength=33.78 stock=10 cap=67555.32 
+[2026-09-24 14:12:04]	[CulturalDiffusion] inject 90,37 civ=0 culture=1 vitality=19.9 strength=5.38 stock=10 cap=10769.85 
+[2026-09-24 14:12:04]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=23.4 strength=5.7 stock=10 cap=11398.21 
+[2026-09-24 14:12:04]	[CulturalDiffusion] inject 93,26 civ=0 culture=9 vitality=24.65 strength=24.21 stock=10 cap=48417.74 
+[2026-09-24 14:12:04]	[CulturalDiffusion] inject 86,20 civ=0 culture=1 vitality=10.03 strength=4.24 stock=10 cap=8473.01 
+[2026-09-24 14:12:04]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=21.5 strength=10.31 stock=10 cap=20616.29 
+[2026-09-24 14:12:04]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=33.35 strength=16.32 stock=10 cap=32630.11 
+[2026-09-24 14:12:04]	[CulturalDiffusion] inject 80,31 civ=3 culture=3 vitality=15.85 strength=6.65 stock=10 cap=13294.3 
+[2026-09-24 14:12:04]	[CulturalDiffusion] frontier city=65536 ring=4 best=430.43 bar=300 over=2/23 centre=10 
+[2026-09-24 14:12:04]	[CulturalDiffusion] frontier city=196609 ring=4 best=8549 bar=300 over=6/24 centre=10 
+[2026-09-24 14:12:04]	[CulturalDiffusion] frontier city=262146 ring=4 best=8549 bar=300 over=4/24 centre=10 
+[2026-09-24 14:12:04]	[CulturalDiffusion] frontier city=327683 ring=4 best=8549 bar=300 over=18/24 centre=10 
+[2026-09-24 14:12:04]	[CulturalDiffusion] frontier city=393220 ring=4 best=0 bar=300 over=0/19 centre=10 
+[2026-09-24 14:12:04]	[CulturalDiffusion] frontier city=458757 ring=4 best=0 bar=300 over=0/24 centre=10 
+[2026-09-24 14:12:04]	[CulturalDiffusion] flip 88,40 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 14:12:04]	[CulturalDiffusion] flip 87,39 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 14:12:04]	[CulturalDiffusion] flip 87,38 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 14:12:04]	[CulturalDiffusion] flip 84,30 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner 18) 
+[2026-09-24 14:12:04]	[CulturalDiffusion] flip 84,29 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner 18) 
+[2026-09-24 14:12:04]	[CulturalDiffusion] flip 81,33 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 14:12:04]	[CulturalDiffusion] flip 81,34 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 14:12:04]	[CulturalDiffusion] flip 81,36 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-09-24 14:12:04]	[CulturalDiffusion] state bytes=2678 field=89 claims=0 locked=0 passMs=26 
+[2026-09-24 14:12:04]	[CulturalDiffusion] pass: 0 flip(s), 8 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 89 active field tile(s) 
+[2026-09-24 14:12:04]	[CDH] PASS {"flips":0,"pending":8,"tiles":18,"healed":0,"released":0,"ceded":0,"cedePending":0,"confirmed":0,"confirmedCede":0} 
+[2026-09-24 14:12:10]	[CDH] POPUPS showing=? tries-left=6 
+[2026-09-24 14:12:12]	[CDH] CAMERA at=84,35 aim=88,35 zoom0.6 
+[2026-09-24 14:12:21]	[CDH] SHOT 01-borders 
+[2026-09-24 14:12:24]	[CDH] CAMERA at=84,35 aim=88,35 zoom0.45 
+[2026-09-24 14:12:32]	[CDH] SHOT 02-lens-off 
+[2026-09-24 14:12:35]	[CDH] LENS set=called active=cd-pressure-lens 
+[2026-09-24 14:12:49]	[CDH] LENS active=cd-pressure-lens layer=true 
+[2026-09-24 14:12:49]	[CDH] SHOT 03-lens-on 
+[2026-09-24 14:12:52]	[CDH] CAMERA at=84,35 aim=88,35 zoom0.75 
+[2026-09-24 14:13:01]	[CDH] SHOT 04-lens-wide 
+[2026-09-24 14:13:05]	[CDH] DONE harness shots finished 
