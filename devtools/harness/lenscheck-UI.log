@@ -1,0 +1,16 @@
+[2026-09-24 15:00:51]	[CDH] shell attached 
+[2026-09-24 15:00:52]	[CDH] shell query complete 
+[2026-09-24 15:00:53]	[CDH] shell found AugustusAnt136.Civ7Save turn 136 age AGE_ANTIQUITY missingMods=0 unowned=0 
+[2026-09-24 15:00:53]	[CDH] shell handleLoadSave returned true 
+[2026-09-24 15:01:10]	[CDH] attached lenscheck 
+[2026-09-24 15:01:10]	[CulturalDiffusion] boot (turnInterval 1, verb purchasePlot, enabled true) 
+[2026-09-24 15:01:15]	[CDH] LOAD GameStarted 
+[2026-09-24 15:01:25]	[CDH] SEED tiles=9 stock=210 centre=86,22 
+[2026-09-24 15:01:35]	[CDH] STATE A-untouched active=fxs-default-lens layerEnabled=false wouldPaint=9 
+[2026-09-24 15:01:35]	[CDH] SHOT A-untouched 
+[2026-09-24 15:01:51]	[CDH] STATE B-pressure-active active=cd-pressure-lens layerEnabled=true wouldPaint=9 
+[2026-09-24 15:01:51]	[CDH] SHOT B-pressure-active 
+[2026-09-24 15:02:07]	[CDH] STATE C-switched-away active=fxs-default-lens layerEnabled=false wouldPaint=9 
+[2026-09-24 15:02:07]	[CDH] SHOT C-switched-away 
+[2026-09-24 15:02:11]	[CDH] VERDICT layerEnabled A=false B=true C=false => GATED CORRECTLY by the layer flag - compare the frames to be sure the OVERLAY follows the flag 
+[2026-09-24 15:02:11]	[CDH] DONE harness lenscheck finished 
