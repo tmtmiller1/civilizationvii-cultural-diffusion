@@ -7,6 +7,10 @@ normal city footprint into open land, and can take a rival's frontier tiles wher
 culture clearly wins there. This is a systemic answer to AI forward-settling: growing
 your cultural border is the deterrent.
 
+![The Cultural Pressure lens over a contested frontier](gallery/01-cultural-pressure-lens.jpg)
+
+*The Cultural Pressure lens: shaded tiles are the ones your culture is winning. More in [gallery/](gallery/).*
+
 Culture gains land only for you. Nearby AI cities add their own culture to the field, which
 defends their tiles and slows yours, but the AI never takes land by culture. The one
 exception is the opt-in recede mode, where a rival can win back a tile the mod claimed for you.

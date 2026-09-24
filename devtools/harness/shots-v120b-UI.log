@@ -1,0 +1,22 @@
+[2026-09-24 14:15:31]	[CDH] shell attached 
+[2026-09-24 14:15:32]	[CDH] shell query complete 
+[2026-09-24 14:15:33]	[CDH] shell found AugustusAnt136.Civ7Save turn 136 age AGE_ANTIQUITY missingMods=0 unowned=0 
+[2026-09-24 14:15:33]	[CDH] shell handleLoadSave returned true 
+[2026-09-24 14:15:50]	[CDH] attached shots 
+[2026-09-24 14:15:50]	[CulturalDiffusion] boot (turnInterval 1, verb purchasePlot, enabled true) 
+[2026-09-24 14:15:55]	[CDH] LOAD GameStarted 
+[2026-09-24 14:16:05]	[CDH] S0 shots turn=136 local=0 cities=6 
+[2026-09-24 14:16:05]	[CDH] SEED city=Megiddo at=84,35 ring=35 stock=210 (below the bar on purpose) 
+[2026-09-24 14:16:05]	[CDH] PASS skipped on purpose: a claimed tile is no longer contested and the lens would paint nothing 
+[2026-09-24 14:16:08]	[CDH] POPUPS showing=? tries-left=6 
+[2026-09-24 14:16:10]	[CDH] LENS at start=fxs-default-lens 
+[2026-09-24 14:16:10]	[CDH] CAMERA at=84,35 aim=88,35 zoom0.5 
+[2026-09-24 14:16:19]	[CDH] SHOT 01-borders 
+[2026-09-24 14:16:22]	[CDH] CAMERA at=84,35 aim=88,35 zoom0.35 
+[2026-09-24 14:16:30]	[CDH] SHOT 02-lens-off 
+[2026-09-24 14:16:33]	[CDH] LENS set=called active=cd-pressure-lens 
+[2026-09-24 14:16:47]	[CDH] LENS active=cd-pressure-lens layer=true 
+[2026-09-24 14:16:47]	[CDH] SHOT 03-lens-on 
+[2026-09-24 14:16:50]	[CDH] CAMERA at=84,35 aim=88,35 zoom0.6 
+[2026-09-24 14:16:59]	[CDH] SHOT 04-lens-wide 
+[2026-09-24 14:17:03]	[CDH] DONE harness shots finished 
