@@ -15,8 +15,9 @@ your cultural border is the deterrent.
 | --- | --- |
 | ![Border before culture claims the frontier](gallery/04-border-before.jpg) | ![Border after culture claims the frontier](gallery/05-border-after.jpg) |
 
-*The same view of Lāhainā before and after cultural expansion takes the frontier: owned tiles within six rings went
-from 33 to 62. More in [gallery/](gallery/).*
+*The same camera, before and after cultural expansion takes the frontier west of Leeds. The city starts with the
+footprint the base game allows - its own tiles reach ring 3 and no further - and ends holding fourteen tiles beyond
+it, at rings 4 and 5. More in [gallery/](gallery/).*
 
 Culture gains land only for you. Nearby AI cities add their own culture to the field, which
 defends their tiles and slows yours, but the AI never takes land by culture. The one

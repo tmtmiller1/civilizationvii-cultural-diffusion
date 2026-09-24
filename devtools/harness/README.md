@@ -38,6 +38,27 @@ restores it, deploys the REPO copy of the mod with `AffectsSavedGames=0` and `de
 files only, waits for `DONE`, writes `<label>-UI.log`, copies any `.ips` crash report, then quits and redeploys the
 unpatched copy.
 
+## Borders 4-6 - the rejected "before" frame: the save was fine, the picture was not (2026-09-24, game 1.5.0)
+
+Scripts `cdh-game-borders4.js`, `-borders5.js`, `-borders6.js`. The v1.2.0 gallery pair was rejected for showing a city with four rings of territory when the base game stops at three (`CONFIG.baseGrowthRadius`), which would mean the "before" frame was not a vanilla baseline at all.
+
+Take 4 censused every one of the local player's cities, counting owned tiles by ring and attributing each tile to its NEAREST city so a neighbour's land cannot be read as this city's:
+
+| City | Owned tiles by ring (0-6) | maxOwnedRing | Foreign tiles within 6 |
+| --- | --- | --- | --- |
+| London | 1,6,12,15,0,0,0 | 3 | 1 |
+| Birmingham | 1,6,12,9,0,0,0 | 3 | 18 |
+| Glasgow | 1,6,11,8,0,0,0 | 3 | 8 |
+| Megiddo | 1,6,10,5,0,0,0 | 3 | 13 |
+| Leeds | 1,6,12,8,0,0,0 | 3 | 1 |
+| Lāhainā | 1,6,11,15,0,0,0 | 3 | 29 |
+
+Every city stopped at ring 3, so **the mod had not over-claimed anything and the save's before-state was vanilla**. What the rejected frame actually showed was a NEIGHBOURING CIV's territory in a near-identical purple: 29 of the tiles within six rings of Lāhainā belong to someone else, and at a wide zoom they read as Lāhainā's. The picture was wrong; the game state was not.
+
+Take 5 therefore picks by `foreignWithin6` (Leeds, 1) instead of by claimable land, and aims the camera ONCE - re-aiming before the second shot does not land on the same view, so the pair was never quite the same frame. Take 6 keeps that and centres on the frontier rather than the city, because centred on the city the border simply left the picture instead of moving across it.
+
+Result (`borders6`, six passes, shipped as `gallery/04-border-before.jpg` and `05-border-after.jpg`): Leeds `[1,6,12,8,0,0,0]` -> `[1,6,12,8,7,7,0]`, owned within six rings 49 -> 74. One camera, held still; in the first frame the border runs down the middle of the shot, in the second it sits at the far west and the plain between is inside it.
+
 ## Lens check - does the pressure layer paint under ANOTHER lens? NO (2026-09-24, game 1.5.0)
 
 Script `cdh-game-lenscheck.js`. Raised while assembling the release gallery: suite shot 01 showed pressure paint although the run had logged `lensAtStart=fxs-default-lens`, which reads like the layer painting without its lens being active - a player on the Continent lens seeing magenta over half the map.

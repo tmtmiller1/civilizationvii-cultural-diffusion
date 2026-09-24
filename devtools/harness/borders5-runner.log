@@ -1,0 +1,17 @@
+[15:47:32] autosaves backed up: 3
+[15:47:32] registry before: 1118=1  (restoring Disabled=1 afterwards)
+[15:47:32] patched ui/cd-settings.js: 'OPT_PRESSURE_LENS, true' -> 'OPT_PRESSURE_LENS, false' (1 hit(s))
+[15:47:32] deployed mod: debug=1 affectsSaves0=1
+[15:47:32] harness installed: cdh-game-borders5.js on AugustusAnt136.Civ7Save
+[15:47:32] previous UI.log kept at /Users/tylermiller/Library/Application Support/Civilization VII/cd-harness-backup/UI-before-borders5-20260924-154732.log (887 lines)
+[15:47:34] game pid 37315
+[15:48:31] shot 01-border-before -> 12262702 bytes
+[15:49:20] shot 02-border-after -> 12198260 bytes
+[15:49:26] result=done after 80s
+[15:49:26] collected AI_Market.csv (1 lines)
+[15:49:26] collected AI_MovementPlanning.csv (27 lines)
+[15:49:26] collected AI_Targets.csv (287 lines)
+[15:49:26] collected AI_UnitEfficiency.csv (115 lines)
+[15:49:34] restored: registry 1120=1  harness present: no debugPatched: 0
+[15:49:34] autosaves changed during the run; putting the player's back
+[15:49:34] FINISHED result=done  log: /Users/tylermiller/Repos/civilization_mods/civilization_vii_mods/tower_mods/cultural_diffusion/devtools/harness/borders5-UI.log
