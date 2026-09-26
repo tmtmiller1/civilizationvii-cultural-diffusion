@@ -28,7 +28,8 @@ function cooldown() {
  * Record an ownership verb whose result has not landed yet.
  * @param {*} state Persisted state (mutated).
  * @param {string} k Plot key.
- * @param {{kind:"claim"|"cede", by:number, city?:number, was?:number}} entry What was asked for.
+ * @param {{kind:"claim"|"cede", by:number, city?:number, was?:number, hold?:number}} entry What was asked for;
+ *   `hold` is a lock length that overrides flipCooldownTurns once confirmed (a conquest's hold).
  */
 export function markPending(state, k, entry) {
   if (!state.pending) state.pending = {};
@@ -37,7 +38,8 @@ export function markPending(state, k, entry) {
     by: entry.by,
     city: entry.city != null ? entry.city : -1,
     turn: state.monoTurn || 0,
-    was: entry.was != null ? entry.was : -1
+    was: entry.was != null ? entry.was : -1,
+    hold: entry.hold > 0 ? Math.floor(entry.hold) : 0
   };
 }
 
@@ -59,7 +61,7 @@ function confirmOne(state, k, p) {
   if (p.kind === "claim") {
     if (owner !== p.by) return null;
     state.claims[k] = { by: p.by, city: p.city, turn: p.turn };
-    state.locked[k] = cooldown();
+    state.locked[k] = p.hold > 0 ? p.hold : cooldown();
     notifyFlip({ x: loc.x, y: loc.y, wasOwner: p.was, newOwner: p.by });
     return "claim";
   }

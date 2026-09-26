@@ -38,6 +38,107 @@ restores it, deploys the REPO copy of the mod with `AffectsSavedGames=0` and `de
 files only, waits for `DONE`, writes `<label>-UI.log`, copies any `.ips` crash report, then quits and redeploys the
 unpatched copy.
 
+## Parity runs 1-2 - the Civ V parity probes P1-P7 and the river rule (RUN 2026-09-25, game 1.5.0)
+
+Script `cdh-game-parity.js`, logs `parity-UI.log` (6 turns) and `parity2-UI.log` (14 turns, corrected site picker),
+frame `shots/parity-p1-window.png`. One run answers every probe in `docs/civ-v-parity-spec.md` and watches the new
+river rule (spec §1) against the real map. The full record, with numbers, is `docs/probe-history.md` §6.
+
+| Stage | What it does | Verdict |
+| --- | --- | --- |
+| P3 SURFACE | Reflects `GameplayMap`, `MapRivers`, `WorldBuilder` for river / crossing / edge members | No edge-level river read exists; every river API is keyed by tile. `RiverTypes.RIVER_MINOR` is 0 and `NO_RIVER` is -1 |
+| P1 RIVERS | Whole-map scan of `getRiverType` / `isRiver` / `isNavigableRiver` / `getRiverName`; same-name river-neighbour histogram per tile; an 11x11 text window and a SHOT of it | Minor rivers are per-tile, named, 1-wide chains (mean 1.3 same-name neighbours), never 2-wide bands. 350 of 352 river tiles carry a name; 24 adjacent pairs differ (confluences) |
+| P2 CHANNEL | Reads on one navigable-river tile | `isWater` false, `TERRAIN_NAVIGABLE_RIVER`, passable, `isCoastalLand` true |
+| E RIVER | Clears the field, seeds 299 (under the ownership bar) or 150 (under the river gate) on real tiles away from our land, runs ONE pass with `culturalDiffusion.runNow()`, reads each neighbour | Every read equals `diffusionDelivered` of the live `stepMods` (ratio x1): gate held (river 0, land 8.25), minor follow x1.65, navigable follow x2.0, navigable cross x0.67, minor cross on hills x0.61 with both gates stacked. The previous rule would have given the three "onto a river" steps x1.65 |
+| P6 COMBAT | `unit.Combat.isCombat` on own and foreign units; `UnitMoved` payload and counts | Fires for every player's units; `Units.get(d.unit).Combat.isCombat` classifies 8,067 combat / 988 civilian of 9,072 moves |
+| P5 CAPTURE | Logs `CityTransfered`, city add/remove, `PlayerDefeat`, war declarations | Two transfers watched, one with no local party (player 6's Tendirma to independent 12). Payload `{ fromPlayer, transferType, cityID }` |
+| P7 DEAD | Map owners vs `Players.getAlive()` / `getEverAlive()` | No defeated major in this save. Dead pseudo-player 63 (`CIVILIZATION_NONE`) owns six `DISTRICT_WILDERNESS` plots |
+| P4 GOLD | `changeGoldBalance` and `grantYield` on a rival, with the local player as control | `changeGoldBalance` moves nothing within 10 s, on anyone; `grantYield(GOLD)` lands at +3 s on a rival and on us. Followed up by the gold runs below |
+
+Site-picker lesson: a "follow" or "cross" site is only usable when the measured step is itself open. Run 1's
+minor-follow site and run 2's minor-cross site each landed on a river tile under rainforest, whose own gate blocks at
+299, so each of those single reads was 0 for the feature, not the river; the picker now requires the follow step to
+pass. The two runs together cover every row.
+
+## Conquest run - a tile taken by occupation, watched (RUN 2026-09-26, game 1.5.0)
+
+Script `cdh-game-conquest.js`, log `conquest-UI.log`, `PATCH="ui/cd-config.js|conquestFlip: false,|conquestFlip: true,"`
+(buffer at its default of 5, adjacency on, AI flips off). Scripts cannot move a unit (run 13), so the run PLANTS one
+with the `CREATE_ELEMENT` request the Emigration mod uses for migrants: `{ Kind: "UNIT", Type: "UNIT_SPEARMAN",
+Location, Owner: local, IndependentIndex: -1 }` landed a Spearman on an enemy-owned tile within 3 s. Turns rolled
+without Autoplay, which would have moved it.
+
+| Turn | Watched |
+| --- | --- |
+| 136 | At war with player 3. Site 83,32: player 3's tile, no district, three from their city and three from Megiddo, touching our land. Spearman created; `hostileCombatOccupants` read `[0]`; one pass: `occupation {by:0, turns:1}` |
+| 137-139 | Counter 2, 3, 4; unit still there, undamaged; tile still player 3's |
+| 140 | The pass logged `conquest 83,32: taken from player 3 by player 0's unit; pending confirmation next pass`; owner read 0 at +5 s |
+| 141 | `pending 83,32 claim confirmed on the live map`. The tile lies inside Megiddo's ring 3, so `releaseInnerClaims` then dropped the claim record (its release call is a no-op on a city-attached tile, watched before); the tile stays ours |
+
+Verdict: **a conquest flip works end to end on 1.5.0** with the shipped buffer. One defect surfaced by it and fixed
+the same day: the inner-ring rule dropped the tile's lock along with its claim record, so a conquest inside our own
+ring 3 kept the tile but lost its hold. `forgetClaim` now keeps the lock, and a conquest applies its own
+`conquestHoldTurns` (10) hold against culture flips, which the sweep never waits on (pinned in tests/pass.mjs §24).
+Rerun `conquest2` (log `conquest2-UI.log`) watched the fix: the pending record carried `hold: 10`, the confirming pass
+set `locked=10`, and the lock was still 10 after that same pass's inner-ring release dropped the claim record.
+
+## Conquest toggle run - the Options checkbox drives conquest (RUN 2026-09-26, game 1.5.0)
+
+Script `cdh-game-conquest-toggle.js`, log `conqtoggle-UI.log`, NO patch: the shipped default (`conquestFlip: false`)
+and no saved Cultural Diffusion settings at all (`modSettings` had no `cultural-diffusion` slice). The only thing that
+turned conquest on was the "armies hold the ground they occupy" checkbox, clicked through its `fxs-checkbox`
+component (`component.toggle()`, the path a mouse click runs) in the pushed `screen-options`, then the screen's
+Confirm. Same site and plant as the conquest runs.
+
+| Stage | Watched |
+| --- | --- |
+| Default | Live config `conquestFlip=false`, `getConquestFlip()=false`, nothing saved; the checkbox row exists and reads `selected=false` |
+| Off, 6 turns | Spearman on 83,32 read as a hostile occupant (`occupants=[0]`) every turn; no occupation counter, tile stayed player 3's through turn 6 (the patched run flipped it at turn 5) |
+| Click on | `selected false -> true`, saved `{"conquestFlip":1}`; after one pass the live config read true and the counter started at 1 |
+| On | Counter 2, 3, 4, then `conquest 83,32: taken from player 3 by player 0's unit`; next pass confirmed with `locked=10` |
+| Click off | Reopened screen read `selected=true` (persisted); click -> false, saved `{"conquestFlip":0}`, live config false after a pass |
+
+Verdict: **the checkbox works end to end; default off holds.** The SHOT frames show the map, not the Options screen:
+the harness context builds and drives the screen's elements but does not draw them (see the Emigration Options
+probing note), so the row's rendered label was not photographed. The runner restored `LocalStorage.sqlite` from a
+pre-run copy, so the player's store is back to no saved setting.
+
+## Build run - the Civ V parity build in the real engine (RUN 2026-09-26, game 1.5.0)
+
+Script `cdh-game-build.js`, log `build-UI.log`, run with `PATCH="ui/cd-config.js|conquestFlip: false,|conquestFlip:
+true, aiCultureFlips: true,"` so both opt-in toggles were on. One pass from a cleared, seeded field, then four turns,
+turns rolled the gold2 way (no Autoplay).
+
+| Stage | Watched |
+| --- | --- |
+| B0 boot | The mod booted with the six new modules; `culturalDiffusion.config()` read `ai:true, conquest:true, foreign:true, capture:true, floor:1, buffer:5`. No script error from the mod all run (the only JS error was the base game's plot tooltip) |
+| B1 AI flip | Seed: rival 3's culture 5000 on unowned 83,27, four tiles from its city Lihu'e and five from ours. One pass: `aiPending=2`; the tile read as player 3's at +5 s; next pass logged `pending 83,27 claim confirmed on the live map` and `confirmed 2 claim`. The AI kept claiming from the diffusing stock on turns 137 and 140 (`1 pending` each) |
+| B2 foreign culture | Seed on our capital (population 24): ours 5000, rival 500. One pass: rival 500 -> 681.47 where decay alone leaves 474; ours 5000 -> 7028.64. The city's people pump the foreign group, and it is converted a little |
+| B3 owner floor | 158 rows at exactly the floor value after one pass, 170 rows with our culture, 270 rows in all |
+| B4 capture | `onCityTransfered` with Lihu'e's real ComponentID (a transfer to its own owner: field-only): `getPurchasedPlots` returned 24 plots, all 24 rewritten, the centre's 1000 became 862.5, exactly 1000 x 0.45 + 550 x 0.75 |
+| B5 conquest | `conquerable` and `hostileCombatOccupants` ran on the tile under our Quadrireme without throwing (no occupier: nobody is at war with us there). The sweep still counted `held=1` somewhere in the region, so a real war-time hold was being tracked; the buffer of five was not reached in four turns. A flip by occupation remains unwatched |
+
+## Gold runs 1-2 - does a claim cost gold, and does any refund land? (RUN 2026-09-25, game 1.5.0)
+
+Scripts `cdh-game-gold.js` (`gold-UI.log`) and `cdh-game-gold2.js` (`gold2-UI.log`). One measurement per turn: a
+refunded claim through the mod's own `flipViaPurchasePlotRefunded`, a control turn, `changeGoldBalance(+37)`, with gold
+read at +0/+3/+10/+30/+60 s and again across the turn roll against the player's own net income.
+
+| Run | Roll method | Result |
+| --- | --- | --- |
+| gold | The run-9 `endTurn` (Autoplay after three blocked tries) | `Autoplay started` on EVERY turn; across-turn effects of -515, +70 and -15 beyond income are the AI spending our treasury. Within-turn reads were clean: claim cost 0 to +10 s, `changeGoldBalance` 0 to +10 s, `grantYield` +37 at +3 s |
+| gold2 | No Autoplay: name the blocker, send `sendTurnComplete()` anyway | The turn ended within 12 s with the blocker reading `UNITS` (later `NEW_POPULATION`); no `Autoplay started` line. Claim: 0 at every read and 0 at the roll (delta = income to the cent). `changeGoldBalance`: 0 everywhere. Control turn: a one-off +70 credit with nothing done |
+
+Verdicts: a script `purchasePlot` is free on 1.5.0; `Treasury.changeGoldBalance` is a no-op for every player;
+`Players.grantYield(pid, YIELD_GOLD, n)` is the verb that moves gold (deferred ~3 s), for a rival as for us.
+
+**Harness lesson.** `sendTurnComplete()` ends the turn although `getEndTurnBlockingType` is not NONE, so the Autoplay
+fallback the older scripts inherited from run 9 was engaging on every turn (one `Autoplay started` engine line per turn
+in every run's full log since run 9). Autoplay lets the AI spend the local player's gold, buy units and change
+production, so any economic measurement across a roll made with those scripts is contaminated. Roll turns the gold2 way.
+
+## Borders 4-6 - the rejected "before" frame: the save was fine, the picture was not (2026-09-24, game 1.5.0)
+
 ## Borders 4-6 - the rejected "before" frame: the save was fine, the picture was not (2026-09-24, game 1.5.0)
 
 Scripts `cdh-game-borders4.js`, `-borders5.js`, `-borders6.js`. The v1.2.0 gallery pair was rejected for showing a city with four rings of territory when the base game stops at three (`CONFIG.baseGrowthRadius`), which would mean the "before" frame was not a vanilla baseline at all.

@@ -70,6 +70,7 @@ rsync -a \
     --exclude='CONTRIBUTING.md' --exclude='scripts' --exclude='probe' --exclude='devtools' \
     --exclude='coverage*' --exclude='reports' --exclude='.stryker-tmp' \
     --exclude='.c8rc.json' --exclude='stryker*.json' \
+    --exclude='gallery' --exclude='README.pdf' --exclude='*.log' \
     ./ "$TARGET_DIR"/
 
 echo "==> Forcing debug logging off in shipped JS"

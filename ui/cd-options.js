@@ -31,6 +31,12 @@ import {
   setGrowthBuffer,
   getRecedeBorders,
   setRecedeBorders,
+  getAiCultureFlips,
+  setAiCultureFlips,
+  getConquestFlip,
+  setConquestFlip,
+  getForeignCultureInCities,
+  setForeignCultureInCities,
   getPressureLensEnabled,
   setPressureLensEnabled,
   getDebug,
@@ -116,6 +122,9 @@ export function registerAll() {
   addCheckbox("cd-require-adjacency", getRequireAdjacency, setRequireAdjacency, "LOC_OPTIONS_CD_ADJACENCY");
   addCheckbox("cd-growth-buffer", getGrowthBuffer, setGrowthBuffer, "LOC_OPTIONS_CD_BUFFER");
   addCheckbox("cd-recede", getRecedeBorders, setRecedeBorders, "LOC_OPTIONS_CD_RECEDE");
+  addCheckbox("cd-ai-flips", getAiCultureFlips, setAiCultureFlips, "LOC_OPTIONS_CD_AI_FLIPS");
+  addCheckbox("cd-conquest", getConquestFlip, setConquestFlip, "LOC_OPTIONS_CD_CONQUEST");
+  addCheckbox("cd-foreign-culture", getForeignCultureInCities, setForeignCultureInCities, "LOC_OPTIONS_CD_FOREIGN_CULTURE");
   addCheckbox("cd-fused", getFusedModel, setFusedModel, "LOC_OPTIONS_CD_FUSED");
   addCheckbox("cd-emigration", getUseEmigration, setUseEmigration, "LOC_OPTIONS_CD_EMIGRATION");
   addCheckbox("cd-pressure-lens", getPressureLensEnabled, setPressureLensEnabled, "LOC_OPTIONS_CD_PRESSURE_LENS");

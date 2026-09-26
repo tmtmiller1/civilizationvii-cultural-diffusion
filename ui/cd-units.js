@@ -5,7 +5,7 @@
 // around player 4's Scout - a major we were at PEACE with - and it froze on that plot for five
 // consecutive turns, having moved every turn before. That is the v1.1.0 field report reproduced, and
 // caused by us: Civ VII's trespass rule leaves a peaceful civ's unit with no legal move once every
-// neighbouring plot is ours, until a war declaration ejects it.
+// neighboring plot is ours, until a war declaration ejects it.
 //
 // Moving the unit instead is ENGINE-CLOSED, not merely unbuilt (harness runs 13 and 16): no unit
 // operation moves a unit we do not own, none moves even our own, and UNITOPERATION_TELEPORT_TO is
@@ -40,7 +40,7 @@
 //
 // Engine reads: MapUnits.getUnits(x, y) -> ComponentID[] (measured: a real Array) ; Units.get(cid).owner
 // -> player id. They fail OPEN (no unit seen), because a silent throw here would stall the whole pass,
-// and failing open only restores the pre-guard behaviour.
+// and failing open only restores the pre-guard behavior.
 
 import { plotsInRadius, ownerAt, isWater, isImpassable } from "/cultural-diffusion/ui/cd-plots.js";
 import { atWar } from "/cultural-diffusion/ui/cd-borders.js";
@@ -65,10 +65,10 @@ function key(loc) {
 }
 
 /**
- * The six neighbours of a plot, with the plot itself removed (the engine's radius-1 query includes
- * the centre).
- * @param {{x:number,y:number}} loc Centre plot.
- * @returns {{x:number,y:number}[]} Neighbour plots.
+ * The six neighbors of a plot, with the plot itself removed (the engine's radius-1 query includes
+ * the center).
+ * @param {{x:number,y:number}} loc Center plot.
+ * @returns {{x:number,y:number}[]} Neighbor plots.
  */
 export function neighborsOf(loc) {
   return plotsInRadius(loc, 1).filter((p) => !(p.x === loc.x && p.y === loc.y));
@@ -147,7 +147,7 @@ function unitDomain(cid) {
 /**
  * Whether a plot is somewhere a foreign land unit at peace with us may NOT go: our own territory
  * (trespass), water, or impassable terrain. Mountains MUST count as blocked: an earlier draft left them
- * traversable, so a unit whose only remaining neighbour was a mountain read as still mobile and the guard
+ * traversable, so a unit whose only remaining neighbor was a mountain read as still mobile and the guard
  * permitted the claim that froze it - watched in harness run 22, where the mod counted one exit and the
  * unit had none.
  * @param {{x:number,y:number}} loc Plot to test.
@@ -168,7 +168,7 @@ function blockedFor(loc, me, claimedKey, inFlight, can) {
 }
 
 /**
- * How many plots a foreign unit standing at `loc` could legally move to: neighbours that are neither
+ * How many plots a foreign unit standing at `loc` could legally move to: neighbors that are neither
  * ours nor impassable. Zero means it cannot move at all, which is the reported symptom.
  * @param {{x:number,y:number}} loc Plot the unit stands on.
  * @param {number} me Local player id.
@@ -195,8 +195,8 @@ export function legalExits(loc, me, claimedKey, inFlight, can) {
 export function wouldStrandForeignUnit(loc, me, inFlight) {
   if (!CONFIG.protectTrappedUnits || me < 0) return false;
   const claimedKey = key(loc);
-  // Only the NEIGHBOURS matter. Taking the ground a unit stands on cannot newly strand it: what it may
-  // move to is its own neighbours, and this claim does not change those. A unit whose whole ring is
+  // Only the NEIGHBORS matter. Taking the ground a unit stands on cannot newly strand it: what it may
+  // move to is its own neighbors, and this claim does not change those. A unit whose whole ring is
   // already ours was immobilised by whichever RING claim took its last destination - the case below.
   for (const n of neighborsOf(loc)) {
     for (const unit of strandableUnitsAt(n, me)) {

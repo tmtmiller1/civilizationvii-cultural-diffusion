@@ -1,0 +1,34 @@
+[10:45:44] autosaves backed up: 10
+[10:45:44] registry before: 1451=0  (restoring Disabled=0 afterwards)
+[10:45:44] deployed mod: debug=1 affectsSaves0=1
+[10:45:44] harness installed: cdh-game-conquest-toggle.js on AugustusAnt136.Civ7Save
+[10:45:44] previous UI.log kept at /Users/tylermiller/Library/Application Support/Civilization VII/cd-harness-backup/UI-before-conqtoggle-20260926-104544.log (2427 lines)
+[10:45:46] game pid 37105
+[10:46:39] shot O1-before -> 12231076 bytes
+[10:48:37] shot O2-before -> 4386602 bytes
+[10:48:44] shot O2-after -> 9075970 bytes
+[10:50:34] shot O3-before -> 4386718 bytes
+[10:50:42] shot O3-after -> 9075273 bytes
+[10:50:48] result=done after 260s
+[10:50:48] collected AI_Behavior_Tree_Events.csv (26 lines)
+[10:50:48] collected AI_Behavior_Trees.csv (19078 lines)
+[10:50:48] collected AI_CityStrategy.csv (47 lines)
+[10:50:48] collected AI_CombatPlanning.csv (7494 lines)
+[10:50:49] collected AI_Commander_Promotions.csv (55 lines)
+[10:50:49] collected AI_DiplomaticActions.csv (984 lines)
+[10:50:49] collected AI_Leader.csv (5 lines)
+[10:50:49] collected AI_Market.csv (425 lines)
+[10:50:49] collected AI_MayhemTracker.csv (533 lines)
+[10:50:49] collected AI_MovementPlanning.csv (10715 lines)
+[10:50:49] collected AI_Operation.csv (8525 lines)
+[10:50:49] collected AI_Operation_Eval.csv (799 lines)
+[10:50:49] collected AI_Recruiting.csv (35621 lines)
+[10:50:49] collected AI_Tactical.csv (3011 lines)
+[10:50:49] collected AI_Targets.csv (49388 lines)
+[10:50:49] collected AI_UnitEfficiency.csv (115 lines)
+[10:50:49] collected AI_Victories.csv (15 lines)
+[10:50:57] restored: registry 1453=0  harness present: no debugPatched: 0
+[10:50:57] autosaves changed during the run; putting the player's back
+[10:50:58] FINISHED result=done  log: /Users/tylermiller/Repos/civilization_mods/civilization_vii_mods/tower_mods/cultural_diffusion/devtools/harness/conqtoggle-UI.log
+HARNESS_EXIT=0
+probes restored: 3; localStorage restored

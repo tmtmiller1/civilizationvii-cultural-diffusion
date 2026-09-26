@@ -3,7 +3,8 @@
 // The per-turn pass: over a bounded region around the local player's cities it injects culture
 // into each city tile (fused CPI/prosperity strength), diffuses and decays the persisted per-tile
 // stock, then flips a tile to the local player once its culture there passes the ownership bar.
-// Ownership is only ever mutated FOR the local player. See docs/current-model.md.
+// Ownership is mutated for the local player, and - with aiCultureFlips on - for any living major whose culture
+// leads a tile inside the region, under the same gates. See docs/current-model.md and docs/civ-v-parity-spec.md.
 
 import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
 import { dlog, log } from "/cultural-diffusion/ui/cd-log.js";
@@ -11,15 +12,20 @@ import {
   localPlayerId, mapDims, allSettlements, plotsInRadius, cityLoc,
   ownerAt, owningCityIdAt, isWater
 } from "/cultural-diffusion/ui/cd-plots.js";
-import { cultureOf, happinessOf, wonderCountOf, isCelebrating, currentAgeKey, prosperityOf, vitalityOf } from "/cultural-diffusion/ui/cd-polity.js";
+import { cultureOf, happinessOf, wonderCountOf, isCelebrating, currentAgeKey, prosperityOf, vitalityOf, populationOf } from "/cultural-diffusion/ui/cd-polity.js";
 import { projectionOf, ethnicFactor } from "/cultural-diffusion/ui/cd-pressure.js";
 import { gatherCivMetrics } from "/cultural-diffusion/ui/cd-metrics.js";
 import { powerMultipliers } from "/cultural-diffusion/ui/cd-cpi.js";
 import { buildEthnicContext } from "/cultural-diffusion/ui/cd-ethnicity.js";
 import { civTuning } from "/cultural-diffusion/ui/cd-civ-tuning.js";
 import { agePace, mapSizeScale, ageProgress } from "/cultural-diffusion/ui/cd-calibration.js";
-import { stepMods } from "/cultural-diffusion/ui/cd-terrain.js";
-import { injectionAmount, cityCultureCap, decayValue, diffusionDelivered, resolveOwner, passCanAct } from "/cultural-diffusion/ui/cd-field.js";
+import { stepMods, sourceThreshold } from "/cultural-diffusion/ui/cd-terrain.js";
+import { decayValue, diffusionDelivered, resolveOwner, passCanAct } from "/cultural-diffusion/ui/cd-field.js";
+import { injectStep, convertStep, ownerFloorStep } from "/cultural-diffusion/ui/cd-inject.js";
+import { loadComposition } from "/cultural-diffusion/ui/cd-emigration.js";
+import { claimCountsFor, flipEligible, commitFlip } from "/cultural-diffusion/ui/cd-flip.js";
+import { resolveAiOwnership } from "/cultural-diffusion/ui/cd-ai-flips.js";
+import { conquestSweep } from "/cultural-diffusion/ui/cd-conquest.js";
 import { neighborsOf } from "/cultural-diffusion/ui/cd-units.js";
 import {
   localCityList, nearestCity, withinOwnNaturalRing, adjacentToMe, distantLandsGated, claimGateBlocked
@@ -42,6 +48,7 @@ function unkey(k) {
   return { x: parseInt(k.slice(0, i), 10), y: parseInt(k.slice(i + 1), 10) };
 }
 
+
 /**
  * Build the pressure-model Settlement rows from the live engine (once per pass).
  * @returns {import("/cultural-diffusion/ui/cd-pressure.js").Settlement[]} Settlements.
@@ -57,6 +64,8 @@ function gatherSettlements() {
     out.push({
       owner,
       loc,
+      city,                      // the engine city, for the conversion reads (cd-conversion.js)
+      population: populationOf(city), // a foreign group's injection strength is population-based (Civ V)
       culture: cultureOf(city), // live per-turn culture (already age-appropriate; age scaling is applied to injection)
       happiness: happinessOf(city),
       wonders: wonderCountOf(city),
@@ -157,7 +166,7 @@ function easeCrossing(m, ease) {
   if (!m) return m;
   return {
     malus: m.malus * (1 - e),
-    max: m.max + (1 - m.max) * e,   // toward 1.0 = no neighbour-cap reduction
+    max: m.max + (1 - m.max) * e,   // toward 1.0 = no neighbor-cap reduction
     threshold: m.threshold * (1 - e) // toward 0 = culture crosses at any strength
   };
 }
@@ -200,10 +209,10 @@ function decayStep(field, region, next, rowOf, ageCfg) {
 }
 
 /**
- * Deliver diffusion from one source tile/civ to a single in-region neighbour, applying terrain
+ * Deliver diffusion from one source tile/civ to a single in-region neighbor, applying terrain
  * step-mods and (when present) the diaspora affinity accelerant.
  */
-function diffuseToNeighbour(src, nb, ctx) {
+function diffuseToNeighbor(src, nb, ctx) {
   const { loc: srcLoc, val: srcVal, civ, civId } = src;
   const { region, rowOf, ethCtx, ageCfg } = ctx;
   if (nb.x === srcLoc.x && nb.y === srcLoc.y) return;
@@ -220,40 +229,23 @@ function diffuseToNeighbour(src, nb, ctx) {
 }
 
 /**
- * Diffuse from every above-threshold source tile to its in-region neighbours (field step 2),
+ * Diffuse from every above-threshold source tile to its in-region neighbors (field step 2),
  * applying terrain step-mods and (when present) the diaspora affinity accelerant.
  */
 function diffuseStep(ctx) {
-  const { field, region, threshold } = ctx;
+  const { field, region, ageCfg } = ctx;
   for (const k of Object.keys(field)) {
     if (!region.has(k)) continue;
     const src = field[k];
     const srcLoc = unkey(k);
+    const threshold = sourceThreshold(srcLoc, ageCfg); // a mountain source needs far more before it leaks (Civ V)
     for (const civ of Object.keys(src)) {
       const srcVal = src[civ];
       if (srcVal <= threshold) continue;
       const source = { loc: srcLoc, val: srcVal, civ, civId: parseInt(civ, 10) };
       for (const nb of plotsInRadius(srcLoc, 1)) {
-        diffuseToNeighbour(source, nb, ctx);
+        diffuseToNeighbor(source, nb, ctx);
       }
-    }
-  }
-}
-
-/** Inject each city's culture into its own tile, capped (field step 3). */
-function injectStep(injectors, field, rowOf, pace) {
-  for (const [k, inj] of injectors) {
-    const civ = String(inj.civ);
-    const row = rowOf(k);
-    const currentOwn = (field[k] && field[k][civ]) || 0;
-    const cap = cityCultureCap(inj.strength, CONFIG);
-    if (currentOwn < cap) {
-      // pace scales the per-turn injected amount too (cap itself is unpaced), so the city stock
-      // builds toward the same equilibrium, just re-timed to the age length.
-      const add = Math.min(cap - currentOwn, injectionAmount(inj.strength, currentOwn, CONFIG) * pace);
-      if (add > 0) row[civ] = (row[civ] || 0) + add;
-    } else if (!(row[civ] > 0)) {
-      row[civ] = currentOwn;
     }
   }
 }
@@ -263,14 +255,16 @@ function injectStep(injectors, field, rowOf, pace) {
  * `state.field`. Returns the new field so ownership resolution can read it directly.
  */
 function updateField(state, region, injectors, ctx) {
-  const { threshold, ethCtx, ageCfg, pace } = ctx;
+  const { ethCtx, ageCfg, pace, alive, comp } = ctx;
   const field = state.field;
   /** @type {Record<string, Record<string, number>>} */
   const next = {};
   const rowOf = (k) => (next[k] || (next[k] = {}));
   decayStep(field, region, next, rowOf, ageCfg);
-  diffuseStep({ field, region, next, rowOf, threshold, ethCtx, ageCfg });
-  injectStep(injectors, field, rowOf, pace);
+  diffuseStep({ field, region, next, rowOf, ethCtx, ageCfg });
+  injectStep(injectors, field, rowOf, pace, { alive, comp });
+  convertStep(injectors, rowOf);
+  ownerFloorStep(region, next, alive);
   for (const k of Object.keys(field)) if (!region.has(k)) next[k] = field[k]; // carry over out-of-region
   state.field = next;
   return next;
@@ -290,21 +284,6 @@ function findDeadOwners(region, next, alive) {
   return deadOwners;
 }
 
-/** Current per-city claim counts for the local player (enforces maxDiffusionPlots). */
-function claimCountsFor(state, me) {
-  /** @type {Map<number, number>} */
-  const claimCount = new Map();
-  const bump = (city) => claimCount.set(city, (claimCount.get(city) || 0) + 1);
-  for (const c of Object.values(state.claims)) {
-    if (c && c.by === me) bump(c.city);
-  }
-  // A claim still landing (cd-pending.js) spends the budget too, so a city can't over-claim mid-write.
-  for (const p of Object.values(state.pending || {})) {
-    if (p && p.kind === "claim" && p.by === me) bump(p.city);
-  }
-  return claimCount;
-}
-
 /** Flip candidates (nearest local city within flipMaxDistance), sorted nearest-first. */
 function flipCandidates(region, next, cities, maxDist) {
   const candidates = [];
@@ -318,56 +297,6 @@ function flipCandidates(region, next, cities, maxDist) {
   }
   candidates.sort((a, b) => a.near.d - b.near.d);
   return candidates;
-}
-
-/**
- * Whether a won tile passes every eligibility gate (safety mode, war, core protection,
- * adjacency, per-city cap). Kept as pure predicates so the flip loop stays flat.
- */
-function flipEligible(cand, owner, me, claimCount, inFlight) {
-  const { k, near } = cand;
-  // Every gate except the per-city cap is shared with the lens and the hover readout (cd-eligibility.js),
-  // so what the map promises and what the pass does cannot drift.
-  const blocked = claimGateBlocked(cand.loc, owner, me, CONFIG, inFlight);
-  if (blocked) {
-    if (blocked === "would-strand-a-unit") dlog(`skip flip ${k}: would strand a foreign unit`);
-    return false;
-  }
-  if ((claimCount.get(near.id) || 0) >= Math.max(0, CONFIG.maxDiffusionPlots)) {
-    dlog(`skip flip ${k}: city ${near.id} at maxDiffusionPlots`);
-    return false;
-  }
-  return true;
-}
-
-/** Commit a single won+eligible flip, recording claim/lock bookkeeping and a seed stock. */
-function commitFlip(cand, owner, verdict, fx) {
-  const { state, next, me, ageCfg, claimCount } = fx;
-  const { k, loc, near } = cand;
-  const res = performFlip({ playerId: me, city: near.city, loc, verb: CONFIG.flipVerb, refund: CONFIG.refundGold });
-  // Verify the tile actually changed owner before booking anything: performFlip only reports
-  // "didn't throw", and a silent no-op would otherwise spend the city's budget, lock the tile,
-  // seed a phantom stock and fire a false toast.
-  if (!res.ok) {
-    dlog(`flip ${k} NOT APPLIED reason=${res.reason || "call-failed"} verb=${res.verb}`);
-    return false;
-  }
-  if (ownerAt(loc) !== me) {
-    // The engine applies ownership AFTER the call, so the same-tick read is still the old owner. Book it
-    // next pass from the live map (cd-pending.js); it counts toward the budget and cap immediately.
-    markPending(state, k, { kind: "claim", by: me, city: near.id, was: owner });
-    claimCount.set(near.id, (claimCount.get(near.id) || 0) + 1);
-    dlog(`flip ${k} -> player ${me} via ${res.verb} sent; pending confirmation next pass (was owner ${owner})`);
-    return "pending";
-  }
-  claimCount.set(near.id, (claimCount.get(near.id) || 0) + 1);
-  state.claims[k] = { by: me, city: near.id, turn: state.monoTurn };
-  state.locked[k] = Math.max(0, Math.floor(CONFIG.flipCooldownTurns));
-  // seed a stable stock so the tile doesn't immediately fail the ownership test
-  next[k][String(me)] = Math.max(next[k][String(me)] || 0, ageCfg.minimumOwner);
-  dlog(`flip ${k} -> player ${me} via ${res.verb} (was owner ${owner}, culture ${Math.round(verdict.value)})`);
-  notifyFlip({ x: loc.x, y: loc.y, wasOwner: owner, newOwner: me });
-  return "booked";
 }
 
 /** Resolve a single candidate tile: gate, then flip. Returns true when a flip was committed. */
@@ -384,13 +313,13 @@ function tryFlipCandidate(cand, fx) {
 }
 
 /**
- * Ownership resolution: flip in-region tiles to the LOCAL player only, nearest-first, honouring
- * every eligibility gate and per-turn/per-city caps.
- * @param {{state:*, region:Set<string>, next:*, cities:*, me:number, ageCfg:*}} p Pass state.
- * @returns {{flips:number, tiles:number}} Flip summary.
+ * Ownership resolution: flip in-region tiles to the LOCAL player, nearest-first, honoring every eligibility gate
+ * and per-turn/per-city caps; then, with aiCultureFlips on, to any other major whose culture leads.
+ * @param {{state:*, region:Set<string>, next:*, cities:*, me:number, ageCfg:*, alive:Set<number>}} p Pass state.
+ * @returns {{flips:number, pending:number, tiles:number, deadOwners:number[], aiFlips:number, aiPending:number}}
+ *   Summary.
  */
-function resolveOwnership({ state, region, next, cities, me, ageCfg }) {
-  const alive = aliveOwners(me);
+function resolveOwnership({ state, region, next, cities, me, ageCfg, alive }) {
   const deadOwners = findDeadOwners(region, next, alive);
   const claimCount = claimCountsFor(state, me);
   const maxFlips = Math.max(0, CONFIG.maxFlipsPerTurn);
@@ -409,7 +338,10 @@ function resolveOwnership({ state, region, next, cities, me, ageCfg }) {
     if (result === "booked") flips++;
     else if (result === "pending") pending++;
   }
-  return { flips, pending, tiles, deadOwners };
+  const ai = CONFIG.aiCultureFlips
+    ? resolveAiOwnership({ state, region, next, me, ageCfg, deadOwners })
+    : { flips: 0, pending: 0 };
+  return { flips, pending, tiles, deadOwners, aiFlips: ai.flips, aiPending: ai.pending };
 }
 
 /** Commit one buffer claim (integrated verb + claim/lock/seed bookkeeping). @returns {boolean} */
@@ -436,7 +368,7 @@ function commitBuffer(state, c, T, me) {
 /**
  * Event-driven "+1 ring" cultural buffer: when the LOCAL player completes a rural improvement on
  * `devLoc`, claim the UNOWNED tiles adjacent to it for the nearest city via the integrated verb.
- * Never takes another player's tile; capped to baseGrowthRadius+1 rings from the nearest city centre.
+ * Never takes another player's tile; capped to baseGrowthRadius+1 rings from the nearest city center.
  * @param {{x:number,y:number}} devLoc The just-developed tile.
  * @returns {number} Buffer tiles claimed.
  */
@@ -462,7 +394,7 @@ export function claimBufferAt(devLoc) {
 }
 
 /**
- * The nearest local city an UNOWNED neighbour tile should attach to as a +1 buffer, or null when
+ * The nearest local city an UNOWNED neighbor tile should attach to as a +1 buffer, or null when
  * ineligible (the dev tile itself, already-owned, cooldown-locked, or past the +1 ring cap). Unlike
  * the land-only diffusion field, the buffer claims adjacent UNOWNED water too (coastal borders).
  */
@@ -506,7 +438,8 @@ function repairOrphans(state, region, cities, me) {
 /** Drop a tile's claim + lock bookkeeping (used when a tile is handed back to the base game). */
 function forgetClaim(state, k) {
   delete state.claims[k];
-  delete state.locked[k];
+  // The cooldown stays: it is the anti-flicker guard (and a conquest's hold), not part of the claim record. Watched
+  // 2026-09-26: a conquered ring-3 tile lost its hold here the pass after it was taken.
 }
 
 /**
@@ -560,7 +493,7 @@ function pruneFarField(state, region, cities, radius) {
 }
 
 /**
- * Injectors: any settlement whose centre sits in the region (nearby rivals inject too, so their
+ * Injectors: any settlement whose center sits in the region (nearby rivals inject too, so their
  * culture contests the field). Map cityKey -> { civ, strength }.
  * @param {import("/cultural-diffusion/ui/cd-pressure.js").Settlement[]} settlements Settlements.
  * @param {Set<string>} region Region plot keys.
@@ -574,7 +507,10 @@ function buildInjectors(settlements, region, strengthOf) {
     const k = key(s.loc.x, s.loc.y);
     if (!region.has(k)) continue;
     // culture/vitality ride along only for the debug injector line (logInjectors); the field ignores them.
-    injectors.set(k, { civ: s.owner, strength: strengthOf(s), culture: s.culture, vitality: s.vitality });
+    injectors.set(k, {
+      civ: s.owner, strength: strengthOf(s), culture: s.culture, vitality: s.vitality,
+      population: s.population, city: s.city
+    });
   }
   return injectors;
 }
@@ -591,9 +527,10 @@ function finishPass(state, region, cities, radius, t0) {
 function logPassSummary(state, c) {
   const done = c.confirmed;
   const busy = c.flips + c.pending + c.ceded + c.cedePending + c.healed + c.released
-    + done.claim + done.cede + done.dropped;
+    + done.claim + done.cede + done.dropped + c.aiFlips + c.aiPending + c.conquests + c.conquestPending;
   if (busy === 0 && !CONFIG.debug) return;
   log(`pass: ${c.flips} flip(s), ${c.pending} pending, ${c.ceded} ceded (${c.cedePending} pending), `
+    + `${c.aiFlips} AI flip(s) (${c.aiPending} pending), ${c.conquests} conquest(s) (${c.conquestPending} pending), `
     + `confirmed ${done.claim} claim/${done.cede} cede (${done.dropped} dropped), `
     + `${c.healed} orphan(s) healed, ${c.released} inner tile(s) released to base game, `
     + `${Object.keys(state.field).length} active field tile(s)`);
@@ -619,8 +556,9 @@ function preparePass(cities) {
   const settlements = gatherSettlements();
   const { strengthOf, ethCtx } = injectionModel(settlements, ageInject);
   const injectors = buildInjectors(settlements, region, strengthOf);
-  const threshold = Math.max(0, CONFIG.cultureThreshold);
-  return { state, region, radius, injectors, threshold, ethCtx, ageCfg, pace, confirmed };
+  // The Emigration composition (who lives in each city) weights foreign groups' injection; null without the mod.
+  const comp = CONFIG.foreignCultureInCities && CONFIG.useEmigration ? loadComposition() : null;
+  return { state, region, radius, injectors, ethCtx, ageCfg, pace, confirmed, comp };
 }
 
 /**
@@ -636,18 +574,25 @@ export function runPass() {
   if (!cities.length) return { flips: 0, tiles: 0 };
 
   const t0 = Date.now();
-  const { state, region, radius, injectors, threshold, ethCtx, ageCfg, pace, confirmed } = preparePass(cities);
+  const { state, region, radius, injectors, ethCtx, ageCfg, pace, confirmed, comp } = preparePass(cities);
+  const alive = aliveOwners(me);
   const healed = repairOrphans(state, region, cities, me);
   const released = releaseInnerClaims(state, cities, me);
-  const next = updateField(state, region, injectors, { threshold, ethCtx, ageCfg, pace });
+  const next = updateField(state, region, injectors, { ethCtx, ageCfg, pace, alive, comp });
   logFieldDiagnostics(injectors, cities, next, me, ageCfg);
-  const { flips, pending, tiles, deadOwners } = resolveOwnership({ state, region, next, cities, me, ageCfg });
+  const { flips, pending, tiles, deadOwners, aiFlips, aiPending } =
+    resolveOwnership({ state, region, next, cities, me, ageCfg, alive });
   const { ceded, pending: cedePending } = recedeOwnership({ state, region, next, me, ageCfg, deadOwners });
+  const conquest = conquestSweep({ state, region, me }); // last: occupation is the final territorial word
 
   finishPass(state, region, cities, radius, t0);
-  logPassSummary(state, { flips, pending, ceded, cedePending, healed, released, confirmed });
+  logPassSummary(state, {
+    flips, pending, ceded, cedePending, healed, released, confirmed, aiFlips, aiPending,
+    conquests: conquest.flips, conquestPending: conquest.pending
+  });
   return {
-    flips, pending, tiles, healed, released, ceded, cedePending,
+    flips, pending, tiles, healed, released, ceded, cedePending, aiFlips, aiPending,
+    conquests: conquest.flips, conquestPending: conquest.pending, occupied: conquest.held,
     confirmed: confirmed.claim, confirmedCede: confirmed.cede
   };
 }

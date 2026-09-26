@@ -15,7 +15,7 @@ import { loadComposition, shareOfCiv } from "/cultural-diffusion/ui/cd-emigratio
 
 /**
  * Build the per-pass ethnic-affinity context. Attaches emigration's composition entries to
- * the current settlements by city-centre location, then answers, for any (civ, plot), the
+ * the current settlements by city-center location, then answers, for any (civ, plot), the
  * diaspora share of that civ in the composition of the settlement NEAREST the plot - the
  * best available read of "whose people live around here."
  * @param {{loc:{x:number,y:number}}[]} settlements Settlement rows (need a `.loc`).

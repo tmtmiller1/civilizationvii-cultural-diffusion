@@ -1,0 +1,28 @@
+[16:52:35] autosaves backed up: 3
+[16:52:35] registry before: 1261=1  (restoring Disabled=1 afterwards)
+[16:52:35] deployed mod: debug=1 affectsSaves0=1
+[16:52:35] harness installed: cdh-game-gold.js on AugustusAnt136.Civ7Save
+[16:52:35] previous UI.log kept at /Users/tylermiller/Library/Application Support/Civilization VII/cd-harness-backup/UI-before-gold-20260925-165235.log (7161 lines)
+[16:52:38] game pid 8625
+[16:55:02] result=done after 128s
+[16:55:02] collected AI_Behavior_Tree_Events.csv (10 lines)
+[16:55:02] collected AI_Behavior_Trees.csv (5308 lines)
+[16:55:02] collected AI_CityStrategy.csv (24 lines)
+[16:55:02] collected AI_CombatPlanning.csv (1309 lines)
+[16:55:02] collected AI_Commander_Promotions.csv (17 lines)
+[16:55:02] collected AI_DiplomaticActions.csv (324 lines)
+[16:55:02] collected AI_Leader.csv (2 lines)
+[16:55:02] collected AI_Market.csv (198 lines)
+[16:55:02] collected AI_MayhemTracker.csv (124 lines)
+[16:55:02] collected AI_MovementPlanning.csv (3725 lines)
+[16:55:02] collected AI_Operation.csv (2327 lines)
+[16:55:02] collected AI_Operation_Eval.csv (224 lines)
+[16:55:02] collected AI_Recruiting.csv (10124 lines)
+[16:55:03] collected AI_Tactical.csv (778 lines)
+[16:55:03] collected AI_Targets.csv (19606 lines)
+[16:55:03] collected AI_UnitEfficiency.csv (115 lines)
+[16:55:03] collected AI_Victories.csv (5 lines)
+[16:55:11] restored: registry 1263=1  harness present: no debugPatched: 0
+[16:55:11] autosaves changed during the run; putting the player's back
+[16:55:11] FINISHED result=done  log: /Users/tylermiller/Repos/civilization_mods/civilization_vii_mods/tower_mods/cultural_diffusion/devtools/harness/gold-UI.log
+RUNNER_EXIT=0

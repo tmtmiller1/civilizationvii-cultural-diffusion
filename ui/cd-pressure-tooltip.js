@@ -11,7 +11,8 @@ import PlotCursor from "/core/ui/input/plot-cursor.js";
 import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
 import { loadState } from "/cultural-diffusion/ui/cd-state.js";
 import { pressureVerdict, estimateTurnsToFlip, passCanAct } from "/cultural-diffusion/ui/cd-field.js";
-import { localCityList, claimInScope, claimGateBlocked } from "/cultural-diffusion/ui/cd-eligibility.js";
+import { localCityList, cityListOf, claimInScope, claimGateBlocked } from "/cultural-diffusion/ui/cd-eligibility.js";
+import { isMajorPlayer } from "/cultural-diffusion/ui/cd-borders.js";
 import { ownerAt, plotsInRadius, localPlayerId } from "/cultural-diffusion/ui/cd-plots.js";
 import { currentAgeKey } from "/cultural-diffusion/ui/cd-polity.js";
 import { applyTunableOverrides } from "/cultural-diffusion/ui/cd-settings.js";
@@ -25,7 +26,7 @@ const CURSOR_OFFSET = 36; // px gap from the cursor so the panel clears the tile
 // (cd-eligibility), so for up to this long the readout can still offer progress on a tile that has just gone
 // on cooldown or had a verb sent. Sub-second staleness in a hover panel is the deliberate trade for not
 // re-reading the whole field on every mouse move; `__test.clearSnapshot` exists so the parity suite can pin
-// the fresh behaviour rather than the cache.
+// the fresh behavior rather than the cache.
 const FIELD_TTL = 1500;
 const MAX_CONTENDERS = 3; // cap the per-civ stock rows so the panel stays compact
 const FALLBACK_HEX = "#c9a24c";
@@ -135,7 +136,7 @@ function snapshot() {
   }
   const cfg = ageAdjustedCfg();
   const me = localPlayerId();
-  _snap = { at: now, field, claims, me, cfg, dead: deadOwnersOf(field, aliveIds()),
+  _snap = { at: now, field, claims, me, cfg, state, dead: deadOwnersOf(field, aliveIds()),
     ctx: { me, cities: localCityList(me), state, cfg } };
   return _snap;
 }
@@ -159,8 +160,8 @@ function lensActive() {
   }
 }
 
-/** The leader's largest stock among a plot's neighbours (for the turns estimate). */
-function strongestNeighbourStock(field, plot, leader) {
+/** The leader's largest stock among a plot's neighbors (for the turns estimate). */
+function strongestNeighborStock(field, plot, leader) {
   let best = 0;
   const civ = String(leader);
   for (const n of plotsInRadius(plot, 1)) {
@@ -179,7 +180,7 @@ function amt(v) {
 
 /** The turns-to-flip display string, or null when there is no pending flip. */
 function turnsText(verdict, field, plot, cfg) {
-  const turns = estimateTurnsToFlip(verdict, strongestNeighbourStock(field, plot, verdict.leader), cfg);
+  const turns = estimateTurnsToFlip(verdict, strongestNeighborStock(field, plot, verdict.leader), cfg);
   if (turns == null) return null;
   if (turns === 0) return t("LOC_CD_PRESSURE_READY", "ready to flip");
   if (!isFinite(turns)) return t("LOC_CD_PRESSURE_STALLED", "stalled");
@@ -220,10 +221,16 @@ function contenderRows(row, owner, dead) {
  * @returns {boolean} True when the flip rows should be shown.
  */
 function actionableHere(plot, owner, v, snap, k) {
-  if (!passCanAct(v.leader, owner, snap.me, snap.claims[k]?.by === snap.me, snap.cfg.recedeBorders)) return false;
-  if (v.leader !== snap.me) return true; // a recede cession: the recede step's business, not this gate's
-  if (!claimInScope(plot, snap.ctx)) return false;
-  return !claimGateBlocked(plot, owner, snap.me, snap.cfg, null);
+  const aiLead = !!snap.cfg.aiCultureFlips && v.leader >= 0 && v.leader !== snap.me && isMajorPlayer(v.leader);
+  const flags = { recede: snap.cfg.recedeBorders, aiFlips: aiLead };
+  if (!passCanAct(v.leader, owner, snap.me, snap.claims[k]?.by === snap.me, flags)) return false;
+  if (v.leader !== snap.me && !aiLead) return true; // a recede cession: the recede step's business, not this gate's
+  // Our own claim, or - with AI flips on - the leader's: the same gates, asked for whoever would claim.
+  const ctx = v.leader === snap.me
+    ? snap.ctx
+    : { me: v.leader, cities: cityListOf(v.leader), state: snap.state, cfg: snap.cfg };
+  if (!claimInScope(plot, ctx)) return false;
+  return !claimGateBlocked(plot, owner, v.leader, snap.cfg, null);
 }
 
 /**

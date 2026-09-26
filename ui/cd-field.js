@@ -3,7 +3,7 @@
 // The PURE reaction-diffusion math for the culture field (docs/current-model.md §2, adapted from
 // the Civ V "Cultural Diffusion" model). No engine reads live here, so it is unit-tested in Node;
 // cd-pass.js owns the persisted field and the engine reads and feeds them through these functions.
-// Each turn a tile DECAYS, DIFFUSES to neighbours and cities INJECT; ownership is a read-out of the stock.
+// Each turn a tile DECAYS, DIFFUSES to neighbors and cities INJECT; ownership is a read-out of the stock.
 
 /** @param {*} v @param {number} [d] @returns {number} */
 function num(v, d = 0) {
@@ -54,22 +54,22 @@ export function decayValue(value, cfg) {
 }
 
 /**
- * @typedef {Object} StepMods Terrain/affinity modifiers for ONE source->neighbour step.
+ * @typedef {Object} StepMods Terrain/affinity modifiers for ONE source->neighbor step.
  * @property {boolean} blocked True when culture cannot cross at all (water, or an ungated feature).
  * @property {number} bonus Additive diffusion-rate bonus fraction (road 1.0 = +100%, river 0.65).
  * @property {number} malus Additive diffusion-rate penalty fraction (0.10 = -ish via 1/(1+malus)).
- * @property {number} maxFactor Multiplier on the base neighbour cap (road x2.5, river x1.8, forest x0.8...).
+ * @property {number} maxFactor Multiplier on the base neighbor cap (road x2.5, river x1.8, forest x0.8...).
  */
 
 /**
- * Culture DELIVERED from a source tile to one neighbour this turn (Civ V DiffuseCulture). The
- * neighbour asymptotes to at most `normalMax x maxFactor` (capped by `maxPercent`) of the source,
- * approached at the diffusion rate. Returns the ADD to the neighbour's stock (never lowers it).
+ * Culture DELIVERED from a source tile to one neighbor this turn (Civ V DiffuseCulture). The
+ * neighbor asymptotes to at most `normalMax x maxFactor` (capped by `maxPercent`) of the source,
+ * approached at the diffusion rate. Returns the ADD to the neighbor's stock (never lowers it).
  * @param {number} sourceValue The diffusing civ's culture on the source tile.
- * @param {number} prevTargetValue The same civ's culture already on the neighbour.
+ * @param {number} prevTargetValue The same civ's culture already on the neighbor.
  * @param {StepMods} mods Terrain/affinity modifiers for this step.
  * @param {import("/cultural-diffusion/ui/cd-config.js").CdConfig} cfg Live config.
- * @returns {number} Culture to add to the neighbour (>= 0).
+ * @returns {number} Culture to add to the neighbor (>= 0).
  */
 export function diffusionDelivered(sourceValue, prevTargetValue, mods, cfg) {
   const src = Math.max(0, num(sourceValue));
@@ -133,18 +133,72 @@ export function resolveOwner(civMap, currentOwner, deadOwners, cfg) {
 }
 
 /**
- * Whether the pass can ever move a tile toward its culture leader. The pass flips only to the local player, and
- * cedes back to a rival only with recede on and only a tile the mod claimed for us. The pass, the recede step, the
- * lens and the hover readout all ask this one question so what they show and what they do cannot drift.
+ * Whether the pass can ever move a tile toward its culture leader. The pass flips to the local player; with
+ * `aiFlips` it also flips to any other major that leads (the caller has already checked the leader IS a major);
+ * and it cedes back to a rival with recede on, only a tile the mod claimed for us. The pass, the recede step,
+ * the lens and the hover readout all ask this one question so what they show and what they do cannot drift.
  * @param {number} leader Leading culture's player id (-1 = none). @param {number} owner Current owner (-1 = unowned).
  * @param {number} me Local player id. @param {boolean} claimedByMe Whether the mod claimed this tile for `me`.
- * @param {boolean} recede CONFIG.recedeBorders.
+ * @param {boolean|{recede?:boolean, aiFlips?:boolean}} flags CONFIG.recedeBorders as a plain boolean, or an object
+ *   with `recede` and `aiFlips` (CONFIG.aiCultureFlips, and the caller has checked the leader is a living major).
  * @returns {boolean} True when the pass can act on the leader's win.
  */
-export function passCanAct(leader, owner, me, claimedByMe, recede) {
+export function passCanAct(leader, owner, me, claimedByMe, flags) {
   if (leader < 0 || leader === owner) return false;
   if (leader === me) return true;
-  return !!recede && !!claimedByMe && owner === me;
+  const f = flags && typeof flags === "object" ? flags : { recede: !!flags, aiFlips: false };
+  if (f.aiFlips) return true;
+  return !!f.recede && !!claimedByMe && owner === me;
+}
+
+/**
+ * Convert a share of every FOREIGN culture on a city tile to the city's owner (Civ V ConvertCulture): the owner's
+ * stock grows by exactly what the others lose. Mutates and returns the row.
+ * @param {Record<string, number>} row civId -> culture on the city tile.
+ * @param {number} owner The city's owner.
+ * @param {number} rate Fraction of each foreign stock converted this turn (clamped to [0,1]).
+ * @returns {number} Total culture moved to the owner.
+ */
+export function convertCityCulture(row, owner, rate) {
+  const r = Math.min(1, Math.max(0, num(rate)));
+  if (!row || r <= 0 || owner < 0) return 0;
+  const ownerKey = String(owner);
+  let moved = 0;
+  for (const civ of Object.keys(row)) {
+    if (civ === ownerKey) continue;
+    const v = num(row[civ]);
+    if (v <= 0) continue;
+    const take = v * r;
+    row[civ] = v - take;
+    moved += take;
+  }
+  if (moved > 0) row[ownerKey] = num(row[ownerKey]) + moved;
+  return moved;
+}
+
+/**
+ * Rewrite one tile's stocks for a city capture (Civ V CityCultureOnCapture): every culture loses `captureLoss`
+ * of its stock, and the new owner gains `captureGain` of the total lost. Mutates and returns the row.
+ * @param {Record<string, number>} row civId -> culture on the tile.
+ * @param {number} newOwner The conqueror.
+ * @param {import("/cultural-diffusion/ui/cd-config.js").CdConfig} cfg Live config.
+ * @returns {number} Culture the conqueror gained.
+ */
+export function applyCaptureTransfer(row, newOwner, cfg) {
+  if (!row || newOwner < 0) return 0;
+  const loss = Math.min(1, Math.max(0, num(cfg.captureLoss, 0.55)));
+  const gain = Math.max(0, num(cfg.captureGain, 0.75));
+  let lost = 0;
+  for (const civ of Object.keys(row)) {
+    const v = num(row[civ]);
+    if (v <= 0) continue;
+    const take = v * loss;
+    row[civ] = v - take;
+    lost += take;
+  }
+  const gained = lost * gain;
+  if (gained > 0) row[String(newOwner)] = num(row[String(newOwner)]) + gained;
+  return gained;
 }
 
 /**
@@ -203,20 +257,20 @@ function clamp01(v) {
 
 /**
  * A rough ONE-STEP-AHEAD estimate of turns until a tile flips to its leader: net gain next turn =
- * diffusion from the leader's strongest neighbour on OPEN ground minus this tile's decay (terrain
+ * diffusion from the leader's strongest neighbor on OPEN ground minus this tile's decay (terrain
  * mods, injection and the cap approach are ignored). Pure. Returns null when there is no pending
  * flip, 0 when already over the bar, and Infinity when the front is stalled (net gain <= 0).
  * @param {{leader:number, leaderValue:number, target:number, willFlip:boolean}} verdict A pressureVerdict.
- * @param {number} strongestNeighbourLeaderStock The leader's largest stock among the tile's neighbours.
+ * @param {number} strongestNeighborLeaderStock The leader's largest stock among the tile's neighbors.
  * @param {import("/cultural-diffusion/ui/cd-config.js").CdConfig} cfg Live config.
  * @returns {number|null} Estimated turns, 0 (ready), Infinity (stalled), or null (no pending flip).
  */
-export function estimateTurnsToFlip(verdict, strongestNeighbourLeaderStock, cfg) {
+export function estimateTurnsToFlip(verdict, strongestNeighborLeaderStock, cfg) {
   if (!verdict || verdict.leader < 0 || verdict.leader === verdict.incumbentOwner) return null;
   const remaining = verdict.target - verdict.leaderValue;
   if (verdict.willFlip || remaining <= 0) return 0;
   const open = { blocked: false, bonus: 0, malus: 0, maxFactor: 1 };
-  const delivered = diffusionDelivered(Math.max(0, num(strongestNeighbourLeaderStock)), verdict.leaderValue, open, cfg);
+  const delivered = diffusionDelivered(Math.max(0, num(strongestNeighborLeaderStock)), verdict.leaderValue, open, cfg);
   const decayLoss = verdict.leaderValue - decayValue(verdict.leaderValue, cfg);
   const net = delivered - decayLoss;
   if (net <= 0) return Infinity;

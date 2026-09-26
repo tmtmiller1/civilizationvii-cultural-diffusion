@@ -1,0 +1,6 @@
+[2026-09-26 09:21:32]	HTML Parser Error@:fs://game/root-game.html@1:2043: Premature end of file  Currently open tags: html, div, div..
+[2026-09-26 09:21:32]	HTML Parser Error@:fs://game/root-game.html@1:2043: Premature end of file  Currently open tags: html, div, div..
+[2026-09-26 09:21:47]	HTML Parser Error@:fs://game/root-game.html@49:43: Tokenizer error with an unimplemented error message.
+[2026-09-26 09:23:10]	JS Error: fs://game/base-standard/ui-next/tooltips/plot-tooltip/helpers.js:297: TypeError: Cannot read properties of null (reading 'owner')
+[2026-09-26 09:23:10]	JS Error (Line):   const owningPlayer = Players.get(unit.owner);
+[2026-09-26 09:23:10]	JS Error (Stack): TypeError: Cannot read properties of null (reading 'owner')

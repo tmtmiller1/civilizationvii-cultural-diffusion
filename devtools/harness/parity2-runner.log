@@ -1,0 +1,29 @@
+[16:42:35] autosaves backed up: 3
+[16:42:35] registry before: 1259=1  (restoring Disabled=1 afterwards)
+[16:42:35] deployed mod: debug=1 affectsSaves0=1
+[16:42:35] harness installed: cdh-game-parity.js on AugustusAnt136.Civ7Save
+[16:42:35] previous UI.log kept at /Users/tylermiller/Library/Application Support/Civilization VII/cd-harness-backup/UI-before-parity2-20260925-164235.log (3428 lines)
+[16:42:37] game pid 5738
+[16:43:29] shot p1-window -> 11229402 bytes
+[16:49:51] result=done after 392s
+[16:49:51] collected AI_Behavior_Tree_Events.csv (45 lines)
+[16:49:51] collected AI_Behavior_Trees.csv (25274 lines)
+[16:49:51] collected AI_CityStrategy.csv (63 lines)
+[16:49:51] collected AI_CombatPlanning.csv (8929 lines)
+[16:49:51] collected AI_Commander_Promotions.csv (78 lines)
+[16:49:51] collected AI_DiplomaticActions.csv (1451 lines)
+[16:49:51] collected AI_Leader.csv (5 lines)
+[16:49:51] collected AI_Market.csv (430 lines)
+[16:49:51] collected AI_MayhemTracker.csv (756 lines)
+[16:49:51] collected AI_MovementPlanning.csv (16271 lines)
+[16:49:51] collected AI_Operation.csv (11527 lines)
+[16:49:51] collected AI_Operation_Eval.csv (1075 lines)
+[16:49:51] collected AI_Recruiting.csv (48103 lines)
+[16:49:51] collected AI_Tactical.csv (4001 lines)
+[16:49:51] collected AI_Targets.csv (78837 lines)
+[16:49:51] collected AI_UnitEfficiency.csv (115 lines)
+[16:49:52] collected AI_Victories.csv (20 lines)
+[16:50:00] restored: registry 1261=1  harness present: no debugPatched: 0
+[16:50:00] autosaves changed during the run; putting the player's back
+[16:50:00] FINISHED result=done  log: /Users/tylermiller/Repos/civilization_mods/civilization_vii_mods/tower_mods/cultural_diffusion/devtools/harness/parity2-UI.log
+RUNNER_EXIT=0

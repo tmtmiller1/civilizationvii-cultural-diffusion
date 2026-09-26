@@ -62,6 +62,20 @@ export function happinessOf(city) {
   return readYield(city, "YIELD_HAPPINESS");
 }
 
+/**
+ * A city's population (the base UI reads `city.population`), or 0 when unreadable.
+ * @param {*} city City object.
+ * @returns {number} Population (>= 0).
+ */
+export function populationOf(city) {
+  return safe(() => {
+    const p = city?.population;
+    if (typeof p === "number" && isFinite(p)) return Math.max(0, p);
+    const g = city?.Growth?.population;
+    return typeof g === "number" && isFinite(g) ? Math.max(0, g) : 0;
+  }, 0);
+}
+
 /** The wonders list from whichever component exposes it, or null. */
 function wondersList(city) {
   return city?.Constructibles?.getWonders?.() ?? city?.Wonders?.getWonders?.();
