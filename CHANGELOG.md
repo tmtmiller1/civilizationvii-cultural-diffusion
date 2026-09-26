@@ -4,7 +4,23 @@ All notable changes to Cultural Diffusion are recorded here. The format follows
 [Keep a Changelog](https://keepachangelog.com/), and the mod uses
 [Semantic Versioning](https://semver.org/).
 
-## [Unreleased]
+## [1.4.0] - 2026-09-26
+
+### Added
+
+- **Civilopedia section.** A Cultural Diffusion tab in the Civilopedia explains every rule in 16 pages: Getting
+  Started, How Culture Spreads, Cultural Power, Rivals, Cities & War, and Interface & Options. Pages point to each
+  other by name, the search box finds them by common words (borders, rivers, conquest, lens, Shift+C, CPI), and a
+  Cultural Borders (Mod) page under Game Concepts, Settlements leads into the tab. Each Options tooltip names the
+  page that explains it. English only.
+
+### Changed
+
+- **Every civilization gains land by culture is now on by default** (`aiCultureFlips: true`). A rival whose culture
+  decisively leads a tile near your lands takes it under the same rules as your claims, including a tile of yours,
+  and you are told when it does; turn the option off to keep culture expansion yours alone. Only players who never
+  changed the option see the new default; a saved choice is kept. With it on, a rival already takes a claimed tile it
+  out-cultures, so the recede option matters mainly when this one is off (pinned in `tests/pass.mjs`).
 
 ## [1.3.0] - 2026-09-26
 

@@ -1,6 +1,6 @@
 [h1]Cultural Diffusion[/h1]
-[b]New in 1.2.0: borders that leave room for other people[/b]
-A claim now leaves another civilization's unit a legal move, so nothing you are at peace with is sealed inside your territory; the tile is taken once the unit moves on, and ships count too. City-states and villages keep a protected ring, so pressure cannot reduce a minor to the single tile its town sits on. Both came from a player's report, and both were reproduced in a test game before anything changed, then watched fixed in one. For Civilization VII 1.5.0.
+[b]New in 1.4.0: a Civilopedia section, and rivals that expand by culture[/b]
+Every rule now has a page in the in-game Civilopedia, under its own Cultural Diffusion tab, and each Options tooltip names the page that explains it. Other civilizations now gain land by culture by default, under the same rules as you. 1.3.0 brought in the rest of Gedemon's model: cities carry every culture living in them, culture passes to a city's conqueror, rivers carry culture along them and hold it back across them, and an opt-in mode lets armies take the ground they hold in a war. For Civilization VII 1.5.0.
 Cultural Diffusion grows your borders out of culture instead of a radius. Your cities deposit culture on the ground around them every turn; it seeps outward along roads and river valleys, drags through rough terrain, and land where your culture wins becomes yours, including land past the three rings a city can normally claim. It is slow, it follows the map, and it answers an AI settling four tiles from your capital. A reimagining and extension of Gedemon's [b]Cultural Diffusion[/b] (Civ V), rebuilt for Civ VII with a deeper model of what makes a city's culture carry, and pairing with the [b]Emigration[/b] companion mod.
 [h2]Mechanics[/h2]
 [list]
@@ -27,7 +27,7 @@ Shift+C shades the tiles on their way to changing hands, stronger the closer the
 [h2]When you will see it[/h2]
 Not early. In a 70-turn test game, a capital making 8 Culture claimed nothing at all. Once cities have grown, a strong one took its first tile past ring 3 about twenty turns after the mod started working; the rings beyond belong to a civilization with wonders and history behind it. This is a mid and late game system, and intensity is the knob if you want it sooner.
 [h2]Settings[/h2]
-One intensity knob: [b]Low[/b] nudges into empty land only, [b]Medium[/b] is the default and contests rival frontier tiles, [b]High[/b] spreads farther and flips faster. Separate switches cover the master enable, an empty-land-only mode, how much of a rival's city ring is protected, contiguous borders, claiming land beside new improvements, borders receding to a rival who out-cultures you (experimental), the lens, and debug logging. Every value underneath can be overridden.
+One intensity knob: [b]Low[/b] nudges into empty land only, [b]Medium[/b] is the default and contests rival frontier tiles, [b]High[/b] spreads farther and flips faster. Separate switches cover the master enable, an empty-land-only mode, how much of a rival's city ring is protected, contiguous borders, claiming land beside new improvements, borders receding to a rival who out-cultures you (experimental), other civilizations gaining land by culture (on by default), armies taking the ground they hold in a war, cities carrying every culture living in them, the lens, and debug logging. Every value underneath can be overridden.
 [h2]Pairs with Emigration[/h2]
 [list]
 [*]With the [b]Emigration[/b] companion mod installed, culture follows your people: it flows faster toward tiles your diaspora settled, so borders grow toward where your population went. The hooks stay inert when it is not installed, so the base mod is unchanged.
@@ -38,18 +38,17 @@ One intensity knob: [b]Low[/b] nudges into empty land only, [b]Medium[/b] is the
 [*][b]A mod cannot move another civilization's unit.[/b] No unit operation moves a unit you do not own, and the engine's teleport is missing from the version mods can reach. So expansion does not shove anyone aside: it leaves a way out and takes the tile once the unit has gone.
 [/list]
 [h2]Languages[/h2]
-English only for now. The mod's text is 41 strings, so a translation is a small job: ask for a language and I will add it.
+English only for now. Ask for a language and I will add it.
 [h2]Caveats and known issues[/h2]
 [list]
 [*][b]Single player only,[/b] and no base-game files are replaced.
 [*][b]Start a new game with it enabled.[/b] A save keeps the mod list it began with, so Cultural Diffusion cannot join a game already in progress.
 [*][b]Claimed tiles stay claimed.[/b] Switch the mod off and new claims stop, but ground it took stays yours: the game cannot hand a city's tile back to nobody.
-[*][b]The AI does not gain land by culture.[/b] Nearby AI cities build culture, which defends their tiles and slows yours, but they take ground this way only if you switch on receding borders.
+[*][b]Rivals gain land by culture too.[/b] A civilization whose culture decisively wins a tile near your lands can take it, including one of yours, and you are told when it does. City-states never do. Switch off Every civilization gains land by culture in Options to keep culture expansion yours alone.
 [*][b]Nothing happens early.[/b] Watch for moving borders in your first fifty turns and you will see none. That is the model, not a fault.
 [/list]
 [h2]Still coming[/h2]
 [list]
-[*][b]Tile ownership flip on conquest.[/b] An opt-in mode where ground your army holds in a war becomes yours outright, culture or no culture.
 [*][b]Options panel parity with Emigration.[/b] Grouped headings, and a label and tooltip on every control.
 [*][b]More balance work.[/b] Intensity presets, per-age pacing and per-leader tuning, as more games get played.
 [/list]

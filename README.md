@@ -18,17 +18,20 @@ culture clearly wins. Growing your cultural border is how you answer AI forward-
 footprint the base game allows (its own tiles reach ring 3 and no further) and ends holding fourteen tiles beyond
 it, at rings 4 and 5. More in [gallery/](gallery/).*
 
-By default culture gains land only for you. Nearby AI cities add their own culture to the
-field, which defends their tiles and slows yours, and their cities keep producing the culture
-of every people living in them. The AI takes land by culture only if you turn on one of two
-options: recede, which lets a rival win back a tile the mod claimed for you, or "every
-civilization gains land by culture", which moves every civilization's borders by culture
-under the same rules as yours.
+Every major civilization gains land by culture, under the same rules as yours: a rival whose
+culture decisively leads a tile near your lands takes it, including a tile of yours, and you
+are told when it does. Nearby AI cities add their own culture to the field, which defends
+their tiles and slows yours, and their cities keep producing the culture of every people
+living in them. Turn off "every civilization gains land by culture" in Options to have culture
+gain land only for you.
 
 It runs in single-player only and sits behind an enable flag. Turning it off stops all new
 claims, but tiles it already claimed stay yours, because the game cannot hand a city's tile
 back to no one. It works standalone, and reads extra data from the
 [Emigration](../emigration/) mod when that is also installed.
+
+In game, the Civilopedia has a Cultural Diffusion tab with a page for every rule, and each Options tooltip names
+the page that explains it.
 
 ---
 
@@ -99,7 +102,9 @@ Off by default (`recedeBorders`). When on, each pass re-checks only the tiles th
 claimed. If a rival's culture now beats yours there by the same decisive margin a claim
 needs, the tile passes to that rival's nearest city. Tiles your cities grew are never touched.
 A claim whose own culture fades stays yours, because the engine will not release a tile that
-is attached to a city.
+is attached to a city. With "every civilization gains land by culture" on (the default), a rival
+that decisively out-cultures a claimed tile near its land already takes it through its own
+claim, so recede matters mainly when that option is off.
 
 ### 6. Cities carry every culture living in them
 On by default (`foreignCultureInCities`). A city produces culture for every people present
@@ -119,8 +124,8 @@ On by default (`captureTransfer`). When a city changes hands, every culture on e
 tiles loses 55% (`captureLoss`) and the conqueror gains 75% of the total lost (`captureGain`).
 This happens for any two civilizations, not only when you are involved.
 
-### 8. Every civilization gains land by culture (opt-in)
-Off by default (`aiCultureFlips`). When on, other civilizations' borders move by culture too,
+### 8. Every civilization gains land by culture
+On by default (`aiCultureFlips`). Other civilizations' borders move by culture too,
 under the same rules as yours: inside the simulated region, a rival whose culture decisively
 leads a tile takes it through its nearest city, if it is at peace with the tile's owner, the
 tile is outside the owner's protected core, touches the rival's land and lies within reach of
@@ -232,8 +237,9 @@ needs less culture to own a tile, so borders reach farther, sooner.
   improvement near your border also claims the unowned tiles right next to it.
 - **Borders recede (experimental):** off by default; claimed tiles can be ceded to a rival
   whose culture overtakes yours (step 5 above).
-- **Every civilization gains land by culture:** off by default; other civilizations' borders
-  move by culture under the same rules as yours (step 8 above).
+- **Every civilization gains land by culture:** on by default; other civilizations' borders
+  move by culture under the same rules as yours (step 8 above). Off = only your borders grow
+  by culture.
 - **Armies hold the ground they occupy:** off by default; a combat unit holding an enemy
   tile through a war takes it after five turns (step 9 above).
 - **Cities carry every culture living in them:** on by default; a city produces culture for
@@ -306,7 +312,7 @@ The runtime is a set of small, single-responsibility UI-script modules (`ui/`):
 | `cd-inject.js` | Cities pump their own and every present culture group under a total cap; conversion; the owner floor. |
 | `cd-conversion.js` | A city's conversion rate from its buildings and its owner's ideology (a data table by type name). |
 | `cd-flip.js` | The flip commit shared by the player's and the AI's claims. |
-| `cd-ai-flips.js` | Opt-in: every civilization gains land by culture inside the simulated region. |
+| `cd-ai-flips.js` | Every civilization gains land by culture inside the simulated region (on by default). |
 | `cd-capture.js` | On a city capture, culture on its tiles passes partly to the conqueror. |
 | `cd-conquest.js` | Opt-in: a combat unit holding an enemy tile through a war takes it after a buffer. |
 | `cd-diagnostics.js` | Debug-only injector, frontier-ring, and state-size log lines. |
