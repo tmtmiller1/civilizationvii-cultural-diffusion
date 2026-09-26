@@ -64,6 +64,7 @@ rm -rf "$DEST"; mkdir -p "$DEST"
 cp "$REPO/cultural-diffusion.modinfo" "$DEST/"
 cp -R "$REPO/ui" "$DEST/"
 [ -d "$REPO/text" ] && cp -R "$REPO/text" "$DEST/"
+[ -d "$REPO/data" ] && cp -R "$REPO/data" "$DEST/"
 grep -q AffectsSavedGames "$MI" || sed -i '' -E 's#(<Version>[^<]+</Version>)#\1\n        <AffectsSavedGames>0</AffectsSavedGames>#' "$MI"
 sed -i '' -E 's/^([[:space:]]*)debug: false/\1debug: true/' "$DEST/ui/cd-config.js"
 # PATCH="<file>|<from>|<to>" edits ONE deployed file, never the repo. Used for defaults that do not live in
@@ -154,6 +155,7 @@ rm -rf "$MODS/cd-harness"
 # Redeploy the unpatched repo copy so the next real session runs the shipped config.
 rm -rf "$DEST"; mkdir -p "$DEST"; cp "$REPO/cultural-diffusion.modinfo" "$DEST/"; cp -R "$REPO/ui" "$DEST/"
 [ -d "$REPO/text" ] && cp -R "$REPO/text" "$DEST/"
+[ -d "$REPO/data" ] && cp -R "$REPO/data" "$DEST/"
 say "restored: registry $(sqlite3 "$DB" "select ModRowId||'='||Disabled from Mods where ModId='cultural-diffusion'" | tr '\n' ' ') harness present: $([ -d "$MODS/cd-harness" ] && echo yes || echo no) debugPatched: $(grep -c 'debug: true' "$DEST/ui/cd-config.js")"
 
 if [ "$(ls "$AUTO"/*.Civ7Save 2>/dev/null | xargs -n1 basename | sort)" != "$(ls "$BAK" 2>/dev/null | sort)" ]; then

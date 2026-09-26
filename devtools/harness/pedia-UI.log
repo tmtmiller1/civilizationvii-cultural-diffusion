@@ -1,0 +1,57 @@
+[2026-09-26 11:58:49]	[CDH] shell attached 
+[2026-09-26 11:58:50]	[CDH] shell query complete 
+[2026-09-26 11:58:50]	[CDH] shell found AugustusAnt136.Civ7Save turn 136 age AGE_ANTIQUITY missingMods=0 unowned=0 
+[2026-09-26 11:58:50]	[CDH] shell handleLoadSave returned true 
+[2026-09-26 11:59:15]	[CDH] pedia harness attached 
+[2026-09-26 11:59:15]	[CulturalDiffusion] boot (turnInterval 1, verb purchasePlot, enabled true) 
+[2026-09-26 11:59:30]	[CDH] pedia run turn=136 
+[2026-09-26 11:59:36]	[CDH] DB section=[{"$index":0,"SectionID":"CULTURAL_DIFFUSION","Icon":"pedia_culture","Name":"LOC_PEDIA_CULTURAL_DIFFUSION_TITLE"}] 
+[2026-09-26 11:59:36]	[CDH] DB pages=0 groups=0 layouts=0 chapters=0 terms=0 bridge=0 
+[2026-09-26 11:59:36]	[CDH] MODEL section={"tab":"Cultural Diffusion","icon":"pedia_culture","sort":165} order=CONCEPTS,LEADERS,AGES,CIVILIZATIONS,GOVERNMENT,CULTURE,TECHNOLOGIES,MAP,BUILDINGS,IMPROVEMENTS,WONDERS,RELIGION,UNITS,EMIGRATION,CULTURAL_DIFFUSION 
+[2026-09-26 11:59:36]	[CDH] MODEL pages=16 first=CD_OVERVIEW tabs=["Cultural Diffusion","Questions & Answers","About This Mod","The Culture Field","Terrain & Rivers","Claiming Tiles","Pace & Claimed Land","Cultural Strength","Leaders, Ages & Maps","With Emigration","Mixed & Captured Cities","Borders Recede","Rival Expansion","Armies Hold Ground","Cultural Pressure Lens","Options & Presets"] 
+[2026-09-26 11:59:36]	[CDH] MODEL groups=["Getting Started","How Culture Spreads","Cultural Power","Rivals, Cities & War","Interface & Options"] 
+[2026-09-26 11:59:36]	[CDH] SEARCH OK   'Shift+C' want CD_LENS got ["CULTURAL_DIFFUSION/CD_LENS"] 
+[2026-09-26 11:59:36]	[CDH] SEARCH OK   'Conquest' want CD_CONQUEST got ["CULTURAL_DIFFUSION/CD_CONQUEST"] 
+[2026-09-26 11:59:36]	[CDH] SEARCH OK   'Cultural Power Index' want CD_STRENGTH got ["CULTURAL_DIFFUSION/CD_STRENGTH"] 
+[2026-09-26 11:59:36]	[CDH] SEARCH OK   'Forward settling' want CD_OVERVIEW got ["CULTURAL_DIFFUSION/CD_OVERVIEW"] 
+[2026-09-26 11:59:36]	[CDH] SEARCH OK   'CD_CLAIMS' want CD_CLAIMS got ["CULTURAL_DIFFUSION/CD_CLAIMS"] 
+[2026-09-26 11:59:36]	[CDH] SEARCH OK   'CULTURAL_DIFFUSION' want CD_OVERVIEW got ["CULTURAL_DIFFUSION/CD_OVERVIEW","CULTURAL_DIFFUSION/CD_OVERVIEW","CONCEPTS/CD_CULTURAL_BORDERS"] 
+[2026-09-26 11:59:36]	[CDH] SEARCH VERDICT pass=6 of 6 
+[2026-09-26 11:59:41]	[CDH] RENDER pedia open=true 
+[2026-09-26 11:59:45]	[CDH] RENDER OK   CD_OVERVIEW navigate=true {"open":true,"pageID":"CD_OVERVIEW","headers":["LOC_UI_VIEW_CIVILOPEDIA","Cultural Diffusion","LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_WHERE_TITLE"],"paragraphs":3,"chars":693,"empty":[],"unresolved":[],"rawMarkup":0} 
+[2026-09-26 11:59:45]	[CDH] SHOT pedia-cd-overview 
+[2026-09-26 11:59:57]	[CDH] RENDER OK   CD_FAQ navigate=true {"open":true,"pageID":"CD_FAQ","headers":["LOC_UI_VIEW_CIVILOPEDIA","Questions & Answers","LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_NOTHING_TITLE","LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_WORK_TITLE","LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_AILAND_TITLE","LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_FLIPBACK_TITLE","LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_TURNOFF_TITLE","LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_SAVES_TITLE"],"paragraphs":6,"chars":1038,"empty":[],"unresolved":[],"rawMarkup":0} 
+[2026-09-26 11:59:57]	[CDH] SHOT pedia-cd-faq 
+[2026-09-26 12:00:10]	[CDH] RENDER OK   CD_ABOUT navigate=true {"open":true,"pageID":"CD_ABOUT","headers":["LOC_UI_VIEW_CIVILOPEDIA","About This Mod","LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_ABOUT_CHAPTER_CREDITS_TITLE"],"paragraphs":2,"chars":365,"empty":[],"unresolved":[],"rawMarkup":0} 
+[2026-09-26 12:00:10]	[CDH] SHOT pedia-cd-about 
+[2026-09-26 12:00:22]	[CDH] RENDER OK   CD_FIELD navigate=true {"open":true,"pageID":"CD_FIELD","headers":["LOC_UI_VIEW_CIVILOPEDIA","The Culture Field","LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_INJECT_TITLE","LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_DIFFUSE_TITLE","LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_DECAY_TITLE"],"paragraphs":4,"chars":843,"empty":[],"unresolved":[],"rawMarkup":0} 
+[2026-09-26 12:00:22]	[CDH] SHOT pedia-cd-field 
+[2026-09-26 12:00:35]	[CDH] RENDER OK   CD_TERRAIN navigate=true {"open":true,"pageID":"CD_TERRAIN","headers":["LOC_UI_VIEW_CIVILOPEDIA","Terrain & Rivers","LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROUGH_TITLE","LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROADS_TITLE","LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_RIVERS_TITLE","LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_WATER_TITLE"],"paragraphs":5,"chars":980,"empty":[],"unresolved":[],"rawMarkup":0} 
+[2026-09-26 12:00:35]	[CDH] SHOT pedia-cd-terrain 
+[2026-09-26 12:00:47]	[CDH] RENDER OK   CD_CLAIMS navigate=true {"open":true,"pageID":"CD_CLAIMS","headers":["LOC_UI_VIEW_CIVILOPEDIA","Claiming Tiles","LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_RULES_TITLE","LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_TITLE","LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_SAFE_TITLE","LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_BUFFER_TITLE"],"paragraphs":7,"chars":1120,"empty":[],"unresolved":[],"rawMarkup":0} 
+[2026-09-26 12:00:47]	[CDH] SHOT pedia-cd-claims 
+[2026-09-26 12:01:00]	[CDH] RENDER OK   CD_GROWTH navigate=true {"open":true,"pageID":"CD_GROWTH","headers":["LOC_UI_VIEW_CIVILOPEDIA","Pace & Claimed Land","LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_RINGS_TITLE","LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_EARLY_TITLE","LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_VALUE_TITLE"],"paragraphs":4,"chars":585,"empty":[],"unresolved":[],"rawMarkup":0} 
+[2026-09-26 12:01:00]	[CDH] SHOT pedia-cd-growth 
+[2026-09-26 12:01:12]	[CDH] RENDER OK   CD_STRENGTH navigate=true {"open":true,"pageID":"CD_STRENGTH","headers":["LOC_UI_VIEW_CIVILOPEDIA","Cultural Strength","LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_BLEND_TITLE","LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_CPI_TITLE","LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_SIMPLE_TITLE"],"paragraphs":5,"chars":801,"empty":[],"unresolved":[],"rawMarkup":0} 
+[2026-09-26 12:01:12]	[CDH] SHOT pedia-cd-strength 
+[2026-09-26 12:01:25]	[CDH] RENDER OK   CD_BALANCE navigate=true {"open":true,"pageID":"CD_BALANCE","headers":["LOC_UI_VIEW_CIVILOPEDIA","Leaders, Ages & Maps","LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_LEADERS_TITLE","LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_AGES_TITLE","LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_SPEED_TITLE"],"paragraphs":4,"chars":615,"empty":[],"unresolved":[],"rawMarkup":0} 
+[2026-09-26 12:01:25]	[CDH] SHOT pedia-cd-balance 
+[2026-09-26 12:01:38]	[CDH] RENDER OK   CD_EMIGRATION navigate=true {"open":true,"pageID":"CD_EMIGRATION","headers":["LOC_UI_VIEW_CIVILOPEDIA","With Emigration","LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_CHAPTER_AFFINITY_TITLE","LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_CHAPTER_PEOPLES_TITLE"],"paragraphs":3,"chars":373,"empty":[],"unresolved":[],"rawMarkup":0} 
+[2026-09-26 12:01:38]	[CDH] SHOT pedia-cd-emigration 
+[2026-09-26 12:01:50]	[CDH] RENDER OK   CD_CITIES navigate=true {"open":true,"pageID":"CD_CITIES","headers":["LOC_UI_VIEW_CIVILOPEDIA","Mixed & Captured Cities","LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_FOREIGN_TITLE","LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CONVERT_TITLE","LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CAPTURE_TITLE"],"paragraphs":5,"chars":989,"empty":[],"unresolved":[],"rawMarkup":0} 
+[2026-09-26 12:01:50]	[CDH] SHOT pedia-cd-cities 
+[2026-09-26 12:02:03]	[CDH] RENDER OK   CD_RECEDE navigate=true {"open":true,"pageID":"CD_RECEDE","headers":["LOC_UI_VIEW_CIVILOPEDIA","Borders Recede","LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RECEDE_CHAPTER_RULES_TITLE"],"paragraphs":2,"chars":491,"empty":[],"unresolved":[],"rawMarkup":0} 
+[2026-09-26 12:02:03]	[CDH] SHOT pedia-cd-recede 
+[2026-09-26 12:02:15]	[CDH] RENDER OK   CD_RIVALFLIPS navigate=true {"open":true,"pageID":"CD_RIVALFLIPS","headers":["LOC_UI_VIEW_CIVILOPEDIA","Rival Expansion","LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_CHAPTER_RULES_TITLE","LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_CHAPTER_LIMITS_TITLE"],"paragraphs":3,"chars":658,"empty":[],"unresolved":[],"rawMarkup":0} 
+[2026-09-26 12:02:15]	[CDH] SHOT pedia-cd-rivalflips 
+[2026-09-26 12:02:28]	[CDH] RENDER OK   CD_CONQUEST navigate=true {"open":true,"pageID":"CD_CONQUEST","headers":["LOC_UI_VIEW_CIVILOPEDIA","Armies Hold Ground","LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_TAKING_TITLE","LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_HOLD_TITLE","LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_AFTER_TITLE"],"paragraphs":4,"chars":599,"empty":[],"unresolved":[],"rawMarkup":0} 
+[2026-09-26 12:02:28]	[CDH] SHOT pedia-cd-conquest 
+[2026-09-26 12:02:40]	[CDH] RENDER OK   CD_LENS navigate=true {"open":true,"pageID":"CD_LENS","headers":["LOC_UI_VIEW_CIVILOPEDIA","Cultural Pressure Lens","LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_COLORS_TITLE","LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_READOUT_TITLE","LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_ALERTS_TITLE"],"paragraphs":6,"chars":699,"empty":[],"unresolved":[],"rawMarkup":0} 
+[2026-09-26 12:02:40]	[CDH] SHOT pedia-cd-lens 
+[2026-09-26 12:02:53]	[CDH] RENDER OK   CD_OPTIONS navigate=true {"open":true,"pageID":"CD_OPTIONS","headers":["LOC_UI_VIEW_CIVILOPEDIA","Options & Presets","LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_PRESETS_TITLE","LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_TOGGLES_TITLE"],"paragraphs":3,"chars":974,"empty":[],"unresolved":[],"rawMarkup":0} 
+[2026-09-26 12:02:53]	[CDH] SHOT pedia-cd-options 
+[2026-09-26 12:03:05]	[CDH] RENDER OK   CD_CULTURAL_BORDERS navigate=true {"open":true,"pageID":"CD_CULTURAL_BORDERS","headers":["LOC_UI_VIEW_CIVILOPEDIA","Cultural Borders (Mod)"],"paragraphs":1,"chars":200,"empty":[],"unresolved":[],"rawMarkup":0} 
+[2026-09-26 12:03:05]	[CDH] SHOT pedia-cd-cultural-borders 
+[2026-09-26 12:03:14]	[CDH] RENDER VERDICT pass=17 fail=0 of 17 
+[2026-09-26 12:03:14]	[CDH] VERDICT reason=done 
+[2026-09-26 12:03:17]	[CDH] DONE harness pedia finished 

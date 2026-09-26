@@ -12,6 +12,8 @@ and `run-harness.sh` grabs the game WINDOW by id (never the whole display) into 
 
 | `04-border-before.jpg` / `05-border-after.jpg` | The mod's EFFECT rather than its readout: one camera, held still, west of Leeds. In `04` the border runs down the middle of the frame with open land beyond it; in `05` that line has moved to the far west and the whole plain is inside the border. Verified by count, not by eye - Leeds' own tiles go from `[1,6,12,8,0,0,0]` by ring to `[1,6,12,8,7,7,0]`, so its footprint stops at the base game's ring 3 in `04` and holds fourteen tiles at rings 4 and 5 in `05` (owned within six rings, 49 to 74, across six passes) |
 
+| `06-civilopedia-section.jpg` / `07-civilopedia-terrain-and-rivers.jpg` / `08-civilopedia-options.jpg` | The Civilopedia section added in 1.4.0: its front page with the full sidebar of groups and pages, a rules page, and the Options page. Captured by `devtools/harness/cdh-game-pedia.js` (run `pedia`) and cropped to the Civilopedia panel, 1300x1100. The runner's shot labels trail the page by one, so each frame was picked by what it shows |
+
 Full-resolution originals (about 11 MB each, 3024x1890) stay in `devtools/harness/shots/` and are gitignored; these
 are 1600px JPEGs at quality 84.
 

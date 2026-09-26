@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Civilopedia text for data/cd-civilopedia.xml. Resolved by the pedia's own key convention (model-civilopedia.js):
+  a page's chapter title is LOC_PEDIA_<section>_PAGE_<page>_CHAPTER_<chapter>_TITLE and its paragraphs are
+  ..._PARA_1, _PARA_2, ... in order until the first missing number. A chapter with no PARA_1 is not drawn, and a
+  chapter without a TITLE row draws its paragraphs with no header (each page's untitled opening).
+
+  Markup as the base game's Civilopedia text uses it: [B]..[/B] bold, [BLIST][LI]..[/LIST] bullet list,
+  [icon:YIELD_X] yield icons. Page titles stay under ~24 characters so the sidebar does not truncate them.
+
+  Cross-references name the page as the sidebar shows it, in bold. Numbers are the shipped defaults
+  (ui/cd-config.js) on the Medium preset.
+
+  Style: short, plain statements of the rules. No commentary about the page, no test anecdotes, no "not X alone".
+-->
+<Database>
+    <EnglishText>
+        <!-- ── Section and page groups ───────────────────────────────────────────────── -->
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_TITLE"><Text>Cultural Diffusion</Text></Row>
+        <Row Tag="LOC_PEDIA_CD_GROUP_START_TITLE"><Text>Getting Started</Text></Row>
+        <Row Tag="LOC_PEDIA_CD_GROUP_SPREAD_TITLE"><Text>How Culture Spreads</Text></Row>
+        <Row Tag="LOC_PEDIA_CD_GROUP_POWER_TITLE"><Text>Cultural Power</Text></Row>
+        <Row Tag="LOC_PEDIA_CD_GROUP_RIVALS_TITLE"><Text>Rivals, Cities &amp; War</Text></Row>
+        <Row Tag="LOC_PEDIA_CD_GROUP_INTERFACE_TITLE"><Text>Interface &amp; Options</Text></Row>
+
+        <!-- ── Overview (section front page) ─────────────────────────────────────────── -->
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_TITLE"><Text>Cultural Diffusion</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_CONTENT_PARA_1"><Text>Each tile near your cities stores how much [icon:YIELD_CULTURE] Culture every civilization has on it. Each turn, cities add culture to their own tile, culture spreads to neighboring tiles, and every tile loses some.</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_CONTENT_PARA_2"><Text>When your culture on a tile beyond a city's third ring is large enough, you claim the tile. Borders grow slowly, mostly from the mid-game on, and can take frontier tiles from rivals whose culture there is much weaker.</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_WHERE_TITLE"><Text>In Game</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_WHERE_PARA_1"><Text>[BLIST][LI][B]Cultural Pressure lens[/B] (lens menu or Shift+C): shades tiles about to change hands. See [B]Cultural Pressure Lens[/B].[LI][B]Notifications[/B]: when you claim territory, or lose a tile to another civilization.[LI][B]Options, Add-ons, Cultural Diffusion[/B]: intensity and all switches. See [B]Options &amp; Presets[/B].[/LIST]</Text></Row>
+
+        <!-- ── Questions & Answers ───────────────────────────────────────────────────── -->
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_TITLE"><Text>Questions &amp; Answers</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_NOTHING_TITLE"><Text>Why haven't my borders grown?</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_NOTHING_PARA_1"><Text>A city needs a large, steady culture before it reaches its fourth ring. Early-game cities usually claim nothing. The lens shows which tiles you are winning and how many turns each needs. See [B]Pace &amp; Claimed Land[/B].</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_WORK_TITLE"><Text>Can my cities work claimed tiles?</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_WORK_PARA_1"><Text>No. Cities work tiles only within three rings, and claimed tiles are farther out. They count as your territory and block rival settlers.</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_AILAND_TITLE"><Text>Can the AI take my land?</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_AILAND_PARA_1"><Text>Yes. By default a rival whose culture clearly leads a tile near your land takes it under the same rules as your claims, and you are notified. Turn off Every civilization gains land by culture to stop this. See [B]Rival Expansion[/B]; [B]Borders Recede[/B] and [B]Armies Hold Ground[/B] are further options.</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_FLIPBACK_TITLE"><Text>Why won't a tile I dominate flip?</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_FLIPBACK_PARA_1"><Text>It fails another claim rule: too far from your cities, not touching your land, inside a protected city core, owned by a civilization you are at war with, in your Distant Lands before the Exploration age, recently changed hands, or taking it would trap a foreign unit. See [B]Claiming Tiles[/B].</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_TURNOFF_TITLE"><Text>What if I turn the mod off?</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_TURNOFF_PARA_1"><Text>New claims stop. Tiles already claimed stay yours.</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_SAVES_TITLE"><Text>Can I add it to a game in progress?</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_SAVES_PARA_1"><Text>No. The mod must be enabled when the game starts. Single-player only.</Text></Row>
+
+        <!-- ── The Culture Field ─────────────────────────────────────────────────────── -->
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_TITLE"><Text>The Culture Field</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_CONTENT_PARA_1"><Text>Every tile within eight rings of your cities stores each civilization's culture. The store changes once per turn, and tile ownership follows it (see [B]Claiming Tiles[/B]).</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_INJECT_TITLE"><Text>Cities Add Culture</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_INJECT_PARA_1"><Text>Each city adds culture to its own tile. The more culture already there, the faster it grows, up to a cap set by the city's strength (see [B]Cultural Strength[/B]). Cities also add culture for the other peoples living in them (see [B]Mixed &amp; Captured Cities[/B]).</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_DIFFUSE_TITLE"><Text>Culture Spreads</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_DIFFUSE_PARA_1"><Text>A tile with at least 100 culture gives about 5.5% of it to each neighbor per turn. A neighbor can reach at most 40% of the source's amount, or 75% along a road or river. Terrain slows or blocks the spread (see [B]Terrain &amp; Rivers[/B]).</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_DECAY_TITLE"><Text>Culture Fades</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_DECAY_PARA_1"><Text>Every tile loses 5% of its culture plus 1 point per turn. This limits how far a border reaches, and culture recedes when its city weakens or is lost. Tiles you own keep at least 1 point of your culture.</Text></Row>
+
+        <!-- ── Terrain & Rivers ──────────────────────────────────────────────────────── -->
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_TITLE"><Text>Terrain &amp; Rivers</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_CONTENT_PARA_1"><Text>The tile culture moves onto decides how well it spreads. Effects on the same tile stack.</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROUGH_TITLE"><Text>Rough Ground</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROUGH_PARA_1"><Text>From easiest to hardest:[BLIST][LI][B]Forest, taiga[/B]: slight slowdown.[LI][B]Hills[/B]: moderate slowdown.[LI][B]Tundra[/B]: moderate slowdown; needs a stronger source to cross.[LI][B]Desert[/B]: heavy slowdown.[LI][B]Rainforest, marsh[/B]: heavy slowdown; only a strong source crosses.[LI][B]Mountains[/B]: almost impassable. Culture on a peak needs 7.5 times the usual amount to spread off it.[/LIST]</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROADS_TITLE"><Text>Roads</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROADS_PARA_1"><Text>Between two road tiles, culture spreads twice as fast and farther.</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_RIVERS_TITLE"><Text>Rivers</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_RIVERS_PARA_1"><Text>Along a river, culture spreads faster and farther, more so on a navigable river than a minor one. Crossing onto a river from its bank or from another river needs twice the usual amount, and the culture arrives weakened. A culture that holds the river reaches both banks.</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_WATER_TITLE"><Text>Coast and Ocean</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_WATER_PARA_1"><Text>Only strong culture crosses water, coast more easily than ocean. Crossing gets easier each age, from barely possible in Antiquity to easiest in the Modern age. Distant Lands tiles cannot be claimed before the Exploration age.</Text></Row>
+
+        <!-- ── Claiming Tiles ────────────────────────────────────────────────────────── -->
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_TITLE"><Text>Claiming Tiles</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_CONTENT_PARA_1"><Text>A claimed tile joins your nearest city.</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_RULES_TITLE"><Text>Requirements</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_RULES_PARA_1"><Text>[BLIST][LI]Your culture is the highest on the tile.[LI]It is at least 300 (375 in Exploration, 480 in Modern).[LI]If a rival owns the tile, their culture is below two thirds of yours.[LI]The tile is within six tiles of your city and beyond its third ring.[LI]The tile touches your land (Contiguous border only option).[/LIST]</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_TITLE"><Text>Protected Tiles</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_1"><Text>The Rival city protection option sets how much of a rival city is safe: the center and its first ring, the center only (default), or nothing.</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_2"><Text>City-states and independent peoples always keep their center and first ring.</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_3"><Text>With Claim empty land only on (default on Low), culture never takes an owned tile.</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_SAFE_TITLE"><Text>Limits</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_SAFE_PARA_1"><Text>[BLIST][LI]Culture never takes tiles from a civilization you are at war with.[LI]A tile that changed hands is locked for 15 turns.[LI]A claim that would leave a foreign unit, of a civilization at peace with you, no way out is refused.[LI]At most 8 tiles change hands per turn, and each city holds at most 80 claimed tiles (40 on Low).[/LIST]</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_BUFFER_TITLE"><Text>Land Beside New Improvements</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_BUFFER_PARA_1"><Text>With this option on (off by default), finishing a rural improvement near your border also claims the unowned tiles next to it, up to one ring past the city's normal reach.</Text></Row>
+
+        <!-- ── Pace & Claimed Land ───────────────────────────────────────────────────── -->
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_TITLE"><Text>Pace &amp; Claimed Land</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_CONTENT_PARA_1"><Text>Culture builds up one ring at a time, so borders grow slowly. A stronger culture reaches farther and faster.</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_RINGS_TITLE"><Text>Rings</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_RINGS_PARA_1"><Text>[BLIST][LI][B]Rings 1-3[/B]: base game rules; never claimed by culture.[LI][B]Ring 4[/B]: the first ring culture claims.[LI][B]Ring 5+[/B]: only strong, established cultures.[/LIST]</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_EARLY_TITLE"><Text>Early Game</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_EARLY_PARA_1"><Text>A young city making little [icon:YIELD_CULTURE] Culture claims nothing. Claims start as cities grow stronger. The High preset reaches farther sooner.</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_VALUE_TITLE"><Text>Claimed Tiles</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_VALUE_PARA_1"><Text>Claimed tiles are yours but cannot be worked or built on, since cities work only the first three rings. They stop rivals from settling next to you: settlers cannot found on or beside another civilization's land.</Text></Row>
+
+        <!-- ── Cultural Strength ─────────────────────────────────────────────────────── -->
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_TITLE"><Text>Cultural Strength</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_CONTENT_PARA_1"><Text>A city's strength sets how much culture it adds each turn. With the Rich cultural model option on (default), strength comes from the factors below.</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_BLEND_TITLE"><Text>City Strength</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_BLEND_PARA_1"><Text>City strength combines [icon:YIELD_CULTURE] Culture with [icon:YIELD_FOOD] Food, [icon:YIELD_PRODUCTION] Production, [icon:YIELD_HAPPINESS] Happiness and growth. A single large bonus counts for less than balanced yields. Cities of a celebrating civilization gain 25%.</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_CPI_TITLE"><Text>Cultural Power Index</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_CPI_PARA_1"><Text>Each civilization's index compares it to the leader in six areas:[BLIST][LI][B]Legacy[/B]: wonders, great works.[LI][B]Flow[/B]: [icon:YIELD_CULTURE] Culture per turn.[LI][B]Reach[/B]: [icon:YIELD_DIPLOMACY] Influence, city-state suzerainties.[LI][B]Vitality[/B]: [icon:YIELD_HAPPINESS] Happiness, celebrations.[LI][B]Prosperity[/B]: empire wealth and growth.[LI][B]Identity[/B]: traditions, age.[/LIST]</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_CPI_PARA_2"><Text>Strength across all six scores higher than one standout. The index multiplies every city's strength by 0.6 to 1.6.</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_SIMPLE_TITLE"><Text>Simple Model</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_SIMPLE_PARA_1"><Text>With Rich cultural model off, strength is the city's [icon:YIELD_CULTURE] Culture, plus the celebration bonus.</Text></Row>
+
+        <!-- ── Leaders, Ages & Maps ──────────────────────────────────────────────────── -->
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_TITLE"><Text>Leaders, Ages &amp; Maps</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_CONTENT_PARA_1"><Text>City strength is adjusted for leader, age, game speed and map size.</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_LEADERS_TITLE"><Text>Leaders, Civilizations and Mementos</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_LEADERS_PARA_1"><Text>Leaders, civilizations and mementos with strong culture, wonder, celebration or suzerain bonuses, or abilities that already grant territory, have slightly reduced strength. Civilizations with weak culture get a small increase.</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_AGES_TITLE"><Text>Ages</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_AGES_PARA_1"><Text>Later ages have more cities and more culture, so cities add less culture in Exploration and Modern and more is needed to claim a tile.</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_SPEED_TITLE"><Text>Game Speed and Map Size</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_SPEED_PARA_1"><Text>Spread speed scales with age length, so borders grow at the same rate relative to the age on any game speed. Cities add slightly less culture on small maps and slightly more on large ones.</Text></Row>
+
+        <!-- ── With Emigration ───────────────────────────────────────────────────────── -->
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_TITLE"><Text>With Emigration</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_CHAPTER_CONTENT_PARA_1"><Text>If the Emigration mod is installed, Cultural Diffusion uses its population data. Without Emigration, these rules do nothing.</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_CHAPTER_AFFINITY_TITLE"><Text>Diaspora</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_CHAPTER_AFFINITY_PARA_1"><Text>With Follow diaspora on (default; requires Rich cultural model), your culture spreads faster toward tiles where your people have settled.</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_CHAPTER_PEOPLES_TITLE"><Text>Mixed Populations</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_CHAPTER_PEOPLES_PARA_1"><Text>Each foreign people's culture in a city is weighted by its share of the population. See [B]Mixed &amp; Captured Cities[/B].</Text></Row>
+
+        <!-- ── Mixed & Captured Cities ───────────────────────────────────────────────── -->
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_TITLE"><Text>Mixed &amp; Captured Cities</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CONTENT_PARA_1"><Text>A captured or mixed city keeps producing its old culture, which competes for nearby tiles and slowly converts to the owner's.</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_FOREIGN_TITLE"><Text>Foreign Culture</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_FOREIGN_PARA_1"><Text>With Cities carry every culture living in them on (default), a city adds culture for each people on its tile. The owner's culture is added at full strength, each foreign culture in proportion to the city's population. With Emigration, each is weighted by its population share; without it, a foreign culture counts once it has 100 on the city tile. With the option off, a city adds only its owner's culture.</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CONVERT_TITLE"><Text>Conversion</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CONVERT_PARA_1"><Text>Each turn a city converts 0.5% of each foreign culture on its tile to the owner's. Buildings add:[BLIST][LI][B]+0.25%[/B]: Library, Monument, Amphitheater.[LI][B]+0.5%[/B]: Academy, University, Observatory, Museum, Opera House.[LI][B]+1%[/B]: Schoolhouse, Laboratory.[/LIST]</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CONVERT_PARA_2"><Text>Modern age ideologies add +1% (Democracy), +1.25% (Communism) or +1.75% (Fascism).</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CAPTURE_TITLE"><Text>Capture</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CAPTURE_PARA_1"><Text>When a city changes hands, every culture on its tiles loses 55%, and the new owner gains 75% of the total lost. This applies to all civilizations.</Text></Row>
+
+        <!-- ── Borders Recede ────────────────────────────────────────────────────────── -->
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RECEDE_TITLE"><Text>Borders Recede</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RECEDE_CHAPTER_CONTENT_PARA_1"><Text>Experimental option, off by default. You can lose tiles your culture claimed. With Every civilization gains land by culture on, rivals already take claimed tiles they out-culture, so this matters mainly when that option is off.</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RECEDE_CHAPTER_RULES_TITLE"><Text>Rules</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RECEDE_CHAPTER_RULES_PARA_1"><Text>If a rival's culture on a claimed tile beats yours by the margin a claim requires, the tile goes to that rival's nearest city. Tiles gained through normal city growth are never lost this way. A claimed tile keeps its owner if its culture fades with no rival ahead.</Text></Row>
+
+        <!-- ── Rival Expansion ───────────────────────────────────────────────────────── -->
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_TITLE"><Text>Rival Expansion</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_CHAPTER_CONTENT_PARA_1"><Text>With Every civilization gains land by culture on (default), other civilizations claim tiles by culture under your rules, including tiles of yours. You are notified when you lose one. With it off, only your borders grow by culture.</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_CHAPTER_RULES_TITLE"><Text>Rules</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_CHAPTER_RULES_PARA_1"><Text>A rival takes a tile it leads when it is at peace with the owner, the tile is outside the owner's protected core, and the tile touches the rival's land within range of its cities. All limits in [B]Claiming Tiles[/B] also apply, and rivals have a separate per-turn cap.</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_CHAPTER_LIMITS_TITLE"><Text>Limits</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_CHAPTER_LIMITS_PARA_1"><Text>City-states and independent peoples never claim tiles this way. Culture is tracked only within eight rings of your cities, so borders elsewhere follow base game rules.</Text></Row>
+
+        <!-- ── Armies Hold Ground ────────────────────────────────────────────────────── -->
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_TITLE"><Text>Armies Hold Ground</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_CONTENT_PARA_1"><Text>Option, off by default. Other civilizations' armies follow these rules only if Every civilization gains land by culture is also on.</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_TAKING_TITLE"><Text>Taking Tiles</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_TAKING_PARA_1"><Text>During a war, a combat unit that stays on an enemy tile for 5 turns in a row takes it, regardless of culture. Moving off resets the count. City centers and urban districts cannot be taken this way.</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_HOLD_TITLE"><Text>Hold Period</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_HOLD_PARA_1"><Text>For 10 turns after capture, culture cannot take the tile back. Another army can still take it the same way at any time.</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_AFTER_TITLE"><Text>After the War</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_AFTER_PARA_1"><Text>During the war, culture never moves a conquered tile. After peace and once the hold ends, culture can claim it by the normal rules for any civilization.</Text></Row>
+
+        <!-- ── Cultural Pressure Lens ────────────────────────────────────────────────── -->
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_TITLE"><Text>Cultural Pressure Lens</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_CONTENT_PARA_1"><Text>Open it from the lens menu or press Shift+C. Display only. The Pressure lens option (on by default) adds it.</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_COLORS_TITLE"><Text>Colors</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_COLORS_PARA_1"><Text>A tile is shaded in the leading civilization's color when a culture other than the owner's leads and could claim it. The shade grows stronger as the claim nears.</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_COLORS_PARA_2"><Text>With Every civilization gains land by culture on, tiles other civilizations could claim are shaded too.</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_READOUT_TITLE"><Text>Tile Readout</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_READOUT_PARA_1"><Text>Hovering a tile shows:[BLIST][LI]the three largest cultures on it, with the owner marked;[LI][B]Capture progress[/B];[LI][B]At current pace[/B]: turns remaining, ready to flip, or stalled.[/LIST]</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_READOUT_PARA_2"><Text>Tiles that cannot be claimed show culture amounts only.</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_ALERTS_TITLE"><Text>Notifications</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_ALERTS_PARA_1"><Text>At most one notification per turn: when you claim territory, or when another civilization takes one of your tiles.</Text></Row>
+
+        <!-- ── Options & Presets ─────────────────────────────────────────────────────── -->
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_TITLE"><Text>Options &amp; Presets</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_CONTENT_PARA_1"><Text>Options, Add-ons, Cultural Diffusion. Settings can be changed mid-game.</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_PRESETS_TITLE"><Text>Intensity</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_PRESETS_PARA_1"><Text>[BLIST][LI][B]Low[/B]: spread 4%, fade 7%, 400 to claim, range 5, empty land only.[LI][B]Medium[/B] (default): spread 5.5%, fade 5%, 300 to claim, range 6.[LI][B]High[/B]: spread 7.5%, fade 4%, 220 to claim, range 8.[/LIST]</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_TOGGLES_TITLE"><Text>Switches</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_TOGGLES_PARA_1"><Text>[BLIST][LI][B]Enabled[/B]: off restores base game borders.[LI][B]Claim empty land only[/B]: see [B]Claiming Tiles[/B].[LI][B]Rival city protection[/B]: see [B]Claiming Tiles[/B].[LI][B]Contiguous border only[/B]: on by default. Off allows claiming pockets inside other territory.[LI][B]Claim land beside new improvements[/B]: off. See [B]Claiming Tiles[/B].[LI][B]Borders recede[/B]: off. See [B]Borders Recede[/B].[LI][B]Every civilization gains land by culture[/B]: on. See [B]Rival Expansion[/B].[LI][B]Armies hold the ground they occupy[/B]: off. See [B]Armies Hold Ground[/B].[LI][B]Cities carry every culture living in them[/B]: on. See [B]Mixed &amp; Captured Cities[/B].[LI][B]Rich cultural model[/B]: on. See [B]Cultural Strength[/B].[LI][B]Follow diaspora[/B]: on. See [B]With Emigration[/B].[LI][B]Pressure lens[/B]: on. See [B]Cultural Pressure Lens[/B].[LI][B]Debug logging[/B]: off. Writes turn diagnostics to the UI log.[/LIST]</Text></Row>
+
+        <!-- ── About This Mod ────────────────────────────────────────────────────────── -->
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_ABOUT_TITLE"><Text>About This Mod</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_ABOUT_CHAPTER_CONTENT_PARA_1"><Text>A Civilization VII version of the Civilization V mod Cultural Diffusion, with additional rules.</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_ABOUT_CHAPTER_CREDITS_TITLE"><Text>Credits</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_ABOUT_CHAPTER_CREDITS_PARA_1"><Text>Made by Tower. Based on Gedemon's Cultural Diffusion for Civilization V (v18), the source of the culture field and of several rules here: rivers, foreign culture in cities, capture transfer, rival and army claims, the mountain threshold, and the owner's minimum culture.</Text></Row>
+
+        <!-- ── Game Concepts bridge page ─────────────────────────────────────────────── -->
+        <Row Tag="LOC_PEDIA_CONCEPTS_PAGE_CD_CULTURAL_BORDERS_TITLE"><Text>Cultural Borders (Mod)</Text></Row>
+        <Row Tag="LOC_PEDIA_CONCEPTS_PAGE_CD_CULTURAL_BORDERS_CHAPTER_CONTENT_PARA_1"><Text>With the Cultural Diffusion mod, culture spreads from cities tile by tile and can extend borders past a city's third ring, including into rival frontier tiles. Rules are in the [B]Cultural Diffusion[/B] tab.</Text></Row>
+
+        <!-- ── Search terms ──────────────────────────────────────────────────────────── -->
+        <Row Tag="LOC_PEDIA_CD_TERM_CULTURAL_DIFFUSION"><Text>Cultural Diffusion</Text></Row>
+        <Row Tag="LOC_PEDIA_CD_TERM_BORDERS"><Text>Borders</Text></Row>
+        <Row Tag="LOC_PEDIA_CD_TERM_FORWARD_SETTLING"><Text>Forward settling</Text></Row>
+        <Row Tag="LOC_PEDIA_CD_TERM_TERRITORY"><Text>Territory</Text></Row>
+        <Row Tag="LOC_PEDIA_CD_TERM_HELP"><Text>Help</Text></Row>
+        <Row Tag="LOC_PEDIA_CD_TERM_DIFFUSION"><Text>Diffusion</Text></Row>
+        <Row Tag="LOC_PEDIA_CD_TERM_DECAY"><Text>Decay</Text></Row>
+        <Row Tag="LOC_PEDIA_CD_TERM_CULTURE_STOCK"><Text>Culture stock</Text></Row>
+        <Row Tag="LOC_PEDIA_CD_TERM_RIVERS"><Text>Rivers</Text></Row>
+        <Row Tag="LOC_PEDIA_CD_TERM_ROADS"><Text>Roads</Text></Row>
+        <Row Tag="LOC_PEDIA_CD_TERM_MOUNTAINS"><Text>Mountains</Text></Row>
+        <Row Tag="LOC_PEDIA_CD_TERM_WATER"><Text>Water crossing</Text></Row>
+        <Row Tag="LOC_PEDIA_CD_TERM_TILE_FLIP"><Text>Tile flip</Text></Row>
+        <Row Tag="LOC_PEDIA_CD_TERM_CITY_PROTECTION"><Text>Rival city protection</Text></Row>
+        <Row Tag="LOC_PEDIA_CD_TERM_CITY_STATES"><Text>City-states</Text></Row>
+        <Row Tag="LOC_PEDIA_CD_TERM_IMPROVEMENT_BUFFER"><Text>Improvement buffer</Text></Row>
+        <Row Tag="LOC_PEDIA_CD_TERM_RING"><Text>Fourth ring</Text></Row>
+        <Row Tag="LOC_PEDIA_CD_TERM_WORK_TILES"><Text>Work tiles</Text></Row>
+        <Row Tag="LOC_PEDIA_CD_TERM_CPI"><Text>CPI</Text></Row>
+        <Row Tag="LOC_PEDIA_CD_TERM_CPI_FULL"><Text>Cultural Power Index</Text></Row>
+        <Row Tag="LOC_PEDIA_CD_TERM_CELEBRATION"><Text>Celebration</Text></Row>
+        <Row Tag="LOC_PEDIA_CD_TERM_LEADERS"><Text>Leader balance</Text></Row>
+        <Row Tag="LOC_PEDIA_CD_TERM_AGES"><Text>Ages</Text></Row>
+        <Row Tag="LOC_PEDIA_CD_TERM_GAME_SPEED"><Text>Game speed</Text></Row>
+        <Row Tag="LOC_PEDIA_CD_TERM_EMIGRATION"><Text>Emigration</Text></Row>
+        <Row Tag="LOC_PEDIA_CD_TERM_DIASPORA"><Text>Diaspora</Text></Row>
+        <Row Tag="LOC_PEDIA_CD_TERM_CONVERSION"><Text>Conversion</Text></Row>
+        <Row Tag="LOC_PEDIA_CD_TERM_CAPTURED_CITY"><Text>Captured city</Text></Row>
+        <Row Tag="LOC_PEDIA_CD_TERM_FOREIGN_CULTURE"><Text>Foreign culture</Text></Row>
+        <Row Tag="LOC_PEDIA_CD_TERM_RECEDE"><Text>Recede</Text></Row>
+        <Row Tag="LOC_PEDIA_CD_TERM_AI"><Text>AI borders</Text></Row>
+        <Row Tag="LOC_PEDIA_CD_TERM_CONQUEST"><Text>Conquest</Text></Row>
+        <Row Tag="LOC_PEDIA_CD_TERM_OCCUPATION"><Text>Occupation</Text></Row>
+        <Row Tag="LOC_PEDIA_CD_TERM_LENS"><Text>Lens</Text></Row>
+        <Row Tag="LOC_PEDIA_CD_TERM_PRESSURE"><Text>Cultural Pressure</Text></Row>
+        <Row Tag="LOC_PEDIA_CD_TERM_HOTKEY"><Text>Shift+C</Text></Row>
+        <Row Tag="LOC_PEDIA_CD_TERM_NOTIFICATIONS"><Text>Notifications</Text></Row>
+        <Row Tag="LOC_PEDIA_CD_TERM_INTENSITY"><Text>Intensity</Text></Row>
+        <Row Tag="LOC_PEDIA_CD_TERM_SETTINGS"><Text>Settings</Text></Row>
+    </EnglishText>
+</Database>

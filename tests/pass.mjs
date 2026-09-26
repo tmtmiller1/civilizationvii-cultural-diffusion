@@ -754,10 +754,22 @@ const rivalWins = () => ({ [String(ME)]: 1000, [String(RIVAL)]: 5000 });
 const TK = tk(TARGET.x, TARGET.y);
 
 assert.equal(CONFIG.recedeBorders, false, "recedeBorders ships OFF (unobserved verbs)");
+// Recede alone: with aiCultureFlips on (the default) the rival would take the tile through its own AI flip instead.
+const aiFlipsDefault = CONFIG.aiCultureFlips;
+assert.equal(aiFlipsDefault, true, "aiCultureFlips ships ON");
+CONFIG.aiCultureFlips = false;
 seedRecede(rivalWins());
 r = runPass();
 assert.equal(getTile(TARGET.x, TARGET.y).owner, ME, "recedeBorders off -> a claimed tile is kept even when out-cultured");
 assert.equal(r.ceded, 0, "...and nothing is reported as ceded");
+// With the shipped defaults the same out-cultured tile IS lost: not ceded by recede, taken by the rival's AI flip.
+CONFIG.aiCultureFlips = aiFlipsDefault;
+seedRecede(rivalWins());
+r = runPass();
+assert.equal(getTile(TARGET.x, TARGET.y).owner, RIVAL, "defaults (recede off, AI flips on): the rival takes the tile");
+assert.equal(r.ceded, 0, "...by its own flip, not by recede");
+// The rest of this file was written with AI flips off; blocks that need them turn them on themselves.
+CONFIG.aiCultureFlips = false;
 
 CONFIG.recedeBorders = true;
 seedRecede(rivalWins());

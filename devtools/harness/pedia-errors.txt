@@ -1,0 +1,13 @@
+[2026-09-26 11:58:54]	HTML Parser Error@:fs://game/root-game.html@1:2043: Premature end of file  Currently open tags: html, div, div..
+[2026-09-26 11:58:54]	HTML Parser Error@:fs://game/root-game.html@1:2043: Premature end of file  Currently open tags: html, div, div..
+[2026-09-26 11:59:16]	HTML Parser Error@:fs://game/root-game.html@49:43: Tokenizer error with an unimplemented error message.
+[2026-09-26 11:59:41]	HTML Parser Error@:fs://game/root-game.html@1:773: Premature end of file  Currently open tags: html, div..
+[2026-09-26 12:00:31]	HTML Parser Error@:fs://game/root-game.html@1:1223: Premature end of file  Currently open tags: html, div..
+[2026-09-26 12:00:44]	HTML Parser Error@:fs://game/root-game.html@1:1002: Premature end of file  Currently open tags: html, div..
+[2026-09-26 12:00:44]	HTML Parser Error@:fs://game/root-game.html@1:894: Premature end of file  Currently open tags: html, div..
+[2026-09-26 12:00:56]	HTML Parser Error@:fs://game/root-game.html@1:610: Premature end of file  Currently open tags: html, div..
+[2026-09-26 12:01:09]	HTML Parser Error@:fs://game/root-game.html@1:1431: Premature end of file  Currently open tags: html, div..
+[2026-09-26 12:01:47]	HTML Parser Error@:fs://game/root-game.html@1:720: Premature end of file  Currently open tags: html, div..
+[2026-09-26 12:02:37]	HTML Parser Error@:fs://game/root-game.html@1:641: Premature end of file  Currently open tags: html, div..
+[2026-09-26 12:02:49]	HTML Parser Error@:fs://game/root-game.html@1:657: Premature end of file  Currently open tags: html, div..
+[2026-09-26 12:02:49]	HTML Parser Error@:fs://game/root-game.html@1:2607: Premature end of file  Currently open tags: html, div..
