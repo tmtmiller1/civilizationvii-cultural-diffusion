@@ -4,9 +4,9 @@
 // into states worth photographing and emits `SHOT <name>` when a view has settled, which run-harness.sh grabs by
 // WINDOW ID (never the whole display).
 //
-// The pattern is run 11's, which is the one that worked: close the queued tech/civic popup first (it sits centred
+// The pattern is run 11's, which is the one that worked: close the queued tech/civic popup first (it sits centered
 // over the map and ruined earlier captures), aim the camera beside the subject rather than at it so the tile is not
-// under any centred UI, switch the lens, and wait long enough for the overlay to redraw before shooting.
+// under any centered UI, switch the lens, and wait long enough for the overlay to redraw before shooting.
 //
 // Shots, in order:
 //   01-borders     the culture-expanded frontier, lens off - what the mod does to a map
@@ -19,7 +19,7 @@
 //
 // The seed sits BELOW the ownership bar on purpose. The first version of this script seeded high and then ran a pass,
 // which CLAIMED the very tiles it wanted to photograph: once a tile is ours the lens correctly paints nothing, so the
-// lens-on and lens-off shots came out identical (measured: 1.44% vs 1.47% lens-coloured pixels). A contested frontier
+// lens-on and lens-off shots came out identical (measured: 1.44% vs 1.47% lens-colored pixels). A contested frontier
 // is what the lens is for, so the seed aims at roughly 70% of the bar - high progress, no flip.
 //
 // The lens-off shot also must NOT switch to another lens: `fxs-default-lens` turns on the YIELD ICON overlay and
@@ -57,7 +57,7 @@ function inRadius(c, r) {
 function localCities() { return safe(() => Players.get(local).Cities.getCities() || [], []); }
 function cityName(c) { return safe(() => Locale.compose(c.name), "?"); }
 
-/** Close the queued tech/civic popup: it is centred over the map and spoiled earlier captures. */
+/** Close the queued tech/civic popup: it is centered over the map and spoiled earlier captures. */
 function closePopups(left, done) {
   const showing = safe(() => TechCivicPopupManager.isShowing(), "?");
   if (showing !== true || left <= 0) { emit(`POPUPS showing=${showing} tries-left=${left}`); done(); return; }
@@ -93,7 +93,7 @@ function seedFrontier() {
   return best;
 }
 
-/** Aim beside the subject, so it sits left of centre and clear of any centred UI. */
+/** Aim beside the subject, so it sits left of center and clear of any centered UI. */
 function aimAt(loc, zoom) {
   const aim = { x: loc.x + 4, y: loc.y };
   const r = safe(() => { Camera.lookAtPlot(aim, { zoom }); return `zoom${zoom}`; }, "no-camera");

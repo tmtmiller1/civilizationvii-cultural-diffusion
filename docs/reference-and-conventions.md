@@ -121,7 +121,7 @@ on load, `v < 3` → add the empty maps, set `v:3`.
 
 ## 6. Test & acceptance plan (Node harnesses, per phase)
 
-Pure logic is unit-tested in Node (no engine); engine behaviour is probe / in-game verified. **No metric masking** —
+Pure logic is unit-tested in Node (no engine); engine behavior is probe / in-game verified. **No metric masking** —
 every new branch gets a real assertion; keep the mutation bar.
 
 - **Phase 2:** `tests/promote.mjs` — a tile promotes only when owned + past `locked` + under `maxDiffusionPlots` +
@@ -164,7 +164,7 @@ All mod-prefixed; ship all 11 locales (or English + fallback) per the mod's exis
   (`cd-pending.js` `pendingClaimKeys`), because `purchasePlot` lands seconds late. Claiming the ground a unit stands on
   is always allowed. Moving the unit instead is engine-closed (`engine-closed.md`).
 - **A non-major owner gets at least `minorProtectRadius` rings of core protection** (default 1), because a city-state or
-  village owns only a ring or two and `coreProtectRadius: 0` stripped it to its centre plot.
+  village owns only a ring or two and `coreProtectRadius: 0` stripped it to its center plot.
 - **Conquest flips** (Phase 4) intentionally **bypass** the peaceful gates (war is the point) but still exclude
   city-center/district plots and require continuous occupation; precedence over the `locked` map — conquest wins.
 - **Affordability:** the shipped refund makes `purchasePlot` net-zero; if a future path spends real gold, never spend
@@ -178,7 +178,7 @@ All mod-prefixed; ship all 11 locales (or English + fallback) per the mod's exis
 | --- | --- |
 | Q-WORK WORKABLE beyond ring 3 | `workOuterTiles` becomes meaningful; promotion uses the passing worker path |
 | Q-WORK BLOCKED (owned but not workable) | outer-ring work ships **territory only**; document that the outer ring is owned/settle-blocking but not yield-worked |
-| Q-CAPTURE TRANSFERRED / STRIPPED | note in-game whether inner captures keep improvements (balance flavour) |
+| Q-CAPTURE TRANSFERRED / STRIPPED | note in-game whether inner captures keep improvements (balance flavor) |
 
 ---
 

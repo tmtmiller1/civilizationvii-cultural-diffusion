@@ -4,7 +4,7 @@ The consolidated roadmap of everything **proposed but not yet built** Style: fla
 anything that changes territory), reversible, single-player only, with file anchors so each item is actionable.
 **Nothing here ships until it has its own probe / verification pass** the way the core diffusion loop did.
 
-Companions: current behaviour is in [`current-model.md`](current-model.md); the feasibility record is in
+Companions: current behavior is in [`current-model.md`](current-model.md); the feasibility record is in
 [`probe-history.md`](probe-history.md); build-time reference (verb calls, state schema, guards, tests, Definition of Done) is in [`reference-and-conventions.md`](reference-and-conventions.md). Decisions **not** to build things live in
 [`wont-build-with-justifications.md`](wont-build-with-justifications.md).
 
@@ -19,7 +19,7 @@ Status legend (marked per section below): **Outstanding** · **Probe-gated** · 
 ## 1. Cultural pressure lens + hover tooltip
 
 *Status: Phase 1 BUILT (shading + split + tooltip + turns estimate). Watched in-game on 2026-09-13 (harness runs 9-11,
-[`probe-history.md`](probe-history.md)): the lens paints a contested tile in the leading civ's colour, and the readout's
+[`probe-history.md`](probe-history.md)): the lens paints a contested tile in the leading civ's color, and the readout's
 data path reads the saved field and resolves civ names. The panel itself has not been hovered on screen. Open defect: it
 shades and counts down tiles an AI leads, which never flip ([`BACKLOG.md`](BACKLOG.md)). Arrows (Phase 2) still
 outstanding.*
@@ -48,7 +48,7 @@ signature is already `resolve(signal, snapshot, plot?)`). Cultural Diffusion has
   civ's stock, the threshold, `flipRatio`, and the verdict.
 
 **Phasing.** Ship shading + split + tooltip first. **Arrows for pressure direction are Phase 2** — the overlay API
-paints plot fills, not vectors; the per-neighbour delivery data exists ([`ui/cd-field.js`](../ui/cd-field.js) diffusion
+paints plot fills, not vectors; the per-neighbor delivery data exists ([`ui/cd-field.js`](../ui/cd-field.js) diffusion
 step) but rendering arrows needs textured edge markers or positioned DOM, which must be confirmed first.
 
 **Honest boundaries.** (1) The field is only populated within `fieldRadius` (8) of local cities and pruned beyond — the
@@ -65,12 +65,12 @@ tooltip are wired into the `game`-scope `<UIScripts>`/`<ImportFiles>` of
 - [`ui/cd-pressure-lens.js`](../ui/cd-pressure-lens.js) — the lens UIScript (mirrors the Emigration prosperity/ethnicity
   lenses): registers a `LensManager` layer + lens, decorates `lens-panel` with a "Cultural Pressure" radio, Shift+C
   hotkey. Reads `loadState().field`, scores each tile with the shared verdict below, paints contested tiles (leading
-  culture ≠ current owner) in the contender's banner colour at an alpha that ramps with capture progress. Batches by
-  quantized colour and memoizes per turn.
+  culture ≠ current owner) in the contender's banner color at an alpha that ramps with capture progress. Batches by
+  quantized color and memoizes per turn.
 - [`ui/cd-pressure-tooltip.js`](../ui/cd-pressure-tooltip.js) — the cursor-following hover panel (per-tile, so no
   plot→settlement index): each contender's stock, an owner marker, capture progress %, and an "at current pace"
   turns-to-flip line (the Civ VI growth-hex idea, below).
-- [`ui/cd-lens-colors.js`](../ui/cd-lens-colors.js) — self-contained readable civ-colour + `#RRGGBB`→float4 helper (a
+- [`ui/cd-lens-colors.js`](../ui/cd-lens-colors.js) — self-contained readable civ-color + `#RRGGBB`→float4 helper (a
   trim of Emigration's `emigration-civ-colors.js`, so this mod stays standalone; no cross-mod import).
 - [`ui/cd-field.js`](../ui/cd-field.js) gained two PURE, unit-tested helpers that both the lens and tooltip share so map
   and sim can't drift: `pressureVerdict(civMap, currentOwner, deadOwners, cfg)` (leader, incumbent, target, `progress`,
@@ -83,7 +83,7 @@ tooltip are wired into the `game`-scope `<UIScripts>`/`<ImportFiles>` of
   / `LOC_CD_PRESSURE_*` strings in [`text/en_us/ModText.xml`](../text/en_us/ModText.xml).
 
 *What is proven vs. assumed.* `npm test` (incl. the new pressure-verdict suite) + `npm run lint` + `check:esm` pass.
-What has NOT happened: loading the mod in Civ VII and watching the overlay tint, the panel follow the cursor, the colours
+What has NOT happened: loading the mod in Civ VII and watching the overlay tint, the panel follow the cursor, the colors
 resolve, and `loadState()` return a populated field in the HUD isolate. Those are the probe items below and the reason
 the status is "not yet watched in-game." Known risk points to check first: whether the HUD isolate actually sees the
 `GameConfiguration`-persisted field, and whether `civLabel` resolves real civ names (its player-name property guesses
@@ -92,8 +92,8 @@ are best-effort with a `#id` fallback).
 *Turns-to-flip (the Civ VI growth-hex, realized).* Civ VI, on city selection, drew a filling hex on the next tile a city
 will culturally claim plus a "N turns until your borders expand" countdown (`UILens.SetLayerGrowthHex` +
 `GetTurnsUntilExpansion`, `CityPanel.lua`). This mod has no per-city culture-cost clock, but the field gives the same
-signal per contested tile: `estimateTurnsToFlip` reads the leader's strongest neighbour stock, projects one open-ground
-diffusion step minus decay, and divides the remaining stock-to-target by that net gain. It is deliberately labelled "at
+signal per contested tile: `estimateTurnsToFlip` reads the leader's strongest neighbor stock, projects one open-ground
+diffusion step minus decay, and divides the remaining stock-to-target by that net gain. It is deliberately labeled "at
 current pace" — an estimate, not a promise (it ignores terrain, injection, and the sigmoid approach to the cap).
 
 ### Prior art — how Civ V and Civ VI did tile-expansion notification and styling
@@ -182,7 +182,7 @@ Loyalty lens's up/down flag variants are the nearest reference for signaling dir
 
 *Status: built 2026-09-26 as `ui/cd-conquest.js` (opt-in `conquestFlip`, buffer `conquestBufferTurns` = 5), after
 probe P6 answered the units-on-tile read (`MapUnits.getUnits` + `Units.get(cid).Combat.isCombat`, watched). It follows
-this design: continuous hold, reset on leaving, integrated verb, city centres and urban districts excluded, conquest
+this design: continuous hold, reset on leaving, integrated verb, city centers and urban districts excluded, conquest
 runs last in the pass and wins over the culture lock. Differences from the sketch below: the buffer is counted in
 passes and not scaled to game speed; another civilization's units take ground only when `aiCultureFlips` is also on;
 tiles stay after peace. Unit-tested (tests/pass.mjs §24, tests/parity.mjs) and watched in game (harness `cdh-game-conquest.js`: a planted
@@ -279,7 +279,7 @@ Three computable candidates, recorded so the thinking is not lost:
 1. **Heritage as inertia.** A dead culture that still leads a tile counts as a virtual incumbent: a living civilization
    must beat it by the usual decisive ratio (`flipRatio`) before the tile can be claimed. Pair with a slower heritage
    decay for dead stock (for example 1% per turn and no flat point, a config pair). What the player sees: the lands of a
-   fallen civilization resist absorption for an age instead of falling to the first neighbour, then give way as the
+   fallen civilization resist absorption for an age instead of falling to the first neighbor, then give way as the
    memory fades. Disproof in a test: a dead leader at 500 on an unowned tile blocks a living 400 and yields to a living
    800. Cost: a few lines in `resolveOwner` and the decay step, plus the lens, which today skips dead leaders.
 2. **Culture is carried by people.** With the Emigration mod present, a dead civilization's descendants still live in
@@ -287,7 +287,7 @@ Three computable candidates, recorded so the thinking is not lost:
    above zero, exactly as it does for living foreign groups, so the culture persists where its people persist and
    fades where they assimilate through conversion. Without Emigration nothing changes. One condition removed from the
    foreign-injection step (`cd-inject.js`).
-3. **Ghost culture in the lens.** Tint tiles a dead culture still leads in a neutral grey with a heritage label.
+3. **Ghost culture in the lens.** Tint tiles a dead culture still leads in a neutral gray with a heritage label.
    Presentation only.
 
 Recommendation when this is picked up: 1 and 2 together (memory in the land, memory in the people), keeping plain decay

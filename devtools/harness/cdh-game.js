@@ -4,7 +4,7 @@
 //               cd-pass.js books a flip on the INLINE read, so an async-only write would silently book nothing)
 //   T2 RIVAL    our purchasePlot on a rival tile touching our land, then CEDE it back via the rival's own city
 //   T3 RELEASE  setOwnership(NO_PLAYER) on a second tile we just bought (the recede release verb)
-//   T4 SETTLE   a spawned settler's FOUND_CITY check: unowned plot vs neighbouring rival-owned plot vs our own
+//   T4 SETTLE   a spawned settler's FOUND_CITY check: unowned plot vs neighboring rival-owned plot vs our own
 //               far claimed plot (does owned territory block founding?)
 //   T5 DEVELOP  CREATE_ELEMENT improvement on our far claimed tile and on a ring<=3 control: does the city gain
 //               population / yields, and does the engine offer the far tile to a worker?
@@ -286,7 +286,7 @@ async function run() {
     if (v.startsWith("WORKS")) await releaseTest(U3.loc); else emit("T3 release skipped: buy " + v);
   } else emit("T3 skipped: no second tile");
 
-  // T4 settle denial: unowned control vs a neighbouring rival-owned plot, plus our own far claimed plot (U).
+  // T4 settle denial: unowned control vs a neighboring rival-owned plot, plus our own far claimed plot (U).
   const spots = un.filter((u) => u.settleDist >= 4 && u.noRes && (!U || key(u.loc) !== key(U.loc)) && (!U3 || key(u.loc) !== key(U3.loc)));
   let P0 = null; let P1 = null;
   for (const a of spots) {

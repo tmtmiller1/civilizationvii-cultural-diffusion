@@ -8,7 +8,7 @@ resume is here; [`../devtools/harness/BISECT-PLAN.md`](../devtools/harness/BISEC
 ## Origin
 
 A player reported that their campaign crashed unrecoverably, **with Cultural Diffusion disabled as well**, and
-said they could not establish whether the mod contributed. They kept no artefacts. That report is still
+said they could not establish whether the mod contributed. They kept no artifacts. That report is still
 unattributable and always will be without the `.ips`; the reply drafted in
 `civilization_vii_mods/steam-comments/2026-09-24-tower-cultural-diffusion-3757509212-discussion-reply.txt`
 asks for it.
@@ -54,7 +54,7 @@ Archived for comparison (different game builds, so frame offsets are NOT compara
 ## What is NOT established
 
 - **Whether the mod causes it.** The scoreboard is 2 crashes / 3 runs with the mod, 0 / 1 without. At that sample
-  size the difference is not meaningful: one more mod-off run could equalise it.
+  size the difference is not meaningful: one more mod-off run could equalize it.
 - **Whether the harness is the destabiliser.** It drives 40 turns in about 20 minutes with scripted end-turns,
   which no player does. The control ran the same harness and survived, but that is a single run on the arm that
   matters most.
@@ -73,7 +73,7 @@ the evidence does not justify it yet.
 
 ## What would re-open it
 
-1. A player report with the artefacts: the macOS `.ips`, the `UI.log` tail, and the `AI_ConstructibleBroker` CSV
+1. A player report with the artifacts: the macOS `.ips`, the `UI.log` tail, and the `AI_ConstructibleBroker` CSV
    tail. `AI_VERBOSE=1` on `run-harness.sh` now turns that logging on and collects the CSVs.
 2. A crash that reproduces at the same point twice - that would make the bisect worth running.
 3. Funded replication: about six runs per arm to establish whether a rate difference exists at all.

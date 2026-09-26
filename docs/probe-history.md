@@ -2,7 +2,7 @@
 
 The chronological record of what the in-game probe (`../probe/`) confirmed, corrected, and left open. This is *ground
 truth* — the currency for this mod is isolation: which verb, on which tile, reproduces or not. When a design question
-turns on engine behaviour, the answer lives here, not in theory. Current behaviour is in
+turns on engine behavior, the answer lives here, not in theory. Current behavior is in
 [`current-model.md`](current-model.md); the outstanding work these findings gate is in
 [`potential-future-features.md`](potential-future-features.md).
 
@@ -45,7 +45,7 @@ The load-bearing finding: **the shipped default flip verb did not do what the mo
 | **`CREATE_ELEMENT DISTRICT_RURAL`** | present in API; UNTESTED | untested | untested | ? |
 
 Corollaries proven this run:
-- **Inner-ring capture is real** — the user watched a rival's ring-1 tiles change colour; the log confirms
+- **Inner-ring capture is real** — the user watched a rival's ring-1 tiles change color; the log confirms
   `purchasePlot` captures at `ringDepth=1`. The earlier "`setOwnership` is god-mode, no ring restriction" claim was
   wrong and is retracted.
 - `buildable[...]=n` even on INTEGRATED tiles is expected — they are worked **rural** tiles (yields), not urban-district
@@ -117,7 +117,7 @@ The first hands-free run against the real engine ([`../devtools/harness/`](../de
 | Does owned territory block founding? | Yes. A settler could found on an unowned plot four tiles from any settlement, and could not found on the rival-owned plot beside it |
 | Can a script place an improvement on a ring-4 claimed tile? | Inconclusive, because the ring-2 control failed too |
 | Is `Game.age` a string? | No, a numeric hash |
-| Does the mod's pass run and read real yields? | Yes, every turn, with nonzero city strengths. No flips in twelve turns: ring 4 needs roughly 12,000 at the city centre, and London's stock was 364 after three passes |
+| Does the mod's pass run and read real yields? | Yes, every turn, with nonzero city strengths. No flips in twelve turns: ring 4 needs roughly 12,000 at the city center, and London's stock was 364 after three passes |
 
 Two bugs followed directly. The pass booked flips on the same-tick read, so it never recorded a real one, and every
 age read as Antiquity. Both are fixed; see the changelog.
@@ -130,7 +130,7 @@ Log `run2-antiquity-turn136-UI.log`.
 | --- | --- |
 | Does the age fix resolve the real hash? | Yes. `Game.age` 2077444219 resolved to `AGE_ANTIQUITY` through `GameInfo.Ages.lookup` |
 | Does the pending fix record a real flip end to end? | Yes. With a mature stock seeded on a frontier tile, the mod's own pass sent the flip and recorded it as pending. The tile was ours within five seconds, and the next pass logged `pending 89,29 claim confirmed`, booking the claim with a 15-turn lock |
-| Does real diffusion then claim on its own? | Yes. In that same next pass the seeded culture had crossed the bar on the neighbouring tile, and the mod sent and later confirmed that flip too |
+| Does real diffusion then claim on its own? | Yes. In that same next pass the seeded culture had crossed the bar on the neighboring tile, and the mod sent and later confirmed that flip too |
 | Can any variant release a city-attached tile? | No. Setting ownership to ourselves first, clearing a tile with no district on it, and a plain clear all left the tile owned and attached after ten seconds |
 | Does script-creating an improvement work at all? | Yes, as a control: London's ring-1 camp was destroyed and recreated. The far-tile half did not run, because the test used up the frontier tiles first; retried in run 3 |
 
@@ -142,7 +142,7 @@ Log `run3-antiquity-turn136-UI.log`, crash evidence `run3-crash-evidence.txt`.
 | --- | --- |
 | Can a script place a citizen on a claimed tile beyond ring 3? | No. After `addRuralPopulation(+1)` the engine offered 13 plots, none beyond ring 3. `CityCommands.sendRequest(EXPAND)` on a ring-4 claimed tile returned true, placed nothing, and left the citizen pending. The same citizen then placed a fishing boat on an offered ring-1 plot |
 | Can a script create an improvement on a claimed tile beyond ring 3? | No. Four attempts on two ring-4 tiles placed nothing: a mine, a woodcutter, and two copies of the town's Potkop. The same call recreated that Potkop on ring 3 |
-| Does the +1 growth buffer work? | Yes. Recreating the Potkop sent claims on its two unowned neighbours, and the next pass confirmed both |
+| Does the +1 growth buffer work? | Yes. Recreating the Potkop sent claims on its two unowned neighbors, and the next pass confirmed both |
 | How fast does the mod claim on its own from an empty field? | London's first ring-4 claim was sent on pass 18. By pass 24 the mod had sent nine flips, two of them tiles taken from player 3. Seven were confirmed and two were still in flight when the run ended |
 | Is the saved state or pass time a problem? | No: 8.9 KB of state and at most 21 ms per pass after 24 passes |
 | Did the old release branch loop, as predicted? | Yes. Once the buffer claims' cooldowns ran out, the deployed pre-removal code sent a release on both every pass and dropped it the next, sixteen times |
@@ -186,7 +186,7 @@ as a floor.
 
 | Question | Verdict |
 | --- | --- |
-| Does a new game's capital claim anything early? | No. No claims in 70 turns. The capital's Culture yield was 8, its injection strength about 11.8, and its centre stock 3,810 at turn 50. The pacing simulator predicts 3,866 for that strength, so the simulator is calibrated. By the simulator a city at strength 12 or less never claims its fourth ring |
+| Does a new game's capital claim anything early? | No. No claims in 70 turns. The capital's Culture yield was 8, its injection strength about 11.8, and its center stock 3,810 at turn 50. The pacing simulator predicts 3,866 for that strength, so the simulator is calibrated. By the simulator a city at strength 12 or less never claims its fourth ring |
 | Did a rival settle near us? | Not closely. The nearest rival major settlement was a town 14 tiles away; the nearest settlement of any kind was a city-state town 8 tiles away on turn 51 |
 | Does the Cultural Pressure lens switch on in a real game? | Yes. `setActiveLens("cd-pressure-lens")` made it the active lens with `cd-pressure-layer` enabled. The game had no contested tiles to shade, and the screenshot caught the editor window instead of the game, so rendering was left to run 9 |
 
@@ -202,7 +202,7 @@ turns, then switches the lens on and captures the game window.
 | Does switching the lens on change the map view? | Yes. The yield icons and border lines give way to the lens's fills (runs 9 and 11, game in front) |
 | When does the lens first have tiles to paint on this save? | On turn 149, the 14th pass from an empty field. After 12 passes (run 9) none of our culture sat on a tile we do not own, so nothing was contested. Run 10 had 1 contested tile on turn 149, 3 on turn 150 and 5 on turn 151. The field's growth matched run 3 pass for pass |
 | Does the hover readout see the saved field and name the civilizations? | Yes, for the data it is built from. The harness rebuilt the readout with the lens's own imports: `loadState()` returned the field, and `civLabel` gave "British Empire" and "Hawaiian Empire", not `#id` fallbacks. The panel itself was not hovered |
-| Does the lens paint the contested tiles? | Not yet seen. In run 10 the top tile was centred under the Civic Unlocked popup and the others were off screen. Run 11 repeats it with the popup closed |
+| Does the lens paint the contested tiles? | Not yet seen. In run 10 the top tile was centered under the Civic Unlocked popup and the others were off screen. Run 11 repeats it with the popup closed |
 | Does the lens show only flips that will happen? | No. Two of run 10's five contested tiles were unowned tiles led by the Hawaiian Empire, which the pass never flips for an AI. See [`BACKLOG.md`](BACKLOG.md) |
 
 ## 6. Civ V parity probes P1-P7 and the river rule, watched (game 1.5.0, 2026-09-25)
@@ -226,14 +226,14 @@ never test truthiness (a minor river is 0). `cd-terrain.js` already does the for
 
 A whole-map scan (96 × 60, 5,760 tiles): 236 minor-river tiles, 116 navigable-river tiles, `isRiver` true on exactly
 those 352 and no others. Names: 234 of 236 minor tiles and 116 of 116 navigable tiles carry a `getRiverName` key;
-98 distinct rivers. Chain shape, counted as each river tile's same-kind, same-name river neighbours:
+98 distinct rivers. Chain shape, counted as each river tile's same-kind, same-name river neighbors:
 
-| Kind | Tiles | Neighbour histogram 0..6 | Mean | Different-name adjacent pairs |
+| Kind | Tiles | Neighbor histogram 0..6 | Mean | Different-name adjacent pairs |
 | --- | --- | --- | --- | --- |
 | Minor | 236 | 4, 162, 63, 6, 1, 0, 0 | 1.31 | 24 |
 | Navigable | 116 | 13, 56, 47, 0, 0, 0, 0 | 1.29 | 4 |
 
-A mean near 1.3 with almost every tile at one or two neighbours is a 1-wide chain with ends and a few forks, not the
+A mean near 1.3 with almost every tile at one or two neighbors is a 1-wide chain with ends and a few forks, not the
 2-wide band both banks would form if the flag were an edge marker. So minor rivers are stored per tile, as the spec
 assumed, and the tile rule stands. `isAdjacentToRivers(x, y, 1)` is true on the river tile itself (197 of 200 sampled)
 and on its bank tiles (790 of 793), so it means "within one tile of a river" and cannot tell a bank from the river. The
@@ -253,7 +253,7 @@ Tile 85,19 (Ozama River, one tile from a local city): `isWater` false, terrain `
 
 The harness cleared the field, seeded known stocks on real tiles at least three rings from every local city and not
 touching our land (299 on the strong sites, under the 300 ownership bar; 150 on the gate site, under the 200 river
-gate), ran ONE pass with `culturalDiffusion.runNow()`, and read what each neighbour received. Every actual value
+gate), ran ONE pass with `culturalDiffusion.runNow()`, and read what each neighbor received. Every actual value
 matched `diffusionDelivered` applied to the live `stepMods` of that step to two decimals (ratio ×1 on every line), so
 the in-game reads classify exactly as the unit stubs do and the Antiquity pace is 1.
 
@@ -266,7 +266,7 @@ the in-game reads classify exactly as the unit stubs do and the Antiquity pace i
 | Cross, bank onto navigable river | 78,34 → 78,35 (Damietta floodplain) | malus 0.5, cap ×0.35 | 10.96 | 16.45 | ×0.67 into the channel |
 
 Under the previous rule every one of the three "onto a river" steps would have received the follow bonus (×1.65
-instead of 0, ×0.61 and ×0.67), so the runs also show the defect is gone. Two picker artefacts are recorded so nobody
+instead of 0, ×0.61 and ×0.67), so the runs also show the defect is gone. Two picker artifacts are recorded so nobody
 re-reads them as failures: run 1's minor-follow site and run 2's minor-cross site each landed on a river tile under
 rainforest, whose own gate (4.5× threshold) blocks at 299, so those single reads were 0 for the feature, not the river.
 Each row above is the run in which the step was open. The mod's own passes ran every turn alongside (8-11 ms, 35-67

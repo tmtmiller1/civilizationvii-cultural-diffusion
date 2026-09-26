@@ -65,7 +65,7 @@ for (const key of ["mementoTypeId", "mementoType", "Type", "type", "id", "value"
 }
 assert.equal(mementoIdOf(null), null, "a null entry -> null");
 assert.equal(mementoIdOf(undefined), null, "an undefined entry -> null");
-assert.equal(mementoIdOf({}), null, "an entry with no recognised field -> null");
+assert.equal(mementoIdOf({}), null, "an entry with no recognized field -> null");
 assert.equal(mementoIdOf({ id: 42 }), null, "a non-string id is rejected by the typeof guard");
 assert.equal(mementoIdOf("NOT_A_MEMENTO"), null, "a string without the MEMENTO_ prefix -> null");
 assert.equal(mementoIdOf({ id: "XMEMENTO_A" }), null, "startsWith, not includes: an embedded prefix -> null");

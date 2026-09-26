@@ -36,7 +36,7 @@ Last run: 2026-07-16 (1344 mutants across 8 files).
 | `cd-pass.js` (orchestration) | not scoped | not scoped | **69.7%** | 189 |
 | **Overall (8 modules)** | — | — | **79.2%** | **279** |
 
-1065 of 1344 mutants killed. Every kill is a real behavioural assertion — **no mutant was
+1065 of 1344 mutants killed. Every kill is a real behavioral assertion — **no mutant was
 suppressed, and no `mutate`/threshold was narrowed to inflate the number.** The headline moved
 87.5% -> 79.2% because a 624-mutant orchestrator entered the denominator; **nothing regressed.**
 The diffusion-math modules still sit at 87–94%.
@@ -49,10 +49,10 @@ field VALUES, and never exercised map bounds, per-age scaling, water, the claim-
 dead owners.
 
 Of the 189 survivors: **32 (17%)** are on `dlog`/`log`/`CONFIG.debug` lines (killing them tests
-logging, not behaviour); **~13** are buffer-path lines owned by `tests/buffer.mjs`, which asserts
+logging, not behavior); **~13** are buffer-path lines owned by `tests/buffer.mjs`, which asserts
 tile ownership but never persisted state or the failure path (filed in `BACKLOG.md`); the rest are
 the degenerate at-cap carry-over, the `cd-ethnicity` affinity leg, and proven-equivalent
-optimisations. An orchestrator over a STUBBED engine has a lower honest ceiling than `clamp01` — its
+optimizations. An orchestrator over a STUBBED engine has a lower honest ceiling than `clamp01` — its
 ratchet floor is 65, not 85, and deliberately so.
 
 ## What the new tests target
@@ -67,7 +67,7 @@ the public API cannot reach:
   kills the `&&`-left-operand `→ true` mutants that plain `NaN` inputs leave alive.
 - **Exact arithmetic**: that strength *multiplies* the sqrt injection term, that a malus
   *divides* via `1/(1+malus)`, that `cultureWeight`/`ageFactor` scale as products, that CPI
-  weights normalise as `w/wsum` (not `w*wsum`), that the diffusion cap is the `min` of two
+  weights normalize as `w/wsum` (not `w*wsum`), that the diffusion cap is the `min` of two
   legs.
 - **Strict vs. non-strict comparisons**: ownership floor (`value > minimumOwner`), the flip
   ratio (`value*ratio > incumbent`), the strongest-culture tie-break (`>` keeps the first
@@ -75,7 +75,7 @@ the public API cannot reach:
 - **Sanitizer edges** (`cd-state`): the civ-id key regex `/^-?\d+$/` (anchors + multi-digit),
   the `{v,data}` envelope-vs-raw discrimination, the 20 000-entry cap, null/number-input
   guards, the `+1` monoTurn advance, and prune's `>0`-not-`>=0` stock test.
-- **Calibration fallthrough**: age-pace normalisation and clamp, the `paceReferenceTurns`/
+- **Calibration fallthrough**: age-pace normalization and clamp, the `paceReferenceTurns`/
   `paceBounds` fallbacks, and the Configuration→GameInfo map-size fallthrough (so the GameInfo
   branch and the Configuration optional-chaining actually run and are observed).
 - **Persistence crash-safety** (`state-branches`, 2026-07-16): the module header promises "a corrupt
@@ -89,7 +89,7 @@ the public API cannot reach:
 
 ## Surviving mutants are equivalent (not gaps)
 
-The 90 survivors fall into a few categories, all of which cannot change observable behaviour.
+The 90 survivors fall into a few categories, all of which cannot change observable behavior.
 Re-verify these categories each run rather than inheriting them — see the civ-tuning section below
 for what happens when a stale equivalence claim goes unchallenged:
 
@@ -103,7 +103,7 @@ for what happens when a stale equivalence claim goes unchallenged:
    `leaderName`/`civName` `L78–88`): an optional-chaining or guard mutant that would throw is
    caught by the surrounding `try` (or the null coalesces the same as a graceful `""`/`null`),
    so the observable result — a default state, a neutral profile — is identical.
-4. **Equivalent optimisations** (`civ-tuning L156`'s `typeof pid` guard, which a non-number pid
+4. **Equivalent optimizations** (`civ-tuning L156`'s `typeof pid` guard, which a non-number pid
    reaches the same NEUTRAL result without): the mutated path reaches the same output by another
    route.
 5. **The inert `BY_MEMENTO` pipeline** (`civ-tuning L116–L119`): `mementoScale()`'s `if (t)` body
@@ -128,7 +128,7 @@ clamp. "Unreachable from the public API" is not the same as "untestable" — it 
 a handle on them.
 
 They are now pinned directly in `tests/civ-tuning-internals.mjs`, via the `__test` export that
-already existed for introspection. **No fake table entry, no shipped-behaviour change** — so this is
+already existed for introspection. **No fake table entry, no shipped-behavior change** — so this is
 not metric-masking; it is testing live code that had no test. It also carries real forward value: the
 pipeline activates the moment a memento is tuned, and it will now work rather than silently no-op.
 
@@ -149,8 +149,8 @@ Before "fixing" either of these, note why the mutant is equivalent:
 - `equippedMementos`' `!Array.isArray(raw)` guard, mutated to `false`, still returns `[]` for a
   string input — a string is iterable, and none of its characters start with `MEMENTO_`.
 - `civTuning`'s `typeof pid !== "number"` guard, mutated away, still returns NEUTRAL for a
-  non-number pid — the lookup just resolves to no entry. The guard is an optimisation, not a
-  behaviour.
+  non-number pid — the lookup just resolves to no entry. The guard is an optimization, not a
+  behavior.
 
 ## Fast per-module loops
 

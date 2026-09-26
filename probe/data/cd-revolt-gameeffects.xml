@@ -2,7 +2,7 @@
 <!-- Phase 5 (cultural city capture) probe: the base-game CityRevolt unhappiness effect, wrapped in
      a modifier we attach to a settlement via a hidden marker constructible. Attaching it triggers
      the base-game loyalty petition (the LOYALTY001 narrative story chain - see cd-revolt-marker.xml),
-     which offers the settlement to a neighbouring major civ and transfers it. Uses only base-game
+     which offers the settlement to a neighboring major civ and transfers it. Uses only base-game
      effect identifiers. -->
 <GameEffects xmlns="GameEffects">
     <!-- Apply the base-game CityRevolt unhappiness effect ONCE. It must NOT be permanent/run-once=false:

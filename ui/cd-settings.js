@@ -68,7 +68,7 @@ class ModOptionsStore {
 
   /**
    * Persist one value, only ever touching our own slice.
-   * @param {string} modID Mod id. @param {string} optionID Option id. @param {*} value Value.
+   * @param {string} modID @param {string} optionID @param {*} value
    */
   save(modID, optionID, value) {
     try {
@@ -83,7 +83,7 @@ class ModOptionsStore {
 
   /**
    * Read one value.
-   * @param {string} modID Mod id. @param {string} optionID Option id.
+   * @param {string} modID @param {string} optionID
    * @returns {*} The value, or null.
    */
   load(modID, optionID) {

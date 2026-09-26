@@ -10,7 +10,7 @@ Cultural Diffusion grows your borders out of culture instead of a radius. Your c
 [*][b]An answer to forward-settling.[/b] The buffer around your cities fills in, and a rival's frontier tile can change hands where your culture clearly wins, without anyone declaring war.
 [*][b]Reach is more than Culture yield.[/b] A city pushes harder when it is prosperous, and when your civilization has weight behind it: wonders, great works, Influence, suzerainties, happiness, golden ages, traditions and how late the age is, plus a lift while you celebrate.
 [*][b]Tuned per leader and civilization.[/b] Leader, civilization and memento tuning damps kits that already hand you territory and lifts Culture-poor ones, so one strategy does not take the map every game.
-[*][b]Room for your neighbours.[/b] A claim never takes the last tile another civilization's unit could move to, and minor settlements keep a protected ring.
+[*][b]Room for your neighbors.[/b] A claim never takes the last tile another civilization's unit could move to, and minor settlements keep a protected ring.
 [*][b]Per-age pacing.[/b] Per-age tuning and map-size calibration re-time the field to the length of the age, so it holds up on a fast game and a cramped map.
 [*][b]Readable, un-minified source.[/b]
 [/list]
@@ -21,7 +21,7 @@ Shift+C shades the tiles on their way to changing hands, stronger the closer the
 [*]Your culture on it is the largest there, and past a floor worth counting.
 [*]Taking one off another civilization needs a clear margin, not a tie.
 [*]It touches land you already hold, so your border stays in one piece.
-[*]A rival's city centre is never taken, and the ring around it can be shielded too.
+[*]A rival's city center is never taken, and the ring around it can be shielded too.
 [*]A fresh claim is locked briefly, so borders cannot flicker.
 [/list]
 [h2]When you will see it[/h2]

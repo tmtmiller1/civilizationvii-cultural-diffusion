@@ -14,9 +14,9 @@
 //      (`skip flip ...: would strand a foreign unit`), the plot stays unowned, and the unit keeps moving
 //      over the following turns instead of freezing.
 //   V  VILLAGE CORE PROTECTION. An Independent Power reports `cities: 0`, so `isCoreProtected`'s city-list
-//      route is blind to a village centre; the fix adds a MAP read (`isCityCenterAt`). Validate that read
-//      against the live engine on our OWN centres first - it failed twice in earlier harnesses - then find
-//      any minor-owned centre, report what the gates now say, and seed the mod's field on the centre to see
+//      route is blind to a village center; the fix adds a MAP read (`isCityCenterAt`). Validate that read
+//      against the live engine on our OWN centers first - it failed twice in earlier harnesses - then find
+//      any minor-owned center, report what the gates now say, and seed the mod's field on the center to see
 //      whether the pass refuses it.
 //
 // Tagged [CDH] in Logs/UI.log.
@@ -139,7 +139,7 @@ async function buildGapPen(kinds) {
   const ringState = site.ring.map((p) => ({ at: key(p), owner: owner(p), isGap: p.x === theGap.x && p.y === theGap.y }));
   const write = seedStock(theGap);                   // make the pass WANT the gap
   gap = { cid: site.u.cid, type: site.u.type, unitOwner: site.u.owner, centre, loc: theGap, ring: site.ring, history: [] };
-  emit(`G PEN centre=${key(centre)} unit=${site.u.type} owner=${site.u.owner} gap=${key(theGap)} seed=${write} ring=${J(ringState)}`);
+  emit(`G PEN center=${key(center)} unit=${site.u.type} owner=${site.u.owner} gap=${key(theGap)} seed=${write} ring=${J(ringState)}`);
   const res = safe(() => runPass(), "threw");
   await later(3000);
   const took = owner(theGap) === local;
@@ -184,21 +184,21 @@ function stageV(kinds) {
         ourRing: dist(c.location, p), district: districtTypeNameAt(p) });
     }
   }
-  emit(`V MINOR-CENTRES n=${centres.length} ${J(centres)}`);
+  emit(`V MINOR-CENTERS n=${centres.length} ${J(centers)}`);
   for (const c of centres.slice(0, 3)) {
     const [x, y] = c.at.split(",").map(Number);
     const loc = { x, y };
     emit(`V GATE ${c.at} ownerPid=${c.ownerPid} indep=${c.indep} ownerCities=${c.cities} atWar=${c.war} `
       + `isCoreProtected(owner,0)=${safe(() => isCoreProtected(loc, c.ownerPid, 0), "ERR")} `
       + `rivalClaimAllowed=${safe(() => rivalClaimAllowed(loc, c.ownerPid, local, CONFIG), "ERR")} => `
-      + (safe(() => isCoreProtected(loc, c.ownerPid, 0), false) ? "CENTRE PROTECTED" : "CENTRE UNPROTECTED"));
+      + (safe(() => isCoreProtected(loc, c.ownerPid, 0), false) ? "CENTER PROTECTED" : "CENTER UNPROTECTED"));
   }
   return centres;
 }
 let villageTest = null;
 async function pressVillage(centres) {
   const pick = centres.find((c) => c.indep === true) || centres[0];
-  if (!pick) { emit("V no minor centre within 14 rings - the pass test cannot run here"); return; }
+  if (!pick) { emit("V no minor center within 14 rings - the pass test cannot run here"); return; }
   const [x, y] = pick.at.split(",").map(Number);
   const loc = { x, y };
   const write = seedStock(loc, { [String(pick.ownerPid)]: 10 });
@@ -207,17 +207,17 @@ async function pressVillage(centres) {
   await later(3000);
   villageTest = { at: pick.at, ownerPid: pick.ownerPid, before, after: owner(loc) };
   emit(`V PRESS ${pick.at} seed=${write} pass=${J(res)} ownerBefore=${before} ownerAfter=${owner(loc)} => `
-    + (owner(loc) === local ? "THE PASS TOOK A SETTLEMENT CENTRE (protection failed)" : "centre held"));
+    + (owner(loc) === local ? "THE PASS TOOK A SETTLEMENT CENTER (protection failed)" : "center held"));
 }
 
 /** The minor-protection floor, against a real city-state's ring-1. */
 function stageM(kinds, centres) {
   const pick = centres[0];
-  if (!pick) { emit("M no minor centre in range"); return; }
+  if (!pick) { emit("M no minor center in range"); return; }
   const [x, y] = pick.at.split(",").map(Number);
   const centre = { x, y };
   const ring1 = neighbours(centre).filter((p) => owner(p) === pick.ownerPid);
-  emit(`M centre=${pick.at} ownerPid=${pick.ownerPid} minorProtectRadius=${CONFIG.minorProtectRadius} `
+  emit(`M center=${pick.at} ownerPid=${pick.ownerPid} minorProtectRadius=${CONFIG.minorProtectRadius} `
     + `ring1Owned=${J(ring1.map(key))}`);
   for (const p of ring1.slice(0, 3)) {
     const withFloor = safe(() => rivalClaimAllowed(p, pick.ownerPid, local, CONFIG), "ERR");
@@ -263,15 +263,15 @@ function endTurn() {
 
 function verdicts() {
   if (villageTest) {
-    emit(`V VERDICT centre=${villageTest.at} ownerPid=${villageTest.ownerPid} nowOwner=${owner({ x: +villageTest.at.split(",")[0], y: +villageTest.at.split(",")[1] })} => `
+    emit(`V VERDICT center=${villageTest.at} ownerPid=${villageTest.ownerPid} nowOwner=${owner({ x: +villageTest.at.split(",")[0], y: +villageTest.at.split(",")[1] })} => `
       + (owner({ x: +villageTest.at.split(",")[0], y: +villageTest.at.split(",")[1] }) === local
-        ? "FAILED: the pass holds a settlement centre" : "HELD: the pass never took the settlement centre"));
-  } else emit("V VERDICT not run (no minor centre in range)");
+        ? "FAILED: the pass holds a settlement center" : "HELD: the pass never took the settlement center"));
+  } else emit("V VERDICT not run (no minor center in range)");
   if (!gap) { emit("G VERDICT no pen built"); return; }
   const moves = gap.history.map((h) => h.unitAt);
   const frozen = moves.length > 1 && moves.every((m) => m === moves[0]);
   const tookGap = gap.history.some((h) => h.gapOwner === local);
-  emit(`G VERDICT centre=${key(gap.centre)} gap=${key(gap.loc)} unit=${gap.type} owner=${gap.unitOwner} `
+  emit(`G VERDICT center=${key(gap.centre)} gap=${key(gap.loc)} unit=${gap.type} owner=${gap.unitOwner} `
     + `gapEverOurs=${tookGap} unitPositions=${J(moves)} => `
     + (tookGap ? "FAILED: the pass took the gap the guard should have refused"
       : frozen ? "INCONCLUSIVE: gap held but the unit never moved anyway (AI may be idle)"
@@ -287,7 +287,7 @@ engine.on("PlayerTurnActivated", (d) => {
     emit(`TURN n=${n} turn=${safe(() => Game.turn)}`);
     if (gap) { const st = gapState(); gap.history.push({ n, ...st }); emit(`G WATCH n=${n} ${J(st)}`); }
     else await buildGapPen(playerKinds()).catch((e) => emit("buildGapPen threw " + e));
-    if (villageTest) emit(`V WATCH n=${n} centre=${villageTest.at} owner=${owner({ x: +villageTest.at.split(",")[0], y: +villageTest.at.split(",")[1] })}`);
+    if (villageTest) emit(`V WATCH n=${n} center=${villageTest.at} owner=${owner({ x: +villageTest.at.split(",")[0], y: +villageTest.at.split(",")[1] })}`);
     const watched = gap ? gap.history.length : 0;
     if ((gap && watched >= WATCH_TURNS) || n >= MAX_TURNS) { verdicts(); setTimeout(() => emit("DONE harness run19 finished"), 3000); return; }
     setTimeout(endTurn, 5000);

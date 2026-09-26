@@ -8,7 +8,7 @@
 #         dist/workshop_item.vdf              (steamcmd build manifest)
 #
 # What this does:
-#   1. Runs the quality gate (npm run verify: lint + syntax + esm + tests).
+#   1. Runs the quality gate (npm run release:gate: lint + syntax + esm + tests).
 #   2. Mirrors the mod source into dist/cultural-diffusion/, excluding all dev cruft
 #      (tests, scripts, docs, node_modules, the probe, tooling configs).
 #   3. Forces debug logging off in the shipped copy (source stays dev-friendly).
@@ -28,8 +28,8 @@ MODINFO="$MOD.modinfo"
 
 # Quality gate: never package a red build. Set SKIP_VERIFY=1 to bypass (emergency only).
 if [ "${SKIP_VERIFY:-0}" != "1" ]; then
-  echo "release: running 'npm run verify' (set SKIP_VERIFY=1 to skip)..."
-  npm run verify || { echo "release: 'npm run verify' FAILED - aborting."; exit 1; }
+  echo "release: running 'npm run release:gate' (set SKIP_VERIFY=1 to skip)..."
+  npm run release:gate || { echo "release: 'npm run release:gate' FAILED - aborting."; exit 1; }
 fi
 
 [ -f "$MODINFO" ] || { echo "error: $MODINFO not found in $(pwd)"; exit 1; }

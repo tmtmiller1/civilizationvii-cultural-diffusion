@@ -13,7 +13,7 @@
 //      read-only against a real pair of players.
 //   N  NAVAL PEN. Run 26 and 27 found no bay on AugustusAnt136: nearest peaceful ship 10 rings out, claims
 //      only survive inside about 7. This reports the nearest peaceful ships on WHATEVER save it is run
-//      against and, if one is pennable, buys all but one of its water neighbours and asks the guard.
+//      against and, if one is pennable, buys all but one of its water neighbors and asks the guard.
 //
 // Tagged [CDH] in Logs/UI.log.
 
@@ -117,7 +117,7 @@ async function stageN() {
   if (!site) { emit(`N no pennable ship in range yet (nearest ${rows[0] ? rows[0].near.d : "?"} rings)`); return false; }
   const centre = site.s.loc;
   const theGap = site.wet[0];
-  emit(`N PEN centre=${key(centre)} ship=${site.s.type} owner=${site.s.owner} ring=${site.near.d} wet=${site.wet.length} gap=${key(theGap)}`);
+  emit(`N PEN center=${key(center)} ship=${site.s.type} owner=${site.s.owner} ring=${site.near.d} wet=${site.wet.length} gap=${key(theGap)}`);
   for (const p of site.wet.slice(1)) if (owner(p) !== local) refundBuy(nearest(p, cities).city, p);
   await later(6000);
   const seen = safe(() => strandableUnitsAt(centre, local), "ERR");

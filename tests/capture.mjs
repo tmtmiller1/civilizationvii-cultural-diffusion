@@ -43,15 +43,15 @@ function seed() {
   saves = 0;
 }
 
-// 1. With getPurchasedPlots: exactly the listed plots (centre added) are rewritten; the far tile is untouched.
+// 1. With getPurchasedPlots: exactly the listed plots (center added) are rewritten; the far tile is untouched.
 seed();
 cities.set(9, { id: 9, location: CENTRE, getPurchasedPlots: () => [enc(A.x, A.y), enc(B.x, B.y)] });
 let n = onCityTransfered({ fromPlayer: 3, transferType: 1, cityID: { owner: 0, id: 9, type: 1 } });
-assert.equal(n, 3, "centre + two purchased plots rewritten");
+assert.equal(n, 3, "center + two purchased plots rewritten");
 assert.equal(saves, 1, "saved at once");
 const f = savedState.field;
 assert.ok(Math.abs(f[tk(CENTRE.x, CENTRE.y)][3] - 450) < 1e-9 && Math.abs(f[tk(CENTRE.x, CENTRE.y)][0] - 412.5) < 1e-9,
-  "centre: old owner keeps 45%, conqueror gains 75% of the 550 lost");
+  "center: old owner keeps 45%, conqueror gains 75% of the 550 lost");
 assert.ok(Math.abs(f[tk(A.x, A.y)][3] - 180) < 1e-9, "a purchased plot is rewritten");
 assert.deepEqual(f[tk(FAR.x, FAR.y)], { 3: 500 }, "a tile of another city is untouched");
 
@@ -59,7 +59,7 @@ assert.deepEqual(f[tk(FAR.x, FAR.y)], { 3: 500 }, "a tile of another city is unt
 seed();
 cities.set(9, { id: 9, location: CENTRE });
 owningCity.set(tk(A.x, A.y), 9); owningCity.set(tk(B.x, B.y), 9); owningCity.set(tk(CENTRE.x, CENTRE.y), 9);
-assert.equal(cityPlots(cities.get(9)).length, 3, "fallback scan: centre + the two owned plots");
+assert.equal(cityPlots(cities.get(9)).length, 3, "fallback scan: center + the two owned plots");
 n = onCityTransfered({ fromPlayer: 3, cityID: { owner: 0, id: 9 } });
 assert.equal(n, 3, "the fallback rewrites the same three tiles");
 

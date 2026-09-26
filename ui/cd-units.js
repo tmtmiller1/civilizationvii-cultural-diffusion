@@ -48,7 +48,7 @@ import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
 
 /**
  * @param {()=>*} fn Thunk.
- * @param {*} fallback Fallback.
+ * @param {*} fallback
  * @returns {*} fn() or fallback on throw.
  */
 function safe(fn, fallback) {

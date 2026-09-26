@@ -32,7 +32,7 @@ The rest of Gedemon's Civ V model, built against what the 2026-09-25 probes prov
 - **Cities carry every culture living in them** (`foreignCultureInCities`, on by default; spec §3 and §4). A city
   injects culture for every group present on its tile, not only its owner's: the owner at full strength, each foreign
   group at population strength (`foreignInjectScale`), weighted by that group's share of the population when the
-  Emigration mod records one, and otherwise only once the group holds `foreignGroupMinStock` there, so a neighbour's
+  Emigration mod records one, and otherwise only once the group holds `foreignGroupMinStock` there, so a neighbor's
   trickle is never amplified. The city-tile cap now bounds the total culture on the tile, as in Civ V. Each turn the
   city converts `convertBase` (0.5%) of every foreign group's stock to its owner, plus a bonus per science and culture
   building it has and per ideology its owner holds (`convertBonuses`, a data table keyed by type name). A captured or
@@ -51,7 +51,7 @@ The rest of Gedemon's Civ V model, built against what the 2026-09-25 probes prov
   majors, a combat unit that holds an enemy tile for `conquestBufferTurns` (5) consecutive turns takes it for its
   owner, whatever the culture there. Leaving resets the count. The tile is then held for `conquestHoldTurns` (10):
   culture cannot flip it back meanwhile, but another army holding it through the buffer takes it at any time; after
-  the hold it works the normal way. City centres and urban districts are never taken this way. Another civilization's
+  the hold it works the normal way. City centers and urban districts are never taken this way. Another civilization's
   armies do the same only when AI culture flips are also on. Watched in game: a planted Spearman held an enemy tile
   five turns, the tile flipped and was confirmed next pass. Watched again driven only by the Options checkbox, with no
   config patch: off by default, six turns of occupation took nothing; checked, the tile fell once the buffer filled;
@@ -108,12 +108,12 @@ The rest of Gedemon's Civ V model, built against what the 2026-09-25 probes prov
     `FEATURE_VOLCANO`, `FEATURE_ICE` and the sixteen impassable natural wonders need no special case.
   - **Only OUR claim being the cause counts.** Comparative: could it move before, can it move after. A unit already
     immobile does not block anything, and claiming the ground a unit stands on is never refused, because what it may
-    move to is its neighbours, which that claim does not change. Once the unit moves on, the tile is claimed normally.
+    move to is its neighbors, which that claim does not change. Once the unit moves on, the tile is claimed normally.
   - **Claims already sent this pass count as ours.** `purchasePlot` applies seconds after the call, so without this the
     second claim in a pass re-counts an exit the mod has already taken - which is how a unit with two exits lost both
     in one pass. The keys come from `cd-pending.js`.
   - New code-only tunable: `protectTrappedUnits` (default on). The units reads fail open, so an unreadable API degrades
-    to the previous behaviour rather than stalling the pass.
+    to the previous behavior rather than stalling the pass.
   - **Known limit, measured rather than assumed:** the guard counts any plot not ours as a destination, although a unit
     of civ A also cannot always enter civ B's borders. Two readings settle why it stays that way. A census of 459
     foreign units found 30 standing in a third party's territory, 9 of 10 sampled at PEACE with its owner, so access is
@@ -128,7 +128,7 @@ The rest of Gedemon's Civ V model, built against what the 2026-09-25 probes prov
     (79,37 then 79,38 then 78,39). Three earlier drafts were watched FAILING in game while these same unit tests
     passed - pocket semantics, deferred writes, and mountains-as-exits - each fixed only after being measured. The
     naval case is **confirmed on a real ship** (run 29b): a `UNIT_KALAM` three rings from one of our cities had five of
-    its six water neighbours bought, and the guard read it as `{domain: DOMAIN_SEA, water: true, land: false}` with
+    its six water neighbors bought, and the guard read it as `{domain: DOMAIN_SEA, water: true, land: false}` with
     `exitsNow=1 exitsAfterClaim=0 wouldStrand=true`. The embarked case rests on the same reads plus off-engine tests.
 
 ### Investigated
@@ -144,17 +144,17 @@ The rest of Gedemon's Civ V model, built against what the 2026-09-25 probes prov
   claim durability tracks distance from the OWNING CITY - comfortably outside `flipMaxDistance` (6), which is why the
   mod's own claims hold.
 - **A minor settlement was being stripped of its land, which is the reporter's "absorbed independent".** With
-  `coreProtectRadius: 0` - reasonable against a major - only the centre PLOT was protected, and a city-state or village
+  `coreProtectRadius: 0` - reasonable against a major - only the center PLOT was protected, and a city-state or village
   owns just a ring or two in total, so diffusion took everything else and left the settlement sitting alone inside our
-  territory. Watched in harness run 13: the pass flipped 89,41 and 90,42, both ring-1 of city-state 33's centre at
+  territory. Watched in harness run 13: the pass flipped 89,41 and 90,42, both ring-1 of city-state 33's center at
   89,42. **Fixed** by `minorProtectRadius` (default 1), a floor on protection for any owner that is not a major.
   Confirmed in game (run 19) by an A/B on three of a real city-state's ring-1 plots: `claimAllowedWithFloor=false`,
   `withoutFloor=true`.
-- **Core protection can now see a settlement no city list reports.** `isCoreProtected` found centres only by walking
+- **Core protection can now see a settlement no city list reports.** `isCoreProtected` found centers only by walking
   `Players.get(pid).Cities.getCities()`, which returns NOTHING for an Independent Power. It now also reads the map
-  (`isCityCenterAt`, via `Cities.getAtLocation`), so a village centre is protected regardless of owner kind. Validated
-  against the live engine in run 18: all six of our own centres detected, five minor-owned centres found where the
-  earlier district-type read found none, and the pass refused a centre carrying a 50,000 culture seed.
+  (`isCityCenterAt`, via `Cities.getAtLocation`), so a village center is protected regardless of owner kind. Validated
+  against the live engine in run 18: all six of our own centers detected, five minor-owned centers found where the
+  earlier district-type read found none, and the pass refused a center carrying a 50,000 culture seed.
 - All four verdicts are recorded in `civilization_vii_mods/engine-closed.md`.
 - **A non-deterministic native crash turned up while stress-testing this build, and is PARKED rather than fixed.**
   Two of four long unattended harness runs faulted, on different threads with different addresses; a third run with
@@ -247,7 +247,7 @@ The rest of Gedemon's Civ V model, built against what the 2026-09-25 probes prov
   to the **geometrically nearest** of your cities. When two of your cities sit close together, a
   tile in **City A's** workable ring that happens to be a hair closer to **City B** was deeded to
   B — so A could no longer work it, and if B was too far, nobody could. This is the reported
-  *"restricting me from working some, but not all, tiles within the 3-ring of my city centre."*
+  *"restricting me from working some, but not all, tiles within the 3-ring of my city center."*
 - **The base game now owns and allocates your inner rings, always.** Rings within
   `baseGrowthRadius` (3) of any of your cities are ceded entirely to the base game, which assigns
   each tile to the city that can actually **work** it. The mod only ever claims the **frontier
@@ -577,11 +577,11 @@ culture still spreads from the outside in and never claims an enemy city-center 
   (both defaults), culture claims a rival's tiles contiguously from the outside in and never
   the city-center plot — the same rival-tile capture the probe's capture stage exercised
   (developed tiles transfer and hold; tile-bound improvements survive). The disconnected-pocket
-  behaviour (`requireAdjacency` off) reaches deep into a rival's worked footprint and is opt-in.
+  behavior (`requireAdjacency` off) reaches deep into a rival's worked footprint and is opt-in.
 
 ## [1.0.3] - 2026-07-06
 
-Test-quality hardening only. No gameplay, balance, or shipped-behaviour changes — the shipped
+Test-quality hardening only. No gameplay, balance, or shipped-behavior changes — the shipped
 `ui/`, `text/`, and modinfo content is identical to 1.0.2 apart from the version bump.
 
 ### Added
@@ -589,7 +589,7 @@ Test-quality hardening only. No gameplay, balance, or shipped-behaviour changes 
   (`cd-pressure`, `cd-field`, `cd-cpi`, `cd-state`, `cd-calibration`, `cd-civ-tuning`). Six new
   `tests/*-branches.mjs` harnesses raise the Stryker mutation score from **63.3% to 81.8%**
   (580 of 709 mutants killed, up from 449), with the diffusion-math modules at 86–94%. Every
-  kill is a genuine behavioural assertion — no mutant was suppressed and no scope narrowed to
+  kill is a genuine behavioral assertion — no mutant was suppressed and no scope narrowed to
   inflate the number; the surviving mutants are equivalent (dead defensive branches, boundary
   equalities, try/catch-masked engine reads, and the intentionally-empty memento pipeline in
   `cd-civ-tuning`). Full write-up in `docs/mutation-analysis.md`.
@@ -628,8 +628,8 @@ mod for Civilization VII.
 
 ### Added
 - Reaction-diffusion culture field: cities inject culture into a persisted per-tile
-  stock that diffuses to neighbours and decays each turn, so borders grow as a slow,
-  organic travelling wave (ring 3 is a mid-game event; ring 5+ is a mature culture).
+  stock that diffuses to neighbors and decays each turn, so borders grow as a slow,
+  organic traveling wave (ring 3 is a mid-game event; ring 5+ is a mature culture).
 - Terrain shaping: culture follows roads and river valleys and is slowed or blocked
   crossing hills, mountains, tundra/desert biomes, and forest/jungle/marsh features.
 - Fused injection strength: a geometric blend of culture with a prosperity/vitality

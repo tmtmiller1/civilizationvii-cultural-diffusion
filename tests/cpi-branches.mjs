@@ -1,6 +1,6 @@
 // tests/cpi-branches.mjs - branch/edge hardening for the pure CPI math (mutation coverage).
 // Every assertion below pins a specific guard or arithmetic branch so a mutant that flips it
-// is caught. Nothing here suppresses a mutant; each is a genuine behavioural check.
+// is caught. Nothing here suppresses a mutant; each is a genuine behavioral check.
 import assert from "node:assert/strict";
 import { sharesVsMax, computeCPI, fPower, __test } from "/cultural-diffusion/ui/cd-cpi.js";
 
@@ -34,11 +34,11 @@ assert.ok(isFinite(withZero) && withZero > EPS * 10,
   `zero share is EPS-floored (share+EPS), giving a small finite CPI (got ${withZero})`);
 
 // --- computeCPI(): weight actually re-weights (w/wsum, not w*wsum) ---
-// Same shares, opposite weight emphasis -> emphasising the strong dim yields a higher CPI.
+// Same shares, opposite weight emphasis -> emphasizing the strong dim yields a higher CPI.
 const shares = { a: 1.0, b: 0.02 };
 const weightStrong = computeCPI(shares, { a: 9, b: 1 }, ["a", "b"]);
 const weightWeak = computeCPI(shares, { a: 1, b: 9 }, ["a", "b"]);
-assert.ok(weightStrong > weightWeak, "weighting the strong dimension raises CPI (normalised w/wsum)");
+assert.ok(weightStrong > weightWeak, "weighting the strong dimension raises CPI (normalized w/wsum)");
 
 // --- computeCPI(): the leader (all shares 1) is exactly ~1, not the guard/floor ---
 assert.ok(Math.abs(computeCPI({ a: 1, b: 1 }, { a: 2, b: 3 }, ["a", "b"]) - 1) < 1e-6,

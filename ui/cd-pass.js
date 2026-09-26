@@ -174,7 +174,7 @@ function easeCrossing(m, ease) {
 /**
  * Fused per-civ injection-strength function (CPI power x per-age damping x civ variance) plus the
  * optional ethnic-diffusion context. When fusedModel is off, strength is the raw projection.
- * @param {import("/cultural-diffusion/ui/cd-pressure.js").Settlement[]} settlements Settlements.
+ * @param {import("/cultural-diffusion/ui/cd-pressure.js").Settlement[]} settlements
  * @param {number} ageInject Per-age injection scale.
  * @returns {{strengthOf:(s:*)=>number, ethCtx:*}} Strength fn + ethnic context (or null).
  */
@@ -495,7 +495,7 @@ function pruneFarField(state, region, cities, radius) {
 /**
  * Injectors: any settlement whose center sits in the region (nearby rivals inject too, so their
  * culture contests the field). Map cityKey -> { civ, strength }.
- * @param {import("/cultural-diffusion/ui/cd-pressure.js").Settlement[]} settlements Settlements.
+ * @param {import("/cultural-diffusion/ui/cd-pressure.js").Settlement[]} settlements
  * @param {Set<string>} region Region plot keys.
  * @param {(s:*)=>number} strengthOf Injection-strength function.
  * @returns {Map<string, {civ:number, strength:number}>} Injectors by plot key.

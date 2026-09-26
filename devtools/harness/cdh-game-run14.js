@@ -4,7 +4,7 @@
 // ENGINE move that unit off by itself?
 //
 // Run 13 settled only the script surface: no callable unit operation moves any unit (ours or a rival's), and
-// UNITOPERATION_TELEPORT_TO is not even in the runtime enum. That says nothing about the engine's own C++ behaviour on
+// UNITOPERATION_TELEPORT_TO is not even in the runtime enum. That says nothing about the engine's own C++ behavior on
 // an ownership change - and the base game plainly does relocate units when borders close. If it does that for OUR
 // claim too, then cd-units.js is unnecessary rather than impossible, and the mod should simply claim and let the engine
 // sort the occupant out.
@@ -175,7 +175,7 @@ async function tryFixture() {
 async function run() {
   local = GameContext.localPlayerID;
   emit(`S0 run14 turn=${safe(() => Game.turn)} local=${local} gold=${gold()} bump=${CONFIG.bumpForeignUnits}`);
-  // The mod must not race us for these plots while we test the engine's own behaviour.
+  // The mod must not race us for these plots while we test the engine's own behavior.
   CONFIG.diffusionEnabled = false;
   emit("S0 mod pass DISABLED for this run: the harness buys the plots itself");
   await tryFixture();

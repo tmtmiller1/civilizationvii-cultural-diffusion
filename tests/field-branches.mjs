@@ -47,7 +47,7 @@ assert.equal(diffusionDelivered(5000, 0, { ...OPEN, malus: -1 }, cfg), noMalus,
   "negative malus floored to 0 (no speed-up)");
 
 // --- diffusionDelivered(): the cap is a MIN of two products (maxPercent vs normalMax*maxFactor) ---
-// With maxFactor huge, the maxPercent leg binds; the neighbour never exceeds src*maxPercent.
+// With maxFactor huge, the maxPercent leg binds; the neighbor never exceeds src*maxPercent.
 const bigFactor = diffusionDelivered(5000, 5000 * 0.75 - 1, { ...OPEN, maxFactor: 100 }, cfg);
 assert.ok(bigFactor <= 1 + 1e-9, "maxPercent cap binds even with a huge maxFactor (Math.min)");
 assert.equal(diffusionDelivered(5000, 5000 * 0.75, { ...OPEN, maxFactor: 100 }, cfg), 0,

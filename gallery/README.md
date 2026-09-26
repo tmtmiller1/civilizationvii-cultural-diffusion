@@ -37,23 +37,23 @@ and because disabling the layer through `LensManager` instead redraws the yield-
 
 - **Seed BELOW the ownership bar and never run a pass.** A claimed tile is not contested, so the lens correctly
   paints nothing. An early attempt seeded high, ran a pass, and produced lens-on and lens-off frames that measured
-  1.44% and 1.47% coloured pixels - identical.
+  1.44% and 1.47% colored pixels - identical.
 - **Log what the lens would paint before shooting.** `pressureTiles().length` at seed time (`LENS would paint N`)
   is the one check that tells you a capture is worth taking. Two runs were wasted before it existed.
-- **Aim AT the subject.** Run 11's recipe aims four columns east to dodge centred pop-ups, which is right for a
+- **Aim AT the subject.** Run 11's recipe aims four columns east to dodge centered pop-ups, which is right for a
   pop-up shot and wrong for a lens shot - it put the paint in the corner of every early frame.
 - **A "before" frame has to be measured, not assumed.** The first border pair was rejected for showing a city with
   four rings of territory when the base game stops at three. Count the owned tiles by ring, attributing each tile to
   its NEAREST city, and log the census beside the shot: Leeds reads `[1,6,12,8,0,0,0]`, which is a vanilla footprint,
   and `[1,6,12,8,7,7,0]` after, which is not.
 - **Pick a city with no second empire in frame.** That rejected pair was not a claim gone wrong - every city in the
-  save measured ring 3. It was a neighbouring civ's land, in a near-identical purple, reading as the subject city's.
+  save measured ring 3. It was a neighboring civ's land, in a near-identical purple, reading as the subject city's.
   Count foreign-owned tiles within six rings and take the lowest: Lāhainā had **29**, Leeds had **1**.
 - **Aim once for a pair.** Calling `Camera.lookAtPlot` again before the second shot does not land on the same view,
   and a pair that is not the same view is not a comparison. Aim, shoot, run the passes, shoot again, never re-aim.
-- **Frame the frontier, not the city.** Centred on the city the border simply left the picture; centred on the land
+- **Frame the frontier, not the city.** Centered on the city the border simply left the picture; centered on the land
   about to be claimed, the old border and the new one are both in shot and the line visibly moves.
-- **Verify by looking.** A hue test cannot check the lens: it paints in the civ's own banner colour, so lens paint
+- **Verify by looking.** A hue test cannot check the lens: it paints in the civ's own banner color, so lens paint
   and ordinary territory are the same pixels. Judge from the frame - the lens is a flat translucent fill across
   whole tiles, territory is a border line.
 

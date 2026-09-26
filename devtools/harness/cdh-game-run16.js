@@ -5,16 +5,16 @@
 // I  THE ABSORBED INDEPENDENT (read-only). Run 15 found that `Players.get(pid).Cities.getCities()` enumerates NOTHING
 //    for an Independent Power (its settlement map listed only majors and city-states), while run 13 watched the mod
 //    flip tiles "was owner 33" - so in this save `atWar(me, 33)` is FALSE and independent land is claimable. If
-//    getCities() cannot see a village, then `isCoreProtected` - which finds city centres by walking getCities() -
-//    cannot protect a village CENTRE, and taking a minor's centre plot absorbs the settlement (the mod's own Phase-5
-//    probe note). This stage calls the SHIPPED gates against a REAL village centre and reports what they say. No writes.
+//    getCities() cannot see a village, then `isCoreProtected` - which finds city centers by walking getCities() -
+//    cannot protect a village CENTER, and taking a minor's center plot absorbs the settlement (the mod's own Phase-5
+//    probe note). This stage calls the SHIPPED gates against a REAL village center and reports what they say. No writes.
 //
 // II THE TRAPPED SETTLER. Runs 14-15 used Independent Powers' units, which are hostile-by-default and may enter our
-//    borders freely, so they could never be trapped by trespass. The report says "another civilisation's Settler",
+//    borders freely, so they could never be trapped by trespass. The report says "another civilization's Settler",
 //    i.e. a MAJOR AT PEACE with us - the only kind trespass binds. This stage builds a REAL enclosure around one:
-//    every neighbour of its plot must be ours or buyable, so `enclosed` is a map fact, not a hope. Then it watches five
+//    every neighbor of its plot must be ours or buyable, so `enclosed` is a map fact, not a hope. Then it watches five
 //    turns: a unit that never moves while enclosed is the reported symptom, caused by us. A unit that walks out proves
-//    trespass does not strand it. Run 15's pen had one neighbour owned by a third player and the unit left through it.
+//    trespass does not strand it. Run 15's pen had one neighbor owned by a third player and the unit left through it.
 //
 // Purchases are issued in one batch and confirmed in ONE pass, so the whole pen is built inside a single turn of ours
 // (AI units do not move during our turn) instead of taking a minute of confirm waits.
@@ -109,7 +109,7 @@ function playerKinds() {
     war: safe(() => atWar(local, safe(() => p.id, -1)), "ERR")
   })), []);
 }
-/** Plots near our cities owned by a NON-major, with whether each is a settlement centre. */
+/** Plots near our cities owned by a NON-major, with whether each is a settlement center. */
 function minorTerritory(kinds) {
   const minors = new Set(kinds.filter((k) => k.major === false).map((k) => k.pid));
   const seen = new Set();
@@ -132,19 +132,19 @@ function stageI() {
   emit(`I PLAYERS ${J(kinds)}`);
   const terr = minorTerritory(kinds);
   const centres = terr.filter((t) => t.centre);
-  emit(`I MINOR-TERRITORY plots=${terr.length} centres=${centres.length} sample=${J(terr.slice(0, 8))}`);
-  emit(`I CENTRES ${J(centres)}`);
+  emit(`I MINOR-TERRITORY plots=${terr.length} centers=${centres.length} sample=${J(terr.slice(0, 8))}`);
+  emit(`I CENTERS ${J(centers)}`);
   for (const c of centres.slice(0, 4)) {
     const [x, y] = c.at.split(",").map(Number);
     const loc = { x, y };
     const protectedAt0 = safe(() => isCoreProtected(loc, c.ownerPid, 0), "ERR");
     const protectedAnyOwner = safe(() => isCoreProtected(loc, -1, 0), "ERR");
     const claimable = safe(() => rivalClaimAllowed(loc, c.ownerPid, local, CONFIG), "ERR");
-    emit(`I GATE centre=${c.at} ownerPid=${c.ownerPid} atWar=${safe(() => atWar(local, c.ownerPid), "ERR")} `
+    emit(`I GATE center=${c.at} ownerPid=${c.ownerPid} atWar=${safe(() => atWar(local, c.ownerPid), "ERR")} `
       + `isCoreProtected(owner)=${protectedAt0} isCoreProtected(any)=${protectedAnyOwner} rivalClaimAllowed=${claimable} => `
-      + (claimable ? "THE MOD WOULD TAKE THIS VILLAGE CENTRE" : "blocked"));
+      + (claimable ? "THE MOD WOULD TAKE THIS VILLAGE CENTER" : "blocked"));
   }
-  if (!centres.length) emit("I no minor settlement centre within 8 rings of our cities - cannot test the gates here");
+  if (!centres.length) emit("I no minor settlement center within 8 rings of our cities - cannot test the gates here");
 }
 
 // --- II: a true enclosure around a MAJOR-AT-PEACE unit -----------------------------------------------------------------
@@ -188,7 +188,7 @@ async function buildPen(kinds) {
   await later(6000);
   const state = plots.map((p) => ({ at: key(p), owner: owner(p), city: owningCity(p) }));
   const ours = state.filter((s) => s.owner === local).length;
-  emit(`II PEN centre=${key(centre)} unit=${site.u.type} owner=${site.u.owner} plots=${plots.length} ours=${ours} ${J(state)}`);
+  emit(`II PEN center=${key(center)} unit=${site.u.type} owner=${site.u.owner} plots=${plots.length} ours=${ours} ${J(state)}`);
   pen = { cid: site.u.cid, type: site.u.type, unitOwner: site.u.owner, centre, ring: site.ring, history: [] };
   emit(`II PEN state ${J(penState())}`);
   return true;
@@ -239,7 +239,7 @@ function verdict() {
   const enclosedTurns = pen.history.filter((h) => h.enclosed).length;
   const movedWhileEnclosed = pen.history.some((h, i) => i > 0 && pen.history[i - 1].enclosed && h.unitAt !== pen.history[i - 1].unitAt);
   const st = penState();
-  emit(`II VERDICT centre=${key(pen.centre)} unit=${pen.type} owner=${pen.unitOwner} enclosedTurns=${enclosedTurns}/${pen.history.length} `
+  emit(`II VERDICT center=${key(pen.centre)} unit=${pen.type} owner=${pen.unitOwner} enclosedTurns=${enclosedTurns}/${pen.history.length} `
     + `movedWhileEnclosed=${movedWhileEnclosed} now=${J(st)} history=${J(pen.history)} => `
     + (enclosedTurns === 0 ? "ENCLOSURE-NEVER-HELD (inconclusive)"
       : movedWhileEnclosed ? "LEFT-WHILE-ENCLOSED: trespass does NOT strand a unit"

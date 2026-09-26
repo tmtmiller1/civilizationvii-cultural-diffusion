@@ -5,11 +5,11 @@
 // ships, and takes a pen fixture if the map offers one.
 //
 //   N1 READ-ONLY, against every foreign ship near us: does `strandableUnitAt` resolve DOMAIN_SEA, and does
-//      `legalExits` count its WATER neighbours rather than reporting the zero it used to? A ship that still
+//      `legalExits` count its WATER neighbors rather than reporting the zero it used to? A ship that still
 //      reports 0 exits on open water means the domain rule is not reaching it.
 //   N2 EMBARKED units: a LAND-domain unit standing on water. If the engine models embarkation that way, the
 //      guard would call water blocked for it and read it as immobile - worth knowing even if rare.
-//   N3 PEN (opportunistic): a foreign ship whose water neighbours are all ours-or-buyable inside
+//   N3 PEN (opportunistic): a foreign ship whose water neighbors are all ours-or-buyable inside
 //      flipMaxDistance. Buy all but one, ask the guard, then let the pass run - the naval twin of run 24.
 //      Reports honestly when the map offers no such fixture.
 //
@@ -82,7 +82,7 @@ function stageN1N2(units) {
     emit(`N1 ${key(s.loc)} type=${s.type} owner=${s.owner} onWater=${isWater(s.loc)} ourRing=${nearest(s.loc, cities)?.d} `
       + `strandableUnitAt=${J(seen)} exitsAsSea=${safe(() => legalExits(s.loc, local, null, null, "DOMAIN_SEA"), "ERR")} `
       + `exitsAsLand=${safe(() => legalExits(s.loc, local, null, null, "DOMAIN_LAND"), "ERR")} `
-      + `waterNbrs=${neighbours(s.loc).filter(isWater).length}`);
+      + `waterNbrs=${neighbors(s.loc).filter(isWater).length}`);
   }
   const bad = ships.slice(0, 5).filter((s) => {
     const seen = safe(() => strandableUnitAt(s.loc, local), null);
@@ -90,7 +90,7 @@ function stageN1N2(units) {
   });
   emit(`N1 VERDICT => ` + (ships.length === 0 ? "no peaceful foreign ship found - naval path unverified here"
     : bad.length ? `DOMAIN READ FAILS on ${bad.length} of the sampled ships - the naval rule is not reaching them`
-      : "the guard sees foreign ships as DOMAIN_SEA and counts their water neighbours as exits"));
+      : "the guard sees foreign ships as DOMAIN_SEA and counts their water neighbors as exits"));
 
   const embarked = units.filter((u) => u.domain === "DOMAIN_LAND" && isWater(u.loc));
   emit(`N2 embarked (LAND domain standing on water) n=${embarked.length} ${J(embarked.slice(0, 4))}`);
@@ -134,9 +134,9 @@ async function stageN3(units) {
   await later(6000);
   const write = seedStock(theGap);
   const direct = safe(() => wouldStrandForeignUnit(theGap, local), "ERR");
-  emit(`N3 PEN centre=${key(centre)} ship=${site.u.type} owner=${site.u.owner} gap=${key(theGap)} seed=${write} `
-    + `exitsNow=${safe(() => legalExits(centre, local, null, null, "DOMAIN_SEA"), "ERR")} `
-    + `exitsAfter=${safe(() => legalExits(centre, local, key(theGap), null, "DOMAIN_SEA"), "ERR")} `
+  emit(`N3 PEN center=${key(center)} ship=${site.u.type} owner=${site.u.owner} gap=${key(theGap)} seed=${write} `
+    + `exitsNow=${safe(() => legalExits(center, local, null, null, "DOMAIN_SEA"), "ERR")} `
+    + `exitsAfter=${safe(() => legalExits(center, local, key(theGap), null, "DOMAIN_SEA"), "ERR")} `
     + `wouldStrand=${direct}`);
   const res = safe(() => runPass(), "threw");
   await later(3000);

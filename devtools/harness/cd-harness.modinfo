@@ -2,7 +2,7 @@
 <Mod id="cd-harness" version="1" xmlns="ModInfo">
     <Properties>
         <Name>Cultural Diffusion Harness (dev)</Name>
-        <Description>Throwaway dev harness. Auto-loads a save from the main menu, presses Begin Game, runs Cultural Diffusion verb/settle/development tests, then ends turns. Logs [CDH] to UI.log. Remove the folder afterwards: it hijacks every launch while installed.</Description>
+        <Description>Throwaway dev harness. Auto-loads a save from the main menu, presses Begin Game, runs Cultural Diffusion verb/settle/development tests, then ends turns. Logs [CDH] to UI.log. Remove the folder afterward: it hijacks every launch while installed.</Description>
         <Authors>Tower</Authors>
         <Package>CulturalDiffusionHarness</Package>
         <PackageSortIndex>9999</PackageSortIndex>

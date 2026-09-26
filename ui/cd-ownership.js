@@ -9,7 +9,7 @@ import { isMultiplayer } from "/cultural-diffusion/ui/cd-plots.js";
 import { log } from "/cultural-diffusion/ui/cd-log.js";
 
 /**
- * @param {()=>*} fn Thunk. @param {*} fallback Fallback. @returns {*} fn() or fallback.
+ * @param {()=>*} fn Thunk. @param {*} fallback @returns {*} fn() or fallback.
  */
 function safe(fn, fallback) {
   try {

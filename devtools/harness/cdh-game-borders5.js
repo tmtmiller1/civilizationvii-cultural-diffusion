@@ -3,7 +3,7 @@
 // Take 4 proved the SAVE was never the problem: every one of the local player's cities measured
 // maxOwnedRing=3, the base game's limit, so the "before" state was vanilla all along. What failed was the
 // PICTURE. Two things made a wide frame unreadable:
-//   * A neighbouring civ's territory sat in frame in a near-identical purple, so tiles four and five rings
+//   * A neighboring civ's territory sat in frame in a near-identical purple, so tiles four and five rings
 //     out - none of them ours - read as this city's. That is what the rejected 04-border-before.jpg showed.
 //   * `lookAtPlot` was called again before the "after" shot, and the camera did not land identically, so the
 //     pair was not the same view twice.
@@ -54,10 +54,10 @@ function closePopups(left, done) {
   setTimeout(() => closePopups(left - 1, done), 1000);
 }
 
-/** Every local city centre, so a tile can be attributed to the nearest one. */
+/** Every local city center, so a tile can be attributed to the nearest one. */
 function centres() { return localCities().map((c) => ({ name: cityName(c), loc: c.location })); }
 
-/** The nearest local city centre to a plot. */
+/** The nearest local city center to a plot. */
 function nearestCentre(p, all) {
   let best = null;
   for (const c of all) {
@@ -69,7 +69,7 @@ function nearestCentre(p, all) {
 
 /**
  * Owned tiles by ring for ONE city, counting only tiles this city is the nearest local city to. Without the
- * attribution a neighbour's ring-2 tile reads as this city's ring-5 and every city looks over-expanded.
+ * attribution a neighbor's ring-2 tile reads as this city's ring-5 and every city looks over-expanded.
  */
 function ringCensus(city, all) {
   const counts = [0, 0, 0, 0, 0, 0, 0];
@@ -86,7 +86,7 @@ function ringCensus(city, all) {
   return { counts, maxRing };
 }
 
-/** Tiles near a city owned by SOMEONE ELSE. A frame with none of these has only one empire's colour in it. */
+/** Tiles near a city owned by SOMEONE ELSE. A frame with none of these has only one empire's color in it. */
 function foreignWithin(city, r) {
   let n = 0;
   for (const p of inRadius(city.loc, r)) {
@@ -144,7 +144,7 @@ function pickCity() {
   const vanilla = usable.filter((r) => r.maxRing <= VANILLA);
   const pool = vanilla.length ? vanilla : usable;
   if (!pool.length) return null;
-  // Fewest foreign tiles first: a second empire's colour in the frame is what made take 4 unreadable.
+  // Fewest foreign tiles first: a second empire's color in the frame is what made take 4 unreadable.
   // Only then the most land to take, so the change is big enough to see.
   pool.sort((a, b) => (a.foreign - b.foreign) || (b.ring.length - a.ring.length) || (b.iso - a.iso));
   const pick = pool[0];
@@ -185,12 +185,12 @@ async function run() {
   // and the frontier in the same frame; the camera is never touched again, so the pair is the same view.
   const target = centroid(pick.ring);
   const frame = target ? { x: Math.round((centre.x + target.x) / 2), y: Math.round((centre.y + target.y) / 2) } : centre;
-  emit(`FRAME city=${key(centre)} frontier=${target ? key(target) : "none"} camera=${key(frame)}`);
+  emit(`FRAME city=${key(center)} frontier=${target ? key(target) : "none"} camera=${key(frame)}`);
   aim(frame, 0.32, "pair");
   await later(12000);
   const b = ringCensus(pick.city, all);
   emit(`BEFORE city=${pick.city.name} maxOwnedRing=${b.maxRing} rings=[${b.counts.join(",")}] ` +
-    `ownedWithin6=${ourTiles(centre, 6)}`);
+    `ownedWithin6=${ourTiles(center, 6)}`);
   emit("SHOT 01-border-before");
   await later(3000);
 
@@ -198,11 +198,11 @@ async function run() {
   for (let i = 0; i < PASSES; i++) {
     const r = safe(() => runPass(), "threw");
     await later(7000);
-    emit(`PASS ${i + 1} ${J(r)} ownedWithin6=${ourTiles(centre, 6)}`);
+    emit(`PASS ${i + 1} ${J(r)} ownedWithin6=${ourTiles(center, 6)}`);
   }
   const a = ringCensus(pick.city, all);
   emit(`AFTER city=${pick.city.name} maxOwnedRing=${a.maxRing} rings=[${a.counts.join(",")}] ` +
-    `ownedWithin6=${ourTiles(centre, 6)}`);
+    `ownedWithin6=${ourTiles(center, 6)}`);
 
   // NO second aim: the camera has not moved since the before shot.
   await later(6000);

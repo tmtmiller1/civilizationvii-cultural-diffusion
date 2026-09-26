@@ -44,7 +44,9 @@
     "inventory": "node scripts/inventory.mjs --md",
     "mutation": "stryker run",
     "duplication": "jscpd ui --reporters json,console --output reports/jscpd --gitignore",
-    "verify": "npm run lint && npm run check:syntax && npm run check:esm && npm test"
+    "check": "npm run check:syntax && npm run check:esm",
+    "verify": "npm run lint && npm run check && npm test",
+    "release:gate": "npm run verify && npm run coverage"
   },
   "devDependencies": {
     "@stryker-mutator/core": "^9.6.1",

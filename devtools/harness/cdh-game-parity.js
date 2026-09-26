@@ -13,7 +13,7 @@
 //   P7  DEAD      owners present on the map vs Players alive: does any defeated player still own plots?
 //   P4  GOLD      Treasury.changeGoldBalance on a rival: inline, +3 s, and after a turn, then reversed
 //   E   RIVER     the §1 rule end to end: clear the field, seed known stocks next to real river tiles, run ONE pass
-//                 with culturalDiffusion.runNow(), read what each neighbour received. Expected with defaults
+//                 with culturalDiffusion.runNow(), read what each neighbor received. Expected with defaults
 //                 (rate 0.055): follow 1.65x plain, cross 1/1.5x plain, and NOTHING crosses below 2x threshold.
 //
 // Seeds are placed beyond flipMaxDistance from every local city and away from our land, so a pass can never turn a
@@ -137,7 +137,7 @@ function scanMap() {
   return c;
 }
 
-/** Chain (tiles) or band (edge flags on both banks)? Count, per river tile, its river neighbours of the same name. */
+/** Chain (tiles) or band (edge flags on both banks)? Count, per river tile, its river neighbors of the same name. */
 function connectivity(kind) {
   const hist = [0, 0, 0, 0, 0, 0, 0];
   let n = 0, diffName = 0, adjBank = 0, adjBankTrue = 0, onRiverAdj = 0, onRiverAdjTrue = 0;
@@ -186,7 +186,7 @@ async function p1Window() {
     if (!legend.has(name)) legend.set(name, String.fromCharCode(97 + legend.size));
     return legend.get(name);
   };
-  emit(`P1 WINDOW centre=${cx},${cy} rows top(y+5)..bottom(y-5), cols x-5..x+5; kind: N navigable, M minor, ~ water, . land, then name letters`);
+  emit(`P1 WINDOW center=${cx},${cy} rows top(y+5)..bottom(y-5), cols x-5..x+5; kind: N navigable, M minor, ~ water, . land, then name letters`);
   for (let dy = 5; dy >= -5; dy--) {
     let k = "", nm = "";
     for (let dx = -5; dx <= 5; dx++) {
@@ -377,7 +377,7 @@ function landNoRiver(l) { const r = SCAN.at.get(key(l)); return !!r && !r.kind &
 /** The LIVE config (a preset chosen in Options can raise the bar or shrink the field), else the shipped one. */
 let cfg = CONFIG;
 function inRegionSafe(l) {
-  // inside the field (<= fieldRadius of a local city), away from centres, not ours and not touching our land
+  // inside the field (<= fieldRadius of a local city), away from centers, not ours and not touching our land
   const d = minCityDist(l);
   if (d > cfg.fieldRadius - 1 || d < 3) return false;
   if (owner(l) === local) return false;
@@ -386,10 +386,10 @@ function inRegionSafe(l) {
 function farFrom(l, used) { return used.every((u) => dist(u, l) >= 4); }
 /** A plain step: not blocked and no terrain modifier at all, so the control tile measures the bare rate. */
 function plainStep(src, dst, v) { const m = stepMods(src, dst, v, cfg); return !m.blocked && m.bonus === 0 && m.malus === 0 && m.maxFactor === 1; }
-/** Prefer a neighbour whose step carries no terrain malus; fall back to any that passes `ok`. */
+/** Prefer a neighbor whose step carries no terrain malus; fall back to any that passes `ok`. */
 function pick(nbs, ok, src, v) { return nbs.find((n) => ok(n) && !stepMods(src, n, v, cfg).blocked && stepMods(src, n, v, cfg).malus === 0) || nbs.find(ok); }
 
-/** A river tile with a same-kind, same-name river neighbour and a plain no-river land neighbour. */
+/** A river tile with a same-kind, same-name river neighbor and a plain no-river land neighbor. */
 function findFollowSite(kind, used, v) {
   for (const row of SCAN.at.values()) {
     if (row.kind !== kind || !inRegionSafe(row.l) || !farFrom(row.l, used)) continue;
@@ -405,7 +405,7 @@ function findFollowSite(kind, used, v) {
   }
   return null;
 }
-/** A no-river land tile with a river neighbour of `kind` and a plain no-river land neighbour. */
+/** A no-river land tile with a river neighbor of `kind` and a plain no-river land neighbor. */
 function findCrossSite(kind, used, v) {
   for (const row of SCAN.at.values()) {
     if (row.kind || row.water || !inRegionSafe(row.l) || !farFrom(row.l, used)) continue;

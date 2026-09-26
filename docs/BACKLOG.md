@@ -71,13 +71,13 @@ the runtime enum), so the fix is to refuse the claim that takes its last legal d
 24: `skip flip 79,37: would strand a foreign unit`, the plot left unowned, and the Scout walked out through it
 (`refusedWhenPenned=true everImmobile=false distinctPositions=3`).
 
-**2. The "absorbed independent" is a stripped minor.** With `coreProtectRadius: 0` only the centre PLOT was protected,
+**2. The "absorbed independent" is a stripped minor.** With `coreProtectRadius: 0` only the center PLOT was protected,
 and a city-state or village owns a ring or two in total - so diffusion took the rest and left the settlement alone
-inside our territory. Watched in run 13 (89,41 and 90,42 flipped, both ring-1 of city-state 33's centre at 89,42).
+inside our territory. Watched in run 13 (89,41 and 90,42 flipped, both ring-1 of city-state 33's center at 89,42).
 Fixed by `minorProtectRadius` (default 1). **Confirmed** by A/B in runs 19 and 24 on three real ring-1 plots:
-`claimAllowedWithFloor=false withoutFloor=true`. Core protection now also reads the MAP for centres
+`claimAllowedWithFloor=false withoutFloor=true`. Core protection now also reads the MAP for centers
 (`isCityCenterAt`), because `getCities()` reports nothing for an Independent Power; validated in run 18 against our own
-six centres, and five minor centres were found where the earlier district-type read found none.
+six centers, and five minor centers were found where the earlier district-type read found none.
 
 **Four drafts of the strand guard were watched FAILING in game while the unit tests passed.** Each cause was a way the
 stub was kinder than the engine, and each is now a regression test:
@@ -86,8 +86,8 @@ stub was kinder than the engine, and each is now a regression test:
 | --- | --- |
 | Region/cap ("can it reach more than N plots") | Any small pocket read as "already trapped", so the culpable claim was waved through. The rule is IMMOBILITY, not confinement - which is also what the user asked for: a pocket is fine, no legal move is not |
 | Live-ownership reads only | `purchasePlot` lands seconds after the call, so the second claim in a pass re-counted an exit already taken. Both of a unit's exits went in one pass. Fixed with `pendingClaimKeys` (`cd-pending.js`) |
-| Mountains traversable | A unit whose only remaining neighbour was impassable read as mobile. Blocked now means our land, water OR impassable |
-| (harness) verdict logic | Scored the designed behaviour - taking the tile later, after the unit moves on - as a failure |
+| Mountains traversable | A unit whose only remaining neighbor was impassable read as mobile. Blocked now means our land, water OR impassable |
+| (harness) verdict logic | Scored the designed behavior - taking the tile later, after the unit moves on - as a failure |
 
 **Method notes that cost a run each:** a fixture must survive a turn roll (claims beyond ~7 rings from the owning city
 are released); Independent Powers are hostile-by-default so they can never be the fixture for a trespass question; and
@@ -97,14 +97,14 @@ are released); Independent Powers are hostile-by-default so they can never be th
 
 The strand guard counts any plot that is not ours as a destination. But a unit of civ A at peace with us also cannot
 enter civ B's borders, so a unit with our land on one side and a third party's on the other can still be immobilised by
-our claim. Judging it needs A-to-B diplomacy for every neighbour, which the mod cannot read cheaply, and guessing wrong
+our claim. Judging it needs A-to-B diplomacy for every neighbor, which the mod cannot read cheaply, and guessing wrong
 in the permissive direction recreates the bug while guessing wrong in the strict direction refuses claims forever along
 any shared frontier.
 
 **Not speculative, but not observed either:** the geometry is common (three-way frontiers), the mechanism is the same
 one reproduced in run 17, and nothing in the guard covers it.
 
-**Cheapest disproof / next step:** from a probe, find a peaceful major's unit whose non-ours neighbours all belong to
+**Cheapest disproof / next step:** from a probe, find a peaceful major's unit whose non-ours neighbors all belong to
 one other player, then read whether the engine offers that unit any move at all - `Units.getReachableMovement` during
 THAT player's turn, not ours (our-turn reads are always 0, see the method notes). If the engine reports no reachable
 plot, the case is real and the guard needs an "owned by anyone else" test; if it reports moves, third-party borders are
@@ -116,7 +116,7 @@ Raised as "are there other terrain types like the mountain bug - coast, volcanoe
 splits impassability across two tables: `Terrains` has exactly one impassable row (`TERRAIN_MOUNTAIN`) while `Features`
 has eighteen - `FEATURE_VOLCANO`, `FEATURE_ICE` and sixteen natural wonders (Everest, Grand Canyon, Uluru, Mount Fuji,
 Thera, Kilimanjaro, Iguazu, Zhangjiajie, ...). If `GameplayMap.isImpassable` read TERRAIN only, the mountain bug would
-have had seventeen more flavours.
+have had seventeen more flavors.
 
 **Measured (run 25, read-only): it covers features.** 49 impassable-terrain plots and 7 impassable-feature plots in
 range, **0 missed** by `isImpassable`. No special case needed, and `engine-closed.md` records it.
@@ -136,7 +136,7 @@ result. Parked with everything needed to resume, including why a bisect was NOT 
   established, and what would re-open it.
 - [`../devtools/harness/BISECT-PLAN.md`](../devtools/harness/BISECT-PLAN.md) - the split order if it is resumed.
 
-The reporter's own crash remains unattributable (they had it with the mod disabled and kept no artefacts). The
+The reporter's own crash remains unattributable (they had it with the mod disabled and kept no artifacts). The
 reply asking for the `.ips` and log tails is drafted in `civilization_vii_mods/steam-comments/`.
 
 ## 2026-09-12 in-game harness findings
@@ -216,7 +216,7 @@ points at the harness re-running its destructive actions.
 ## [Low · Confirmed] The debug `frontier` line over-reports claimable tiles
 
 **Symptom:** `logFrontier` (`ui/cd-diagnostics.js`) scans every ring-4 tile of a city. That includes tiles inside
-another of our cities' first three rings, and neighbouring city centres, which the pass can never claim, so `best` and
+another of our cities' first three rings, and neighboring city centers, which the pass can never claim, so `best` and
 `over` run high. In run 3 London showed tiles over the bar from pass 8, but its first claim came on pass 18.
 **Fix:** skip tiles within `baseGrowthRadius` of any local city, matching `flipCandidates`.
 
@@ -250,7 +250,7 @@ ring it sits in; that re-parent between our own cities is untested.
 ## [Medium · Confirmed] Ring 4 takes a very long time to reach the ownership bar
 
 **Symptom:** since 1.0.7 the mod claims only ring 4 and beyond. Each ring holds at most 40% of the ring inside it, so a
-ring-4 tile reaches the default bar of 300 only once the city centre holds roughly 12,000. In harness run 1 London
+ring-4 tile reaches the default bar of 300 only once the city center holds roughly 12,000. In harness run 1 London
 (culture 40, strength 84) reached 364 after three passes, and no ring-4 tile had any stock after twelve turns.
 **Offline estimate (2026-09-12):** a hex-grid replay of the pass's own field functions, on open terrain with one city
 and the ~0.8 pace implied by London's logged stocks, gives the turn of the first claim on rings 4, 5 and 6. Terrain
@@ -268,7 +268,7 @@ sooner than the estimate, likely because its culture rose during the run and roa
 24 the mod had sent nine flips, two of them rival tiles. Megiddo, at strength 7, never came close.
 **New game (harness run 8, 2026-09-13), which reopens the decision above:** a brand-new game started through Play Now
 at shipped defaults ran 70 turns with the pass running every turn and made no claim at all. The harness only ended
-turns, so we kept one city, with culture 8 and injection strength about 12. Its centre stock reached 3,810 by turn 50,
+turns, so we kept one city, with culture 8 and injection strength about 12. Its center stock reached 3,810 by turn 50,
 and no culture reached ring 4. The simulator, which predicts 3,866 for that city, gives the first ring-4 claim on
 open terrain at pace 0.8 as:
 
@@ -281,7 +281,7 @@ open terrain at pace 0.8 as:
 | 30 | turn 39 |
 | 50 | turn 30 |
 
-Below a strength of about 13, injection and decay balance before the centre can push 300 out to ring 4, so a young
+Below a strength of about 13, injection and decay balance before the center can push 300 out to ring 4, so a young
 empire's cities claim nothing until their culture grows. That is most of the early game.
 **Needs a decision:** retune so early cities claim something, or document that the mod starts working mid-game. Options
 include a lower ownership bar on the first ring the mod may claim, a higher `injectBase`, or a ring share (`normalMax`)
@@ -308,7 +308,7 @@ grows the pass time, so leave them for a second step.
 `cd-pressure-lens.js:118`). The hover readout adds capture progress and an "At current pace ~N turns" line for the same
 tiles (`cd-pressure-tooltip.js:222-230`). But the pass only flips a tile to the local player (`cd-pass.js:466`), and
 cedes to a rival only with recede on and only a tile the mod claimed. So a tile where an AI's culture leads, whether
-unowned land or our own land with recede off, is painted in the AI's colour with a countdown that never ends in a flip.
+unowned land or our own land with recede off, is painted in the AI's color with a countdown that never ends in a flip.
 **In-game (harness run 10, turn 151):** two of the five contested tiles were unowned tiles led by the Hawaiian Empire:
 84,24 at 22% and 79,30 at 15%.
 **Fix sketch:** shade tiles and count down only where the pass can act. That means our culture leading on unowned or

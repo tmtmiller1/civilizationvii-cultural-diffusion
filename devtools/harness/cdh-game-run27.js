@@ -9,11 +9,11 @@
 //      every foreign unit on the map, is it standing on a plot owned by a DIFFERENT player? If that is
 //      common, access is common (alliances, open borders) and the permissive rule is right. If it is close
 //      to zero, third-party land is closed by default and the guard must treat it as blocked.
-//      Also sampled: how often a peaceful unit's only non-ours neighbours belong to one other player - the
+//      Also sampled: how often a peaceful unit's only non-ours neighbors belong to one other player - the
 //      geometry where this would actually bite.
 //   S  NAVAL FIXTURE SURVEY. Run 26 found no bay to pen a ship in: the nearest foreign ships were 10-13
 //      rings out, and a claim only survives inside ~7 rings of the buying city. Report the nearest foreign
-//      ships with their distance and how many of their water neighbours are unowned, so a save that CAN
+//      ships with their distance and how many of their water neighbors are unowned, so a save that CAN
 //      host the fixture is identifiable instead of guessed at.
 //
 // No writes, no turns, no pass. Tagged [CDH] in Logs/UI.log.
@@ -95,7 +95,7 @@ function stageT(units) {
       : `${peacefulThird.length} unit(s) stand PEACEFULLY in a third party's territory, so access does happen - `
         + "blocking third-party land outright would over-protect"));
 
-  // Where the geometry would actually bite: a peaceful unit whose only non-ours neighbours are one other civ's.
+  // Where the geometry would actually bite: a peaceful unit whose only non-ours neighbors are one other civ's.
   const wedged = [];
   for (const u of units) {
     if (u.pid === local || atWar(local, u.pid) !== false) continue;

@@ -45,7 +45,7 @@ the pedia rows need. Verdict: **all 17 pages render** (16 in the Cultural Diffus
 page): every paragraph resolved, none empty, no raw `[B]`/`[LI]` markup, sidebar names uncut, section sorted after
 Emigration with the `pedia_culture` icon. Search found the expected page for 6 of 6 terms (`Shift+C`, `Conquest`,
 `Cultural Power Index`, `Forward settling`, a bare page id, the section id). The run's `DB pages=0` line was a probe
-bug (it read each row's `$index` field), fixed afterwards and not re-run; the model read the same rows as 16 pages.
+bug (it read each row's `$index` field), fixed afterward and not re-run; the model read the same rows as 16 pages.
 Shot labels trail the page by one (4 s runner poll against a 3.5 s page settle); the DOM verdicts are keyed correctly.
 
 ## Parity runs 1-2 - the Civ V parity probes P1-P7 and the river rule (RUN 2026-09-25, game 1.5.0)
@@ -57,9 +57,9 @@ river rule (spec §1) against the real map. The full record, with numbers, is `d
 | Stage | What it does | Verdict |
 | --- | --- | --- |
 | P3 SURFACE | Reflects `GameplayMap`, `MapRivers`, `WorldBuilder` for river / crossing / edge members | No edge-level river read exists; every river API is keyed by tile. `RiverTypes.RIVER_MINOR` is 0 and `NO_RIVER` is -1 |
-| P1 RIVERS | Whole-map scan of `getRiverType` / `isRiver` / `isNavigableRiver` / `getRiverName`; same-name river-neighbour histogram per tile; an 11x11 text window and a SHOT of it | Minor rivers are per-tile, named, 1-wide chains (mean 1.3 same-name neighbours), never 2-wide bands. 350 of 352 river tiles carry a name; 24 adjacent pairs differ (confluences) |
+| P1 RIVERS | Whole-map scan of `getRiverType` / `isRiver` / `isNavigableRiver` / `getRiverName`; same-name river-neighbor histogram per tile; an 11x11 text window and a SHOT of it | Minor rivers are per-tile, named, 1-wide chains (mean 1.3 same-name neighbors), never 2-wide bands. 350 of 352 river tiles carry a name; 24 adjacent pairs differ (confluences) |
 | P2 CHANNEL | Reads on one navigable-river tile | `isWater` false, `TERRAIN_NAVIGABLE_RIVER`, passable, `isCoastalLand` true |
-| E RIVER | Clears the field, seeds 299 (under the ownership bar) or 150 (under the river gate) on real tiles away from our land, runs ONE pass with `culturalDiffusion.runNow()`, reads each neighbour | Every read equals `diffusionDelivered` of the live `stepMods` (ratio x1): gate held (river 0, land 8.25), minor follow x1.65, navigable follow x2.0, navigable cross x0.67, minor cross on hills x0.61 with both gates stacked. The previous rule would have given the three "onto a river" steps x1.65 |
+| E RIVER | Clears the field, seeds 299 (under the ownership bar) or 150 (under the river gate) on real tiles away from our land, runs ONE pass with `culturalDiffusion.runNow()`, reads each neighbor | Every read equals `diffusionDelivered` of the live `stepMods` (ratio x1): gate held (river 0, land 8.25), minor follow x1.65, navigable follow x2.0, navigable cross x0.67, minor cross on hills x0.61 with both gates stacked. The previous rule would have given the three "onto a river" steps x1.65 |
 | P6 COMBAT | `unit.Combat.isCombat` on own and foreign units; `UnitMoved` payload and counts | Fires for every player's units; `Units.get(d.unit).Combat.isCombat` classifies 8,067 combat / 988 civilian of 9,072 moves |
 | P5 CAPTURE | Logs `CityTransfered`, city add/remove, `PlayerDefeat`, war declarations | Two transfers watched, one with no local party (player 6's Tendirma to independent 12). Payload `{ fromPlayer, transferType, cityID }` |
 | P7 DEAD | Map owners vs `Players.getAlive()` / `getEverAlive()` | No defeated major in this save. Dead pseudo-player 63 (`CIVILIZATION_NONE`) owns six `DISTRICT_WILDERNESS` plots |
@@ -125,7 +125,7 @@ turns rolled the gold2 way (no Autoplay).
 | B1 AI flip | Seed: rival 3's culture 5000 on unowned 83,27, four tiles from its city Lihu'e and five from ours. One pass: `aiPending=2`; the tile read as player 3's at +5 s; next pass logged `pending 83,27 claim confirmed on the live map` and `confirmed 2 claim`. The AI kept claiming from the diffusing stock on turns 137 and 140 (`1 pending` each) |
 | B2 foreign culture | Seed on our capital (population 24): ours 5000, rival 500. One pass: rival 500 -> 681.47 where decay alone leaves 474; ours 5000 -> 7028.64. The city's people pump the foreign group, and it is converted a little |
 | B3 owner floor | 158 rows at exactly the floor value after one pass, 170 rows with our culture, 270 rows in all |
-| B4 capture | `onCityTransfered` with Lihu'e's real ComponentID (a transfer to its own owner: field-only): `getPurchasedPlots` returned 24 plots, all 24 rewritten, the centre's 1000 became 862.5, exactly 1000 x 0.45 + 550 x 0.75 |
+| B4 capture | `onCityTransfered` with Lihu'e's real ComponentID (a transfer to its own owner: field-only): `getPurchasedPlots` returned 24 plots, all 24 rewritten, the center's 1000 became 862.5, exactly 1000 x 0.45 + 550 x 0.75 |
 | B5 conquest | `conquerable` and `hostileCombatOccupants` ran on the tile under our Quadrireme without throwing (no occupier: nobody is at war with us there). The sweep still counted `held=1` somewhere in the region, so a real war-time hold was being tracked; the buffer of five was not reached in four turns. A flip by occupation remains unwatched |
 
 ## Gold runs 1-2 - does a claim cost gold, and does any refund land? (RUN 2026-09-25, game 1.5.0)
@@ -153,7 +153,7 @@ production, so any economic measurement across a roll made with those scripts is
 
 Scripts `cdh-game-borders4.js`, `-borders5.js`, `-borders6.js`. The v1.2.0 gallery pair was rejected for showing a city with four rings of territory when the base game stops at three (`CONFIG.baseGrowthRadius`), which would mean the "before" frame was not a vanilla baseline at all.
 
-Take 4 censused every one of the local player's cities, counting owned tiles by ring and attributing each tile to its NEAREST city so a neighbour's land cannot be read as this city's:
+Take 4 censused every one of the local player's cities, counting owned tiles by ring and attributing each tile to its NEAREST city so a neighbor's land cannot be read as this city's:
 
 | City | Owned tiles by ring (0-6) | maxOwnedRing | Foreign tiles within 6 |
 | --- | --- | --- | --- |
@@ -164,9 +164,9 @@ Take 4 censused every one of the local player's cities, counting owned tiles by 
 | Leeds | 1,6,12,8,0,0,0 | 3 | 1 |
 | Lāhainā | 1,6,11,15,0,0,0 | 3 | 29 |
 
-Every city stopped at ring 3, so **the mod had not over-claimed anything and the save's before-state was vanilla**. What the rejected frame actually showed was a NEIGHBOURING CIV's territory in a near-identical purple: 29 of the tiles within six rings of Lāhainā belong to someone else, and at a wide zoom they read as Lāhainā's. The picture was wrong; the game state was not.
+Every city stopped at ring 3, so **the mod had not over-claimed anything and the save's before-state was vanilla**. What the rejected frame actually showed was a NEIGHBORING CIV's territory in a near-identical purple: 29 of the tiles within six rings of Lāhainā belong to someone else, and at a wide zoom they read as Lāhainā's. The picture was wrong; the game state was not.
 
-Take 5 therefore picks by `foreignWithin6` (Leeds, 1) instead of by claimable land, and aims the camera ONCE - re-aiming before the second shot does not land on the same view, so the pair was never quite the same frame. Take 6 keeps that and centres on the frontier rather than the city, because centred on the city the border simply left the picture instead of moving across it.
+Take 5 therefore picks by `foreignWithin6` (Leeds, 1) instead of by claimable land, and aims the camera ONCE - re-aiming before the second shot does not land on the same view, so the pair was never quite the same frame. Take 6 keeps that and centers on the frontier rather than the city, because centered on the city the border simply left the picture instead of moving across it.
 
 Result (`borders6`, six passes, shipped as `gallery/04-border-before.jpg` and `05-border-after.jpg`): Leeds `[1,6,12,8,0,0,0]` -> `[1,6,12,8,7,7,0]`, owned within six rings 49 -> 74. One camera, held still; in the first frame the border runs down the middle of the shot, in the second it sits at the far west and the plain between is inside it.
 
@@ -174,7 +174,7 @@ Result (`borders6`, six passes, shipped as `gallery/04-border-before.jpg` and `0
 
 Script `cdh-game-lenscheck.js`. Raised while assembling the release gallery: suite shot 01 showed pressure paint although the run had logged `lensAtStart=fxs-default-lens`, which reads like the layer painting without its lens being active - a player on the Continent lens seeing magenta over half the map.
 
-The script seeds one contested block (9 tiles, rival stock 210, centre 86,22), then captures three states, logging `LensManager.isLayerEnabled(LAYER)` and `pressureTiles().length` at each:
+The script seeds one contested block (9 tiles, rival stock 210, center 86,22), then captures three states, logging `LensManager.isLayerEnabled(LAYER)` and `pressureTiles().length` at each:
 
 | State | Active lens | `layerEnabled` | `wouldPaint` | Frame |
 | --- | --- | --- | --- | --- |
@@ -182,7 +182,7 @@ The script seeds one contested block (9 tiles, rival stock 210, centre 86,22), t
 | B - pressure active | `cd-pressure-lens` | true | 9 | Fully painted, the seeded band in magenta |
 | C - switched away | `fxs-default-lens` | false | 9 | Clean again - `removeLayer` clears the overlay |
 
-Verdict: **not a defect.** The layer is painted only while its own lens is active, and `wouldPaint=9` across all three states proves the clean frames are gating, not an empty field. The suite-01 observation was an artefact of the harness: the ACTIVE LENS PERSISTS ACROSS GAME SESSIONS, the run before it had left `cd-pressure-lens` selected, the game restored that selection after the script's early `getActiveLens()` read, and the frame was taken nine seconds later with the mod's lens genuinely on. Two lessons for capture runs - an early `getActiveLens()` is not the lens you will photograph, and a run should end on the default lens or it contaminates the next one.
+Verdict: **not a defect.** The layer is painted only while its own lens is active, and `wouldPaint=9` across all three states proves the clean frames are gating, not an empty field. The suite-01 observation was an artifact of the harness: the ACTIVE LENS PERSISTS ACROSS GAME SESSIONS, the run before it had left `cd-pressure-lens` selected, the game restored that selection after the script's early `getActiveLens()` read, and the frame was taken nine seconds later with the mod's lens genuinely on. Two lessons for capture runs - an early `getActiveLens()` is not the lens you will photograph, and a run should end on the default lens or it contaminates the next one.
 
 ## Run 13 - the eviction: can a mod move a unit it does not own? (RUN 2026-09-24, game 1.5.0)
 
@@ -224,7 +224,7 @@ them back).
 
 Consequences:
 
-- `ui/cd-units.js` can never succeed on this engine. With `bumpForeignUnits` on, the shipped behaviour is **identical to
+- `ui/cd-units.js` can never succeed on this engine. With `bumpForeignUnits` on, the shipped behavior is **identical to
   refusing the claim**, just with four wasted `canStart` calls and a ring scan first.
 - Recorded in `civilization_vii_mods/engine-closed.md` under "A mod cannot move a unit it does not own" and
   "`UnitOperationTypes` does not expose every operation the gameplay DB defines".
@@ -269,7 +269,7 @@ point. Full write-up, including the cost of doing it properly, in
 Next steps if it is resumed, in order:
 
 1. `control40` (this folder, `cdh-game-control.js` with `NO_MOD=1`) - 40 turns on the same save with the mod DISABLED.
-   A crash there means long unattended runs destabilise this save regardless of the mod.
+   A crash there means long unattended runs destabilize this save regardless of the mod.
 2. `AI_VERBOSE=1`, so the `AI_ConstructibleBroker` CSV tail names the last-evaluated constructible - the evidence
    an AI-turn crash report needs, and absent from both reports here.
 3. If the mod is implicated, bisect by config rather than by code: `maxDiffusionPlots` low, then `flipMaxDistance` 4,
@@ -288,13 +288,13 @@ is made with the knob on and off.
 
 | Run | Result |
 | --- | --- |
-| 18 | Map centre read validated live (all six of our centres; `Cities.getAtLocation` is the route that works - district type reads null). Five minor centres found where run 16-17's district read found none; the pass refused a centre carrying a 50,000 seed. Stage G was VOID: the gap it left was outside `flipMaxDistance`, so "left alone" proved nothing |
+| 18 | Map center read validated live (all six of our centers; `Cities.getAtLocation` is the route that works - district type reads null). Five minor centers found where run 16-17's district read found none; the pass refused a center carrying a 50,000 seed. Stage G was VOID: the gap it left was outside `flipMaxDistance`, so "left alone" proved nothing |
 | 19 | `minorProtectRadius` CONFIRMED by A/B on three of city-state 18's ring-1 plots (`withFloor=false, withoutFloor=true`). Strand guard FAILED: took the gap, unit frozen 4 turns |
 | 20 | Diagnosis: the unit list IS a real Array (`isArray=true`), so that theory was wrong. `hasStrandableUnit=true` but `wouldStrandForeignUnit=false` - the cap/region rule called a small pocket "already trapped" |
 | 21 | Second cause: `legalExitsNow=2 -> 1`, and the pass took BOTH exits in one pass because `purchasePlot` had not landed when the second claim was judged |
-| 22 | Third cause: `legalExitsNow` stayed 2 because a MOUNTAIN neighbour counted as a legal destination |
+| 22 | Third cause: `legalExitsNow` stayed 2 because a MOUNTAIN neighbor counted as a legal destination |
 | 23 | **HELD.** `legalExitsNow=1 legalExitsAfterClaim=0`, `skip flip 79,37: would strand a foreign unit`, gap left unowned, Scout walked out 79,37 / 79,38 / 78,39 |
-| 24 | Repeat with corrected verdict semantics: `refusedWhenPenned=true everImmobile=false distinctPositions=3 => HELD`, plus the minor floor and centre protection re-confirmed in the same run |
+| 24 | Repeat with corrected verdict semantics: `refusedWhenPenned=true everImmobile=false distinctPositions=3 => HELD`, plus the minor floor and center protection re-confirmed in the same run |
 
 Taking the tile LATER, once the unit has moved on, is correct and designed - run 23's first verdict logic scored that as
 a failure. Judge the guard on the seeded claim and on the unit never being left immobile.
@@ -307,7 +307,7 @@ because the first two answered method problems rather than the question.
 | Run | What it settled |
 | --- | --- |
 | 15 | **No general claim reversion.** Nine plots bought at rings 4-7, each confirmed, all stayed ours for five turns - including two rings from a city-state and two from a rival major's city. The pen half was void: one ring plot belonged to a third player and the unit left through the gap |
-| 16 | **Claim durability is distance from the OWNING CITY.** The pen was 8 rings out and the engine released all five plots at the turn roll, dissolving the cage in the same turn the unit moved - inconclusive again. Also: Independent Powers report `cities:0`, so `getCities()`-based centre protection is blind to villages |
+| 16 | **Claim durability is distance from the OWNING CITY.** The pen was 8 rings out and the engine released all five plots at the turn roll, dissolving the cage in the same turn the unit moved - inconclusive again. Also: Independent Powers report `cities:0`, so `getCities()`-based center protection is blind to villages |
 | 17 | **TRAPPED-BY-US.** Pen at ring 6 around player 4's Scout, a major at PEACE: `enclosedTurns=5/5`, `movedWhileEnclosed=false`. The unit had moved every turn before and never moved again. The reporter's symptom, reproduced, caused by the mod |
 
 Method notes, each earned by a wasted run:
@@ -347,10 +347,10 @@ Full log: `run1-antiquity-turn136-UI.log`.
 | Our city's `purchasePlot` on a rival tile touching our land | Works, no gold, lands after the call |
 | A rival city's `purchasePlot` on that tile (cede back) | Works, lands after the call |
 | `WorldBuilder.MapPlots.setOwnership(NO_PLAYER)` on a city-attached tile | Fails. Still ours at 3 seconds and 12 turns later |
-| Settler `UNITOPERATION_FOUND_CITY`: unowned plot vs rival-owned neighbour, both four tiles from any settlement | Unowned: can found. Rival-owned: cannot ("no valid constructions for this location") |
+| Settler `UNITOPERATION_FOUND_CITY`: unowned plot vs rival-owned neighbor, both four tiles from any settlement | Unowned: can found. Rival-owned: cannot ("no valid constructions for this location") |
 | `CREATE_ELEMENT` improvement on a ring-4 claimed tile, and on a ring-2 control | Neither placed. Inconclusive, because the control failed too; redone in run 2 |
 | `Game.age` | A numeric hash, not a string |
-| The mod's own pass over 12 turns | Runs every turn, city strengths nonzero (London 84), no flips. London's centre stock reached 364 by turn 3, and ring 4 needs about 12,000 at the centre |
+| The mod's own pass over 12 turns | Runs every turn, city strengths nonzero (London 84), no flips. London's center stock reached 364 by turn 3, and ring 4 needs about 12,000 at the center |
 
 Consequences: the pass never recorded a real flip (fixed with `ui/cd-pending.js`), and every age read as Antiquity
 (fixed in `ui/cd-polity.js`). Both are in the changelog.
@@ -362,7 +362,7 @@ Script `cdh-game-run2.js`, full log `run2-antiquity-turn136-UI.log`.
 | Test | Verdict |
 | --- | --- |
 | R5 age hash | `GameInfo.Ages.lookup(Game.age).AgeType` resolved the hash to `AGE_ANTIQUITY` |
-| R1 seeded stock, then the mod's own pass | Flip sent and recorded pending; tile ours within 5 seconds; next pass confirmed and booked it with a 15-turn lock; the neighbouring tile flipped organically and was confirmed a pass later |
+| R1 seeded stock, then the mod's own pass | Flip sent and recorded pending; tile ours within 5 seconds; next pass confirmed and booked it with a 15-turn lock; the neighboring tile flipped organically and was confirmed a pass later |
 | R2 release variants | All three still owned and attached at 10 seconds; the bought tile had no district to destroy |
 | R3 pending citizen onto a far tile | Did not run: seeding and release purchases used up the main city's frontier tiles |
 | R4 improvement create | Control worked (London's ring-1 camp destroyed and recreated); the far half did not run, for the same reason |
@@ -376,7 +376,7 @@ Script `cdh-game-run3.js`, log `run3-antiquity-turn136-UI.log`, crash evidence `
 | R3 pending citizen onto a ring-4 tile | Refused. The tile was not offered, and `sendRequest(EXPAND)` placed nothing; the control on an offered ring-1 plot placed a fishing boat |
 | R4 improvement on ring-4 tiles | Refused four times (mine, woodcutter, two Potkop copies); the control recreated the Potkop on ring 3 |
 | R7 the mod's own cession | Not tested: the rival was read as at war, and the seeded tile was inside Megiddo's ring 3 |
-| Growth buffer, unplanned | Two neighbour tiles claimed and confirmed after the Potkop was recreated |
+| Growth buffer, unplanned | Two neighbor tiles claimed and confirmed after the Potkop was recreated |
 | 24 natural passes from an empty field | First organic claim on pass 18 (London, ring 4); nine flips sent by pass 24, two of them rival tiles |
 | How it ended | Native crash about 30 seconds after Autoplay drove the Antiquity to Exploration transition at turn 160 |
 
@@ -441,7 +441,7 @@ pixels in `CGWindowListCopyWindowInfo`.
 ## Runs 9 and 10 - the pressure lens, 2026-09-13
 
 Scripts `cdh-game-run9.js` and `cdh-game-run10.js`, both on AugustusAnt136 via `cdh-shell-run5.js`. Run 9 ends 12
-turns, centres the camera on our largest city, and switches the lens on. Run 10 ends turns until the lens's own
+turns, centers the camera on our largest city, and switches the lens on. Run 10 ends turns until the lens's own
 contested-tile list, rebuilt with the lens's imports, holds four tiles. Then it logs the readout for the top tiles and
 shoots with the lens off and on.
 
@@ -450,7 +450,7 @@ Results, logs `run9-lens-no-contested-tiles-UI.log` and `run10-lens-popup-covere
   the switch it still showed the old view. Wait about 20 seconds before shooting.
 - Run 9 had nothing to paint. Run 10 reached five contested tiles on turn 151, and the readout named the civilizations
   correctly.
-- `Camera.lookAtPlot(tile)` centres the tile, and a queued Civic Unlocked popup covers the screen centre, so the tile
+- `Camera.lookAtPlot(tile)` centers the tile, and a queued Civic Unlocked popup covers the screen center, so the tile
   was hidden. The second `lookAtPlot` with `{ zoom: 0.3 }` did not visibly zoom.
 - Two of the five tiles were led by an AI on unowned land. The lens shades them, but the pass never flips them.
 
