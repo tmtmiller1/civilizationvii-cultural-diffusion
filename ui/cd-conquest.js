@@ -30,7 +30,7 @@ import { performFlip } from "/cultural-diffusion/ui/cd-ownership.js";
 import { markPending, isPending } from "/cultural-diffusion/ui/cd-pending.js";
 import { notifyFlip } from "/cultural-diffusion/ui/cd-notifications.js";
 
-/** @param {()=>*} fn Thunk. @param {*} fallback Fallback. @returns {*} fn() or fallback. */
+/** @param {()=>*} fn Thunk. @param {*} fallback @returns {*} fn() or fallback. */
 function safe(fn, fallback) {
   try {
     return fn();

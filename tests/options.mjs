@@ -24,7 +24,7 @@ Options.init();
 assert.deepEqual(present(), CD_IDS, "the screen's init adds every Cultural Diffusion option, in display order");
 
 const buffer = Options.data.get("cd-growth-buffer");
-assert.equal(buffer.label, "LOC_OPTIONS_CD_BUFFER", "the +1 ring buffer toggle is labelled");
+assert.equal(buffer.label, "LOC_OPTIONS_CD_BUFFER", "the +1 ring buffer toggle is labeled");
 assert.equal(buffer.description, "LOC_OPTIONS_CD_BUFFER_DESCRIPTION", "...and described");
 assert.equal(buffer.currentValue, CONFIG_DEFAULTS.growthBuffer, "...and shows the shipped default on a fresh profile");
 

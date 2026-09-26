@@ -68,9 +68,9 @@ reset();
 // ================================================================================
 reset();
 const EXITS = { x: 10, y: 10 };
-assert.equal(legalExits(EXITS, ME, null), 6, "open ground: all six neighbours are legal destinations");
+assert.equal(legalExits(EXITS, ME, null), 6, "open ground: all six neighbors are legal destinations");
 for (const n of neighborsOf(EXITS).slice(0, 5)) tiles.set(tk(n.x, n.y), ME);
-assert.equal(legalExits(EXITS, ME, null), 1, "five neighbours ours -> one destination left");
+assert.equal(legalExits(EXITS, ME, null), 1, "five neighbors ours -> one destination left");
 const LAST = neighborsOf(EXITS)[5];
 assert.equal(legalExits(EXITS, ME, tk(LAST.x, LAST.y)), 0, "...and claiming that one leaves none");
 reset();
@@ -78,18 +78,18 @@ for (const n of neighborsOf(EXITS)) water.add(tk(n.x, n.y));
 assert.equal(legalExits(EXITS, ME, null), 0, "water counts as no destination for a land unit");
 
 // A MOUNTAIN is not an escape (harness run 22): with it counted as traversable, a unit whose last
-// neighbour was impassable read as mobile and the guard let the freezing claim through.
+// neighbor was impassable read as mobile and the guard let the freezing claim through.
 reset();
 for (const n of neighborsOf(EXITS).slice(0, 5)) tiles.set(tk(n.x, n.y), ME);
 impassable.add(tk(neighborsOf(EXITS)[5].x, neighborsOf(EXITS)[5].y));
-assert.equal(legalExits(EXITS, ME, null), 0, "an impassable last neighbour is no destination at all");
+assert.equal(legalExits(EXITS, ME, null), 0, "an impassable last neighbor is no destination at all");
 reset();
 units.set(tk(EXITS.x, EXITS.y), [{ owner: PEACEFUL }]);
 const ex = neighborsOf(EXITS);
 for (const n of ex.slice(1, 5)) tiles.set(tk(n.x, n.y), ME);
 impassable.add(tk(ex[5].x, ex[5].y));
 assert.equal(wouldStrandForeignUnit(ex[0], ME), true,
-  "claiming the last passable neighbour is refused even when a mountain remains");
+  "claiming the last passable neighbor is refused even when a mountain remains");
 
 // ================================================================================
 // 2. hasStrandableUnit - only a PEACEFUL foreign owner counts.
@@ -109,7 +109,7 @@ assert.equal(hasStrandableUnit(P, ME), false,
   "an Independent Power reads as at war, so it is never protected (run 17's void fixtures)");
 units.set(tk(P.x, P.y), [{ owner: INDEPENDENT }, { owner: PEACEFUL }]);
 assert.equal(hasStrandableUnit(P, ME), true, "a mixed stack is protected if ANY occupant is peaceful");
-assert.equal(neighborsOf(P).length, 6, "six neighbours, centre excluded");
+assert.equal(neighborsOf(P).length, 6, "six neighbors, center excluded");
 
 // The unit list is a real Array in game (measured, run 20: `isArray=true ctor=Array`), but the read
 // iterates rather than type-checking, so an array-like would work too.
@@ -230,7 +230,7 @@ for (const n of ring.slice(2)) tiles.set(tk(n.x, n.y), ME);
 units.set(tk(CENTRE.x, CENTRE.y), [{ owner: PEACEFUL }]);
 assert.equal(wouldStrandForeignUnit(ring[0], ME), false, "closing one of TWO gaps is allowed");
 
-// Claiming the ground UNDER a unit is never the culpable claim: its options are its neighbours, which
+// Claiming the ground UNDER a unit is never the culpable claim: its options are its neighbors, which
 // this claim does not change. With the ring already ours the unit was stuck before we touched its plot.
 reset();
 units.set(tk(P.x, P.y), [{ owner: PEACEFUL }]);
@@ -241,7 +241,7 @@ units.set(tk(P.x, P.y), [{ owner: PEACEFUL }]);
 assert.equal(wouldStrandForeignUnit(P, ME), false,
   "ring already ours: the trap pre-existed this claim, so taking the plot under it changes nothing");
 
-// The neighbour case with the unit beside the claim rather than at its centre.
+// The neighbor case with the unit beside the claim rather than at its center.
 reset();
 const SIDE = neighborsOf(P)[0];
 for (const n of neighborsOf(SIDE)) {
@@ -249,7 +249,7 @@ for (const n of neighborsOf(SIDE)) {
   tiles.set(tk(n.x, n.y), ME);
 }
 units.set(tk(SIDE.x, SIDE.y), [{ owner: PEACEFUL }]);
-assert.equal(wouldStrandForeignUnit(P, ME), true, "closing a neighbour's last way out is refused");
+assert.equal(wouldStrandForeignUnit(P, ME), true, "closing a neighbor's last way out is refused");
 
 // Do no new harm: already penned in before this claim -> not our doing.
 reset();

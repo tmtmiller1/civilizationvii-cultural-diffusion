@@ -1,12 +1,12 @@
 // cdh-game-borders4.js - game scope, deployed as ui/cdh-game.js. Border-expansion imagery, take 4 (dev only).
 //
 // Why a fourth take: the borders3 pair was rejected. Its "before" frame showed tiles FOUR rings out from the city
-// centre, and the base game stops at three (`baseGrowthRadius: 3`), so the frame everyone was meant to read as
+// center, and the base game stops at three (`baseGrowthRadius: 3`), so the frame everyone was meant to read as
 // "the vanilla footprint" already looked like the mod had been at work. A before/after pair only means anything
 // when the BEFORE is unmistakably vanilla.
 //
 // So this run does not trust the eye. It censuses every one of the local player's cities first - owned tiles by
-// ring, each tile attributed to its NEAREST local city so a neighbour's territory cannot be read as this city's -
+// ring, each tile attributed to its NEAREST local city so a neighbor's territory cannot be read as this city's -
 // and picks a city whose own footprint reaches no further than ring 3. The census goes in the log next to the
 // shot, so the claim "this is the vanilla footprint" is a measurement, not a description of a JPEG.
 //
@@ -56,10 +56,10 @@ function closePopups(left, done) {
   setTimeout(() => closePopups(left - 1, done), 1000);
 }
 
-/** Every local city centre, so a tile can be attributed to the nearest one. */
+/** Every local city center, so a tile can be attributed to the nearest one. */
 function centres() { return localCities().map((c) => ({ name: cityName(c), loc: c.location })); }
 
-/** The nearest local city centre to a plot. */
+/** The nearest local city center to a plot. */
 function nearestCentre(p, all) {
   let best = null;
   for (const c of all) {
@@ -71,7 +71,7 @@ function nearestCentre(p, all) {
 
 /**
  * Owned tiles by ring for ONE city, counting only tiles this city is the nearest local city to. Without the
- * attribution a neighbour's ring-2 tile reads as this city's ring-5 and every city looks over-expanded.
+ * attribution a neighbor's ring-2 tile reads as this city's ring-5 and every city looks over-expanded.
  */
 function ringCensus(city, all) {
   const counts = [0, 0, 0, 0, 0, 0, 0];
@@ -165,7 +165,7 @@ async function run() {
   await later(12000);
   const b = ringCensus(pick.city, all);
   emit(`BEFORE city=${pick.city.name} maxOwnedRing=${b.maxRing} rings=[${b.counts.join(",")}] ` +
-    `ownedWithin6=${ourTiles(centre, 6)}`);
+    `ownedWithin6=${ourTiles(center, 6)}`);
   emit("SHOT 01-border-before");
   await later(3000);
 
@@ -173,11 +173,11 @@ async function run() {
   for (let i = 0; i < PASSES; i++) {
     const r = safe(() => runPass(), "threw");
     await later(7000);
-    emit(`PASS ${i + 1} ${J(r)} ownedWithin6=${ourTiles(centre, 6)}`);
+    emit(`PASS ${i + 1} ${J(r)} ownedWithin6=${ourTiles(center, 6)}`);
   }
   const a = ringCensus(pick.city, all);
   emit(`AFTER city=${pick.city.name} maxOwnedRing=${a.maxRing} rings=[${a.counts.join(",")}] ` +
-    `ownedWithin6=${ourTiles(centre, 6)}`);
+    `ownedWithin6=${ourTiles(center, 6)}`);
 
   aim(centre, 0.40, "after");
   await later(10000);

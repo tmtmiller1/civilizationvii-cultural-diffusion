@@ -1,5 +1,5 @@
 // cdh-game-run11.js - game scope, deployed as ui/cdh-game.js. Run 11 (dev only): does the Cultural Pressure lens paint
-// contested tiles? Run 10 reached five contested tiles, but the camera centred the top tile under the Civic Unlocked
+// contested tiles? Run 10 reached five contested tiles, but the camera centered the top tile under the Civic Unlocked
 // popup and the captures came before the lens view had redrawn. Run 11 closes that popup, aims the camera beside the
 // tile, and shoots 20 and 30 seconds after switching the lens on.
 // Loads AugustusAnt136 (via cdh-shell-run5.js) and ends turns one at a time. Each turn it rebuilds the lens's own
@@ -73,10 +73,10 @@ function closePopups(left, done) {
 }
 
 function lensShots(c) {
-  // Prefer a tile our culture leads: it is painted in our colour and is a flip the pass will actually make.
+  // Prefer a tile our culture leads: it is painted in our color and is a flip the pass will actually make.
   const top = c.tiles.find((t) => t.leader === local) || c.tiles[0];
   const at = top ? { x: top.x, y: top.y } : safe(() => Players.get(local).Cities.getCities()[0].location, null);
-  // Aim four columns east of the tile so it sits left of the screen centre, clear of any centred popup.
+  // Aim four columns east of the tile so it sits left of the screen center, clear of any centered popup.
   const aim = at ? { x: at.x + 4, y: at.y } : null;
   closePopups(6, () => {
     const cam = aim ? safe(() => { Camera.lookAtPlot(aim, { zoom: 0.45 }); return "zoom0.45"; }, "no-camera") : "no-target";

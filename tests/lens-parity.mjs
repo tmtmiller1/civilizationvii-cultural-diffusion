@@ -203,7 +203,7 @@ assertParity("beyond flipMaxDistance", FAR, false);
 reset(); seed({ field: { [tk(15, 10)]: mature() } });
 assertParity("not adjacent to our land", { x: 15, y: 10 }, false);
 
-// 4. A rival's protected city centre.
+// 4. A rival's protected city center.
 reset();
 const RIVAL_CORE = { x: 16, y: 10 };
 rivalCity = makeCity(99, RIVAL_CORE, RIVAL, 10);
@@ -250,7 +250,7 @@ CONFIG.claimOnlyUnowned = false;
 // 9. The strand guard: this claim would take a peaceful civ's last legal destination.
 reset();
 const PEN = { x: 15, y: 10 };            // the unit sits here; TARGET is its only way out
-// Compute the six neighbours rather than listing them: on an odd-r hex grid the diagonals shift per row, and
+// Compute the six neighbors rather than listing them: on an odd-r hex grid the diagonals shift per row, and
 // a hand-written ring left this unit two exits the guard was right to respect.
 for (let y = PEN.y - 1; y <= PEN.y + 1; y++) {
   for (let x = PEN.x - 1; x <= PEN.x + 1; x++) {

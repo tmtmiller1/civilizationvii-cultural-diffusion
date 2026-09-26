@@ -3,7 +3,7 @@
 // Run with the deployed config patched to `conquestFlip: true` (run-harness.sh PATCH). Scripts cannot move a unit
 // (harness run 13), so the run PLANTS one: a combat unit of ours is created with the CREATE_ELEMENT request the
 // Emigration mod uses for its migrants (watched working), on a tile that an enemy MAJOR owns, that touches our land,
-// is not a settlement centre or urban district, and is as far from that enemy's cities as the frontier allows (so
+// is not a settlement center or urban district, and is as far from that enemy's cities as the frontier allows (so
 // the unit is less likely to be attacked before the buffer runs out). Then the mod's own pass does the rest:
 //
 //   C0  boot + toggles; which majors we are at war with

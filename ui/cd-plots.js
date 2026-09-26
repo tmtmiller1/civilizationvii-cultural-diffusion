@@ -8,7 +8,7 @@ const NO_OWNER = -1;
 
 /**
  * @param {()=>*} fn Thunk.
- * @param {*} fallback Fallback.
+ * @param {*} fallback
  * @returns {*} fn() or fallback on throw.
  */
 function safe(fn, fallback) {
@@ -106,7 +106,7 @@ export function isImpassable(loc) {
  * True when a plot lies in the given player's DISTANT LANDS (the far hemisphere - only reachable
  * from the Exploration age). Base-game Player method: Players.get(pid).isDistantLands({x,y}).
  * Fails OPEN (false = treat as home lands) when unreadable, so a missing API never over-blocks.
- * @param {number} playerId Player id.
+ * @param {number} playerId
  * @param {{x:number,y:number}} loc Plot.
  * @returns {boolean} Whether the plot is distant lands for that player.
  */

@@ -16,7 +16,7 @@ import { loadState, saveState } from "/cultural-diffusion/ui/cd-state.js";
 import { applyCaptureTransfer } from "/cultural-diffusion/ui/cd-field.js";
 import { plotsInRadius, owningCityIdAt, cityIdOf, cityLoc } from "/cultural-diffusion/ui/cd-plots.js";
 
-/** @param {()=>*} fn Thunk. @param {*} fallback Fallback. @returns {*} fn() or fallback. */
+/** @param {()=>*} fn Thunk. @param {*} fallback @returns {*} fn() or fallback. */
 function safe(fn, fallback) {
   try {
     return fn();

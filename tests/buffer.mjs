@@ -66,23 +66,23 @@ function seedFootprint() {
   }
 }
 
-// --- 1. develop a ring-3 tile -> claim its UNOWNED neighbours only ---------------
+// --- 1. develop a ring-3 tile -> claim its UNOWNED neighbors only ---------------
 seedFootprint();
 const DEV = { x: 13, y: 10 };                 // a ring-3 (base-game frontier) tile we just improved
 assert.equal(hexDistance(CENTER, DEV), 3);
-// Its neighbours split between ring-2/3 (owned) and ring-4 (unowned) - only the unowned get claimed.
+// Its neighbors split between ring-2/3 (owned) and ring-4 (unowned) - only the unowned get claimed.
 const neighbours = [];
 for (let y = DEV.y - 1; y <= DEV.y + 1; y++) for (let x = DEV.x - 1; x <= DEV.x + 1; x++) {
   if ((x === DEV.x && y === DEV.y) || hexDistance(DEV, { x, y }) !== 1) continue;
   neighbours.push({ x, y });
 }
 const unownedNbrs = neighbours.filter((n) => getTile(n.x, n.y).owner < 0);
-assert.ok(unownedNbrs.length > 0, "the dev tile has unowned (ring-4) neighbours");
+assert.ok(unownedNbrs.length > 0, "the dev tile has unowned (ring-4) neighbors");
 
 const claimed = claimBufferAt(DEV);
-assert.equal(claimed, unownedNbrs.length, "claimed exactly the unowned neighbours");
+assert.equal(claimed, unownedNbrs.length, "claimed exactly the unowned neighbors");
 for (const n of unownedNbrs) {
-  assert.deepEqual(getTile(n.x, n.y), { owner: ME, city: CITY_ID }, `neighbour ${n.x},${n.y} claimed + integrated`);
+  assert.deepEqual(getTile(n.x, n.y), { owner: ME, city: CITY_ID }, `neighbor ${n.x},${n.y} claimed + integrated`);
 }
 // It did NOT claim the whole ring 4 - a distant ring-4 tile not adjacent to DEV stays unowned.
 const FARRING4 = { x: 6, y: 10 };
@@ -92,16 +92,16 @@ assert.equal(getTile(FARRING4.x, FARRING4.y).owner, -1, "far ring-4 tile NOT cla
 // --- 2. never take a rival's tile; DO claim unowned water -----------------------
 seedFootprint();
 const RIVAL = { x: 14, y: 10 }, WET = { x: 13, y: 11 };
-getTileMut(RIVAL.x, RIVAL.y).owner = 3; getTileMut(RIVAL.x, RIVAL.y).city = 9;  // rival-owned neighbour of DEV
+getTileMut(RIVAL.x, RIVAL.y).owner = 3; getTileMut(RIVAL.x, RIVAL.y).city = 9;  // rival-owned neighbor of DEV
 assert.equal(getTile(WET.x, WET.y).owner, -1); assert.equal(hexDistance(DEV, WET), 1);
-water.add(tk(WET.x, WET.y));                                                     // an UNOWNED water neighbour of DEV
+water.add(tk(WET.x, WET.y));                                                     // an UNOWNED water neighbor of DEV
 claimBufferAt(DEV);
-assert.deepEqual(getTile(RIVAL.x, RIVAL.y), { owner: 3, city: 9 }, "rival neighbour NOT taken");
-assert.deepEqual(getTile(WET.x, WET.y), { owner: ME, city: CITY_ID }, "unowned water neighbour IS claimed");
+assert.deepEqual(getTile(RIVAL.x, RIVAL.y), { owner: 3, city: 9 }, "rival neighbor NOT taken");
+assert.deepEqual(getTile(WET.x, WET.y), { owner: ME, city: CITY_ID }, "unowned water neighbor IS claimed");
 
-// --- 3. developing an INNER tile claims nothing (all neighbours already owned) ---
+// --- 3. developing an INNER tile claims nothing (all neighbors already owned) ---
 seedFootprint();
-assert.equal(claimBufferAt({ x: 10, y: 10 }), 0, "developing the city centre claims nothing");
+assert.equal(claimBufferAt({ x: 10, y: 10 }), 0, "developing the city center claims nothing");
 assert.equal(claimBufferAt({ x: 11, y: 10 }), 0, "developing a ring-1 tile claims nothing");
 
 // --- 4. only OUR development triggers it ----------------------------------------
@@ -119,11 +119,11 @@ CONFIG.growthBuffer = true;
 CONFIG.blockDistantLandsBeforeExploration = true;
 seedFootprint();
 distant.clear();
-// Mark the dev tile's unowned neighbours as Distant Lands for us.
+// Mark the dev tile's unowned neighbors as Distant Lands for us.
 for (const n of neighbours) if (getTile(n.x, n.y).owner < 0) distant.add(tk(n.x, n.y));
 globalThis.Game = { age: "AGE_ANTIQUITY" };
 assert.equal(claimBufferAt(DEV), 0, "no distant-lands claims during Antiquity");
-// From the Exploration age, the same distant-lands neighbours can be claimed.
+// From the Exploration age, the same distant-lands neighbors can be claimed.
 globalThis.Game = { age: "AGE_EXPLORATION" };
 assert.ok(claimBufferAt(DEV) > 0, "distant-lands claims allowed from Exploration");
 globalThis.Game = { age: "AGE_ANTIQUITY" };

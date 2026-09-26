@@ -49,7 +49,7 @@
  * @property {boolean} conquestFlip A combat unit that holds an enemy tile for `conquestBufferTurns` consecutive
  *   passes during a war takes it, ignoring culture; city centers and urban districts are never taken. Opt-in.
  * @property {number}  conquestBufferTurns Consecutive passes a tile must be held before a conquest flip (0 = at once).
- * @property {number}  conquestHoldTurns Turns a conquered tile is held against CULTURE flips afterwards; another army
+ * @property {number}  conquestHoldTurns Turns a conquered tile is held against CULTURE flips afterward; another army
  *   can still take it at any time. After the hold the tile works the normal way.
  * @property {boolean} foreignCultureInCities A city injects culture for EVERY group present on its tile, weighted
  *   by population (and by the Emigration composition when present), and converts foreign stock to its owner each
@@ -187,7 +187,7 @@ export const CONFIG = {
   // unit that holds an enemy tile for `conquestBufferTurns` consecutive passes takes it for its owner, ignoring
   // culture. Leaving resets the count. City centers and urban districts are never taken (capturing a city is the
   // engine's job). A conquered tile is then HELD for conquestHoldTurns: culture cannot flip it back in that time, but
-  // another army holding it through the buffer takes it at any time (conquest never waits on a lock). Afterwards
+  // another army holding it through the buffer takes it at any time (conquest never waits on a lock). Afterward
   // the tile works the normal way: once peace is made (no culture path crosses an active front) any civilization
   // whose culture decisively leads the tile may take it, not only the one it was taken from - intended, decided
   // 2026-09-26. For another civ's units it also needs aiCultureFlips.

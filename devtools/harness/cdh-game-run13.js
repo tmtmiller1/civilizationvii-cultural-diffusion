@@ -3,7 +3,7 @@
 // ONE QUESTION: can a mod move a unit it does not own off a plot the border is taking, and if not, what does the
 // engine do instead? The 1.1.1 eviction (ui/cd-units.js) is built on UNITOPERATION_TELEPORT_TO and is UNWATCHED.
 // Three recorded signals say it may not work, so this run does not test one verb - it bakes off every candidate and
-// reads the UNIT'S LOCATION afterwards rather than trusting canStart:
+// reads the UNIT'S LOCATION afterward rather than trusting canStart:
 //   - engine-closed.md: an operation sent under another player's id is refused, and `canStart` SUCCEEDS anyway.
 //   - engine-closed.md: canStart checks request shape, not placement; confirm every write with a deferred re-read.
 //   - emigration engine-probe README: canStart(UNITOPERATION_TELEPORT_TO) answered FALSE for one of our own units.
@@ -118,7 +118,7 @@ function candidateDest(from, wantForeign) {
 }
 
 /**
- * For one unit, try every verb and report what the UNIT'S LOCATION says afterwards - never what canStart said.
+ * For one unit, try every verb and report what the UNIT'S LOCATION says afterward - never what canStart said.
  * @returns {Promise<object[]>} One row per verb.
  */
 async function bakeOff(label, unit) {

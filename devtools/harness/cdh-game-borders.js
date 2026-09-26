@@ -87,8 +87,8 @@ async function run() {
   const pick = pickCity();
   if (!pick) { emit("BORDERS no city with claimable open land; aborting"); return; }
   const centre = pick.city.location;
-  emit(`S0 borders city=${cityName(pick.city)} at=${key(centre)} claimable=${pick.ring.length} ` +
-    `ownedWithin6=${ourTiles(centre, 6)}`);
+  emit(`S0 borders city=${cityName(pick.city)} at=${key(center)} claimable=${pick.ring.length} ` +
+    `ownedWithin6=${ourTiles(center, 6)}`);
 
   // LensManager is NOT touched at all: disabling the layer through it redraws the default lens's yield-icon
   // overlay, which is what put badges over every earlier attempt. The lens is off because the runner patched its
@@ -99,7 +99,7 @@ async function run() {
   safe(() => UI.Player.deselectAllUnits());
   aim(centre, 0.65, "before");
   await later(12000);
-  emit(`BEFORE ownedWithin6=${ourTiles(centre, 6)}`);
+  emit(`BEFORE ownedWithin6=${ourTiles(center, 6)}`);
   emit("SHOT 01-border-before");
   await later(3000);
 
@@ -112,7 +112,7 @@ async function run() {
     claimed = ourTiles(centre, 6);
     emit(`PASS ${i + 1} ${J(r)} ownedWithin6=${claimed}`);
   }
-  emit(`AFTER ownedWithin6=${claimed} (was ${ourTiles(centre, 6)})`);
+  emit(`AFTER ownedWithin6=${claimed} (was ${ourTiles(center, 6)})`);
 
   // Same camera, so the pair reads as one view changing.
   aim(centre, 0.65, "after");

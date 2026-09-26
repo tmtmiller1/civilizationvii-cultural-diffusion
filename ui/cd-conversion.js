@@ -11,7 +11,7 @@
 // Players.get(pid).Culture.getActiveTraditions(slot) -> GameInfo.Traditions.lookup(t).TraditionType;
 // Culture.getChosenIdeology() -> GameInfo.Ideologies.lookup(i).IdeologyType (Modern age only).
 
-/** @param {()=>*} fn Thunk. @param {*} fallback Fallback. @returns {*} fn() or fallback. */
+/** @param {()=>*} fn Thunk. @param {*} fallback @returns {*} fn() or fallback. */
 function safe(fn, fallback) {
   try {
     return fn();

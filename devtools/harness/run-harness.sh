@@ -6,7 +6,7 @@
 #   - refuses to start if the game is already running, or if another session's probe/harness mod is installed
 #     (a second harness hijacks the launch and contaminates both runs)
 #   - backs up the player's autosaves, and puts them back if the run churned the 10-slot rotation
-#   - remembers every cultural-diffusion registry row's Disabled flag and restores it exactly afterwards
+#   - remembers every cultural-diffusion registry row's Disabled flag and restores it exactly afterward
 #   - deploys the REPO copy of the mod into Mods/ with AffectsSavedGames=0 and debug: true patched into the
 #     DEPLOYED copy only (the repo is never edited)
 #   - installs the throwaway cd-harness mod with the chosen game script, launches via Steam, waits for DONE,
@@ -57,7 +57,7 @@ say "autosaves backed up: $(ls "$BAK" 2>/dev/null | wc -l | tr -d ' ')"
 # nothing from the mod.
 PRE_DISABLED=$(sqlite3 "$DB" "select max(Disabled) from Mods where ModId='cultural-diffusion'")
 [ -n "$PRE_DISABLED" ] || PRE_DISABLED=1
-say "registry before: $(sqlite3 "$DB" "select ModRowId||'='||Disabled from Mods where ModId='cultural-diffusion'" | tr '\n' ' ') (restoring Disabled=$PRE_DISABLED afterwards)"
+say "registry before: $(sqlite3 "$DB" "select ModRowId||'='||Disabled from Mods where ModId='cultural-diffusion'" | tr '\n' ' ') (restoring Disabled=$PRE_DISABLED afterward)"
 
 # Deploy the repo copy, then patch the DEPLOYED files only.
 rm -rf "$DEST"; mkdir -p "$DEST"

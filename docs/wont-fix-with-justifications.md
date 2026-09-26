@@ -1,26 +1,26 @@
 # Cultural Diffusion — Won't-Fix Decisions (with justifications)
 
-The canonical record of **deliberate decisions not to change existing, working behaviour** — benign findings closed by
+The canonical record of **deliberate decisions not to change existing, working behavior** — benign findings closed by
 judgment rather than by a wall. Each is something a future audit will flag again, so the reasoning is written down here
 to stop the re-litigation.
 
 Mirrors the sibling mod's pattern
 ([`emigration/docs/wont-fix-with-justifications.md`](../../emigration/docs/wont-fix-with-justifications.md)).
 
-> **How this differs from the neighbouring docs.**
+> **How this differs from the neighboring docs.**
 > - [`wont-build-with-justifications.md`](wont-build-with-justifications.md) — features/approaches with **no path to
 >   shipping** (proven-nonfunctional, superseded, or model-misaligned).
 > - [`BACKLOG.md`](BACKLOG.md) — open items we still **intend** to fix (severity · confidence tagged).
-> - **This file** — behaviour that is technically imperfect but **intentionally left as-is**.
+> - **This file** — behavior that is technically imperfect but **intentionally left as-is**.
 >
-> **Standing convention:** when a judgment *not* to change working behaviour is made, add a `##` entry with the
-> behaviour, the finding, why we are not changing it, and a **verdict**.
+> **Standing convention:** when a judgment *not* to change working behavior is made, add a `##` entry with the
+> behavior, the finding, why we are not changing it, and a **verdict**.
 
 ---
 
 ## `commitFlip` seed-stock floor line — WON'T-FIX (intentional guard, author's call)
 
-**Behaviour:** after a flip, `commitFlip` runs
+**Behavior:** after a flip, `commitFlip` runs
 `next[k][String(me)] = Math.max(next[k][String(me)] || 0, ageCfg.minimumOwner)`
 ([`ui/cd-pass.js`](../ui/cd-pass.js)), commented as seeding "a stable stock so the tile doesn't immediately fail the
 ownership test."
@@ -42,7 +42,7 @@ an "unkillable mutant"; that is expected. If ever removed, the comment must be c
 
 ## `commitBuffer` twin seed-stock line — WON'T-FIX (same decision)
 
-**Behaviour:** the buffer-path twin of the above:
+**Behavior:** the buffer-path twin of the above:
 `state.field[k][String(me)] = Math.max(state.field[k][String(me)] || 0, CONFIG.minimumOwner)`
 ([`ui/cd-pass.js`](../ui/cd-pass.js) `commitBuffer`). On a freshly claimed tile with no prior stock it
 collapses to `= CONFIG.minimumOwner`, so both the `|| 0` and the `Math.max` do nothing.
@@ -53,7 +53,7 @@ collapses to `= CONFIG.minimumOwner`, so both the `|| 0` and the `Math.max` do n
 
 ## Tested-but-unwired pressure `*Factor` helpers kept — WON'T-FIX (removal would drop coverage)
 
-**Behaviour:** `happinessFactor` / `wonderFactor` / `prosperityFactor` ([`ui/cd-pressure.js`](../ui/cd-pressure.js)) are
+**Behavior:** `happinessFactor` / `wonderFactor` / `prosperityFactor` ([`ui/cd-pressure.js`](../ui/cd-pressure.js)) are
 exported but never called by `projectionOf` — the fused model folds wonders/happiness/prosperity into CPI/`vitality`.
 `prosperityOf` / `s.prosperity` ([`ui/cd-pass.js`](../ui/cd-pass.js)) is the data source for that same (unwired) factor.
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  Civilopedia entries for Cultural Diffusion: a dedicated "Cultural Diffusion" section organised into page groups,
+  Civilopedia entries for Cultural Diffusion: a dedicated "Cultural Diffusion" section organized into page groups,
   plus one bridge page in the base game's Game Concepts > Settlements group so a player browsing the base rules
   finds the mod. Loaded through the modinfo <UpdateDatabase> in the game-scope ActionGroup; the text lives in
   text/en_us/PediaText.xml.

@@ -1,7 +1,7 @@
 # Cultural Diffusion — Current Model (authoritative)
 
 What the mod **is** as shipped (v1.0.7): the reaction-diffusion culture field, the fused scoring that shapes it, the
-flip verb, and the rules that gate ownership changes. This is the single source of truth for current behaviour.
+flip verb, and the rules that gate ownership changes. This is the single source of truth for current behavior.
 Forward-looking work lives in [`potential-future-features.md`](potential-future-features.md); the feasibility record
 that got us here is in [`probe-history.md`](probe-history.md); build-time reference (verb call shapes, state schema,
 guards) is in [`reference-and-conventions.md`](reference-and-conventions.md).
@@ -43,7 +43,7 @@ orchestration is `runPass()` in [`ui/cd-pass.js`](../ui/cd-pass.js).
   pumped too, at population strength, and `convertBase` (+ building/ideology bonuses) of each foreign stock then
   converts to the owner ([`ui/cd-inject.js`](../ui/cd-inject.js), §5).
 - **Diffuse.** A source above `cultureThreshold` (× `sourceThresholdMountain` on a mountain) delivers `src * effRate`
-  to each of 6 neighbours, where `effRate =
+  to each of 6 neighbors, where `effRate =
   rate*(1+bonus)/(1+malus)`; the neighbour is capped at a fraction of the source (`normalMax`, higher along
   roads/rivers). Terrain gates/penalties via [`ui/cd-terrain.js`](../ui/cd-terrain.js); culture also crosses water,
   slowly and gated by age.
@@ -115,7 +115,7 @@ three seconds later. The pass therefore never books an ownership change on that 
 recorded in `state.pending` ([`ui/cd-pending.js`](../ui/cd-pending.js)) and confirmed from the live map at the start
 of the next pass, when it becomes a claim, a cession or a release, or is dropped and retried later. Harness run 2 watched
 this work end to end: a flip on a seeded frontier tile was sent, landed within five seconds, and was confirmed and
-locked by the next pass, and an organic flip on the neighbouring tile followed the same path.
+locked by the next pass, and an organic flip on the neighboring tile followed the same path.
 
 ---
 
@@ -139,9 +139,9 @@ locked by the next pass, and an organic flip on the neighbouring tile followed t
   Every occupant of a stack is judged separately. Applies to
   the +1 buffer, runs last in `flipEligible`, fails OPEN. Moving the unit instead is engine-closed (`engine-closed.md`).
 - **A minor's territory is not stripped** — `minorProtectRadius` (default 1) floors core protection for any non-major
-  owner. `coreProtectRadius: 0` protects only the centre plot, which is fine against a major but takes everything a
-  city-state or village has. Watched in run 13 (the pass flipped both ring-1 tiles of a city-state's centre) and the
-  floor confirmed by A/B in run 19. Centres are found by the city list AND by a map read
+  owner. `coreProtectRadius: 0` protects only the center plot, which is fine against a major but takes everything a
+  city-state or village has. Watched in run 13 (the pass flipped both ring-1 tiles of a city-state's center) and the
+  floor confirmed by A/B in run 19. Centers are found by the city list AND by a map read
   ([`ui/cd-plots.js`](../ui/cd-plots.js) `isCityCenterAt`), because `getCities()` reports nothing for an Independent
   Power.
 - **War** — `atWar` tiles pause peaceful flips (borders don't diffuse across an active front).
@@ -150,7 +150,7 @@ locked by the next pass, and an organic flip on the neighbouring tile followed t
 - **Outer-ring tiles are territory, not workable land.** A claimed tile beyond ring 3 is city-attached but outside
   the native ring-3 work radius, so it yields nothing and cannot be developed. Its value is strategic: frontier tiles taken
   from a rival, and a buffer that blocks foreign founding. The block is watched in-game (harness run 1): a settler
-  could found on an unowned plot four tiles from any settlement, and could not found on the neighbouring plot once
+  could found on an unowned plot four tiles from any settlement, and could not found on the neighboring plot once
   a rival owned it ("This Unit has no valid constructions for this location"). Making outer tiles workable is engine-blocked — recorded in
   [`wont-build-with-justifications.md`](wont-build-with-justifications.md). Founding a **new city** on an outer tile is
   base-game min-city-range territory, not a mod feature.
@@ -194,7 +194,7 @@ locked by the next pass, and an organic flip on the neighbouring tile followed t
   Intended retake rules (decided 2026-09-26): an army may retake a conquered tile at any time; culture may retake it
   only after peace (every culture path refuses an active front) and after the hold, by the standard method, which
   means ANY civilization whose culture decisively leads the tile, not only the one it was taken from.
-  City centres and urban districts are never taken; safety mode blocks it; adjacency to the conqueror's land applies
+  City centers and urban districts are never taken; safety mode blocks it; adjacency to the conqueror's land applies
   when `requireAdjacency` is on. Another civilization's units take ground only when `aiCultureFlips` is also on. Watched in
   game 2026-09-26 (harness `cdh-game-conquest.js`): a planted Spearman on an enemy tile beside our land counted 1-4,
   the fifth pass took the tile (`conquest 83,32: taken from player 3 by player 0's unit`), the next confirmed it.

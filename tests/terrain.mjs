@@ -1,7 +1,7 @@
 // tests/terrain.mjs - water crossing in stepMods (diffuseAcrossWater).
 //
 // Culture crosses water only when strong enough: shallow coast has a lower gate than deep ocean,
-// and with diffuseAcrossWater off, water stays hard-blocked (legacy land-only behaviour).
+// and with diffuseAcrossWater off, water stays hard-blocked (legacy land-only behavior).
 import assert from "node:assert/strict";
 
 // --- stub the map: one coast tile, one ocean tile, everything else land ----------

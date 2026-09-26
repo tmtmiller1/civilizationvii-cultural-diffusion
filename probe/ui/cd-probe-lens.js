@@ -11,7 +11,7 @@
 //                         lens) reads 0 field tiles while the Cultural Diffusion mod is enabled and has
 //                         played a few turns, the lens is a no-op and must be rethought.
 //   H2  CD-LENS-VERDICT - does the shared flip-gate math produce a sane leader / capture-progress on
-//                         REAL field data, and do a contender's banner colour + display name resolve
+//                         REAL field data, and do a contender's banner color + display name resolve
 //                         (the two best-effort bits: civDisplayColor / civLabel)?
 //
 // SELF-CONTAINED on purpose: it replicates loadState()'s exact read and a trim of cd-field
@@ -118,7 +118,7 @@ function verdict(civMap, currentOwner, alive) {
   return { leader: owner, leaderValue: value, incumbent, target, progress, willFlip };
 }
 
-/** Whether a contender's banner colour resolves (the lens's civDisplayColor path). @param {number} pid */
+/** Whether a contender's banner color resolves (the lens's civDisplayColor path). @param {number} pid */
 function colorResolves(pid) {
   return safe(() => {
     const c = typeof UI !== "undefined" && UI.Player && typeof UI.Player.getPrimaryColorValueAsString === "function"
@@ -195,7 +195,7 @@ export function runLensProbe(trigger) {
 
   const top = samples[0];
   const h2 = top
-    ? `top tile (${top.x},${top.y}) leader=${top.name} ${top.progressPct}% colour=${top.colorOk ? "ok" : "FALLBACK"}`
+    ? `top tile (${top.x},${top.y}) leader=${top.name} ${top.progressPct}% color=${top.colorOk ? "ok" : "FALLBACK"}`
     : "no contested tiles yet (all frontier is settled or below the floor)";
   hudVerdict(`CD-LENS: HUD SEES field = ${tiles} tiles, ${contested} contested - H1 CONFIRMED. ${h2}`, "cdlens");
 

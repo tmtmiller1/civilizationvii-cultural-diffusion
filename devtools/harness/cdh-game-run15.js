@@ -11,8 +11,8 @@
 //                 The report also allows three different mechanisms, only one of which is ours:
 //                   (a) our border closed over/around it; (b) it entered legally and lost access later; (c) it was
 //                   never stuck - an idle AI Settler looks identical from outside, and war ejects it either way.
-//                 (c) is separated by a MAP fact, not a unit API: a unit standing on our land with all six neighbours
-//                 ours is enclosed by definition. One with an unowned neighbour that still does not move was idle.
+//                 (c) is separated by a MAP fact, not a unit API: a unit standing on our land with all six neighbors
+//                 ours is enclosed by definition. One with an unowned neighbor that still does not move was idle.
 //
 // Instruments, rather than inferring from turn snapshots:
 //   EV   engine.on PlotOwnershipChanged / CityTransfered / CityAddedToMap / CityRemovedFromMap - every ownership
@@ -21,9 +21,9 @@
 //        measured distance rather than a guess.
 //   A    three plots bought at different distances from the nearest rival settlement, each confirmed, then owner +
 //        owningCity re-read every turn: does reversion track distance to THEIR settlement rather than to ours?
-//   B    the enclosure: buy the plot a foreign unit stands on AND all six of its neighbours, confirm each, then watch.
+//   B    the enclosure: buy the plot a foreign unit stands on AND all six of its neighbors, confirm each, then watch.
 //        Every turn: where is the unit, how many of the seven plots are still ours, and does it have a non-ours
-//        neighbour to step to. Verdict distinguishes TRAPPED-BY-US / LEFT-WHILE-ENCLOSED / ENCLOSURE-BROKE.
+//        neighbor to step to. Verdict distinguishes TRAPPED-BY-US / LEFT-WHILE-ENCLOSED / ENCLOSURE-BROKE.
 //
 // The mod's own pass stays disabled: this measures the ENGINE, not the mod.
 // Tagged [CDH] in Logs/UI.log.
@@ -176,7 +176,7 @@ function reversionTargets() {
 }
 
 // --- B: the enclosure ------------------------------------------------------------------------------------------------
-let pen = null;   // {cid, type, unitOwner, centre, ring:[loc], boughtTurn, history:[]}
+let pen = null;   // {cid, type, unitOwner, center, ring:[loc], boughtTurn, history:[]}
 async function buildPen() {
   const cities = localCities();
   const cands = [];
@@ -193,8 +193,8 @@ async function buildPen() {
   if (!pick) { emit("B no foreign unit on unowned land within reach"); return false; }
   const centre = { x: pick.u.loc.x, y: pick.u.loc.y };
   const ring = neighbours(centre).filter((p) => landClean(p));
-  emit(`B PEN target ${key(centre)} unit=${pick.u.type} owner=${pick.u.owner} ringLand=${ring.length}`);
-  await buyAndConfirm(centre, pick.near.city, "pen-centre");
+  emit(`B PEN target ${key(center)} unit=${pick.u.type} owner=${pick.u.owner} ringLand=${ring.length}`);
+  await buyAndConfirm(centre, pick.near.city, "pen-center");
   for (const p of ring) {
     if (owner(p) === local) { watched.add(key(p)); continue; }
     if (owner(p) !== -1) { watched.add(key(p)); continue; }   // someone else's: cannot buy it, note and move on
@@ -203,7 +203,7 @@ async function buildPen() {
   }
   pen = { cid: pick.u.cid, type: pick.u.type, unitOwner: pick.u.owner, centre, ring,
     boughtTurn: safe(() => Game.turn, -1), history: [] };
-  emit(`B PEN built ${key(centre)} ${J(penState())}`);
+  emit(`B PEN built ${key(center)} ${J(penState())}`);
   return true;
 }
 function penState() {
@@ -262,7 +262,7 @@ function verdicts() {
   const st = penState();
   const moved = pen.history.some((h) => !h.onCentre);
   const everEnclosed = pen.history.some((h) => h.enclosed) || false;
-  emit(`B VERDICT centre=${key(pen.centre)} unit=${pen.type} owner=${pen.unitOwner} everEnclosed=${everEnclosed} `
+  emit(`B VERDICT center=${key(pen.centre)} unit=${pen.type} owner=${pen.unitOwner} everEnclosed=${everEnclosed} `
     + `moved=${moved} now=${J(st)} history=${J(pen.history)} => `
     + (!everEnclosed ? "ENCLOSURE-NEVER-HELD: plots reverted before the unit was ever surrounded by our land"
       : moved ? "LEFT-WHILE-ENCLOSED: a unit CAN leave our territory, so trespass does not strand it"

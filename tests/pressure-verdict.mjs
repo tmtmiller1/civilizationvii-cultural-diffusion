@@ -76,14 +76,14 @@ const cfg = {
   const none = pressureVerdict({ "3": 900 }, 3, [], cfg);
   assert.equal(estimateTurnsToFlip(none, 900, cfg), null, "no pending flip => null");
 
-  // Growing: a strong neighbour feeds the tile, so it should flip in a finite, positive number of turns.
+  // Growing: a strong neighbor feeds the tile, so it should flip in a finite, positive number of turns.
   const growing = pressureVerdict({ "5": 150 }, -1, [], cfg); // needs to reach 300
-  const turns = estimateTurnsToFlip(growing, 6000, cfg);      // strong neighbour delivering culture
+  const turns = estimateTurnsToFlip(growing, 6000, cfg);      // strong neighbor delivering culture
   assert.ok(Number.isFinite(turns) && turns > 0, "a fed frontier tile flips in finite turns");
 
-  // Stalled: no neighbour support, decay dominates => Infinity.
+  // Stalled: no neighbor support, decay dominates => Infinity.
   const stalled = estimateTurnsToFlip(growing, 0, cfg);
-  assert.equal(stalled, Infinity, "no neighbour support => stalled (Infinity)");
+  assert.equal(stalled, Infinity, "no neighbor support => stalled (Infinity)");
 
   // Null verdict guard.
   assert.equal(estimateTurnsToFlip(null, 100, cfg), null, "null verdict => null");

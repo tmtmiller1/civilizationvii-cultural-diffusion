@@ -11,10 +11,10 @@
 //   06-lens-wide        the front in context, for a header image
 //
 // Framing lessons from the first two attempts, both of which wasted a run:
-//   * Aim AT the subject. Run 11's recipe aims four columns east to dodge centred pop-ups, which put the paint in
+//   * Aim AT the subject. Run 11's recipe aims four columns east to dodge centered pop-ups, which put the paint in
 //     the top-left corner and made the cities the subject instead.
 //   * Seed BELOW the ownership bar and never run a pass: a claimed tile is not contested, so the lens has nothing
-//     to paint (the first attempt's lens-on and lens-off frames measured 1.44% and 1.47% coloured pixels).
+//     to paint (the first attempt's lens-on and lens-off frames measured 1.44% and 1.47% colored pixels).
 //   * Do not switch to `fxs-default-lens` for a clean map - it is the yield-icon overlay.
 
 import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
@@ -59,10 +59,10 @@ function seedStock() {
 }
 
 /**
- * Seed a compact block of contested tiles and return its CENTRE, so the camera can sit on the paint rather than
+ * Seed a compact block of contested tiles and return its CENTER, so the camera can sit on the paint rather than
  * beside it. Prefers tiles that are unowned and touch our land, which are the ones the lens will actually paint
  * under the v1.2.0 gates.
- * @returns {{centre:{x:number,y:number}, city:*, n:number}|null} The seeded block.
+ * @returns {{center:{x:number,y:number}, city:*, n:number}|null} The seeded block.
  */
 function seedBlock() {
   const cities = localCities();
@@ -86,7 +86,7 @@ function seedBlock() {
   safe(() => { Configuration.editGame().setValue(STATE_KEY, JSON.stringify({ v: 2, data: d })); });
   const cx = Math.round(best.ring.reduce((a, p) => a + p.x, 0) / best.ring.length);
   const cy = Math.round(best.ring.reduce((a, p) => a + p.y, 0) / best.ring.length);
-  emit(`SEED city=${cityName(best.city)} tiles=${best.ring.length} stock=${stock} centre=${cx},${cy}`);
+  emit(`SEED city=${cityName(best.city)} tiles=${best.ring.length} stock=${stock} center=${cx},${cy}`);
   return { centre: { x: cx, y: cy }, city: best.city, n: best.ring.length };
 }
 

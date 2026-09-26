@@ -5,7 +5,7 @@
 // value degrades to a neutral default and never throws.
 
 /**
- * @param {()=>*} fn Thunk. @param {*} fallback Fallback. @returns {*} fn() or fallback.
+ * @param {()=>*} fn Thunk. @param {*} fallback @returns {*} fn() or fallback.
  */
 function safe(fn, fallback) {
   try {

@@ -5,7 +5,7 @@
 // Why it is open: while shooting release imagery, a frame taken before any `setActiveLens` call already showed the
 // shading, with `getActiveLens()` reporting `fxs-default-lens`. That is either a leak or a misread of the image.
 // The code looks correctly gated - `PressureLens.activeLayers` holds the layer, and the layer implements
-// `applyLayer` / `removeLayer` - so this measures the behaviour instead of re-reading the source.
+// `applyLayer` / `removeLayer` - so this measures the behavior instead of re-reading the source.
 //
 // Sequence, with the layer's own enabled flag logged at every step and a frame at each:
 //   A  untouched at load        - the state a player opens the game in
@@ -78,7 +78,7 @@ function seedBlock() {
   safe(() => { Configuration.editGame().setValue(STATE_KEY, JSON.stringify({ v: 2, data: d })); });
   const cx = Math.round(best.ring.reduce((a, p) => a + p.x, 0) / best.ring.length);
   const cy = Math.round(best.ring.reduce((a, p) => a + p.y, 0) / best.ring.length);
-  emit(`SEED tiles=${best.ring.length} stock=${stock} centre=${cx},${cy}`);
+  emit(`SEED tiles=${best.ring.length} stock=${stock} center=${cx},${cy}`);
   return { x: cx, y: cy };
 }
 

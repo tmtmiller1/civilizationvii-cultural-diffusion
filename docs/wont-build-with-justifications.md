@@ -18,10 +18,10 @@ Mirrors the sibling mod's pattern
 >   instead.
 > - **Paused — not engine-blocked** — no wall; parked for priority, with a revisit trigger.
 
-> **How this differs from the neighbouring docs.**
+> **How this differs from the neighboring docs.**
 > - [`potential-future-features.md`](potential-future-features.md) — work we still intend to do.
 > - [`wont-fix-with-justifications.md`](wont-fix-with-justifications.md) — decisions **not to change** existing, working
->   behaviour. Closed by judgment, not by a wall.
+>   behavior. Closed by judgment, not by a wall.
 > - **This file** — features/approaches with **no path (or no reason) to ship**, grouped by the reasons above.
 >
 > **Standing convention — keep this list current.** When an approach is abandoned or retired, add a `##` entry with:
@@ -196,7 +196,7 @@ enforces the ring-3 limit inside both operations, not just in the list the inter
 ownership bar, via `unclaim` (`WorldBuilder.MapPlots.setOwnership(NO_PLAYER, loc)`), with a floor-to-bar hysteresis
 band (`recedeFraction`).
 
-**Why it was tempting:** it is the Civ V behaviour. A culture that fades should lose its frontier, and not only to a
+**Why it was tempting:** it is the Civ V behavior. A culture that fades should lose its frontier, and not only to a
 rival that out-cultures it.
 
 **Concrete reason it won't ship:** on game 1.4.2 `setOwnership(NO_PLAYER)` never un-owns a tile attached to a city.

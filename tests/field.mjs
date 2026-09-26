@@ -23,14 +23,14 @@ assert.ok(injectionAmount(60, 1000, cfg) > injectionAmount(30, 1000, cfg), "a st
 assert.ok(Math.abs(decayValue(1000, cfg) - (1000 - 51)) < 1e-9, "5% + 1 lost");
 assert.equal(decayValue(0.5, cfg), 0, "tiny stock decays to nothing");
 
-// diffusion: below threshold nothing spreads; blocked terrain nothing spreads; neighbour
+// diffusion: below threshold nothing spreads; blocked terrain nothing spreads; neighbor
 // asymptotes to normalMax of the source and never exceeds it.
 assert.equal(diffusionDelivered(50, 0, OPEN, cfg), 0, "source below threshold does not diffuse");
 assert.equal(diffusionDelivered(5000, 0, { ...OPEN, blocked: true }, cfg), 0, "blocked terrain stops culture");
 const oneStep = diffusionDelivered(5000, 0, OPEN, cfg);
 assert.ok(Math.abs(oneStep - 5000 * 0.055) < 1e-6, "delivers the diffusion rate of the source");
 const nearCap = diffusionDelivered(5000, 5000 * 0.4 - 1, OPEN, cfg);
-assert.ok(nearCap <= 1 + 1e-9, "a neighbour near the normalMax cap receives almost nothing more");
+assert.ok(nearCap <= 1 + 1e-9, "a neighbor near the normalMax cap receives almost nothing more");
 assert.equal(diffusionDelivered(5000, 5000 * 0.4, OPEN, cfg), 0, "at the cap it receives nothing");
 // road carries much farther than open ground.
 assert.ok(
@@ -46,9 +46,9 @@ assert.equal(resolveOwner({ "0": 400, "1": 380 }, 1, [], cfg).flip, false, "a sl
 assert.equal(resolveOwner({ "0": 900, "1": 380 }, 1, [], cfg).flip, true, "a decisive lead flips it");
 assert.equal(resolveOwner({ "0": 5000 }, -1, [0], cfg).owner, -1, "dead civs are ignored");
 
-// -- Travelling wave: reach is SLOW and emergent (the whole point of the port) --
+// -- Traveling wave: reach is SLOW and emergent (the whole point of the port) --
 // A 1-D line of tiles; tile 0 is a city injecting each turn; culture diffuses to line
-// neighbours, decays, and we watch how many TURNS until each distance crosses ownership.
+// neighbors, decays, and we watch how many TURNS until each distance crosses ownership.
 function simulateReach(strength, maxTurns) {
   const N = 12;
   let f = new Array(N).fill(0);

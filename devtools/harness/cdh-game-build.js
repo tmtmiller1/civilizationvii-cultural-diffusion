@@ -49,7 +49,7 @@ function writeField(field) {
 }
 function stock(field, l, pid) { const row = field[key(l)]; return (row && row[String(pid)]) || 0; }
 
-/** A rival MAJOR city inside our region, and an unowned land tile beside that rival's land, 4-6 from its centre. */
+/** A rival MAJOR city inside our region, and an unowned land tile beside that rival's land, 4-6 from its center. */
 function findAiSite() {
   const ours = localCities();
   for (const p of safe(() => Players.getAlive(), [])) {
@@ -116,12 +116,12 @@ async function run() {
   if (site) {
     const cid = site.city.id;
     const centreBefore = stock(readState().field || {}, site.cityLoc, site.rival);
-    // give the centre a stock to rewrite (a fresh field has only what one pass injected)
+    // give the center a stock to rewrite (a fresh field has only what one pass injected)
     const st = readState(); st.field[key(site.cityLoc)] = { [String(site.rival)]: 1000 };
     safe(() => Configuration.editGame().setValue(STATE_KEY, JSON.stringify({ v: 2, data: st })));
     const n = safe(() => onCityTransfered({ fromPlayer: site.rival, transferType: 0, cityID: cid }), "ERR");
     const after = stock(readState().field || {}, site.cityLoc, site.rival);
-    emit(`B4 CAPTURE handler on ${site.name} cid=${js(cid)} purchasedPlots=${safe(() => site.city.getPurchasedPlots().length, "n/a")} rewrote=${n} centre stock 1000 -> ${r2(after)} (expect 1000*0.45 + 550*0.75 = 862.5; before the seed it was ${r2(centreBefore)})`);
+    emit(`B4 CAPTURE handler on ${site.name} cid=${js(cid)} purchasedPlots=${safe(() => site.city.getPurchasedPlots().length, "n/a")} rewrote=${n} center stock 1000 -> ${r2(after)} (expect 1000*0.45 + 550*0.75 = 862.5; before the seed it was ${r2(centreBefore)})`);
     emit(`B4 VERDICT ${Math.abs(after - 862.5) < 0.01 ? "CAPTURE TRANSFER applied through the real city reads" : "unexpected value"}`);
   }
   // B5: conquest reads on a tile under one of our units
