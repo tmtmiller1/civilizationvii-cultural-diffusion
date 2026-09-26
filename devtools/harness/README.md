@@ -271,7 +271,7 @@ Next steps if it is resumed, in order:
 1. `control40` (this folder, `cdh-game-control.js` with `NO_MOD=1`) - 40 turns on the same save with the mod DISABLED.
    A crash there means long unattended runs destabilise this save regardless of the mod.
 2. `AI_VERBOSE=1`, so the `AI_ConstructibleBroker` CSV tail names the last-evaluated constructible - the evidence
-   CLAUDE.md calls for on AI-turn crashes, and absent from both reports here.
+   an AI-turn crash report needs, and absent from both reports here.
 3. If the mod is implicated, bisect by config rather than by code: `maxDiffusionPlots` low, then `flipMaxDistance` 4,
    then claims beyond ring 3 disallowed entirely.
 

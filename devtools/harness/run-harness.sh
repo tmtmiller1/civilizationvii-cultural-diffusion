@@ -34,7 +34,7 @@ FOREIGN=$(ls "$MODS" 2>/dev/null | grep -iE "probe|harness" | grep -v "^cd-harne
 [ -n "$FOREIGN" ] && { say "another session's probe mod(s) are installed: $FOREIGN"; say "move them out first, or they hijack this launch"; exit 1; }
 
 # AI_VERBOSE=1 turns on the engine's AI scoring logs (AppOptions.txt AIVerboseLogging), which is what makes
-# the AI_ConstructibleBroker CSV tail appear - the evidence CLAUDE.md calls for on an AI-turn crash. The file
+# the AI_ConstructibleBroker CSV tail appear - the evidence an AI-turn crash report needs. The file
 # is the player's, so it is backed up and restored. Mechanism proven by firaxis-bug-reports/repro/run-repro.sh.
 OPTS="$S/AppOptions.txt"
 if [ "${AI_VERBOSE:-0}" = "1" ] && [ -f "$OPTS" ]; then

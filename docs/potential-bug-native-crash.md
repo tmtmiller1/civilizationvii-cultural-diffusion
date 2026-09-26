@@ -68,7 +68,7 @@ at the same point twice, a single run per point is a coin toss dressed as a resu
 
 Making the measure usable needs replicates. Separating something like a 65% crash rate from a 15% one takes on the
 order of ten runs per arm; at ~20 minutes a run that is about **seven hours of exclusive game time for one
-comparison**, before the four-point bisect starts. That is the kind of spend `CLAUDE.md` exists to prevent, and
+comparison**, before the four-point bisect starts. That is a large spend, and
 the evidence does not justify it yet.
 
 ## What would re-open it
