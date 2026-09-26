@@ -80,8 +80,9 @@ export function playerGold(pid) {
 
 /**
  * Grant (amount>0) or deduct (amount<0) gold to a player - the WRITE twin of playerGold. Prefers
- * Treasury.changeGoldBalance (balance-only) over Players.grantYield, which would also spike the
- * net-gold yield stat; grantYield is only a last-resort fallback.
+ * Players.grantYield(YIELD_GOLD), the one gold write that works on this engine (watched 2026-09-25: it lands
+ * about 3 s after the call, for a rival as for us), over Treasury.changeGoldBalance, which was watched changing
+ * nothing for anyone and is kept only as a fallback for a build without grantYield.
  * @param {number} pid Player id. @param {number} amount Gold delta.
  * @returns {{ok:boolean, reason:string}} Result.
  */
@@ -96,18 +97,18 @@ function playersApi() {
   return typeof Players !== "undefined" ? Players : null;
 }
 
-/** The write branch of grantGold: changeGoldBalance first, then grantYield. @returns {{ok:boolean, reason:string}} */
+/** The write branch of grantGold: grantYield first, then changeGoldBalance. @returns {{ok:boolean, reason:string}} */
 function writeGold(pid, amount) {
   const P = playersApi();
-  const t = P?.get?.(pid)?.Treasury;
-  if (typeof t?.changeGoldBalance === "function") {
-    t.changeGoldBalance(amount);
-    return { ok: true, reason: "changeGoldBalance" };
-  }
   const yt = typeof YieldTypes !== "undefined" ? YieldTypes.YIELD_GOLD : null;
   if (yt != null && typeof P?.grantYield === "function") {
     P.grantYield(pid, yt, amount);
-    return { ok: true, reason: "grantYield-fallback" };
+    return { ok: true, reason: "grantYield" };
+  }
+  const t = P?.get?.(pid)?.Treasury;
+  if (typeof t?.changeGoldBalance === "function") {
+    t.changeGoldBalance(amount);
+    return { ok: true, reason: "changeGoldBalance-fallback" };
   }
   return { ok: false, reason: "no-api" };
 }

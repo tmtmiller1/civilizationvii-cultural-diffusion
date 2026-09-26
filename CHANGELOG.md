@@ -4,6 +4,68 @@ All notable changes to Cultural Diffusion are recorded here. The format follows
 [Keep a Changelog](https://keepachangelog.com/), and the mod uses
 [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+## [1.3.0] - 2026-09-26
+
+### Added
+
+The rest of Gedemon's Civ V model, built against what the 2026-09-25 probes proved
+([`docs/civ-v-parity-spec.md`](docs/civ-v-parity-spec.md), results in [`docs/probe-history.md`](docs/probe-history.md) §6).
+
+- **Cities carry every culture living in them** (`foreignCultureInCities`, on by default; spec §3 and §4). A city
+  injects culture for every group present on its tile, not only its owner's: the owner at full strength, each foreign
+  group at population strength (`foreignInjectScale`), weighted by that group's share of the population when the
+  Emigration mod records one, and otherwise only once the group holds `foreignGroupMinStock` there, so a neighbour's
+  trickle is never amplified. The city-tile cap now bounds the total culture on the tile, as in Civ V. Each turn the
+  city converts `convertBase` (0.5%) of every foreign group's stock to its owner, plus a bonus per science and culture
+  building it has and per ideology its owner holds (`convertBonuses`, a data table keyed by type name). A captured or
+  mixed city therefore keeps producing its old culture, which contests the land around it and fades over time.
+- **Culture transfer on capture** (`captureTransfer`, on by default; spec §5). When a city changes hands, every culture
+  on its tiles loses `captureLoss` (55%) and the conqueror gains `captureGain` (75%) of the total lost, saved at once.
+  The engine's `CityTransfered` event was watched reaching the mod for transfers between two other civilizations.
+- **Every civilization gains land by culture** (`aiCultureFlips`, opt-in, Options toggle; spec §2). Inside the
+  simulated region a living major whose culture decisively leads a tile takes it through its nearest city, under the
+  same gates as the player's own claims (peace, the incumbent's core protection, adjacency to the leader's land,
+  `flipMaxDistance`, the strand guard, its per-city cap, its own inner rings left to the base game), with its own
+  per-pass ceiling. A rival can take one of your tiles and lose one the same way; you are told when it does.
+  City-states and independent peoples never gain land this way. Far from your cities nothing moves, because the field
+  is only simulated around them.
+- **Armies hold the ground they occupy** (`conquestFlip`, opt-in, Options toggle; spec §6). During a war between two
+  majors, a combat unit that holds an enemy tile for `conquestBufferTurns` (5) consecutive turns takes it for its
+  owner, whatever the culture there. Leaving resets the count. The tile is then held for `conquestHoldTurns` (10):
+  culture cannot flip it back meanwhile, but another army holding it through the buffer takes it at any time; after
+  the hold it works the normal way. City centres and urban districts are never taken this way. Another civilization's
+  armies do the same only when AI culture flips are also on. Watched in game: a planted Spearman held an enemy tile
+  five turns, the tile flipped and was confirmed next pass. Watched again driven only by the Options checkbox, with no
+  config patch: off by default, six turns of occupation took nothing; checked, the tile fell once the buffer filled;
+  unchecked again, the live setting went off on the next pass.
+- **Three small Civ V rules** (spec §8): a mountain source needs `sourceThresholdMountain` (7.5×) the threshold before
+  it diffuses at all; every owned tile in the region keeps at least `ownerFloor` (1) of its owner's culture, so owned
+  land never reads as empty in the lens; and the city-tile cap applies to the total (above).
+- The pressure lens and its hover readout know about AI flips: with the toggle on, a tile another civilization's
+  culture is winning is shaded and counted down only when that civilization's own gates would let it take the tile.
+
+### Changed
+
+- **Gold writes go through `Players.grantYield`.** `Treasury.changeGoldBalance`, the refund verb until now, was watched
+  changing nothing for any player on 1.5.0, while `grantYield` lands within about 3 s for a rival as for us. A script
+  `purchasePlot` was also watched costing nothing, so no gold moved either way; the change is insurance for a build
+  that prices the purchase.
+
+- **Rivers are a highway along them and a barrier across them, for both kinds of river.** Until now any step onto a
+  river tile, from any direction, got the "follow the river" bonus, so rivers sped culture across them: the opposite of
+  the Civ V original, where a river carried culture along its bank and held it back from the far side. Now a step from
+  one tile of a river to the next follows it, and a navigable river is the stronger highway (+100% rate and a ×2.5 cap,
+  as strong as a road, against +65% and ×1.8 on a minor river). A step onto a river from its bank, from the other kind
+  of river, or from a differently named river crosses it, and pays Civ V's river-crossing gate once: the source needs
+  twice the base threshold, the rate takes a 50% malus and the cap falls to ×0.35. Stepping off a river is free.
+  New keys `navigableFollowBonus`, `navigableFollowMax`, `terrainRiverCross` and `terrainNavigableCross`. Unit-tested
+  in `tests/rivers.mjs` and watched in game on 2026-09-25: from a seeded field, one pass delivered 1.65× along a minor
+  river, 2.0× along a navigable one, 0.67× and 0.61× across them, and nothing across below the gate, each exactly the
+  value the field math predicts ([`docs/probe-history.md`](docs/probe-history.md) §6). Spec:
+  [`docs/civ-v-parity-spec.md`](docs/civ-v-parity-spec.md) §1.
+
 ## [1.2.0] - 2026-09-24
 
 ### Fixed

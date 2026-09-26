@@ -22,6 +22,9 @@ const OPT_ADJACENCY = "requireAdjacency";
 const OPT_PRESSURE_LENS = "pressureLens"; // read-only Cultural Pressure map lens (UI only)
 const OPT_RECEDE = "recedeBorders";        // opt-in: claimed tiles can be ceded to a rival
 const OPT_BUFFER = "growthBuffer";         // +1 ring: claim unowned tiles beside a newly finished rural improvement
+const OPT_AI_FLIPS = "aiCultureFlips";     // opt-in: every major civ gains land by culture inside the region
+const OPT_CONQUEST = "conquestFlip";       // opt-in: a combat unit holding an enemy tile through a war takes it
+const OPT_FOREIGN = "foreignCultureInCities"; // cities pump every culture group present and convert foreign stock
 
 // Core-protection dropdown index -> ring radius that never flips (see cd-config coreProtectRadius).
 const CORE_RADIUS_BY_INDEX = [1, 0, -1];
@@ -101,7 +104,7 @@ const ModOptions = new ModOptionsStore();
 
 /**
  * The saved intensity-preset index (0 = Custom). Defaults to Medium (index 2) on a
- * fresh profile so the mod has sensible behaviour out of the box.
+ * fresh profile so the mod has sensible behavior out of the box.
  * @returns {number} Preset index.
  */
 export function getPresetIndex() {
@@ -239,6 +242,45 @@ export function setGrowthBuffer(on) {
   ModOptions.save(MOD_ID, OPT_BUFFER, on ? 1 : 0);
 }
 
+/**
+ * Whether every living major civilization gains land by culture inside the simulated region, under the same gates
+ * as the local player. Opt-in, OFF by default.
+ * @returns {boolean} Whether AI culture flips are on.
+ */
+export function getAiCultureFlips() {
+  return loadBool(OPT_AI_FLIPS, CONFIG_DEFAULTS.aiCultureFlips);
+}
+/** @param {boolean} on AI-flips flag. */
+export function setAiCultureFlips(on) {
+  ModOptions.save(MOD_ID, OPT_AI_FLIPS, on ? 1 : 0);
+}
+
+/**
+ * Whether a combat unit that holds an enemy tile for the occupation buffer during a war takes it. Opt-in, OFF by
+ * default.
+ * @returns {boolean} Whether conquest flips are on.
+ */
+export function getConquestFlip() {
+  return loadBool(OPT_CONQUEST, CONFIG_DEFAULTS.conquestFlip);
+}
+/** @param {boolean} on Conquest flag. */
+export function setConquestFlip(on) {
+  ModOptions.save(MOD_ID, OPT_CONQUEST, on ? 1 : 0);
+}
+
+/**
+ * Whether a city injects culture for every group present on its tile and converts foreign stock to its owner each
+ * turn. Defaults to the shipped CONFIG value (on).
+ * @returns {boolean} Whether foreign culture in cities is on.
+ */
+export function getForeignCultureInCities() {
+  return loadBool(OPT_FOREIGN, CONFIG_DEFAULTS.foreignCultureInCities);
+}
+/** @param {boolean} on Foreign-culture flag. */
+export function setForeignCultureInCities(on) {
+  ModOptions.save(MOD_ID, OPT_FOREIGN, on ? 1 : 0);
+}
+
 // -- apply to live CONFIG -------------------------------------------
 
 /**
@@ -276,6 +318,9 @@ export function applyTunableOverrides() {
   CONFIG.requireAdjacency = getRequireAdjacency();
   CONFIG.recedeBorders = getRecedeBorders();
   CONFIG.growthBuffer = getGrowthBuffer();
+  CONFIG.aiCultureFlips = getAiCultureFlips();
+  CONFIG.conquestFlip = getConquestFlip();
+  CONFIG.foreignCultureInCities = getForeignCultureInCities();
   CONFIG.debug = getDebug();
 }
 

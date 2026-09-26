@@ -81,6 +81,27 @@
             <Text>Off by default. Tiles your culture claimed can be lost again: if a rival's culture decisively overtakes yours on one, it passes to that rival's nearest city. Tiles your cities gained through normal growth are never affected.</Text>
         </Row>
 
+        <Row Tag="LOC_OPTIONS_CD_AI_FLIPS">
+            <Text>Cultural Diffusion - every civilization gains land by culture</Text>
+        </Row>
+        <Row Tag="LOC_OPTIONS_CD_AI_FLIPS_DESCRIPTION">
+            <Text>Off by default. When on, other civilizations' borders move by culture too, under the same rules as yours: a rival whose culture decisively leads a tile near your lands takes it, including tiles of yours, and can lose tiles the same way. City-states and independent peoples never gain land this way. You are told when a rival takes one of your tiles.</Text>
+        </Row>
+
+        <Row Tag="LOC_OPTIONS_CD_CONQUEST">
+            <Text>Cultural Diffusion - armies hold the ground they occupy</Text>
+        </Row>
+        <Row Tag="LOC_OPTIONS_CD_CONQUEST_DESCRIPTION">
+            <Text>Off by default. When on, during a war a combat unit that holds an enemy tile for five consecutive turns takes it for its owner, whatever the culture there; leaving resets the count, and city centers and urban districts are never taken this way. The conquered tile is then held against culture for ten turns, though another army can still take it. Other civilizations' armies do the same only when "every civilization gains land by culture" is also on.</Text>
+        </Row>
+
+        <Row Tag="LOC_OPTIONS_CD_FOREIGN_CULTURE">
+            <Text>Cultural Diffusion - cities carry every culture living in them</Text>
+        </Row>
+        <Row Tag="LOC_OPTIONS_CD_FOREIGN_CULTURE_DESCRIPTION">
+            <Text>On by default. A city produces culture for every people present on its tile, not only its owner's: a captured or mixed city keeps producing its old culture, which contests the land around it, while each turn a small share of that foreign culture converts to the owner's (faster with libraries, universities, museums and, in the Modern age, an ideology). Off = a city produces only its owner's culture.</Text>
+        </Row>
+
         <Row Tag="LOC_OPTIONS_CD_DEBUG">
             <Text>Cultural Diffusion - debug logging</Text>
         </Row>

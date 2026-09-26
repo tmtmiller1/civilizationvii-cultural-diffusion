@@ -16,7 +16,7 @@ pandoc "$BUILD_DIR/README.pdf.md" \
   --toc \
   --toc-depth=2 \
   --pdf-engine=tectonic \
-  -V title="Cultural Diffusion - a culture-field border mod for Civilization VII" \
+  -V title="Cultural Diffusion: a culture-field border mod for Civilization VII" \
   -V author="" \
   -V date="" \
   -V geometry:margin=0.65in \

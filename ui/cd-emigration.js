@@ -7,7 +7,7 @@
 // Data channels:
 //   - Configuration.getGame().getValue("EmigrationEthnos_v1")
 //       -> JSON { cities: { "x,y": { owner, byCiv: { <civId>: pts }, total, name } } }
-//       keyed by the city-centre plot "x,y" (emigration-composition.js locKey).
+//       keyed by the city-center plot "x,y" (emigration-composition.js locKey).
 //   - globalThis.EmigrationData - per-player migration stats (presence signal / future use).
 
 const COMPOSITION_KEY = "EmigrationEthnos_v1";
@@ -67,7 +67,7 @@ function parseCompositionEntry(e) {
 
 /**
  * Load emigration's population composition as a plot-keyed lookup. Each entry gives, for a
- * settlement centre "x,y", the share of population descended from each origin civ.
+ * settlement center "x,y", the share of population descended from each origin civ.
  * @returns {Map<string, {owner:number, total:number, byCiv:Record<string,number>}>|null}
  *   "x,y" -> composition, or null when unavailable/unreadable.
  */

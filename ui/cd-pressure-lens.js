@@ -1,7 +1,7 @@
 // cd-pressure-lens.js
 //
 // The CULTURAL PRESSURE lens: a read-only map overlay that tints every simulated frontier tile whose
-// LEADING culture differs from its owner in the leader's banner colour, deepening as the tile nears
+// LEADING culture differs from its owner in the leader's banner color, deepening as the tile nears
 // capture. Pressure is read off the persisted culture field and scored with the SAME flip gates the
 // pass uses (cd-field pressureVerdict), age-adjusted, so the map and the sim agree. It never touches
 // ownership. Self-registers from its own <UIScripts> entry in the HUD context (LensManager/WorldUI).
@@ -13,13 +13,14 @@ import { pressureVerdict, passCanAct } from "/cultural-diffusion/ui/cd-field.js"
 import { ownerAt, localPlayerId } from "/cultural-diffusion/ui/cd-plots.js";
 import { currentAgeKey } from "/cultural-diffusion/ui/cd-polity.js";
 import { applyTunableOverrides, getPressureLensEnabled } from "/cultural-diffusion/ui/cd-settings.js";
-import { localCityList, claimInScope, claimGateBlocked } from "/cultural-diffusion/ui/cd-eligibility.js";
+import { localCityList, cityListOf, claimInScope, claimGateBlocked } from "/cultural-diffusion/ui/cd-eligibility.js";
+import { isMajorPlayer } from "/cultural-diffusion/ui/cd-borders.js";
 import { civDisplayColor, hexToFloat4 } from "/cultural-diffusion/ui/cd-lens-colors.js";
 
 export const LENS = "cd-pressure-lens";
 const LAYER = "cd-pressure-layer";
 const HEX_GRID = 1; // OVERLAY_PRIORITY.HEX_GRID, inlined
-const FALLBACK_HEX = "#c9a24c"; // the mod's gold, when a contender's banner colour can't be resolved
+const FALLBACK_HEX = "#c9a24c"; // the mod's gold, when a contender's banner color can't be resolved
 // Alpha ramps with capture progress so the frontier reads faint->vivid as tiles near a flip.
 const MIN_ALPHA = 0.18;
 const MAX_ALPHA = 0.78;
@@ -94,7 +95,7 @@ function lensState() {
 /**
  * Every simulated tile with a border shift the pass can make (passCanAct: our culture leading, or with recede on a
  * rival leading on a tile the mod claimed for us) and non-trivial capture progress. Each entry carries the leader
- * (for colour) and the progress (for alpha).
+ * (for color) and the progress (for alpha).
  * @returns {{x:number, y:number, leader:number, progress:number}[]} Contested tiles.
  */
 function pressureTiles() {
@@ -104,20 +105,49 @@ function pressureTiles() {
   const cfg = ageAdjustedCfg();
   const me = localPlayerId();
   const dead = deadOwnersOf(field, aliveIds());
-  const ctx = { me, cities: localCityList(me), state: st.state, cfg };
+  const env = { field, claims, cfg, me, dead, ctx: { me, cities: localCityList(me), state: st.state, cfg },
+    ctxFor: leaderContexts(st.state, cfg) };
   /** @type {{x:number, y:number, leader:number, progress:number}[]} */
   const out = [];
   for (const k of Object.keys(field)) {
-    const loc = unkey(k);
-    if (!isFinite(loc.x) || !isFinite(loc.y)) continue;
-    const owner = ownerAt(loc);
-    const v = pressureVerdict(field[k], owner, dead, cfg);
-    if (!passCanAct(v.leader, owner, me, claims[k]?.by === me, cfg.recedeBorders)) continue; // the pass never acts
-    if (v.progress < MIN_PROGRESS) continue;
-    if (v.leader === me && !claimable(loc, owner, ctx)) continue; // ...nor on a tile every other gate refuses
-    out.push({ x: loc.x, y: loc.y, leader: v.leader, progress: v.progress });
+    const entry = contestedEntry(k, env);
+    if (entry) out.push(entry);
   }
   return out;
+}
+
+/**
+ * One field tile as a lens entry, or null when the pass could never act on it: passCanAct (with AI flips on,
+ * another major that leads is a claimant too), enough progress, and every claim gate asked for whoever would claim.
+ */
+function contestedEntry(k, env) {
+  const { field, claims, cfg, me, dead } = env;
+  const loc = unkey(k);
+  if (!isFinite(loc.x) || !isFinite(loc.y)) return null;
+  const owner = ownerAt(loc);
+  const v = pressureVerdict(field[k], owner, dead, cfg);
+  const aiLead = aiLeads(v.leader, me, cfg);
+  const flags = { recede: cfg.recedeBorders, aiFlips: aiLead };
+  if (!passCanAct(v.leader, owner, me, claims[k]?.by === me, flags)) return null;
+  if (v.progress < MIN_PROGRESS) return null;
+  if (v.leader === me && !claimable(loc, owner, env.ctx)) return null; // ...nor on a tile every other gate refuses
+  if (aiLead && !claimable(loc, owner, env.ctxFor(v.leader))) return null;
+  return { x: loc.x, y: loc.y, leader: v.leader, progress: v.progress };
+}
+
+/** Whether a leading culture is another major that the AI-flip path could act for. */
+function aiLeads(leader, me, cfg) {
+  return !!cfg.aiCultureFlips && leader >= 0 && leader !== me && isMajorPlayer(leader);
+}
+
+/** A cached eligibility context per leading player (its own city list), for the AI-flip gates. */
+function leaderContexts(state, cfg) {
+  /** @type {Map<number, *>} */
+  const cache = new Map();
+  return (pid) => {
+    if (!cache.has(pid)) cache.set(pid, { me: pid, cities: cityListOf(pid), state, cfg });
+    return cache.get(pid);
+  };
 }
 
 /**
@@ -139,7 +169,7 @@ function batchKey(leader, progress) {
 }
 
 /**
- * Group contested tiles into a handful of (leader colour x progress-alpha) batches, so the overlay is
+ * Group contested tiles into a handful of (leader color x progress-alpha) batches, so the overlay is
  * painted in a few addPlots calls instead of one per tile.
  * @param {{x:number, y:number, leader:number, progress:number}[]} tiles Contested tiles.
  * @returns {{fill:*, plots:{x:number,y:number}[]}[]} Fill batches.
@@ -181,7 +211,7 @@ function cachedBatches() {
   return b;
 }
 
-/** The lens layer: an overlay of plot fills coloured by the contender about to take each frontier tile. */
+/** The lens layer: an overlay of plot fills colored by the contender about to take each frontier tile. */
 class PressureLensLayer {
   constructor() {
     this.group = WorldUI.createOverlayGroup("CdPressureOverlay", HEX_GRID);
@@ -197,7 +227,7 @@ class PressureLensLayer {
   /** Lens-layer lifecycle: init (no-op; built in the constructor). */
   initLayer() {}
 
-  /** Lens-layer lifecycle: paint each contested tile in its contender's colour at a progress alpha. */
+  /** Lens-layer lifecycle: paint each contested tile in its contender's color at a progress alpha. */
   applyLayer() {
     this.clear();
     for (const b of cachedBatches()) {

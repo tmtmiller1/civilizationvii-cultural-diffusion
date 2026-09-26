@@ -101,6 +101,8 @@ const cfg = {
   assert.equal(passCanAct(ai, me, me, true, false), false, "a claimed tile never recedes with recede off");
   assert.equal(passCanAct(ai, me, me, false, true), false, "a tile the base game grew never recedes");
   assert.equal(passCanAct(ai, me, me, true, true), true, "with recede on a rival can win back a claimed tile");
+  assert.equal(passCanAct(ai, -1, me, false, { aiFlips: true }), true, "with AI flips on an AI leading unowned land flips");
+  assert.equal(passCanAct(ai, me, me, false, { recede: true, aiFlips: false }), false, "object flags: recede alone still needs a claim");
   assert.equal(passCanAct(me, me, me, true, true), false, "the owner leading is no shift");
   assert.equal(passCanAct(-1, -1, me, false, true), false, "no leader is no shift");
 }

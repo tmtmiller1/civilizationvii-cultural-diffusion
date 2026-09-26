@@ -461,6 +461,13 @@ r = runPass();
 assert.equal(r.released, 1, "a mod claim inside the natural ring is released back to the base game");
 assert.equal(savedState.claims[tk(INNER.x, INNER.y)], undefined, "...and its claim record is dropped");
 assert.ok(unclaimed.includes(tk(INNER.x, INNER.y)), "...via a real unclaim on the tile");
+// ...but a cooldown on that tile survives the release: it is the anti-flicker guard (and a conquest's hold), not part
+// of the claim record. Watched 2026-09-26: a conquered ring-3 tile lost its hold here the pass after it was taken.
+reset();
+seedState({ claims: { [tk(INNER.x, INNER.y)]: { by: ME, city: CITY_ID, turn: 1 } }, locked: { [tk(INNER.x, INNER.y)]: 10 } });
+r = runPass();
+assert.equal(r.released, 1, "fixture: the inner claim is released");
+assert.equal(savedState.locked[tk(INNER.x, INNER.y)], 9, "the lock stays (ticked down by the pass), only the record goes");
 
 // repairOrphans: owner==me but no owning city => released or re-integrated, never left an orphan.
 reset();
@@ -973,5 +980,268 @@ CONFIG.protectTrappedUnits = false;
 r = runPass();
 assert.equal(r.flips, 1, "protectTrappedUnits off -> the claim goes ahead (pre-guard behaviour)");
 CONFIG.protectTrappedUnits = true;
+
+// ================================================================================
+// 20. Foreign culture IN cities (spec §3 + §4): a mixed city pumps every group present and converts some back.
+// ================================================================================
+const CK = tk(CENTER.x, CENTER.y);
+CONFIG.foreignCultureInCities = true;
+reset(); myCity.population = 10;
+seedState({ field: { [CK]: { [String(ME)]: 5000, [String(RIVAL)]: 500 } } });
+r = runPass();
+let centre = savedState.field[CK];
+const decayedRival = 500 - 500 * CONFIG.decayRate - CONFIG.decayFlat; // what decay alone would leave: 474
+assert.ok(centre[String(RIVAL)] > decayedRival + 50, "a foreign group on the city tile is pumped by the city's people");
+assert.ok(centre[String(RIVAL)] < 600, "...at population strength, not the owner's");
+// The same, off: the foreign stock only decays and is not converted.
+CONFIG.foreignCultureInCities = false;
+reset(); myCity.population = 10;
+seedState({ field: { [CK]: { [String(ME)]: 5000, [String(RIVAL)]: 500 } } });
+runPass();
+assert.ok(Math.abs(savedState.field[CK][String(RIVAL)] - decayedRival) < 1e-9, "off: the foreign stock just decays");
+CONFIG.foreignCultureInCities = true;
+// A trickle below foreignGroupMinStock is not amplified, but is still converted.
+reset(); myCity.population = 10;
+seedState({ field: { [CK]: { [String(ME)]: 5000, [String(RIVAL)]: 50 } } });
+runPass();
+const trickle = savedState.field[CK][String(RIVAL)];
+const decayedTrickle = 50 - 50 * CONFIG.decayRate - CONFIG.decayFlat; // 46.5
+assert.ok(trickle < decayedTrickle && trickle > decayedTrickle * 0.99, "a trickle is converted (0.5%) but never pumped");
+// Conversion: the owner gains exactly what the foreign group lost to it.
+reset(); myCity.population = 0; // no foreign pumping, so the only cross-group movement is conversion
+seedState({ field: { [CK]: { [String(ME)]: 5000, [String(RIVAL)]: 1000 } } });
+runPass();
+centre = savedState.field[CK];
+const decayedR = 1000 - 1000 * CONFIG.decayRate - CONFIG.decayFlat; // 949
+assert.ok(Math.abs(centre[String(RIVAL)] - decayedR * (1 - CONFIG.convertBase)) < 1e-9, "0.5% of the foreign stock converts");
+// The cap bounds the TOTAL on the tile: with a tiny cap nobody injects, and the foreign group is only converted.
+CONFIG.cityCapFactor = 1;
+reset(); myCity.population = 10;
+seedState({ field: { [CK]: { [String(ME)]: 5000, [String(RIVAL)]: 500 } } });
+runPass();
+assert.ok(Math.abs(savedState.field[CK][String(RIVAL)] - decayedRival * (1 - CONFIG.convertBase)) < 1e-9,
+  "at the total cap the foreign group is not pumped, only converted");
+CONFIG.cityCapFactor = 2000;
+
+// ================================================================================
+// 21. The owner floor (spec §8): owned land in the region always carries at least 1 of its owner's culture.
+// ================================================================================
+reset(); seedState({});
+runPass();
+assert.ok(savedState.field[tk(12, 10)] && savedState.field[tk(12, 10)][String(ME)] >= CONFIG.ownerFloor,
+  "one of our ring-2 tiles carries the floor after a pass");
+assert.equal(savedState.field[tk(15, 10)], undefined, "an unowned tile gets no floor");
+assert.equal(savedState.field[tk(RIVAL_CENTER.x, RIVAL_CENTER.y)], undefined, "outside the region nothing is written");
+CONFIG.ownerFloor = 0;
+reset(); seedState({});
+runPass();
+assert.equal(savedState.field[tk(12, 10)], undefined, "ownerFloor 0 writes nothing");
+CONFIG.ownerFloor = 1;
+
+// ================================================================================
+// 22. The mountain source threshold (spec §8): culture on a peak needs 7.5x the threshold before it leaks.
+// ================================================================================
+const mountains = new Set();
+globalThis.GameplayMap.isMountain = (x, y) => mountains.has(tk(x, y));
+const PEAK = { x: 16, y: 10 }, FOOT = { x: 17, y: 10 }; // ring 6-7 from CENTER: in the region, never adjacent to us
+mountains.add(tk(PEAK.x, PEAK.y));
+reset(); seedState({ field: { [tk(PEAK.x, PEAK.y)]: { [String(ME)]: 500 } } });
+runPass();
+assert.equal(savedState.field[tk(FOOT.x, FOOT.y)], undefined, "500 on a mountain (gate 750) diffuses nowhere");
+mountains.clear();
+reset(); seedState({ field: { [tk(PEAK.x, PEAK.y)]: { [String(ME)]: 500 } } });
+runPass();
+assert.ok(savedState.field[tk(FOOT.x, FOOT.y)][String(ME)] > 0, "the same 500 on flat land diffuses");
+
+// ================================================================================
+// 23. Every civilization gains land by culture (spec §2, opt-in aiCultureFlips).
+// ================================================================================
+const AI_T = { x: 17, y: 10 }; // 7 from our centre (in the region), 5 from the rival's (within flipMaxDistance, past its ring 3)
+assert.equal(hexDistance(RIVAL_CENTER, AI_T), 5, "fixture: AI target is 5 from the rival city");
+/** Rival land beside AI_T, and a mature RIVAL stock on AI_T itself. */
+function seedAiTarget(extraField) {
+  reset();
+  const t = getTileMut(18, 10); t.owner = RIVAL; t.city = RIVAL_CITY_ID;
+  seedState({ field: { [tk(AI_T.x, AI_T.y)]: mature(RIVAL), ...(extraField || {}) } });
+}
+seedAiTarget();
+r = runPass();
+assert.equal(r.aiFlips, 0, "off (the default): an AI never gains a tile");
+assert.equal(getTile(AI_T.x, AI_T.y).owner, -1, "...the tile stays unowned");
+
+CONFIG.aiCultureFlips = true;
+seedAiTarget();
+r = runPass();
+assert.equal(r.aiFlips, 1, "on: the rival whose culture leads takes the tile");
+assert.deepEqual(getTile(AI_T.x, AI_T.y), { owner: RIVAL, city: RIVAL_CITY_ID }, "...through its own city, integrated");
+assert.equal(savedState.claims[tk(AI_T.x, AI_T.y)].by, RIVAL, "...recorded as the rival's claim");
+assert.equal(savedState.locked[tk(AI_T.x, AI_T.y)], CONFIG.flipCooldownTurns, "...and locked like any flip");
+assert.equal(r.flips, 0, "our own flip count is untouched");
+
+// The deferred engine: pending, then confirmed from the live map next pass.
+seedAiTarget();
+deferWrites = true;
+r = runPass();
+assert.equal(r.aiPending, 1, "on the deferred engine the AI flip is pending");
+assert.equal(savedState.pending[tk(AI_T.x, AI_T.y)].by, RIVAL, "...for the rival");
+flushWrites();
+r = runPass();
+assert.equal(r.confirmed, 1, "next pass confirms it from the map");
+assert.equal(savedState.claims[tk(AI_T.x, AI_T.y)].by, RIVAL, "...as the rival's claim");
+deferWrites = false;
+
+// An AI can take OUR tile when its culture decisively leads there, at peace and outside our protected core.
+const OURS = { x: 16, y: 10 }; // 6 from us, 6 from the rival: reachable by both
+reset();
+{ const t = getTileMut(OURS.x, OURS.y); t.owner = ME; t.city = CITY_ID; }
+{ const t = getTileMut(17, 10); t.owner = RIVAL; t.city = RIVAL_CITY_ID; }
+seedState({ field: { [tk(OURS.x, OURS.y)]: { [String(RIVAL)]: 5000, [String(ME)]: 100 } },
+  claims: { [tk(OURS.x, OURS.y)]: { by: ME, city: CITY_ID, turn: 1 } } });
+r = runPass();
+assert.equal(r.aiFlips, 1, "a rival's decisive lead takes one of our tiles");
+assert.equal(getTile(OURS.x, OURS.y).owner, RIVAL, "...it is the rival's now");
+assert.equal(savedState.claims[tk(OURS.x, OURS.y)].by, RIVAL, "...and our claim record is replaced");
+// At war, no peaceful flip either way.
+reset();
+{ const t = getTileMut(OURS.x, OURS.y); t.owner = ME; t.city = CITY_ID; }
+{ const t = getTileMut(17, 10); t.owner = RIVAL; t.city = RIVAL_CITY_ID; }
+seedState({ field: { [tk(OURS.x, OURS.y)]: { [String(RIVAL)]: 5000, [String(ME)]: 100 } } });
+atWarWithRival = true;
+r = runPass();
+assert.equal(r.aiFlips, 0, "at war the rival's culture does not take our tile");
+atWarWithRival = false;
+// A minor (city-state / Independent Power) never leads a flip.
+seedAiTarget();
+minorPlayers.add(RIVAL);
+r = runPass();
+assert.equal(r.aiFlips, 0, "a non-major leader is skipped");
+assert.equal(getTile(AI_T.x, AI_T.y).owner, -1, "...and the tile stays unowned");
+minorPlayers.clear();
+// The AI's per-pass ceiling is its own.
+CONFIG.maxFlipsPerTurn = 1;
+seedAiTarget({ [tk(TARGET.x, TARGET.y)]: mature() });
+r = runPass();
+assert.equal(r.flips, 1, "our flip uses our ceiling");
+assert.equal(r.aiFlips, 1, "...and the AI flip its own, so neither starves the other");
+CONFIG.maxFlipsPerTurn = 8;
+CONFIG.aiCultureFlips = false;
+
+// ================================================================================
+// 24. Unit conquest (spec §6, opt-in conquestFlip): hold an enemy tile through the buffer and it is yours.
+// ================================================================================
+const HELD = { x: 17, y: 10 };
+const HK = tk(HELD.x, HELD.y);
+/** A rival tile at HELD with one of OUR units (combat unless told otherwise) standing on it, at war. */
+function seedHold(unit = { owner: ME, Combat: { isCombat: true } }) {
+  reset();
+  const t = getTileMut(HELD.x, HELD.y); t.owner = RIVAL; t.city = RIVAL_CITY_ID;
+  mapUnits.set(HK, [unit]);
+  atWarWithRival = true;
+  seedState({});
+}
+CONFIG.requireAdjacency = false; // HELD does not touch our land in this fixture; adjacency has its own tests
+CONFIG.conquestBufferTurns = 2;
+seedHold();
+r = runPass();
+assert.equal(r.conquests, 0, "off (the default): nothing happens");
+assert.equal(Object.keys(savedState.occupation || {}).length, 0, "...and nothing is counted");
+
+CONFIG.conquestFlip = true;
+seedHold();
+r = runPass();
+assert.equal(r.conquests, 0, "pass 1 of a 2-pass buffer: not yet");
+assert.equal(r.occupied, 1, "...but the hold is counted");
+assert.deepEqual(savedState.occupation[HK], { by: ME, turns: 1 }, "...one pass so far");
+r = runPass();
+assert.equal(r.conquests, 1, "pass 2: the tile is taken");
+assert.deepEqual(getTile(HELD.x, HELD.y), { owner: ME, city: CITY_ID }, "...ours, attached to our city");
+assert.equal(savedState.locked[HK], CONFIG.conquestHoldTurns, "...and held for conquestHoldTurns, not the culture cooldown");
+assert.equal(savedState.occupation[HK], undefined, "...the counter is spent");
+assert.equal(savedState.claims[HK].by, ME, "...recorded as our claim");
+
+// The hold is against CULTURE only: a rival's decisive culture cannot take the conquered tile during the hold...
+CONFIG.aiCultureFlips = true;
+seedHold();
+runPass(); runPass(); // conquered, held
+{ const t = getTileMut(18, 10); t.owner = RIVAL; t.city = RIVAL_CITY_ID; } // rival land beside it, for adjacency
+atWarWithRival = false;                                                   // peace: culture flips are possible again
+savedState.field[HK] = { [String(RIVAL)]: 5000, [String(ME)]: 10 };
+r = runPass();
+assert.equal(r.aiFlips + r.aiPending, 0, "during the hold a rival's culture cannot flip the conquered tile back");
+assert.equal(getTile(HELD.x, HELD.y).owner, ME, "...it stays ours");
+// ...and once the hold has run out the tile works the normal way again.
+savedState.locked[HK] = 1; // the pass ticks it to 0 and drops it before resolving flips
+savedState.field[HK] = { [String(RIVAL)]: 5000, [String(ME)]: 10 };
+r = runPass();
+assert.ok(r.aiFlips >= 1, "after the hold the rival's culture flips again (its diffused stock wins neighbours too)");
+assert.equal(getTile(HELD.x, HELD.y).owner, RIVAL, "...and the conquered tile itself goes back to the rival");
+CONFIG.aiCultureFlips = false;
+// ...while another army never waits on the lock: a freshly conquered (locked) tile can be re-taken by occupation.
+seedHold({ owner: RIVAL, Combat: { isCombat: true } }); // the rival's unit on the tile the rival owns: not an occupier
+{ const t = getTileMut(HELD.x, HELD.y); t.owner = ME; t.city = CITY_ID; }  // make the tile ours...
+savedState.locked[HK] = 15;                                              // ...freshly locked
+CONFIG.aiCultureFlips = true;                                            // AI armies act only with AI flips on
+runPass(); r = runPass();
+assert.equal(r.conquests, 1, "a locked tile still falls to an army that holds it through the buffer");
+assert.equal(getTile(HELD.x, HELD.y).owner, RIVAL, "...conquest never waits on the lock");
+CONFIG.aiCultureFlips = false;
+// A deferred conquest carries its hold through the pending confirm.
+seedHold();
+runPass(); deferWrites = true; r = runPass();
+assert.equal(r.conquestPending, 1, "on the deferred engine the conquest is pending");
+assert.equal(savedState.pending[HK].hold, CONFIG.conquestHoldTurns, "...carrying the hold length");
+flushWrites(); deferWrites = false;
+runPass();
+assert.equal(savedState.locked[HK], CONFIG.conquestHoldTurns, "the confirm applies the conquest hold, not the culture cooldown");
+
+// Leaving resets the count.
+seedHold();
+runPass();
+mapUnits.delete(HK);
+r = runPass();
+assert.equal(savedState.occupation[HK], undefined, "the unit left: the counter is cleared");
+mapUnits.set(HK, [{ owner: ME, Combat: { isCombat: true } }]);
+r = runPass();
+assert.equal(r.conquests, 0, "back on the tile: the count starts over");
+assert.deepEqual(savedState.occupation[HK], { by: ME, turns: 1 }, "...from one");
+
+// Civilians, peace, and city centres never conquer / are never conquered.
+seedHold({ owner: ME, Combat: { isCombat: false } });
+runPass(); r = runPass();
+assert.equal(r.conquests, 0, "a civilian never takes ground");
+assert.equal(Object.keys(savedState.occupation).length, 0, "...nor is it counted");
+seedHold(); atWarWithRival = false;
+runPass(); r = runPass();
+assert.equal(r.conquests, 0, "at peace a unit standing on a rival tile takes nothing");
+seedHold(); centresOnMap.add(HK);
+runPass(); r = runPass();
+assert.equal(r.conquests, 0, "a settlement centre is never taken by occupation");
+assert.equal(getTile(HELD.x, HELD.y).owner, RIVAL, "...it stays the rival's");
+centresOnMap.clear();
+
+// Another civilization's army takes OUR tile only when AI flips are on too.
+/** A rival combat unit on our ring-4 claimed tile, at war. */
+function seedRivalHold() {
+  reset();
+  const t = getTileMut(TARGET.x, TARGET.y); t.owner = ME; t.city = CITY_ID;
+  mapUnits.set(tk(TARGET.x, TARGET.y), [{ owner: RIVAL, Combat: { isCombat: true } }]);
+  atWarWithRival = true;
+  seedState({});
+}
+seedRivalHold();
+runPass(); r = runPass();
+assert.equal(r.conquests, 0, "AI flips off: a rival army does not take our tile");
+assert.equal(getTile(TARGET.x, TARGET.y).owner, ME, "...it stays ours");
+CONFIG.aiCultureFlips = true;
+seedRivalHold();
+runPass(); r = runPass();
+assert.equal(r.conquests, 1, "AI flips on: the rival army takes the tile it held");
+assert.equal(getTile(TARGET.x, TARGET.y).owner, RIVAL, "...it is the rival's");
+CONFIG.aiCultureFlips = false;
+
+CONFIG.conquestFlip = false;
+CONFIG.requireAdjacency = true;
+atWarWithRival = false;
+mapUnits.clear();
 
 console.log("pass.mjs OK");

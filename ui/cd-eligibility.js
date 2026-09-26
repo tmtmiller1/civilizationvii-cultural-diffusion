@@ -28,18 +28,28 @@ function key(x, y) {
 }
 
 /**
+ * A player's cities as {city, id, loc}. The claim gates are written in terms of a claimant `me`; with AI flips
+ * the claimant is whichever major leads the tile, so the same list is built for that player.
+ * @param {number} pid Player id.
+ * @returns {{city:*, id:number, loc:{x:number,y:number}}[]} Cities.
+ */
+export function cityListOf(pid) {
+  const out = [];
+  for (const { city, owner } of allSettlements(false)) {
+    if (owner !== pid) continue;
+    const loc = cityLoc(city);
+    if (loc) out.push({ city, id: cityIdOf(city), loc });
+  }
+  return out;
+}
+
+/**
  * The local player's own cities as {city, id, loc}.
  * @param {number} me Local player id.
  * @returns {{city:*, id:number, loc:{x:number,y:number}}[]} Cities.
  */
 export function localCityList(me) {
-  const out = [];
-  for (const { city, owner } of allSettlements(false)) {
-    if (owner !== me) continue;
-    const loc = cityLoc(city);
-    if (loc) out.push({ city, id: cityIdOf(city), loc });
-  }
-  return out;
+  return cityListOf(me);
 }
 
 /**
@@ -72,7 +82,7 @@ export function withinOwnNaturalRing(loc, cities) {
 }
 
 /**
- * True when any neighbour of the plot is owned by `me` (Civ V IsAdjacentToOwner).
+ * True when any neighbor of the plot is owned by `me` (Civ V IsAdjacentToOwner).
  * @param {{x:number,y:number}} plot Plot.
  * @param {number} me Local player id.
  * @returns {boolean} True when our land touches it.

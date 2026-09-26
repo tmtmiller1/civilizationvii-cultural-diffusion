@@ -9,6 +9,7 @@ import { setDebug as setLogDebug, log, dlog } from "/cultural-diffusion/ui/cd-lo
 import { applyTunableOverrides } from "/cultural-diffusion/ui/cd-settings.js";
 import { runPass, claimBufferAt } from "/cultural-diffusion/ui/cd-pass.js";
 import { loadState, saveState } from "/cultural-diffusion/ui/cd-state.js";
+import { onCityTransfered } from "/cultural-diffusion/ui/cd-capture.js";
 
 let _lastLocalTurnRun = -999;
 
@@ -18,6 +19,8 @@ let _lastLocalTurnRun = -999;
 let _turnHandlerRef = null;
 /** @type {((data:*)=>void)|null} */
 let _constructibleHandlerRef = null;
+/** @type {((data:*)=>void)|null} */
+let _transferHandlerRef = null;
 
 // Kill switch: if our per-turn pass throws repeatedly, unsubscribe so a broken build stops
 // running - and stops spamming errors - on every turn for the rest of the session.
@@ -31,17 +34,19 @@ function teardown() {
     if (eng && typeof eng.off === "function") {
       if (_turnHandlerRef) eng.off("PlayerTurnActivated", _turnHandlerRef);
       if (_constructibleHandlerRef) eng.off("ConstructibleAddedToMap", _constructibleHandlerRef);
+      if (_transferHandlerRef) eng.off("CityTransfered", _transferHandlerRef);
     }
   } catch (_) {
     /* ignore */
   }
   _turnHandlerRef = null;
   _constructibleHandlerRef = null;
+  _transferHandlerRef = null;
 }
 
 /**
  * True when a constructible type is a RURAL development (a worked improvement or the rural
- * district) rather than a city-centre building/wonder - i.e. a "we improved a tile" growth event.
+ * district) rather than a city-center building/wonder - i.e. a "we improved a tile" growth event.
  * @param {*} typeId The event's constructibleType id.
  * @returns {boolean} Whether it counts as rural growth.
  */
@@ -181,6 +186,9 @@ function boot() {
       eng.on("PlayerTurnActivated", _turnHandlerRef);
       _constructibleHandlerRef = onConstructibleAdded;
       eng.on("ConstructibleAddedToMap", _constructibleHandlerRef);
+      // A city changing hands rewrites the culture on its tiles at once (cd-capture.js), for any two players.
+      _transferHandlerRef = (d) => { applyTunableOverrides(); onCityTransfered(d); };
+      eng.on("CityTransfered", _transferHandlerRef);
     } catch (e) {
       log(`turn hook failed ${String(e)}`);
     }

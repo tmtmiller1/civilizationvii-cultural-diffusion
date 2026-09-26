@@ -133,13 +133,13 @@ export function districtTypeNameAt(loc) {
 }
 
 /**
- * Whether a SETTLEMENT CENTRE sits on this plot, read straight off the MAP rather than from a player's
+ * Whether a SETTLEMENT CENTER sits on this plot, read straight off the MAP rather than from a player's
  * city list. That distinction matters: an Independent Power reports NO cities through
- * `Players.get(pid).Cities.getCities()` (watched, harness runs 15-17), so anything that finds centres by
+ * `Players.get(pid).Cities.getCities()` (watched, harness runs 15-17), so anything that finds centers by
  * walking a city list is blind to a village. Three routes, because none is available everywhere:
  * `Cities.getAtLocation`, the owning city's own location, then the district type.
  * @param {{x:number,y:number}} loc Plot.
- * @returns {boolean} True when a settlement centre occupies the plot.
+ * @returns {boolean} True when a settlement center occupies the plot.
  */
 export function isCityCenterAt(loc) {
   if (safe(() => !!Cities?.getAtLocation?.(loc.x, loc.y), false)) return true;
@@ -211,7 +211,7 @@ export function cityIdOf(city) {
 }
 
 /**
- * Append one alive player's cities to `out` as {city, owner, isCityState} rows, honouring the
+ * Append one alive player's cities to `out` as {city, owner, isCityState} rows, honoring the
  * city-state filter. Kept separate so allSettlements stays flat.
  * @param {*} player Engine player.
  * @param {boolean} includeCityStates Whether minors are included.

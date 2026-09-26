@@ -38,12 +38,17 @@ the local player's cities. The math is pure and lives in [`ui/cd-field.js`](../u
 orchestration is `runPass()` in [`ui/cd-pass.js`](../ui/cd-pass.js).
 
 - **Inject.** Each city adds `strength * sqrt(currentOwnCulture * injectRatio) + injectBase` (self-amplifying), capped
-  at `strength * cityCapFactor`. "Strength" is the fused CPI / prosperity projection (§3), not raw culture.
-- **Diffuse.** A source above `cultureThreshold` delivers `src * effRate` to each of 6 neighbours, where `effRate =
+  at `strength * cityCapFactor` on the TOTAL culture of the tile. "Strength" is the fused CPI / prosperity projection
+  (§3), not raw culture. With `foreignCultureInCities` (default on) every other living culture group on the tile is
+  pumped too, at population strength, and `convertBase` (+ building/ideology bonuses) of each foreign stock then
+  converts to the owner ([`ui/cd-inject.js`](../ui/cd-inject.js), §5).
+- **Diffuse.** A source above `cultureThreshold` (× `sourceThresholdMountain` on a mountain) delivers `src * effRate`
+  to each of 6 neighbours, where `effRate =
   rate*(1+bonus)/(1+malus)`; the neighbour is capped at a fraction of the source (`normalMax`, higher along
   roads/rivers). Terrain gates/penalties via [`ui/cd-terrain.js`](../ui/cd-terrain.js); culture also crosses water,
   slowly and gated by age.
-- **Decay.** `value - (value*decayRate + decayFlat)`.
+- **Decay.** `value - (value*decayRate + decayFlat)`; an owned tile in the region keeps at least `ownerFloor` of its
+  owner's culture.
 - **Flip.** Ownership is read off the stock (`resolveOwner`): the strongest civ wins past `minimumOwner`, and to take a
   tile from a rival its stock must clear the incumbent decisively: `winnerCulture * flipRatio > incumbentCulture`.
 
@@ -52,14 +57,16 @@ ring 5+ is a mature-culture, late-game event. Overwhelming culture injects a big
 faster/farther, organically.
 
 **State** is persisted in [`ui/cd-state.js`](../ui/cd-state.js) (v2 envelope: `field` / `claims` / `locked` /
-`monoTurn`); `field["x,y"]` is a `Record<civId, number>` of culture stock. The pass is bounded to `fieldRadius` rings
-around local cities and pruned beyond that.
+`pending` / `occupation` / `monoTurn`); `field["x,y"]` is a `Record<civId, number>` of culture stock. The pass is
+bounded to `fieldRadius` rings around local cities and pruned beyond that. A city capture rewrites the field at once
+(`captureLoss` / `captureGain`, [`ui/cd-capture.js`](../ui/cd-capture.js)).
 
 ### Constants (defaults, `ui/cd-config.js`)
 
 `cultureThreshold:100, diffusionRate:0.055, decayRate:0.05, decayFlat:1, normalMax:0.4, maxPercent:0.75, injectBase:10,
 injectRatio:0.15, cityCapFactor:2000, minimumOwner:300, flipRatio:0.65, flipMaxDistance:6, fieldRadius:8,
-maxFlipsPerTurn:8`.
+maxFlipsPerTurn:8, sourceThresholdMountain:7.5, ownerFloor:1, foreignInjectScale:1, foreignGroupMinStock:100,
+convertBase:0.005, captureLoss:0.55, captureGain:0.75, conquestBufferTurns:5`.
 
 ---
 
@@ -166,13 +173,56 @@ locked by the next pass, and an organic flip on the neighbouring tile followed t
 
 ---
 
+- **Every civilization gains land by culture (opt-in, `aiCultureFlips`, default off).** `resolveAiOwnership`
+  ([`ui/cd-ai-flips.js`](../ui/cd-ai-flips.js)) runs after our own flips. Inside the region, a tile whose culture leader
+  is a living MAJOR other than us and other than its owner flips to that leader through the leader's nearest city, under
+  the very gates our claims pass (`cd-eligibility.js` asked with the leader as claimant: distant lands, peace with the
+  incumbent, the incumbent's core protection, adjacency to the leader's land, the strand guard) plus `flipMaxDistance`
+  from one of the leader's cities, outside the leader's own natural ring, and its per-city cap; the commit is the shared
+  one ([`ui/cd-flip.js`](../ui/cd-flip.js)), so a pending AI flip is confirmed from the live map next pass like ours.
+  The AI has its own per-pass ceiling. A rival can take one of our tiles this way (our claim record is replaced) and we
+  are told; a change between two other civilizations is only logged. Independent Powers and city-states never lead a
+  flip. Nothing moves outside the region, and that asymmetry is documented in the README. Probes 2026-09-25: a rival
+  city's `purchasePlot` lands like ours and charges nothing; `grantYield` is the gold write if one is ever needed.
+- **Armies hold the ground they occupy (opt-in, `conquestFlip`, default off).** `conquestSweep`
+  ([`ui/cd-conquest.js`](../ui/cd-conquest.js)) runs LAST in the pass. Per region tile owned by a major: the COMBAT units
+  on it whose owners are majors at war with the owner are its occupiers (`Units.get(cid).Combat.isCombat`, watched);
+  a continuous hold by one occupier counts up in `state.occupation`, leaving clears it, a different occupier restarts
+  it; at `conquestBufferTurns` (5) the tile flips to the occupier through its nearest city, ignoring culture, and is
+  held for `conquestHoldTurns` (10) against culture flips; the sweep itself never reads the lock, so another army can
+  re-take it at any time, and after the hold the tile works the normal way. The inner-ring release keeps the lock.
+  Intended retake rules (decided 2026-09-26): an army may retake a conquered tile at any time; culture may retake it
+  only after peace (every culture path refuses an active front) and after the hold, by the standard method, which
+  means ANY civilization whose culture decisively leads the tile, not only the one it was taken from.
+  City centres and urban districts are never taken; safety mode blocks it; adjacency to the conqueror's land applies
+  when `requireAdjacency` is on. Another civilization's units take ground only when `aiCultureFlips` is also on. Watched in
+  game 2026-09-26 (harness `cdh-game-conquest.js`): a planted Spearman on an enemy tile beside our land counted 1-4,
+  the fifth pass took the tile (`conquest 83,32: taken from player 3 by player 0's unit`), the next confirmed it.
+- **Cities carry every culture living in them (`foreignCultureInCities`, default on).** `injectStep`
+  ([`ui/cd-inject.js`](../ui/cd-inject.js)) caps the TOTAL culture on a city tile and pumps every living foreign group
+  present: strength = population × `foreignInjectScale` × that group's share of the Emigration composition when one
+  is recorded, else full population strength once the group holds `foreignGroupMinStock`. `convertStep` then moves
+  `convertBase` (0.5%) plus the city's `convertBonuses` (science and culture buildings, the owner's ideology; a data
+  table keyed by type name, [`ui/cd-conversion.js`](../ui/cd-conversion.js)) of each foreign stock to the owner.
+- **Culture transfer on capture (`captureTransfer`, default on).** On `CityTransfered`
+  ([`ui/cd-capture.js`](../ui/cd-capture.js), subscribed in the bootstrap) every culture on the city's plots
+  (`getPurchasedPlots`, else a scan by owning city) loses `captureLoss` and the new owner gains `captureGain` of the
+  total lost; saved at once. The event was watched reaching the UI context for a transfer between two other players.
+- **Small Civ V rules.** A mountain source needs `sourceThresholdMountain` × the threshold before it diffuses
+  (`sourceThreshold` in `cd-terrain.js`); every owned region tile keeps `ownerFloor` of its owner's culture
+  (`ownerFloorStep`), so the lens never reads owned land as empty.
+
+---
+
 ## 6. Options surface
 
 Registered under **Options → Mods → Cultural Diffusion** in both shell and game scopes
 ([`ui/cd-options.js`](../ui/cd-options.js), state in [`ui/cd-settings.js`](../ui/cd-settings.js)): intensity preset
 (Custom / Low / Medium / High), enable diffusion (master switch), claim-only-unowned (safety mode), core-protection
-radius, adjacency, the +1 ring growth buffer (default off), borders recede (default off), the rich cultural model, follow
-diaspora, the pressure lens, and debug logging. The flip verb is code-only. Options register through
+radius, adjacency, the +1 ring growth buffer (default off), borders recede (default off), every civilization gains land
+by culture (default off), armies hold the ground they occupy (default off), cities carry every culture living in them
+(default on), the rich cultural model, follow diaspora, the pressure lens, and debug logging. The flip verb is
+code-only. Options register through
 `Options.addInitCallback`, so they survive the base model's `reInitOptions()` rebuild; a bare `addOption` at load made
 them vanish after closing Settings until a restart. Notifications are throttled toasts
 ([`ui/cd-notifications.js`](../ui/cd-notifications.js)). Tunables reference is in

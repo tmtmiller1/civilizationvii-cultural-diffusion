@@ -1,19 +1,19 @@
 // cd-lens-colors.js
 //
-// Readable per-civ display colours + a float4 helper for the Cultural Pressure lens/tooltip: prefer a
-// civ's PRIMARY banner colour, fall back to SECONDARY when the primary is a dark grey, then lift any
-// still-dark colour to a minimum lightness. Unresolved civs fall back to the caller's hex.
+// Readable per-civ display colors + a float4 helper for the Cultural Pressure lens/tooltip: prefer a
+// civ's PRIMARY banner color, fall back to SECONDARY when the primary is a dark gray, then lift any
+// still-dark color to a minimum lightness. Unresolved civs fall back to the caller's hex.
 // Import-less on purpose so it can live in <ImportFiles> and still expose its exports.
 
-const MIN_L_GREY = 0.65; // greys need more lift (no hue to aid readability)
+const MIN_L_GRAY = 0.65; // grays need more lift (no hue to aid readability)
 const MIN_L_SAT = 0.5;
-const DARK_GREY_MAX_L = 0.42; // a primary worth replacing with the secondary: dark AND nearly colourless
-const DARK_GREY_MAX_S = 0.3;
+const DARK_GRAY_MAX_L = 0.42; // a primary worth replacing with the secondary: dark AND nearly colorless
+const DARK_GRAY_MAX_S = 0.3;
 const FALLBACK_HEX = "#888888";
 
 /**
- * Parse a `#RRGGBB`/`#AARRGGBB` or `rgb()/rgba()` colour into 0-255 channels, or null.
- * @param {*} input Colour string.
+ * Parse a `#RRGGBB`/`#AARRGGBB` or `rgb()/rgba()` color into 0-255 channels, or null.
+ * @param {*} input Color string.
  * @returns {{r:number, g:number, b:number}|null} Channels or null.
  */
 function parse(input) {
@@ -70,30 +70,30 @@ function hslToHex(h, s, l) {
   return toHex(ch(base.r), ch(base.g), ch(base.b));
 }
 
-/** Whether a colour is a dark, nearly-colourless grey/black. @param {{r:number,g:number,b:number}} c */
-function isDarkGrey(c) {
+/** Whether a color is a dark, nearly-colorless gray/black. @param {{r:number,g:number,b:number}} c */
+function isDarkGray(c) {
   const { s, l } = rgbToHsl(c.r, c.g, c.b);
-  return l < DARK_GREY_MAX_L && s < DARK_GREY_MAX_S;
+  return l < DARK_GRAY_MAX_L && s < DARK_GRAY_MAX_S;
 }
 
-/** Lift a colour to the minimum readable lightness on the dark canvas. @param {string} color @returns {string} */
+/** Lift a color to the minimum readable lightness on the dark canvas. @param {string} color @returns {string} */
 function safeColor(color) {
   const ch = parse(color);
   if (!ch) return color;
   const { h, s, l } = rgbToHsl(ch.r, ch.g, ch.b);
-  const minL = MIN_L_GREY + (MIN_L_SAT - MIN_L_GREY) * Math.min(1, Math.max(0, s));
+  const minL = MIN_L_GRAY + (MIN_L_SAT - MIN_L_GRAY) * Math.min(1, Math.max(0, s));
   return l >= minL ? toHex(ch.r, ch.g, ch.b) : hslToHex(h, s, minL);
 }
 
-/** Prefer the more readable of a civ's two banner colours. @param {*} primary @param {*} secondary @returns {*} */
+/** Prefer the more readable of a civ's two banner colors. @param {*} primary @param {*} secondary @returns {*} */
 function preferReadable(primary, secondary) {
   const p = parse(primary);
-  if (!p || !isDarkGrey(p)) return primary;
+  if (!p || !isDarkGray(p)) return primary;
   const s = parse(secondary);
-  return s && !isDarkGrey(s) ? secondary : primary;
+  return s && !isDarkGray(s) ? secondary : primary;
 }
 
-/** A live player's banner colour string via UI.Player, or undefined. @param {number} pid @param {string} fn */
+/** A live player's banner color string via UI.Player, or undefined. @param {number} pid @param {string} fn */
 function bannerColor(pid, fn) {
   try {
     if (typeof UI !== "undefined" && UI.Player && typeof UI.Player[fn] === "function") {
@@ -107,9 +107,9 @@ function bannerColor(pid, fn) {
 }
 
 /**
- * A civ's readable display colour (`#RRGGBB`) for the dark map canvas: its banner colour (primary, or
- * the secondary when the primary is a dark grey), lifted to a readable lightness. Falls back to
- * `fallbackHex` off-engine or when no banner colour is available.
+ * A civ's readable display color (`#RRGGBB`) for the dark map canvas: its banner color (primary, or
+ * the secondary when the primary is a dark gray), lifted to a readable lightness. Falls back to
+ * `fallbackHex` off-engine or when no banner color is available.
  * @param {number} pid Civ/player id.
  * @param {string} [fallbackHex] Fallback `#RRGGBB`.
  * @returns {string} A readable `#RRGGBB`.
@@ -161,9 +161,9 @@ function composeTag(tag) {
 }
 
 /**
- * A `#RRGGBB` colour as the engine's plot-overlay float4 {x,y,z,w} (0-1 RGBA). Every channel is
+ * A `#RRGGBB` color as the engine's plot-overlay float4 {x,y,z,w} (0-1 RGBA). Every channel is
  * finite-clamped - a NaN reaching the Metal plot overlay is a known Mac crash vector.
- * @param {string} hex A `#RRGGBB` colour.
+ * @param {string} hex A `#RRGGBB` color.
  * @param {number} [alpha] Alpha 0..1.
  * @returns {{x:number, y:number, z:number, w:number}} Float4 RGBA.
  */
