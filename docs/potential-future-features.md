@@ -180,7 +180,14 @@ Loyalty lens's up/down flag variants are the nearest reference for signaling dir
 
 ## 2. Tile ownership flip on conquest (with an occupation buffer)
 
-*Status: outstanding, probe-gated.*
+*Status: built 2026-09-26 as `ui/cd-conquest.js` (opt-in `conquestFlip`, buffer `conquestBufferTurns` = 5), after
+probe P6 answered the units-on-tile read (`MapUnits.getUnits` + `Units.get(cid).Combat.isCombat`, watched). It follows
+this design: continuous hold, reset on leaving, integrated verb, city centres and urban districts excluded, conquest
+runs last in the pass and wins over the culture lock. Differences from the sketch below: the buffer is counted in
+passes and not scaled to game speed; another civilization's units take ground only when `aiCultureFlips` is also on;
+tiles stay after peace. Unit-tested (tests/pass.mjs §24, tests/parity.mjs) and watched in game (harness `cdh-game-conquest.js`: a planted
+Spearman held an enemy tile five turns, the tile flipped and was confirmed next pass). See
+[`civ-v-parity-spec.md`](civ-v-parity-spec.md) §6.*
 
 While you are **at war**, a plot your military **continuously holds** flips to your territory — but **not immediately**.
 A configurable **occupation buffer** (default **5 turns**) must elapse with your unit holding the tile before it
@@ -253,3 +260,37 @@ menu ([`emigration/ui/emigration-options.js`](../../emigration/ui/emigration-opt
 toggles above under a clear sub-heading so the tab reads as a coherent panel, and keep Emigration's convention of one
 persisted setting per option, defaulted OFF for anything that changes territory, with a localized label + tooltip per
 control. Every new toggle proposed above lives in this same menu.
+
+---
+
+## 6. Heritage culture — what a dead civilization leaves behind
+
+*Status: parked 2026-09-26 as a future idea (user decision). Nothing built.*
+
+Civ V's `UpdateCultureMap` (parity spec #7) struck dead civilizations from the plot-ownership test and released their
+plots. This mod already excludes a dead civilization from winning a tile (`findDeadOwners` into `resolveOwner`), and
+the release half is moot here because territory belongs to cities. What is left is a design question: a dead
+civilization's culture stock stays in the field today and simply fades (normal decay, no city pumps it, cities convert
+it to their owner), with no effect on play beyond the hover readout. In this version of Civ a civilization's influence
+does not vanish the day it dies, so the parked question is whether that trace should matter.
+
+Three computable candidates, recorded so the thinking is not lost:
+
+1. **Heritage as inertia.** A dead culture that still leads a tile counts as a virtual incumbent: a living civilization
+   must beat it by the usual decisive ratio (`flipRatio`) before the tile can be claimed. Pair with a slower heritage
+   decay for dead stock (for example 1% per turn and no flat point, a config pair). What the player sees: the lands of a
+   fallen civilization resist absorption for an age instead of falling to the first neighbour, then give way as the
+   memory fades. Disproof in a test: a dead leader at 500 on an unowned tile blocks a living 400 and yields to a living
+   800. Cost: a few lines in `resolveOwner` and the decay step, plus the lens, which today skips dead leaders.
+2. **Culture is carried by people.** With the Emigration mod present, a dead civilization's descendants still live in
+   cities and its composition records them by origin civ. Let a city pump a dead group's culture whenever that share is
+   above zero, exactly as it does for living foreign groups, so the culture persists where its people persist and
+   fades where they assimilate through conversion. Without Emigration nothing changes. One condition removed from the
+   foreign-injection step (`cd-inject.js`).
+3. **Ghost culture in the lens.** Tint tiles a dead culture still leads in a neutral grey with a heritage label.
+   Presentation only.
+
+Recommendation when this is picked up: 1 and 2 together (memory in the land, memory in the people), keeping plain decay
+for dead stock with no people behind it. Caution: age transitions do not kill anyone in this mod's terms, because the
+field is keyed by player id and the player persists through the transition, so a previous-age civilization's culture
+simply becomes the new civilization's; extending heritage to that case is a separate, larger design.

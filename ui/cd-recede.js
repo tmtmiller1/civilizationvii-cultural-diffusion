@@ -36,7 +36,7 @@ function nearest(loc, rows) {
   return best ? { ...best, d: bestD } : null;
 }
 
-/** @returns {boolean} True when any neighbour of the plot is owned by `owner`. */
+/** @returns {boolean} True when any neighbor of the plot is owned by `owner`. */
 function touchesOwner(loc, owner) {
   for (const n of plotsInRadius(loc, 1)) {
     if (n.x === loc.x && n.y === loc.y) continue;

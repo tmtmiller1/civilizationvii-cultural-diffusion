@@ -65,7 +65,9 @@ assert.equal(healed, 3, "all three orphans processed");
 assert.equal(getTile(5, 6).owner, -1, "inner orphan (5,6) released to the base game");
 assert.equal(getTile(6, 6).owner, -1, "inner orphan (6,6) released to the base game");
 assert.equal(state.claims["5,6"], undefined, "inner orphan claim dropped");
-assert.equal(state.locked["5,6"], undefined, "inner orphan lock dropped");
+// The lock is NOT part of the claim record: it stays (anti-flicker, and a conquest's hold). Changed 2026-09-26 after a
+// conquered ring-3 tile lost its hold through this helper.
+assert.equal(state.locked["5,6"], 5, "inner orphan lock kept");
 // Frontier orphan re-integrated into the nearest city (owned border, beyond the base-game ring).
 assert.deepEqual(getTile(5, 11), { owner: ME, city: CITY_ID }, "frontier orphan re-integrated");
 assert.equal(state.claims["5,11"].city, CITY_ID, "frontier claim re-pointed to real city");
@@ -87,7 +89,7 @@ const healed3 = repairOrphans(state2, new Set(["5,11"]), [{ city: noBuyCity, id:
 assert.equal(healed3, 1, "frontier orphan processed");
 assert.equal(getTile(5, 11).owner, -1, "frontier orphan released back to the map (re-buy failed)");
 assert.equal(state2.claims["5,11"], undefined, "dropped claim on release");
-assert.equal(state2.locked["5,11"], undefined, "dropped lock on release");
+assert.equal(state2.locked["5,11"], 5, "the lock is kept on release (it is not part of the claim record)");
 
 // --- scenario 3: releaseInnerClaims heals a mis-deeded inner tile ----------------
 // The 1.0.6 regression: an inner tile the mod force-bought to the WRONG city (real owning city,
@@ -101,7 +103,7 @@ const released = releaseInnerClaims(state3, cities, ME);
 assert.equal(released, 1, "one inner claim released");
 assert.equal(getTile(5, 6).owner, -1, "mis-deeded inner tile handed back to the base game");
 assert.equal(state3.claims["5,6"], undefined, "inner claim record dropped");
-assert.equal(state3.locked["5,6"], undefined, "inner lock dropped");
+assert.equal(state3.locked["5,6"], 9, "inner lock kept (not part of the claim record)");
 // The frontier claim is untouched.
 assert.deepEqual(getTile(5, 11), { owner: ME, city: CITY_ID }, "frontier claim untouched");
 assert.ok(state3.claims["5,11"], "frontier claim record kept");

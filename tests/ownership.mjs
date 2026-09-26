@@ -87,6 +87,14 @@ assert.equal(goldWrites.length, 0, "free buy triggers no gold write");
 goldBalance = 42;
 assert.equal(playerGold(0), 42, "playerGold reads the balance");
 grantGold(0, 8);
-assert.equal(goldBalance, 50, "grantGold writes the balance");
+assert.equal(goldBalance, 50, "grantGold writes the balance through changeGoldBalance when grantYield is absent");
+// With Players.grantYield present it is preferred: the one gold write watched working on 1.5.0 (changeGoldBalance
+// changed nothing for anyone, gold runs 2026-09-25).
+const grants = [];
+globalThis.Players.grantYield = (pid, yt, amt) => { grants.push([pid, yt, amt]); };
+assert.deepEqual(grantGold(2, 37), { ok: true, reason: "grantYield" }, "grantYield is the preferred verb");
+assert.deepEqual(grants, [[2, 7, 37]], "...called with the player, YIELD_GOLD and the amount");
+assert.equal(goldBalance, 50, "...and changeGoldBalance is not also called");
+delete globalThis.Players.grantYield;
 
 console.log("ownership.mjs OK");

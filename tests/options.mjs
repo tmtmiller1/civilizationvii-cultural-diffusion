@@ -12,7 +12,8 @@ const { installOptions, registerAll } = await import("/cultural-diffusion/ui/cd-
 
 const CD_IDS = [
   "cd-preset", "cd-enabled", "cd-claim-only", "cd-core-protect", "cd-require-adjacency", "cd-growth-buffer",
-  "cd-recede", "cd-fused", "cd-emigration", "cd-pressure-lens", "cd-debug"
+  "cd-recede", "cd-ai-flips", "cd-conquest", "cd-foreign-culture", "cd-fused", "cd-emigration", "cd-pressure-lens",
+  "cd-debug"
 ];
 const present = () => CD_IDS.filter((id) => Options.data.has(id));
 const registrations = () => Options.optionsReInitCallbacks.filter((cb) => cb === registerAll).length;

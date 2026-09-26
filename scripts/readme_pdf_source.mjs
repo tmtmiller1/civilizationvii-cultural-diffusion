@@ -84,7 +84,7 @@ function pairFigure(panels) {
     "```{=latex}",
     "\\begin{figure}[H]", "\\centering",
     panel(panels[0], "Before"), "\\hfill", panel(panels[1], "After"),
-    "\\caption{" + panels[0].alt.replace(/[&%$#_{}]/g, "") + " - and after}",
+    "\\caption{" + panels[0].alt.replace(/[&%$#_{}]/g, "").replace(/\bbefore\b/, "before and after") + "}",
     "\\end{figure}",
     "```",
   ].join("\n");

@@ -10,6 +10,7 @@ const MAX_FIELD_ENTRIES = 20000;
 const MAX_CLAIM_ENTRIES = 8192;
 const MAX_LOCK_ENTRIES = 8192;
 const MAX_PENDING_ENTRIES = 1024;
+const MAX_OCCUPATION_ENTRIES = 2048;
 const PENDING_KINDS = ["claim", "cede"];
 
 /**
@@ -26,6 +27,7 @@ const PENDING_KINDS = ["claim", "cede"];
  * @property {number} city City id the tile was attached to (claim), or -1.
  * @property {number} turn Monotonic turn the verb was sent.
  * @property {number} was Owner before the verb (for the claim notification), or -1.
+ * @property {number} hold Lock length to apply once confirmed instead of flipCooldownTurns (0 = the default).
  */
 
 /**
@@ -34,12 +36,27 @@ const PENDING_KINDS = ["claim", "cede"];
  * @property {Record<string, ClaimEntry>} claims Plots this mod has claimed (soft halo), keyed "x,y".
  * @property {Record<string, number>} locked Anti-flicker cooldown: "x,y" -> turns remaining before it may flip again.
  * @property {Record<string, PendingEntry>} pending Verbs awaiting confirmation on the next pass, keyed "x,y".
+ * @property {Record<string, {by:number, turns:number}>} occupation Conquest counters (cd-conquest.js): "x,y" ->
+ *   which player's combat unit has held the tile, and for how many consecutive passes.
  * @property {number} monoTurn Monotonic turn (never resets at age boundaries).
  */
 
 /** @returns {CdState} A fresh empty state. */
 function defaultState() {
-  return { field: {}, claims: {}, locked: {}, pending: {}, monoTurn: 0 };
+  return { field: {}, claims: {}, locked: {}, pending: {}, occupation: {}, monoTurn: 0 };
+}
+
+/**
+ * Normalize one occupation row.
+ * @param {*} v Candidate.
+ * @returns {{by:number, turns:number}|null} Normalized row, or null if unusable.
+ */
+function normalizeOccupation(v) {
+  if (!v || typeof v !== "object") return null;
+  const by = Math.floor(num(v.by, Number.NaN));
+  const turns = Math.floor(num(v.turns, 0));
+  if (!isFinite(by) || by < 0 || turns <= 0) return null;
+  return { by, turns };
 }
 
 /**
@@ -56,7 +73,8 @@ function normalizePending(v) {
     by,
     city: Math.floor(num(v.city, -1)),
     turn: Math.max(0, Math.floor(num(v.turn, 0))),
-    was: Math.floor(num(v.was, -1))
+    was: Math.floor(num(v.was, -1)),
+    hold: Math.max(0, Math.floor(num(v.hold, 0)))
   };
 }
 
@@ -137,6 +155,7 @@ export function normalizeState(s) {
     MAX_LOCK_ENTRIES
   );
   out.pending = normalizeMap(payload.pending, normalizePending, MAX_PENDING_ENTRIES);
+  out.occupation = normalizeMap(payload.occupation, normalizeOccupation, MAX_OCCUPATION_ENTRIES);
   return out;
 }
 

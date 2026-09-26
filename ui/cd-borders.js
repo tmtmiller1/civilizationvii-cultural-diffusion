@@ -30,20 +30,20 @@ export function isCoreProtected(plot, protectOwner, radius = 1) {
   const r = Math.max(0, radius || 0);
   // Two routes on purpose. The player-list route sees a major's or city-state's cities; the MAP route
   // also sees settlements no city list reports - watched: an Independent Power reads `cities: 0`, so
-  // the list route alone leaves every village centre unprotected (docs/BACKLOG.md).
-  return _cityCenterWithin(plot, protectOwner, r) || _centreOnMapWithin(plot, protectOwner, r);
+  // the list route alone leaves every village center unprotected (docs/BACKLOG.md).
+  return _cityCenterWithin(plot, protectOwner, r) || _centerOnMapWithin(plot, protectOwner, r);
 }
 
 /**
- * Whether a settlement centre read off the MAP sits within `radius` rings of the plot, optionally
+ * Whether a settlement center read off the MAP sits within `radius` rings of the plot, optionally
  * filtered to one owner. Catches villages that no player's city list enumerates.
  * @param {{x:number,y:number}} plot Target plot.
  * @param {number} protectOwner Owner filter (-1 = any).
  * @param {number} radius Rings to search.
- * @returns {boolean} True when a matching centre is within radius.
+ * @returns {boolean} True when a matching center is within radius.
  * @private
  */
-function _centreOnMapWithin(plot, protectOwner, radius) {
+function _centerOnMapWithin(plot, protectOwner, radius) {
   return safe(() => {
     const ring = plotsInRadius(plot, radius);
     const seen = ring.some((p) => p.x === plot.x && p.y === plot.y) ? ring : [plot, ...ring];
@@ -57,11 +57,11 @@ function _centreOnMapWithin(plot, protectOwner, radius) {
 }
 
 /**
- * Whether any of `player`'s city centres sits on one of the pre-computed ring keys.
+ * Whether any of `player`'s city centers sits on one of the pre-computed ring keys.
  * @param {*} player Engine player.
  * @param {number} protectOwner Owner filter (-1 = any).
  * @param {Set<string>} ringKeys Plot keys of the ring (plus the plot itself).
- * @returns {boolean} True when a matching city centre is on the ring.
+ * @returns {boolean} True when a matching city center is on the ring.
  * @private
  */
 function _playerCenterOnRing(player, protectOwner, ringKeys) {
@@ -172,6 +172,20 @@ export function isMinorOwner(pid) {
   return safe(() => {
     const p = Players?.get?.(pid);
     return !!p && p.isMajor === false;
+  }, false);
+}
+
+/**
+ * Whether a player id belongs to a LIVING MAJOR civilization: the only players that may gain land by culture or
+ * conquest. `isMajor === true` is required (not merely "not minor"), and a dead player never qualifies.
+ * @param {number} pid Player id.
+ * @returns {boolean} True when the player is an alive major.
+ */
+export function isMajorPlayer(pid) {
+  if (typeof pid !== "number" || pid < 0) return false;
+  return safe(() => {
+    const p = Players?.get?.(pid);
+    return !!p && p.isMajor === true && p.isAlive !== false;
   }, false);
 }
 

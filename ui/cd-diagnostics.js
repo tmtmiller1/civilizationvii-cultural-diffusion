@@ -51,7 +51,7 @@ function logFrontier(cities, next, me, ageCfg) {
       if (v > ageCfg.minimumOwner) over++;
     }
     dlog(`frontier city=${c.id} ring=${ring} best=${fmt(best)} bar=${fmt(ageCfg.minimumOwner)} over=${over}/${n} `
-      + `centre=${fmt(stockAt(next, `${c.loc.x},${c.loc.y}`, me))}`);
+      + `center=${fmt(stockAt(next, `${c.loc.x},${c.loc.y}`, me))}`);
   }
 }
 

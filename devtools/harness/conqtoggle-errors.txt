@@ -1,0 +1,15 @@
+[2026-09-26 10:45:53]	HTML Parser Error@:fs://game/root-game.html@1:2043: Premature end of file  Currently open tags: html, div, div..
+[2026-09-26 10:45:53]	HTML Parser Error@:fs://game/root-game.html@1:2043: Premature end of file  Currently open tags: html, div, div..
+[2026-09-26 10:46:09]	HTML Parser Error@:fs://game/root-game.html@49:43: Tokenizer error with an unimplemented error message.
+[2026-09-26 10:47:40]	JS Error: fs://game/base-standard/ui-next/tooltips/plot-tooltip/helpers.js:297: TypeError: Cannot read properties of null (reading 'owner')
+[2026-09-26 10:47:40]	JS Error (Line):   const owningPlayer = Players.get(unit.owner);
+[2026-09-26 10:47:40]	JS Error (Stack): TypeError: Cannot read properties of null (reading 'owner')
+[2026-09-26 10:49:53]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags-independent-powers.js:463: TypeError: Cannot read properties of null (reading 'type')
+[2026-09-26 10:49:53]	JS Error (Line):     const unitDefinition = GameInfo.Units.lookup(this.unit.type);
+[2026-09-26 10:49:53]	JS Error (Stack): TypeError: Cannot read properties of null (reading 'type')
+[2026-09-26 10:50:15]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags-independent-powers.js:463: TypeError: Cannot read properties of null (reading 'type')
+[2026-09-26 10:50:15]	JS Error (Line):     const unitDefinition = GameInfo.Units.lookup(this.unit.type);
+[2026-09-26 10:50:15]	JS Error (Stack): TypeError: Cannot read properties of null (reading 'type')
+[2026-09-26 10:50:18]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags-independent-powers.js:463: TypeError: Cannot read properties of null (reading 'type')
+[2026-09-26 10:50:18]	JS Error (Line):     const unitDefinition = GameInfo.Units.lookup(this.unit.type);
+[2026-09-26 10:50:18]	JS Error (Stack): TypeError: Cannot read properties of null (reading 'type')

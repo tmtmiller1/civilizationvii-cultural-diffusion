@@ -1,0 +1,83 @@
+[2026-09-25 16:52:39]	[CDH] shell attached 
+[2026-09-25 16:52:40]	[CDH] shell query complete 
+[2026-09-25 16:52:41]	[CDH] shell found AugustusAnt136.Civ7Save turn 136 age AGE_ANTIQUITY missingMods=0 unowned=0 
+[2026-09-25 16:52:41]	[CDH] shell handleLoadSave returned true 
+[2026-09-25 16:52:58]	[CDH] attached gold 
+[2026-09-25 16:52:58]	[CulturalDiffusion] boot (turnInterval 1, verb purchasePlot, enabled true) 
+[2026-09-25 16:53:03]	[CDH] LOAD GameStarted 
+[2026-09-25 16:53:13]	[CDH] GOLD start turn=136 local=0 cities=6 
+[2026-09-25 16:53:13]	[CDH] G turn1 start one refunded claim: gold=538.96 netIncome=95.44 
+[2026-09-25 16:53:13]	[CDH] G CLAIM 89,29 from London: result={"ok":true,"reason":"purchasePlot","cost":0} (cost is what the refund measured on the same tick) 
+[2026-09-25 16:53:23]	[CDH] G CLAIM: gold before=538.96 inline=0 at+3s=0 owner=0 at+10s=0 owner=0 
+[2026-09-25 16:53:43]	[CulturalDiffusion] inject 92,32 civ=0 culture=39.6 vitality=57.1 strength=83.83 stock=10 cap=167662.14 
+[2026-09-25 16:53:43]	[CulturalDiffusion] inject 87,32 civ=0 culture=13 vitality=33.85 strength=33.84 stock=10 cap=67689.75 
+[2026-09-25 16:53:43]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=24.1 strength=5.67 stock=10 cap=11345.41 
+[2026-09-25 16:53:43]	[CulturalDiffusion] inject 93,26 civ=0 culture=13 vitality=23.9 strength=29.96 stock=10 cap=59926.19 
+[2026-09-25 16:53:43]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=11.3 strength=0 stock=0 cap=0 
+[2026-09-25 16:53:43]	[CulturalDiffusion] inject 90,37 civ=3 culture=5 vitality=22.65 strength=10.86 stock=10 cap=21710.13 
+[2026-09-25 16:53:43]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=16.35 strength=9.68 stock=10 cap=19369.56 
+[2026-09-25 16:53:43]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=28.45 strength=15.96 stock=10 cap=31915.04 
+[2026-09-25 16:53:43]	[CulturalDiffusion] inject 80,31 civ=3 culture=3 vitality=13.85 strength=6.56 stock=10 cap=13112.77 
+[2026-09-25 16:53:43]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/23 centre=10 
+[2026-09-25 16:53:43]	[CulturalDiffusion] frontier city=196609 ring=4 best=10 bar=300 over=0/24 centre=10 
+[2026-09-25 16:53:43]	[CulturalDiffusion] frontier city=327683 ring=4 best=10 bar=300 over=0/24 centre=10 
+[2026-09-25 16:53:43]	[CulturalDiffusion] frontier city=393220 ring=4 best=0 bar=300 over=0/19 centre=10 
+[2026-09-25 16:53:43]	[CulturalDiffusion] frontier city=458757 ring=4 best=0 bar=300 over=0/24 centre=0 
+[2026-09-25 16:53:43]	[CulturalDiffusion] state bytes=214 field=8 claims=0 locked=0 passMs=9 
+[2026-09-25 16:53:43]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 8 active field tile(s) 
+[2026-09-25 16:53:43]	[CulturalDiffusion] pass (turn 137): flips=0 field tiles=4 
+[2026-09-25 16:53:47]	[CDH] TURN n=2 turn=137 
+[2026-09-25 16:53:47]	[CDH] G turn1 across-turn one refunded claim: start=538.96 end=119.4 delta=-419.56 income=95.44 => effect beyond income = -515 
+[2026-09-25 16:53:47]	[CDH] G turn2 start changeGoldBalance(+37): gold=119.4 netIncome=79.34 
+[2026-09-25 16:53:47]	[CDH] G CHANGE changeGoldBalance(37) returned=undefined 
+[2026-09-25 16:53:57]	[CDH] G CHANGE: gold before=119.4 inline=0 at+3s=0  at+10s=0  
+[2026-09-25 16:54:18]	[CulturalDiffusion] inject 92,32 civ=0 culture=39.6 vitality=58.33 strength=65.84 stock=99.14 cap=131682.84 
+[2026-09-25 16:54:18]	[CulturalDiffusion] inject 87,32 civ=0 culture=13 vitality=33.85 strength=26.39 stock=50.82 cap=52770.46 
+[2026-09-25 16:54:18]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=17.36 strength=3.94 stock=23.33 cap=7885.81 
+[2026-09-25 16:54:18]	[CulturalDiffusion] inject 93,26 civ=0 culture=9 vitality=25.13 strength=18.72 stock=41.42 cap=37434.92 
+[2026-09-25 16:54:18]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=13.51 strength=0 stock=0 cap=0 
+[2026-09-25 16:54:18]	[CulturalDiffusion] inject 90,37 civ=3 culture=5 vitality=23.75 strength=10.79 stock=31.71 cap=21575.1 
+[2026-09-25 16:54:18]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=16.35 strength=9.47 stock=30.09 cap=18932.23 
+[2026-09-25 16:54:18]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=28.45 strength=15.6 stock=37.6 cap=31194.45 
+[2026-09-25 16:54:18]	[CulturalDiffusion] inject 80,31 civ=3 culture=3 vitality=13.85 strength=6.41 stock=26.35 cap=12816.7 
+[2026-09-25 16:54:18]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/23 centre=99.14 
+[2026-09-25 16:54:18]	[CulturalDiffusion] frontier city=196609 ring=4 best=23.33 bar=300 over=0/24 centre=50.82 
+[2026-09-25 16:54:18]	[CulturalDiffusion] frontier city=327683 ring=4 best=50.82 bar=300 over=0/24 centre=23.33 
+[2026-09-25 16:54:18]	[CulturalDiffusion] frontier city=393220 ring=4 best=0 bar=300 over=0/19 centre=41.42 
+[2026-09-25 16:54:18]	[CulturalDiffusion] frontier city=458757 ring=4 best=0 bar=300 over=0/24 centre=0 
+[2026-09-25 16:54:18]	[CulturalDiffusion] state bytes=337 field=8 claims=0 locked=0 passMs=8 
+[2026-09-25 16:54:18]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 8 active field tile(s) 
+[2026-09-25 16:54:18]	[CulturalDiffusion] pass (turn 138): flips=0 field tiles=4 
+[2026-09-25 16:54:22]	[CDH] TURN n=3 turn=138 
+[2026-09-25 16:54:22]	[CDH] G turn2 across-turn changeGoldBalance(+37): start=119.4 end=268.49 delta=149.09 income=79.34 => effect beyond income = 69.75 
+[2026-09-25 16:54:22]	[CDH] G turn3 start grantYield(GOLD,+37): gold=268.49 netIncome=55.09 
+[2026-09-25 16:54:22]	[CDH] G GRANT grantYield(37) returned=null 
+[2026-09-25 16:54:32]	[CDH] G GRANT: gold before=268.49 inline=0 at+3s=37  at+10s=37  
+[2026-09-25 16:54:50]	[CulturalDiffusion] inject 92,32 civ=0 culture=41.8 vitality=58.59 strength=67.14 stock=362.1 cap=134283.98 
+[2026-09-25 16:54:50]	[CulturalDiffusion] inject 87,32 civ=0 culture=15 vitality=29.95 strength=27.27 stock=132.57 cap=54543.33 
+[2026-09-25 16:54:50]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=14.61 strength=3.65 stock=37.99 cap=7297.88 
+[2026-09-25 16:54:50]	[CulturalDiffusion] inject 93,26 civ=0 culture=5 vitality=28.37 strength=13.1 stock=81.01 cap=26206.04 
+[2026-09-25 16:54:50]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=12.33 strength=0 stock=0 cap=0 
+[2026-09-25 16:54:50]	[CulturalDiffusion] inject 90,37 civ=3 culture=5 vitality=23.75 strength=9.01 stock=58.77 cap=18011.76 
+[2026-09-25 16:54:50]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=17.35 strength=8.07 stock=54.73 cap=16137.22 
+[2026-09-25 16:54:50]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=29.45 strength=13.18 stock=76.02 cap=26359.17 
+[2026-09-25 16:54:50]	[CulturalDiffusion] inject 80,31 civ=3 culture=3 vitality=13.85 strength=5.35 stock=44.67 cap=10699.9 
+[2026-09-25 16:54:50]	[CulturalDiffusion] frontier city=65536 ring=4 best=0 bar=300 over=0/23 centre=362.1 
+[2026-09-25 16:54:50]	[CulturalDiffusion] frontier city=196609 ring=4 best=37.99 bar=300 over=0/24 centre=132.57 
+[2026-09-25 16:54:50]	[CulturalDiffusion] frontier city=327683 ring=4 best=132.57 bar=300 over=0/24 centre=37.99 
+[2026-09-25 16:54:50]	[CulturalDiffusion] frontier city=393220 ring=4 best=0 bar=300 over=0/19 centre=81.01 
+[2026-09-25 16:54:50]	[CulturalDiffusion] frontier city=458757 ring=4 best=0 bar=300 over=0/24 centre=0 
+[2026-09-25 16:54:50]	[CulturalDiffusion] state bytes=338 field=8 claims=0 locked=0 passMs=8 
+[2026-09-25 16:54:50]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 8 active field tile(s) 
+[2026-09-25 16:54:50]	[CulturalDiffusion] pass (turn 139): flips=0 field tiles=4 
+[2026-09-25 16:54:54]	[CDH] TURN n=4 turn=139 
+[2026-09-25 16:54:54]	[CDH] G turn3 across-turn grantYield(GOLD,+37): start=268.49 end=309.09 delta=40.59 income=55.09 => effect beyond income = -14.5 
+[2026-09-25 16:54:54]	[CDH] G turn3 across-turn grantYield(GOLD,+37): start=268.49 end=309.09 delta=40.59 income=55.09 => effect beyond income = -14.5 
+[2026-09-25 16:54:54]	[CDH] P7 wilderness 8,21 owner=63 feature=- naturalWonder=false resource=- constructibles=["IMPROVEMENT_COAST"] district=DISTRICT_WILDERNESS owningCityId=-1 
+[2026-09-25 16:54:54]	[CDH] P7 wilderness 51,23 owner=63 feature=- naturalWonder=false resource=- constructibles=["IMPROVEMENT_WRECKAGE"] district=DISTRICT_WILDERNESS owningCityId=-1 
+[2026-09-25 16:54:54]	[CDH] P7 wilderness 26,26 owner=63 feature=- naturalWonder=false resource=- constructibles=["IMPROVEMENT_CAMPFIRE"] district=DISTRICT_WILDERNESS owningCityId=-1 
+[2026-09-25 16:54:54]	[CDH] P7 wilderness 0,31 owner=63 feature=- naturalWonder=false resource=- constructibles=["IMPROVEMENT_COAST"] district=DISTRICT_WILDERNESS owningCityId=-1 
+[2026-09-25 16:54:54]	[CDH] P7 wilderness 41,37 owner=63 feature=FEATURE_SAVANNA_WOODLAND naturalWonder=false resource=- constructibles=["IMPROVEMENT_TENTS"] district=DISTRICT_WILDERNESS owningCityId=-1 
+[2026-09-25 16:54:54]	[CDH] P7 wilderness 50,57 owner=63 feature=- naturalWonder=false resource=- constructibles=["IMPROVEMENT_CAVE"] district=DISTRICT_WILDERNESS owningCityId=-1 
+[2026-09-25 16:54:54]	[CDH] G VERDICT claim effect beyond income=-515 changeGoldBalance effect=69.75 grantYield effect=-14.5 => claims COST GOLD across the turn (-515); changeGoldBalance moved 69.75; grantYield moved -14.5 
+[2026-09-25 16:54:54]	[CDH] DONE harness gold finished 

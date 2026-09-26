@@ -8,7 +8,7 @@
 /**
  * @typedef {Object} CrossMod Per-terrain diffusion modifier {malus, max, threshold}.
  * @property {number} malus Diffusion-rate penalty fraction crossing into this terrain.
- * @property {number} max Neighbour-cap multiplier (x normalMax) for this terrain.
+ * @property {number} max Neighbor-cap multiplier (x normalMax) for this terrain.
  * @property {number} threshold Multiple of cultureThreshold the source must exceed to cross at all.
  */
 
@@ -39,27 +39,55 @@
  *   that can still move, even inside a small pocket, is fine.
  * @property {number}  minorProtectRadius Minimum rings of core protection around a MINOR settlement
  *   (city-state or Independent Power) regardless of coreProtectRadius. A minor's whole territory is a
- *   ring or two, so the major-civ default of 0 stripped it to its centre plot - which reads to the
+ *   ring or two, so the major-civ default of 0 stripped it to its center plot - which reads to the
  *   player as the settlement being absorbed. -1 disables the floor.
  * @property {boolean} requireAdjacency Only flip a tile that TOUCHES your existing land
  *   (the organic contiguous front - takes a rival's rings from the outside in). Off = flip
  *   any tile your culture field dominates, even a disconnected pocket inside their territory.
+ * @property {boolean} aiCultureFlips Every living major civilization gains land by culture inside the simulated
+ *   region, under the same gates as the local player (Civ V UpdatePlotOwnership). Opt-in.
+ * @property {boolean} conquestFlip A combat unit that holds an enemy tile for `conquestBufferTurns` consecutive
+ *   passes during a war takes it, ignoring culture; city centers and urban districts are never taken. Opt-in.
+ * @property {number}  conquestBufferTurns Consecutive passes a tile must be held before a conquest flip (0 = at once).
+ * @property {number}  conquestHoldTurns Turns a conquered tile is held against CULTURE flips afterwards; another army
+ *   can still take it at any time. After the hold the tile works the normal way.
+ * @property {boolean} foreignCultureInCities A city injects culture for EVERY group present on its tile, weighted
+ *   by population (and by the Emigration composition when present), and converts foreign stock to its owner each
+ *   turn (Civ V GetCityCulturalOutput + ConvertCulture).
+ * @property {number}  foreignInjectScale Multiplier on a city's population for a foreign group's injection strength.
+ * @property {number}  foreignGroupMinStock Without Emigration data, a foreign group must hold at least this much
+ *   stock on the city tile before the city's people pump it (keeps a trickle from being amplified).
+ * @property {number}  convertBase Fraction of every foreign group's city-tile stock converted to the owner per turn.
+ * @property {Record<string, number>} convertBonuses Extra conversion per turn keyed by constructible, tradition or
+ *   ideology type present in the city / on its owner. Unknown keys are ignored.
+ * @property {boolean} captureTransfer On a city capture, every culture on the city's tiles loses `captureLoss` and
+ *   the conqueror gains `captureGain` of the total lost (Civ V CityCultureOnCapture).
+ * @property {number}  captureLoss Fraction each culture loses on the captured city's tiles.
+ * @property {number}  captureGain Fraction of the total lost that the conqueror gains.
+ * @property {number}  sourceThresholdMountain Multiple of cultureThreshold a MOUNTAIN source needs before it
+ *   diffuses at all (Civ V PlotCultureThreshold).
+ * @property {number}  ownerFloor Minimum stock of the owner's culture kept on every owned tile in the region
+ *   (Civ V MINIMAL_CULTURE_ON_OWNED_PLOT). 0 disables.
  *
  * -- reaction-diffusion field (Civ V model) --
- * @property {number}  cultureThreshold Min culture on a tile before it diffuses to neighbours.
- * @property {number}  diffusionRate Fraction of a tile's stock delivered to each neighbour per turn (Civ V 5.5%).
+ * @property {number}  cultureThreshold Min culture on a tile before it diffuses to neighbors.
+ * @property {number}  diffusionRate Fraction of a tile's stock delivered to each neighbor per turn (Civ V 5.5%).
  * @property {number}  decayRate Fraction of a tile's stock lost per turn.
  * @property {number}  decayFlat Flat culture lost per turn (dissipates tiny stocks).
- * @property {number}  normalMax Neighbour cap as a fraction of the source (open ground).
- * @property {number}  maxPercent Absolute neighbour cap as a fraction of the source (with road/river bonuses).
+ * @property {number}  normalMax Neighbor cap as a fraction of the source (open ground).
+ * @property {number}  maxPercent Absolute neighbor cap as a fraction of the source (with road/river bonuses).
  * @property {number}  injectBase Flat culture a city injects into its own tile each turn.
  * @property {number}  injectRatio Self-amplification ratio in the sqrt injection curve.
  * @property {number}  cityCapFactor City-tile culture cap = injection strength x this.
  * @property {number}  minimumOwner Culture a civ needs on a tile before it can own it.
  * @property {number}  flipRatio A flip needs newOwnerCulture x flipRatio > incumbentCulture (0.65 = decisive lead).
  * @property {number}  flipMaxDistance Max tiles from a city a plot may be claimed.
- * @property {number}  roadBonus / roadMax / riverFollowBonus / riverFollowMax Road/river follow
- *   bonus + cap multipliers.
+ * @property {number}  roadBonus / roadMax Road follow bonus + cap multiplier.
+ * @property {number}  riverFollowBonus / riverFollowMax Follow bonus + cap multiplier along a MINOR river.
+ * @property {number}  navigableFollowBonus / navigableFollowMax Follow bonus + cap multiplier along a
+ *   NAVIGABLE river (the stronger highway).
+ * @property {CrossMod} terrainRiverCross / terrainNavigableCross Gate for stepping onto a minor /
+ *   navigable river from anywhere but the same river (the wall across it).
  * @property {CrossMod} terrainHills / terrainMountain Terrain (elevation) crossing modifiers.
  * @property {CrossMod} terrainTundra / terrainDesert Biome crossing modifiers.
  * @property {CrossMod} terrainForest / terrainJungle / terrainMarsh Feature crossing modifiers.
@@ -100,14 +128,15 @@ export const CONFIG = {
   protectTrappedUnits: true,
   // A minor settlement is a ring or two of territory in total, so coreProtectRadius 0 - fine against a
   // major - takes everything a city-state or village has except the plot it stands on. Watched in harness
-  // run 13: the pass flipped 89,41 and 90,42, both ring-1 neighbours of city-state 33's centre at 89,42.
+  // run 13: the pass flipped 89,41 and 90,42, both ring-1 neighbors of city-state 33's center at 89,42.
   minorProtectRadius: 1,
   // The INTEGRATED verb (current-model.md §4): `purchasePlot` attaches the flipped tile to the
   // nearest city so it is a real, workable plot, not the orphan `setOwnership` produces (which blocks
   // base-game border growth). Code-only; `setOwnership` survives for `unclaim` and as a testing escape hatch.
   flipVerb: "purchasePlot",
-  // Net-zero the gold purchasePlot spends by restoring the balance the same tick via
-  // Treasury.changeGoldBalance (invisible to the player). Turn off to let claims actually cost gold.
+  // Net-zero any gold purchasePlot spends by restoring the balance the same tick (Players.grantYield; watched
+  // 2026-09-25: a script purchase charges nothing on 1.5.0 and Treasury.changeGoldBalance is a no-op, so this
+  // is insurance against a future build that prices the purchase). Turn off to let claims cost gold if they ever do.
   refundGold: true,
   // Each pass, re-integrate any ORPHAN tile (owner === me but no owning city): release it, then
   // re-claim it via the integrated verb so it stops blocking base-game border growth. Off = leave orphans as-is.
@@ -146,8 +175,60 @@ export const CONFIG = {
   // purchasePlot (refunded). Only tiles in state.claims are touched; there is no release-to-no-one.
   recedeBorders: false,
 
+  // EVERY civilization gains land by culture (opt-in; docs/civ-v-parity-spec.md §2). Inside the simulated
+  // region a living major whose culture decisively leads a tile takes it through its nearest city, under the
+  // same gates as our own claims: peace with the incumbent, the incumbent's core protection, adjacency to the
+  // leader's land, flipMaxDistance from one of the leader's cities, the strand guard, its per-city cap, and its
+  // own natural ring left to the base game. Independent Powers and city-states never win a tile. Watched
+  // 2026-09-25: a rival city's purchasePlot lands like ours and costs nothing. Off = AI borders never move by culture.
+  aiCultureFlips: false,
+
+  // Unit CONQUEST (opt-in; spec §6, potential-future-features.md §2). During a war between two majors, a combat
+  // unit that holds an enemy tile for `conquestBufferTurns` consecutive passes takes it for its owner, ignoring
+  // culture. Leaving resets the count. City centers and urban districts are never taken (capturing a city is the
+  // engine's job). A conquered tile is then HELD for conquestHoldTurns: culture cannot flip it back in that time, but
+  // another army holding it through the buffer takes it at any time (conquest never waits on a lock). Afterwards
+  // the tile works the normal way: once peace is made (no culture path crosses an active front) any civilization
+  // whose culture decisively leads the tile may take it, not only the one it was taken from - intended, decided
+  // 2026-09-26. For another civ's units it also needs aiCultureFlips.
+  conquestFlip: false,
+  conquestBufferTurns: 5,
+  conquestHoldTurns: 10,
+
+  // Foreign culture IN cities (spec §3 + §4, shipped together). A city injects for every culture group present on
+  // its tile - the owner at full strength, each foreign group at population x foreignInjectScale (x that group's
+  // share of the population when the Emigration mod records one) - so a captured or mixed city keeps producing its
+  // old culture; and each turn it CONVERTS convertBase (+ bonuses) of every foreign group's stock to its owner, so
+  // that culture fades over time. The city-tile cap applies to the TOTAL culture on the tile.
+  foreignCultureInCities: true,
+  foreignInjectScale: 1.0,
+  foreignGroupMinStock: 100,
+  convertBase: 0.005, // Civ V 0.5% per turn
+  convertBonuses: {
+    // science buildings (Civ V: Library +0.25%, University +0.5%, Public School +1%), by age
+    BUILDING_LIBRARY: 0.0025, BUILDING_ACADEMY: 0.005,
+    BUILDING_UNIVERSITY: 0.005, BUILDING_OBSERVATORY: 0.005,
+    BUILDING_SCHOOLHOUSE: 0.01, BUILDING_LABORATORY: 0.01,
+    // culture buildings help a city absorb its people
+    BUILDING_MONUMENT: 0.0025, BUILDING_AMPHITHEATER: 0.0025, BUILDING_MUSEUM: 0.005, BUILDING_OPERA_HOUSE: 0.005,
+    // the Modern ideologies (Civ V: +1.0% to +1.75%)
+    IDEOLOGY_DEMOCRACY: 0.01, IDEOLOGY_FASCISM: 0.0175, IDEOLOGY_COMMUNISM: 0.0125
+  },
+
+  // Culture transfer on city CAPTURE (spec §5): on CityTransfered, every culture on the captured city's tiles
+  // loses captureLoss and the new owner gains captureGain of the total lost, so a conquered region starts leaning
+  // toward its conqueror at once. Watched 2026-09-25: the event reaches the mod for any transfer, AI-vs-AI included.
+  captureTransfer: true,
+  captureLoss: 0.55,
+  captureGain: 0.75,
+
+  // Three small Civ V rules (spec §8): a mountain source needs 7.5x the threshold before it diffuses, and an
+  // owned tile never drops below ownerFloor of its owner's culture.
+  sourceThresholdMountain: 7.5,
+  ownerFloor: 1,
+
   // -- reaction-diffusion field (the SLOW, organic reach - Civ V model) --
-  // Culture is a persisted per-tile stock: a tile diffuses 5.5% to each neighbour per turn (capped at
+  // Culture is a persisted per-tile stock: a tile diffuses 5.5% to each neighbor per turn (capped at
   // 40% of the source, 75% along roads/rivers) and loses 5%+1 to decay; a tile is owned once a civ's
   // stock passes `minimumOwner`. Building up ring by ring against decay makes reach a creeping front.
   cultureThreshold: 100,
@@ -163,11 +244,18 @@ export const CONFIG = {
   flipRatio: 0.65,
   flipMaxDistance: 6,
 
-  // Terrain: culture follows roads/rivers and is slowed crossing rough ground. `max` is the neighbour
+  // Terrain: culture follows roads/rivers and is slowed crossing rough ground. `max` is the neighbor
   // cap x normalMax; `malus` slows the rate; `threshold` (x cultureThreshold) gates whether culture
   // crosses at all. Modifiers for the DESTINATION tile's terrain, biome and feature STACK.
   roadBonus: 1.0, roadMax: 2.5,
-  riverFollowBonus: 0.65, riverFollowMax: 1.8,
+  // Rivers are a highway ALONG them and a wall ACROSS them, as in Civ V (docs/civ-v-parity-spec.md §1).
+  // Following: tile to tile down the same river. A navigable river carries culture farther than a minor
+  // one (road strength, vs Civ V's river values). Crossing: stepping onto a river from a bank, the other
+  // kind or another river pays Civ V's river-crossing gate once; stepping off a river is free.
+  riverFollowBonus: 0.65, riverFollowMax: 1.8,         // minor river (Civ V CULTURE_FOLLOW_RIVER_*)
+  navigableFollowBonus: 1.0, navigableFollowMax: 2.5,  // navigable river
+  terrainRiverCross:     { malus: 0.50, max: 0.35, threshold: 2.00 }, // onto a minor river (Civ V CROSS_RIVER)
+  terrainNavigableCross: { malus: 0.50, max: 0.35, threshold: 2.00 }, // onto a navigable river
   terrainHills:    { malus: 0.15, max: 0.60, threshold: 1.50 }, // TERRAIN_HILL
   terrainMountain: { malus: 0.75, max: 0.10, threshold: 7.50 }, // TERRAIN_MOUNTAIN (near-impassable to culture)
   terrainTundra:   { malus: 0.25, max: 0.40, threshold: 2.50 }, // BIOME_TUNDRA (the cold biome)

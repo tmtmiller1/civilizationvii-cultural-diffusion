@@ -204,3 +204,136 @@ turns, then switches the lens on and captures the game window.
 | Does the hover readout see the saved field and name the civilizations? | Yes, for the data it is built from. The harness rebuilt the readout with the lens's own imports: `loadState()` returned the field, and `civLabel` gave "British Empire" and "Hawaiian Empire", not `#id` fallbacks. The panel itself was not hovered |
 | Does the lens paint the contested tiles? | Not yet seen. In run 10 the top tile was centred under the Civic Unlocked popup and the others were off screen. Run 11 repeats it with the popup closed |
 | Does the lens show only flips that will happen? | No. Two of run 10's five contested tiles were unowned tiles led by the Hawaiian Empire, which the pass never flips for an AI. See [`BACKLOG.md`](BACKLOG.md) |
+
+## 6. Civ V parity probes P1-P7 and the river rule, watched (game 1.5.0, 2026-09-25)
+
+The probes from [`civ-v-parity-spec.md`](civ-v-parity-spec.md), run hands-free on AugustusAnt136 (Antiquity, turn 136)
+with the harness script `devtools/harness/cdh-game-parity.js`. Two runs, logs `parity-UI.log` (6 turns) and
+`parity2-UI.log` (14 turns, a corrected site picker); a third, `cdh-game-gold.js` / `gold-UI.log`, isolates the gold
+question P4 raised. Every line below is a watched read from the running game, not a reading of the source.
+
+### P3. Is there any edge-level river read? No
+
+`GameplayMap` has 74 members. The river ones are `getRiverName`, `getRiverType`, `isAdjacentToRivers`,
+`isNavigableRiver` and `isRiver`, all keyed by a tile. `isRiverCrossing`, `isRiverConnection`, `getRiverEdge` and
+`getRiverFlowDirection` are undefined; the only edge read on the object is `isCliffCrossing`. A `MapRivers` global
+exists (`getRiver`, `getRiverIDByIndex`, `getRiverPlots`, `getRiverTypeByIndex`, `isRiverConnectedToOcean`,
+`numRivers`) and it too speaks in plots. `TerrainBuilder` is absent from the game scope. `RiverTypes` is
+`{ NO_RIVER: -1, RIVER_MINOR: 0, RIVER_NAVIGABLE: 1 }`, so a "river present" test must compare against `NO_RIVER`,
+never test truthiness (a minor river is 0). `cd-terrain.js` already does the former.
+
+### P1. Minor rivers are tiles, in 1-wide named chains
+
+A whole-map scan (96 × 60, 5,760 tiles): 236 minor-river tiles, 116 navigable-river tiles, `isRiver` true on exactly
+those 352 and no others. Names: 234 of 236 minor tiles and 116 of 116 navigable tiles carry a `getRiverName` key;
+98 distinct rivers. Chain shape, counted as each river tile's same-kind, same-name river neighbours:
+
+| Kind | Tiles | Neighbour histogram 0..6 | Mean | Different-name adjacent pairs |
+| --- | --- | --- | --- | --- |
+| Minor | 236 | 4, 162, 63, 6, 1, 0, 0 | 1.31 | 24 |
+| Navigable | 116 | 13, 56, 47, 0, 0, 0, 0 | 1.29 | 4 |
+
+A mean near 1.3 with almost every tile at one or two neighbours is a 1-wide chain with ends and a few forks, not the
+2-wide band both banks would form if the flag were an edge marker. So minor rivers are stored per tile, as the spec
+assumed, and the tile rule stands. `isAdjacentToRivers(x, y, 1)` is true on the river tile itself (197 of 200 sampled)
+and on its bank tiles (790 of 793), so it means "within one tile of a river" and cannot tell a bank from the river. The
+two unnamed minor tiles and the 24 different-name pairs (confluences) are the cases the "missing name counts as the same
+river" rule and the "different name is a crossing" rule cover. The 11 × 11 text window at 82,32 (River Trent, Yenisei,
+Damietta, Wye, Severn, Arno) and the frame `shots/parity-p1-window.png` show the same chains the renderer draws as
+streams.
+
+### P2. A navigable river tile is not water to the engine
+
+Tile 85,19 (Ozama River, one tile from a local city): `isWater` false, terrain `TERRAIN_NAVIGABLE_RIVER`, biome
+`BIOME_PLAINS`, `isNavigableRiver` true, `getRiverType` 1, `isRiver` true, `isImpassable` false, `isLake` false,
+`isCoastalLand` true, owner 0. `Terrains.Water = 0` holds at runtime, so the channel takes the land path in
+`stepMods`, and the isWater override in `cd-terrain.js` is a safety net that this build never needs.
+
+### The river rule end to end (spec §1), watched in both runs
+
+The harness cleared the field, seeded known stocks on real tiles at least three rings from every local city and not
+touching our land (299 on the strong sites, under the 300 ownership bar; 150 on the gate site, under the 200 river
+gate), ran ONE pass with `culturalDiffusion.runNow()`, and read what each neighbour received. Every actual value
+matched `diffusionDelivered` applied to the live `stepMods` of that step to two decimals (ratio ×1 on every line), so
+the in-game reads classify exactly as the unit stubs do and the Antiquity pace is 1.
+
+| Step | Source, destination | Live stepMods | Received | Plain-land control | Verdict |
+| --- | --- | --- | --- | --- | --- |
+| Gate, bank onto minor river at 150 | 81,15 → 82,16 (Song Hong) | blocked | 0 | 8.25 | Nothing crosses below 2× threshold |
+| Follow, minor river | 82,27 → 83,28 (Arno, flat floodplain) | bonus 0.65, cap ×1.8 | 27.13 | 16.45 | ×1.65 along the river (run 2) |
+| Cross, bank onto minor river on hills | 84,25 → 85,24 (Sejenane) | malus 0.65, cap ×0.21 | 9.97 | 16.45 | ×0.61: river crossing and hills stack (run 1) |
+| Follow, navigable river | 80,22 → 79,21 (Kolekole) | bonus 1.0, cap ×2.5 | 32.89 | 16.45 | ×2.0 along the channel (run 2) |
+| Cross, bank onto navigable river | 78,34 → 78,35 (Damietta floodplain) | malus 0.5, cap ×0.35 | 10.96 | 16.45 | ×0.67 into the channel |
+
+Under the previous rule every one of the three "onto a river" steps would have received the follow bonus (×1.65
+instead of 0, ×0.61 and ×0.67), so the runs also show the defect is gone. Two picker artefacts are recorded so nobody
+re-reads them as failures: run 1's minor-follow site and run 2's minor-cross site each landed on a river tile under
+rainforest, whose own gate (4.5× threshold) blocks at 299, so those single reads were 0 for the feature, not the river.
+Each row above is the run in which the step was open. The mod's own passes ran every turn alongside (8-11 ms, 35-67
+field tiles, no flips), and no error was logged.
+
+### P6. A moved unit can be classed combat or civilian
+
+`UnitMoved` fires in the UI context for every player's units: 9,072 events over 14 turns, 8,615 of them foreign.
+The payload is `{ unit, location, parent, toStateChange, visibleToLocalPlayer, destinationVisibleToLocalPlayer }` with
+`unit` a ComponentID. `Units.get(data.unit)` resolved for all but 17, and `unit.Combat.isCombat` split them 8,067
+combat to 988 civilian (trade ships and settlers read false; scouts, commanders and quadriremes true). `canAttack` is
+a separate flag (a scout is combat but cannot attack). Spec §6 can use `Combat.isCombat` directly.
+
+### P5. `CityTransfered` reaches the UI for transfers the local player is not part of
+
+Payload: `{ fromPlayer, transferType, cityID }`, the city already carrying its new owner. Two were watched:
+
+| Turn | City | From → to | Note |
+| --- | --- | --- | --- |
+| 136 (run 1 and 2) | Glasgow, 90,37 | 0 (us) → 3 | Preceded by `CityRemovedFromMap` for our id and `CityAddedToMap` for player 3's; a capture while autoplay left the city undefended |
+| 149 (run 2) | Tendirma, 31,26 | 6 (major) → 12 (an independent, no cities before) | Neither side local; a different `transferType` hash, so a revolt or independence rather than a capture |
+
+So the event is delivered for AI-to-AI transfers; a capture between two AI majors was not seen in 20 turns but has no
+reason to differ from the second row. Spec §5 can subscribe. Note the accompanying `CityRemovedFromMap` +
+`CityAddedToMap` pair: a capture is not silent on those events, so razing must still be told apart by
+`CityRazingStarted` / the absence of a `CityTransfered`.
+
+### P7. No defeated major exists in this save; the only dead plot owner is the engine's wilderness player
+
+`Players.getEverAlive()` lists 51 ids, `getAlive()` 49. The two dead: 49, a `CIVILIZATION_PLACEHOLDER_CITYSTATE`
+minor with no plots, and 63, `CIVILIZATION_NONE`, neither major nor minor nor independent, no cities, holding six plots
+scattered across the whole map (5 to 45 tiles from us), each with `DISTRICT_WILDERNESS` and an owning-city id of -1.
+Those are engine-owned wilderness plots, not a defeated civilization's land. Whether a defeated MAJOR keeps plots is
+still not watched (it needs a save with a real defeat), but two facts narrow it: territory hangs off cities here, and
+the mod's `findDeadOwners` already excludes dead ids from winning. Note for the flip path: `ownerAt` on a player-63
+plot returns 63, a dead owner, so a tile with a wilderness district must never be treated as claimable frontier;
+the district check in the claim gate is what protects it.
+
+### P4 and the price of a claim: `changeGoldBalance` is dead, `grantYield` works, and a script purchase is free
+
+Parity run 2 found `Treasury.changeGoldBalance(+37)` on a rival moved nothing, and the same call on the local player,
+the mod's own refund verb, moved nothing either. Two short runs isolated it (`cdh-game-gold.js` / `gold-UI.log` and
+`cdh-game-gold2.js` / `gold2-UI.log`). The first rolled its turns with the harness's Autoplay fallback, and the engine
+log shows `Autoplay started` on every one of them, so its across-turn gold deltas (−515, +70, −15 beyond income) are
+the AI spending our treasury and prove nothing. The second rolled every turn WITHOUT Autoplay: `sendTurnComplete()`
+ended the turn within 12 s although the blocker read `UNITS` (and later `NEW_POPULATION`), no `Autoplay started` line
+was logged, and our unit count only changed by one completed build. Its numbers are clean:
+
+| Turn | Action | Gold at +0 / +3 / +10 / +30 / +60 s | Across the roll, beyond own net income |
+| --- | --- | --- | --- |
+| 136 | One refunded claim of 89,29 from London (`flipViaPurchasePlotRefunded`, result cost 0); owner became us at +3 s | 0 / 0 / 0 / 0 / 0 | 0 (delta 95.44 = income 95.44) |
+| 137 | Control, nothing done | 0 / 0 / 0 / 0 / 0 | +70 (a one-off credit with no claim and no Autoplay; noise, not cost) |
+| 138 | `changeGoldBalance(+37)` on the local player | 0 / 0 / 0 / 0 / 0 | 0 (delta 94.34 = income 94.34) |
+
+And from the parity and first gold runs, within a turn: `Players.grantYield(pid, YIELD_GOLD, +37)` read 0 on the tick
+and +37 at +3 s, on the rival (416.52 to 453.52) and on us (268.49 to 305.49), and `grantYield(−37)` took it back.
+
+Verdicts, all watched on 1.5.0:
+
+- `Treasury.changeGoldBalance` changes nothing, for the local player or a rival, within 60 s or across a turn. The
+  `Treasury` object has only `changeGoldBalance`, `goldBalance` and two maintenance getters. The mod's `grantGold`
+  prefers this verb and falls back to `grantYield` only when it is not a function, so on this build the mod's refund
+  path never moves gold.
+- `Players.grantYield(pid, YIELD_GOLD, n)` is the working verb, deferred by up to 3 s, for any player. So an AI CAN be
+  refunded (spec §2, P4), through `grantYield`.
+- A script `city.purchasePlot` costs nothing: 0 on the tick, 0 through +60 s, and 0 at the turn roll, while the tile
+  landed at +3 s. Every harness run since July logged `goldSpent=0` at the same tick, and this closes the possibility
+  of a late charge. The July "spends gold" verdict in §2 came from a build where the tuner's purchase was priced; it is
+  not the case now. The dead refund verb therefore costs the player nothing today; if the engine ever prices script
+  purchases again, `grantGold` must reach for `grantYield` first.
