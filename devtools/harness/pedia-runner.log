@@ -1,0 +1,32 @@
+[11:58:46] autosaves backed up: 10
+[11:58:46] registry before: 1453=0  (restoring Disabled=0 afterwards)
+[11:58:46] deployed mod: debug=1 affectsSaves0=1
+[11:58:46] harness installed: cdh-game-pedia.js on AugustusAnt136.Civ7Save
+[11:58:46] previous UI.log kept at /Users/tylermiller/Library/Application Support/Civilization VII/cd-harness-backup/UI-before-pedia-20260926-115846.log (12850 lines)
+[11:58:48] game pid 64521
+[11:59:50] shot pedia-cd-overview -> 6525895 bytes
+[11:59:59] shot pedia-cd-faq -> 6620890 bytes
+[12:00:12] shot pedia-cd-about -> 6525576 bytes
+[12:00:24] shot pedia-cd-field -> 6780683 bytes
+[12:00:37] shot pedia-cd-terrain -> 6382183 bytes
+[12:00:50] shot pedia-cd-claims -> 6656132 bytes
+[12:01:03] shot pedia-cd-growth -> 6630086 bytes
+[12:01:16] shot pedia-cd-strength -> 6749233 bytes
+[12:01:28] shot pedia-cd-balance -> 6481627 bytes
+[12:01:41] shot pedia-cd-emigration -> 6600514 bytes
+[12:01:54] shot pedia-cd-cities -> 6498425 bytes
+[12:02:07] shot pedia-cd-recede -> 6529527 bytes
+[12:02:20] shot pedia-cd-rivalflips -> 6637972 bytes
+[12:02:32] shot pedia-cd-conquest -> 6548278 bytes
+[12:02:43] shot pedia-cd-lens -> 6523167 bytes
+[12:02:56] shot pedia-cd-options -> 6573672 bytes
+[12:03:09] shot pedia-cd-cultural-borders -> 6666604 bytes
+[12:03:27] result=done after 256s
+[12:03:27] collected AI_Market.csv (1 lines)
+[12:03:27] collected AI_MovementPlanning.csv (27 lines)
+[12:03:27] collected AI_Targets.csv (287 lines)
+[12:03:27] collected AI_UnitEfficiency.csv (115 lines)
+[12:03:35] restored: registry 1455=0  harness present: no debugPatched: 0
+[12:03:35] autosaves changed during the run; putting the player's back
+[12:03:35] FINISHED result=done  log: /Users/tylermiller/Repos/civilization_mods/civilization_vii_mods/tower_mods/cultural_diffusion/devtools/harness/pedia-UI.log
+RUN_EXIT=0

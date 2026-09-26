@@ -175,13 +175,13 @@ export const CONFIG = {
   // purchasePlot (refunded). Only tiles in state.claims are touched; there is no release-to-no-one.
   recedeBorders: false,
 
-  // EVERY civilization gains land by culture (opt-in; docs/civ-v-parity-spec.md §2). Inside the simulated
-  // region a living major whose culture decisively leads a tile takes it through its nearest city, under the
-  // same gates as our own claims: peace with the incumbent, the incumbent's core protection, adjacency to the
-  // leader's land, flipMaxDistance from one of the leader's cities, the strand guard, its per-city cap, and its
+  // EVERY civilization gains land by culture (on by default since 1.4.0; docs/civ-v-parity-spec.md §2). Inside
+  // the simulated region a living major whose culture decisively leads a tile takes it through its nearest city,
+  // under the same gates as our own claims: peace with the incumbent, the incumbent's core protection, adjacency to
+  // the leader's land, flipMaxDistance from one of the leader's cities, the strand guard, its per-city cap, and its
   // own natural ring left to the base game. Independent Powers and city-states never win a tile. Watched
   // 2026-09-25: a rival city's purchasePlot lands like ours and costs nothing. Off = AI borders never move by culture.
-  aiCultureFlips: false,
+  aiCultureFlips: true,
 
   // Unit CONQUEST (opt-in; spec §6, potential-future-features.md §2). During a war between two majors, a combat
   // unit that holds an enemy tile for `conquestBufferTurns` consecutive passes takes it for its owner, ignoring

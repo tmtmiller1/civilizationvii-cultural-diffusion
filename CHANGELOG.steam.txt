@@ -3,7 +3,16 @@ Generated from CHANGELOG.md by scripts/steam-changelog.mjs; release.sh uploads t
 To fix an old Workshop entry, paste the text under its ==== line into that entry's Edit box on the change-notes page.
 A block edited by hand is kept as-is. Delete a block to regenerate it from CHANGELOG.md.
 
-==== 1.3.0 | 2026-09-26 | src 4f999fbf37a4 | gen f270fc58f0f3 ====
+==== 1.4.0 | 2026-09-26 | src 91b783dceb31 | gen 7db71614f2f8 ====
+[b]Version 1.4.0 · 26 September 2026[/b]
+
+[b]Added[/b]
+• [b]Civilopedia section.[/b] A Cultural Diffusion tab in the Civilopedia explains every rule in 16 pages: Getting Started, How Culture Spreads, Cultural Power, Rivals, Cities & War, and Interface & Options. Pages point to each other by name, the search box finds them by common words (borders, rivers, conquest, lens, Shift+C, CPI), and a Cultural Borders (Mod) page under Game Concepts, Settlements leads into the tab. Each Options tooltip names the page that explains it. English only.
+
+[b]Changed[/b]
+• [b]Every civilization gains land by culture is now on by default.[/b] A rival whose culture decisively leads a tile near your lands takes it under the same rules as your claims, including a tile of yours, and you are told when it does. Turn the option off to keep culture expansion yours alone. A choice you already saved is kept.
+
+==== 1.3.0 | 2026-09-26 | src 4f999fbf37a4 | gen 3e61b1ffdab4 ====
 [b]Version 1.3.0 · 26 September 2026[/b]
 
 [b]Added[/b]
@@ -18,6 +27,8 @@ The rest of Gedemon's Civ V model, built against what the 2026-09-25 probes prov
 [b]Changed[/b]
 • Gold writes go through Players.grantYield
 • Rivers are a highway along them and a barrier across them, for both kinds of river
+
+Details in the [url=https://github.com/tmtmiller1/civilizationvii-cultural-diffusion/blob/main/CHANGELOG.md]full changelog[/url].
 
 ==== 1.2.0 | 2026-09-24 | src 3d9c549a4637 | gen 2cad4f6020ee ====
 [b]Version 1.2.0 · 24 September 2026[/b]

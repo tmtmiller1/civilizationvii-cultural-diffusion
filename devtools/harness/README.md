@@ -38,6 +38,16 @@ restores it, deploys the REPO copy of the mod with `AffectsSavedGames=0` and `de
 files only, waits for `DONE`, writes `<label>-UI.log`, copies any `.ips` crash report, then quits and redeploys the
 unpatched copy.
 
+## Pedia run - the Civilopedia section renders (RUN 2026-09-26, game 1.5.0, mod 1.4.0)
+
+Script `cdh-game-pedia.js`, log `pedia-UI.log`, no turns played. `run-harness.sh` now deploys `data/` as well, which
+the pedia rows need. Verdict: **all 17 pages render** (16 in the Cultural Diffusion tab plus the Game Concepts bridge
+page): every paragraph resolved, none empty, no raw `[B]`/`[LI]` markup, sidebar names uncut, section sorted after
+Emigration with the `pedia_culture` icon. Search found the expected page for 6 of 6 terms (`Shift+C`, `Conquest`,
+`Cultural Power Index`, `Forward settling`, a bare page id, the section id). The run's `DB pages=0` line was a probe
+bug (it read each row's `$index` field), fixed afterwards and not re-run; the model read the same rows as 16 pages.
+Shot labels trail the page by one (4 s runner poll against a 3.5 s page settle); the DOM verdicts are keyed correctly.
+
 ## Parity runs 1-2 - the Civ V parity probes P1-P7 and the river rule (RUN 2026-09-25, game 1.5.0)
 
 Script `cdh-game-parity.js`, logs `parity-UI.log` (6 turns) and `parity2-UI.log` (14 turns, corrected site picker),

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Civilopedia entries for Cultural Diffusion: a dedicated "Cultural Diffusion" section organised into page groups,
+  plus one bridge page in the base game's Game Concepts > Settlements group so a player browsing the base rules
+  finds the mod. Loaded through the modinfo <UpdateDatabase> in the game-scope ActionGroup; the text lives in
+  text/en_us/PediaText.xml.
+
+  Every page uses its own layout and NO CivilopediaPageChapterParagraphs rows: the pedia resolves each chapter's
+  title and paragraphs by key convention (base-standard ui/civilopedia/model-civilopedia.js findChapterTextKey),
+  LOC_PEDIA_<section>_PAGE_<page>_CHAPTER_<chapter>_TITLE and ..._PARA_1, _PARA_2, ... until the first gap. A
+  chapter with no PARA_1 is skipped; a chapter with no TITLE row draws untitled (each page's CONTENT opening).
+  tests/pedia-pages.mjs walks this file the way the engine does and fails on a page that would draw blank.
+
+  Page ids carry a CD_ prefix because the pedia's search (open-civilopedia, the search box) matches a bare page id
+  across every section, and OVERVIEW / OPTIONS / ABOUT already exist in other mods.
+
+  CivilopediaPageLayouts must come before CivilopediaPages and CivilopediaPageLayoutChapters in this file: both
+  have a real foreign key onto it and the loader inserts in document order.
+-->
+<Database>
+    <CivilopediaSections>
+        <Row SectionID="CULTURAL_DIFFUSION" Name="LOC_PEDIA_CULTURAL_DIFFUSION_TITLE" Icon="pedia_culture" SortIndex="165"/>
+    </CivilopediaSections>
+
+    <CivilopediaPageGroups>
+        <Row SectionID="CULTURAL_DIFFUSION" PageGroupID="CD_START" Name="LOC_PEDIA_CD_GROUP_START_TITLE" SortIndex="10"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageGroupID="CD_SPREAD" Name="LOC_PEDIA_CD_GROUP_SPREAD_TITLE" SortIndex="20"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageGroupID="CD_POWER" Name="LOC_PEDIA_CD_GROUP_POWER_TITLE" SortIndex="30"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageGroupID="CD_RIVALS" Name="LOC_PEDIA_CD_GROUP_RIVALS_TITLE" SortIndex="40"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageGroupID="CD_INTERFACE" Name="LOC_PEDIA_CD_GROUP_INTERFACE_TITLE" SortIndex="50"/>
+    </CivilopediaPageGroups>
+
+    <CivilopediaPageLayouts>
+        <Row PageLayoutID="CD_OVERVIEW" UseSidebar="false"/>
+        <Row PageLayoutID="CD_FAQ" UseSidebar="false"/>
+        <Row PageLayoutID="CD_FIELD" UseSidebar="false"/>
+        <Row PageLayoutID="CD_TERRAIN" UseSidebar="false"/>
+        <Row PageLayoutID="CD_CLAIMS" UseSidebar="false"/>
+        <Row PageLayoutID="CD_GROWTH" UseSidebar="false"/>
+        <Row PageLayoutID="CD_STRENGTH" UseSidebar="false"/>
+        <Row PageLayoutID="CD_BALANCE" UseSidebar="false"/>
+        <Row PageLayoutID="CD_CITIES" UseSidebar="false"/>
+        <Row PageLayoutID="CD_RECEDE" UseSidebar="false"/>
+        <Row PageLayoutID="CD_RIVALFLIPS" UseSidebar="false"/>
+        <Row PageLayoutID="CD_CONQUEST" UseSidebar="false"/>
+        <Row PageLayoutID="CD_LENS" UseSidebar="false"/>
+        <Row PageLayoutID="CD_OPTIONS" UseSidebar="false"/>
+        <Row PageLayoutID="CD_EMIGRATION" UseSidebar="false"/>
+        <Row PageLayoutID="CD_ABOUT" UseSidebar="false"/>
+        <Row PageLayoutID="CD_BRIDGE" UseSidebar="false"/>
+    </CivilopediaPageLayouts>
+
+    <CivilopediaPageLayoutChapters>
+        <Row PageLayoutID="CD_OVERVIEW" ChapterID="CONTENT" SortIndex="10"/>
+        <Row PageLayoutID="CD_OVERVIEW" ChapterID="WHERE" SortIndex="30"/>
+
+        <Row PageLayoutID="CD_FAQ" ChapterID="NOTHING" SortIndex="10"/>
+        <Row PageLayoutID="CD_FAQ" ChapterID="WORK" SortIndex="20"/>
+        <Row PageLayoutID="CD_FAQ" ChapterID="AILAND" SortIndex="30"/>
+        <Row PageLayoutID="CD_FAQ" ChapterID="FLIPBACK" SortIndex="40"/>
+        <Row PageLayoutID="CD_FAQ" ChapterID="TURNOFF" SortIndex="50"/>
+        <Row PageLayoutID="CD_FAQ" ChapterID="SAVES" SortIndex="60"/>
+
+        <Row PageLayoutID="CD_FIELD" ChapterID="CONTENT" SortIndex="10"/>
+        <Row PageLayoutID="CD_FIELD" ChapterID="INJECT" SortIndex="20"/>
+        <Row PageLayoutID="CD_FIELD" ChapterID="DIFFUSE" SortIndex="30"/>
+        <Row PageLayoutID="CD_FIELD" ChapterID="DECAY" SortIndex="40"/>
+
+        <Row PageLayoutID="CD_TERRAIN" ChapterID="CONTENT" SortIndex="10"/>
+        <Row PageLayoutID="CD_TERRAIN" ChapterID="ROUGH" SortIndex="20"/>
+        <Row PageLayoutID="CD_TERRAIN" ChapterID="ROADS" SortIndex="30"/>
+        <Row PageLayoutID="CD_TERRAIN" ChapterID="RIVERS" SortIndex="40"/>
+        <Row PageLayoutID="CD_TERRAIN" ChapterID="WATER" SortIndex="50"/>
+
+        <Row PageLayoutID="CD_CLAIMS" ChapterID="CONTENT" SortIndex="10"/>
+        <Row PageLayoutID="CD_CLAIMS" ChapterID="RULES" SortIndex="20"/>
+        <Row PageLayoutID="CD_CLAIMS" ChapterID="PROTECT" SortIndex="30"/>
+        <Row PageLayoutID="CD_CLAIMS" ChapterID="SAFE" SortIndex="40"/>
+        <Row PageLayoutID="CD_CLAIMS" ChapterID="BUFFER" SortIndex="50"/>
+
+        <Row PageLayoutID="CD_GROWTH" ChapterID="CONTENT" SortIndex="10"/>
+        <Row PageLayoutID="CD_GROWTH" ChapterID="RINGS" SortIndex="20"/>
+        <Row PageLayoutID="CD_GROWTH" ChapterID="EARLY" SortIndex="30"/>
+        <Row PageLayoutID="CD_GROWTH" ChapterID="VALUE" SortIndex="40"/>
+
+        <Row PageLayoutID="CD_STRENGTH" ChapterID="CONTENT" SortIndex="10"/>
+        <Row PageLayoutID="CD_STRENGTH" ChapterID="BLEND" SortIndex="20"/>
+        <Row PageLayoutID="CD_STRENGTH" ChapterID="CPI" SortIndex="40"/>
+        <Row PageLayoutID="CD_STRENGTH" ChapterID="SIMPLE" SortIndex="50"/>
+
+        <Row PageLayoutID="CD_BALANCE" ChapterID="CONTENT" SortIndex="10"/>
+        <Row PageLayoutID="CD_BALANCE" ChapterID="LEADERS" SortIndex="20"/>
+        <Row PageLayoutID="CD_BALANCE" ChapterID="AGES" SortIndex="30"/>
+        <Row PageLayoutID="CD_BALANCE" ChapterID="SPEED" SortIndex="40"/>
+
+        <Row PageLayoutID="CD_CITIES" ChapterID="CONTENT" SortIndex="10"/>
+        <Row PageLayoutID="CD_CITIES" ChapterID="FOREIGN" SortIndex="20"/>
+        <Row PageLayoutID="CD_CITIES" ChapterID="CONVERT" SortIndex="30"/>
+        <Row PageLayoutID="CD_CITIES" ChapterID="CAPTURE" SortIndex="40"/>
+
+        <Row PageLayoutID="CD_RECEDE" ChapterID="CONTENT" SortIndex="10"/>
+        <Row PageLayoutID="CD_RECEDE" ChapterID="RULES" SortIndex="20"/>
+
+        <Row PageLayoutID="CD_RIVALFLIPS" ChapterID="CONTENT" SortIndex="10"/>
+        <Row PageLayoutID="CD_RIVALFLIPS" ChapterID="RULES" SortIndex="20"/>
+        <Row PageLayoutID="CD_RIVALFLIPS" ChapterID="LIMITS" SortIndex="30"/>
+
+        <Row PageLayoutID="CD_CONQUEST" ChapterID="CONTENT" SortIndex="10"/>
+        <Row PageLayoutID="CD_CONQUEST" ChapterID="TAKING" SortIndex="20"/>
+        <Row PageLayoutID="CD_CONQUEST" ChapterID="HOLD" SortIndex="30"/>
+        <Row PageLayoutID="CD_CONQUEST" ChapterID="AFTER" SortIndex="40"/>
+
+        <Row PageLayoutID="CD_LENS" ChapterID="CONTENT" SortIndex="10"/>
+        <Row PageLayoutID="CD_LENS" ChapterID="COLORS" SortIndex="20"/>
+        <Row PageLayoutID="CD_LENS" ChapterID="READOUT" SortIndex="30"/>
+        <Row PageLayoutID="CD_LENS" ChapterID="ALERTS" SortIndex="40"/>
+
+        <Row PageLayoutID="CD_OPTIONS" ChapterID="CONTENT" SortIndex="10"/>
+        <Row PageLayoutID="CD_OPTIONS" ChapterID="PRESETS" SortIndex="20"/>
+        <Row PageLayoutID="CD_OPTIONS" ChapterID="TOGGLES" SortIndex="30"/>
+        <Row PageLayoutID="CD_OPTIONS" ChapterID="DEBUG" SortIndex="40"/>
+
+        <Row PageLayoutID="CD_EMIGRATION" ChapterID="CONTENT" SortIndex="10"/>
+        <Row PageLayoutID="CD_EMIGRATION" ChapterID="AFFINITY" SortIndex="20"/>
+        <Row PageLayoutID="CD_EMIGRATION" ChapterID="PEOPLES" SortIndex="30"/>
+
+        <Row PageLayoutID="CD_ABOUT" ChapterID="CONTENT" SortIndex="10"/>
+        <Row PageLayoutID="CD_ABOUT" ChapterID="CREDITS" SortIndex="30"/>
+
+        <Row PageLayoutID="CD_BRIDGE" ChapterID="CONTENT" SortIndex="10"/>
+    </CivilopediaPageLayoutChapters>
+
+    <CivilopediaPages>
+        <!-- Getting Started (CD_OVERVIEW sorts first, so it is the section's front page) -->
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_OVERVIEW" PageGroupID="CD_START" PageLayoutID="CD_OVERVIEW" Name="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_TITLE" SortIndex="10"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_FAQ" PageGroupID="CD_START" PageLayoutID="CD_FAQ" Name="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_TITLE" SortIndex="20"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_ABOUT" PageGroupID="CD_START" PageLayoutID="CD_ABOUT" Name="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_ABOUT_TITLE" SortIndex="30"/>
+
+        <!-- How Culture Spreads -->
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_FIELD" PageGroupID="CD_SPREAD" PageLayoutID="CD_FIELD" Name="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_TITLE" SortIndex="10"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_TERRAIN" PageGroupID="CD_SPREAD" PageLayoutID="CD_TERRAIN" Name="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_TITLE" SortIndex="20"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_CLAIMS" PageGroupID="CD_SPREAD" PageLayoutID="CD_CLAIMS" Name="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_TITLE" SortIndex="30"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_GROWTH" PageGroupID="CD_SPREAD" PageLayoutID="CD_GROWTH" Name="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_TITLE" SortIndex="40"/>
+
+        <!-- Cultural Power -->
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_STRENGTH" PageGroupID="CD_POWER" PageLayoutID="CD_STRENGTH" Name="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_TITLE" SortIndex="10"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_BALANCE" PageGroupID="CD_POWER" PageLayoutID="CD_BALANCE" Name="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_TITLE" SortIndex="20"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_EMIGRATION" PageGroupID="CD_POWER" PageLayoutID="CD_EMIGRATION" Name="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_TITLE" SortIndex="30"/>
+
+        <!-- Rivals, Cities & War -->
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_CITIES" PageGroupID="CD_RIVALS" PageLayoutID="CD_CITIES" Name="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_TITLE" SortIndex="10"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_RECEDE" PageGroupID="CD_RIVALS" PageLayoutID="CD_RECEDE" Name="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RECEDE_TITLE" SortIndex="20"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_RIVALFLIPS" PageGroupID="CD_RIVALS" PageLayoutID="CD_RIVALFLIPS" Name="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_TITLE" SortIndex="30"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_CONQUEST" PageGroupID="CD_RIVALS" PageLayoutID="CD_CONQUEST" Name="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_TITLE" SortIndex="40"/>
+
+        <!-- Interface & Options -->
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_LENS" PageGroupID="CD_INTERFACE" PageLayoutID="CD_LENS" Name="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_TITLE" SortIndex="10"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_OPTIONS" PageGroupID="CD_INTERFACE" PageLayoutID="CD_OPTIONS" Name="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_TITLE" SortIndex="20"/>
+
+        <!-- Bridge from the base game's Game Concepts > Settlements group into this section -->
+        <Row SectionID="CONCEPTS" PageID="CD_CULTURAL_BORDERS" PageGroupID="SETTLEMENTS" PageLayoutID="CD_BRIDGE" Name="LOC_PEDIA_CONCEPTS_PAGE_CD_CULTURAL_BORDERS_TITLE" SortIndex="560"/>
+    </CivilopediaPages>
+
+    <!-- Extra words the Civilopedia search box matches, beyond each page's title. -->
+    <CivilopediaPageSearchTerms>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_OVERVIEW" Term="LOC_PEDIA_CD_TERM_CULTURAL_DIFFUSION"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_OVERVIEW" Term="LOC_PEDIA_CD_TERM_BORDERS"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_OVERVIEW" Term="LOC_PEDIA_CD_TERM_FORWARD_SETTLING"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_OVERVIEW" Term="LOC_PEDIA_CD_TERM_TERRITORY"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_FAQ" Term="LOC_PEDIA_CD_TERM_HELP"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_FIELD" Term="LOC_PEDIA_CD_TERM_DIFFUSION"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_FIELD" Term="LOC_PEDIA_CD_TERM_DECAY"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_FIELD" Term="LOC_PEDIA_CD_TERM_CULTURE_STOCK"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_TERRAIN" Term="LOC_PEDIA_CD_TERM_RIVERS"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_TERRAIN" Term="LOC_PEDIA_CD_TERM_ROADS"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_TERRAIN" Term="LOC_PEDIA_CD_TERM_MOUNTAINS"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_TERRAIN" Term="LOC_PEDIA_CD_TERM_WATER"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_CLAIMS" Term="LOC_PEDIA_CD_TERM_TILE_FLIP"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_CLAIMS" Term="LOC_PEDIA_CD_TERM_CITY_PROTECTION"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_CLAIMS" Term="LOC_PEDIA_CD_TERM_CITY_STATES"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_CLAIMS" Term="LOC_PEDIA_CD_TERM_IMPROVEMENT_BUFFER"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_GROWTH" Term="LOC_PEDIA_CD_TERM_RING"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_GROWTH" Term="LOC_PEDIA_CD_TERM_WORK_TILES"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_STRENGTH" Term="LOC_PEDIA_CD_TERM_CPI"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_STRENGTH" Term="LOC_PEDIA_CD_TERM_CPI_FULL"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_STRENGTH" Term="LOC_PEDIA_CD_TERM_CELEBRATION"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_BALANCE" Term="LOC_PEDIA_CD_TERM_LEADERS"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_BALANCE" Term="LOC_PEDIA_CD_TERM_AGES"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_BALANCE" Term="LOC_PEDIA_CD_TERM_GAME_SPEED"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_EMIGRATION" Term="LOC_PEDIA_CD_TERM_EMIGRATION"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_EMIGRATION" Term="LOC_PEDIA_CD_TERM_DIASPORA"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_CITIES" Term="LOC_PEDIA_CD_TERM_CONVERSION"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_CITIES" Term="LOC_PEDIA_CD_TERM_CAPTURED_CITY"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_CITIES" Term="LOC_PEDIA_CD_TERM_FOREIGN_CULTURE"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_RECEDE" Term="LOC_PEDIA_CD_TERM_RECEDE"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_RIVALFLIPS" Term="LOC_PEDIA_CD_TERM_AI"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_CONQUEST" Term="LOC_PEDIA_CD_TERM_CONQUEST"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_CONQUEST" Term="LOC_PEDIA_CD_TERM_OCCUPATION"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_LENS" Term="LOC_PEDIA_CD_TERM_LENS"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_LENS" Term="LOC_PEDIA_CD_TERM_PRESSURE"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_LENS" Term="LOC_PEDIA_CD_TERM_HOTKEY"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_LENS" Term="LOC_PEDIA_CD_TERM_NOTIFICATIONS"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_OPTIONS" Term="LOC_PEDIA_CD_TERM_INTENSITY"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_OPTIONS" Term="LOC_PEDIA_CD_TERM_SETTINGS"/>
+        <Row SectionID="CONCEPTS" PageID="CD_CULTURAL_BORDERS" Term="LOC_PEDIA_CD_TERM_BORDERS"/>
+        <Row SectionID="CONCEPTS" PageID="CD_CULTURAL_BORDERS" Term="LOC_PEDIA_CD_TERM_CULTURAL_DIFFUSION"/>
+    </CivilopediaPageSearchTerms>
+</Database>

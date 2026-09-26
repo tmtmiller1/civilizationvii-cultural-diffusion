@@ -173,7 +173,7 @@ locked by the next pass, and an organic flip on the neighbouring tile followed t
 
 ---
 
-- **Every civilization gains land by culture (opt-in, `aiCultureFlips`, default off).** `resolveAiOwnership`
+- **Every civilization gains land by culture (`aiCultureFlips`, default on since 1.3.1).** `resolveAiOwnership`
   ([`ui/cd-ai-flips.js`](../ui/cd-ai-flips.js)) runs after our own flips. Inside the region, a tile whose culture leader
   is a living MAJOR other than us and other than its owner flips to that leader through the leader's nearest city, under
   the very gates our claims pass (`cd-eligibility.js` asked with the leader as claimant: distant lands, peace with the

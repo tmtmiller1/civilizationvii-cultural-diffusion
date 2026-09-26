@@ -8,14 +8,14 @@
             <Text>Cultural Diffusion</Text>
         </Row>
         <Row Tag="LOC_MOD_CULTURAL_DIFFUSION_DESCRIPTION">
-            <Text>Culture becomes a living field that spreads from your cities tile by tile. A strong, established culture slowly grows its borders beyond the normal city footprint, seeps into open land, and can flip a rival's frontier tiles once your culture there decisively wins - a systemic answer to AI forward-settling. Growth is slow and organic: borders creep outward over the game and flow back when a culture weakens; an overwhelming culture reaches farther. A reimagining and extension of the Civ V mod Cultural Diffusion, rebuilt for Civ VII, with a deeper cultural-power model and optional Emigration integration. Single-player, tunable (Low/Medium/High), reversible. Works standalone, and reads diaspora data from the Emigration mod when it is installed.</Text>
+            <Text>Culture becomes a living field that spreads from your cities tile by tile. A strong, established culture slowly grows its borders beyond the normal city footprint, seeps into open land, and can flip a rival's frontier tiles once your culture there decisively wins - a systemic answer to AI forward-settling. Growth is slow and organic: borders creep outward over the game and flow back when a culture weakens; an overwhelming culture reaches farther. A reimagining and extension of the Civ V mod Cultural Diffusion, rebuilt for Civ VII, with a deeper cultural-power model and optional Emigration integration. Single-player, tunable (Low/Medium/High), reversible. Works standalone, and reads diaspora data from the Emigration mod when it is installed. Every rule is explained in the Cultural Diffusion section of the in-game Civilopedia.</Text>
         </Row>
 
         <Row Tag="LOC_OPTIONS_CD_PRESET">
             <Text>Cultural Diffusion - intensity</Text>
         </Row>
         <Row Tag="LOC_OPTIONS_CD_PRESET_DESCRIPTION">
-            <Text>How aggressively culture spreads your borders. Low nudges into empty land only; Medium contests rival frontier tiles; High spreads farther and flips faster.</Text>
+            <Text>How aggressively culture spreads your borders. Low nudges into empty land only; Medium contests rival frontier tiles; High spreads farther and flips faster. Civilopedia: Cultural Diffusion, Options &amp; Presets.</Text>
         </Row>
         <Row Tag="LOC_CD_PRESET_CUSTOM"><Text>Custom</Text></Row>
         <Row Tag="LOC_CD_PRESET_LOW"><Text>Low</Text></Row>
@@ -26,21 +26,21 @@
             <Text>Cultural Diffusion - enabled</Text>
         </Row>
         <Row Tag="LOC_OPTIONS_CD_ENABLED_DESCRIPTION">
-            <Text>Master switch. When off, borders behave exactly as in the base game.</Text>
+            <Text>Master switch. When off, borders behave exactly as in the base game. Full rules in the Civilopedia, Cultural Diffusion section.</Text>
         </Row>
 
         <Row Tag="LOC_OPTIONS_CD_CLAIM_ONLY">
             <Text>Cultural Diffusion - claim empty land only</Text>
         </Row>
         <Row Tag="LOC_OPTIONS_CD_CLAIM_ONLY_DESCRIPTION">
-            <Text>Safety mode. Diffusion claims only unowned frontier plots and never flips a tile owned by another civilization.</Text>
+            <Text>Safety mode. Diffusion claims only unowned frontier plots and never flips a tile owned by another civilization. Civilopedia: Cultural Diffusion, Claiming Tiles.</Text>
         </Row>
 
         <Row Tag="LOC_OPTIONS_CD_CORE">
             <Text>Cultural Diffusion - rival city protection</Text>
         </Row>
         <Row Tag="LOC_OPTIONS_CD_CORE_DESCRIPTION">
-            <Text>How deep culture may push into a rival's city. Full downtown ring keeps their center and its inner ring safe. Center only protects just the city-center tile, letting culture take the tiles around it. None lets even the center flip.</Text>
+            <Text>How deep culture may push into a rival's city. Full downtown ring keeps their center and its inner ring safe. Center only protects just the city-center tile, letting culture take the tiles around it. None lets even the center flip. Civilopedia: Cultural Diffusion, Claiming Tiles.</Text>
         </Row>
         <Row Tag="LOC_OPTIONS_CD_CORE_FULL"><Text>Protect full downtown ring</Text></Row>
         <Row Tag="LOC_OPTIONS_CD_CORE_CENTER"><Text>Protect city center only (take inner tiles)</Text></Row>
@@ -50,56 +50,56 @@
             <Text>Cultural Diffusion - contiguous border only</Text>
         </Row>
         <Row Tag="LOC_OPTIONS_CD_ADJACENCY_DESCRIPTION">
-            <Text>On (recommended): culture only claims tiles touching your land, so a rival's territory is taken from the outside in. Off: culture may claim any tile it dominates, including a disconnected pocket inside another civilization.</Text>
+            <Text>On (recommended): culture only claims tiles touching your land, so a rival's territory is taken from the outside in. Off: culture may claim any tile it dominates, including a disconnected pocket inside another civilization. Civilopedia: Cultural Diffusion, Claiming Tiles.</Text>
         </Row>
 
         <Row Tag="LOC_OPTIONS_CD_FUSED">
             <Text>Cultural Diffusion - rich cultural model</Text>
         </Row>
         <Row Tag="LOC_OPTIONS_CD_FUSED_DESCRIPTION">
-            <Text>Drive border spread with a civilization's whole cultural power - wonders, culture, influence, happiness, prosperity, traditions - not culture-per-turn alone. A stronger culture pushes its borders farther. Off = the simple settlement-culture model.</Text>
+            <Text>Drive border spread with a civilization's whole cultural power - wonders, culture, influence, happiness, prosperity, traditions - not culture-per-turn alone. A stronger culture pushes its borders farther. Off = the simple settlement-culture model. Civilopedia: Cultural Diffusion, Cultural Strength.</Text>
         </Row>
 
         <Row Tag="LOC_OPTIONS_CD_EMIGRATION">
             <Text>Cultural Diffusion - follow diaspora (Emigration mod)</Text>
         </Row>
         <Row Tag="LOC_OPTIONS_CD_EMIGRATION_DESCRIPTION">
-            <Text>When the Emigration mod is installed, let a frontier tile settled by your people feel your pull - borders follow diaspora. No effect if Emigration is absent. Requires the rich cultural model.</Text>
+            <Text>When the Emigration mod is installed, let a frontier tile settled by your people feel your pull - borders follow diaspora. No effect if Emigration is absent. Requires the rich cultural model. Civilopedia: Cultural Diffusion, With Emigration.</Text>
         </Row>
 
         <Row Tag="LOC_OPTIONS_CD_BUFFER">
             <Text>Cultural Diffusion - claim land beside new improvements (+1 ring)</Text>
         </Row>
         <Row Tag="LOC_OPTIONS_CD_BUFFER_DESCRIPTION">
-            <Text>Off by default. When on, finishing a rural improvement near your border also claims the unowned tiles right next to it, one ring past your city's normal reach. When off, your borders grow only from the culture field.</Text>
+            <Text>Off by default. When on, finishing a rural improvement near your border also claims the unowned tiles right next to it, one ring past your city's normal reach. When off, your borders grow only from the culture field. Civilopedia: Cultural Diffusion, Claiming Tiles.</Text>
         </Row>
 
         <Row Tag="LOC_OPTIONS_CD_RECEDE">
             <Text>Cultural Diffusion - borders recede (experimental)</Text>
         </Row>
         <Row Tag="LOC_OPTIONS_CD_RECEDE_DESCRIPTION">
-            <Text>Off by default. Tiles your culture claimed can be lost again: if a rival's culture decisively overtakes yours on one, it passes to that rival's nearest city. Tiles your cities gained through normal growth are never affected.</Text>
+            <Text>Off by default. Tiles your culture claimed can be lost again: if a rival's culture decisively overtakes yours on one, it passes to that rival's nearest city. Tiles your cities gained through normal growth are never affected. Civilopedia: Cultural Diffusion, Borders Recede.</Text>
         </Row>
 
         <Row Tag="LOC_OPTIONS_CD_AI_FLIPS">
             <Text>Cultural Diffusion - every civilization gains land by culture</Text>
         </Row>
         <Row Tag="LOC_OPTIONS_CD_AI_FLIPS_DESCRIPTION">
-            <Text>Off by default. When on, other civilizations' borders move by culture too, under the same rules as yours: a rival whose culture decisively leads a tile near your lands takes it, including tiles of yours, and can lose tiles the same way. City-states and independent peoples never gain land this way. You are told when a rival takes one of your tiles.</Text>
+            <Text>On by default. Other civilizations' borders move by culture too, under the same rules as yours: a rival whose culture decisively leads a tile near your lands takes it, including tiles of yours, and can lose tiles the same way. City-states and independent peoples never gain land this way. You are told when a rival takes one of your tiles. Off = only your borders grow by culture. Civilopedia: Cultural Diffusion, Rival Expansion.</Text>
         </Row>
 
         <Row Tag="LOC_OPTIONS_CD_CONQUEST">
             <Text>Cultural Diffusion - armies hold the ground they occupy</Text>
         </Row>
         <Row Tag="LOC_OPTIONS_CD_CONQUEST_DESCRIPTION">
-            <Text>Off by default. When on, during a war a combat unit that holds an enemy tile for five consecutive turns takes it for its owner, whatever the culture there; leaving resets the count, and city centers and urban districts are never taken this way. The conquered tile is then held against culture for ten turns, though another army can still take it. Other civilizations' armies do the same only when "every civilization gains land by culture" is also on.</Text>
+            <Text>Off by default. When on, during a war a combat unit that holds an enemy tile for five consecutive turns takes it for its owner, whatever the culture there; leaving resets the count, and city centers and urban districts are never taken this way. The conquered tile is then held against culture for ten turns, though another army can still take it. Other civilizations' armies do the same only when "every civilization gains land by culture" is also on. Civilopedia: Cultural Diffusion, Armies Hold Ground.</Text>
         </Row>
 
         <Row Tag="LOC_OPTIONS_CD_FOREIGN_CULTURE">
             <Text>Cultural Diffusion - cities carry every culture living in them</Text>
         </Row>
         <Row Tag="LOC_OPTIONS_CD_FOREIGN_CULTURE_DESCRIPTION">
-            <Text>On by default. A city produces culture for every people present on its tile, not only its owner's: a captured or mixed city keeps producing its old culture, which contests the land around it, while each turn a small share of that foreign culture converts to the owner's (faster with libraries, universities, museums and, in the Modern age, an ideology). Off = a city produces only its owner's culture.</Text>
+            <Text>On by default. A city produces culture for every people present on its tile, not only its owner's: a captured or mixed city keeps producing its old culture, which contests the land around it, while each turn a small share of that foreign culture converts to the owner's (faster with libraries, universities, museums and, in the Modern age, an ideology). Off = a city produces only its owner's culture. Civilopedia: Cultural Diffusion, Mixed &amp; Captured Cities.</Text>
         </Row>
 
         <Row Tag="LOC_OPTIONS_CD_DEBUG">
@@ -113,7 +113,7 @@
             <Text>Cultural Diffusion - pressure lens</Text>
         </Row>
         <Row Tag="LOC_OPTIONS_CD_PRESSURE_LENS_DESCRIPTION">
-            <Text>Add a read-only "Cultural Pressure" map lens (and Shift+C hotkey) that shades contested frontier tiles by how close your - or a rival's - culture is to claiming them. Shows information only; it changes nothing about how borders move.</Text>
+            <Text>Add a read-only "Cultural Pressure" map lens (and Shift+C hotkey) that shades contested frontier tiles by how close your - or a rival's - culture is to claiming them. Shows information only; it changes nothing about how borders move. Civilopedia: Cultural Diffusion, Cultural Pressure Lens.</Text>
         </Row>
 
         <!-- Cultural Pressure lens + hover tooltip (potential-future-features.md section 1). -->
