@@ -53,10 +53,9 @@ English only for now. Ask for a language and I will add it.
 [/list]
 [h2]Source and documentation[/h2]
 [list]
-[*][url=https://github.com/tmtmiller1/civilizationvii-cultural-diffusion]Open source on GitHub[/url]
-[*][url=https://github.com/tmtmiller1/civilizationvii-cultural-diffusion/releases/latest]The latest release notes and a download[/url]
-[*][url=https://github.com/tmtmiller1/civilizationvii-cultural-diffusion/blob/main/README.md]Full documentation, with every formula and tuning knob[/url]
-[*][url=https://github.com/tmtmiller1/civilizationvii-cultural-diffusion/blob/main/README.pdf]The same document as a typeset PDF[/url]
+[*][b]What's new:[/b] [url=https://github.com/tmtmiller1/civilizationvii-cultural-diffusion/releases/latest]the latest release notes and a download[/url]
+[*][b]Full documentation:[/b] [url=https://github.com/tmtmiller1/civilizationvii-cultural-diffusion/blob/main/README.md]how the mod works[/url]
+[*][b]The same as a PDF:[/b] [url=https://github.com/tmtmiller1/civilizationvii-cultural-diffusion/blob/main/README.pdf]README.pdf, typeset with the screenshots[/url]
 [/list]
 [h2]For modders[/h2]
 This mod is developed with [url=https://github.com/tmtmiller1/civilizationvii_tower-bench]Tower Bench[/url], a free, open-source test bench for Civilization VII mods. It connects to a running game from your browser or the command line: inspect and change the map with every write verified and undoable, diff the world between two turns, prove your deployed code is what the game runs, find which mod causes a crash, and see which copy of each mod is actually loaded.
