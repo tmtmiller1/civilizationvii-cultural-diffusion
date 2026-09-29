@@ -1,7 +1,6 @@
 [h1]Cultural Diffusion[/h1]
-[b]New in 1.4.0: a Civilopedia section, and rivals that expand by culture[/b]
-Every rule now has a page in the in-game Civilopedia, under its own Cultural Diffusion tab, and each Options tooltip names the page that explains it. Other civilizations now gain land by culture by default, under the same rules as you. 1.3.0 brought in the rest of Gedemon's model: cities carry every culture living in them, culture passes to a city's conqueror, rivers carry culture along them and hold it back across them, and an opt-in mode lets armies take the ground they hold in a war. For Civilization VII 1.5.0.
-Cultural Diffusion grows your borders out of culture instead of a radius. Your cities deposit culture on the ground around them every turn; it seeps outward along roads and river valleys, drags through rough terrain, and land where your culture wins becomes yours, including land past the three rings a city can normally claim. It is slow, it follows the map, and it answers an AI settling four tiles from your capital. A reimagining and extension of Gedemon's [b]Cultural Diffusion[/b] (Civ V), rebuilt for Civ VII with a deeper model of what makes a city's culture carry, and pairing with the [b]Emigration[/b] companion mod.
+[b]New in 1.4.0:[/b] every rule has a Civilopedia page, and other civilizations gain land by culture by default, under your rules. 1.3.0 brought the rest of Gedemon's model: cities carry every culture living in them, culture passes to a conqueror, rivers carry it along and hold it back across, and armies can take the ground they hold. For Civilization VII 1.5.0.
+Cultural Diffusion grows your borders out of culture instead of a radius. Your cities deposit culture on the ground around them every turn; it seeps outward along roads and river valleys, drags through rough terrain, and land where your culture wins becomes yours, including land past the three rings a city can normally claim. It is slow, it follows the map, and it answers an AI settling four tiles from your capital. A reimagining and extension of Gedemon's [b]Cultural Diffusion[/b] (Civ V), rebuilt for Civ VII with a deeper model of what makes a city's culture carry.
 [h2]Mechanics[/h2]
 [list]
 [*][b]Compatible with 1.5.0.[/b]
@@ -15,7 +14,7 @@ Cultural Diffusion grows your borders out of culture instead of a radius. Your c
 [*][b]Readable, un-minified source.[/b]
 [/list]
 [h2]The Cultural Pressure lens[/h2]
-Shift+C shades the tiles on their way to changing hands, stronger the closer they are, with a hover readout of each civilization's culture there and a rough count of turns until it flips. Tiles where nothing will happen stay unshaded: the lens shows what the mod will do, not what merely looks contested. It can be switched off in Options.
+Shift+C shades the tiles on their way to changing hands, stronger the closer they are, with a hover readout of each civilization's culture there and a rough count of turns until it flips. Tiles where nothing will happen stay unshaded. It can be switched off in Options.
 [h2]How a tile changes hands[/h2]
 [list]
 [*]Your culture on it is the largest there, and past a floor worth counting.
@@ -35,7 +34,7 @@ One intensity knob: [b]Low[/b] nudges into empty land only, [b]Medium[/b] is the
 [h2]Two limits of the game engine[/h2]
 [list]
 [*][b]Land past a city's third ring cannot be worked.[/b] Civilization VII will not let a city work or build out there, so claimed ground is territory rather than yields. Its worth is positional: nobody can plant a settlement on land you own.
-[*][b]A mod cannot move another civilization's unit.[/b] No unit operation moves a unit you do not own, and the engine's teleport is missing from the version mods can reach. So expansion does not shove anyone aside: it leaves a way out and takes the tile once the unit has gone.
+[*][b]A mod cannot move another civilization's unit.[/b] So expansion does not shove anyone aside: it leaves a way out and takes the tile once the unit has gone.
 [/list]
 [h2]Languages[/h2]
 English only for now. Ask for a language and I will add it.
@@ -45,7 +44,7 @@ English only for now. Ask for a language and I will add it.
 [*][b]Start a new game with it enabled.[/b] A save keeps the mod list it began with, so Cultural Diffusion cannot join a game already in progress.
 [*][b]Claimed tiles stay claimed.[/b] Switch the mod off and new claims stop, but ground it took stays yours: the game cannot hand a city's tile back to nobody.
 [*][b]Rivals gain land by culture too.[/b] A civilization whose culture decisively wins a tile near your lands can take it, including one of yours, and you are told when it does. City-states never do. Switch off Every civilization gains land by culture in Options to keep culture expansion yours alone.
-[*][b]Nothing happens early.[/b] Watch for moving borders in your first fifty turns and you will see none. That is the model, not a fault.
+[*][b]Nothing happens early.[/b] No borders move in the first fifty turns. That is the model, not a fault.
 [/list]
 [h2]Still coming[/h2]
 [list]
@@ -59,6 +58,8 @@ English only for now. Ask for a language and I will add it.
 [*][url=https://github.com/tmtmiller1/civilizationvii-cultural-diffusion/blob/main/README.md]Full documentation, with every formula and tuning knob[/url]
 [*][url=https://github.com/tmtmiller1/civilizationvii-cultural-diffusion/blob/main/README.pdf]The same document as a typeset PDF[/url]
 [/list]
+[h2]For modders[/h2]
+This mod is developed with [url=https://github.com/tmtmiller1/civilizationvii_tower-bench]Tower Bench[/url], a free, open-source test bench for Civilization VII mods. It connects to a running game from your browser or the command line: inspect and change the map with every write verified and undoable, diff the world between two turns, prove your deployed code is what the game runs, find which mod causes a crash, and see which copy of each mod is actually loaded.
 [h2]Credits[/h2]
 [list]
 [*][b]Tower[/b], for design and Civilization VII implementation.
