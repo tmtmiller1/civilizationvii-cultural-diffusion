@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database>
+    <LocalizedText>
+        <Replace Tag="LOC_MOD_CULTURAL_DIFFUSION_NAME" Language="pl_PL"><Text>Dyfuzja kulturowa</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_GROUP_CULTURAL_DIFFUSION" Language="pl_PL"><Text>Dyfuzja kulturowa</Text></Replace>
+        <Replace Tag="LOC_MOD_CULTURAL_DIFFUSION_DESCRIPTION" Language="pl_PL"><Text>Kultura staje się żywym polem, które rozchodzi się z twoich miast pole po polu. Silna, ugruntowana kultura powoli poszerza granice poza zwykły obszar miasta, wnika na wolne ziemie i może przejąć przygraniczne pola rywala, gdy twoja kultura wyraźnie tam wygrywa. To systemowa odpowiedź na zakładanie przez SI osad tuż przy twoich granicach. Wzrost jest powolny: granice przesuwają się na zewnątrz w ciągu gry i cofają, gdy kultura słabnie, a przytłaczająca kultura sięga dalej. Nowa wersja i rozwinięcie moda Cultural Diffusion do Civ V, zbudowana od nowa dla Civ VII, z głębszym modelem siły kulturowej i opcjonalną współpracą z modem Emigracja. Gra jednoosobowa, intensywność Niska/Średnia/Wysoka i wyłącznik. Działa samodzielnie, a dane o diasporze odczytuje z moda Emigracja, jeśli jest zainstalowany. Wszystkie zasady opisuje dział Dyfuzja kulturowa w Civilopedii w grze.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_PRESET" Language="pl_PL"><Text>Dyfuzja kulturowa - Intensywność</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_PRESET_DESCRIPTION" Language="pl_PL"><Text>Jak mocno kultura poszerza twoje granice. Niska wchodzi tylko na puste ziemie; Średnia walczy o przygraniczne pola rywali; Wysoka sięga dalej i szybciej przejmuje pola. Civilopedia: Dyfuzja kulturowa, Opcje i ustawienia.</Text></Replace>
+        <Replace Tag="LOC_CD_PRESET_CUSTOM" Language="pl_PL"><Text>Niestandardowa</Text></Replace>
+        <Replace Tag="LOC_CD_PRESET_LOW" Language="pl_PL"><Text>Niska</Text></Replace>
+        <Replace Tag="LOC_CD_PRESET_MEDIUM" Language="pl_PL"><Text>Średnia</Text></Replace>
+        <Replace Tag="LOC_CD_PRESET_HIGH" Language="pl_PL"><Text>Wysoka</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_ENABLED" Language="pl_PL"><Text>Dyfuzja kulturowa - Włączona</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_ENABLED_DESCRIPTION" Language="pl_PL"><Text>Główny wyłącznik. Gdy jest wyłączony, granice działają dokładnie jak w podstawowej grze. Pełne zasady w Civilopedii, dział Dyfuzja kulturowa.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_CLAIM_ONLY" Language="pl_PL"><Text>Dyfuzja kulturowa - Zajmuj tylko wolną ziemię</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CLAIM_ONLY_DESCRIPTION" Language="pl_PL"><Text>Tryb bezpieczny. Dyfuzja zajmuje tylko niczyje pola przygraniczne i nigdy nie przejmuje pola należącego do innej cywilizacji. Civilopedia: Dyfuzja kulturowa, Zajmowanie pól.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_CORE" Language="pl_PL"><Text>Dyfuzja kulturowa - Ochrona miast rywali</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_DESCRIPTION" Language="pl_PL"><Text>Jak głęboko kultura może wejść w miasto rywala. Cały pierścień śródmieścia chroni centrum i jego wewnętrzny pierścień. Tylko centrum miasta chroni wyłącznie pole centrum miasta, a kultura może zająć pola wokół niego. Nic nie chroni nawet centrum. Civilopedia: Dyfuzja kulturowa, Zajmowanie pól.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_FULL" Language="pl_PL"><Text>Chroń cały pierścień śródmieścia</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_CENTER" Language="pl_PL"><Text>Chroń tylko centrum miasta (zajmuj pola wewnętrzne)</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_NONE" Language="pl_PL"><Text>Nie chroń niczego</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_ADJACENCY" Language="pl_PL"><Text>Dyfuzja kulturowa - Tylko ciągła granica</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_ADJACENCY_DESCRIPTION" Language="pl_PL"><Text>Wł. (zalecane): kultura zajmuje tylko pola stykające się z twoją ziemią, więc terytorium rywala jest zajmowane od zewnątrz do środka. Wył.: kultura może zająć każde pole, na którym dominuje, także oderwaną enklawę wewnątrz innej cywilizacji. Civilopedia: Dyfuzja kulturowa, Zajmowanie pól.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_FUSED" Language="pl_PL"><Text>Dyfuzja kulturowa - Rozbudowany model kultury</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_FUSED_DESCRIPTION" Language="pl_PL"><Text>Granice poszerzają się według całej siły kulturowej cywilizacji (cuda, kultura, wpływy, zadowolenie, dobrobyt, tradycje), a nie tylko według kultury na turę. Silniejsza kultura przesuwa granice dalej. Wył. = prosty model oparty na kulturze osiedla. Civilopedia: Dyfuzja kulturowa, Siła kulturowa.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_EMIGRATION" Language="pl_PL"><Text>Dyfuzja kulturowa - Podążaj za diasporą (mod Emigracja)</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_EMIGRATION_DESCRIPTION" Language="pl_PL"><Text>Gdy zainstalowany jest mod Emigracja, pole przygraniczne zasiedlone przez twój lud odczuwa twoje przyciąganie, więc granice podążają za diasporą. Bez Emigracji nie ma efektu. Wymaga rozbudowanego modelu kultury. Civilopedia: Dyfuzja kulturowa, Z Emigracją.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_BUFFER" Language="pl_PL"><Text>Dyfuzja kulturowa - Zajmuj ziemię obok nowych ulepszeń (+1 pierścień)</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_BUFFER_DESCRIPTION" Language="pl_PL"><Text>Domyślnie wył. Gdy jest włączone, ukończenie ulepszenia wiejskiego przy twojej granicy zajmuje też niczyje pola tuż obok niego, jeden pierścień poza zwykłym zasięgiem miasta. Gdy jest wyłączone, granice rosną tylko dzięki polu kultury. Civilopedia: Dyfuzja kulturowa, Zajmowanie pól.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_RECEDE" Language="pl_PL"><Text>Dyfuzja kulturowa - Cofanie się granic (eksperymentalne)</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_RECEDE_DESCRIPTION" Language="pl_PL"><Text>Domyślnie wył. Pola zajęte przez twoją kulturę można znów stracić: jeśli kultura rywala wyraźnie wyprzedzi twoją na jednym z nich, pole przechodzi do najbliższego miasta tego rywala. Pola zdobyte przez miasta w zwykły sposób nigdy nie są objęte tą zasadą. Civilopedia: Dyfuzja kulturowa, Cofanie się granic.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_AI_FLIPS" Language="pl_PL"><Text>Dyfuzja kulturowa - Każda cywilizacja zdobywa ziemię kulturą</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_AI_FLIPS_DESCRIPTION" Language="pl_PL"><Text>Domyślnie wł. Granice innych cywilizacji też przesuwają się dzięki kulturze, według tych samych zasad co twoje: rywal, którego kultura wyraźnie prowadzi na polu blisko twoich ziem, zajmuje je, także twoje pola, i w ten sam sposób może pola tracić. Miasta-państwa i niezależne siły nigdy nie zdobywają tak ziemi. Dostajesz powiadomienie, gdy rywal zajmie jedno z twoich pól. Wył. = tylko twoje granice rosną dzięki kulturze. Civilopedia: Dyfuzja kulturowa, Ekspansja rywali.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_CONQUEST" Language="pl_PL"><Text>Dyfuzja kulturowa - Armie utrzymują zajęty teren</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CONQUEST_DESCRIPTION" Language="pl_PL"><Text>Domyślnie wył. Gdy jest włączone, w czasie wojny jednostka bojowa, która utrzyma wrogie pole przez pięć tur z rzędu, zajmuje je dla swojego właściciela bez względu na kulturę na nim; zejście z pola zeruje licznik, a centra miast i miejskie dystrykty nigdy nie są tak zajmowane. Zdobyte pole jest potem przez dziesięć tur chronione przed kulturą, choć inna armia nadal może je zająć. Armie innych cywilizacji robią to samo tylko wtedy, gdy włączona jest też opcja "Każda cywilizacja zdobywa ziemię kulturą". Civilopedia: Dyfuzja kulturowa, Armie utrzymują teren.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_FOREIGN_CULTURE" Language="pl_PL"><Text>Dyfuzja kulturowa - Miasta niosą kultury swoich mieszkańców</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_FOREIGN_CULTURE_DESCRIPTION" Language="pl_PL"><Text>Domyślnie wł. Miasto wytwarza kulturę każdego ludu obecnego na jego polu, nie tylko swojego właściciela: zdobyte lub mieszane miasto nadal wytwarza swoją dawną kulturę, która walczy o okoliczne ziemie, a co turę niewielka część tej obcej kultury zmienia się w kulturę właściciela (szybciej z bibliotekami, uniwersytetami, muzeami i, w epoce nowożytnej, z ideologią). Wył. = miasto wytwarza tylko kulturę właściciela. Civilopedia: Dyfuzja kulturowa, Mieszane i zdobyte.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_DEBUG" Language="pl_PL"><Text>Dyfuzja kulturowa - Dziennik debugowania</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_DEBUG_DESCRIPTION" Language="pl_PL"><Text>Zapisuje szczegółową diagnostykę każdego przebiegu do UI.log (do strojenia i rozwiązywania problemów).</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_PRESSURE_LENS" Language="pl_PL"><Text>Dyfuzja kulturowa - Filtr presji</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_PRESSURE_LENS_DESCRIPTION" Language="pl_PL"><Text>Dodaje filtr mapy "Presja kulturowa" tylko do odczytu (i skrót Shift+C), który zabarwia sporne pola przygraniczne według tego, jak blisko twoja kultura lub kultura rywala jest ich zajęcia. Tylko pokazuje informacje; nie zmienia sposobu, w jaki przesuwają się granice. Civilopedia: Dyfuzja kulturowa, Filtr presji kulturowej.</Text></Replace>
+
+        <Replace Tag="LOC_CD_LENS_PRESSURE" Language="pl_PL"><Text>Presja kulturowa</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_TITLE" Language="pl_PL"><Text>Presja kulturowa</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_PROGRESS" Language="pl_PL"><Text>Postęp przejęcia</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_TURNS" Language="pl_PL"><Text>W obecnym tempie</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_TURNS_COUNT" Language="pl_PL"><Text>~{1_Turns} {1_Turns: plural 1?tura; 2?tury; other?tur;}</Text></Replace>
+        <Replace Tag="LOC_CD_TOAST_GAINED" Language="pl_PL"><Text>Dyfuzja kulturowa: twoja kultura zajęła nowe terytorium.</Text></Replace>
+        <Replace Tag="LOC_CD_TOAST_LOST" Language="pl_PL"><Text>Dyfuzja kulturowa: inna cywilizacja zajęła jedno z twoich pól.</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_READY" Language="pl_PL"><Text>gotowe do przejęcia</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_STALLED" Language="pl_PL"><Text>wstrzymane</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_OWNER_SUFFIX" Language="pl_PL"><Text> (właściciel)</Text></Replace>
+    </LocalizedText>
+</Database>

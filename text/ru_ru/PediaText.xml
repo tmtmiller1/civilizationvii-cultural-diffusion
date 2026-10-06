@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database>
+    <LocalizedText>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_TITLE" Language="ru_RU"><Text>Культурная диффузия</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_GROUP_START_TITLE" Language="ru_RU"><Text>Начало игры</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_GROUP_SPREAD_TITLE" Language="ru_RU"><Text>Распространение культуры</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_GROUP_POWER_TITLE" Language="ru_RU"><Text>Культурная сила</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_GROUP_RIVALS_TITLE" Language="ru_RU"><Text>Соперники, города, война</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_GROUP_INTERFACE_TITLE" Language="ru_RU"><Text>Интерфейс и настройки</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_TITLE" Language="ru_RU"><Text>Культурная диффузия</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_CONTENT_PARA_1" Language="ru_RU"><Text>Каждая клетка рядом с вашими городами хранит, сколько [icon:YIELD_CULTURE] культуры на ней у каждой цивилизации. Каждый ход города добавляют культуру на свою клетку, культура распространяется на соседние клетки, а каждая клетка часть ее теряет.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_CONTENT_PARA_2" Language="ru_RU"><Text>Когда вашей культуры на клетке за третьим кольцом города становится достаточно много, вы занимаете эту клетку. Границы растут медленно, в основном с середины игры, и могут забирать пограничные клетки у соперников, чья культура там намного слабее.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_WHERE_TITLE" Language="ru_RU"><Text>В игре</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_WHERE_PARA_1" Language="ru_RU"><Text>[BLIST][LI][B]Линза «Культурное давление»[/B] (меню линз или Shift+C): затеняет клетки, которые вот-вот сменят владельца. См. [B]Линза давления[/B].[LI][B]Уведомления[/B]: когда вы занимаете территорию или теряете клетку в пользу другой цивилизации.[LI][B]Настройки, Дополнения, Культурная диффузия[/B]: интенсивность и все переключатели. См. [B]Настройки и уровни[/B].[/LIST]</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_TITLE" Language="ru_RU"><Text>Вопросы и ответы</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_NOTHING_TITLE" Language="ru_RU"><Text>Почему границы не растут?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_NOTHING_PARA_1" Language="ru_RU"><Text>Чтобы дойти до четвертого кольца, городу нужна большая и стабильная культура. Города в начале игры обычно ничего не занимают. Линза показывает, на каких клетках вы побеждаете и сколько ходов нужно для каждой. См. [B]Темп и занятые земли[/B].</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_WORK_TITLE" Language="ru_RU"><Text>Можно ли обрабатывать занятые клетки?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_WORK_PARA_1" Language="ru_RU"><Text>Нет. Города обрабатывают клетки только в пределах трех колец, а занятые клетки лежат дальше. Они считаются вашей территорией и не дают селиться поселенцам соперников.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_AILAND_TITLE" Language="ru_RU"><Text>Может ли ИИ забрать мои земли?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_AILAND_PARA_1" Language="ru_RU"><Text>Да. По умолчанию соперник, чья культура явно лидирует на клетке рядом с вашими землями, забирает ее по тем же правилам, по которым занимаете клетки вы, и вы получаете уведомление. Чтобы это прекратить, выключите параметр «Все цивилизации получают земли культурой». См. [B]Экспансия соперников[/B]; [B]Отступление границ[/B] и [B]Армии держат землю[/B] — дополнительные параметры.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_FLIPBACK_TITLE" Language="ru_RU"><Text>Почему клетка не переходит ко мне?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_FLIPBACK_PARA_1" Language="ru_RU"><Text>Она не проходит другое правило захвата: слишком далеко от ваших городов, не граничит с вашими землями, лежит в защищенном центре города, принадлежит цивилизации, с которой вы воюете, находится в далеких землях до эпохи исследований, недавно сменила владельца, или ее захват запер бы чужой юнит. См. [B]Захват клеток[/B].</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_TURNOFF_TITLE" Language="ru_RU"><Text>Что будет, если выключить мод?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_TURNOFF_PARA_1" Language="ru_RU"><Text>Новые захваты прекратятся. Уже занятые клетки останутся вашими.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_SAVES_TITLE" Language="ru_RU"><Text>Можно ли добавить мод в начатую игру?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_SAVES_PARA_1" Language="ru_RU"><Text>Нет. Мод должен быть включен в начале игры. Только одиночная игра.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_TITLE" Language="ru_RU"><Text>Поле культуры</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_CONTENT_PARA_1" Language="ru_RU"><Text>Каждая клетка в пределах восьми колец от ваших городов хранит культуру каждой цивилизации. Запас меняется раз в ход, и владение клетками следует за ним (см. [B]Захват клеток[/B]).</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_INJECT_TITLE" Language="ru_RU"><Text>Города добавляют культуру</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_INJECT_PARA_1" Language="ru_RU"><Text>Каждый город добавляет культуру на свою клетку. Чем больше культуры там уже есть, тем быстрее она растет, вплоть до предела, который задает сила города (см. [B]Сила культуры[/B]). Города также добавляют культуру других народов, живущих в них (см. [B]Смешанные и захваченные[/B]).</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_DIFFUSE_TITLE" Language="ru_RU"><Text>Культура распространяется</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_DIFFUSE_PARA_1" Language="ru_RU"><Text>Клетка, на которой не меньше 100 культуры, каждый ход отдает около 5.5% ее каждой соседней клетке. Соседняя клетка может получить не больше 40% от количества на исходной, или 75% вдоль дороги или реки. Местность замедляет или блокирует распространение (см. [B]Местность и реки[/B]).</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_DECAY_TITLE" Language="ru_RU"><Text>Культура угасает</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_DECAY_PARA_1" Language="ru_RU"><Text>Каждый ход каждая клетка теряет 5% своей культуры и еще 1 очко. Это ограничивает дальность границ, а когда город слабеет или потерян, культура отступает. На ваших клетках всегда остается хотя бы 1 очко вашей культуры.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_TITLE" Language="ru_RU"><Text>Местность и реки</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_CONTENT_PARA_1" Language="ru_RU"><Text>Насколько хорошо распространяется культура, зависит от клетки, на которую она переходит. Эффекты на одной клетке складываются.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROUGH_TITLE" Language="ru_RU"><Text>Трудная местность</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROUGH_PARA_1" Language="ru_RU"><Text>От самой легкой к самой трудной:[BLIST][LI][B]Лес, тайга[/B]: небольшое замедление.[LI][B]Холмы[/B]: умеренное замедление.[LI][B]Тундра[/B]: умеренное замедление; для перехода нужен более сильный источник.[LI][B]Пустыня[/B]: сильное замедление.[LI][B]Тропический лес, болото[/B]: сильное замедление; переходит только сильный источник.[LI][B]Горы[/B]: почти непроходимы. Чтобы культура ушла с вершины, ей нужно в 7.5 раза больше обычного.[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROADS_TITLE" Language="ru_RU"><Text>Дороги</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROADS_PARA_1" Language="ru_RU"><Text>Между двумя клетками с дорогой культура распространяется вдвое быстрее и дальше.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_RIVERS_TITLE" Language="ru_RU"><Text>Реки</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_RIVERS_PARA_1" Language="ru_RU"><Text>Вдоль реки культура распространяется быстрее и дальше, причем по судоходной реке сильнее, чем по малой. Чтобы перейти на реку с ее берега или с другой реки, нужно вдвое больше обычного, и культура приходит ослабленной. Культура, удерживающая реку, достигает обоих берегов.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_WATER_TITLE" Language="ru_RU"><Text>Побережье и океан</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_WATER_PARA_1" Language="ru_RU"><Text>Воду пересекает только сильная культура, побережье легче, чем океан. С каждой эпохой пересекать воду проще: в Античности это едва возможно, в Современности легче всего. Клетки далеких земель нельзя занять до эпохи исследований.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_TITLE" Language="ru_RU"><Text>Захват клеток</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_CONTENT_PARA_1" Language="ru_RU"><Text>Занятая клетка переходит к вашему ближайшему городу.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_RULES_TITLE" Language="ru_RU"><Text>Условия</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_RULES_PARA_1" Language="ru_RU"><Text>[BLIST][LI]Ваша культура на клетке самая высокая.[LI]Она не меньше 300 (375 в эпоху исследований, 480 в Современности).[LI]Если клетка принадлежит сопернику, его культура меньше двух третей вашей.[LI]Клетка находится не дальше шести клеток от вашего города и за его третьим кольцом.[LI]Клетка граничит с вашими землями (параметр «Только сплошная граница»).[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_TITLE" Language="ru_RU"><Text>Защищенные клетки</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_1" Language="ru_RU"><Text>Параметр «Защита городов соперников» задает, какая часть города соперника в безопасности: центр и его первое кольцо, только центр (по умолчанию) или ничего.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_2" Language="ru_RU"><Text>Города-государства и независимые силы всегда сохраняют центр и первое кольцо.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_3" Language="ru_RU"><Text>Если включен параметр «Только ничейные земли» (по умолчанию на уровне «Низкая»), культура никогда не забирает чужие клетки.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_4" Language="ru_RU"><Text>При смене эпохи чужая клетка с улучшением, городским районом или чудом света не меняет владельца во время обратного отсчёта до окончания эпохи и в первые два хода следующей. На клетки без улучшений это не распространяется.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_SAFE_TITLE" Language="ru_RU"><Text>Ограничения</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_SAFE_PARA_1" Language="ru_RU"><Text>[BLIST][LI]Культура никогда не забирает клетки у цивилизации, с которой вы воюете.[LI]Клетка, сменившая владельца, блокируется на 15 ходов.[LI]Захват, после которого чужому юниту цивилизации, с которой у вас мир, некуда было бы уйти, не происходит.[LI]За ход меняют владельца не больше 8 клеток, и у каждого города не больше 80 занятых клеток (40 на уровне «Низкая»).[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_BUFFER_TITLE" Language="ru_RU"><Text>Земли у новых улучшений</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_BUFFER_PARA_1" Language="ru_RU"><Text>Если этот параметр включен (по умолчанию выкл.), завершение деревенского улучшения рядом с вашей границей также занимает ничейные клетки рядом с ним, не дальше одного кольца за обычной досягаемостью города.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_TITLE" Language="ru_RU"><Text>Темп и занятые земли</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_CONTENT_PARA_1" Language="ru_RU"><Text>Культура накапливается по одному кольцу за раз, поэтому границы растут медленно. Более сильная культура достигает дальше и быстрее.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_RINGS_TITLE" Language="ru_RU"><Text>Кольца</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_RINGS_PARA_1" Language="ru_RU"><Text>[BLIST][LI][B]Кольца 1-3[/B]: правила основной игры; ваша культура их никогда не занимает, но культура соперника может, если включен параметр «Все цивилизации получают земли культурой».[LI][B]Кольцо 4[/B]: первое кольцо, которое занимает культура.[LI][B]Кольцо 5+[/B]: только сильные, устоявшиеся культуры.[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_EARLY_TITLE" Language="ru_RU"><Text>Начало игры</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_EARLY_PARA_1" Language="ru_RU"><Text>Молодой город, производящий мало [icon:YIELD_CULTURE] культуры, ничего не занимает. Захваты начинаются, когда города становятся сильнее. На уровне «Высокая» культура раньше достигает дальше.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_VALUE_TITLE" Language="ru_RU"><Text>Занятые клетки</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_VALUE_PARA_1" Language="ru_RU"><Text>Занятые клетки ваши, но их нельзя обрабатывать и застраивать, так как города обрабатывают только первые три кольца. Они не дают соперникам селиться рядом с вами: поселенцы не могут основать поселение на землях другой цивилизации или рядом с ними.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_TITLE" Language="ru_RU"><Text>Сила культуры</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_CONTENT_PARA_1" Language="ru_RU"><Text>Сила города определяет, сколько культуры он добавляет каждый ход. Если включен параметр «Расширенная культурная модель» (по умолчанию), сила складывается из факторов ниже.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_BLEND_TITLE" Language="ru_RU"><Text>Сила города</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_BLEND_PARA_1" Language="ru_RU"><Text>Сила города объединяет [icon:YIELD_CULTURE] культуру с [icon:YIELD_FOOD] пищей, [icon:YIELD_PRODUCTION] производством, [icon:YIELD_HAPPINESS] довольством и ростом. Один большой бонус значит меньше, чем сбалансированные доходы. Города цивилизации, у которой идет празднество, получают 25%.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_CPI_TITLE" Language="ru_RU"><Text>Индекс культурной силы</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_CPI_PARA_1" Language="ru_RU"><Text>Индекс каждой цивилизации сравнивает ее с лидером в шести областях:[BLIST][LI][B]Наследие[/B]: чудеса света, шедевры.[LI][B]Поток[/B]: [icon:YIELD_CULTURE] культура за ход.[LI][B]Охват[/B]: [icon:YIELD_DIPLOMACY] влияние, сюзеренитет над городами-государствами.[LI][B]Жизненная сила[/B]: [icon:YIELD_HAPPINESS] довольство, празднества.[LI][B]Процветание[/B]: богатство и рост державы.[LI][B]Самобытность[/B]: традиции, эпоха.[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_CPI_PARA_2" Language="ru_RU"><Text>Сила во всех шести областях ценится выше, чем один выдающийся показатель. Индекс умножает силу каждого города на значение от 0.6 до 1.6.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_SIMPLE_TITLE" Language="ru_RU"><Text>Простая модель</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_SIMPLE_PARA_1" Language="ru_RU"><Text>Если параметр «Расширенная культурная модель» выключен, сила равна [icon:YIELD_CULTURE] культуре города плюс бонус за празднество.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_TITLE" Language="ru_RU"><Text>Лидеры, эпохи и карты</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_CONTENT_PARA_1" Language="ru_RU"><Text>Сила города корректируется с учетом лидера, эпохи, скорости игры и размера карты.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_LEADERS_TITLE" Language="ru_RU"><Text>Лидеры, цивилизации и памятные вещи</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_LEADERS_PARA_1" Language="ru_RU"><Text>У лидеров, цивилизаций и памятных вещей с сильными бонусами к культуре, чудесам света, празднествам или сюзеренитету, а также со способностями, которые уже дают территорию, сила немного снижена. Цивилизации со слабой культурой получают небольшую прибавку.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_AGES_TITLE" Language="ru_RU"><Text>Эпохи</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_AGES_PARA_1" Language="ru_RU"><Text>В поздних эпохах больше городов и больше культуры, поэтому в эпоху исследований и в Современности города добавляют меньше культуры, а для захвата клетки ее нужно больше.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_SPEED_TITLE" Language="ru_RU"><Text>Скорость игры и размер карты</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_SPEED_PARA_1" Language="ru_RU"><Text>Скорость распространения зависит от длины эпохи, поэтому на любой скорости игры границы растут одинаково относительно эпохи. На маленьких картах города добавляют немного меньше культуры, на больших немного больше.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_TITLE" Language="ru_RU"><Text>С модом «Эмиграция»</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_CHAPTER_CONTENT_PARA_1" Language="ru_RU"><Text>Если установлен мод «Эмиграция», Культурная диффузия использует его данные о населении. Без мода «Эмиграция» эти правила ничего не делают.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_CHAPTER_AFFINITY_TITLE" Language="ru_RU"><Text>Диаспора</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_CHAPTER_AFFINITY_PARA_1" Language="ru_RU"><Text>Если включен параметр «Следовать за диаспорой» (по умолчанию; требует «Расширенной культурной модели»), ваша культура быстрее распространяется к клеткам, где поселился ваш народ.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_CHAPTER_PEOPLES_TITLE" Language="ru_RU"><Text>Смешанное население</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_CHAPTER_PEOPLES_PARA_1" Language="ru_RU"><Text>Культура каждого чужого народа в городе учитывается по его доле в населении. См. [B]Смешанные и захваченные[/B].</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_TITLE" Language="ru_RU"><Text>Смешанные и захваченные</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CONTENT_PARA_1" Language="ru_RU"><Text>Захваченный или смешанный город продолжает производить свою прежнюю культуру, которая борется за соседние клетки и постепенно переходит в культуру владельца.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_FOREIGN_TITLE" Language="ru_RU"><Text>Чужая культура</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_FOREIGN_PARA_1" Language="ru_RU"><Text>Если включен параметр «Города несут культуры всех жителей» (по умолчанию), город добавляет культуру каждого народа на своей клетке. Культура владельца добавляется в полную силу, каждая чужая культура пропорционально населению города. С модом «Эмиграция» каждая учитывается по доле в населении; без него чужая культура учитывается, когда ее на клетке города не меньше 100. Если параметр выключен, город добавляет только культуру владельца.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CONVERT_TITLE" Language="ru_RU"><Text>Переход культуры</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CONVERT_PARA_1" Language="ru_RU"><Text>Каждый ход город превращает 0.5% каждой чужой культуры на своей клетке в культуру владельца. Здания добавляют:[BLIST][LI][B]+0.25%[/B]: библиотека, монумент, амфитеатр.[LI][B]+0.5%[/B]: академия, университет, обсерватория, музей, оперный театр.[LI][B]+1%[/B]: школа, лаборатория.[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CONVERT_PARA_2" Language="ru_RU"><Text>Идеологии эпохи Современности добавляют +1% (демократия), +1.25% (коммунизм) или +1.75% (фашизм).</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CAPTURE_TITLE" Language="ru_RU"><Text>Захват города</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CAPTURE_PARA_1" Language="ru_RU"><Text>Когда город меняет владельца, каждая культура на его клетках теряет 55%, а новый владелец получает 75% от всего потерянного. Это касается всех цивилизаций.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RECEDE_TITLE" Language="ru_RU"><Text>Отступление границ</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RECEDE_CHAPTER_CONTENT_PARA_1" Language="ru_RU"><Text>Экспериментальный параметр, по умолчанию выкл. Вы можете потерять клетки, занятые вашей культурой. Если включен параметр «Все цивилизации получают земли культурой», соперники и так забирают занятые клетки, где их культура сильнее, поэтому этот параметр важен в основном, когда тот выключен.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RECEDE_CHAPTER_RULES_TITLE" Language="ru_RU"><Text>Правила</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RECEDE_CHAPTER_RULES_PARA_1" Language="ru_RU"><Text>Если культура соперника на занятой клетке превосходит вашу с тем перевесом, который нужен для захвата, клетка переходит к ближайшему городу этого соперника. Клетки, полученные при обычном росте города, так не теряются. Занятая клетка сохраняет владельца, если ее культура угасает, а соперника впереди нет.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_TITLE" Language="ru_RU"><Text>Экспансия соперников</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_CHAPTER_CONTENT_PARA_1" Language="ru_RU"><Text>Если включен параметр «Все цивилизации получают земли культурой» (по умолчанию), другие цивилизации занимают клетки культурой по вашим правилам, в том числе ваши клетки. Когда вы теряете клетку, вы получаете уведомление. Если параметр выключен, культурой растут только ваши границы.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_CHAPTER_RULES_TITLE" Language="ru_RU"><Text>Правила</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_CHAPTER_RULES_PARA_1" Language="ru_RU"><Text>Соперник забирает клетку, где лидирует, если у него мир с владельцем, клетка лежит за пределами защищенного центра владельца и граничит с землями соперника в пределах досягаемости его городов. Действуют и все ограничения из раздела [B]Захват клеток[/B], а у соперников есть отдельный предел на ход.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_CHAPTER_LIMITS_TITLE" Language="ru_RU"><Text>Ограничения</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_CHAPTER_LIMITS_PARA_1" Language="ru_RU"><Text>Города-государства и независимые силы никогда не занимают клетки таким способом. Культура отслеживается только в пределах восьми колец от ваших городов, поэтому границы в других местах следуют правилам основной игры.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_TITLE" Language="ru_RU"><Text>Армии держат землю</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_CONTENT_PARA_1" Language="ru_RU"><Text>Параметр, по умолчанию выкл. Армии других цивилизаций следуют этим правилам, только если включен и параметр «Все цивилизации получают земли культурой».</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_TAKING_TITLE" Language="ru_RU"><Text>Захват клеток армией</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_TAKING_PARA_1" Language="ru_RU"><Text>Во время войны боевой юнит, который стоит на вражеской клетке 5 ходов подряд, забирает ее независимо от культуры. Если юнит уходит, отсчет начинается заново. Центры городов и городские районы так забрать нельзя.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_HOLD_TITLE" Language="ru_RU"><Text>Срок удержания</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_HOLD_PARA_1" Language="ru_RU"><Text>В течение 10 ходов после захвата культура не может вернуть клетку. Другая армия по-прежнему может в любой момент забрать ее тем же способом.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_AFTER_TITLE" Language="ru_RU"><Text>После войны</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_AFTER_PARA_1" Language="ru_RU"><Text>Пока идет война, культура никогда не меняет владельца завоеванной клетки. После заключения мира и окончания срока удержания любая цивилизация может занять ее культурой по обычным правилам.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_TITLE" Language="ru_RU"><Text>Линза давления</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_CONTENT_PARA_1" Language="ru_RU"><Text>Откройте ее из меню линз или нажмите Shift+C. Только для просмотра. Ее добавляет параметр «Линза давления» (по умолчанию вкл.).</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_COLORS_TITLE" Language="ru_RU"><Text>Цвета</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_COLORS_PARA_1" Language="ru_RU"><Text>Клетка затеняется цветом лидирующей цивилизации, если лидирует не культура владельца и она может занять клетку. Чем ближе захват, тем сильнее затенение.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_COLORS_PARA_2" Language="ru_RU"><Text>Если включен параметр «Все цивилизации получают земли культурой», затеняются и клетки, которые могут занять другие цивилизации.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_READOUT_TITLE" Language="ru_RU"><Text>Сведения о клетке</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_READOUT_PARA_1" Language="ru_RU"><Text>При наведении на клетку видно:[BLIST][LI]три крупнейшие культуры на ней, с отметкой владельца;[LI][B]Прогресс захвата[/B];[LI][B]При текущем темпе[/B]: сколько ходов осталось, «готова к захвату» или «застой».[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_READOUT_PARA_2" Language="ru_RU"><Text>Для клеток, которые нельзя занять, показывается только количество культуры.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_ALERTS_TITLE" Language="ru_RU"><Text>Уведомления</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_ALERTS_PARA_1" Language="ru_RU"><Text>Не больше одного уведомления за ход: когда вы занимаете территорию или когда другая цивилизация забирает одну из ваших клеток.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_TITLE" Language="ru_RU"><Text>Настройки и уровни</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_CONTENT_PARA_1" Language="ru_RU"><Text>Настройки, Дополнения, Культурная диффузия. Параметры можно менять во время игры.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_PRESETS_TITLE" Language="ru_RU"><Text>Интенсивность</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_PRESETS_PARA_1" Language="ru_RU"><Text>[BLIST][LI][B]Низкая[/B]: распространение 4%, угасание 7%, 400 для захвата, дальность 5, только ничейные земли.[LI][B]Средняя[/B] (по умолчанию): распространение 5.5%, угасание 5%, 300 для захвата, дальность 6.[LI][B]Высокая[/B]: распространение 7.5%, угасание 4%, 220 для захвата, дальность 8.[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_TOGGLES_TITLE" Language="ru_RU"><Text>Переключатели</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_TOGGLES_PARA_1" Language="ru_RU"><Text>[BLIST][LI][B]Включено[/B]: выкл. возвращает границы основной игры.[LI][B]Только ничейные земли[/B]: см. [B]Захват клеток[/B].[LI][B]Защита городов соперников[/B]: см. [B]Захват клеток[/B].[LI][B]Только сплошная граница[/B]: по умолчанию вкл. Выкл. позволяет занимать участки внутри чужой территории.[LI][B]Занимать земли у новых улучшений[/B]: выкл. См. [B]Захват клеток[/B].[LI][B]Отступление границ[/B]: выкл. См. [B]Отступление границ[/B].[LI][B]Все цивилизации получают земли культурой[/B]: вкл. См. [B]Экспансия соперников[/B].[LI][B]Армии удерживают занятые земли[/B]: выкл. См. [B]Армии держат землю[/B].[LI][B]Города несут культуры всех жителей[/B]: вкл. См. [B]Смешанные и захваченные[/B].[LI][B]Расширенная культурная модель[/B]: вкл. См. [B]Сила культуры[/B].[LI][B]Следовать за диаспорой[/B]: вкл. См. [B]С модом «Эмиграция»[/B].[LI][B]Линза давления[/B]: вкл. См. [B]Линза давления[/B].[LI][B]Отладочный журнал[/B]: выкл. Записывает диагностику ходов в журнал интерфейса.[/LIST]</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_ABOUT_TITLE" Language="ru_RU"><Text>Об этом моде</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_ABOUT_CHAPTER_CONTENT_PARA_1" Language="ru_RU"><Text>Версия мода Cultural Diffusion для Civilization V, перенесенная в Civilization VII и дополненная новыми правилами.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_ABOUT_CHAPTER_CREDITS_TITLE" Language="ru_RU"><Text>Авторы</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_ABOUT_CHAPTER_CREDITS_PARA_1" Language="ru_RU"><Text>Автор: Tower. Основано на моде Cultural Diffusion от Gedemon для Civilization V (v18), откуда взяты поле культуры и ряд правил: реки, чужая культура в городах, передача культуры при захвате, захваты соперниками и армиями, порог для гор и минимальная культура владельца.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_CD_CULTURAL_BORDERS_TITLE" Language="ru_RU"><Text>Культурные границы (мод)</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_CD_CULTURAL_BORDERS_CHAPTER_CONTENT_PARA_1" Language="ru_RU"><Text>С модом «Культурная диффузия» культура распространяется от городов клетка за клеткой и может расширять границы за третье кольцо города, в том числе на пограничные клетки соперников. Правила описаны на вкладке [B]Культурная диффузия[/B].</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CD_TERM_CULTURAL_DIFFUSION" Language="ru_RU"><Text>Культурная диффузия</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_BORDERS" Language="ru_RU"><Text>Границы</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_FORWARD_SETTLING" Language="ru_RU"><Text>Заселение у границы</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_TERRITORY" Language="ru_RU"><Text>Территория</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_HELP" Language="ru_RU"><Text>Помощь</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_DIFFUSION" Language="ru_RU"><Text>Диффузия</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_DECAY" Language="ru_RU"><Text>Угасание</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CULTURE_STOCK" Language="ru_RU"><Text>Запас культуры</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_RIVERS" Language="ru_RU"><Text>Реки</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_ROADS" Language="ru_RU"><Text>Дороги</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_MOUNTAINS" Language="ru_RU"><Text>Горы</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_WATER" Language="ru_RU"><Text>Пересечение воды</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_TILE_FLIP" Language="ru_RU"><Text>Смена владельца клетки</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CITY_PROTECTION" Language="ru_RU"><Text>Защита городов соперников</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CITY_STATES" Language="ru_RU"><Text>Города-государства</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_IMPROVEMENT_BUFFER" Language="ru_RU"><Text>Земли у улучшений</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_RING" Language="ru_RU"><Text>Четвертое кольцо</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_WORK_TILES" Language="ru_RU"><Text>Обработка клеток</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CPI" Language="ru_RU"><Text>ИКС</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CPI_FULL" Language="ru_RU"><Text>Индекс культурной силы</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CELEBRATION" Language="ru_RU"><Text>Празднество</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_LEADERS" Language="ru_RU"><Text>Баланс лидеров</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_AGES" Language="ru_RU"><Text>Эпохи</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_GAME_SPEED" Language="ru_RU"><Text>Скорость игры</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_EMIGRATION" Language="ru_RU"><Text>Эмиграция</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_DIASPORA" Language="ru_RU"><Text>Диаспора</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CONVERSION" Language="ru_RU"><Text>Переход культуры</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CAPTURED_CITY" Language="ru_RU"><Text>Захваченный город</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_FOREIGN_CULTURE" Language="ru_RU"><Text>Чужая культура</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_RECEDE" Language="ru_RU"><Text>Отступление</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_AI" Language="ru_RU"><Text>Границы ИИ</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CONQUEST" Language="ru_RU"><Text>Завоевание</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_OCCUPATION" Language="ru_RU"><Text>Оккупация</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_LENS" Language="ru_RU"><Text>Линза</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_PRESSURE" Language="ru_RU"><Text>Культурное давление</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_HOTKEY" Language="ru_RU"><Text>Shift+C</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_NOTIFICATIONS" Language="ru_RU"><Text>Уведомления</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_INTENSITY" Language="ru_RU"><Text>Интенсивность</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_SETTINGS" Language="ru_RU"><Text>Настройки</Text></Replace>
+    </LocalizedText>
+</Database>

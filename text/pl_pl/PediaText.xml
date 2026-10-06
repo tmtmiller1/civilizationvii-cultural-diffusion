@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database>
+    <LocalizedText>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_TITLE" Language="pl_PL"><Text>Dyfuzja kulturowa</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_GROUP_START_TITLE" Language="pl_PL"><Text>Pierwsze kroki</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_GROUP_SPREAD_TITLE" Language="pl_PL"><Text>Jak szerzy się kultura</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_GROUP_POWER_TITLE" Language="pl_PL"><Text>Potęga kulturowa</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_GROUP_RIVALS_TITLE" Language="pl_PL"><Text>Rywale, miasta i wojna</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_GROUP_INTERFACE_TITLE" Language="pl_PL"><Text>Interfejs i opcje</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_TITLE" Language="pl_PL"><Text>Dyfuzja kulturowa</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_CONTENT_PARA_1" Language="pl_PL"><Text>Każde pole w pobliżu twoich miast przechowuje, ile [icon:YIELD_CULTURE] kultury ma na nim każda cywilizacja. W każdej turze miasta dodają kulturę na własne pole, kultura rozchodzi się na sąsiednie pola, a każde pole trochę jej traci.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_CONTENT_PARA_2" Language="pl_PL"><Text>Gdy twoja kultura na polu za trzecim pierścieniem miasta jest dość duża, zajmujesz to pole. Granice rosną powoli, głównie od połowy gry, i mogą odbierać przygraniczne pola rywalom, których kultura jest tam dużo słabsza.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_WHERE_TITLE" Language="pl_PL"><Text>W grze</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_WHERE_PARA_1" Language="pl_PL"><Text>[BLIST][LI][B]Filtr presji kulturowej[/B] (menu filtrów lub Shift+C): zabarwia pola, które wkrótce zmienią właściciela. Zob. [B]Filtr presji kulturowej[/B].[LI][B]Powiadomienia[/B]: gdy zajmiesz terytorium lub stracisz pole na rzecz innej cywilizacji.[LI][B]Opcje, Dodatki, Dyfuzja kulturowa[/B]: intensywność i wszystkie przełączniki. Zob. [B]Opcje i ustawienia[/B].[/LIST]</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_TITLE" Language="pl_PL"><Text>Pytania i odpowiedzi</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_NOTHING_TITLE" Language="pl_PL"><Text>Czemu moje granice nie rosną?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_NOTHING_PARA_1" Language="pl_PL"><Text>Miasto potrzebuje dużej, stałej kultury, zanim sięgnie czwartego pierścienia. Miasta we wczesnej fazie gry zwykle niczego nie zajmują. Filtr pokazuje, na których polach wygrywasz i ile tur potrzebuje każde z nich. Zob. [B]Tempo i nowe ziemie[/B].</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_WORK_TITLE" Language="pl_PL"><Text>Czy miasta mogą eksploatować zajęte pola?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_WORK_PARA_1" Language="pl_PL"><Text>Nie. Miasta eksploatują pola tylko w obrębie trzech pierścieni, a zajęte pola leżą dalej. Liczą się jako twoje terytorium i blokują osadników rywali.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_AILAND_TITLE" Language="pl_PL"><Text>Czy SI może zabrać moją ziemię?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_AILAND_PARA_1" Language="pl_PL"><Text>Tak. Domyślnie rywal, którego kultura wyraźnie prowadzi na polu blisko twoich ziem, zajmuje je według tych samych zasad co ty, a ty dostajesz powiadomienie. Aby temu zapobiec, wyłącz opcję Każda cywilizacja zdobywa ziemię kulturą. Zob. [B]Ekspansja rywali[/B]; [B]Cofanie się granic[/B] i [B]Armie utrzymują teren[/B] to kolejne opcje.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_FLIPBACK_TITLE" Language="pl_PL"><Text>Czemu pole, na którym dominuję, nie przechodzi do mnie?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_FLIPBACK_PARA_1" Language="pl_PL"><Text>Nie spełnia innej zasady zajmowania: jest za daleko od twoich miast, nie styka się z twoją ziemią, leży w chronionym rdzeniu miasta, należy do cywilizacji, z którą prowadzisz wojnę, leży w twoich Odległych krainach przed epoką odkryć, niedawno zmieniło właściciela albo jego zajęcie uwięziłoby obcą jednostkę. Zob. [B]Zajmowanie pól[/B].</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_TURNOFF_TITLE" Language="pl_PL"><Text>Co, jeśli wyłączę mod?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_TURNOFF_PARA_1" Language="pl_PL"><Text>Nowe zajęcia ustają. Już zajęte pola pozostają twoje.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_SAVES_TITLE" Language="pl_PL"><Text>Czy mogę go dodać do trwającej gry?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_SAVES_PARA_1" Language="pl_PL"><Text>Nie. Mod musi być włączony na początku gry. Tylko gra jednoosobowa.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_TITLE" Language="pl_PL"><Text>Pole kultury</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_CONTENT_PARA_1" Language="pl_PL"><Text>Każde pole w promieniu ośmiu pierścieni od twoich miast przechowuje kulturę każdej cywilizacji. Zapas zmienia się raz na turę, a własność pól podąża za nim (zob. [B]Zajmowanie pól[/B]).</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_INJECT_TITLE" Language="pl_PL"><Text>Miasta dodają kulturę</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_INJECT_PARA_1" Language="pl_PL"><Text>Każde miasto dodaje kulturę na własne pole. Im więcej kultury już tam jest, tym szybciej rośnie, aż do limitu wyznaczonego przez siłę miasta (zob. [B]Siła kulturowa[/B]). Miasta dodają też kulturę innych ludów, które w nich mieszkają (zob. [B]Mieszane i zdobyte[/B]).</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_DIFFUSE_TITLE" Language="pl_PL"><Text>Kultura się szerzy</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_DIFFUSE_PARA_1" Language="pl_PL"><Text>Pole z co najmniej 100 kultury oddaje co turę około 5,5% z niej każdemu sąsiadowi. Sąsiad może osiągnąć najwyżej 40% ilości ze źródła, a wzdłuż drogi lub rzeki 75%. Teren spowalnia lub blokuje szerzenie się kultury (zob. [B]Teren i rzeki[/B]).</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_DECAY_TITLE" Language="pl_PL"><Text>Kultura słabnie</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_DECAY_PARA_1" Language="pl_PL"><Text>Każde pole traci co turę 5% swojej kultury plus 1 punkt. To ogranicza zasięg granicy, a kultura cofa się, gdy jej miasto słabnie lub zostaje utracone. Twoje pola zachowują co najmniej 1 punkt twojej kultury.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_TITLE" Language="pl_PL"><Text>Teren i rzeki</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_CONTENT_PARA_1" Language="pl_PL"><Text>Pole, na które wchodzi kultura, decyduje, jak dobrze się ona szerzy. Efekty na tym samym polu się sumują.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROUGH_TITLE" Language="pl_PL"><Text>Trudny teren</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROUGH_PARA_1" Language="pl_PL"><Text>Od najłatwiejszego do najtrudniejszego:[BLIST][LI][B]Las, tajga[/B]: lekkie spowolnienie.[LI][B]Nierówny teren[/B]: umiarkowane spowolnienie.[LI][B]Tundra[/B]: umiarkowane spowolnienie; do przejścia potrzeba silniejszego źródła.[LI][B]Pustynia[/B]: duże spowolnienie.[LI][B]Las deszczowy, mokradła[/B]: duże spowolnienie; przechodzi tylko silne źródło.[LI][B]Góry[/B]: prawie nie do przejścia. Kultura na szczycie potrzebuje 7,5 raza większej ilości niż zwykle, by się z niego rozejść.[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROADS_TITLE" Language="pl_PL"><Text>Drogi</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROADS_PARA_1" Language="pl_PL"><Text>Między dwoma polami z drogą kultura szerzy się dwa razy szybciej i dalej.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_RIVERS_TITLE" Language="pl_PL"><Text>Rzeki</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_RIVERS_PARA_1" Language="pl_PL"><Text>Wzdłuż rzeki kultura szerzy się szybciej i dalej, bardziej na żeglownej rzece niż na pomniejszej. Wejście na rzekę z jej brzegu lub z innej rzeki wymaga dwa razy większej ilości niż zwykle, a kultura dociera osłabiona. Kultura, która trzyma rzekę, sięga obu brzegów.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_WATER_TITLE" Language="pl_PL"><Text>Wybrzeże i ocean</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_WATER_PARA_1" Language="pl_PL"><Text>Tylko silna kultura przekracza wodę, wody przybrzeżne łatwiej niż ocean. Z każdą epoką jest to łatwiejsze: od ledwie możliwego w epoce antyku do najłatwiejszego w epoce nowożytnej. Pól w Odległych krainach nie można zająć przed epoką odkryć.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_TITLE" Language="pl_PL"><Text>Zajmowanie pól</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_CONTENT_PARA_1" Language="pl_PL"><Text>Zajęte pole dołącza do twojego najbliższego miasta.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_RULES_TITLE" Language="pl_PL"><Text>Wymagania</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_RULES_PARA_1" Language="pl_PL"><Text>[BLIST][LI]Twoja kultura jest na polu najwyższa.[LI]Wynosi co najmniej 300 (375 w epoce odkryć, 480 w epoce nowożytnej).[LI]Jeśli pole należy do rywala, jego kultura jest niższa niż dwie trzecie twojej.[LI]Pole leży najwyżej sześć pól od twojego miasta i za jego trzecim pierścieniem.[LI]Pole styka się z twoją ziemią (opcja Tylko ciągła granica).[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_TITLE" Language="pl_PL"><Text>Pola chronione</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_1" Language="pl_PL"><Text>Opcja Ochrona miast rywali określa, jaka część miasta rywala jest bezpieczna: centrum i jego pierwszy pierścień, tylko centrum (domyślnie) albo nic.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_2" Language="pl_PL"><Text>Miasta-państwa i niezależne siły zawsze zachowują centrum i pierwszy pierścień.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_3" Language="pl_PL"><Text>Gdy opcja Zajmuj tylko wolną ziemię jest włączona (domyślnie przy Niskiej), kultura nigdy nie zajmuje pola, które ma właściciela.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_4" Language="pl_PL"><Text>W okresie zmiany epoki pole z właścicielem, na którym jest ulepszenie, miejski dystrykt lub cud, nie zmienia się podczas odliczania do końca epoki i przez dwie pierwsze tury następnej. Pól bez ulepszeń to nie dotyczy.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_SAFE_TITLE" Language="pl_PL"><Text>Ograniczenia</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_SAFE_PARA_1" Language="pl_PL"><Text>[BLIST][LI]Kultura nigdy nie zabiera pól cywilizacji, z którą prowadzisz wojnę.[LI]Pole, które zmieniło właściciela, jest zablokowane na 15 tur.[LI]Zajęcie, które zostawiłoby obcą jednostkę cywilizacji będącej z tobą w pokoju bez wyjścia, jest odrzucane.[LI]Na turę właściciela zmienia najwyżej 8 pól, a każde miasto może mieć najwyżej 80 zajętych pól (40 przy Niskiej).[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_BUFFER_TITLE" Language="pl_PL"><Text>Ziemia obok nowych ulepszeń</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_BUFFER_PARA_1" Language="pl_PL"><Text>Gdy ta opcja jest włączona (domyślnie wył.), ukończenie ulepszenia wiejskiego przy twojej granicy zajmuje też niczyje pola obok niego, do jednego pierścienia poza zwykłym zasięgiem miasta.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_TITLE" Language="pl_PL"><Text>Tempo i nowe ziemie</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_CONTENT_PARA_1" Language="pl_PL"><Text>Kultura narasta pierścień po pierścieniu, więc granice rosną powoli. Silniejsza kultura sięga dalej i szybciej.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_RINGS_TITLE" Language="pl_PL"><Text>Pierścienie</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_RINGS_PARA_1" Language="pl_PL"><Text>[BLIST][LI][B]Pierścienie 1-3[/B]: zasady podstawowej gry; twoja kultura nigdy ich nie zajmuje, ale kultura rywala może, gdy włączona jest opcja Każda cywilizacja zdobywa ziemię kulturą.[LI][B]Pierścień 4[/B]: pierwszy pierścień, który zajmuje kultura.[LI][B]Pierścień 5+[/B]: tylko silne, ugruntowane kultury.[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_EARLY_TITLE" Language="pl_PL"><Text>Wczesna gra</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_EARLY_PARA_1" Language="pl_PL"><Text>Młode miasto, które wytwarza mało [icon:YIELD_CULTURE] kultury, niczego nie zajmuje. Zajmowanie zaczyna się, gdy miasta stają się silniejsze. Ustawienie Wysoka szybciej sięga dalej.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_VALUE_TITLE" Language="pl_PL"><Text>Zajęte pola</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_VALUE_PARA_1" Language="pl_PL"><Text>Zajęte pola są twoje, ale nie można ich eksploatować ani na nich budować, bo miasta eksploatują tylko pierwsze trzy pierścienie. Nie pozwalają rywalom osiedlać się obok ciebie: osadnicy nie mogą zakładać osad na ziemi innej cywilizacji ani obok niej.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_TITLE" Language="pl_PL"><Text>Siła kulturowa</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_CONTENT_PARA_1" Language="pl_PL"><Text>Siła miasta określa, ile kultury dodaje ono co turę. Gdy opcja Rozbudowany model kultury jest włączona (domyślnie), siła wynika z poniższych czynników.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_BLEND_TITLE" Language="pl_PL"><Text>Siła miasta</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_BLEND_PARA_1" Language="pl_PL"><Text>Siła miasta łączy [icon:YIELD_CULTURE] kulturę z [icon:YIELD_FOOD] żywnością, [icon:YIELD_PRODUCTION] produkcją, [icon:YIELD_HAPPINESS] zadowoleniem i wzrostem. Jedna duża premia liczy się mniej niż zrównoważone plony. Miasta cywilizacji, która prowadzi obchody, zyskują 25%.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_CPI_TITLE" Language="pl_PL"><Text>Wskaźnik potęgi kulturowej</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_CPI_PARA_1" Language="pl_PL"><Text>Wskaźnik każdej cywilizacji porównuje ją z liderem w sześciu dziedzinach:[BLIST][LI][B]Spuścizna[/B]: cuda, wielkie dzieła.[LI][B]Przepływ[/B]: [icon:YIELD_CULTURE] kultura na turę.[LI][B]Zasięg[/B]: [icon:YIELD_DIPLOMACY] wpływy, zwierzchnictwo nad miastami-państwami.[LI][B]Witalność[/B]: [icon:YIELD_HAPPINESS] zadowolenie, obchody.[LI][B]Dobrobyt[/B]: bogactwo i wzrost imperium.[LI][B]Tożsamość[/B]: tradycje, epoka.[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_CPI_PARA_2" Language="pl_PL"><Text>Siła we wszystkich sześciu dziedzinach daje więcej niż jedna wybitna. Wskaźnik mnoży siłę każdego miasta przez 0,6 do 1,6.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_SIMPLE_TITLE" Language="pl_PL"><Text>Prosty model</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_SIMPLE_PARA_1" Language="pl_PL"><Text>Gdy opcja Rozbudowany model kultury jest wyłączona, siła to [icon:YIELD_CULTURE] kultura miasta plus premia za obchody.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_TITLE" Language="pl_PL"><Text>Przywódcy, epoki, mapy</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_CONTENT_PARA_1" Language="pl_PL"><Text>Siła miasta jest dostosowana do przywódcy, epoki, prędkości gry i rozmiaru mapy.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_LEADERS_TITLE" Language="pl_PL"><Text>Przywódcy, cywilizacje i pamiątki</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_LEADERS_PARA_1" Language="pl_PL"><Text>Przywódcy, cywilizacje i pamiątki z silnymi premiami do kultury, cudów, obchodów lub zwierzchnictwa albo ze zdolnościami, które już dają terytorium, mają nieco zmniejszoną siłę. Cywilizacje ze słabą kulturą dostają niewielki wzrost.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_AGES_TITLE" Language="pl_PL"><Text>Epoki</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_AGES_PARA_1" Language="pl_PL"><Text>W późniejszych epokach jest więcej miast i więcej kultury, więc w epoce odkryć i epoce nowożytnej miasta dodają mniej kultury, a do zajęcia pola potrzeba więcej.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_SPEED_TITLE" Language="pl_PL"><Text>Prędkość gry i rozmiar mapy</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_SPEED_PARA_1" Language="pl_PL"><Text>Tempo szerzenia się zależy od długości epoki, więc przy każdej prędkości gry granice rosną w tym samym tempie względem epoki. Na małych mapach miasta dodają nieco mniej kultury, a na dużych nieco więcej.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_TITLE" Language="pl_PL"><Text>Z Emigracją</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_CHAPTER_CONTENT_PARA_1" Language="pl_PL"><Text>Jeśli zainstalowany jest mod Emigracja, Dyfuzja kulturowa korzysta z jego danych o populacji. Bez Emigracji te zasady nic nie robią.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_CHAPTER_AFFINITY_TITLE" Language="pl_PL"><Text>Diaspora</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_CHAPTER_AFFINITY_PARA_1" Language="pl_PL"><Text>Gdy opcja Podążaj za diasporą jest włączona (domyślnie; wymaga opcji Rozbudowany model kultury), twoja kultura szybciej szerzy się w stronę pól, na których osiedlił się twój lud.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_CHAPTER_PEOPLES_TITLE" Language="pl_PL"><Text>Mieszana populacja</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_CHAPTER_PEOPLES_PARA_1" Language="pl_PL"><Text>Kultura każdego obcego ludu w mieście jest ważona jego udziałem w populacji. Zob. [B]Mieszane i zdobyte[/B].</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_TITLE" Language="pl_PL"><Text>Mieszane i zdobyte</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CONTENT_PARA_1" Language="pl_PL"><Text>Zdobyte lub mieszane miasto nadal wytwarza swoją dawną kulturę, która walczy o pobliskie pola i powoli zmienia się w kulturę właściciela.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_FOREIGN_TITLE" Language="pl_PL"><Text>Obca kultura</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_FOREIGN_PARA_1" Language="pl_PL"><Text>Gdy opcja Miasta niosą kultury swoich mieszkańców jest włączona (domyślnie), miasto dodaje kulturę każdego ludu na swoim polu. Kultura właściciela jest dodawana w pełnej sile, a każda obca kultura proporcjonalnie do populacji miasta. Z Emigracją każda jest ważona swoim udziałem w populacji; bez niej obca kultura liczy się, gdy ma 100 na polu miasta. Gdy opcja jest wyłączona, miasto dodaje tylko kulturę właściciela.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CONVERT_TITLE" Language="pl_PL"><Text>Przemiana</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CONVERT_PARA_1" Language="pl_PL"><Text>Co turę miasto zmienia 0,5% każdej obcej kultury na swoim polu w kulturę właściciela. Budowle dodają:[BLIST][LI][B]+0,25%[/B]: biblioteka, pomnik, amfiteatr.[LI][B]+0,5%[/B]: akademia, uniwersytet, obserwatorium, muzeum, opera.[LI][B]+1%[/B]: szkoła, laboratorium.[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CONVERT_PARA_2" Language="pl_PL"><Text>Ideologie epoki nowożytnej dodają +1% (demokracja), +1,25% (komunizm) lub +1,75% (faszyzm).</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CAPTURE_TITLE" Language="pl_PL"><Text>Zdobycie</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CAPTURE_PARA_1" Language="pl_PL"><Text>Gdy miasto zmienia właściciela, każda kultura na jego polach traci 55%, a nowy właściciel zyskuje 75% całej utraconej ilości. Dotyczy to wszystkich cywilizacji.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RECEDE_TITLE" Language="pl_PL"><Text>Cofanie się granic</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RECEDE_CHAPTER_CONTENT_PARA_1" Language="pl_PL"><Text>Opcja eksperymentalna, domyślnie wył. Możesz stracić pola zajęte przez twoją kulturę. Gdy opcja Każda cywilizacja zdobywa ziemię kulturą jest włączona, rywale i tak zajmują zajęte pola, na których mają silniejszą kulturę, więc ma to znaczenie głównie wtedy, gdy tamta opcja jest wyłączona.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RECEDE_CHAPTER_RULES_TITLE" Language="pl_PL"><Text>Zasady</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RECEDE_CHAPTER_RULES_PARA_1" Language="pl_PL"><Text>Jeśli kultura rywala na zajętym polu przewyższa twoją o przewagę wymaganą do zajęcia, pole przechodzi do najbliższego miasta tego rywala. Pól zdobytych w zwykłym wzroście miasta nie traci się w ten sposób. Zajęte pole zachowuje właściciela, jeśli jego kultura słabnie, a żaden rywal nie prowadzi.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_TITLE" Language="pl_PL"><Text>Ekspansja rywali</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_CHAPTER_CONTENT_PARA_1" Language="pl_PL"><Text>Gdy opcja Każda cywilizacja zdobywa ziemię kulturą jest włączona (domyślnie), inne cywilizacje zajmują pola kulturą według twoich zasad, także twoje pola. Dostajesz powiadomienie, gdy stracisz pole. Gdy opcja jest wyłączona, kulturą rosną tylko twoje granice.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_CHAPTER_RULES_TITLE" Language="pl_PL"><Text>Zasady</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_CHAPTER_RULES_PARA_1" Language="pl_PL"><Text>Rywal zajmuje pole, na którym prowadzi, gdy jest w pokoju z właścicielem, pole leży poza chronionym rdzeniem właściciela i styka się z ziemią rywala w zasięgu jego miast. Obowiązują też wszystkie ograniczenia z [B]Zajmowanie pól[/B], a rywale mają osobny limit na turę.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_CHAPTER_LIMITS_TITLE" Language="pl_PL"><Text>Ograniczenia</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_CHAPTER_LIMITS_PARA_1" Language="pl_PL"><Text>Miasta-państwa i niezależne siły nigdy nie zajmują tak pól. Kultura jest śledzona tylko w promieniu ośmiu pierścieni od twoich miast, więc granice gdzie indziej działają według zasad podstawowej gry.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_TITLE" Language="pl_PL"><Text>Armie utrzymują teren</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_CONTENT_PARA_1" Language="pl_PL"><Text>Opcja, domyślnie wył. Armie innych cywilizacji podlegają tym zasadom tylko wtedy, gdy włączona jest też opcja Każda cywilizacja zdobywa ziemię kulturą.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_TAKING_TITLE" Language="pl_PL"><Text>Zajmowanie pól</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_TAKING_PARA_1" Language="pl_PL"><Text>W czasie wojny jednostka bojowa, która stoi na wrogim polu przez 5 tur z rzędu, zajmuje je bez względu na kulturę. Zejście z pola zeruje licznik. Centrów miast i miejskich dystryktów nie można tak zająć.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_HOLD_TITLE" Language="pl_PL"><Text>Okres utrzymania</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_HOLD_PARA_1" Language="pl_PL"><Text>Przez 10 tur po zdobyciu kultura nie może odebrać pola. Inna armia może je w każdej chwili zająć w ten sam sposób.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_AFTER_TITLE" Language="pl_PL"><Text>Po wojnie</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_AFTER_PARA_1" Language="pl_PL"><Text>W czasie wojny kultura nigdy nie przenosi zdobytego pola. Po zawarciu pokoju i końcu okresu utrzymania kultura może je zająć według zwykłych zasad dla każdej cywilizacji.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_TITLE" Language="pl_PL"><Text>Filtr presji kulturowej</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_CONTENT_PARA_1" Language="pl_PL"><Text>Otwórz go z menu filtrów lub naciśnij Shift+C. Służy tylko do podglądu. Dodaje go opcja Filtr presji (domyślnie wł.).</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_COLORS_TITLE" Language="pl_PL"><Text>Kolory</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_COLORS_PARA_1" Language="pl_PL"><Text>Pole jest zabarwione kolorem prowadzącej cywilizacji, gdy prowadzi kultura inna niż kultura właściciela i mogłaby je zająć. Barwa jest tym mocniejsza, im bliżej zajęcia.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_COLORS_PARA_2" Language="pl_PL"><Text>Gdy opcja Każda cywilizacja zdobywa ziemię kulturą jest włączona, zabarwione są też pola, które mogłyby zająć inne cywilizacje.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_READOUT_TITLE" Language="pl_PL"><Text>Informacje o polu</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_READOUT_PARA_1" Language="pl_PL"><Text>Po najechaniu kursorem na pole widać:[BLIST][LI]trzy największe kultury na nim, z zaznaczonym właścicielem;[LI][B]Postęp przejęcia[/B];[LI][B]W obecnym tempie[/B]: pozostałe tury, gotowe do przejęcia lub wstrzymane.[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_READOUT_PARA_2" Language="pl_PL"><Text>Pola, których nie można zająć, pokazują tylko ilości kultury.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_ALERTS_TITLE" Language="pl_PL"><Text>Powiadomienia</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_ALERTS_PARA_1" Language="pl_PL"><Text>Najwyżej jedno powiadomienie na turę: gdy zajmiesz terytorium lub gdy inna cywilizacja zajmie jedno z twoich pól.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_TITLE" Language="pl_PL"><Text>Opcje i ustawienia</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_CONTENT_PARA_1" Language="pl_PL"><Text>Opcje, Dodatki, Dyfuzja kulturowa. Ustawienia można zmieniać w trakcie gry.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_PRESETS_TITLE" Language="pl_PL"><Text>Intensywność</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_PRESETS_PARA_1" Language="pl_PL"><Text>[BLIST][LI][B]Niska[/B]: szerzenie 4%, słabnięcie 7%, 400 do zajęcia, zasięg 5, tylko wolna ziemia.[LI][B]Średnia[/B] (domyślnie): szerzenie 5,5%, słabnięcie 5%, 300 do zajęcia, zasięg 6.[LI][B]Wysoka[/B]: szerzenie 7,5%, słabnięcie 4%, 220 do zajęcia, zasięg 8.[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_TOGGLES_TITLE" Language="pl_PL"><Text>Przełączniki</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_TOGGLES_PARA_1" Language="pl_PL"><Text>[BLIST][LI][B]Włączona[/B]: wyłączenie przywraca granice z podstawowej gry.[LI][B]Zajmuj tylko wolną ziemię[/B]: zob. [B]Zajmowanie pól[/B].[LI][B]Ochrona miast rywali[/B]: zob. [B]Zajmowanie pól[/B].[LI][B]Tylko ciągła granica[/B]: domyślnie wł. Wyłączenie pozwala zajmować enklawy na cudzym terytorium.[LI][B]Zajmuj ziemię obok nowych ulepszeń[/B]: wył. Zob. [B]Zajmowanie pól[/B].[LI][B]Cofanie się granic[/B]: wył. Zob. [B]Cofanie się granic[/B].[LI][B]Każda cywilizacja zdobywa ziemię kulturą[/B]: wł. Zob. [B]Ekspansja rywali[/B].[LI][B]Armie utrzymują zajęty teren[/B]: wył. Zob. [B]Armie utrzymują teren[/B].[LI][B]Miasta niosą kultury swoich mieszkańców[/B]: wł. Zob. [B]Mieszane i zdobyte[/B].[LI][B]Rozbudowany model kultury[/B]: wł. Zob. [B]Siła kulturowa[/B].[LI][B]Podążaj za diasporą[/B]: wł. Zob. [B]Z Emigracją[/B].[LI][B]Filtr presji[/B]: wł. Zob. [B]Filtr presji kulturowej[/B].[LI][B]Dziennik debugowania[/B]: wył. Zapisuje diagnostykę tur w dzienniku UI.[/LIST]</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_ABOUT_TITLE" Language="pl_PL"><Text>O modzie</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_ABOUT_CHAPTER_CONTENT_PARA_1" Language="pl_PL"><Text>Wersja moda Cultural Diffusion z Civilization V dla Civilization VII, z dodatkowymi zasadami.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_ABOUT_CHAPTER_CREDITS_TITLE" Language="pl_PL"><Text>Twórcy</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_ABOUT_CHAPTER_CREDITS_PARA_1" Language="pl_PL"><Text>Autor: Tower. Na podstawie moda Cultural Diffusion autorstwa Gedemona dla Civilization V (v18), z którego pochodzi pole kultury i kilka tutejszych zasad: rzeki, obca kultura w miastach, przekazanie przy zdobyciu, zajęcia przez rywali i armie, próg dla gór oraz minimalna kultura właściciela.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_CD_CULTURAL_BORDERS_TITLE" Language="pl_PL"><Text>Granice kulturowe (mod)</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_CD_CULTURAL_BORDERS_CHAPTER_CONTENT_PARA_1" Language="pl_PL"><Text>Z modem Dyfuzja kulturowa kultura rozchodzi się z miast pole po polu i może poszerzać granice poza trzeci pierścień miasta, także na przygraniczne pola rywali. Zasady opisuje zakładka [B]Dyfuzja kulturowa[/B].</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CD_TERM_CULTURAL_DIFFUSION" Language="pl_PL"><Text>Dyfuzja kulturowa</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_BORDERS" Language="pl_PL"><Text>Granice</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_FORWARD_SETTLING" Language="pl_PL"><Text>Osiedlanie przy granicy</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_TERRITORY" Language="pl_PL"><Text>Terytorium</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_HELP" Language="pl_PL"><Text>Pomoc</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_DIFFUSION" Language="pl_PL"><Text>Dyfuzja</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_DECAY" Language="pl_PL"><Text>Słabnięcie</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CULTURE_STOCK" Language="pl_PL"><Text>Zapas kultury</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_RIVERS" Language="pl_PL"><Text>Rzeki</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_ROADS" Language="pl_PL"><Text>Drogi</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_MOUNTAINS" Language="pl_PL"><Text>Góry</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_WATER" Language="pl_PL"><Text>Przekraczanie wody</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_TILE_FLIP" Language="pl_PL"><Text>Przejęcie pola</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CITY_PROTECTION" Language="pl_PL"><Text>Ochrona miast rywali</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CITY_STATES" Language="pl_PL"><Text>Miasta-państwa</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_IMPROVEMENT_BUFFER" Language="pl_PL"><Text>Bufor ulepszeń</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_RING" Language="pl_PL"><Text>Czwarty pierścień</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_WORK_TILES" Language="pl_PL"><Text>Eksploatacja pól</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CPI" Language="pl_PL"><Text>WPK</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CPI_FULL" Language="pl_PL"><Text>Wskaźnik potęgi kulturowej</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CELEBRATION" Language="pl_PL"><Text>Obchody</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_LEADERS" Language="pl_PL"><Text>Balans przywódców</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_AGES" Language="pl_PL"><Text>Epoki</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_GAME_SPEED" Language="pl_PL"><Text>Prędkość gry</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_EMIGRATION" Language="pl_PL"><Text>Emigracja</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_DIASPORA" Language="pl_PL"><Text>Diaspora</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CONVERSION" Language="pl_PL"><Text>Przemiana</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CAPTURED_CITY" Language="pl_PL"><Text>Zdobyte miasto</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_FOREIGN_CULTURE" Language="pl_PL"><Text>Obca kultura</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_RECEDE" Language="pl_PL"><Text>Cofanie się</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_AI" Language="pl_PL"><Text>Granice SI</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CONQUEST" Language="pl_PL"><Text>Podbój</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_OCCUPATION" Language="pl_PL"><Text>Okupacja</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_LENS" Language="pl_PL"><Text>Filtr</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_PRESSURE" Language="pl_PL"><Text>Presja kulturowa</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_HOTKEY" Language="pl_PL"><Text>Shift+C</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_NOTIFICATIONS" Language="pl_PL"><Text>Powiadomienia</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_INTENSITY" Language="pl_PL"><Text>Intensywność</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_SETTINGS" Language="pl_PL"><Text>Ustawienia</Text></Replace>
+    </LocalizedText>
+</Database>

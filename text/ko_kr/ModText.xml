@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database>
+    <LocalizedText>
+        <Replace Tag="LOC_MOD_CULTURAL_DIFFUSION_NAME" Language="ko_KR"><Text>문화 확산</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_GROUP_CULTURAL_DIFFUSION" Language="ko_KR"><Text>문화 확산</Text></Replace>
+        <Replace Tag="LOC_MOD_CULTURAL_DIFFUSION_DESCRIPTION" Language="ko_KR"><Text>문화가 도시에서 타일 단위로 퍼져 나가는 살아 있는 장이 됩니다. 강하고 자리 잡은 문화는 일반적인 도시 범위 너머로 국경을 천천히 넓히고, 빈 땅으로 스며들며, 그곳에서 우리 문화가 확실히 앞서면 경쟁 문명의 변경 타일을 빼앗을 수도 있습니다. 이로써 AI가 바로 옆에 정착지를 세우는 행동에 게임 체계 차원에서 대응할 수 있습니다. 확장은 느립니다. 국경은 게임 내내 조금씩 바깥으로 넓어지고 문화가 약해지면 다시 물러나며, 압도적인 문화일수록 더 멀리 닿습니다. Civilization V의 모드 Cultural Diffusion을 Civilization VII용으로 다시 만들고 확장한 것으로, 더 깊은 문화적 힘 모델과 선택적인 이주 모드 연동을 갖추었습니다. 싱글 플레이 전용이며, 강도는 낮음/중간/높음 중에서 고를 수 있고 끌 수도 있습니다. 단독으로 작동하며, 이주 모드가 설치되어 있으면 그 디아스포라 데이터를 읽습니다. 모든 규칙은 게임 내 문명 백과사전의 '문화 확산' 항목에 설명되어 있습니다.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_PRESET" Language="ko_KR"><Text>문화 확산 - 강도</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_PRESET_DESCRIPTION" Language="ko_KR"><Text>문화가 국경을 얼마나 적극적으로 넓히는지 정합니다. 낮음은 빈 땅으로만 조금씩 넓히고, 중간은 경쟁 문명의 변경 타일을 두고 다투며, 높음은 더 멀리 퍼지고 더 빨리 빼앗습니다. 문명 백과사전: 문화 확산, 옵션 및 프리셋.</Text></Replace>
+        <Replace Tag="LOC_CD_PRESET_CUSTOM" Language="ko_KR"><Text>맞춤 설정</Text></Replace>
+        <Replace Tag="LOC_CD_PRESET_LOW" Language="ko_KR"><Text>낮음</Text></Replace>
+        <Replace Tag="LOC_CD_PRESET_MEDIUM" Language="ko_KR"><Text>중간</Text></Replace>
+        <Replace Tag="LOC_CD_PRESET_HIGH" Language="ko_KR"><Text>높음</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_ENABLED" Language="ko_KR"><Text>문화 확산 - 활성화</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_ENABLED_DESCRIPTION" Language="ko_KR"><Text>전체 스위치입니다. 끄면 국경이 기본 게임과 똑같이 작동합니다. 전체 규칙은 문명 백과사전의 '문화 확산' 항목에 있습니다.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CLAIM_ONLY" Language="ko_KR"><Text>문화 확산 - 빈 땅만 획득</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CLAIM_ONLY_DESCRIPTION" Language="ko_KR"><Text>안전 모드입니다. 확산은 주인 없는 변경 타일만 획득하며, 다른 문명이 소유한 타일은 절대 빼앗지 않습니다. 문명 백과사전: 문화 확산, 타일 획득.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE" Language="ko_KR"><Text>문화 확산 - 경쟁 문명 도시 보호</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_DESCRIPTION" Language="ko_KR"><Text>문화가 경쟁 문명의 도시 안으로 얼마나 깊이 밀고 들어갈 수 있는지 정합니다. '도심부와 안쪽 링 보호'는 도심부와 그 안쪽 링을 지킵니다. '도심부만 보호'는 도심부 타일만 지키며, 그 주변 타일은 문화로 획득할 수 있습니다. '보호 안 함'은 도심부까지도 빼앗길 수 있습니다. 문명 백과사전: 문화 확산, 타일 획득.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_FULL" Language="ko_KR"><Text>도심부와 안쪽 링 보호</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_CENTER" Language="ko_KR"><Text>도심부만 보호 (안쪽 타일은 획득 가능)</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_NONE" Language="ko_KR"><Text>보호 안 함</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_ADJACENCY" Language="ko_KR"><Text>문화 확산 - 인접 타일만</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_ADJACENCY_DESCRIPTION" Language="ko_KR"><Text>켜짐(권장): 문화는 우리 영토에 닿은 타일만 획득하므로, 경쟁 문명의 영토는 바깥쪽부터 차례로 빼앗깁니다. 꺼짐: 문화가 우세한 타일이라면 어디든 획득할 수 있으며, 다른 문명 안에 떨어져 있는 고립 지역도 포함됩니다. 문명 백과사전: 문화 확산, 타일 획득.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_FUSED" Language="ko_KR"><Text>문화 확산 - 종합 문화 모델</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_FUSED_DESCRIPTION" Language="ko_KR"><Text>턴당 문화만이 아니라 문명의 문화적 힘 전체(불가사의, 문화, 영향력, 행복도, 번영, 전통)로 국경 확장을 결정합니다. 더 강한 문화일수록 국경을 더 멀리 밀어냅니다. 꺼짐 = 정착지 문화만 쓰는 단순한 모델. 문명 백과사전: 문화 확산, 문화 역량.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_EMIGRATION" Language="ko_KR"><Text>문화 확산 - 디아스포라 따르기 (이주 모드)</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_EMIGRATION_DESCRIPTION" Language="ko_KR"><Text>이주 모드가 설치되어 있으면, 우리 국민이 정착한 변경 타일이 우리 문화에 끌리게 되어 국경이 디아스포라를 따라갑니다. 이주 모드가 없으면 효과가 없습니다. '종합 문화 모델'이 필요합니다. 문명 백과사전: 문화 확산, 이주 모드 연동.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_BUFFER" Language="ko_KR"><Text>문화 확산 - 새 시설 옆 땅 획득 (+1링)</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_BUFFER_DESCRIPTION" Language="ko_KR"><Text>기본값은 꺼짐입니다. 켜면 국경 근처에서 교외 시설을 완성할 때 바로 옆의 주인 없는 타일도 획득하며, 범위는 도시의 일반 범위보다 한 링 더 바깥까지입니다. 꺼져 있으면 국경은 문화 필드로만 넓어집니다. 문명 백과사전: 문화 확산, 타일 획득.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_RECEDE" Language="ko_KR"><Text>문화 확산 - 국경 후퇴 (실험적)</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_RECEDE_DESCRIPTION" Language="ko_KR"><Text>기본값은 꺼짐입니다. 우리 문화가 획득한 타일을 다시 잃을 수 있습니다. 경쟁 문명의 문화가 어떤 타일에서 우리 문화를 확실히 앞지르면, 그 타일은 그 문명의 가장 가까운 도시로 넘어갑니다. 도시가 일반적인 성장으로 얻은 타일은 영향을 받지 않습니다. 문명 백과사전: 문화 확산, 국경 후퇴.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_AI_FLIPS" Language="ko_KR"><Text>문화 확산 - 모든 문명이 문화로 땅 획득</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_AI_FLIPS_DESCRIPTION" Language="ko_KR"><Text>기본값은 켜짐입니다. 다른 문명의 국경도 우리와 같은 규칙에 따라 문화로 움직입니다. 우리 영토 근처의 타일에서 문화가 확실히 앞선 경쟁 문명은 그 타일을 차지하며, 여기에는 우리 타일도 포함됩니다. 같은 방식으로 타일을 잃을 수도 있습니다. 도시 국가와 독립 세력은 이 방식으로 땅을 얻지 않습니다. 경쟁 문명이 우리 타일을 차지하면 알림을 받습니다. 꺼짐 = 우리 국경만 문화로 넓어집니다. 문명 백과사전: 문화 확산, 경쟁 문명의 확장.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CONQUEST" Language="ko_KR"><Text>문화 확산 - 군대가 점령한 땅 유지</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CONQUEST_DESCRIPTION" Language="ko_KR"><Text>기본값은 꺼짐입니다. 켜면 전쟁 중에 전투 유닛이 적의 타일에 5턴 연속으로 머무를 경우, 그곳의 문화와 관계없이 그 타일을 소유자의 것으로 만듭니다. 자리를 떠나면 횟수가 초기화되며, 도심부와 시가지 특수지구는 이 방식으로 차지할 수 없습니다. 점령한 타일은 이후 10턴 동안 문화로부터 지켜지지만, 다른 군대는 여전히 차지할 수 있습니다. 다른 문명의 군대는 '모든 문명이 문화로 땅 획득'도 켜져 있을 때만 같은 일을 합니다. 문명 백과사전: 문화 확산, 군대의 점령지 유지.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_FOREIGN_CULTURE" Language="ko_KR"><Text>문화 확산 - 도시에 사는 모든 문화 반영</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_FOREIGN_CULTURE_DESCRIPTION" Language="ko_KR"><Text>기본값은 켜짐입니다. 도시는 소유자의 문화뿐 아니라 그 타일에 있는 모든 민족의 문화를 만들어 냅니다. 점령했거나 여러 민족이 섞인 도시는 옛 문화를 계속 만들어 내고, 그 문화가 주변 땅을 두고 다툽니다. 한편 매 턴 그 외래 문화의 일부가 소유자의 문화로 바뀝니다(도서관, 대학교, 박물관이 있거나 근대에 이데올로기가 있으면 더 빨라집니다). 꺼짐 = 도시는 소유자의 문화만 만들어 냅니다. 문명 백과사전: 문화 확산, 혼합 도시와 점령 도시.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_DEBUG" Language="ko_KR"><Text>문화 확산 - 디버그 로그</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_DEBUG_DESCRIPTION" Language="ko_KR"><Text>처리 단계마다 자세한 진단 정보를 UI.log에 기록합니다(조정 및 문제 해결용).</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_PRESSURE_LENS" Language="ko_KR"><Text>문화 확산 - 압력 렌즈</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_PRESSURE_LENS_DESCRIPTION" Language="ko_KR"><Text>읽기 전용 '문화 압력' 지도 렌즈(와 Shift+C 단축키)를 추가합니다. 다툼이 있는 변경 타일을, 우리 또는 경쟁 문명의 문화가 그 타일 획득에 얼마나 가까운지에 따라 색으로 표시합니다. 정보만 보여 줄 뿐, 국경이 움직이는 방식은 전혀 바꾸지 않습니다. 문명 백과사전: 문화 확산, 문화 압력 렌즈.</Text></Replace>
+        <Replace Tag="LOC_CD_LENS_PRESSURE" Language="ko_KR"><Text>문화 압력</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_TITLE" Language="ko_KR"><Text>문화 압력</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_PROGRESS" Language="ko_KR"><Text>획득 진행도</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_TURNS" Language="ko_KR"><Text>현재 속도로</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_TURNS_COUNT" Language="ko_KR"><Text>약 {1_Turns}{1_Turns: plural other?턴;}</Text></Replace>
+        <Replace Tag="LOC_CD_TOAST_GAINED" Language="ko_KR"><Text>문화 확산: 우리 문화가 새 영토를 획득했습니다.</Text></Replace>
+        <Replace Tag="LOC_CD_TOAST_LOST" Language="ko_KR"><Text>문화 확산: 다른 문명이 우리 타일 하나를 차지했습니다.</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_READY" Language="ko_KR"><Text>획득 가능</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_STALLED" Language="ko_KR"><Text>정체됨</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_OWNER_SUFFIX" Language="ko_KR"><Text> (소유자)</Text></Replace>
+    </LocalizedText>
+</Database>

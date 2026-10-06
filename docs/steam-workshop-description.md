@@ -1,68 +1,73 @@
 [h1]Cultural Diffusion[/h1]
-[b]New in 1.4.0:[/b] every rule has a Civilopedia page, and other civilizations gain land by culture by default, under your rules. 1.3.0 brought the rest of Gedemon's model: cities carry every culture living in them, culture passes to a conqueror, rivers carry it along and hold it back across, and armies can take the ground they hold. For Civilization VII 1.5.0.
-Cultural Diffusion grows your borders out of culture instead of a radius. Your cities deposit culture on the ground around them every turn; it seeps outward along roads and river valleys, drags through rough terrain, and land where your culture wins becomes yours, including land past the three rings a city can normally claim. It is slow, it follows the map, and it answers an AI settling four tiles from your capital. A reimagining and extension of Gedemon's [b]Cultural Diffusion[/b] (Civ V), rebuilt for Civ VII with a deeper model of what makes a city's culture carry.
+For Civilization VII 1.5.0.
+Cultural Diffusion lets culture move your borders. Every turn, your cities put culture onto the tiles around them. It spreads outward one tile at a time, faster along roads and rivers and slower through rough terrain. When your culture is the strongest on a tile, that tile becomes yours, including tiles past the three rings a city normally reaches. It's slow, it follows the shape of the map, and it gives you a way to push back when the AI settles four tiles from your capital.
+Based on Gedemon's [b]Cultural Diffusion[/b] mod for Civ V, rebuilt for Civ VII.
 [h2]Mechanics[/h2]
 [list]
-[*][b]Compatible with 1.5.0.[/b]
-[*][b]A culture field, not a radius.[/b] Each city deposits culture on its own tile every turn, it seeps one tile outward at a time, and every tile sheds a little. The stock is kept per tile and per civilization in your save, so borders creep as a front, not a circle.
-[*][b]Terrain decides the shape.[/b] Culture follows roads and rivers, drags through hills, tundra, desert, forest, jungle and marsh, and mostly gives up at mountains.
-[*][b]An answer to forward-settling.[/b] The buffer around your cities fills in, and a rival's frontier tile can change hands where your culture clearly wins, without anyone declaring war.
-[*][b]Reach is more than Culture yield.[/b] A city pushes harder when it is prosperous, and when your civilization has weight behind it: wonders, great works, Influence, suzerainties, happiness, golden ages, traditions and how late the age is, plus a lift while you celebrate.
-[*][b]Tuned per leader and civilization.[/b] Leader, civilization and memento tuning damps kits that already hand you territory and lifts Culture-poor ones, so one strategy does not take the map every game.
-[*][b]Room for your neighbors.[/b] A claim never takes the last tile another civilization's unit could move to, and minor settlements keep a protected ring.
-[*][b]Per-age pacing.[/b] Per-age tuning and map-size calibration re-time the field to the length of the age, so it holds up on a fast game and a cramped map.
-[*][b]Readable, un-minified source.[/b]
+[*][b]Works with game version 1.5.0.[/b]
+[*][b]Culture spreads tile by tile.[/b] Each city adds culture to its own tile every turn. It spreads to the tiles next to it, and fades a little everywhere. Your save keeps track of how much culture each civ has on each tile, so borders move forward gradually instead of jumping out in rings.
+[*][b]Terrain matters.[/b] Culture moves easily along roads and rivers, slowly through hills, tundra, desert, forest, jungle and marsh, and barely crosses mountains.
+[*][b]Helps against forward settling.[/b] Land around your cities fills in over time. If your culture is clearly stronger on a rival's border tile, it can become yours without a war.
+[*][b]More than Culture per turn.[/b] Prosperous cities spread more culture, and so does a civ with wonders, great works, Influence, suzerainties, happiness, golden ages and traditions. It also gets stronger later in the age and while you're celebrating.
+[*][b]Cities can hold more than one culture.[/b] A captured city, or one with people from other civs, keeps their culture for a while and keeps spreading it until yours slowly takes over. When a city is captured, the conqueror takes over the culture on its tiles.
+[*][b]Rivers count.[/b] Culture travels along a river but has a harder time crossing one.
+[*][b]Balanced per leader and civ.[/b] Leaders and civs that already get extra territory are toned down, and ones with little Culture get a boost, so the same strategy doesn't win every game.
+[*][b]Fair to neighbors.[/b] Culture never takes the last tile another civ's unit could move to, and city-states and independents always keep the ring around their settlement.
+[*][b]Paced per age.[/b] Speed is adjusted for each age and map size, so it works on fast games and small maps.
+[*][b]Explained in the Civilopedia.[/b] Every rule has its own page.
+[*][b]Readable source code.[/b] Nothing is minified.
 [/list]
 [h2]The Cultural Pressure lens[/h2]
-Shift+C shades the tiles on their way to changing hands, stronger the closer they are, with a hover readout of each civilization's culture there and a rough count of turns until it flips. Tiles where nothing will happen stay unshaded. It can be switched off in Options.
+Press Shift+C to see which tiles are about to change hands. The closer a tile is to flipping, the stronger its color. Hover over a tile to see each civ's culture there and roughly how many turns until it flips. Tiles that won't change aren't colored. You can turn the lens off in Options.
 [h2]How a tile changes hands[/h2]
 [list]
-[*]Your culture on it is the largest there, and past a floor worth counting.
-[*]Taking one off another civilization needs a clear margin, not a tie.
-[*]It touches land you already hold, so your border stays in one piece.
-[*]A rival's city center is never taken, and the ring around it can be shielded too.
-[*]A fresh claim is locked briefly, so borders cannot flicker.
+[*]Your culture is the highest on the tile and above a minimum amount.
+[*]To take a tile from another civ, you need clearly more culture than they have. A tie isn't enough.
+[*]The tile has to touch land you already own, so your borders stay connected.
+[*]A rival's city center can never be taken, and you can choose to protect the ring around it too.
+[*]A newly claimed tile is locked for a few turns so it can't flip back and forth.
+[*]Tiles with improvements, districts or wonders hold still during the Age Ending countdown and the first two turns of the next age.
 [/list]
-[h2]When you will see it[/h2]
-Not early. In a 70-turn test game, a capital making 8 Culture claimed nothing at all. Once cities have grown, a strong one took its first tile past ring 3 about twenty turns after the mod started working; the rings beyond belong to a civilization with wonders and history behind it. This is a mid and late game system, and intensity is the knob if you want it sooner.
+[h2]When you'll see it[/h2]
+Not right away. In a 70-turn test game, a capital making 8 Culture didn't claim anything. Once your cities have grown, a strong city takes its first tile past ring 3 about twenty turns after the mod starts having an effect. Going further out takes a civ with wonders and a long history. This mostly matters in the mid and late game. Raise the intensity if you want it sooner.
 [h2]Settings[/h2]
-One intensity knob: [b]Low[/b] nudges into empty land only, [b]Medium[/b] is the default and contests rival frontier tiles, [b]High[/b] spreads farther and flips faster. Separate switches cover the master enable, an empty-land-only mode, how much of a rival's city ring is protected, contiguous borders, claiming land beside new improvements, borders receding to a rival who out-cultures you (experimental), other civilizations gaining land by culture (on by default), armies taking the ground they hold in a war, cities carrying every culture living in them, the lens, and debug logging. Every value underneath can be overridden.
-[h2]Pairs with Emigration[/h2]
+Intensity: [b]Low[/b] only claims empty land, [b]Medium[/b] (the default) can also take rival border tiles, and [b]High[/b] spreads farther and flips faster. There are also switches for turning the mod on or off, claiming empty land only, how much of a rival's city ring is protected, keeping borders connected, claiming land next to new improvements, letting your borders shrink when a rival out-cultures you (experimental), letting other civs gain land by culture (on by default), letting armies take tiles they hold during a war (never city centers or urban districts), cities holding the culture of everyone living in them, the lens, and debug logging. Every number behind these can be changed in the mod's config.
+[h2]Works with Emigration[/h2]
 [list]
-[*]With the [b]Emigration[/b] companion mod installed, culture follows your people: it flows faster toward tiles your diaspora settled, so borders grow toward where your population went. The hooks stay inert when it is not installed, so the base mod is unchanged.
+[*]If you also use the [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3750554030]Emigration[/url] mod, culture spreads faster toward tiles where your people have moved, so your borders grow toward them. Without Emigration installed, this part does nothing.
 [/list]
 [h2]Two limits of the game engine[/h2]
 [list]
-[*][b]Land past a city's third ring cannot be worked.[/b] Civilization VII will not let a city work or build out there, so claimed ground is territory rather than yields. Its worth is positional: nobody can plant a settlement on land you own.
-[*][b]A mod cannot move another civilization's unit.[/b] So expansion does not shove anyone aside: it leaves a way out and takes the tile once the unit has gone.
+[*][b]Tiles past a city's third ring can't be worked.[/b] The game won't let a city work or build there, so these tiles give you territory, not yields. They still matter: nobody can settle on land you own.
+[*][b]Mods can't move other civs' units.[/b] So the mod never takes the last tile a unit could escape to. It waits until the unit moves.
 [/list]
 [h2]Languages[/h2]
-English only for now. Ask for a language and I will add it.
+English, German, Spanish, French, Italian, Japanese, Korean, Polish, Brazilian Portuguese, Russian, and Simplified and Traditional Chinese. Machine translated, so corrections are welcome.
 [h2]Caveats and known issues[/h2]
 [list]
-[*][b]Single player only,[/b] and no base-game files are replaced.
-[*][b]Start a new game with it enabled.[/b] A save keeps the mod list it began with, so Cultural Diffusion cannot join a game already in progress.
-[*][b]Claimed tiles stay claimed.[/b] Switch the mod off and new claims stop, but ground it took stays yours: the game cannot hand a city's tile back to nobody.
-[*][b]Rivals gain land by culture too.[/b] A civilization whose culture decisively wins a tile near your lands can take it, including one of yours, and you are told when it does. City-states never do. Switch off Every civilization gains land by culture in Options to keep culture expansion yours alone.
-[*][b]Nothing happens early.[/b] No borders move in the first fifty turns. That is the model, not a fault.
+[*][b]Single player only.[/b] No base game files are replaced.
+[*][b]Start a new game with the mod on.[/b] A save keeps the mod list it started with, so you can't add Cultural Diffusion to a game in progress.
+[*][b]Claimed tiles stay yours.[/b] If you turn the mod off, it stops claiming new tiles, but the tiles it already gave you stay yours. The game has no way to make a city's tile unowned again.
+[*][b]AI civs gain land by culture too.[/b] A civ whose culture clearly wins a tile near you can take it, including one of yours, and you get a notification when that happens. City-states never do. Turn off "Every civilization gains land by culture" in Options if you only want this for yourself.
+[*][b]Nothing happens early.[/b] Borders don't move in the first fifty turns. That's expected.
 [/list]
 [h2]Still coming[/h2]
 [list]
-[*][b]Options panel parity with Emigration.[/b] Grouped headings, and a label and tooltip on every control.
-[*][b]More balance work.[/b] Intensity presets, per-age pacing and per-leader tuning, as more games get played.
+[*][b]A better Options screen,[/b] laid out like Emigration's, with section headings and a label and tooltip on every setting.
+[*][b]More balancing[/b] of the intensity levels, age pacing and leader tuning as more games get played.
 [/list]
 [h2]Source and documentation[/h2]
 [list]
-[*][b]What's new:[/b] [url=https://github.com/tmtmiller1/civilizationvii-cultural-diffusion/releases/latest]the latest release notes and a download[/url]
+[*][b]What's new:[/b] [url=https://github.com/tmtmiller1/civilizationvii-cultural-diffusion/releases/latest]latest release notes and download[/url]
 [*][b]Full documentation:[/b] [url=https://github.com/tmtmiller1/civilizationvii-cultural-diffusion/blob/main/README.md]how the mod works[/url]
-[*][b]The same as a PDF:[/b] [url=https://github.com/tmtmiller1/civilizationvii-cultural-diffusion/blob/main/README.pdf]README.pdf, typeset with the screenshots[/url]
+[*][b]PDF version:[/b] [url=https://github.com/tmtmiller1/civilizationvii-cultural-diffusion/blob/main/README.pdf]README.pdf, with screenshots[/url]
 [/list]
 [h2]For modders[/h2]
-This mod is developed with [url=https://github.com/tmtmiller1/civilizationvii_tower-bench]Tower Bench[/url], a free, open-source test bench for Civilization VII mods. It connects to a running game from your browser or the command line: inspect and change the map with every write verified and undoable, diff the world between two turns, prove your deployed code is what the game runs, find which mod causes a crash, and see which copy of each mod is actually loaded.
+I test this mod with [url=https://github.com/tmtmiller1/civilizationvii_tower-bench]Tower Bench[/url], a free, open-source tool for building and testing Civilization VII mods.
 [h2]Credits[/h2]
 [list]
-[*][b]Tower[/b], for design and Civilization VII implementation.
-[*][b]Gedemon[/b], creator of the Civilization V [i]Cultural Diffusion[/i] mod (v18), whose reaction-diffusion culture model (the inject / diffuse / decay / flip loop over a per-tile stock, plus its terrain and ownership rules) is the core layer this mod builds on.
+[*][b]Tower:[/b] design and Civilization VII version.
+[*][b]Gedemon:[/b] made the original Civilization V [i]Cultural Diffusion[/i] mod (v18). Its culture model, where culture is added, spreads, fades and flips tiles, with rules for terrain and ownership, is the foundation this mod is built on.
 [/list]
 [h2]Special Thanks[/h2]
 [list]

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database>
+    <LocalizedText>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_TITLE" Language="de_DE"><Text>Kulturelle Diffusion</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_GROUP_START_TITLE" Language="de_DE"><Text>Erste Schritte</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_GROUP_SPREAD_TITLE" Language="de_DE"><Text>Ausbreitung der Kultur</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_GROUP_POWER_TITLE" Language="de_DE"><Text>Kulturelle Macht</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_GROUP_RIVALS_TITLE" Language="de_DE"><Text>Rivalen, Städte &amp; Krieg</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_GROUP_INTERFACE_TITLE" Language="de_DE"><Text>Interface &amp; Optionen</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_TITLE" Language="de_DE"><Text>Kulturelle Diffusion</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_CONTENT_PARA_1" Language="de_DE"><Text>Jedes Feld nahe Euren Städten speichert, wie viel [icon:YIELD_CULTURE] Kultur jede Zivilisation darauf hat. In jeder Runde fügen Städte ihrem eigenen Feld Kultur hinzu, Kultur breitet sich auf Nachbarfelder aus und jedes Feld verliert etwas davon.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_CONTENT_PARA_2" Language="de_DE"><Text>Ist Eure Kultur auf einem Feld jenseits des dritten Rings einer Stadt groß genug, beansprucht Ihr das Feld. Grenzen wachsen langsam, meist erst ab der Spielmitte, und können Rivalen Grenzfelder abnehmen, deren Kultur dort viel schwächer ist.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_WHERE_TITLE" Language="de_DE"><Text>Im Spiel</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_WHERE_PARA_1" Language="de_DE"><Text>[BLIST][LI][B]Linse Kultureller Druck[/B] (Linsenmenü oder Shift+C): färbt Felder, die bald den Besitzer wechseln. Siehe [B]Linse: Kultureller Druck[/B].[LI][B]Benachrichtigungen[/B]: wenn Ihr Territorium beansprucht oder ein Feld an eine andere Zivilisation verliert.[LI][B]Optionen, Add-Ons, Kulturelle Diffusion[/B]: Intensität und alle Schalter. Siehe [B]Optionen &amp; Vorgaben[/B].[/LIST]</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_TITLE" Language="de_DE"><Text>Fragen &amp; Antworten</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_NOTHING_TITLE" Language="de_DE"><Text>Warum wachsen meine Grenzen nicht?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_NOTHING_PARA_1" Language="de_DE"><Text>Eine Stadt braucht viel und beständige Kultur, bevor sie ihren vierten Ring erreicht. Städte im frühen Spiel beanspruchen meist nichts. Die Linse zeigt, welche Felder Ihr gewinnt und wie viele Runden jedes noch braucht. Siehe [B]Tempo &amp; Landgewinn[/B].</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_WORK_TITLE" Language="de_DE"><Text>Können meine Städte beanspruchte Felder bewirtschaften?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_WORK_PARA_1" Language="de_DE"><Text>Nein. Städte bewirtschaften nur Felder innerhalb von drei Ringen, und beanspruchte Felder liegen weiter außen. Sie zählen als Euer Territorium und blockieren rivalisierende Siedler.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_AILAND_TITLE" Language="de_DE"><Text>Kann die KI mein Land übernehmen?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_AILAND_PARA_1" Language="de_DE"><Text>Ja. Standardmäßig übernimmt ein Rivale, dessen Kultur auf einem Feld nahe Eurem Land klar führt, dieses nach denselben Regeln wie Eure Ansprüche, und Ihr werdet benachrichtigt. Schaltet Jede Zivilisation gewinnt Land durch Kultur aus, um das zu verhindern. Siehe [B]Ausdehnung der Rivalen[/B]; [B]Grenzen weichen zurück[/B] und [B]Armeen halten Land[/B] sind weitere Optionen.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_FLIPBACK_TITLE" Language="de_DE"><Text>Warum wechselt ein Feld, das ich beherrsche, nicht?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_FLIPBACK_PARA_1" Language="de_DE"><Text>Es verletzt eine andere Regel für Ansprüche: zu weit von Euren Städten entfernt, grenzt nicht an Euer Land, liegt in einem geschützten Stadtkern, gehört einer Zivilisation, mit der Ihr im Krieg seid, liegt vor dem Zeitalter der Erkundung in Euren Fernen Ländern, hat kürzlich den Besitzer gewechselt, oder die Übernahme würde eine fremde Einheit einschließen. Siehe [B]Felder beanspruchen[/B].</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_TURNOFF_TITLE" Language="de_DE"><Text>Was passiert, wenn ich den Mod ausschalte?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_TURNOFF_PARA_1" Language="de_DE"><Text>Neue Ansprüche enden. Bereits beanspruchte Felder bleiben Euer.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_SAVES_TITLE" Language="de_DE"><Text>Kann ich ihn in ein laufendes Spiel einbauen?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_SAVES_PARA_1" Language="de_DE"><Text>Nein. Der Mod muss beim Spielstart aktiviert sein. Nur Einzelspieler.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_TITLE" Language="de_DE"><Text>Das Kulturfeld</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_CONTENT_PARA_1" Language="de_DE"><Text>Jedes Feld innerhalb von acht Ringen um Eure Städte speichert die Kultur jeder Zivilisation. Der Vorrat ändert sich einmal pro Runde, und der Besitz der Felder folgt ihm (siehe [B]Felder beanspruchen[/B]).</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_INJECT_TITLE" Language="de_DE"><Text>Städte fügen Kultur hinzu</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_INJECT_PARA_1" Language="de_DE"><Text>Jede Stadt fügt ihrem eigenen Feld Kultur hinzu. Je mehr Kultur dort schon ist, desto schneller wächst sie, bis zu einer Obergrenze, die die Stärke der Stadt festlegt (siehe [B]Kulturelle Stärke[/B]). Städte fügen auch Kultur für die anderen Völker hinzu, die in ihnen leben (siehe [B]Eroberte &amp; Mischstädte[/B]).</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_DIFFUSE_TITLE" Language="de_DE"><Text>Kultur breitet sich aus</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_DIFFUSE_PARA_1" Language="de_DE"><Text>Ein Feld mit mindestens 100 Kultur gibt pro Runde etwa 5,5 % davon an jedes Nachbarfeld ab. Ein Nachbarfeld erreicht höchstens 40 % der Menge der Quelle, entlang einer Straße oder eines Flusses 75 %. Gelände bremst oder blockiert die Ausbreitung (siehe [B]Gelände &amp; Flüsse[/B]).</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_DECAY_TITLE" Language="de_DE"><Text>Kultur verblasst</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_DECAY_PARA_1" Language="de_DE"><Text>Jedes Feld verliert pro Runde 5 % seiner Kultur plus 1 Punkt. Das begrenzt, wie weit eine Grenze reicht, und Kultur geht zurück, wenn ihre Stadt schwächer wird oder verloren geht. Felder in Eurem Besitz behalten mindestens 1 Punkt Eurer Kultur.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_TITLE" Language="de_DE"><Text>Gelände &amp; Flüsse</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_CONTENT_PARA_1" Language="de_DE"><Text>Das Feld, auf das Kultur wandert, bestimmt, wie gut sie sich ausbreitet. Effekte auf demselben Feld addieren sich.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROUGH_TITLE" Language="de_DE"><Text>Schwieriges Gelände</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROUGH_PARA_1" Language="de_DE"><Text>Vom leichtesten zum schwersten:[BLIST][LI][B]Wald, Taiga[/B]: leichte Verlangsamung.[LI][B]Unwegsames Gelände[/B]: mäßige Verlangsamung.[LI][B]Tundra[/B]: mäßige Verlangsamung; braucht eine stärkere Quelle zum Überqueren.[LI][B]Wüste[/B]: starke Verlangsamung.[LI][B]Regenwald, Sumpf[/B]: starke Verlangsamung; nur eine starke Quelle kommt hinüber.[LI][B]Bergiges Gelände[/B]: fast unpassierbar. Kultur auf einem Gipfel braucht die 7,5-fache übliche Menge, um sich von dort auszubreiten.[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROADS_TITLE" Language="de_DE"><Text>Straßen</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROADS_PARA_1" Language="de_DE"><Text>Zwischen zwei Straßenfeldern breitet sich Kultur doppelt so schnell und weiter aus.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_RIVERS_TITLE" Language="de_DE"><Text>Flüsse</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_RIVERS_PARA_1" Language="de_DE"><Text>Entlang eines Flusses breitet sich Kultur schneller und weiter aus, auf einem schiffbaren Fluss mehr als auf einem kleinen. Der Übergang auf einen Fluss von seinem Ufer oder von einem anderen Fluss braucht die doppelte übliche Menge, und die Kultur kommt geschwächt an. Eine Kultur, die den Fluss hält, erreicht beide Ufer.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_WATER_TITLE" Language="de_DE"><Text>Küste und Ozean</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_WATER_PARA_1" Language="de_DE"><Text>Nur starke Kultur überquert Wasser, Küste leichter als Ozean. Das Überqueren wird mit jedem Zeitalter leichter, von kaum möglich in der Antike bis am leichtesten in der Moderne. Felder in Fernen Ländern können vor dem Zeitalter der Erkundung nicht beansprucht werden.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_TITLE" Language="de_DE"><Text>Felder beanspruchen</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_CONTENT_PARA_1" Language="de_DE"><Text>Ein beanspruchtes Feld gehört dann zu Eurer nächstgelegenen Stadt.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_RULES_TITLE" Language="de_DE"><Text>Voraussetzungen</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_RULES_PARA_1" Language="de_DE"><Text>[BLIST][LI]Eure Kultur ist auf dem Feld die höchste.[LI]Sie beträgt mindestens 300 (375 in der Erkundung, 480 in der Moderne).[LI]Gehört das Feld einem Rivalen, liegt dessen Kultur unter zwei Dritteln Eurer Kultur.[LI]Das Feld liegt höchstens sechs Felder von Eurer Stadt entfernt und jenseits ihres dritten Rings.[LI]Das Feld grenzt an Euer Land (Option Nur zusammenhängende Grenze).[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_TITLE" Language="de_DE"><Text>Geschützte Felder</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_1" Language="de_DE"><Text>Die Option Schutz rivalisierender Städte legt fest, wie viel einer rivalisierenden Stadt sicher ist: das Zentrum und sein erster Ring, nur das Zentrum (Standard) oder nichts.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_2" Language="de_DE"><Text>Stadtstaaten und unabhängige Mächte behalten immer ihr Zentrum und ihren ersten Ring.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_3" Language="de_DE"><Text>Mit Nur freies Land beanspruchen an (Standard bei Niedrig) übernimmt Kultur nie ein Feld mit Besitzer.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_4" Language="de_DE"><Text>Rund um einen Zeitalterwechsel bleibt ein Feld mit Besitzer, das eine Modernisierung, einen Stadtbezirk oder ein Wunder hat, während des Countdowns zum Ende eines Zeitalters und in den ersten zwei Runden des nächsten unverändert. Felder ohne Modernisierung sind nicht betroffen.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_SAFE_TITLE" Language="de_DE"><Text>Grenzen</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_SAFE_PARA_1" Language="de_DE"><Text>[BLIST][LI]Kultur nimmt nie Felder einer Zivilisation, mit der Ihr im Krieg seid.[LI]Ein Feld, das den Besitzer gewechselt hat, ist 15 Runden lang gesperrt.[LI]Ein Anspruch, der einer fremden Einheit einer Zivilisation, mit der Ihr in Frieden lebt, keinen Ausweg ließe, wird abgelehnt.[LI]Pro Runde wechseln höchstens 8 Felder den Besitzer, und jede Stadt hält höchstens 80 beanspruchte Felder (40 bei Niedrig).[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_BUFFER_TITLE" Language="de_DE"><Text>Land neben neuen Modernisierungen</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_BUFFER_PARA_1" Language="de_DE"><Text>Ist diese Option an (standardmäßig aus), beansprucht eine fertiggestellte ländliche Modernisierung nahe Eurer Grenze auch die herrenlosen Felder daneben, bis zu einen Ring über die normale Reichweite der Stadt hinaus.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_TITLE" Language="de_DE"><Text>Tempo &amp; Landgewinn</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_CONTENT_PARA_1" Language="de_DE"><Text>Kultur baut sich Ring für Ring auf, daher wachsen Grenzen langsam. Eine stärkere Kultur reicht weiter und schneller.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_RINGS_TITLE" Language="de_DE"><Text>Ringe</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_RINGS_PARA_1" Language="de_DE"><Text>[BLIST][LI][B]Ringe 1-3[/B]: Regeln des Grundspiels; Eure eigene Kultur beansprucht sie nie, die Kultur eines Rivalen aber schon, wenn Jede Zivilisation gewinnt Land durch Kultur an ist.[LI][B]Ring 4[/B]: der erste Ring, den Kultur beansprucht.[LI][B]Ring 5+[/B]: nur starke, gefestigte Kulturen.[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_EARLY_TITLE" Language="de_DE"><Text>Frühes Spiel</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_EARLY_PARA_1" Language="de_DE"><Text>Eine junge Stadt, die wenig [icon:YIELD_CULTURE] Kultur erzeugt, beansprucht nichts. Ansprüche beginnen, wenn Städte stärker werden. Die Vorgabe Hoch reicht früher weiter.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_VALUE_TITLE" Language="de_DE"><Text>Beanspruchte Felder</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_VALUE_PARA_1" Language="de_DE"><Text>Beanspruchte Felder gehören Euch, können aber nicht bewirtschaftet oder bebaut werden, da Städte nur die ersten drei Ringe bewirtschaften. Sie hindern Rivalen daran, sich neben Euch anzusiedeln: Siedler können nicht auf oder neben dem Land einer anderen Zivilisation gründen.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_TITLE" Language="de_DE"><Text>Kulturelle Stärke</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_CONTENT_PARA_1" Language="de_DE"><Text>Die Stärke einer Stadt legt fest, wie viel Kultur sie pro Runde hinzufügt. Mit der Option Erweitertes Kulturmodell an (Standard) ergibt sich die Stärke aus den folgenden Faktoren.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_BLEND_TITLE" Language="de_DE"><Text>Stärke der Stadt</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_BLEND_PARA_1" Language="de_DE"><Text>Die Stärke einer Stadt verbindet [icon:YIELD_CULTURE] Kultur mit [icon:YIELD_FOOD] Nahrung, [icon:YIELD_PRODUCTION] Produktion, [icon:YIELD_HAPPINESS] Zufriedenheit und Wachstum. Ein einzelner großer Bonus zählt weniger als ausgewogene Erträge. Städte einer feiernden Zivilisation erhalten 25 %.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_CPI_TITLE" Language="de_DE"><Text>Index kultureller Macht</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_CPI_PARA_1" Language="de_DE"><Text>Der Index jeder Zivilisation vergleicht sie in sechs Bereichen mit der führenden:[BLIST][LI][B]Vermächtnis[/B]: Wunder, Große Werke.[LI][B]Fluss[/B]: [icon:YIELD_CULTURE] Kultur pro Runde.[LI][B]Reichweite[/B]: [icon:YIELD_DIPLOMACY] Einfluss, Suzeränitäten über Stadtstaaten.[LI][B]Vitalität[/B]: [icon:YIELD_HAPPINESS] Zufriedenheit, Feiern.[LI][B]Wohlstand[/B]: Reichtum und Wachstum des Reiches.[LI][B]Identität[/B]: Traditionen, Zeitalter.[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_CPI_PARA_2" Language="de_DE"><Text>Stärke in allen sechs Bereichen zählt mehr als ein einzelner Spitzenwert. Der Index multipliziert die Stärke jeder Stadt mit 0,6 bis 1,6.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_SIMPLE_TITLE" Language="de_DE"><Text>Einfaches Modell</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_SIMPLE_PARA_1" Language="de_DE"><Text>Mit Erweitertes Kulturmodell aus ist die Stärke die [icon:YIELD_CULTURE] Kultur der Stadt plus der Bonus für Feiern.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_TITLE" Language="de_DE"><Text>Anführer &amp; Zeitalter</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_CONTENT_PARA_1" Language="de_DE"><Text>Die Stärke einer Stadt wird an Anführer, Zeitalter, Spielgeschwindigkeit und Kartengröße angepasst.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_LEADERS_TITLE" Language="de_DE"><Text>Anführer, Zivilisationen und Mementos</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_LEADERS_PARA_1" Language="de_DE"><Text>Anführer, Zivilisationen und Mementos mit starken Boni für Kultur, Wunder, Feiern oder Suzeräne oder mit Fähigkeiten, die schon Territorium gewähren, haben leicht verringerte Stärke. Zivilisationen mit schwacher Kultur erhalten eine kleine Erhöhung.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_AGES_TITLE" Language="de_DE"><Text>Zeitalter</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_AGES_PARA_1" Language="de_DE"><Text>Spätere Zeitalter haben mehr Städte und mehr Kultur, daher fügen Städte in der Erkundung und der Moderne weniger Kultur hinzu und für einen Anspruch ist mehr nötig.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_SPEED_TITLE" Language="de_DE"><Text>Spielgeschwindigkeit und Kartengröße</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_SPEED_PARA_1" Language="de_DE"><Text>Die Ausbreitung richtet sich nach der Länge des Zeitalters, sodass Grenzen bei jeder Spielgeschwindigkeit im Verhältnis zum Zeitalter gleich schnell wachsen. Städte fügen auf kleinen Karten etwas weniger und auf großen etwas mehr Kultur hinzu.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_TITLE" Language="de_DE"><Text>Mit Auswanderung</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_CHAPTER_CONTENT_PARA_1" Language="de_DE"><Text>Ist der Mod Auswanderung installiert, nutzt Kulturelle Diffusion dessen Bevölkerungsdaten. Ohne Auswanderung haben diese Regeln keine Wirkung.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_CHAPTER_AFFINITY_TITLE" Language="de_DE"><Text>Diaspora</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_CHAPTER_AFFINITY_PARA_1" Language="de_DE"><Text>Mit Diaspora folgen an (Standard; erfordert Erweitertes Kulturmodell) breitet sich Eure Kultur schneller zu Feldern aus, auf denen sich Euer Volk angesiedelt hat.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_CHAPTER_PEOPLES_TITLE" Language="de_DE"><Text>Gemischte Bevölkerung</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_CHAPTER_PEOPLES_PARA_1" Language="de_DE"><Text>Die Kultur jedes fremden Volkes in einer Stadt wird nach seinem Anteil an der Bevölkerung gewichtet. Siehe [B]Eroberte &amp; Mischstädte[/B].</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_TITLE" Language="de_DE"><Text>Eroberte &amp; Mischstädte</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CONTENT_PARA_1" Language="de_DE"><Text>Eine eroberte oder gemischte Stadt erzeugt weiter ihre alte Kultur, die um nahe Felder konkurriert und langsam zur Kultur des Besitzers wird.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_FOREIGN_TITLE" Language="de_DE"><Text>Fremde Kultur</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_FOREIGN_PARA_1" Language="de_DE"><Text>Mit Städte tragen jede Kultur ihrer Bewohner an (Standard) fügt eine Stadt Kultur für jedes Volk auf ihrem Feld hinzu. Die Kultur des Besitzers wird in voller Stärke hinzugefügt, jede fremde Kultur im Verhältnis zur Bevölkerung der Stadt. Mit Auswanderung wird jede nach ihrem Bevölkerungsanteil gewichtet; ohne zählt eine fremde Kultur, sobald sie 100 auf dem Stadtfeld hat. Ist die Option aus, fügt eine Stadt nur die Kultur ihres Besitzers hinzu.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CONVERT_TITLE" Language="de_DE"><Text>Umwandlung</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CONVERT_PARA_1" Language="de_DE"><Text>Jede Runde wandelt eine Stadt 0,5 % jeder fremden Kultur auf ihrem Feld in die des Besitzers um. Gebäude fügen hinzu:[BLIST][LI][B]+0,25 %[/B]: Bibliothek, Monument, Amphitheater.[LI][B]+0,5 %[/B]: Akademie, Universität, Observatorium, Museum, Opernhaus.[LI][B]+1 %[/B]: Schule, Labor.[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CONVERT_PARA_2" Language="de_DE"><Text>Ideologien der Moderne fügen +1 % (Demokratie), +1,25 % (Kommunismus) oder +1,75 % (Faschismus) hinzu.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CAPTURE_TITLE" Language="de_DE"><Text>Eroberung</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CAPTURE_PARA_1" Language="de_DE"><Text>Wechselt eine Stadt den Besitzer, verliert jede Kultur auf ihren Feldern 55 %, und der neue Besitzer erhält 75 % der gesamten verlorenen Menge. Das gilt für alle Zivilisationen.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RECEDE_TITLE" Language="de_DE"><Text>Grenzen weichen zurück</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RECEDE_CHAPTER_CONTENT_PARA_1" Language="de_DE"><Text>Experimentelle Option, standardmäßig aus. Ihr könnt Felder verlieren, die Eure Kultur beansprucht hat. Mit Jede Zivilisation gewinnt Land durch Kultur an übernehmen Rivalen bereits beanspruchte Felder, auf denen ihre Kultur stärker ist, daher zählt dies vor allem, wenn jene Option aus ist.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RECEDE_CHAPTER_RULES_TITLE" Language="de_DE"><Text>Regeln</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RECEDE_CHAPTER_RULES_PARA_1" Language="de_DE"><Text>Übertrifft die Kultur eines Rivalen auf einem beanspruchten Feld Eure um den Abstand, den ein Anspruch erfordert, geht das Feld an die nächste Stadt dieses Rivalen. Felder aus normalem Stadtwachstum gehen so nie verloren. Ein beanspruchtes Feld behält seinen Besitzer, wenn seine Kultur verblasst, ohne dass ein Rivale vorn liegt.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_TITLE" Language="de_DE"><Text>Ausdehnung der Rivalen</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_CHAPTER_CONTENT_PARA_1" Language="de_DE"><Text>Mit Jede Zivilisation gewinnt Land durch Kultur an (Standard) beanspruchen andere Zivilisationen Felder durch Kultur nach Euren Regeln, auch Eure Felder. Ihr werdet benachrichtigt, wenn Ihr eines verliert. Ist die Option aus, wachsen nur Eure Grenzen durch Kultur.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_CHAPTER_RULES_TITLE" Language="de_DE"><Text>Regeln</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_CHAPTER_RULES_PARA_1" Language="de_DE"><Text>Ein Rivale übernimmt ein Feld, auf dem er führt, wenn er mit dem Besitzer in Frieden ist, das Feld außerhalb des geschützten Kerns des Besitzers liegt und an das Land des Rivalen in Reichweite seiner Städte grenzt. Alle Grenzen aus [B]Felder beanspruchen[/B] gelten ebenfalls, und Rivalen haben eine eigene Obergrenze pro Runde.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_CHAPTER_LIMITS_TITLE" Language="de_DE"><Text>Grenzen</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_CHAPTER_LIMITS_PARA_1" Language="de_DE"><Text>Stadtstaaten und unabhängige Mächte beanspruchen so nie Felder. Kultur wird nur innerhalb von acht Ringen um Eure Städte verfolgt, daher folgen Grenzen anderswo den Regeln des Grundspiels.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_TITLE" Language="de_DE"><Text>Armeen halten Land</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_CONTENT_PARA_1" Language="de_DE"><Text>Option, standardmäßig aus. Armeen anderer Zivilisationen folgen diesen Regeln nur, wenn auch Jede Zivilisation gewinnt Land durch Kultur an ist.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_TAKING_TITLE" Language="de_DE"><Text>Felder einnehmen</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_TAKING_PARA_1" Language="de_DE"><Text>Im Krieg nimmt eine Kampfeinheit, die 5 Runden in Folge auf einem feindlichen Feld steht, dieses ein, unabhängig von der Kultur. Wegziehen setzt die Zählung zurück. Stadtzentren und Stadtbezirke können so nicht eingenommen werden.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_HOLD_TITLE" Language="de_DE"><Text>Haltezeit</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_HOLD_PARA_1" Language="de_DE"><Text>10 Runden nach der Einnahme kann Kultur das Feld nicht zurückholen. Eine andere Armee kann es jederzeit auf dieselbe Weise einnehmen.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_AFTER_TITLE" Language="de_DE"><Text>Nach dem Krieg</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_AFTER_PARA_1" Language="de_DE"><Text>Während des Krieges bewegt Kultur nie ein erobertes Feld. Nach dem Frieden und dem Ende der Haltezeit kann Kultur es nach den normalen Regeln für jede Zivilisation beanspruchen.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_TITLE" Language="de_DE"><Text>Linse: Kultureller Druck</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_CONTENT_PARA_1" Language="de_DE"><Text>Öffnet sie im Linsenmenü oder drückt Shift+C. Nur Anzeige. Die Option Drucklinse (standardmäßig an) fügt sie hinzu.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_COLORS_TITLE" Language="de_DE"><Text>Farben</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_COLORS_PARA_1" Language="de_DE"><Text>Ein Feld wird in der Farbe der führenden Zivilisation gefärbt, wenn eine andere Kultur als die des Besitzers führt und es beanspruchen könnte. Die Färbung wird stärker, je näher der Anspruch rückt.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_COLORS_PARA_2" Language="de_DE"><Text>Mit Jede Zivilisation gewinnt Land durch Kultur an werden auch Felder gefärbt, die andere Zivilisationen beanspruchen könnten.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_READOUT_TITLE" Language="de_DE"><Text>Feldanzeige</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_READOUT_PARA_1" Language="de_DE"><Text>Fahrt Ihr mit der Maus über ein Feld, seht Ihr:[BLIST][LI]die drei größten Kulturen darauf, mit markiertem Besitzer;[LI][B]Fortschritt der Übernahme[/B];[LI][B]Beim aktuellen Tempo[/B]: verbleibende Runden, bereit zur Übernahme oder stockt.[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_READOUT_PARA_2" Language="de_DE"><Text>Felder, die nicht beansprucht werden können, zeigen nur die Kulturmengen.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_ALERTS_TITLE" Language="de_DE"><Text>Benachrichtigungen</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_ALERTS_PARA_1" Language="de_DE"><Text>Höchstens eine Benachrichtigung pro Runde: wenn Ihr Territorium beansprucht oder wenn eine andere Zivilisation eines Eurer Felder übernimmt.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_TITLE" Language="de_DE"><Text>Optionen &amp; Vorgaben</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_CONTENT_PARA_1" Language="de_DE"><Text>Optionen, Add-Ons, Kulturelle Diffusion. Die Einstellungen können mitten im Spiel geändert werden.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_PRESETS_TITLE" Language="de_DE"><Text>Intensität</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_PRESETS_PARA_1" Language="de_DE"><Text>[BLIST][LI][B]Niedrig[/B]: Ausbreitung 4 %, Verblassen 7 %, 400 für einen Anspruch, Reichweite 5, nur leeres Land.[LI][B]Mittel[/B] (Standard): Ausbreitung 5,5 %, Verblassen 5 %, 300 für einen Anspruch, Reichweite 6.[LI][B]Hoch[/B]: Ausbreitung 7,5 %, Verblassen 4 %, 220 für einen Anspruch, Reichweite 8.[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_TOGGLES_TITLE" Language="de_DE"><Text>Schalter</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_TOGGLES_PARA_1" Language="de_DE"><Text>[BLIST][LI][B]Aktiviert[/B]: aus stellt die Grenzen des Grundspiels wieder her.[LI][B]Nur freies Land beanspruchen[/B]: siehe [B]Felder beanspruchen[/B].[LI][B]Schutz rivalisierender Städte[/B]: siehe [B]Felder beanspruchen[/B].[LI][B]Nur zusammenhängende Grenze[/B]: standardmäßig an. Aus erlaubt, Enklaven in fremdem Gebiet zu beanspruchen.[LI][B]Land neben neuen Modernisierungen beanspruchen[/B]: aus. Siehe [B]Felder beanspruchen[/B].[LI][B]Grenzen weichen zurück[/B]: aus. Siehe [B]Grenzen weichen zurück[/B].[LI][B]Jede Zivilisation gewinnt Land durch Kultur[/B]: an. Siehe [B]Ausdehnung der Rivalen[/B].[LI][B]Armeen halten besetztes Land[/B]: aus. Siehe [B]Armeen halten Land[/B].[LI][B]Städte tragen jede Kultur ihrer Bewohner[/B]: an. Siehe [B]Eroberte &amp; Mischstädte[/B].[LI][B]Erweitertes Kulturmodell[/B]: an. Siehe [B]Kulturelle Stärke[/B].[LI][B]Diaspora folgen[/B]: an. Siehe [B]Mit Auswanderung[/B].[LI][B]Drucklinse[/B]: an. Siehe [B]Linse: Kultureller Druck[/B].[LI][B]Debug-Protokoll[/B]: aus. Schreibt Diagnosen pro Runde in das UI-Protokoll.[/LIST]</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_ABOUT_TITLE" Language="de_DE"><Text>Über diesen Mod</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_ABOUT_CHAPTER_CONTENT_PARA_1" Language="de_DE"><Text>Eine Version des Mods Cultural Diffusion aus Civilization V für Civilization VII, mit zusätzlichen Regeln.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_ABOUT_CHAPTER_CREDITS_TITLE" Language="de_DE"><Text>Credits</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_ABOUT_CHAPTER_CREDITS_PARA_1" Language="de_DE"><Text>Erstellt von Tower. Basiert auf Gedemons Cultural Diffusion für Civilization V (v18), der Quelle des Kulturfelds und mehrerer Regeln hier: Flüsse, fremde Kultur in Städten, Übertragung bei Eroberung, Ansprüche von Rivalen und Armeen, die Schwelle für Gebirge und die Mindestkultur des Besitzers.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_CD_CULTURAL_BORDERS_TITLE" Language="de_DE"><Text>Kulturgrenzen (Mod)</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_CD_CULTURAL_BORDERS_CHAPTER_CONTENT_PARA_1" Language="de_DE"><Text>Mit dem Mod Kulturelle Diffusion breitet sich Kultur Feld für Feld von Städten aus und kann Grenzen über den dritten Ring einer Stadt hinaus erweitern, auch in rivalisierende Grenzfelder. Die Regeln stehen im Reiter [B]Kulturelle Diffusion[/B].</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CD_TERM_CULTURAL_DIFFUSION" Language="de_DE"><Text>Kulturelle Diffusion</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_BORDERS" Language="de_DE"><Text>Grenzen</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_FORWARD_SETTLING" Language="de_DE"><Text>Vorgeschobenes Siedeln</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_TERRITORY" Language="de_DE"><Text>Territorium</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_HELP" Language="de_DE"><Text>Hilfe</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_DIFFUSION" Language="de_DE"><Text>Diffusion</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_DECAY" Language="de_DE"><Text>Verblassen</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CULTURE_STOCK" Language="de_DE"><Text>Kulturvorrat</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_RIVERS" Language="de_DE"><Text>Flüsse</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_ROADS" Language="de_DE"><Text>Straßen</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_MOUNTAINS" Language="de_DE"><Text>Berge</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_WATER" Language="de_DE"><Text>Wasserüberquerung</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_TILE_FLIP" Language="de_DE"><Text>Feldwechsel</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CITY_PROTECTION" Language="de_DE"><Text>Schutz rivalisierender Städte</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CITY_STATES" Language="de_DE"><Text>Stadtstaaten</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_IMPROVEMENT_BUFFER" Language="de_DE"><Text>Modernisierungspuffer</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_RING" Language="de_DE"><Text>Vierter Ring</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_WORK_TILES" Language="de_DE"><Text>Felder bewirtschaften</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CPI" Language="de_DE"><Text>IKM</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CPI_FULL" Language="de_DE"><Text>Index kultureller Macht</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CELEBRATION" Language="de_DE"><Text>Feiern</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_LEADERS" Language="de_DE"><Text>Anführer-Ausgleich</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_AGES" Language="de_DE"><Text>Zeitalter</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_GAME_SPEED" Language="de_DE"><Text>Spielgeschwindigkeit</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_EMIGRATION" Language="de_DE"><Text>Auswanderung</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_DIASPORA" Language="de_DE"><Text>Diaspora</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CONVERSION" Language="de_DE"><Text>Umwandlung</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CAPTURED_CITY" Language="de_DE"><Text>Eroberte Stadt</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_FOREIGN_CULTURE" Language="de_DE"><Text>Fremde Kultur</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_RECEDE" Language="de_DE"><Text>Zurückweichen</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_AI" Language="de_DE"><Text>KI-Grenzen</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CONQUEST" Language="de_DE"><Text>Eroberung</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_OCCUPATION" Language="de_DE"><Text>Besetzung</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_LENS" Language="de_DE"><Text>Linse</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_PRESSURE" Language="de_DE"><Text>Kultureller Druck</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_HOTKEY" Language="de_DE"><Text>Shift+C</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_NOTIFICATIONS" Language="de_DE"><Text>Benachrichtigungen</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_INTENSITY" Language="de_DE"><Text>Intensität</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_SETTINGS" Language="de_DE"><Text>Einstellungen</Text></Replace>
+    </LocalizedText>
+</Database>

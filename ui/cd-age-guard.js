@@ -1,7 +1,8 @@
 // cd-age-guard.js
 //
-// Keeps tiles that carry a district (a rural improvement, an urban district or a wonder) from changing hands in the
-// turns either side of an age transition. Unimproved tiles are not affected, and nothing changes mid-age.
+// Keeps tiles that carry a district (a rural improvement, an urban district or a wonder) from changing hands while an
+// age's end countdown runs and in the first two turns of the next age. Unimproved tiles are not affected, and nothing
+// changes the rest of the time.
 //
 // Why: moving an owned district tile to another civilization in that window crashed the game natively, on the AI's
 // AsyncWorker1 thread, reading a null object through an id list that no longer resolved (watched 2026-10-05/06 on
@@ -13,21 +14,26 @@
 import { districtTypeNameAt } from "/cultural-diffusion/ui/cd-plots.js";
 import { currentAgeKey } from "/cultural-diffusion/ui/cd-polity.js";
 
-/** Turns on each side of the transition in which district tiles hold: the last two of an age, the first two after. */
+/** Turns after a transition in which district tiles still hold: the first two of the new age. */
 export const TRANSITION_GUARD_TURNS = 2;
 
 /**
- * Pure: whether an age-transition window is open.
+ * Pure: whether an age-transition window is open: for the whole of the age's end countdown, and the first turns of
+ * the next age.
+ *
+ * The whole countdown, not only its last turns: the countdown's "turns left" is progression points, and one turn can
+ * add 5, 10 or 20 at once (legacy milestones; 10 for each Future Tech or Civic, AgeProgressionEvents), so the age can
+ * end on a turn that read several points from the end.
  * @param {{countdownStarted:boolean, ageOver:boolean, turnsRemaining:number|null, ageKey:string, turn:number}} a
- *   The age reads: the base game's countdown flag, its age-over flag, the countdown's turns left (max progression
- *   points minus current, as the base game's age warning computes it), the age key and Game.turn.
- * @param {number} [n] Window width in turns.
+ *   The age reads: the base game's countdown flag, its age-over flag, the countdown's points left (max progression
+ *   points minus current, as the base game's age warning computes it; logged, not decided on), the age key and
+ *   Game.turn.
+ * @param {number} [n] Turns after a transition that still hold.
  * @returns {boolean} True inside the window.
  */
 export function transitionWindowOpen(a, n = TRANSITION_GUARD_TURNS) {
   if (!a) return false;
-  if (a.ageOver) return true;
-  if (a.countdownStarted && typeof a.turnsRemaining === "number" && a.turnsRemaining <= n) return true;
+  if (a.ageOver || a.countdownStarted) return true;
   // A new age restarts Game.turn at 1. Antiquity has no transition before it.
   return a.ageKey !== "ANTIQUITY" && typeof a.turn === "number" && a.turn >= 1 && a.turn <= n;
 }

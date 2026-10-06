@@ -43,6 +43,22 @@ function raiseToast(text) {
   }
 }
 
+/**
+ * The text of a tag in the game's language, or the English fallback when it cannot be composed.
+ * @param {string} tag @param {string} fb @returns {string}
+ */
+function localized(tag, fb) {
+  try {
+    if (typeof Locale !== "undefined" && typeof Locale.compose === "function") {
+      const s = Locale.compose(tag);
+      if (typeof s === "string" && s && s !== tag && !s.startsWith("LOC_")) return s;
+    }
+  } catch (_) {
+    /* ignore */
+  }
+  return fb;
+}
+
 /** @returns {number} The local player id, or -1. */
 function localId() {
   try {
@@ -77,8 +93,8 @@ export function notifyFlip({ x, y, wasOwner, newOwner }) {
   if (_pendingThisTurn === 1) {
     // First change of the turn: one summary toast.
     raiseToast(gained
-      ? "Cultural Diffusion: your culture has claimed new territory."
-      : "Cultural Diffusion: another civilization has taken one of your tiles.");
+      ? localized("LOC_CD_TOAST_GAINED", "Cultural Diffusion: your culture has claimed new territory.")
+      : localized("LOC_CD_TOAST_LOST", "Cultural Diffusion: another civilization has taken one of your tiles."));
   }
 }
 

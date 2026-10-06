@@ -129,11 +129,14 @@
         <Row Tag="LOC_CD_PRESSURE_TURNS">
             <Text>At current pace</Text>
         </Row>
-        <Row Tag="LOC_CD_PRESSURE_TURNS_APPROX">
-            <Text>~</Text>
+        <Row Tag="LOC_CD_PRESSURE_TURNS_COUNT">
+            <Text>~{1_Turns} {1_Turns: plural 1?turn; other?turns;}</Text>
         </Row>
-        <Row Tag="LOC_CD_PRESSURE_TURNS_UNIT">
-            <Text>turns</Text>
+        <Row Tag="LOC_CD_TOAST_GAINED">
+            <Text>Cultural Diffusion: your culture has claimed new territory.</Text>
+        </Row>
+        <Row Tag="LOC_CD_TOAST_LOST">
+            <Text>Cultural Diffusion: another civilization has taken one of your tiles.</Text>
         </Row>
         <Row Tag="LOC_CD_PRESSURE_READY">
             <Text>ready to flip</Text>

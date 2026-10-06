@@ -147,6 +147,24 @@ setGrowthBuffer(true);
 applyTunableOverrides();
 assert.equal(CONFIG.growthBuffer, true, "...and turning it back on applies too");
 
+// The Low preset claims empty land only, as its Options text says, unless the player saved the checkbox themselves.
+// (It used to be overwritten by the checkbox's code default, so Low contested rival tiles like Medium.)
+backing.set("modSettings", JSON.stringify({}));
+setPresetIndex(PRESET_NAMES.indexOf("Low"));
+assert.equal(getClaimOnlyUnowned(), true, "Low with nothing saved: empty land only");
+applyTunableOverrides();
+assert.equal(CONFIG.claimOnlyUnowned, true, "Low reaches the live config");
+setPresetIndex(PRESET_NAMES.indexOf("Medium"));
+assert.equal(getClaimOnlyUnowned(), false, "Medium with nothing saved: contests rival tiles");
+setPresetIndex(PRESET_NAMES.indexOf("Low"));
+setClaimOnlyUnowned(false);
+applyTunableOverrides();
+assert.equal(CONFIG.claimOnlyUnowned, false, "a saved choice still wins over the preset");
+setPresetIndex(PRESET_NAMES.indexOf("Medium"));
+setClaimOnlyUnowned(true);
+applyTunableOverrides();
+assert.equal(CONFIG.claimOnlyUnowned, true, "the checkbox turns it on under any preset");
+
 if (originalLocalStorage === undefined) delete globalThis.localStorage;
 else globalThis.localStorage = originalLocalStorage;
 

@@ -59,6 +59,22 @@ function t(tag, fb) {
   return fb;
 }
 
+/**
+ * Localize a tag that takes a number as {1_...}, degrading to a plain-English fallback.
+ * @param {string} tag @param {number} n @param {string} fb @returns {string}
+ */
+function tCount(tag, n, fb) {
+  try {
+    if (typeof Locale !== "undefined" && typeof Locale.compose === "function") {
+      const s = Locale.compose(tag, n);
+      if (typeof s === "string" && s && s !== tag && !s.startsWith("LOC_")) return s;
+    }
+  } catch (_) {
+    /* ignore */
+  }
+  return fb;
+}
+
 /** The panel stylesheet (matches the Emigration lens panels' look). @returns {string} CSS. */
 function css() {
   const id = "#" + PANEL_ID;
@@ -184,7 +200,8 @@ function turnsText(verdict, field, plot, cfg) {
   if (turns == null) return null;
   if (turns === 0) return t("LOC_CD_PRESSURE_READY", "ready to flip");
   if (!isFinite(turns)) return t("LOC_CD_PRESSURE_STALLED", "stalled");
-  return t("LOC_CD_PRESSURE_TURNS_APPROX", "~") + turns + " " + t("LOC_CD_PRESSURE_TURNS_UNIT", "turns");
+  // One key with the count in it, so each language can place the number and choose its plural form.
+  return tCount("LOC_CD_PRESSURE_TURNS_COUNT", turns, `~${turns} turns`);
 }
 
 /**

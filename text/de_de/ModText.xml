@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database>
+    <LocalizedText>
+        <Replace Tag="LOC_MOD_CULTURAL_DIFFUSION_NAME" Language="de_DE"><Text>Kulturelle Diffusion</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_GROUP_CULTURAL_DIFFUSION" Language="de_DE"><Text>Kulturelle Diffusion</Text></Replace>
+        <Replace Tag="LOC_MOD_CULTURAL_DIFFUSION_DESCRIPTION" Language="de_DE"><Text>Kultur wird zu einem lebendigen Feld, das sich Feld für Feld von Euren Städten ausbreitet. Eine starke, gefestigte Kultur erweitert ihre Grenzen langsam über den normalen Stadtbereich hinaus, dringt in offenes Land vor und kann Grenzfelder eines Rivalen übernehmen, sobald Eure Kultur dort klar überlegen ist. So hat das vorgeschobene Siedeln der KI eine systematische Antwort. Das Wachstum ist langsam: Grenzen schieben sich im Lauf des Spiels nach außen und weichen zurück, wenn eine Kultur schwächer wird, und eine überwältigende Kultur reicht weiter. Eine Neuinterpretation und Erweiterung des Civ-V-Mods Cultural Diffusion, für Civ VII neu aufgebaut, mit einem tieferen Modell kultureller Macht und optionaler Anbindung an Auswanderung. Einzelspieler, mit den Intensitäten Niedrig/Mittel/Hoch und einem Ausschalter. Funktioniert eigenständig und liest Diaspora-Daten aus dem Mod Auswanderung, wenn er installiert ist. Alle Regeln werden im Abschnitt Kulturelle Diffusion der Zivilopädie im Spiel erklärt.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_PRESET" Language="de_DE"><Text>Kulturelle Diffusion - Intensität</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_PRESET_DESCRIPTION" Language="de_DE"><Text>Wie stark Kultur Eure Grenzen ausdehnt. Niedrig dringt nur in leeres Land vor; Mittel macht rivalisierende Grenzfelder streitig; Hoch breitet sich weiter aus und übernimmt schneller. Zivilopädie: Kulturelle Diffusion, Optionen &amp; Vorgaben.</Text></Replace>
+        <Replace Tag="LOC_CD_PRESET_CUSTOM" Language="de_DE"><Text>Individuell</Text></Replace>
+        <Replace Tag="LOC_CD_PRESET_LOW" Language="de_DE"><Text>Niedrig</Text></Replace>
+        <Replace Tag="LOC_CD_PRESET_MEDIUM" Language="de_DE"><Text>Mittel</Text></Replace>
+        <Replace Tag="LOC_CD_PRESET_HIGH" Language="de_DE"><Text>Hoch</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_ENABLED" Language="de_DE"><Text>Kulturelle Diffusion - Aktiviert</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_ENABLED_DESCRIPTION" Language="de_DE"><Text>Hauptschalter. Wenn aus, verhalten sich Grenzen genau wie im Grundspiel. Alle Regeln in der Zivilopädie, Abschnitt Kulturelle Diffusion.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_CLAIM_ONLY" Language="de_DE"><Text>Kulturelle Diffusion - Nur freies Land beanspruchen</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CLAIM_ONLY_DESCRIPTION" Language="de_DE"><Text>Sicherer Modus. Die Diffusion beansprucht nur herrenlose Grenzfelder und übernimmt nie ein Feld einer anderen Zivilisation. Zivilopädie: Kulturelle Diffusion, Felder beanspruchen.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_CORE" Language="de_DE"><Text>Kulturelle Diffusion - Schutz rivalisierender Städte</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_DESCRIPTION" Language="de_DE"><Text>Wie tief Kultur in eine rivalisierende Stadt vordringen darf. Ganzer Innenring schützt ihr Zentrum und den inneren Ring. Nur Stadtzentrum schützt nur das Stadtzentrum selbst, Kultur kann die Felder darum übernehmen. Nichts lässt sogar das Zentrum wechseln. Zivilopädie: Kulturelle Diffusion, Felder beanspruchen.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_FULL" Language="de_DE"><Text>Ganzen Innenring schützen</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_CENTER" Language="de_DE"><Text>Nur Stadtzentrum schützen (innere Felder übernehmen)</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_NONE" Language="de_DE"><Text>Nichts schützen</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_ADJACENCY" Language="de_DE"><Text>Kulturelle Diffusion - Nur zusammenhängende Grenze</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_ADJACENCY_DESCRIPTION" Language="de_DE"><Text>An (empfohlen): Kultur beansprucht nur Felder, die an Euer Land grenzen, sodass rivalisierendes Gebiet von außen nach innen übernommen wird. Aus: Kultur kann jedes Feld beanspruchen, das sie beherrscht, auch eine abgetrennte Enklave innerhalb einer anderen Zivilisation. Zivilopädie: Kulturelle Diffusion, Felder beanspruchen.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_FUSED" Language="de_DE"><Text>Kulturelle Diffusion - Erweitertes Kulturmodell</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_FUSED_DESCRIPTION" Language="de_DE"><Text>Die Grenzausdehnung richtet sich nach der gesamten kulturellen Macht einer Zivilisation (Wunder, Kultur, Einfluss, Zufriedenheit, Wohlstand, Traditionen) statt nur nach Kultur pro Runde. Eine stärkere Kultur schiebt ihre Grenzen weiter hinaus. Aus = das einfache Modell mit der Kultur der Siedlung. Zivilopädie: Kulturelle Diffusion, Kulturelle Stärke.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_EMIGRATION" Language="de_DE"><Text>Kulturelle Diffusion - Diaspora folgen (Mod Auswanderung)</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_EMIGRATION_DESCRIPTION" Language="de_DE"><Text>Wenn der Mod Auswanderung installiert ist, spürt ein Grenzfeld, auf dem sich Euer Volk angesiedelt hat, Eure Anziehung, sodass Grenzen der Diaspora folgen. Ohne Auswanderung keine Wirkung. Erfordert das erweiterte Kulturmodell. Zivilopädie: Kulturelle Diffusion, Mit Auswanderung.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_BUFFER" Language="de_DE"><Text>Kulturelle Diffusion - Land neben neuen Modernisierungen beanspruchen (+1 Ring)</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_BUFFER_DESCRIPTION" Language="de_DE"><Text>Standardmäßig aus. Wenn an, beansprucht eine fertiggestellte ländliche Modernisierung nahe Eurer Grenze auch die herrenlosen Felder direkt daneben, einen Ring über die normale Reichweite Eurer Stadt hinaus. Wenn aus, wachsen Eure Grenzen nur durch das Kulturfeld. Zivilopädie: Kulturelle Diffusion, Felder beanspruchen.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_RECEDE" Language="de_DE"><Text>Kulturelle Diffusion - Grenzen weichen zurück (experimentell)</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_RECEDE_DESCRIPTION" Language="de_DE"><Text>Standardmäßig aus. Felder, die Eure Kultur beansprucht hat, können wieder verloren gehen: Überholt die Kultur eines Rivalen Eure auf einem davon klar, geht es an die nächste Stadt dieses Rivalen. Felder, die Eure Städte durch normales Wachstum erhalten haben, sind nie betroffen. Zivilopädie: Kulturelle Diffusion, Grenzen weichen zurück.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_AI_FLIPS" Language="de_DE"><Text>Kulturelle Diffusion - Jede Zivilisation gewinnt Land durch Kultur</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_AI_FLIPS_DESCRIPTION" Language="de_DE"><Text>Standardmäßig an. Auch die Grenzen anderer Zivilisationen verschieben sich durch Kultur, nach denselben Regeln wie Eure: Ein Rivale, dessen Kultur auf einem Feld nahe Eurem Land klar führt, übernimmt es, auch Eure Felder, und kann auf dieselbe Weise Felder verlieren. Stadtstaaten und unabhängige Mächte gewinnen so nie Land. Ihr werdet benachrichtigt, wenn ein Rivale eines Eurer Felder übernimmt. Aus = nur Eure Grenzen wachsen durch Kultur. Zivilopädie: Kulturelle Diffusion, Ausdehnung der Rivalen.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_CONQUEST" Language="de_DE"><Text>Kulturelle Diffusion - Armeen halten besetztes Land</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CONQUEST_DESCRIPTION" Language="de_DE"><Text>Standardmäßig aus. Wenn an, übernimmt im Krieg eine Kampfeinheit, die fünf Runden in Folge ein feindliches Feld hält, dieses für ihren Besitzer, unabhängig von der Kultur dort; beim Verlassen beginnt die Zählung neu, und Stadtzentren und Stadtbezirke werden so nie übernommen. Das eroberte Feld ist danach zehn Runden lang vor Kultur geschützt, eine andere Armee kann es aber trotzdem übernehmen. Armeen anderer Zivilisationen tun dasselbe nur, wenn auch "Jede Zivilisation gewinnt Land durch Kultur" an ist. Zivilopädie: Kulturelle Diffusion, Armeen halten Land.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_FOREIGN_CULTURE" Language="de_DE"><Text>Kulturelle Diffusion - Städte tragen jede Kultur ihrer Bewohner</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_FOREIGN_CULTURE_DESCRIPTION" Language="de_DE"><Text>Standardmäßig an. Eine Stadt erzeugt Kultur für jedes Volk auf ihrem Feld, nicht nur für ihren Besitzer: Eine eroberte oder gemischte Stadt erzeugt weiter ihre alte Kultur, die das Land um sie herum streitig macht, während jede Runde ein kleiner Teil dieser fremden Kultur zur Kultur des Besitzers wird (schneller mit Bibliotheken, Universitäten, Museen und in der Moderne mit einer Ideologie). Aus = eine Stadt erzeugt nur die Kultur ihres Besitzers. Zivilopädie: Kulturelle Diffusion, Eroberte &amp; Mischstädte.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_DEBUG" Language="de_DE"><Text>Kulturelle Diffusion - Debug-Protokoll</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_DEBUG_DESCRIPTION" Language="de_DE"><Text>Schreibt ausführliche Diagnosen zu jedem Durchlauf in UI.log (zum Abstimmen und zur Fehlersuche).</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_PRESSURE_LENS" Language="de_DE"><Text>Kulturelle Diffusion - Drucklinse</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_PRESSURE_LENS_DESCRIPTION" Language="de_DE"><Text>Fügt die Kartenlinse "Kultureller Druck" (und das Tastenkürzel Shift+C) hinzu, die nur anzeigt: Sie färbt umkämpfte Grenzfelder danach, wie nahe Eure Kultur oder die eines Rivalen daran ist, sie zu beanspruchen. Sie zeigt nur Informationen und ändert nichts daran, wie sich Grenzen bewegen. Zivilopädie: Kulturelle Diffusion, Linse: Kultureller Druck.</Text></Replace>
+
+        <Replace Tag="LOC_CD_LENS_PRESSURE" Language="de_DE"><Text>Kultureller Druck</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_TITLE" Language="de_DE"><Text>Kultureller Druck</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_PROGRESS" Language="de_DE"><Text>Fortschritt der Übernahme</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_TURNS" Language="de_DE"><Text>Beim aktuellen Tempo</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_TURNS_COUNT" Language="de_DE"><Text>~{1_Turns} {1_Turns: plural 1?Runde; other?Runden;}</Text></Replace>
+        <Replace Tag="LOC_CD_TOAST_GAINED" Language="de_DE"><Text>Kulturelle Diffusion: Eure Kultur hat neues Territorium beansprucht.</Text></Replace>
+        <Replace Tag="LOC_CD_TOAST_LOST" Language="de_DE"><Text>Kulturelle Diffusion: Eine andere Zivilisation hat eines Eurer Felder übernommen.</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_READY" Language="de_DE"><Text>bereit zur Übernahme</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_STALLED" Language="de_DE"><Text>stockt</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_OWNER_SUFFIX" Language="de_DE"><Text> (Besitzer)</Text></Replace>
+    </LocalizedText>
+</Database>

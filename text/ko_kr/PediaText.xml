@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database>
+    <LocalizedText>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_TITLE" Language="ko_KR"><Text>문화 확산</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_GROUP_START_TITLE" Language="ko_KR"><Text>시작하기</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_GROUP_SPREAD_TITLE" Language="ko_KR"><Text>문화가 퍼지는 방식</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_GROUP_POWER_TITLE" Language="ko_KR"><Text>문화의 힘</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_GROUP_RIVALS_TITLE" Language="ko_KR"><Text>경쟁 문명, 도시, 전쟁</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_GROUP_INTERFACE_TITLE" Language="ko_KR"><Text>인터페이스 및 옵션</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_TITLE" Language="ko_KR"><Text>문화 확산</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_CONTENT_PARA_1" Language="ko_KR"><Text>도시 근처의 각 타일에는 문명마다 [icon:YIELD_CULTURE] 문화가 얼마나 있는지 저장됩니다. 매 턴 도시는 자기 타일에 문화를 더하고, 문화는 이웃 타일로 퍼지며, 모든 타일은 문화를 일부 잃습니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_CONTENT_PARA_2" Language="ko_KR"><Text>도시의 3번째 링 바깥 타일에서 우리 문화가 충분히 커지면 그 타일을 획득합니다. 국경은 주로 게임 중반부터 천천히 넓어지며, 그곳의 문화가 훨씬 약한 경쟁 문명에게서 변경 타일을 빼앗을 수도 있습니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_WHERE_TITLE" Language="ko_KR"><Text>게임 내</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_WHERE_PARA_1" Language="ko_KR"><Text>[BLIST][LI][B]문화 압력 렌즈[/B](렌즈 메뉴 또는 Shift+C): 곧 주인이 바뀔 타일에 색을 칠합니다. [B]문화 압력 렌즈[/B]를 참조하십시오.[LI][B]알림[/B]: 영토를 획득했을 때, 또는 다른 문명에게 타일을 잃었을 때.[LI][B]옵션, 추가 콘텐츠, 문화 확산[/B]: 강도와 모든 스위치. [B]옵션 및 프리셋[/B]을 참조하십시오.[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_TITLE" Language="ko_KR"><Text>자주 묻는 질문</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_NOTHING_TITLE" Language="ko_KR"><Text>국경이 왜 안 넓어지나요?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_NOTHING_PARA_1" Language="ko_KR"><Text>도시가 4번째 링에 닿으려면 크고 꾸준한 문화가 필요합니다. 게임 초반의 도시는 대개 아무것도 획득하지 못합니다. 렌즈에서 우리가 앞서는 타일과 각 타일에 필요한 턴 수를 볼 수 있습니다. [B]속도와 획득한 땅[/B]을 참조하십시오.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_WORK_TITLE" Language="ko_KR"><Text>획득한 타일에서 일할 수 있나요?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_WORK_PARA_1" Language="ko_KR"><Text>아니요. 도시는 3링 이내의 타일에서만 일할 수 있고, 획득한 타일은 그보다 바깥에 있습니다. 획득한 타일은 우리 영토로 취급되며 경쟁 문명의 개척자를 막습니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_AILAND_TITLE" Language="ko_KR"><Text>AI가 내 땅을 빼앗을 수 있나요?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_AILAND_PARA_1" Language="ko_KR"><Text>네. 기본적으로 우리 영토 근처의 타일에서 문화가 확실히 앞선 경쟁 문명은 우리의 획득과 같은 규칙으로 그 타일을 차지하며, 알림이 표시됩니다. 이를 막으려면 '모든 문명이 문화로 땅 획득'을 끄십시오. [B]경쟁 문명의 확장[/B]을 참조하십시오. [B]국경 후퇴[/B]와 [B]군대의 점령지 유지[/B]는 추가 옵션입니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_FLIPBACK_TITLE" Language="ko_KR"><Text>앞서는데 왜 못 빼앗나요?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_FLIPBACK_PARA_1" Language="ko_KR"><Text>다른 획득 규칙을 충족하지 못한 것입니다. 도시에서 너무 멀거나, 우리 영토에 닿아 있지 않거나, 보호되는 도시 중심부 안에 있거나, 전쟁 중인 문명이 소유하고 있거나, 대항해시대 이전의 머나먼 땅에 있거나, 최근에 주인이 바뀌었거나, 차지하면 외국 유닛이 갇히게 되는 경우입니다. [B]타일 획득[/B]을 참조하십시오.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_TURNOFF_TITLE" Language="ko_KR"><Text>모드를 끄면 어떻게 되나요?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_TURNOFF_PARA_1" Language="ko_KR"><Text>새로운 획득이 멈춥니다. 이미 획득한 타일은 그대로 우리 것입니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_SAVES_TITLE" Language="ko_KR"><Text>진행 중인 게임에 추가할 수 있나요?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_SAVES_PARA_1" Language="ko_KR"><Text>아니요. 게임을 시작할 때 모드가 활성화되어 있어야 합니다. 싱글 플레이 전용입니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_TITLE" Language="ko_KR"><Text>문화 필드</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_CONTENT_PARA_1" Language="ko_KR"><Text>도시에서 8링 이내의 모든 타일에 문명별 문화가 저장됩니다. 저장량은 턴마다 한 번 바뀌며, 타일 소유권은 이를 따릅니다([B]타일 획득[/B] 참조).</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_INJECT_TITLE" Language="ko_KR"><Text>도시가 더하는 문화</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_INJECT_PARA_1" Language="ko_KR"><Text>각 도시는 자기 타일에 문화를 더합니다. 이미 있는 문화가 많을수록 더 빨리 늘어나며, 상한은 도시의 역량으로 정해집니다([B]문화 역량[/B] 참조). 도시는 그곳에 사는 다른 민족의 문화도 더합니다([B]혼합 도시와 점령 도시[/B] 참조).</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_DIFFUSE_TITLE" Language="ko_KR"><Text>문화의 확산</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_DIFFUSE_PARA_1" Language="ko_KR"><Text>문화가 100 이상인 타일은 매 턴 그 약 5.5%를 각 이웃 타일에 줍니다. 이웃 타일은 최대 원래 타일 양의 40%까지, 도로나 강을 따라서는 75%까지 도달할 수 있습니다. 지형은 확산을 늦추거나 막습니다([B]지형과 강[/B] 참조).</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_DECAY_TITLE" Language="ko_KR"><Text>문화의 감소</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_DECAY_PARA_1" Language="ko_KR"><Text>모든 타일은 매 턴 문화의 5%에 더해 1점을 잃습니다. 이 때문에 국경이 닿는 범위가 제한되며, 도시가 약해지거나 사라지면 문화가 물러납니다. 우리가 소유한 타일에는 우리 문화가 최소 1점 남습니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_TITLE" Language="ko_KR"><Text>지형과 강</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_CONTENT_PARA_1" Language="ko_KR"><Text>문화가 얼마나 잘 퍼지는지는 문화가 옮겨 가는 타일이 결정합니다. 같은 타일의 효과는 중첩됩니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROUGH_TITLE" Language="ko_KR"><Text>험한 지형</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROUGH_PARA_1" Language="ko_KR"><Text>쉬운 것부터 어려운 순으로:[BLIST][LI][B]숲, 타이가[/B]: 약간 느려집니다.[LI][B]거친 지형[/B]: 보통 정도로 느려집니다.[LI][B]툰드라[/B]: 보통 정도로 느려지며, 건너려면 더 강한 원천이 필요합니다.[LI][B]사막[/B]: 크게 느려집니다.[LI][B]열대우림, 습지[/B]: 크게 느려지며, 강한 원천만 건널 수 있습니다.[LI][B]산[/B]: 거의 지나갈 수 없습니다. 산 정상의 문화가 그곳에서 퍼지려면 평소의 7.5배가 필요합니다.[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROADS_TITLE" Language="ko_KR"><Text>도로</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROADS_PARA_1" Language="ko_KR"><Text>도로가 있는 두 타일 사이에서는 문화가 두 배 빠르게, 더 멀리 퍼집니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_RIVERS_TITLE" Language="ko_KR"><Text>강</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_RIVERS_PARA_1" Language="ko_KR"><Text>강을 따라 문화는 더 빠르고 더 멀리 퍼지며, 얕은 하천보다 깊은 강에서 효과가 더 큽니다. 강둑에서나 다른 강에서 강으로 건너가려면 평소의 두 배가 필요하고, 도착하는 문화는 약해집니다. 강을 장악한 문화는 양쪽 강둑에 닿습니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_WATER_TITLE" Language="ko_KR"><Text>해안과 대양</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_WATER_PARA_1" Language="ko_KR"><Text>강한 문화만 물을 건널 수 있으며, 대양보다 해안이 더 쉽습니다. 건너기는 시대마다 쉬워져, 고대에는 겨우 가능한 정도이고 근대에 가장 쉽습니다. 머나먼 땅의 타일은 대항해시대 이전에는 획득할 수 없습니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_TITLE" Language="ko_KR"><Text>타일 획득</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_CONTENT_PARA_1" Language="ko_KR"><Text>획득한 타일은 가장 가까운 우리 도시에 편입됩니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_RULES_TITLE" Language="ko_KR"><Text>조건</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_RULES_PARA_1" Language="ko_KR"><Text>[BLIST][LI]그 타일에서 우리 문화가 가장 많습니다.[LI]우리 문화가 300 이상입니다(대항해시대 375, 근대 480).[LI]경쟁 문명이 소유한 타일이라면, 그 문명의 문화가 우리 문화의 3분의 2 미만입니다.[LI]타일이 우리 도시에서 6타일 이내이고 3번째 링 바깥에 있습니다.[LI]타일이 우리 영토에 닿아 있습니다('인접 타일만' 옵션).[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_TITLE" Language="ko_KR"><Text>보호되는 타일</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_1" Language="ko_KR"><Text>'경쟁 문명 도시 보호' 옵션으로 경쟁 문명 도시의 어디까지가 안전한지 정합니다. 도심부와 그 첫 번째 링, 도심부만(기본값), 또는 보호 안 함 중에서 고릅니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_2" Language="ko_KR"><Text>도시 국가와 독립 세력은 항상 도심부와 첫 번째 링을 지킵니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_3" Language="ko_KR"><Text>'빈 땅만 획득'이 켜져 있으면(낮음에서는 기본적으로 켜짐), 문화는 주인이 있는 타일을 절대 차지하지 않습니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_4" Language="ko_KR"><Text>시대가 바뀌는 전후에는 시설, 시가지 특수지구, 불가사의가 있는 소유 타일이 시대의 끝 카운트다운 동안과 다음 시대의 첫 2턴 동안 주인이 바뀌지 않습니다. 시설이 없는 타일은 영향을 받지 않습니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_SAFE_TITLE" Language="ko_KR"><Text>제한</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_SAFE_PARA_1" Language="ko_KR"><Text>[BLIST][LI]문화는 전쟁 중인 문명의 타일을 절대 차지하지 않습니다.[LI]주인이 바뀐 타일은 15턴 동안 고정됩니다.[LI]우리와 평화 상태인 문명의 외국 유닛이 빠져나갈 길을 잃게 되는 획득은 거부됩니다.[LI]한 턴에 주인이 바뀌는 타일은 최대 8개이며, 각 도시가 가질 수 있는 획득 타일은 최대 80개(낮음에서는 40개)입니다.[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_BUFFER_TITLE" Language="ko_KR"><Text>새 시설 옆 땅</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_BUFFER_PARA_1" Language="ko_KR"><Text>이 옵션이 켜져 있으면(기본값은 꺼짐), 국경 근처에서 교외 시설을 완성할 때 그 옆의 주인 없는 타일도 획득하며, 범위는 도시의 일반 범위보다 한 링 더 바깥까지입니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_TITLE" Language="ko_KR"><Text>속도와 획득한 땅</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_CONTENT_PARA_1" Language="ko_KR"><Text>문화는 한 링씩 쌓이므로 국경은 천천히 넓어집니다. 문화가 강할수록 더 멀리, 더 빨리 닿습니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_RINGS_TITLE" Language="ko_KR"><Text>링</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_RINGS_PARA_1" Language="ko_KR"><Text>[BLIST][LI][B]1~3링[/B]: 기본 게임 규칙을 따릅니다. 우리 문화는 이곳을 획득하지 않지만, '모든 문명이 문화로 땅 획득'이 켜져 있으면 경쟁 문명의 문화는 획득할 수 있습니다.[LI][B]4링[/B]: 문화가 획득하는 첫 번째 링입니다.[LI][B]5링 이상[/B]: 강하고 자리 잡은 문화만 가능합니다.[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_EARLY_TITLE" Language="ko_KR"><Text>게임 초반</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_EARLY_PARA_1" Language="ko_KR"><Text>[icon:YIELD_CULTURE] 문화를 적게 만드는 신생 도시는 아무것도 획득하지 못합니다. 획득은 도시가 강해지면서 시작됩니다. 높음 프리셋은 더 일찍 더 멀리 닿습니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_VALUE_TITLE" Language="ko_KR"><Text>획득한 타일</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_VALUE_PARA_1" Language="ko_KR"><Text>획득한 타일은 우리 것이지만, 도시는 처음 3링에서만 일하므로 그곳에서 일하거나 건설할 수 없습니다. 획득한 타일은 경쟁 문명이 우리 바로 옆에 정착하는 것을 막습니다. 개척자는 다른 문명의 땅 위나 그 옆에 정착지를 세울 수 없습니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_TITLE" Language="ko_KR"><Text>문화 역량</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_CONTENT_PARA_1" Language="ko_KR"><Text>도시의 역량에 따라 매 턴 더하는 문화의 양이 정해집니다. '종합 문화 모델' 옵션이 켜져 있으면(기본값) 역량은 아래 요소로 정해집니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_BLEND_TITLE" Language="ko_KR"><Text>도시 역량</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_BLEND_PARA_1" Language="ko_KR"><Text>도시 역량은 [icon:YIELD_CULTURE] 문화에 [icon:YIELD_FOOD] 식량, [icon:YIELD_PRODUCTION] 생산력, [icon:YIELD_HAPPINESS] 행복도, 성장을 합친 것입니다. 하나만 큰 보너스는 균형 잡힌 산출보다 낮게 평가됩니다. 기념 행사 중인 문명의 도시는 25% 증가합니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_CPI_TITLE" Language="ko_KR"><Text>문화력 지수</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_CPI_PARA_1" Language="ko_KR"><Text>각 문명의 지수는 여섯 분야에서 선두 문명과 비교합니다:[BLIST][LI][B]유산[/B]: 불가사의, 걸작.[LI][B]흐름[/B]: 턴당 [icon:YIELD_CULTURE] 문화.[LI][B]영향 범위[/B]: [icon:YIELD_DIPLOMACY] 영향력, 도시 국가 종주국 지위.[LI][B]활력[/B]: [icon:YIELD_HAPPINESS] 행복도, 기념 행사.[LI][B]번영[/B]: 제국의 부와 성장.[LI][B]정체성[/B]: 전통, 시대.[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_CPI_PARA_2" Language="ko_KR"><Text>한 분야만 뛰어난 것보다 여섯 분야 모두 강한 것이 더 높게 평가됩니다. 지수는 모든 도시의 역량에 0.6~1.6을 곱합니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_SIMPLE_TITLE" Language="ko_KR"><Text>단순 모델</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_SIMPLE_PARA_1" Language="ko_KR"><Text>'종합 문화 모델'이 꺼져 있으면, 역량은 도시의 [icon:YIELD_CULTURE] 문화에 기념 행사 보너스를 더한 값입니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_TITLE" Language="ko_KR"><Text>지도자, 시대, 지도</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_CONTENT_PARA_1" Language="ko_KR"><Text>도시 역량은 지도자, 시대, 게임 속도, 지도 크기에 따라 조정됩니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_LEADERS_TITLE" Language="ko_KR"><Text>지도자, 문명, 기념물</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_LEADERS_PARA_1" Language="ko_KR"><Text>문화, 불가사의, 기념 행사, 종주국 관련 보너스가 강하거나 이미 영토를 주는 능력을 가진 지도자, 문명, 기념물은 역량이 약간 줄어듭니다. 문화가 약한 문명은 조금 늘어납니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_AGES_TITLE" Language="ko_KR"><Text>시대</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_AGES_PARA_1" Language="ko_KR"><Text>후반 시대일수록 도시와 문화가 많아지므로, 대항해시대와 근대에는 도시가 더하는 문화가 줄고 타일 획득에 더 많은 문화가 필요합니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_SPEED_TITLE" Language="ko_KR"><Text>게임 속도와 지도 크기</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_SPEED_PARA_1" Language="ko_KR"><Text>확산 속도는 시대 길이에 맞춰 조정되므로, 어떤 게임 속도에서도 국경은 시대 대비 같은 비율로 넓어집니다. 작은 지도에서는 도시가 더하는 문화가 약간 적고, 큰 지도에서는 약간 많습니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_TITLE" Language="ko_KR"><Text>이주 모드 연동</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_CHAPTER_CONTENT_PARA_1" Language="ko_KR"><Text>이주 모드가 설치되어 있으면 문화 확산은 그 인구 데이터를 사용합니다. 이주 모드가 없으면 이 규칙들은 아무 효과가 없습니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_CHAPTER_AFFINITY_TITLE" Language="ko_KR"><Text>디아스포라</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_CHAPTER_AFFINITY_PARA_1" Language="ko_KR"><Text>'디아스포라 따르기'가 켜져 있으면(기본값, '종합 문화 모델' 필요), 우리 문화는 우리 국민이 정착한 타일 쪽으로 더 빨리 퍼집니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_CHAPTER_PEOPLES_TITLE" Language="ko_KR"><Text>혼합 인구</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_CHAPTER_PEOPLES_PARA_1" Language="ko_KR"><Text>도시 안 각 외국 민족의 문화는 인구에서 차지하는 비율로 가중치가 매겨집니다. [B]혼합 도시와 점령 도시[/B]를 참조하십시오.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_TITLE" Language="ko_KR"><Text>혼합 도시와 점령 도시</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CONTENT_PARA_1" Language="ko_KR"><Text>점령했거나 여러 민족이 섞인 도시는 옛 문화를 계속 만들어 냅니다. 그 문화는 주변 타일을 두고 다투며, 천천히 소유자의 문화로 바뀝니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_FOREIGN_TITLE" Language="ko_KR"><Text>외래 문화</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_FOREIGN_PARA_1" Language="ko_KR"><Text>'도시에 사는 모든 문화 반영'이 켜져 있으면(기본값), 도시는 그 타일에 있는 각 민족의 문화를 더합니다. 소유자의 문화는 전부 더해지고, 각 외래 문화는 도시 인구에 비례해 더해집니다. 이주 모드가 있으면 각 문화는 인구 비율로 가중치가 매겨지고, 없으면 외래 문화는 도시 타일에서 100이 되었을 때부터 계산됩니다. 옵션이 꺼져 있으면 도시는 소유자의 문화만 더합니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CONVERT_TITLE" Language="ko_KR"><Text>동화</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CONVERT_PARA_1" Language="ko_KR"><Text>도시는 매 턴 자기 타일에 있는 각 외래 문화의 0.5%를 소유자의 문화로 바꿉니다. 건물에 따른 추가:[BLIST][LI][B]+0.25%[/B]: 도서관, 기념비, 원형 극장.[LI][B]+0.5%[/B]: 학술원, 대학교, 천문대, 박물관, 오페라 하우스.[LI][B]+1%[/B]: 공립학교, 연구소.[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CONVERT_PARA_2" Language="ko_KR"><Text>근대 이데올로기는 +1%(민주주의), +1.25%(공산주의), +1.75%(파시즘)를 더합니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CAPTURE_TITLE" Language="ko_KR"><Text>점령</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CAPTURE_PARA_1" Language="ko_KR"><Text>도시의 주인이 바뀌면 그 타일들의 모든 문화가 55% 줄고, 새 소유자는 잃은 총량의 75%를 얻습니다. 이는 모든 문명에 적용됩니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RECEDE_TITLE" Language="ko_KR"><Text>국경 후퇴</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RECEDE_CHAPTER_CONTENT_PARA_1" Language="ko_KR"><Text>실험적 옵션이며 기본값은 꺼짐입니다. 우리 문화가 획득한 타일을 잃을 수 있습니다. '모든 문명이 문화로 땅 획득'이 켜져 있으면 경쟁 문명이 이미 문화로 앞선 획득 타일을 차지하므로, 이 옵션은 주로 그 옵션이 꺼져 있을 때 의미가 있습니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RECEDE_CHAPTER_RULES_TITLE" Language="ko_KR"><Text>규칙</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RECEDE_CHAPTER_RULES_PARA_1" Language="ko_KR"><Text>획득한 타일에서 경쟁 문명의 문화가 획득에 필요한 차이만큼 우리 문화를 앞서면, 그 타일은 그 문명의 가장 가까운 도시로 넘어갑니다. 일반적인 도시 성장으로 얻은 타일은 이 방식으로 잃지 않습니다. 앞서는 경쟁 문명 없이 문화가 줄어들기만 하면 획득한 타일의 주인은 바뀌지 않습니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_TITLE" Language="ko_KR"><Text>경쟁 문명의 확장</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_CHAPTER_CONTENT_PARA_1" Language="ko_KR"><Text>'모든 문명이 문화로 땅 획득'이 켜져 있으면(기본값), 다른 문명도 우리와 같은 규칙으로 문화를 통해 타일을 획득하며, 우리 타일도 포함됩니다. 타일을 잃으면 알림이 표시됩니다. 꺼져 있으면 우리 국경만 문화로 넓어집니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_CHAPTER_RULES_TITLE" Language="ko_KR"><Text>규칙</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_CHAPTER_RULES_PARA_1" Language="ko_KR"><Text>경쟁 문명은 소유자와 평화 상태이고, 타일이 소유자의 보호되는 중심부 밖에 있으며, 타일이 그 문명 도시의 범위 안에서 그 문명의 영토에 닿아 있을 때 앞서는 타일을 차지합니다. [B]타일 획득[/B]의 모든 제한도 적용되며, 경쟁 문명에게는 별도의 턴당 상한이 있습니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_CHAPTER_LIMITS_TITLE" Language="ko_KR"><Text>제한</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_CHAPTER_LIMITS_PARA_1" Language="ko_KR"><Text>도시 국가와 독립 세력은 이 방식으로 타일을 획득하지 않습니다. 문화는 우리 도시에서 8링 이내에서만 추적되므로, 그 밖의 국경은 기본 게임 규칙을 따릅니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_TITLE" Language="ko_KR"><Text>군대의 점령지 유지</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_CONTENT_PARA_1" Language="ko_KR"><Text>옵션이며 기본값은 꺼짐입니다. 다른 문명의 군대는 '모든 문명이 문화로 땅 획득'도 켜져 있을 때만 이 규칙을 따릅니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_TAKING_TITLE" Language="ko_KR"><Text>타일 차지</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_TAKING_PARA_1" Language="ko_KR"><Text>전쟁 중에 전투 유닛이 적의 타일에 5턴 연속으로 머무르면 문화와 관계없이 그 타일을 차지합니다. 이동하면 횟수가 초기화됩니다. 도심부와 시가지 특수지구는 이 방식으로 차지할 수 없습니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_HOLD_TITLE" Language="ko_KR"><Text>유지 기간</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_HOLD_PARA_1" Language="ko_KR"><Text>차지한 뒤 10턴 동안은 문화가 그 타일을 되찾을 수 없습니다. 다른 군대는 언제든 같은 방식으로 차지할 수 있습니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_AFTER_TITLE" Language="ko_KR"><Text>전쟁 후</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_AFTER_PARA_1" Language="ko_KR"><Text>전쟁 중에는 문화가 점령된 타일을 움직이지 않습니다. 평화가 찾아오고 유지 기간이 끝나면, 어느 문명의 문화든 일반 규칙에 따라 그 타일을 획득할 수 있습니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_TITLE" Language="ko_KR"><Text>문화 압력 렌즈</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_CONTENT_PARA_1" Language="ko_KR"><Text>렌즈 메뉴에서 열거나 Shift+C를 누르십시오. 표시 전용입니다. '압력 렌즈' 옵션(기본값은 켜짐)이 추가합니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_COLORS_TITLE" Language="ko_KR"><Text>색</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_COLORS_PARA_1" Language="ko_KR"><Text>소유자가 아닌 문화가 앞서고 그 타일을 획득할 수 있으면, 타일은 앞서는 문명의 색으로 칠해집니다. 획득이 가까워질수록 색이 짙어집니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_COLORS_PARA_2" Language="ko_KR"><Text>'모든 문명이 문화로 땅 획득'이 켜져 있으면, 다른 문명이 획득할 수 있는 타일도 칠해집니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_READOUT_TITLE" Language="ko_KR"><Text>타일 정보</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_READOUT_PARA_1" Language="ko_KR"><Text>타일에 마우스를 올리면 다음이 표시됩니다:[BLIST][LI]그 타일에서 가장 큰 세 문화(소유자 표시 포함)[LI][B]획득 진행도[/B][LI][B]현재 속도로[/B]: 남은 턴 수, 획득 가능, 또는 정체됨.[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_READOUT_PARA_2" Language="ko_KR"><Text>획득할 수 없는 타일에는 문화의 양만 표시됩니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_ALERTS_TITLE" Language="ko_KR"><Text>알림</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_ALERTS_PARA_1" Language="ko_KR"><Text>알림은 턴당 최대 한 번입니다. 영토를 획득했을 때, 또는 다른 문명이 우리 타일을 차지했을 때 표시됩니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_TITLE" Language="ko_KR"><Text>옵션 및 프리셋</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_CONTENT_PARA_1" Language="ko_KR"><Text>옵션, 추가 콘텐츠, 문화 확산. 설정은 게임 도중에 바꿀 수 있습니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_PRESETS_TITLE" Language="ko_KR"><Text>강도</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_PRESETS_PARA_1" Language="ko_KR"><Text>[BLIST][LI][B]낮음[/B]: 확산 4%, 감소 7%, 획득에 400, 범위 5, 빈 땅만.[LI][B]중간[/B](기본값): 확산 5.5%, 감소 5%, 획득에 300, 범위 6.[LI][B]높음[/B]: 확산 7.5%, 감소 4%, 획득에 220, 범위 8.[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_TOGGLES_TITLE" Language="ko_KR"><Text>스위치</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_TOGGLES_PARA_1" Language="ko_KR"><Text>[BLIST][LI][B]활성화[/B]: 끄면 기본 게임 국경으로 돌아갑니다.[LI][B]빈 땅만 획득[/B]: [B]타일 획득[/B] 참조.[LI][B]경쟁 문명 도시 보호[/B]: [B]타일 획득[/B] 참조.[LI][B]인접 타일만[/B]: 기본값은 켜짐. 끄면 다른 영토 안의 고립 지역도 획득할 수 있습니다.[LI][B]새 시설 옆 땅 획득[/B]: 꺼짐. [B]타일 획득[/B] 참조.[LI][B]국경 후퇴[/B]: 꺼짐. [B]국경 후퇴[/B] 참조.[LI][B]모든 문명이 문화로 땅 획득[/B]: 켜짐. [B]경쟁 문명의 확장[/B] 참조.[LI][B]군대가 점령한 땅 유지[/B]: 꺼짐. [B]군대의 점령지 유지[/B] 참조.[LI][B]도시에 사는 모든 문화 반영[/B]: 켜짐. [B]혼합 도시와 점령 도시[/B] 참조.[LI][B]종합 문화 모델[/B]: 켜짐. [B]문화 역량[/B] 참조.[LI][B]디아스포라 따르기[/B]: 켜짐. [B]이주 모드 연동[/B] 참조.[LI][B]압력 렌즈[/B]: 켜짐. [B]문화 압력 렌즈[/B] 참조.[LI][B]디버그 로그[/B]: 꺼짐. 턴별 진단 정보를 UI 로그에 기록합니다.[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_ABOUT_TITLE" Language="ko_KR"><Text>이 모드에 대하여</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_ABOUT_CHAPTER_CONTENT_PARA_1" Language="ko_KR"><Text>Civilization V 모드 Cultural Diffusion의 Civilization VII 버전으로, 규칙이 추가되었습니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_ABOUT_CHAPTER_CREDITS_TITLE" Language="ko_KR"><Text>제작진</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_ABOUT_CHAPTER_CREDITS_PARA_1" Language="ko_KR"><Text>제작: Tower. Gedemon의 Civilization V용 Cultural Diffusion(v18)을 바탕으로 했으며, 문화 필드와 여기 있는 여러 규칙의 출처입니다: 강, 도시 안의 외래 문화, 점령 시 이전, 경쟁 문명과 군대의 획득, 산 문턱값, 소유자의 최소 문화.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_CD_CULTURAL_BORDERS_TITLE" Language="ko_KR"><Text>문화적 국경(모드)</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_CD_CULTURAL_BORDERS_CHAPTER_CONTENT_PARA_1" Language="ko_KR"><Text>문화 확산 모드를 사용하면 문화가 도시에서 타일 단위로 퍼지고, 도시의 3번째 링 너머로, 경쟁 문명의 변경 타일까지 국경을 넓힐 수 있습니다. 규칙은 [B]문화 확산[/B] 탭에 있습니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CULTURAL_DIFFUSION" Language="ko_KR"><Text>문화 확산</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_BORDERS" Language="ko_KR"><Text>국경</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_FORWARD_SETTLING" Language="ko_KR"><Text>전진 정착</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_TERRITORY" Language="ko_KR"><Text>영토</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_HELP" Language="ko_KR"><Text>도움말</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_DIFFUSION" Language="ko_KR"><Text>확산</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_DECAY" Language="ko_KR"><Text>감소</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CULTURE_STOCK" Language="ko_KR"><Text>문화 저장량</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_RIVERS" Language="ko_KR"><Text>강</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_ROADS" Language="ko_KR"><Text>도로</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_MOUNTAINS" Language="ko_KR"><Text>산</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_WATER" Language="ko_KR"><Text>물 건너기</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_TILE_FLIP" Language="ko_KR"><Text>타일 빼앗기</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CITY_PROTECTION" Language="ko_KR"><Text>경쟁 문명 도시 보호</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CITY_STATES" Language="ko_KR"><Text>도시 국가</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_IMPROVEMENT_BUFFER" Language="ko_KR"><Text>시설 주변</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_RING" Language="ko_KR"><Text>4링</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_WORK_TILES" Language="ko_KR"><Text>타일 작업</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CPI" Language="ko_KR"><Text>CPI</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CPI_FULL" Language="ko_KR"><Text>문화력 지수</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CELEBRATION" Language="ko_KR"><Text>기념 행사</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_LEADERS" Language="ko_KR"><Text>지도자 밸런스</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_AGES" Language="ko_KR"><Text>시대</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_GAME_SPEED" Language="ko_KR"><Text>게임 속도</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_EMIGRATION" Language="ko_KR"><Text>이주</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_DIASPORA" Language="ko_KR"><Text>디아스포라</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CONVERSION" Language="ko_KR"><Text>동화</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CAPTURED_CITY" Language="ko_KR"><Text>점령 도시</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_FOREIGN_CULTURE" Language="ko_KR"><Text>외래 문화</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_RECEDE" Language="ko_KR"><Text>후퇴</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_AI" Language="ko_KR"><Text>AI 국경</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CONQUEST" Language="ko_KR"><Text>정복</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_OCCUPATION" Language="ko_KR"><Text>점령</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_LENS" Language="ko_KR"><Text>렌즈</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_PRESSURE" Language="ko_KR"><Text>문화 압력</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_HOTKEY" Language="ko_KR"><Text>Shift+C</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_NOTIFICATIONS" Language="ko_KR"><Text>알림</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_INTENSITY" Language="ko_KR"><Text>강도</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_SETTINGS" Language="ko_KR"><Text>설정</Text></Replace>
+    </LocalizedText>
+</Database>
