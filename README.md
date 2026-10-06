@@ -153,13 +153,18 @@ needs 7.5 times the usual stock before it spreads off the peak (`sourceThreshold
 and owned land always keeps at least a point of its owner's culture (`ownerFloor`), so it
 never reads as empty in the pressure lens.
 
+Around an age change, a tile that carries a district (an improvement, an urban district or a
+wonder) does not change hands in the last two turns of an age or the first two of the next,
+whether by culture, recede or conquest. Moving such a tile in that window crashed the game.
+Unimproved tiles, and every tile the rest of the time, follow the rules above.
+
 ### Why growth is slow
 Culture has to build up ring by ring against decay, so a border's reach grows as a slow wave
 outward from each city:
 
 | Distance from city | Who owns it |
 | --- | --- |
-| Ring 1-3 | Always the base game; the mod never claims or reassigns your inner rings |
+| Ring 1-3 | The base game grows them; your culture never claims your own inner rings. A rival's culture can take one of these tiles when "every civilization gains land by culture" is on (the default) |
 | Ring 4 | The first ring the mod claims, once a city's culture stock is large enough |
 | Ring 5+ | Only a mature, entrenched culture |
 

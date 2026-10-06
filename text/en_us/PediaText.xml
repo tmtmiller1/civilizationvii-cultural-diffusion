@@ -76,6 +76,7 @@
         <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_1"><Text>The Rival city protection option sets how much of a rival city is safe: the center and its first ring, the center only (default), or nothing.</Text></Row>
         <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_2"><Text>City-states and independent peoples always keep their center and first ring.</Text></Row>
         <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_3"><Text>With Claim empty land only on (default on Low), culture never takes an owned tile.</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_4"><Text>Around an age change, an owned tile with an improvement, an urban district or a wonder stays put for the last two turns of the age and the first two of the next. Unimproved tiles are not affected.</Text></Row>
         <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_SAFE_TITLE"><Text>Limits</Text></Row>
         <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_SAFE_PARA_1"><Text>[BLIST][LI]Culture never takes tiles from a civilization you are at war with.[LI]A tile that changed hands is locked for 15 turns.[LI]A claim that would leave a foreign unit, of a civilization at peace with you, no way out is refused.[LI]At most 8 tiles change hands per turn, and each city holds at most 80 claimed tiles (40 on Low).[/LIST]</Text></Row>
         <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_BUFFER_TITLE"><Text>Land Beside New Improvements</Text></Row>
@@ -85,7 +86,7 @@
         <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_TITLE"><Text>Pace &amp; Claimed Land</Text></Row>
         <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_CONTENT_PARA_1"><Text>Culture builds up one ring at a time, so borders grow slowly. A stronger culture reaches farther and faster.</Text></Row>
         <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_RINGS_TITLE"><Text>Rings</Text></Row>
-        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_RINGS_PARA_1"><Text>[BLIST][LI][B]Rings 1-3[/B]: base game rules; never claimed by culture.[LI][B]Ring 4[/B]: the first ring culture claims.[LI][B]Ring 5+[/B]: only strong, established cultures.[/LIST]</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_RINGS_PARA_1"><Text>[BLIST][LI][B]Rings 1-3[/B]: base game rules; your own culture never claims them, but a rival's culture can when Every civilization gains land by culture is on.[LI][B]Ring 4[/B]: the first ring culture claims.[LI][B]Ring 5+[/B]: only strong, established cultures.[/LIST]</Text></Row>
         <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_EARLY_TITLE"><Text>Early Game</Text></Row>
         <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_EARLY_PARA_1"><Text>A young city making little [icon:YIELD_CULTURE] Culture claims nothing. Claims start as cities grow stronger. The High preset reaches farther sooner.</Text></Row>
         <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_VALUE_TITLE"><Text>Claimed Tiles</Text></Row>

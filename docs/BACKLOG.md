@@ -125,6 +125,54 @@ The same question did turn up two real gaps, both now fixed: ships (water is the
 land units (40 on the test map, reading `DOMAIN_LAND` while afloat). Neither has been run end to end, because no map
 offered a bay fixture, so they rest on off-engine tests plus direct reads against ships in game.
 
+## [Fixed, watched once · 2026-10-06] Age-transition crash from district tiles changing hands
+
+**Watched 2026-10-06** (runs from `CDH-Ant159.Civ7Save`, one turn before Antiquity ends):
+
+| Run | Result |
+| --- | --- |
+| `win-pre-district`, mod off, 12 district tiles moved on turn 159 | crash 4 s into Exploration (AsyncWorker2, null+0x2a8 at `+0xac64bc`) |
+| `win-pre-bare`, mod off, 12 tiles with no district, same moment | no crash |
+| `win-post-district`, mod off, 12 district tiles on the live Exploration turn 1 | no crash this time (1 of 2) |
+| `win-none-district`, no moves | no crash |
+| `soak159-1..3`, shipped mod with the guard, 400 seeded frontier tiles | no crash through the transition and 6 turns; 0 district tiles moved in the window, 9 moved the turn it closed |
+
+The guard reads the game as expected: turn 159 countdown on with 1 turn left, turn 160 with 0, Exploration turn 1
+with the countdown off. The three soaks replay identically from the save, so they count as one result. Still owed: the
+same soak with the guard switched off (`PATCH='ui/cd-age-guard.js|TRANSITION_GUARD_TURNS = 2;|TRANSITION_GUARD_TURNS
+= -1;'`), which should crash if the guard is what prevents it. `win-post-bare` is void (the game never loaded; the
+harness copied a stale report, the bug fixed in `run-harness.sh` the same day).
+
+A player reported hard crashes at the start of a turn that stopped with "claim empty land only". Their log line,
+"Trade Route Validation Failure", is base-game noise: it appeared in a run with no ownership changes at all
+(`devtools/harness/trade-control1-Trade.log`), and all seven such checks in the engine log and return.
+
+What crashed, game 1.5.0, `AugustusAnt136` (Antiquity ends at turn 160), all on the AI's AsyncWorker1 thread reading
+a null object through an id list (`KERN_INVALID_ADDRESS` at 0x308 and 0x2a8, neighboring getters
+`CivilizationVII +0xac64a0` / `+0xac64bc`, both reached through the same id lookup `+0xc79b68`):
+
+| Run | Owned tiles moved | Result |
+| --- | --- | --- |
+| `soakA`, shipped mod at defaults, seeded culture | the mod's own flips, including turns 159-160 | crash in the new age's setup (`soakA-crash.ips`) |
+| `trans-district1`, mod off | 12 tiles with a district at t136, 12 more on the live Exploration turn 1 | crash 0.5 s after the turn-1 moves (`trans-district1-crash.ips`) |
+| `trans-bare1`, mod off | the same, tiles with no district | no crash, 30 turns |
+| `soakA-ctrl1`, mod off | none | no crash through the transition |
+| `fast-district-*` / `fast-bare-*`, mod off, a saved Exploration turn 1 | 12 per run | no crash (3 + 2 runs) |
+| `trade-stress1`, `valuable3`, `valuable-exp2`, mod off, mid-age | 180 rural, 43 + 54 urban (wonders among them) | no crash |
+
+So the danger is a district tile changing hands inside the live age transition, not district moves as such.
+`cd-age-guard.js` holds owned district tiles still for the last two turns of an age and the first two of the next,
+on every path (the shared claim gate, recede, conquest); `tests/age-guard.mjs` pins it. Not yet watched: the
+transition-window replicates (`devtools/harness/cdh-game-win-*.js`, from `CDH-Ant159.Civ7Save`) and a rerun of
+`soakA` with the guard in place are the check. The parked run 31 below (Exploration turn 26, AsyncWorker3, 0x2d8)
+faulted inside the same lookup `+0x903a10` that the district crash's caller uses, on a stale pointer, so it is likely
+the same family; but it crashed well outside the guarded window, so the guard may not cover every trigger. If a
+mid-age crash of this family recurs, the next cut is to stop moving owned district tiles at all (a visible change,
+which is why it was not made here). Run 30 (AppHost `+0x21081fc`) is the base game's load-transition crash.
+
+The same investigation found the district read dead on 1.5.0 (`GameplayMap.getDistrictType` is gone), which let
+conquest take urban districts; `districtTypeNameAt` now reads `Districts.getAtLocation` (`tests/districts.mjs`).
+
 ## [Open · parked 2026-09-24] Non-deterministic native crash in long unattended runs
 
 Two of four long harness runs crashed, on different threads with different fault addresses, and a mod-ON run then

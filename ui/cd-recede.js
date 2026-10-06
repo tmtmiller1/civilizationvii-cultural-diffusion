@@ -15,6 +15,7 @@ import { resolveOwner, passCanAct } from "/cultural-diffusion/ui/cd-field.js";
 import { atWar } from "/cultural-diffusion/ui/cd-borders.js";
 import { performFlip } from "/cultural-diffusion/ui/cd-ownership.js";
 import { markPending, isPending } from "/cultural-diffusion/ui/cd-pending.js";
+import { districtTransferPaused } from "/cultural-diffusion/ui/cd-age-guard.js";
 
 /** @param {string} k Plot key. @returns {{x:number,y:number}} Location. */
 function unkey(k) {
@@ -67,6 +68,7 @@ function cedeToRival(state, k, loc, rival, ctx) {
   const near = nearest(loc, rivals.filter((c) => c.owner === rival));
   if (!near || near.d > Math.max(1, CONFIG.flipMaxDistance)) return null;
   if (CONFIG.requireAdjacency && !touchesOwner(loc, rival)) return null;
+  if (districtTransferPaused(loc, me)) return null; // the tile is ours; it waits out the age transition
   const res = performFlip({ playerId: rival, city: near.city, loc, verb: "purchasePlot", refund: CONFIG.refundGold });
   if (!res.ok) {
     dlog(`recede ${k}: cede to player ${rival} NOT APPLIED reason=${res.reason || "call-failed"}`);

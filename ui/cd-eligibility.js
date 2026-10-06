@@ -21,6 +21,7 @@ import { currentAgeKey } from "/cultural-diffusion/ui/cd-polity.js";
 import { rivalClaimAllowed } from "/cultural-diffusion/ui/cd-borders.js";
 import { wouldStrandForeignUnit } from "/cultural-diffusion/ui/cd-units.js";
 import { isPending } from "/cultural-diffusion/ui/cd-pending.js";
+import { districtTransferPaused } from "/cultural-diffusion/ui/cd-age-guard.js";
 
 /** @param {number} x @param {number} y @returns {string} Plot key. */
 function key(x, y) {
@@ -141,6 +142,7 @@ export function claimInScope(loc, ctx) {
 export function claimGateBlocked(loc, owner, me, cfg, inFlight) {
   if (distantLandsGated(loc, me)) return "distant-lands";
   if (owner >= 0 && !rivalClaimAllowed(loc, owner, me, cfg)) return "protected-or-at-war";
+  if (districtTransferPaused(loc, owner)) return "age-transition";
   if (cfg.requireAdjacency && !adjacentToMe(loc, me)) return "not-adjacent";
   if (wouldStrandForeignUnit(loc, me, inFlight)) return "would-strand-a-unit";
   return null;
