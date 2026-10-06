@@ -29,6 +29,7 @@ import { hexDistance } from "/cultural-diffusion/ui/cd-pressure.js";
 import { performFlip } from "/cultural-diffusion/ui/cd-ownership.js";
 import { markPending, isPending } from "/cultural-diffusion/ui/cd-pending.js";
 import { notifyFlip } from "/cultural-diffusion/ui/cd-notifications.js";
+import { districtTransferPaused } from "/cultural-diffusion/ui/cd-age-guard.js";
 
 /** @param {()=>*} fn Thunk. @param {*} fallback @returns {*} fn() or fallback. */
 function safe(fn, fallback) {
@@ -172,6 +173,7 @@ function sweepTile(k, ctx) {
   if (out.flips + out.pending >= Math.max(0, CONFIG.maxFlipsPerTurn)) return "held";
   if (CONFIG.claimOnlyUnowned) return "held";                                  // safety mode: owned land never flips
   if (CONFIG.requireAdjacency && !touches(loc, winner)) return "held";         // Civ V: adjacent to the unit owner's land
+  if (districtTransferPaused(loc, owner)) return "held";                       // a district tile waits out the age transition
   return conquer(state, k, loc, owner, winner);
 }
 

@@ -10,6 +10,7 @@ import { applyTunableOverrides } from "/cultural-diffusion/ui/cd-settings.js";
 import { runPass, claimBufferAt } from "/cultural-diffusion/ui/cd-pass.js";
 import { loadState, saveState } from "/cultural-diffusion/ui/cd-state.js";
 import { onCityTransfered } from "/cultural-diffusion/ui/cd-capture.js";
+import { ownerAt } from "/cultural-diffusion/ui/cd-plots.js";
 
 let _lastLocalTurnRun = -999;
 
@@ -68,19 +69,31 @@ function lookupConstructible(typeId) {
 }
 
 /**
+ * Whether a ConstructibleAddedToMap payload is a completed rural development on the local player's own land.
+ * @param {*} data Event payload: { location:{x,y}, constructibleType, percentComplete }.
+ * @returns {boolean} True when the +1 buffer could apply.
+ */
+function isOwnRuralCompletion(data) {
+  const loc = data && data.location;
+  if (!loc || typeof loc.x !== "number" || typeof loc.y !== "number") return false;
+  if (data.percentComplete != null && data.percentComplete !== 100) return false; // only completed builds
+  if (!isRuralConstructible(data.constructibleType)) return false;                 // rural growth only
+  return ownerAt(loc) === localId();                                                // only our own development
+}
+
+/**
  * ConstructibleAddedToMap handler: when the local player finishes a rural improvement, push the
  * "+1 ring" cultural buffer onto the unowned tiles adjacent to it.
  * @param {*} data Event payload: { location:{x,y}, constructibleType, percentComplete }.
  */
 function onConstructibleAdded(data) {
   try {
+    // Cheap checks first: this event fires for every player's every build, and the settings refresh below
+    // reads and parses the shared localStorage blob about fifteen times.
+    if (!isOwnRuralCompletion(data)) return;
     applyTunableOverrides(); // pick up an Options change made since the last pass, e.g. the buffer just switched off
     if (!CONFIG.growthBuffer) return;
-    const loc = data && data.location;
-    if (!loc || typeof loc.x !== "number" || typeof loc.y !== "number") return;
-    if (data.percentComplete != null && data.percentComplete !== 100) return; // only completed builds
-    if (!isRuralConstructible(data.constructibleType)) return;                 // rural growth only
-    claimBufferAt({ x: loc.x, y: loc.y });
+    claimBufferAt({ x: data.location.x, y: data.location.y });
   } catch (e) {
     dlog(`onConstructibleAdded threw ${String(e)}`);
   }

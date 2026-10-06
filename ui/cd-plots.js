@@ -126,9 +126,30 @@ export function isDistantLands(playerId, loc) {
 export function districtTypeNameAt(loc) {
   return safe(() => {
     const t = GameplayMap?.getDistrictType?.(loc.x, loc.y);
-    if (t == null) return null;
-    if (typeof t === "string") return t;
-    return GameInfo?.Districts?.lookup?.(t)?.DistrictType || null;
+    if (t != null) {
+      if (typeof t === "string") return t;
+      const name = GameInfo?.Districts?.lookup?.(t)?.DistrictType;
+      if (name) return name;
+    }
+    return districtNameFromDistricts(loc);
+  }, null);
+}
+
+/**
+ * The district type name through `Districts.getAtLocation(loc).type`, matched against `DistrictTypes`. Game 1.5.0
+ * has no `GameplayMap.getDistrictType` (watched 2026-10-05), so this is the read that works there.
+ * @param {{x:number,y:number}} loc Plot.
+ * @returns {string|null} "DISTRICT_URBAN" and the like, or null when there is no district or no API.
+ */
+function districtNameFromDistricts(loc) {
+  return safe(() => {
+    if (typeof Districts === "undefined" || typeof Districts.getAtLocation !== "function") return null;
+    const d = Districts.getAtLocation({ x: loc.x, y: loc.y });
+    if (!d || d.type == null || typeof DistrictTypes === "undefined") return null;
+    for (const k of Object.keys(DistrictTypes)) {
+      if (DistrictTypes[k] === d.type) return `DISTRICT_${k}`;
+    }
+    return null;
   }, null);
 }
 

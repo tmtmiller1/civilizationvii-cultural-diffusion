@@ -4,6 +4,26 @@ All notable changes to Cultural Diffusion are recorded here. The format follows
 [Keep a Changelog](https://keepachangelog.com/), and the mod uses
 [Semantic Versioning](https://semver.org/).
 
+## [1.4.1] - 2026-10-06
+
+### Fixed
+
+- A crash at the start of a turn around an age transition. When culture moved a tile that carries a district (a farm,
+  mine or other improvement, an urban district or a wonder) from one civilization to another in the last turns of an
+  age or the first turns of the next, the game could crash while it set up the new age or on its first turn (watched
+  twice on game 1.5.0; the same moves of unimproved tiles, and of improved tiles mid-age, did not crash). Such tiles now
+  wait out the last two turns of an age and the first two of the next before they change hands; unimproved tiles, and
+  every tile the rest of the time, behave as before. "Claim empty land only" had avoided the crash because it never
+  moves another civilization's tile.
+- Armies holding ground (conquest) could take an urban district on game 1.5.0, against the rule that city centers and
+  urban districts never change hands that way. The game no longer offers the call the mod used to read a tile's
+  district, so every tile read as having none; the mod now reads districts the way the base game does.
+
+### Changed
+
+- Finishing any building or improvement, for any player, no longer makes the mod re-read its settings. It now does so
+  only for a completed rural improvement on your own land, the one case the "+1 ring" option acts on.
+
 ## [1.4.0] - 2026-09-26
 
 ### Added
