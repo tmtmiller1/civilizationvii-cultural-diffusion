@@ -1,0 +1,20 @@
+[2026-10-06 09:44:57]	JS Error (Line):       throw new Error(`Expected this.unit to be non-null.`);
+[2026-10-06 09:44:57]	JS Error (Stack): Error: Expected this.unit to be non-null.
+[2026-10-06 09:44:57]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags.js:348: Error: Expected this.unit to be non-null.
+[2026-10-06 09:44:57]	JS Error (Line):       throw new Error(`Expected this.unit to be non-null.`);
+[2026-10-06 09:44:57]	JS Error (Stack): Error: Expected this.unit to be non-null.
+[2026-10-06 09:44:58]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags.js:348: Error: Expected this.unit to be non-null.
+[2026-10-06 09:44:58]	JS Error (Line):       throw new Error(`Expected this.unit to be non-null.`);
+[2026-10-06 09:44:58]	JS Error (Stack): Error: Expected this.unit to be non-null.
+[2026-10-06 09:44:59]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags.js:348: Error: Expected this.unit to be non-null.
+[2026-10-06 09:44:59]	JS Error (Line):       throw new Error(`Expected this.unit to be non-null.`);
+[2026-10-06 09:44:59]	JS Error (Stack): Error: Expected this.unit to be non-null.
+[2026-10-06 09:45:29]	HTML Parser Error@:fs://game/root-game.html@49:43: Tokenizer error with an unimplemented error message.
+[2026-10-06 09:45:29]	Unhandled Promise Rejection: TypeError: Cannot read properties of null (reading 'cityId').  Re-run with inspector attached for callstack. 
+[2026-10-06 09:45:29]	Unhandled rejection error value: TypeError: Cannot read properties of null (reading 'cityId')
+[2026-10-06 09:54:44]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags.js:348: Error: Expected this.unit to be non-null.
+[2026-10-06 09:54:44]	JS Error (Line):       throw new Error(`Expected this.unit to be non-null.`);
+[2026-10-06 09:54:44]	JS Error (Stack): Error: Expected this.unit to be non-null.
+[2026-10-06 10:29:51]	JS Error: fs://game/bz-army-trix/ui/unit-actions/bz-unit-actions.js:125: TypeError: Cannot read properties of null (reading 'Units')
+[2026-10-06 10:29:51]	JS Error (Line):     const units = player.Units.getUnits().filter(u => u.Religion?.spreadCharges ?? 0);
+[2026-10-06 10:29:51]	JS Error (Stack): TypeError: Cannot read properties of null (reading 'Units')

@@ -38,6 +38,29 @@ restores it, deploys the repo copy of the mod with `AffectsSavedGames=0` and `de
 files only, waits for `DONE`, writes `<label>-UI.log`, copies any `.ips` crash report, then quits and redeploys the
 unpatched copy.
 
+## Age-transition crash runs (2026-10-05/06, game 1.5.0)
+
+A player's turn-start crash, gone with "claim empty land only". The verdicts and the fix are in
+[`../../docs/BACKLOG.md`](../../docs/BACKLOG.md) (the 2026-10-06 entry). `PATCH` now takes several substitutions
+separated by `;;`. Set `EnableSingleOutput 1` in `AppOptions.txt` (back it up first) to get the engine's own
+`Logs/Trade.log`. Most of these run with `NO_MOD=1` and make the ownership moves themselves with `city.purchasePlot`.
+
+| Script | What it does |
+| --- | --- |
+| `cdh-game-trade.js` / `-off.js` | Moves rival tiles on (or nowhere near) live trade-route paths, read from `Trade.getCurrentTradeRoutes()` |
+| `cdh-game-trade-stress.js` | 60 then 20 rival-tile moves a turn for 8 turns, projecting every major's routes before and after |
+| `cdh-game-trade-merchant.js` / `-merch-control.js` | Moves the tiles under merchants; the control makes no move |
+| `cdh-game-atwar.js` | `Diplomacy.isAtWarWith` with every owner id on the map, then 99 |
+| `cdh-game-valuable.js` | Moves urban districts (wonders included), resource tiles and tiles with units, logging what stood there |
+| `cdh-game-soak.js` / `-soak-control.js` | The shipped mod for 40 turns with seeded culture, checking its promises each turn (inner rings, districts, city centers, stale claims, pending writes, state size); the control imports nothing from the mod |
+| `cdh-game-transition.js` / `-bare.js` | Moves 12 owned tiles with (or without) a district, then plays through the age transition |
+| `cdh-game-fast-*.js` | The same moves on a loaded Exploration turn 1 (`AugustusExp1`) |
+| `cdh-game-win-<when>-<mode>.js` | From `CDH-Ant159.Civ7Save` (an autosave copy, one turn before Antiquity ends): moves district or bare tiles before (`pre`) or after (`post`) the transition, or none |
+
+Every script counts turns played, not `Game.turn`, which restarts at 1 in a new age. After a transition the game
+reloads the UI scripts, so a script runs its first-turn step again in the new age; the `win-` scripts check the age
+to act on one side only.
+
 ## Pedia run: the Civilopedia section renders (run 2026-09-26, game 1.5.0, mod 1.4.0)
 
 Script `cdh-game-pedia.js`, log `pedia-UI.log`, no turns played. `run-harness.sh` now deploys `data/` as well, which
