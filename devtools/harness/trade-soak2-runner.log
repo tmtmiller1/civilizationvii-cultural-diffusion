@@ -1,0 +1,26 @@
+[19:36:55] autosaves backed up: 10
+[19:36:55] registry before: 2273=0  (restoring Disabled=0 afterward)
+[19:36:55] deployed mod: debug=1 affectsSaves0=1
+[19:36:55] harness installed: cdh-game-trade-soak.js on AugustusExp64.Civ7Save
+[19:36:55] previous UI.log kept at /Users/USER/Library/Application Support/Civilization VII/cd-harness-backup/UI-before-trade-soak2-20261005-193655.log (78 lines)
+[19:36:58] game pid 14114
+[19:39:41] result=done after 148s
+[19:39:41] collected AI_Behavior_Tree_Events.csv (4 lines)
+[19:39:41] collected AI_Behavior_Trees.csv (1332 lines)
+[19:39:41] collected AI_CityStrategy.csv (1 lines)
+[19:39:41] collected AI_CombatPlanning.csv (149 lines)
+[19:39:41] collected AI_DiplomaticActions.csv (75 lines)
+[19:39:41] collected AI_Market.csv (16 lines)
+[19:39:41] collected AI_MayhemTracker.csv (24 lines)
+[19:39:42] collected AI_MovementPlanning.csv (915 lines)
+[19:39:42] collected AI_Operation.csv (578 lines)
+[19:39:42] collected AI_Operation_Eval.csv (16 lines)
+[19:39:42] collected AI_Recruiting.csv (5163 lines)
+[19:39:42] collected AI_Tactical.csv (275 lines)
+[19:39:42] collected AI_Targets.csv (4137 lines)
+[19:39:42] collected AI_UnitEfficiency.csv (141 lines)
+[19:39:42] collected AI_Victories.csv (1 lines)
+[19:39:50] restored: registry 2275=0  harness present: no debugPatched: 0
+[19:39:50] autosaves changed during the run; putting the player's back
+[19:39:50] FINISHED result=done  log: /Users/USER/Repos/civilization_mods/civilization_vii_mods/tower_mods/cultural_diffusion/devtools/harness/trade-soak2-UI.log
+RUN_EXIT=0

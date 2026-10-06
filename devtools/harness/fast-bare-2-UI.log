@@ -1,0 +1,27 @@
+[2026-10-06 00:23:02]	[CDH] shell attached 
+[2026-10-06 00:23:03]	[CDH] shell query complete 
+[2026-10-06 00:23:04]	[CDH] shell found AugustusExp1.Civ7Save turn 1 age AGE_EXPLORATION missingMods=0 unowned=0 
+[2026-10-06 00:23:04]	[CDH] shell handleLoadSave returned true 
+[2026-10-06 00:23:20]	[CDH] attached transition-bare 
+[2026-10-06 00:23:25]	[CDH] LOAD GameStarted 
+[2026-10-06 00:23:35]	[CDH] VALUABLE start turn=1 age=AGE_EXPLORATION majors=[0,1,2,3,4,5,6,7,8,9] 
+[2026-10-06 00:23:35]	[CDH] DISTRICT READ check: 92,32 probe=DISTRICT_CITY_CENTER mod=null(getDistrictType undefined) | 64,14 probe=DISTRICT_CITY_CENTER mod=null(getDistrictType undefined) | 70,54 probe=DISTRICT_CITY_CENTER mod=null(getDistrictType undefined) 
+[2026-10-06 00:23:35]	[CDH] FLIP T0 bare 80,14 1->3 dist=none cons=[] 
+[2026-10-06 00:23:35]	[CDH] FLIP T0 bare 79,15 3->1 dist=none cons=[] 
+[2026-10-06 00:23:35]	[CDH] FLIP T0 bare 83,18 3->0 dist=none cons=[] 
+[2026-10-06 00:23:35]	[CDH] FLIP T0 bare 84,18 0->3 dist=none cons=[] 
+[2026-10-06 00:23:35]	[CDH] FLIP T0 bare 78,19 3->0 dist=none cons=[] 
+[2026-10-06 00:23:35]	[CDH] FLIP T0 bare 84,19 0->3 dist=none cons=[] 
+[2026-10-06 00:23:35]	[CDH] FLIP T0 bare 84,20 0->3 dist=none cons=[] 
+[2026-10-06 00:23:35]	[CDH] FLIP T0 bare 80,22 0->3 dist=none cons=[] 
+[2026-10-06 00:23:35]	[CDH] FLIP T0 bare 15,25 7->8 dist=none cons=[] 
+[2026-10-06 00:23:35]	[CDH] FLIP T0 bare 20,25 7->8 dist=none cons=[] 
+[2026-10-06 00:23:35]	[CDH] FLIP T0 bare 14,26 7->8 dist=none cons=[] 
+[2026-10-06 00:23:35]	[CDH] FLIP T0 bare 15,26 7->8 dist=none cons=[] 
+[2026-10-06 00:23:41]	[CDH] LANDED T0: 12/12 mode=bare 
+[2026-10-06 00:23:49]	[CDH] TURN k=1 turn=2 
+[2026-10-06 00:23:49]	[CDH] AGE T1 AGE_EXPLORATION 
+[2026-10-06 00:23:58]	[CDH] TURN k=2 turn=3 
+[2026-10-06 00:23:58]	[CDH] AGE T2 AGE_EXPLORATION 
+[2026-10-06 00:24:14]	[CDH] TURN k=3 turn=5 
+[2026-10-06 00:24:14]	[CDH] DONE harness fast finished, survived 3 turns, 0 flips 

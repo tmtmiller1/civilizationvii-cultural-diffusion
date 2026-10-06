@@ -1,0 +1,30 @@
+[23:32:48] autosaves backed up: 10
+[23:32:48] registry before: 2297=0  (restoring Disabled=0 afterward)
+[23:32:48] deployed mod: debug=1 affectsSaves0=1
+[23:32:48] harness installed: cdh-game-soak.js on AugustusAnt136.Civ7Save
+[23:32:48] previous UI.log kept at /Users/USER/Library/Application Support/Civilization VII/cd-harness-backup/UI-before-soakA-20261005-233248.log (3846 lines)
+[23:32:50] game pid 14738
+[23:44:18] result=crashed after 632s
+[23:44:18] collected AI_Behavior_Tree_Events.csv (60 lines)
+[23:44:18] collected AI_Behavior_Trees.csv (42203 lines)
+[23:44:18] collected AI_CityStrategy.csv (100 lines)
+[23:44:18] collected AI_CombatPlanning.csv (14187 lines)
+[23:44:18] collected AI_Commander_Promotions.csv (123 lines)
+[23:44:18] collected AI_DiplomaticActions.csv (2066 lines)
+[23:44:18] collected AI_Leader.csv (11 lines)
+[23:44:18] collected AI_Market.csv (808 lines)
+[23:44:18] collected AI_MayhemTracker.csv (1176 lines)
+[23:44:18] collected AI_MovementPlanning.csv (23853 lines)
+[23:44:18] collected AI_Operation.csv (18107 lines)
+[23:44:18] collected AI_Operation_Eval.csv (1704 lines)
+[23:44:18] collected AI_Recruiting.csv (78617 lines)
+[23:44:18] collected AI_Tactical.csv (6527 lines)
+[23:44:18] collected AI_Targets.csv (114716 lines)
+[23:44:18] collected AI_UnitEfficiency.csv (256 lines)
+[23:44:18] collected AI_Victories.csv (29 lines)
+[23:44:18] waiting 60s for the crash report to land
+[23:45:18] crash report: CivilizationVII-2026-10-05-234437.ips
+[23:45:26] restored: registry 2299=0  harness present: no debugPatched: 0
+[23:45:26] autosaves changed during the run; putting the player's back
+[23:45:26] FINISHED result=crashed  log: /Users/USER/Repos/civilization_mods/civilization_vii_mods/tower_mods/cultural_diffusion/devtools/harness/soakA-UI.log
+RUN_EXIT=0

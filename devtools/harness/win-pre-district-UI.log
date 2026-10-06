@@ -1,0 +1,29 @@
+[2026-10-06 08:58:35]	[CDH] shell attached 
+[2026-10-06 08:58:36]	[CDH] shell query complete 
+[2026-10-06 08:58:36]	[CDH] shell found CDH-Ant159.Civ7Save turn 159 age AGE_ANTIQUITY missingMods=0 unowned=0 
+[2026-10-06 08:58:36]	[CDH] shell handleLoadSave returned true 
+[2026-10-06 08:58:54]	[CDH] attached transition-district 
+[2026-10-06 08:58:59]	[CDH] LOAD GameStarted 
+[2026-10-06 08:59:09]	[CDH] VALUABLE start turn=159 age=AGE_ANTIQUITY majors=[0,1,2,3,4,5,6,7,8,9] 
+[2026-10-06 08:59:09]	[CDH] DISTRICT READ check: 92,32 probe=DISTRICT_CITY_CENTER mod=null(getDistrictType undefined) | 64,14 probe=DISTRICT_CITY_CENTER mod=null(getDistrictType undefined) | 70,54 probe=DISTRICT_CITY_CENTER mod=null(getDistrictType undefined) 
+[2026-10-06 08:59:09]	[CDH] WINDOW pre age=AGE_ANTIQUITY flipping=true 
+[2026-10-06 08:59:09]	[CDH] FLIP T0 district 80,15 3->1 dist=DISTRICT_RURAL cons=["IMPROVEMENT_MINE_RESOURCE"] 
+[2026-10-06 08:59:09]	[CDH] FLIP T0 district 83,20 3->0 dist=DISTRICT_RURAL cons=["IMPROVEMENT_WOODCUTTER"] 
+[2026-10-06 08:59:09]	[CDH] FLIP T0 district 83,21 3->0 dist=DISTRICT_RURAL cons=["IMPROVEMENT_CLAY_PIT"] 
+[2026-10-06 08:59:09]	[CDH] FLIP T0 district 15,25 7->8 dist=DISTRICT_RURAL cons=["IMPROVEMENT_WOODCUTTER"] 
+[2026-10-06 08:59:09]	[CDH] FLIP T0 district 15,27 8->7 dist=DISTRICT_RURAL cons=["IMPROVEMENT_WOODCUTTER"] 
+[2026-10-06 08:59:09]	[CDH] FLIP T0 district 83,31 3->0 dist=DISTRICT_RURAL cons=["IMPROVEMENT_FARM"] 
+[2026-10-06 08:59:09]	[CDH] FLIP T0 district 84,31 0->3 dist=DISTRICT_RURAL cons=["IMPROVEMENT_WOODCUTTER"] 
+[2026-10-06 08:59:09]	[CDH] FLIP T0 district 82,32 3->0 dist=DISTRICT_RURAL cons=["IMPROVEMENT_FARM"] 
+[2026-10-06 08:59:09]	[CDH] FLIP T0 district 83,32 3->0 dist=DISTRICT_RURAL cons=["IMPROVEMENT_WOODCUTTER_RESOURCE"] 
+[2026-10-06 08:59:09]	[CDH] FLIP T0 district 80,34 3->2 dist=DISTRICT_RURAL cons=["IMPROVEMENT_FARM"] 
+[2026-10-06 08:59:09]	[CDH] FLIP T0 district 82,34 0->3 dist=DISTRICT_RURAL cons=["IMPROVEMENT_CAMP"] 
+[2026-10-06 08:59:09]	[CDH] FLIP T0 district 90,34 0->3 dist=DISTRICT_WONDER cons=["WONDER_MUNDO_PERDIDO(W)"] 
+[2026-10-06 08:59:15]	[CDH] LANDED T0: 12/12 mode=district 
+[2026-10-06 08:59:23]	[CDH] TURN k=1 turn=160 
+[2026-10-06 08:59:23]	[CDH] AGE T1 AGE_ANTIQUITY 
+[2026-10-06 08:59:50]	[CDH] attached transition-district 
+[2026-10-06 08:59:55]	[CDH] LOAD GameStarted 
+[2026-10-06 09:00:05]	[CDH] VALUABLE start turn=1 age=AGE_EXPLORATION majors=[0,1,2,3,4,5,6,7,8,9] 
+[2026-10-06 09:00:05]	[CDH] DISTRICT READ check: 92,32 probe=DISTRICT_CITY_CENTER mod=null(getDistrictType undefined) | 64,14 probe=DISTRICT_CITY_CENTER mod=null(getDistrictType undefined) | 70,54 probe=DISTRICT_CITY_CENTER mod=null(getDistrictType undefined) 
+[2026-10-06 09:00:05]	[CDH] WINDOW pre age=AGE_EXPLORATION flipping=false 

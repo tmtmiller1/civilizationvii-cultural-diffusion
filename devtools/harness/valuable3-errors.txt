@@ -1,0 +1,20 @@
+[2026-10-05 23:10:41]	JS Error (Line):       throw new Error(`Expected this.unit to be non-null.`);
+[2026-10-05 23:10:41]	JS Error (Stack): Error: Expected this.unit to be non-null.
+[2026-10-05 23:10:45]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags.js:348: Error: Expected this.unit to be non-null.
+[2026-10-05 23:10:45]	JS Error (Line):       throw new Error(`Expected this.unit to be non-null.`);
+[2026-10-05 23:10:45]	JS Error (Stack): Error: Expected this.unit to be non-null.
+[2026-10-05 23:10:45]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags.js:348: Error: Expected this.unit to be non-null.
+[2026-10-05 23:10:45]	JS Error (Line):       throw new Error(`Expected this.unit to be non-null.`);
+[2026-10-05 23:10:45]	JS Error (Stack): Error: Expected this.unit to be non-null.
+[2026-10-05 23:10:45]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags.js:348: Error: Expected this.unit to be non-null.
+[2026-10-05 23:10:45]	JS Error (Line):       throw new Error(`Expected this.unit to be non-null.`);
+[2026-10-05 23:10:45]	JS Error (Stack): Error: Expected this.unit to be non-null.
+[2026-10-05 23:10:45]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags.js:348: Error: Expected this.unit to be non-null.
+[2026-10-05 23:10:45]	JS Error (Line):       throw new Error(`Expected this.unit to be non-null.`);
+[2026-10-05 23:10:45]	JS Error (Stack): Error: Expected this.unit to be non-null.
+[2026-10-05 23:10:46]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags.js:348: Error: Expected this.unit to be non-null.
+[2026-10-05 23:10:46]	JS Error (Line):       throw new Error(`Expected this.unit to be non-null.`);
+[2026-10-05 23:10:46]	JS Error (Stack): Error: Expected this.unit to be non-null.
+[2026-10-05 23:10:47]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags.js:348: Error: Expected this.unit to be non-null.
+[2026-10-05 23:10:47]	JS Error (Line):       throw new Error(`Expected this.unit to be non-null.`);
+[2026-10-05 23:10:47]	JS Error (Stack): Error: Expected this.unit to be non-null.

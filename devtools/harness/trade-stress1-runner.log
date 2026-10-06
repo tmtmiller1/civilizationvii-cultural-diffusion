@@ -1,0 +1,29 @@
+[19:41:24] autosaves backed up: 10
+[19:41:24] registry before: 2275=0  (restoring Disabled=0 afterward)
+[19:41:24] deployed mod: debug=1 affectsSaves0=1
+[19:41:24] NO_MOD=1: Cultural Diffusion left DISABLED for this run (control)
+[19:41:24] harness installed: cdh-game-trade-stress.js on AugustusAnt136.Civ7Save
+[19:41:24] previous UI.log kept at /Users/USER/Library/Application Support/Civilization VII/cd-harness-backup/UI-before-trade-stress1-20261005-194124.log (1696 lines)
+[19:41:27] game pid 17711
+[19:43:50] result=done after 128s
+[19:43:50] collected AI_Behavior_Tree_Events.csv (23 lines)
+[19:43:50] collected AI_Behavior_Trees.csv (14598 lines)
+[19:43:50] collected AI_CityStrategy.csv (30 lines)
+[19:43:50] collected AI_CombatPlanning.csv (3452 lines)
+[19:43:50] collected AI_Commander_Promotions.csv (23 lines)
+[19:43:50] collected AI_DiplomaticActions.csv (731 lines)
+[19:43:50] collected AI_Leader.csv (4 lines)
+[19:43:50] collected AI_Market.csv (367 lines)
+[19:43:50] collected AI_MayhemTracker.csv (315 lines)
+[19:43:50] collected AI_MovementPlanning.csv (7729 lines)
+[19:43:50] collected AI_Operation.csv (6447 lines)
+[19:43:51] collected AI_Operation_Eval.csv (613 lines)
+[19:43:51] collected AI_Recruiting.csv (28156 lines)
+[19:43:51] collected AI_Tactical.csv (1839 lines)
+[19:43:51] collected AI_Targets.csv (36107 lines)
+[19:43:51] collected AI_UnitEfficiency.csv (115 lines)
+[19:43:51] collected AI_Victories.csv (9 lines)
+[19:43:59] restored: registry 2277=0  harness present: no debugPatched: 0
+[19:43:59] autosaves changed during the run; putting the player's back
+[19:43:59] FINISHED result=done  log: /Users/USER/Repos/civilization_mods/civilization_vii_mods/tower_mods/cultural_diffusion/devtools/harness/trade-stress1-UI.log
+RUN_EXIT=0

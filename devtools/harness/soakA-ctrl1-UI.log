@@ -1,0 +1,64 @@
+[2026-10-05 23:46:40]	[CDH] shell attached 
+[2026-10-05 23:46:41]	[CDH] shell query complete 
+[2026-10-05 23:46:41]	[CDH] shell found AugustusAnt136.Civ7Save turn 136 age AGE_ANTIQUITY missingMods=0 unowned=0 
+[2026-10-05 23:46:41]	[CDH] shell handleLoadSave returned true 
+[2026-10-05 23:46:59]	[CDH] attached soak-control 
+[2026-10-05 23:47:04]	[CDH] LOAD GameStarted 
+[2026-10-05 23:47:14]	[CDH] SOAK start turn=136 age=AGE_ANTIQUITY local=0 majors=[0,1,2,3,4,5,6,7,8,9] config={} 
+[2026-10-05 23:47:14]	[CDH] INV T0-pre: no state (null) 
+[2026-10-05 23:47:14]	[CDH] SEED T0: skipped (control) 
+[2026-10-05 23:47:14]	[CDH] T0 runNow="ERR" 
+[2026-10-05 23:47:22]	[CDH] INV T0-post: no state (null) 
+[2026-10-05 23:47:41]	[CDH] TURN k=1 turn=137 age=AGE_ANTIQUITY 
+[2026-10-05 23:47:41]	[CDH] INV T1: no state (null) 
+[2026-10-05 23:48:23]	[CDH] TURN k=4 turn=140 age=AGE_ANTIQUITY 
+[2026-10-05 23:48:23]	[CDH] INV T4: no state (null) 
+[2026-10-05 23:48:55]	[CDH] TURN k=6 turn=142 age=AGE_ANTIQUITY 
+[2026-10-05 23:48:55]	[CDH] INV T6: no state (null) 
+[2026-10-05 23:49:25]	[CDH] TURN k=8 turn=144 age=AGE_ANTIQUITY 
+[2026-10-05 23:49:25]	[CDH] INV T8: no state (null) 
+[2026-10-05 23:49:41]	[CDH] TURN k=9 turn=145 age=AGE_ANTIQUITY 
+[2026-10-05 23:49:41]	[CDH] INV T9: no state (null) 
+[2026-10-05 23:49:55]	[CDH] TURN k=10 turn=146 age=AGE_ANTIQUITY 
+[2026-10-05 23:49:55]	[CDH] INV T10: no state (null) 
+[2026-10-05 23:49:55]	[CDH] SEED T10: skipped (control) 
+[2026-10-05 23:50:19]	[CDH] TURN k=11 turn=147 age=AGE_ANTIQUITY 
+[2026-10-05 23:50:19]	[CDH] INV T11: no state (null) 
+[2026-10-05 23:51:42]	[CDH] ENDTURN stuck on turn 147 blocker=NEW_POPULATION: one Autoplay turn 
+[2026-10-05 23:52:03]	[CDH] TURN k=12 turn=148 age=AGE_ANTIQUITY 
+[2026-10-05 23:52:03]	[CDH] INV T12: no state (null) 
+[2026-10-05 23:52:39]	[CDH] TURN k=14 turn=150 age=AGE_ANTIQUITY 
+[2026-10-05 23:52:39]	[CDH] INV T14: no state (null) 
+[2026-10-05 23:53:05]	[CDH] TURN k=15 turn=151 age=AGE_ANTIQUITY 
+[2026-10-05 23:53:05]	[CDH] INV T15: no state (null) 
+[2026-10-05 23:53:05]	[CDH] SEED T15: skipped (control) 
+[2026-10-05 23:53:29]	[CDH] TURN k=16 turn=152 age=AGE_ANTIQUITY 
+[2026-10-05 23:53:29]	[CDH] INV T16: no state (null) 
+[2026-10-05 23:53:48]	[CDH] TURN k=17 turn=153 age=AGE_ANTIQUITY 
+[2026-10-05 23:53:48]	[CDH] INV T17: no state (null) 
+[2026-10-05 23:54:15]	[CDH] TURN k=18 turn=154 age=AGE_ANTIQUITY 
+[2026-10-05 23:54:15]	[CDH] INV T18: no state (null) 
+[2026-10-05 23:54:39]	[CDH] TURN k=19 turn=155 age=AGE_ANTIQUITY 
+[2026-10-05 23:54:39]	[CDH] INV T19: no state (null) 
+[2026-10-05 23:55:02]	[CDH] TURN k=20 turn=156 age=AGE_ANTIQUITY 
+[2026-10-05 23:55:02]	[CDH] INV T20: no state (null) 
+[2026-10-05 23:55:02]	[CDH] SEED T20: skipped (control) 
+[2026-10-05 23:55:12]	[CDH] TURN k=21 turn=157 age=AGE_ANTIQUITY 
+[2026-10-05 23:55:12]	[CDH] INV T21: no state (null) 
+[2026-10-05 23:55:30]	[CDH] TURN k=22 turn=158 age=AGE_ANTIQUITY 
+[2026-10-05 23:55:30]	[CDH] INV T22: no state (null) 
+[2026-10-05 23:55:50]	[CDH] TURN k=23 turn=159 age=AGE_ANTIQUITY 
+[2026-10-05 23:55:50]	[CDH] INV T23: no state (null) 
+[2026-10-05 23:56:27]	[CDH] attached soak-control 
+[2026-10-05 23:56:33]	[CDH] LOAD GameStarted 
+[2026-10-05 23:56:43]	[CDH] SOAK start turn=1 age=AGE_EXPLORATION local=0 majors=[0,1,2,3,4,5,6,7,8,9] config={} 
+[2026-10-05 23:56:43]	[CDH] INV T0-pre: no state (null) 
+[2026-10-05 23:56:43]	[CDH] SEED T0: skipped (control) 
+[2026-10-05 23:56:43]	[CDH] T0 runNow="ERR" 
+[2026-10-05 23:56:51]	[CDH] INV T0-post: no state (null) 
+[2026-10-05 23:57:08]	[CDH] TURN k=1 turn=2 age=AGE_EXPLORATION 
+[2026-10-05 23:57:08]	[CDH] INV T1: no state (null) 
+[2026-10-05 23:57:19]	[CDH] TURN k=2 turn=3 age=AGE_EXPLORATION 
+[2026-10-05 23:57:19]	[CDH] INV T2: no state (null) 
+[2026-10-05 23:57:35]	[CDH] TURN k=3 turn=4 age=AGE_EXPLORATION 
+[2026-10-05 23:57:35]	[CDH] INV T3: no state (null) 

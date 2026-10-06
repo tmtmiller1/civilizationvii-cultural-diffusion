@@ -1,0 +1,29 @@
+[2026-10-05 23:05:26]	[CDH] shell attached 
+[2026-10-05 23:05:27]	[CDH] shell query complete 
+[2026-10-05 23:05:27]	[CDH] shell found AugustusAnt136.Civ7Save turn 136 age AGE_ANTIQUITY missingMods=0 unowned=0 
+[2026-10-05 23:05:27]	[CDH] shell handleLoadSave returned true 
+[2026-10-05 23:05:43]	[CDH] attached valuable 
+[2026-10-05 23:05:48]	[CDH] LOAD GameStarted 
+[2026-10-05 23:05:58]	[CDH] VALUABLE start turn=136 age=AGE_ANTIQUITY majors=[0,1,2,3,4,5,6,7,8,9] 
+[2026-10-05 23:05:58]	[CDH] DISTRICT READ check: 92,32 probe=DISTRICT_CITY_CENTER mod=null(getDistrictType undefined) | 64,14 probe=DISTRICT_CITY_CENTER mod=null(getDistrictType undefined) | 70,54 probe=DISTRICT_CITY_CENTER mod=null(getDistrictType undefined) 
+[2026-10-05 23:05:58]	[CDH] FLIP T0 resource 22,4 13->7(far) d=6 dist=DISTRICT_RURAL cons=["IMPROVEMENT_QUARRY"] res=RESOURCE_JADE units=0 
+[2026-10-05 23:05:58]	[CDH] FLIP T0 resource 81,5 11->1(far) d=8 dist=DISTRICT_RURAL cons=["IMPROVEMENT_CAMP"] res=RESOURCE_HIDES units=0 
+[2026-10-05 23:05:58]	[CDH] FLIP T0 unit 73,2 21->1(far) d=8 dist=DISTRICT_WILDERNESS cons=["IMPROVEMENT_VILLAGE"] res= units=1 
+[2026-10-05 23:05:59]	[CDH] FLIP T0 unit 68,6 10->1(far) d=6 dist=DISTRICT_WILDERNESS cons=["IMPROVEMENT_VILLAGE"] res= units=1 
+[2026-10-05 23:05:59]	[CDH] FLIP T0 unit 82,6 11->1 d=7 dist=DISTRICT_RURAL cons=["IMPROVEMENT_MINE"] res= units=1 
+[2026-10-05 23:06:05]	[CDH] LANDED T0: 5/5 r:y r:y u:y u:y u:y 
+[2026-10-05 23:06:24]	[CDH] TURN k=2 turn=138 
+[2026-10-05 23:06:30]	[CDH] LANDED T2: 0/0  
+[2026-10-05 23:06:37]	[CDH] TURN k=3 turn=139 
+[2026-10-05 23:06:43]	[CDH] LANDED T3: 0/0  
+[2026-10-05 23:06:51]	[CDH] TURN k=4 turn=140 
+[2026-10-05 23:06:57]	[CDH] LANDED T4: 0/0  
+[2026-10-05 23:07:05]	[CDH] TURN k=5 turn=141 
+[2026-10-05 23:07:11]	[CDH] LANDED T5: 0/0  
+[2026-10-05 23:07:15]	[CDH] TURN k=6 turn=142 
+[2026-10-05 23:07:21]	[CDH] LANDED T6: 0/0  
+[2026-10-05 23:07:24]	[CDH] TURN k=7 turn=143 
+[2026-10-05 23:07:24]	[CDH] FLIP T7 unit 23,4 13->7 d=5 dist=DISTRICT_RURAL cons=["IMPROVEMENT_FARM"] res= units=1 
+[2026-10-05 23:07:30]	[CDH] LANDED T7: 1/1 u:y 
+[2026-10-05 23:07:35]	[CDH] TURN k=8 turn=144 
+[2026-10-05 23:07:35]	[CDH] DONE harness valuable finished, survived 8 turns, 0 flips 

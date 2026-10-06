@@ -1,0 +1,19 @@
+[2026-10-06 09:36:36]	HTML Parser Error@:fs://game/root-game.html@1:2043: Premature end of file  Currently open tags: html, div, div..
+[2026-10-06 09:36:36]	HTML Parser Error@:fs://game/root-game.html@1:2043: Premature end of file  Currently open tags: html, div, div..
+[2026-10-06 09:36:52]	HTML Parser Error@:fs://game/root-game.html@49:43: Tokenizer error with an unimplemented error message.
+[2026-10-06 09:37:18]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags.js:348: Error: Expected this.unit to be non-null.
+[2026-10-06 09:37:18]	JS Error (Line):       throw new Error(`Expected this.unit to be non-null.`);
+[2026-10-06 09:37:18]	JS Error (Stack): Error: Expected this.unit to be non-null.
+[2026-10-06 09:37:18]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags.js:348: Error: Expected this.unit to be non-null.
+[2026-10-06 09:37:18]	JS Error (Line):       throw new Error(`Expected this.unit to be non-null.`);
+[2026-10-06 09:37:18]	JS Error (Stack): Error: Expected this.unit to be non-null.
+[2026-10-06 09:37:19]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags.js:348: Error: Expected this.unit to be non-null.
+[2026-10-06 09:37:19]	JS Error (Line):       throw new Error(`Expected this.unit to be non-null.`);
+[2026-10-06 09:37:19]	JS Error (Stack): Error: Expected this.unit to be non-null.
+[2026-10-06 09:37:20]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags.js:348: Error: Expected this.unit to be non-null.
+[2026-10-06 09:37:20]	JS Error (Line):       throw new Error(`Expected this.unit to be non-null.`);
+[2026-10-06 09:37:20]	JS Error (Stack): Error: Expected this.unit to be non-null.
+[2026-10-06 09:37:50]	HTML Parser Error@:fs://game/root-game.html@49:43: Tokenizer error with an unimplemented error message.
+[2026-10-06 09:39:00]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags.js:348: Error: Expected this.unit to be non-null.
+[2026-10-06 09:39:00]	JS Error (Line):       throw new Error(`Expected this.unit to be non-null.`);
+[2026-10-06 09:39:00]	JS Error (Stack): Error: Expected this.unit to be non-null.

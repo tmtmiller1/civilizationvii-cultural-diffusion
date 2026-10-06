@@ -1,0 +1,178 @@
+[2026-10-05 19:53:38]	[CDH] shell attached 
+[2026-10-05 19:53:40]	[CDH] shell query complete 
+[2026-10-05 19:53:40]	[CDH] shell found AugustusAnt136.Civ7Save turn 136 age AGE_ANTIQUITY missingMods=0 unowned=0 
+[2026-10-05 19:53:40]	[CDH] shell handleLoadSave returned true 
+[2026-10-05 19:53:58]	[CDH] attached trade-merchant 
+[2026-10-05 19:54:03]	[CDH] LOAD GameStarted 
+[2026-10-05 19:54:13]	[CDH] MERCH start turn=136 age=AGE_ANTIQUITY majors=[0,1,2,3,4,5,6,7,8,9] 
+[2026-10-05 19:54:13]	[CDH] ROUTE shape p0: targetCityId:object nearestCityId:object pathPlots:object domain:number status:object id:undefined fromCityId:undefined toCityId:undefined owner:undefined keys=["status","domain","targetCityId","nearestCityId","importPayloads","exportYields","pathPlots"] 
+[2026-10-05 19:54:13]	[CDH] ROUTES T0 p0: count=1 current=1 
+[2026-10-05 19:54:13]	[CDH] ROUTE p0#0 4->0 dom=0 len=26 owners=[0,0,-1,0,0,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,4,4,4,4] 
+[2026-10-05 19:54:13]	[CDH] ROUTE shape p1: targetCityId:object nearestCityId:object pathPlots:object domain:number status:object id:undefined fromCityId:undefined toCityId:undefined owner:undefined keys=["status","domain","targetCityId","nearestCityId","importPayloads","exportYields","pathPlots"] 
+[2026-10-05 19:54:13]	[CDH] ROUTES T0 p1: count=2 current=2 
+[2026-10-05 19:54:13]	[CDH] ROUTE p1#0 22->1 dom=0 len=26 owners=[1,1,1,1,1,-1,1,1,1,1,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,22] 
+[2026-10-05 19:54:13]	[CDH] ROUTE p1#1 0->1 dom=0 len=23 owners=[1,1,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,0,0,0,0,-1,-1,-1,-1,0,0] 
+[2026-10-05 19:54:13]	[CDH] ROUTE shape p2: targetCityId:object nearestCityId:object pathPlots:object domain:number status:object id:undefined fromCityId:undefined toCityId:undefined owner:undefined keys=["status","domain","targetCityId","nearestCityId","importPayloads","exportYields","pathPlots"] 
+[2026-10-05 19:54:13]	[CDH] ROUTES T0 p2: count=5 current=5 
+[2026-10-05 19:54:13]	[CDH] ROUTE p2#0 27->2 dom=0 len=25 owners=[2,2,2,-1,-1,2,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,5,5,5,5,27] 
+[2026-10-05 19:54:13]	[CDH] ROUTE p2#1 39->2 dom=0 len=9 owners=[2,2,-1,-1,2,-1,-1,-1,39] 
+[2026-10-05 19:54:13]	[CDH] ROUTE p2#2 5->2 dom=2 len=9 owners=[2,2,2,2,-1,5,5,5,5] 
+[2026-10-05 19:54:13]	[CDH] ROUTE p2#3 4->2 dom=0 len=6 owners=[2,2,4,4,4,4] 
+[2026-10-05 19:54:13]	[CDH] ROUTE p2#4 22->2 dom=0 len=30 owners=[2,-1,27,27,5,5,5,5,5,5,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,22] 
+[2026-10-05 19:54:13]	[CDH] ROUTE shape p3: targetCityId:object nearestCityId:object pathPlots:object domain:number status:object id:undefined fromCityId:undefined toCityId:undefined owner:undefined keys=["status","domain","targetCityId","nearestCityId","importPayloads","exportYields","pathPlots"] 
+[2026-10-05 19:54:13]	[CDH] ROUTES T0 p3: count=2 current=2 
+[2026-10-05 19:54:13]	[CDH] ROUTE p3#0 5->3 dom=0 len=16 owners=[3,3,-1,-1,-1,-1,-1,-1,-1,37,37,-1,-1,-1,5,5] 
+[2026-10-05 19:54:13]	[CDH] ROUTE p3#1 23->3 dom=2 len=9 owners=[3,3,3,3,-1,-1,1,23,23] 
+[2026-10-05 19:54:13]	[CDH] ROUTE shape p4: targetCityId:object nearestCityId:object pathPlots:object domain:number status:object id:undefined fromCityId:undefined toCityId:undefined owner:undefined keys=["status","domain","targetCityId","nearestCityId","importPayloads","exportYields","pathPlots"] 
+[2026-10-05 19:54:13]	[CDH] ROUTES T0 p4: count=2 current=2 
+[2026-10-05 19:54:13]	[CDH] ROUTE p4#0 39->4 dom=0 len=15 owners=[4,2,4,4,2,-1,-1,-1,-1,-1,2,-1,-1,-1,39] 
+[2026-10-05 19:54:13]	[CDH] ROUTE p4#1 2->4 dom=0 len=6 owners=[4,2,4,4,2,2] 
+[2026-10-05 19:54:13]	[CDH] ROUTE shape p5: targetCityId:object nearestCityId:object pathPlots:object domain:number status:object id:undefined fromCityId:undefined toCityId:undefined owner:undefined keys=["status","domain","targetCityId","nearestCityId","importPayloads","exportYields","pathPlots"] 
+[2026-10-05 19:54:13]	[CDH] ROUTES T0 p5: count=4 current=4 
+[2026-10-05 19:54:13]	[CDH] ROUTE p5#0 22->5 dom=0 len=17 owners=[5,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,22] 
+[2026-10-05 19:54:13]	[CDH] ROUTE p5#1 1->5 dom=2 len=16 owners=[5,5,5,5,-1,-1,-1,-1,-1,-1,-1,-1,-1,1,1,1] 
+[2026-10-05 19:54:13]	[CDH] ROUTE p5#2 2->5 dom=0 len=22 owners=[5,5,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,2,-1,-1,2,2,2] 
+[2026-10-05 19:54:13]	[CDH] ROUTE p5#3 27->5 dom=0 len=3 owners=[5,5,27] 
+[2026-10-05 19:54:13]	[CDH] ROUTE shape p6: targetCityId:object nearestCityId:object pathPlots:object domain:number status:object id:undefined fromCityId:undefined toCityId:undefined owner:undefined keys=["status","domain","targetCityId","nearestCityId","importPayloads","exportYields","pathPlots"] 
+[2026-10-05 19:54:13]	[CDH] ROUTES T0 p6: count=1 current=1 
+[2026-10-05 19:54:13]	[CDH] ROUTE p6#0 9->6 dom=0 len=26 owners=[6,6,6,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,9] 
+[2026-10-05 19:54:13]	[CDH] ROUTE shape p7: targetCityId:object nearestCityId:object pathPlots:object domain:number status:object id:undefined fromCityId:undefined toCityId:undefined owner:undefined keys=["status","domain","targetCityId","nearestCityId","importPayloads","exportYields","pathPlots"] 
+[2026-10-05 19:54:13]	[CDH] ROUTES T0 p7: count=3 current=3 
+[2026-10-05 19:54:13]	[CDH] ROUTE p7#0 28->7 dom=0 len=6 owners=[7,7,7,-1,-1,28] 
+[2026-10-05 19:54:13]	[CDH] ROUTE p7#1 8->7 dom=0 len=13 owners=[7,7,7,-1,-1,28,28,28,-1,-1,-1,8,8] 
+[2026-10-05 19:54:13]	[CDH] ROUTE p7#2 6->7 dom=0 len=10 owners=[7,7,7,-1,-1,-1,-1,6,6,6] 
+[2026-10-05 19:54:13]	[CDH] ROUTE shape p8: targetCityId:object nearestCityId:object pathPlots:object domain:number status:object id:undefined fromCityId:undefined toCityId:undefined owner:undefined keys=["status","domain","targetCityId","nearestCityId","importPayloads","exportYields","pathPlots"] 
+[2026-10-05 19:54:13]	[CDH] ROUTES T0 p8: count=4 current=4 
+[2026-10-05 19:54:13]	[CDH] ROUTE p8#0 36->8 dom=2 len=9 owners=[8,8,8,8,8,-1,-1,36,36] 
+[2026-10-05 19:54:13]	[CDH] ROUTE p8#1 31->8 dom=2 len=11 owners=[8,8,8,9,9,9,9,9,9,31,31] 
+[2026-10-05 19:54:13]	[CDH] ROUTE p8#2 9->8 dom=2 len=6 owners=[8,8,8,9,9,9] 
+[2026-10-05 19:54:13]	[CDH] ROUTE p8#3 28->8 dom=0 len=6 owners=[8,8,-1,-1,-1,28] 
+[2026-10-05 19:54:13]	[CDH] ROUTE shape p9: targetCityId:object nearestCityId:object pathPlots:object domain:number status:object id:undefined fromCityId:undefined toCityId:undefined owner:undefined keys=["status","domain","targetCityId","nearestCityId","importPayloads","exportYields","pathPlots"] 
+[2026-10-05 19:54:13]	[CDH] ROUTES T0 p9: count=3 current=3 
+[2026-10-05 19:54:13]	[CDH] ROUTE p9#0 31->9 dom=0 len=3 owners=[9,9,31] 
+[2026-10-05 19:54:13]	[CDH] ROUTE p9#1 35->9 dom=2 len=7 owners=[9,9,9,-1,-1,35,35] 
+[2026-10-05 19:54:13]	[CDH] ROUTE p9#2 8->9 dom=2 len=8 owners=[9,9,-1,-1,8,8,8,8] 
+[2026-10-05 19:54:13]	[CDH] ROUTES T0 total=27 pathPlots=287 
+[2026-10-05 19:54:13]	[CDH] MERCH T0: tradeTypes=["UNIT_MERCHANT","UNIT_VAISHYA","UNIT_WATONATHI","UNIT_SANGDAEDEUNG"] merchants=7 at p4@87,45(own -1) p5@78,47(own 4) p5@71,34(own 5) p5@67,36(own 5) p5@69,38(own 5) p8@14,25(own 7) p9@37,24(own -1) 
+[2026-10-05 19:54:13]	[CDH] MERCH T0: flipped 1 merchant tiles (total 1) 
+[2026-10-05 19:54:19]	[CDH] MERCH T0: p5 UNIT_MERCHANT at 78,47 tile 4->4 (buyer 2) unit now 78,47 moved 0 
+[2026-10-05 19:54:19]	[CDH] PROJECT T0-after: routes=139 success=23 successWithEmptyPath=0 threw=0 
+[2026-10-05 19:54:37]	[CDH] TURN k=2 turn=138 
+[2026-10-05 19:54:37]	[CDH] ROUTES T2 p0: count=1 current=1 
+[2026-10-05 19:54:37]	[CDH] ROUTES T2 p1: count=2 current=2 
+[2026-10-05 19:54:37]	[CDH] ROUTES T2 p2: count=5 current=5 
+[2026-10-05 19:54:37]	[CDH] ROUTES T2 p3: count=2 current=2 
+[2026-10-05 19:54:37]	[CDH] ROUTES T2 p4: count=2 current=2 
+[2026-10-05 19:54:37]	[CDH] ROUTES T2 p5: count=4 current=4 
+[2026-10-05 19:54:37]	[CDH] ROUTES T2 p6: count=1 current=1 
+[2026-10-05 19:54:37]	[CDH] ROUTES T2 p7: count=3 current=3 
+[2026-10-05 19:54:37]	[CDH] ROUTES T2 p8: count=5 current=5 
+[2026-10-05 19:54:37]	[CDH] ROUTES T2 p9: count=3 current=3 
+[2026-10-05 19:54:37]	[CDH] ROUTES T2 total=28 pathPlots=287 
+[2026-10-05 19:54:37]	[CDH] PROJECT T2-before: routes=137 success=20 successWithEmptyPath=0 threw=0 
+[2026-10-05 19:54:37]	[CDH] MERCH T2: tradeTypes=["UNIT_MERCHANT","UNIT_VAISHYA","UNIT_WATONATHI","UNIT_SANGDAEDEUNG"] merchants=7 at p1@78,13(own 1) p4@89,42(own 33) p5@78,47(own 4) p5@69,30(own -1) p5@64,33(own -1) p5@73,35(own -1) p9@40,21(own 6) 
+[2026-10-05 19:54:37]	[CDH] MERCH T2: flipped 3 merchant tiles (total 4) 
+[2026-10-05 19:54:43]	[CDH] MERCH T2: p1 UNIT_MERCHANT at 78,13 tile 1->1 (buyer 3) unit now 78,11 moved 2 
+[2026-10-05 19:54:43]	[CDH] MERCH T2: p4 UNIT_MERCHANT at 89,42 tile 33->33 (buyer 0) unit now 88,45 moved 3 
+[2026-10-05 19:54:43]	[CDH] MERCH T2: p5 UNIT_MERCHANT at 78,47 tile 4->4 (buyer 2) unit now 78,47 moved 0 
+[2026-10-05 19:54:43]	[CDH] PROJECT T2-after: routes=137 success=20 successWithEmptyPath=0 threw=0 
+[2026-10-05 19:54:51]	[CDH] TURN k=3 turn=139 
+[2026-10-05 19:54:51]	[CDH] ROUTES T3 p0: count=1 current=1 
+[2026-10-05 19:54:51]	[CDH] ROUTES T3 p1: count=2 current=2 
+[2026-10-05 19:54:51]	[CDH] ROUTES T3 p2: count=5 current=5 
+[2026-10-05 19:54:51]	[CDH] ROUTES T3 p3: count=2 current=2 
+[2026-10-05 19:54:51]	[CDH] ROUTES T3 p4: count=2 current=2 
+[2026-10-05 19:54:51]	[CDH] ROUTES T3 p5: count=4 current=4 
+[2026-10-05 19:54:51]	[CDH] ROUTES T3 p6: count=1 current=1 
+[2026-10-05 19:54:51]	[CDH] ROUTES T3 p7: count=3 current=3 
+[2026-10-05 19:54:51]	[CDH] ROUTES T3 p8: count=5 current=5 
+[2026-10-05 19:54:51]	[CDH] ROUTES T3 p9: count=3 current=3 
+[2026-10-05 19:54:51]	[CDH] ROUTES T3 total=28 pathPlots=287 
+[2026-10-05 19:54:51]	[CDH] PROJECT T3-before: routes=137 success=20 successWithEmptyPath=0 threw=0 
+[2026-10-05 19:54:51]	[CDH] MERCH T3: tradeTypes=["UNIT_MERCHANT","UNIT_VAISHYA","UNIT_WATONATHI","UNIT_SANGDAEDEUNG"] merchants=7 at p1@78,11(own 1) p4@88,45(own -1) p5@78,47(own 4) p5@70,34(own 5) p5@67,31(own -1) p5@72,35(own 5) p9@41,19(own 6) 
+[2026-10-05 19:54:51]	[CDH] MERCH T3: flipped 1 merchant tiles (total 5) 
+[2026-10-05 19:54:57]	[CDH] MERCH T3: p5 UNIT_MERCHANT at 78,47 tile 4->4 (buyer 2) unit now 78,47 moved 0 
+[2026-10-05 19:54:57]	[CDH] PROJECT T3-after: routes=138 success=21 successWithEmptyPath=0 threw=0 
+[2026-10-05 19:55:04]	[CDH] TURN k=4 turn=140 
+[2026-10-05 19:55:04]	[CDH] ROUTES T4 p0: count=1 current=1 
+[2026-10-05 19:55:04]	[CDH] ROUTES T4 p1: count=2 current=2 
+[2026-10-05 19:55:04]	[CDH] ROUTES T4 p2: count=5 current=5 
+[2026-10-05 19:55:04]	[CDH] ROUTES T4 p3: count=2 current=2 
+[2026-10-05 19:55:04]	[CDH] ROUTES T4 p4: count=2 current=2 
+[2026-10-05 19:55:04]	[CDH] ROUTES T4 p5: count=4 current=4 
+[2026-10-05 19:55:04]	[CDH] ROUTES T4 p6: count=1 current=1 
+[2026-10-05 19:55:04]	[CDH] ROUTES T4 p7: count=3 current=3 
+[2026-10-05 19:55:04]	[CDH] ROUTES T4 p8: count=5 current=5 
+[2026-10-05 19:55:04]	[CDH] ROUTES T4 p9: count=3 current=3 
+[2026-10-05 19:55:04]	[CDH] ROUTES T4 total=28 pathPlots=287 
+[2026-10-05 19:55:04]	[CDH] PROJECT T4-before: routes=138 success=21 successWithEmptyPath=0 threw=0 
+[2026-10-05 19:55:04]	[CDH] MERCH T4: tradeTypes=["UNIT_MERCHANT","UNIT_VAISHYA","UNIT_WATONATHI","UNIT_SANGDAEDEUNG"] merchants=8 at p1@78,9(own -1) p4@89,47(own -1) p5@78,47(own 4) p5@69,38(own 5) p5@69,28(own -1) p5@72,39(own 5) p8@17,42(own 8) p9@43,17(own 6) 
+[2026-10-05 19:55:04]	[CDH] MERCH T4: flipped 1 merchant tiles (total 6) 
+[2026-10-05 19:55:10]	[CDH] MERCH T4: p5 UNIT_MERCHANT at 78,47 tile 4->4 (buyer 2) unit now 78,47 moved 0 
+[2026-10-05 19:55:10]	[CDH] PROJECT T4-after: routes=140 success=21 successWithEmptyPath=0 threw=0 
+[2026-10-05 19:55:14]	[CDH] TURN k=5 turn=141 
+[2026-10-05 19:55:14]	[CDH] ROUTES T5 p0: count=1 current=1 
+[2026-10-05 19:55:14]	[CDH] ROUTES T5 p1: count=2 current=2 
+[2026-10-05 19:55:14]	[CDH] ROUTES T5 p2: count=5 current=5 
+[2026-10-05 19:55:14]	[CDH] ROUTES T5 p3: count=2 current=2 
+[2026-10-05 19:55:14]	[CDH] ROUTES T5 p4: count=2 current=2 
+[2026-10-05 19:55:14]	[CDH] ROUTES T5 p5: count=4 current=4 
+[2026-10-05 19:55:14]	[CDH] ROUTES T5 p6: count=1 current=1 
+[2026-10-05 19:55:14]	[CDH] ROUTES T5 p7: count=3 current=3 
+[2026-10-05 19:55:14]	[CDH] ROUTES T5 p8: count=5 current=5 
+[2026-10-05 19:55:14]	[CDH] ROUTES T5 p9: count=3 current=3 
+[2026-10-05 19:55:14]	[CDH] ROUTES T5 total=28 pathPlots=287 
+[2026-10-05 19:55:14]	[CDH] PROJECT T5-before: routes=140 success=21 successWithEmptyPath=0 threw=0 
+[2026-10-05 19:55:14]	[CDH] MERCH T5: tradeTypes=["UNIT_MERCHANT","UNIT_VAISHYA","UNIT_WATONATHI","UNIT_SANGDAEDEUNG"] merchants=9 at p1@80,9(own -1) p4@90,45(own -1) p5@78,47(own 4) p5@70,35(own 5) p5@68,29(own -1) p5@73,41(own -1) p7@17,11(own -1) p8@16,42(own 8) p9@43,15(own 6) 
+[2026-10-05 19:55:14]	[CDH] MERCH T5: flipped 1 merchant tiles (total 7) 
+[2026-10-05 19:55:20]	[CDH] MERCH T5: p5 UNIT_MERCHANT at 78,47 tile 4->4 (buyer 2) unit now 78,47 moved 0 
+[2026-10-05 19:55:20]	[CDH] PROJECT T5-after: routes=142 success=22 successWithEmptyPath=0 threw=0 
+[2026-10-05 19:55:24]	[CDH] TURN k=6 turn=142 
+[2026-10-05 19:55:24]	[CDH] ROUTES T6 p0: count=1 current=1 
+[2026-10-05 19:55:24]	[CDH] ROUTES T6 p1: count=2 current=2 
+[2026-10-05 19:55:24]	[CDH] ROUTES T6 p2: count=5 current=5 
+[2026-10-05 19:55:24]	[CDH] ROUTES T6 p3: count=2 current=2 
+[2026-10-05 19:55:24]	[CDH] ROUTES T6 p4: count=2 current=2 
+[2026-10-05 19:55:24]	[CDH] ROUTES T6 p5: count=4 current=4 
+[2026-10-05 19:55:24]	[CDH] ROUTES T6 p6: count=1 current=1 
+[2026-10-05 19:55:24]	[CDH] ROUTES T6 p7: count=3 current=3 
+[2026-10-05 19:55:24]	[CDH] ROUTES T6 p8: count=5 current=5 
+[2026-10-05 19:55:24]	[CDH] ROUTES T6 p9: count=3 current=3 
+[2026-10-05 19:55:24]	[CDH] ROUTES T6 total=28 pathPlots=287 
+[2026-10-05 19:55:24]	[CDH] PROJECT T6-before: routes=142 success=22 successWithEmptyPath=0 threw=0 
+[2026-10-05 19:55:24]	[CDH] MERCH T6: tradeTypes=["UNIT_MERCHANT","UNIT_VAISHYA","UNIT_WATONATHI","UNIT_SANGDAEDEUNG"] merchants=9 at p1@82,8(own -1) p4@90,44(own -1) p5@78,47(own 4) p5@72,32(own 5) p5@67,25(own -1) p5@70,40(own 5) p7@17,9(own -1) p8@15,42(own 8) p9@44,15(own 6) 
+[2026-10-05 19:55:24]	[CDH] MERCH T6: flipped 1 merchant tiles (total 8) 
+[2026-10-05 19:55:30]	[CDH] MERCH T6: p5 UNIT_MERCHANT at 78,47 tile 4->4 (buyer 2) unit now 78,47 moved 0 
+[2026-10-05 19:55:30]	[CDH] PROJECT T6-after: routes=146 success=22 successWithEmptyPath=0 threw=0 
+[2026-10-05 19:55:32]	[CDH] TURN k=7 turn=143 
+[2026-10-05 19:55:32]	[CDH] ROUTES T7 p0: count=1 current=1 
+[2026-10-05 19:55:32]	[CDH] ROUTES T7 p1: count=2 current=2 
+[2026-10-05 19:55:32]	[CDH] ROUTES T7 p2: count=4 current=4 
+[2026-10-05 19:55:32]	[CDH] ROUTES T7 p3: count=2 current=2 
+[2026-10-05 19:55:32]	[CDH] ROUTES T7 p4: count=1 current=1 
+[2026-10-05 19:55:32]	[CDH] ROUTES T7 p5: count=4 current=4 
+[2026-10-05 19:55:32]	[CDH] ROUTES T7 p6: count=1 current=1 
+[2026-10-05 19:55:32]	[CDH] ROUTES T7 p7: count=3 current=3 
+[2026-10-05 19:55:32]	[CDH] ROUTES T7 p8: count=5 current=5 
+[2026-10-05 19:55:32]	[CDH] ROUTES T7 p9: count=3 current=3 
+[2026-10-05 19:55:32]	[CDH] ROUTES T7 total=26 pathPlots=275 
+[2026-10-05 19:55:32]	[CDH] PROJECT T7-before: routes=146 success=22 successWithEmptyPath=0 threw=0 
+[2026-10-05 19:55:32]	[CDH] MERCH T7: tradeTypes=["UNIT_MERCHANT","UNIT_VAISHYA","UNIT_WATONATHI","UNIT_SANGDAEDEUNG"] merchants=9 at p1@83,7(own 11) p4@89,42(own 33) p5@78,47(own 4) p5@71,30(own 5) p5@67,21(own 1) p5@73,38(own 5) p7@18,5(own -1) p8@14,42(own 8) p9@46,14(own -1) 
+[2026-10-05 19:55:32]	[CDH] MERCH T7: flipped 2 merchant tiles (total 10) 
+[2026-10-05 19:55:38]	[CDH] MERCH T7: p4 UNIT_MERCHANT at 89,42 tile 33->33 (buyer 0) unit now 88,45 moved 3 
+[2026-10-05 19:55:38]	[CDH] MERCH T7: p5 UNIT_MERCHANT at 78,47 tile 4->4 (buyer 2) unit now 78,47 moved 0 
+[2026-10-05 19:55:38]	[CDH] PROJECT T7-after: routes=149 success=22 successWithEmptyPath=0 threw=0 
+[2026-10-05 19:55:43]	[CDH] TURN k=8 turn=144 
+[2026-10-05 19:55:43]	[CDH] ROUTES T8 p0: count=1 current=1 
+[2026-10-05 19:55:43]	[CDH] ROUTES T8 p1: count=2 current=2 
+[2026-10-05 19:55:43]	[CDH] ROUTES T8 p2: count=4 current=4 
+[2026-10-05 19:55:43]	[CDH] ROUTES T8 p3: count=2 current=2 
+[2026-10-05 19:55:43]	[CDH] ROUTES T8 p4: count=1 current=1 
+[2026-10-05 19:55:43]	[CDH] ROUTES T8 p5: count=4 current=4 
+[2026-10-05 19:55:43]	[CDH] ROUTES T8 p6: count=1 current=1 
+[2026-10-05 19:55:43]	[CDH] ROUTES T8 p7: count=3 current=3 
+[2026-10-05 19:55:43]	[CDH] ROUTES T8 p8: count=5 current=5 
+[2026-10-05 19:55:43]	[CDH] ROUTES T8 p9: count=3 current=3 
+[2026-10-05 19:55:43]	[CDH] ROUTES T8 total=26 pathPlots=275 
+[2026-10-05 19:55:43]	[CDH] PROJECT T8-before: routes=149 success=22 successWithEmptyPath=0 threw=0 
+[2026-10-05 19:55:43]	[CDH] DONE harness trade-merchant finished, survived 8 turns, 0 flips 

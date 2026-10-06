@@ -1,0 +1,28 @@
+[23:24:30] autosaves backed up: 10
+[23:24:30] registry before: 2295=0  (restoring Disabled=0 afterward)
+[23:24:30] deployed mod: debug=1 affectsSaves0=1
+[23:24:30] NO_MOD=1: Cultural Diffusion left DISABLED for this run (control)
+[23:24:30] harness installed: cdh-game-valuable.js on AugustusExp64.Civ7Save
+[23:24:30] previous UI.log kept at /Users/USER/Library/Application Support/Civilization VII/cd-harness-backup/UI-before-valuable-exp2-20261005-232430.log (387 lines)
+[23:24:32] game pid 7939
+[23:30:08] result=done after 312s
+[23:30:08] collected AI_Behavior_Tree_Events.csv (24 lines)
+[23:30:08] collected AI_Behavior_Trees.csv (11622 lines)
+[23:30:08] collected AI_CityStrategy.csv (14 lines)
+[23:30:08] collected AI_CombatPlanning.csv (1414 lines)
+[23:30:08] collected AI_Commander_Promotions.csv (3 lines)
+[23:30:08] collected AI_DiplomaticActions.csv (686 lines)
+[23:30:08] collected AI_Market.csv (200 lines)
+[23:30:08] collected AI_MayhemTracker.csv (181 lines)
+[23:30:08] collected AI_MovementPlanning.csv (9965 lines)
+[23:30:08] collected AI_Operation.csv (5252 lines)
+[23:30:08] collected AI_Operation_Eval.csv (147 lines)
+[23:30:08] collected AI_Recruiting.csv (46503 lines)
+[23:30:08] collected AI_Tactical.csv (2381 lines)
+[23:30:08] collected AI_Targets.csv (46783 lines)
+[23:30:08] collected AI_UnitEfficiency.csv (141 lines)
+[23:30:08] collected AI_Victories.csv (4 lines)
+[23:30:17] restored: registry 2297=0  harness present: no debugPatched: 0
+[23:30:17] autosaves changed during the run; putting the player's back
+[23:30:17] FINISHED result=done  log: /Users/USER/Repos/civilization_mods/civilization_vii_mods/tower_mods/cultural_diffusion/devtools/harness/valuable-exp2-UI.log
+RUN_EXIT=0

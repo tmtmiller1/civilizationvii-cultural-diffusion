@@ -1,0 +1,153 @@
+[2026-10-05 15:38:40]	[CDH] shell attached 
+[2026-10-05 15:38:41]	[CDH] shell query complete 
+[2026-10-05 15:38:42]	[CDH] shell found AugustusAnt136.Civ7Save turn 136 age AGE_ANTIQUITY missingMods=0 unowned=0 
+[2026-10-05 15:38:42]	[CDH] shell handleLoadSave returned true 
+[2026-10-05 15:38:59]	[CDH] attached trade-onpath 
+[2026-10-05 15:39:04]	[CDH] LOAD GameStarted 
+[2026-10-05 15:39:14]	[CDH] TRADE start mode=onpath turn=136 local=0 majors=[0,1,2,3,4,5,6,7,8,9] 
+[2026-10-05 15:39:14]	[CDH] ROUTE shape p0: targetCityId:object nearestCityId:object pathPlots:object domain:number status:object id:undefined fromCityId:undefined toCityId:undefined owner:undefined keys=["status","domain","targetCityId","nearestCityId","importPayloads","exportYields","pathPlots"] 
+[2026-10-05 15:39:14]	[CDH] ROUTES T0 p0: count=1 current=1 
+[2026-10-05 15:39:14]	[CDH] ROUTE p0#0 4->0 dom=0 len=26 owners=[0,0,-1,0,0,0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,4,4,4,4] 
+[2026-10-05 15:39:14]	[CDH] ROUTE shape p1: targetCityId:object nearestCityId:object pathPlots:object domain:number status:object id:undefined fromCityId:undefined toCityId:undefined owner:undefined keys=["status","domain","targetCityId","nearestCityId","importPayloads","exportYields","pathPlots"] 
+[2026-10-05 15:39:14]	[CDH] ROUTES T0 p1: count=2 current=2 
+[2026-10-05 15:39:14]	[CDH] ROUTE p1#0 22->1 dom=0 len=26 owners=[1,1,1,1,1,-1,1,1,1,1,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,22] 
+[2026-10-05 15:39:14]	[CDH] ROUTE p1#1 0->1 dom=0 len=23 owners=[1,1,1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,0,0,0,0,-1,-1,-1,-1,0,0] 
+[2026-10-05 15:39:14]	[CDH] ROUTE shape p2: targetCityId:object nearestCityId:object pathPlots:object domain:number status:object id:undefined fromCityId:undefined toCityId:undefined owner:undefined keys=["status","domain","targetCityId","nearestCityId","importPayloads","exportYields","pathPlots"] 
+[2026-10-05 15:39:14]	[CDH] ROUTES T0 p2: count=5 current=5 
+[2026-10-05 15:39:14]	[CDH] ROUTE p2#0 27->2 dom=0 len=25 owners=[2,2,2,-1,-1,2,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,5,5,5,5,27] 
+[2026-10-05 15:39:14]	[CDH] ROUTE p2#1 39->2 dom=0 len=9 owners=[2,2,-1,-1,2,-1,-1,-1,39] 
+[2026-10-05 15:39:14]	[CDH] ROUTE p2#2 5->2 dom=2 len=9 owners=[2,2,2,2,-1,5,5,5,5] 
+[2026-10-05 15:39:14]	[CDH] ROUTE p2#3 4->2 dom=0 len=6 owners=[2,2,4,4,4,4] 
+[2026-10-05 15:39:14]	[CDH] ROUTE p2#4 22->2 dom=0 len=30 owners=[2,-1,27,27,5,5,5,5,5,5,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,22] 
+[2026-10-05 15:39:14]	[CDH] ROUTE shape p3: targetCityId:object nearestCityId:object pathPlots:object domain:number status:object id:undefined fromCityId:undefined toCityId:undefined owner:undefined keys=["status","domain","targetCityId","nearestCityId","importPayloads","exportYields","pathPlots"] 
+[2026-10-05 15:39:14]	[CDH] ROUTES T0 p3: count=2 current=2 
+[2026-10-05 15:39:14]	[CDH] ROUTE p3#0 5->3 dom=0 len=16 owners=[3,3,-1,-1,-1,-1,-1,-1,-1,37,37,-1,-1,-1,5,5] 
+[2026-10-05 15:39:14]	[CDH] ROUTE p3#1 23->3 dom=2 len=9 owners=[3,3,3,3,-1,-1,1,23,23] 
+[2026-10-05 15:39:14]	[CDH] ROUTE shape p4: targetCityId:object nearestCityId:object pathPlots:object domain:number status:object id:undefined fromCityId:undefined toCityId:undefined owner:undefined keys=["status","domain","targetCityId","nearestCityId","importPayloads","exportYields","pathPlots"] 
+[2026-10-05 15:39:14]	[CDH] ROUTES T0 p4: count=2 current=2 
+[2026-10-05 15:39:14]	[CDH] ROUTE p4#0 39->4 dom=0 len=15 owners=[4,2,4,4,2,-1,-1,-1,-1,-1,2,-1,-1,-1,39] 
+[2026-10-05 15:39:14]	[CDH] ROUTE p4#1 2->4 dom=0 len=6 owners=[4,2,4,4,2,2] 
+[2026-10-05 15:39:14]	[CDH] ROUTE shape p5: targetCityId:object nearestCityId:object pathPlots:object domain:number status:object id:undefined fromCityId:undefined toCityId:undefined owner:undefined keys=["status","domain","targetCityId","nearestCityId","importPayloads","exportYields","pathPlots"] 
+[2026-10-05 15:39:14]	[CDH] ROUTES T0 p5: count=4 current=4 
+[2026-10-05 15:39:14]	[CDH] ROUTE p5#0 22->5 dom=0 len=17 owners=[5,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,22] 
+[2026-10-05 15:39:14]	[CDH] ROUTE p5#1 1->5 dom=2 len=16 owners=[5,5,5,5,-1,-1,-1,-1,-1,-1,-1,-1,-1,1,1,1] 
+[2026-10-05 15:39:14]	[CDH] ROUTE p5#2 2->5 dom=0 len=22 owners=[5,5,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,2,-1,-1,2,2,2] 
+[2026-10-05 15:39:14]	[CDH] ROUTE p5#3 27->5 dom=0 len=3 owners=[5,5,27] 
+[2026-10-05 15:39:14]	[CDH] ROUTE shape p6: targetCityId:object nearestCityId:object pathPlots:object domain:number status:object id:undefined fromCityId:undefined toCityId:undefined owner:undefined keys=["status","domain","targetCityId","nearestCityId","importPayloads","exportYields","pathPlots"] 
+[2026-10-05 15:39:14]	[CDH] ROUTES T0 p6: count=1 current=1 
+[2026-10-05 15:39:14]	[CDH] ROUTE p6#0 9->6 dom=0 len=26 owners=[6,6,6,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,9] 
+[2026-10-05 15:39:14]	[CDH] ROUTE shape p7: targetCityId:object nearestCityId:object pathPlots:object domain:number status:object id:undefined fromCityId:undefined toCityId:undefined owner:undefined keys=["status","domain","targetCityId","nearestCityId","importPayloads","exportYields","pathPlots"] 
+[2026-10-05 15:39:14]	[CDH] ROUTES T0 p7: count=3 current=3 
+[2026-10-05 15:39:14]	[CDH] ROUTE p7#0 28->7 dom=0 len=6 owners=[7,7,7,-1,-1,28] 
+[2026-10-05 15:39:14]	[CDH] ROUTE p7#1 8->7 dom=0 len=13 owners=[7,7,7,-1,-1,28,28,28,-1,-1,-1,8,8] 
+[2026-10-05 15:39:14]	[CDH] ROUTE p7#2 6->7 dom=0 len=10 owners=[7,7,7,-1,-1,-1,-1,6,6,6] 
+[2026-10-05 15:39:14]	[CDH] ROUTE shape p8: targetCityId:object nearestCityId:object pathPlots:object domain:number status:object id:undefined fromCityId:undefined toCityId:undefined owner:undefined keys=["status","domain","targetCityId","nearestCityId","importPayloads","exportYields","pathPlots"] 
+[2026-10-05 15:39:14]	[CDH] ROUTES T0 p8: count=4 current=4 
+[2026-10-05 15:39:14]	[CDH] ROUTE p8#0 36->8 dom=2 len=9 owners=[8,8,8,8,8,-1,-1,36,36] 
+[2026-10-05 15:39:14]	[CDH] ROUTE p8#1 31->8 dom=2 len=11 owners=[8,8,8,9,9,9,9,9,9,31,31] 
+[2026-10-05 15:39:14]	[CDH] ROUTE p8#2 9->8 dom=2 len=6 owners=[8,8,8,9,9,9] 
+[2026-10-05 15:39:14]	[CDH] ROUTE p8#3 28->8 dom=0 len=6 owners=[8,8,-1,-1,-1,28] 
+[2026-10-05 15:39:14]	[CDH] ROUTE shape p9: targetCityId:object nearestCityId:object pathPlots:object domain:number status:object id:undefined fromCityId:undefined toCityId:undefined owner:undefined keys=["status","domain","targetCityId","nearestCityId","importPayloads","exportYields","pathPlots"] 
+[2026-10-05 15:39:14]	[CDH] ROUTES T0 p9: count=3 current=3 
+[2026-10-05 15:39:14]	[CDH] ROUTE p9#0 31->9 dom=0 len=3 owners=[9,9,31] 
+[2026-10-05 15:39:14]	[CDH] ROUTE p9#1 35->9 dom=2 len=7 owners=[9,9,9,-1,-1,35,35] 
+[2026-10-05 15:39:14]	[CDH] ROUTE p9#2 8->9 dom=2 len=8 owners=[9,9,-1,-1,8,8,8,8] 
+[2026-10-05 15:39:14]	[CDH] ROUTES T0 total=27 pathPlots=287 
+[2026-10-05 15:39:14]	[CDH] TARGETS 5: 75,49 39->2 via city@3 ? route=p2#1 39->2 dom=0 len=9 third=false | 75,15 23->1 via city@4 ? route=p3#1 23->3 dom=2 len=9 third=true | 22,51 8->9 via city@3 ? route=p8#1 31->8 dom=2 len=11 third=true | 23,51 9->8 via city@3 ? route=p8#1 31->8 dom=2 len=11 third=false | 28,51 31->9 via city@3 ? route=p8#1 31->8 dom=2 len=11 third=true 
+[2026-10-05 15:39:14]	[CDH] FLIP 75,49 39->2: sent 
+[2026-10-05 15:39:14]	[CDH] FLIP 75,15 23->1: sent 
+[2026-10-05 15:39:14]	[CDH] FLIP 22,51 8->9: sent 
+[2026-10-05 15:39:14]	[CDH] FLIP 23,51 9->8: sent 
+[2026-10-05 15:39:14]	[CDH] FLIP 28,51 31->9: sent 
+[2026-10-05 15:39:20]	[CDH] FLIPS landed 5/5: 75,49=2 75,15=1 22,51=9 23,51=8 28,51=9 
+[2026-10-05 15:39:20]	[CDH] ROUTES T0+flip p0: count=1 current=1 
+[2026-10-05 15:39:20]	[CDH] ROUTES T0+flip p1: count=2 current=2 
+[2026-10-05 15:39:20]	[CDH] ROUTES T0+flip p2: count=5 current=5 
+[2026-10-05 15:39:20]	[CDH] ROUTES T0+flip p3: count=2 current=2 
+[2026-10-05 15:39:20]	[CDH] ROUTES T0+flip p4: count=2 current=2 
+[2026-10-05 15:39:20]	[CDH] ROUTES T0+flip p5: count=4 current=4 
+[2026-10-05 15:39:20]	[CDH] ROUTES T0+flip p6: count=1 current=1 
+[2026-10-05 15:39:20]	[CDH] ROUTES T0+flip p7: count=3 current=3 
+[2026-10-05 15:39:20]	[CDH] ROUTES T0+flip p8: count=4 current=4 
+[2026-10-05 15:39:20]	[CDH] ROUTES T0+flip p9: count=3 current=3 
+[2026-10-05 15:39:20]	[CDH] ROUTES T0+flip total=27 pathPlots=287 
+[2026-10-05 15:39:20]	[CDH] SHOT flipped 
+[2026-10-05 15:39:23]	[CDH] ENDTURN turn1 try 1 blocker=UNITS 
+[2026-10-05 15:39:36]	[CDH] TURN n=2 turn=137 owners=75,49=2 75,15=1 22,51=9 23,51=8 28,51=9 
+[2026-10-05 15:39:36]	[CDH] ROUTES T2 p0: count=1 current=1 
+[2026-10-05 15:39:36]	[CDH] ROUTES T2 p1: count=2 current=2 
+[2026-10-05 15:39:36]	[CDH] ROUTES T2 p2: count=5 current=5 
+[2026-10-05 15:39:36]	[CDH] ROUTES T2 p3: count=2 current=2 
+[2026-10-05 15:39:36]	[CDH] ROUTES T2 p4: count=2 current=2 
+[2026-10-05 15:39:36]	[CDH] ROUTES T2 p5: count=4 current=4 
+[2026-10-05 15:39:36]	[CDH] ROUTES T2 p6: count=1 current=1 
+[2026-10-05 15:39:36]	[CDH] ROUTES T2 p7: count=3 current=3 
+[2026-10-05 15:39:36]	[CDH] ROUTES T2 p8: count=5 current=5 
+[2026-10-05 15:39:36]	[CDH] ROUTES T2 p9: count=3 current=3 
+[2026-10-05 15:39:36]	[CDH] ROUTES T2 total=28 pathPlots=287 
+[2026-10-05 15:39:36]	[CDH] ENDTURN turn2 try 1 blocker=NEW_POPULATION 
+[2026-10-05 15:39:48]	[CDH] TURN n=3 turn=138 owners=75,49=2 75,15=1 22,51=9 23,51=8 28,51=9 
+[2026-10-05 15:39:48]	[CDH] ROUTES T3 p0: count=1 current=1 
+[2026-10-05 15:39:48]	[CDH] ROUTES T3 p1: count=2 current=2 
+[2026-10-05 15:39:48]	[CDH] ROUTES T3 p2: count=5 current=5 
+[2026-10-05 15:39:48]	[CDH] ROUTES T3 p3: count=2 current=2 
+[2026-10-05 15:39:48]	[CDH] ROUTES T3 p4: count=2 current=2 
+[2026-10-05 15:39:48]	[CDH] ROUTES T3 p5: count=4 current=4 
+[2026-10-05 15:39:48]	[CDH] ROUTES T3 p6: count=1 current=1 
+[2026-10-05 15:39:48]	[CDH] ROUTES T3 p7: count=3 current=3 
+[2026-10-05 15:39:48]	[CDH] ROUTES T3 p8: count=5 current=5 
+[2026-10-05 15:39:48]	[CDH] ROUTES T3 p9: count=3 current=3 
+[2026-10-05 15:39:48]	[CDH] ROUTES T3 total=28 pathPlots=287 
+[2026-10-05 15:39:48]	[CDH] ENDTURN turn3 try 1 blocker=NEW_POPULATION 
+[2026-10-05 15:40:04]	[CDH] TURN n=4 turn=139 owners=75,49=2 75,15=1 22,51=9 23,51=8 28,51=9 
+[2026-10-05 15:40:04]	[CDH] ROUTES T4 p0: count=1 current=1 
+[2026-10-05 15:40:04]	[CDH] ROUTES T4 p1: count=2 current=2 
+[2026-10-05 15:40:04]	[CDH] ROUTES T4 p2: count=5 current=5 
+[2026-10-05 15:40:04]	[CDH] ROUTES T4 p3: count=2 current=2 
+[2026-10-05 15:40:04]	[CDH] ROUTES T4 p4: count=2 current=2 
+[2026-10-05 15:40:04]	[CDH] ROUTES T4 p5: count=4 current=4 
+[2026-10-05 15:40:04]	[CDH] ROUTES T4 p6: count=1 current=1 
+[2026-10-05 15:40:04]	[CDH] ROUTES T4 p7: count=3 current=3 
+[2026-10-05 15:40:04]	[CDH] ROUTES T4 p8: count=5 current=5 
+[2026-10-05 15:40:04]	[CDH] ROUTES T4 p9: count=3 current=3 
+[2026-10-05 15:40:04]	[CDH] ROUTES T4 total=28 pathPlots=287 
+[2026-10-05 15:40:04]	[CDH] ENDTURN turn4 try 1 blocker=NEW_POPULATION 
+[2026-10-05 15:40:16]	[CDH] TURN n=5 turn=140 owners=75,49=2 75,15=1 22,51=9 23,51=8 28,51=9 
+[2026-10-05 15:40:16]	[CDH] ROUTES T5 p0: count=1 current=1 
+[2026-10-05 15:40:16]	[CDH] ROUTES T5 p1: count=2 current=2 
+[2026-10-05 15:40:16]	[CDH] ROUTES T5 p2: count=5 current=5 
+[2026-10-05 15:40:16]	[CDH] ROUTES T5 p3: count=2 current=2 
+[2026-10-05 15:40:16]	[CDH] ROUTES T5 p4: count=2 current=2 
+[2026-10-05 15:40:16]	[CDH] ROUTES T5 p5: count=4 current=4 
+[2026-10-05 15:40:16]	[CDH] ROUTES T5 p6: count=1 current=1 
+[2026-10-05 15:40:16]	[CDH] ROUTES T5 p7: count=3 current=3 
+[2026-10-05 15:40:16]	[CDH] ROUTES T5 p8: count=5 current=5 
+[2026-10-05 15:40:16]	[CDH] ROUTES T5 p9: count=3 current=3 
+[2026-10-05 15:40:16]	[CDH] ROUTES T5 total=28 pathPlots=287 
+[2026-10-05 15:40:16]	[CDH] ENDTURN turn5 try 1 blocker=NEW_POPULATION 
+[2026-10-05 15:40:28]	[CDH] TURN n=6 turn=141 owners=75,49=2 75,15=1 22,51=9 23,51=8 28,51=9 
+[2026-10-05 15:40:28]	[CDH] ROUTES T6 p0: count=1 current=1 
+[2026-10-05 15:40:28]	[CDH] ROUTES T6 p1: count=2 current=2 
+[2026-10-05 15:40:28]	[CDH] ROUTES T6 p2: count=5 current=5 
+[2026-10-05 15:40:28]	[CDH] ROUTES T6 p3: count=2 current=2 
+[2026-10-05 15:40:28]	[CDH] ROUTES T6 p4: count=3 current=3 
+[2026-10-05 15:40:28]	[CDH] ROUTES T6 p5: count=4 current=4 
+[2026-10-05 15:40:28]	[CDH] ROUTES T6 p6: count=1 current=1 
+[2026-10-05 15:40:28]	[CDH] ROUTES T6 p7: count=3 current=3 
+[2026-10-05 15:40:28]	[CDH] ROUTES T6 p8: count=5 current=5 
+[2026-10-05 15:40:28]	[CDH] ROUTES T6 p9: count=3 current=3 
+[2026-10-05 15:40:28]	[CDH] ROUTES T6 total=29 pathPlots=290 
+[2026-10-05 15:40:28]	[CDH] ENDTURN turn6 try 1 blocker=NEW_POPULATION 
+[2026-10-05 15:40:43]	[CDH] TURN n=7 turn=142 owners=75,49=2 75,15=1 22,51=9 23,51=8 28,51=9 
+[2026-10-05 15:40:43]	[CDH] ROUTES T7 p0: count=1 current=1 
+[2026-10-05 15:40:43]	[CDH] ROUTES T7 p1: count=2 current=2 
+[2026-10-05 15:40:43]	[CDH] ROUTES T7 p2: count=5 current=5 
+[2026-10-05 15:40:43]	[CDH] ROUTES T7 p3: count=2 current=2 
+[2026-10-05 15:40:43]	[CDH] ROUTES T7 p4: count=3 current=3 
+[2026-10-05 15:40:43]	[CDH] ROUTES T7 p5: count=4 current=4 
+[2026-10-05 15:40:43]	[CDH] ROUTES T7 p6: count=1 current=1 
+[2026-10-05 15:40:43]	[CDH] ROUTES T7 p7: count=3 current=3 
+[2026-10-05 15:40:43]	[CDH] ROUTES T7 p8: count=5 current=5 
+[2026-10-05 15:40:43]	[CDH] ROUTES T7 p9: count=3 current=3 
+[2026-10-05 15:40:43]	[CDH] ROUTES T7 total=29 pathPlots=290 
+[2026-10-05 15:40:43]	[CDH] DONE harness trade-onpath finished, survived 6 turns 

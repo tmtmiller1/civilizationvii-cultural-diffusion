@@ -1,0 +1,18 @@
+[2026-10-06 08:58:39]	HTML Parser Error@:fs://game/root-game.html@1:2043: Premature end of file  Currently open tags: html, div, div..
+[2026-10-06 08:58:39]	HTML Parser Error@:fs://game/root-game.html@1:2043: Premature end of file  Currently open tags: html, div, div..
+[2026-10-06 08:58:55]	HTML Parser Error@:fs://game/root-game.html@49:43: Tokenizer error with an unimplemented error message.
+[2026-10-06 08:59:19]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags.js:348: Error: Expected this.unit to be non-null.
+[2026-10-06 08:59:19]	JS Error (Line):       throw new Error(`Expected this.unit to be non-null.`);
+[2026-10-06 08:59:19]	JS Error (Stack): Error: Expected this.unit to be non-null.
+[2026-10-06 08:59:19]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags.js:348: Error: Expected this.unit to be non-null.
+[2026-10-06 08:59:19]	JS Error (Line):       throw new Error(`Expected this.unit to be non-null.`);
+[2026-10-06 08:59:19]	JS Error (Stack): Error: Expected this.unit to be non-null.
+[2026-10-06 08:59:20]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags.js:348: Error: Expected this.unit to be non-null.
+[2026-10-06 08:59:20]	JS Error (Line):       throw new Error(`Expected this.unit to be non-null.`);
+[2026-10-06 08:59:20]	JS Error (Stack): Error: Expected this.unit to be non-null.
+[2026-10-06 08:59:21]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags.js:348: Error: Expected this.unit to be non-null.
+[2026-10-06 08:59:21]	JS Error (Line):       throw new Error(`Expected this.unit to be non-null.`);
+[2026-10-06 08:59:21]	JS Error (Stack): Error: Expected this.unit to be non-null.
+[2026-10-06 08:59:51]	HTML Parser Error@:fs://game/root-game.html@49:43: Tokenizer error with an unimplemented error message.
+[2026-10-06 08:59:51]	Unhandled Promise Rejection: TypeError: Cannot read properties of null (reading 'cityId').  Re-run with inspector attached for callstack. 
+[2026-10-06 08:59:51]	Unhandled rejection error value: TypeError: Cannot read properties of null (reading 'cityId')

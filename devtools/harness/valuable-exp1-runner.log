@@ -1,0 +1,18 @@
+[23:22:21] autosaves backed up: 10
+[23:22:21] registry before: 2293=0  (restoring Disabled=0 afterward)
+[23:22:21] deployed mod: debug=1 affectsSaves0=1
+[23:22:21] NO_MOD=1: Cultural Diffusion left DISABLED for this run (control)
+[23:22:21] harness installed: cdh-game-valuable.js on AugustusExp64.Civ7Save
+[23:22:21] previous UI.log kept at /Users/USER/Library/Application Support/Civilization VII/cd-harness-backup/UI-before-valuable-exp1-20261005-232221.log (321 lines)
+[23:22:23] game pid 5859
+[23:22:51] result=crashed after 28s
+[23:22:51] collected AI_Market.csv (1 lines)
+[23:22:52] collected AI_MovementPlanning.csv (87 lines)
+[23:22:52] collected AI_Targets.csv (602 lines)
+[23:22:52] collected AI_UnitEfficiency.csv (141 lines)
+[23:22:52] waiting 60s for the crash report to land
+[23:23:52] crash report: valuable-exp1-runner.log
+[23:24:00] restored: registry 2295=0  harness present: no debugPatched: 0
+[23:24:00] autosaves changed during the run; putting the player's back
+[23:24:00] FINISHED result=crashed  log: /Users/USER/Repos/civilization_mods/civilization_vii_mods/tower_mods/cultural_diffusion/devtools/harness/valuable-exp1-UI.log
+RUN_EXIT=0

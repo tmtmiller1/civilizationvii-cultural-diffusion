@@ -1,0 +1,18 @@
+[2026-10-05 19:37:04]	HTML Parser Error@:fs://game/root-game.html@1:1146: Premature end of file  Currently open tags: html, div..
+[2026-10-05 19:37:20]	HTML Parser Error@:fs://game/root-game.html@49:43: Tokenizer error with an unimplemented error message.
+[2026-10-05 19:37:37]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags.js:348: Error: Expected this.unit to be non-null.
+[2026-10-05 19:37:37]	JS Error (Line):       throw new Error(`Expected this.unit to be non-null.`);
+[2026-10-05 19:37:37]	JS Error (Stack): Error: Expected this.unit to be non-null.
+[2026-10-05 19:37:40]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags.js:348: Error: Expected this.unit to be non-null.
+[2026-10-05 19:37:40]	JS Error (Line):       throw new Error(`Expected this.unit to be non-null.`);
+[2026-10-05 19:37:40]	JS Error (Stack): Error: Expected this.unit to be non-null.
+[2026-10-05 19:37:40]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags.js:348: Error: Expected this.unit to be non-null.
+[2026-10-05 19:37:40]	JS Error (Line):       throw new Error(`Expected this.unit to be non-null.`);
+[2026-10-05 19:37:40]	JS Error (Stack): Error: Expected this.unit to be non-null.
+[2026-10-05 19:37:40]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags.js:348: Error: Expected this.unit to be non-null.
+[2026-10-05 19:37:40]	JS Error (Line):       throw new Error(`Expected this.unit to be non-null.`);
+[2026-10-05 19:37:40]	JS Error (Stack): Error: Expected this.unit to be non-null.
+[2026-10-05 19:37:47]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags.js:348: Error: Expected this.unit to be non-null.
+[2026-10-05 19:37:47]	JS Error (Line):       throw new Error(`Expected this.unit to be non-null.`);
+[2026-10-05 19:37:47]	JS Error (Stack): Error: Expected this.unit to be non-null.
+[2026-10-05 19:39:40]	HTML Parser Error@:fs://game/root-game.html@1:25: Premature end of file  Currently open tags: html, div..

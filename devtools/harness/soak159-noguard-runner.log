@@ -1,0 +1,29 @@
+[09:32:15] autosaves backed up: 10
+[09:32:15] registry before: 2331=0  (restoring Disabled=0 afterward)
+[09:32:15] patched ui/cd-age-guard.js: 'TRANSITION_GUARD_TURNS = 2;' -> 'TRANSITION_GUARD_TURNS = -1;' (1 hit(s))
+[09:32:15] deployed mod: debug=1 affectsSaves0=1
+[09:32:15] harness installed: cdh-game-soak159.js on CDH-Ant159.Civ7Save
+[09:32:15] previous UI.log kept at /Users/USER/Library/Application Support/Civilization VII/cd-harness-backup/UI-before-soak159-noguard-20261006-093215.log (3204 lines)
+[09:32:17] game pid 56268
+[09:35:40] result=done after 188s
+[09:35:40] collected AI_Behavior_Tree_Events.csv (12 lines)
+[09:35:40] collected AI_Behavior_Trees.csv (6300 lines)
+[09:35:40] collected AI_CityStrategy.csv (127 lines)
+[09:35:40] collected AI_CombatPlanning.csv (593 lines)
+[09:35:40] collected AI_Commander_Promotions.csv (5 lines)
+[09:35:40] collected AI_Dedications.csv (69 lines)
+[09:35:40] collected AI_DiplomaticActions.csv (453 lines)
+[09:35:41] collected AI_Leader.csv (2 lines)
+[09:35:41] collected AI_Market.csv (285 lines)
+[09:35:41] collected AI_MayhemTracker.csv (69 lines)
+[09:35:41] collected AI_MovementPlanning.csv (4793 lines)
+[09:35:41] collected AI_Operation.csv (2563 lines)
+[09:35:41] collected AI_Operation_Eval.csv (135 lines)
+[09:35:41] collected AI_Recruiting.csv (21294 lines)
+[09:35:41] collected AI_Tactical.csv (2087 lines)
+[09:35:41] collected AI_Targets.csv (23020 lines)
+[09:35:41] collected AI_UnitEfficiency.csv (256 lines)
+[09:35:41] collected AI_Victories.csv (27 lines)
+[09:35:49] restored: registry 2333=0  harness present: no debugPatched: 0
+[09:35:49] autosaves changed during the run; putting the player's back
+[09:35:50] FINISHED result=done  log: /Users/USER/Repos/civilization_mods/civilization_vii_mods/tower_mods/cultural_diffusion/devtools/harness/soak159-noguard-UI.log

@@ -1,0 +1,130 @@
+[2026-10-05 23:08:35]	[CDH] shell attached 
+[2026-10-05 23:08:36]	[CDH] shell query complete 
+[2026-10-05 23:08:36]	[CDH] shell found AugustusAnt136.Civ7Save turn 136 age AGE_ANTIQUITY missingMods=0 unowned=0 
+[2026-10-05 23:08:36]	[CDH] shell handleLoadSave returned true 
+[2026-10-05 23:08:54]	[CDH] attached valuable 
+[2026-10-05 23:08:59]	[CDH] LOAD GameStarted 
+[2026-10-05 23:09:09]	[CDH] VALUABLE start turn=136 age=AGE_ANTIQUITY majors=[0,1,2,3,4,5,6,7,8,9] 
+[2026-10-05 23:09:09]	[CDH] DISTRICT READ check: 92,32 probe=DISTRICT_CITY_CENTER mod=null(getDistrictType undefined) | 64,14 probe=DISTRICT_CITY_CENTER mod=null(getDistrictType undefined) | 70,54 probe=DISTRICT_CITY_CENTER mod=null(getDistrictType undefined) 
+[2026-10-05 23:09:09]	[CDH] URBAN candidates T0: 36 (adjacent buyer 2) 
+[2026-10-05 23:09:09]	[CDH] FLIP T0 urban 74,48 39->2 d=4 dist=DISTRICT_URBAN cons=["BUILDING_SAW_PIT","BUILDING_GRANARY"] res= units=0 
+[2026-10-05 23:09:09]	[CDH] FLIP T0 urban 75,49 39->2 d=3 dist=DISTRICT_URBAN cons=["BUILDING_HARBOR"] res= units=1 
+[2026-10-05 23:09:09]	[CDH] FLIP T0 urban 79,17 3->1(far) d=4 dist=DISTRICT_URBAN cons=["BUILDING_MARKET"] res= units=0 
+[2026-10-05 23:09:10]	[CDH] FLIP T0 urban 81,19 3->0(far) d=5 dist=DISTRICT_URBAN cons=["BUILDING_BLACKSMITH"] res= units=0 
+[2026-10-05 23:09:10]	[CDH] FLIP T0 urban 86,19 0->3(far) d=6 dist=DISTRICT_URBAN cons=["BUILDING_MARKET","BUILDING_ANCIENT_WALLS","BUILDING_GRANARY"] res= units=1 
+[2026-10-05 23:09:10]	[CDH] FLIP T0 urban 65,20 1->5(far) d=6 dist=DISTRICT_URBAN cons=["BUILDING_PARTHENON"] res= units=1 
+[2026-10-05 23:09:10]	[CDH] FLIP T0 urban 87,20 0->3 d=6 dist=DISTRICT_URBAN cons=["BUILDING_LIBRARY","BUILDING_BRICKYARD","BUILDING_ANCIENT_WALLS"] res= units=0 
+[2026-10-05 23:09:10]	[CDH] FLIP T0 urban 87,21 0->3(far) d=6 dist=DISTRICT_URBAN cons=["BUILDING_BARRACKS","BUILDING_BLACKSMITH"] res= units=0 
+[2026-10-05 23:09:10]	[CDH] FLIP T0 urban 86,31 0->3(far) d=6 dist=DISTRICT_URBAN cons=["BUILDING_MONUMENT","BUILDING_ALTAR"] res= units=0 
+[2026-10-05 23:09:11]	[CDH] FLIP T0 urban 88,32 0->3(far) d=8 dist=DISTRICT_URBAN cons=["BUILDING_SAW_PIT","BUILDING_BRICKYARD"] res= units=0 
+[2026-10-05 23:09:11]	[CDH] FLIP T0 urban 86,33 0->3(far) d=7 dist=DISTRICT_URBAN cons=["BUILDING_GRANARY"] res= units=0 
+[2026-10-05 23:09:11]	[CDH] FLIP T0 urban 66,42 5->2(far) d=8 dist=DISTRICT_URBAN cons=["BUILDING_HARBOR"] res= units=0 
+[2026-10-05 23:09:11]	[CDH] FLIP T0 resource 22,4 13->7(far) d=6 dist=DISTRICT_RURAL cons=["IMPROVEMENT_QUARRY"] res=RESOURCE_JADE units=0 
+[2026-10-05 23:09:11]	[CDH] FLIP T0 resource 81,5 11->1(far) d=8 dist=DISTRICT_RURAL cons=["IMPROVEMENT_CAMP"] res=RESOURCE_HIDES units=0 
+[2026-10-05 23:09:11]	[CDH] FLIP T0 resource 72,13 23->1 d=2 dist=DISTRICT_RURAL cons=["IMPROVEMENT_MINE_RESOURCE"] res=RESOURCE_GOLD units=0 
+[2026-10-05 23:09:11]	[CDH] FLIP T0 resource 77,14 1->3(far) d=6 dist=DISTRICT_RURAL cons=["IMPROVEMENT_PASTURE"] res=RESOURCE_WOOL units=0 
+[2026-10-05 23:09:12]	[CDH] FLIP T0 resource 80,15 3->1 d=3 dist=DISTRICT_RURAL cons=["IMPROVEMENT_MINE_RESOURCE"] res=RESOURCE_IRON units=0 
+[2026-10-05 23:09:12]	[CDH] FLIP T0 resource 76,16 23->1 d=4 dist=DISTRICT_RURAL cons=["IMPROVEMENT_PLANTATION"] res=RESOURCE_COTTON units=0 
+[2026-10-05 23:09:12]	[CDH] FLIP T0 unit 73,2 21->1(far) d=8 dist=DISTRICT_WILDERNESS cons=["IMPROVEMENT_VILLAGE"] res= units=1 
+[2026-10-05 23:09:12]	[CDH] FLIP T0 unit 68,6 10->1(far) d=6 dist=DISTRICT_WILDERNESS cons=["IMPROVEMENT_VILLAGE"] res= units=1 
+[2026-10-05 23:09:12]	[CDH] FLIP T0 unit 82,6 11->1 d=7 dist=DISTRICT_RURAL cons=["IMPROVEMENT_MINE"] res= units=1 
+[2026-10-05 23:09:12]	[CDH] FLIP T0 unit 38,14 12->6(far) d=5 dist=DISTRICT_WILDERNESS cons=["IMPROVEMENT_VILLAGE"] res= units=1 
+[2026-10-05 23:09:13]	[CDH] FLIP T0 unit 79,16 3->1 d=3 dist=DISTRICT_RURAL cons=["IMPROVEMENT_WOODCUTTER"] res= units=1 
+[2026-10-05 23:09:13]	[CDH] FLIP T0 unit 63,18 1->5(far) d=8 dist=DISTRICT_RURAL cons=["IMPROVEMENT_FARM"] res= units=1 
+[2026-10-05 23:09:19]	[CDH] LANDED T0: 24/24 u:y u:y u:y u:y u:y u:y u:y u:y u:y u:y u:y u:y r:y r:y r:y r:y r:y r:y u:y u:y u:y u:y u:y u:y 
+[2026-10-05 23:09:27]	[CDH] TURN k=1 turn=137 
+[2026-10-05 23:09:27]	[CDH] URBAN candidates T1: 25 (adjacent buyer 2) 
+[2026-10-05 23:09:27]	[CDH] FLIP T1 urban 67,42 5->2 d=8 dist=DISTRICT_URBAN cons=["BUILDING_MARKET","BUILDING_SAW_PIT"] res= units=0 
+[2026-10-05 23:09:28]	[CDH] FLIP T1 urban 24,52 9->8 d=4 dist=DISTRICT_URBAN cons=["BUILDING_BLACKSMITH"] res= units=0 
+[2026-10-05 23:09:28]	[CDH] FLIP T1 urban 68,42 5->2 d=8 dist=DISTRICT_URBAN cons=["BUILDING_BRICKYARD","BUILDING_ANCIENT_WALLS"] res= units=1 
+[2026-10-05 23:09:29]	[CDH] FLIP T1 urban 22,43 8->9(far) d=8 dist=DISTRICT_URBAN cons=["BUILDING_BARRACKS","BUILDING_BLACKSMITH"] res= units=0 
+[2026-10-05 23:09:29]	[CDH] FLIP T1 urban 23,43 8->9(far) d=8 dist=DISTRICT_URBAN cons=["BUILDING_BRICKYARD","BUILDING_ACADEMY"] res= units=0 
+[2026-10-05 23:09:29]	[CDH] FLIP T1 urban 22,44 8->9 d=7 dist=DISTRICT_URBAN cons=["BUILDING_DHARAMSHALA","BUILDING_ANCIENT_WALLS","BUILDING_VIHARA"] res= units=0 
+[2026-10-05 23:09:29]	[CDH] FLIP T1 resource 81,16 3->1 d=4 dist=DISTRICT_RURAL cons=["IMPROVEMENT_MINE_RESOURCE"] res=RESOURCE_SALT units=0 
+[2026-10-05 23:09:29]	[CDH] FLIP T1 resource 84,17 0->3(far) d=4 dist=DISTRICT_RURAL cons=["IMPROVEMENT_PLANTATION"] res=RESOURCE_INCENSE units=0 
+[2026-10-05 23:09:29]	[CDH] FLIP T1 resource 66,18 1->5(far) d=8 dist=DISTRICT_RURAL cons=["IMPROVEMENT_CAMP"] res=RESOURCE_CAMELS units=0 
+[2026-10-05 23:09:30]	[CDH] FLIP T1 unit 77,10 40->1(far) d=3 dist=DISTRICT_WILDERNESS cons=["IMPROVEMENT_ENCAMPMENT"] res= units=1 
+[2026-10-05 23:09:30]	[CDH] FLIP T1 unit 80,16 3->1 d=3 dist=none cons=[] res= units=0 
+[2026-10-05 23:09:30]	[CDH] FLIP T1 unit 53,19 19->1(far) d=8 dist=DISTRICT_WILDERNESS cons=["IMPROVEMENT_VILLAGE"] res= units=1 
+[2026-10-05 23:09:36]	[CDH] LANDED T1: 12/12 u:y u:y u:y u:y u:y u:y r:y r:y r:y u:y u:y u:y 
+[2026-10-05 23:09:41]	[CDH] TURN k=2 turn=138 
+[2026-10-05 23:09:41]	[CDH] URBAN candidates T2: 20 (adjacent buyer 2) 
+[2026-10-05 23:09:41]	[CDH] FLIP T2 urban 22,45 8->9 d=6 dist=DISTRICT_URBAN cons=["BUILDING_LIBRARY","BUILDING_MARKET","BUILDING_ANCIENT_WALLS"] res= units=1 
+[2026-10-05 23:09:41]	[CDH] FLIP T2 urban 24,51 9->8 d=4 dist=DISTRICT_URBAN cons=["BUILDING_LIBRARY","BUILDING_BARRACKS"] res= units=0 
+[2026-10-05 23:09:41]	[CDH] FLIP T2 urban 64,44 5->2(far) d=6 dist=DISTRICT_URBAN cons=["BUILDING_BRICKYARD","BUILDING_ACADEMY"] res= units=0 
+[2026-10-05 23:09:42]	[CDH] FLIP T2 urban 70,44 5->2(far) d=6 dist=DISTRICT_URBAN cons=["BUILDING_LIBRARY","BUILDING_BARRACKS","BUILDING_ANCIENT_WALLS"] res= units=0 
+[2026-10-05 23:09:42]	[CDH] FLIP T2 urban 63,45 5->2 d=6 dist=DISTRICT_URBAN cons=["BUILDING_MARKET"] res= units=0 
+[2026-10-05 23:09:42]	[CDH] FLIP T2 urban 65,45 5->2(far) d=5 dist=DISTRICT_URBAN cons=["BUILDING_LIBRARY","BUILDING_BLACKSMITH"] res= units=0 
+[2026-10-05 23:09:42]	[CDH] FLIP T2 resource 79,18 3->1 d=5 dist=DISTRICT_RURAL cons=["IMPROVEMENT_MINE_RESOURCE"] res=RESOURCE_SILVER units=0 
+[2026-10-05 23:09:42]	[CDH] FLIP T2 resource 82,19 3->0 d=4 dist=none cons=[] res=RESOURCE_COTTON units=0 
+[2026-10-05 23:09:43]	[CDH] FLIP T2 resource 62,21 1->5(far) d=5 dist=DISTRICT_RURAL cons=["IMPROVEMENT_PLANTATION"] res=RESOURCE_INCENSE units=1 
+[2026-10-05 23:09:43]	[CDH] FLIP T2 unit 73,13 23->1 d=3 dist=DISTRICT_RURAL cons=["IMPROVEMENT_MINE"] res= units=1 
+[2026-10-05 23:09:43]	[CDH] FLIP T2 unit 63,20 1->5 d=6 dist=DISTRICT_RURAL cons=["IMPROVEMENT_MINE"] res= units=1 
+[2026-10-05 23:09:43]	[CDH] FLIP T2 unit 80,22 3->0(far) d=7 dist=none cons=[] res= units=1 
+[2026-10-05 23:09:49]	[CDH] LANDED T2: 12/12 u:y u:y u:y u:y u:y u:y r:y r:y r:y u:y u:y u:y 
+[2026-10-05 23:09:56]	[CDH] TURN k=3 turn=139 
+[2026-10-05 23:09:56]	[CDH] URBAN candidates T3: 15 (adjacent buyer 0) 
+[2026-10-05 23:09:56]	[CDH] FLIP T3 urban 83,48 4->2(far) d=7 dist=DISTRICT_URBAN cons=["BUILDING_BLACKSMITH","BUILDING_AMPHITHEATER"] res= units=0 
+[2026-10-05 23:09:56]	[CDH] FLIP T3 urban 81,49 4->2(far) d=5 dist=DISTRICT_URBAN cons=["BUILDING_MARKET"] res= units=0 
+[2026-10-05 23:09:56]	[CDH] FLIP T3 urban 84,49 4->2(far) d=8 dist=DISTRICT_URBAN cons=["BUILDING_BARRACKS"] res= units=0 
+[2026-10-05 23:09:56]	[CDH] FLIP T3 urban 72,50 2->5(far) d=6 dist=DISTRICT_URBAN cons=["BUILDING_BLACKSMITH"] res= units=0 
+[2026-10-05 23:09:56]	[CDH] FLIP T3 urban 73,50 2->5(far) d=6 dist=DISTRICT_URBAN cons=["BUILDING_ACADEMY","BUILDING_ALTAR"] res= units=0 
+[2026-10-05 23:09:57]	[CDH] FLIP T3 urban 82,50 4->2 d=5 dist=DISTRICT_URBAN cons=["BUILDING_HARBOR","BUILDING_FISHING_QUAY"] res= units=0 
+[2026-10-05 23:09:57]	[CDH] FLIP T3 resource 81,21 3->0(far) d=5 dist=DISTRICT_RURAL cons=["IMPROVEMENT_PASTURE"] res=RESOURCE_HORSES units=0 
+[2026-10-05 23:09:57]	[CDH] FLIP T3 resource 82,21 3->0(far) d=4 dist=DISTRICT_RURAL cons=["IMPROVEMENT_MINE_RESOURCE"] res=RESOURCE_SILVER units=1 
+[2026-10-05 23:09:57]	[CDH] FLIP T3 resource 23,22 7->8(far) d=7 dist=DISTRICT_RURAL cons=["IMPROVEMENT_MINE_RESOURCE"] res=RESOURCE_GOLD units=0 
+[2026-10-05 23:09:57]	[CDH] FLIP T3 unit 63,21 1->5 d=5 dist=none cons=[] res= units=1 
+[2026-10-05 23:09:57]	[CDH] FLIP T3 unit 87,22 0->3 d=5 dist=DISTRICT_RURAL cons=["IMPROVEMENT_PLANTATION"] res=RESOURCE_WINE units=1 
+[2026-10-05 23:09:58]	[CDH] FLIP T3 unit 51,23 63->6(far) d=8 dist=DISTRICT_WILDERNESS cons=["IMPROVEMENT_WRECKAGE"] res= units=1 
+[2026-10-05 23:10:04]	[CDH] LANDED T3: 12/12 u:y u:y u:y u:y u:y u:y r:y r:y r:y u:y u:y u:y 
+[2026-10-05 23:10:11]	[CDH] TURN k=4 turn=140 
+[2026-10-05 23:10:11]	[CDH] URBAN candidates T4: 12 (adjacent buyer 3) 
+[2026-10-05 23:10:11]	[CDH] FLIP T4 urban 83,50 4->2 d=6 dist=DISTRICT_URBAN cons=["BUILDING_LIBRARY","BUILDING_SAW_PIT"] res= units=0 
+[2026-10-05 23:10:11]	[CDH] FLIP T4 urban 84,50 4->2 d=7 dist=DISTRICT_URBAN cons=["BUILDING_TEMPLE_OF_JUPITER","BUILDING_BASILICA"] res= units=0 
+[2026-10-05 23:10:11]	[CDH] FLIP T4 urban 73,51 2->5 d=3 dist=DISTRICT_URBAN cons=["BUILDING_MARKET","BUILDING_BARRACKS"] res= units=0 
+[2026-10-05 23:10:11]	[CDH] FLIP T4 urban 68,51 2->5(far) d=7 dist=DISTRICT_URBAN cons=["BUILDING_ALTAR"] res= units=0 
+[2026-10-05 23:10:12]	[CDH] FLIP T4 urban 83,51 4->2 d=6 dist=DISTRICT_URBAN cons=["BUILDING_BRICKYARD","BUILDING_AMPHITHEATER"] res= units=0 
+[2026-10-05 23:10:12]	[CDH] FLIP T4 urban 69,53 2->5(far) d=8 dist=DISTRICT_URBAN cons=["BUILDING_MARKET","BUILDING_ANCIENT_WALLS","BUILDING_SAW_PIT"] res= units=0 
+[2026-10-05 23:10:12]	[CDH] FLIP T4 resource 70,19 1->3(far) d=8 dist=DISTRICT_RURAL cons=["IMPROVEMENT_MINE_RESOURCE"] res=RESOURCE_TIN units=0 
+[2026-10-05 23:10:12]	[CDH] FLIP T4 resource 63,22 1->5 d=4 dist=none cons=[] res=RESOURCE_IRON units=0 
+[2026-10-05 23:10:12]	[CDH] FLIP T4 resource 85,23 0->3(far) d=3 dist=none cons=[] res=RESOURCE_WINE units=0 
+[2026-10-05 23:10:12]	[CDH] FLIP T4 unit 77,12 1->3(far) d=7 dist=none cons=[] res= units=1 
+[2026-10-05 23:10:12]	[CDH] FLIP T4 unit 75,17 23->1 d=5 dist=DISTRICT_RURAL cons=["IMPROVEMENT_WOODCUTTER"] res= units=1 
+[2026-10-05 23:10:13]	[CDH] FLIP T4 unit 23,23 7->8 d=6 dist=DISTRICT_RURAL cons=["IMPROVEMENT_FISHING_BOAT"] res= units=1 
+[2026-10-05 23:10:19]	[CDH] LANDED T4: 12/12 u:y u:y u:y u:y u:y u:y r:y r:y r:y u:y u:y u:y 
+[2026-10-05 23:10:24]	[CDH] TURN k=5 turn=141 
+[2026-10-05 23:10:24]	[CDH] URBAN candidates T5: 6 (adjacent buyer 0) 
+[2026-10-05 23:10:24]	[CDH] FLIP T5 urban 70,55 2->5(far) d=8 dist=DISTRICT_URBAN cons=["BUILDING_LIBRARY","BUILDING_BRICKYARD","BUILDING_ANCIENT_WALLS"] res= units=0 
+[2026-10-05 23:10:24]	[CDH] FLIP T5 urban 71,55 2->5(far) d=7 dist=DISTRICT_URBAN cons=["BUILDING_BARRACKS","BUILDING_ACADEMY"] res= units=0 
+[2026-10-05 23:10:24]	[CDH] FLIP T5 urban 81,55 4->2(far) d=4 dist=DISTRICT_URBAN cons=["BUILDING_BLACKSMITH"] res= units=0 
+[2026-10-05 23:10:24]	[CDH] FLIP T5 urban 82,56 4->2(far) d=5 dist=DISTRICT_URBAN cons=["BUILDING_LIBRARY","BUILDING_BARRACKS"] res= units=0 
+[2026-10-05 23:10:24]	[CDH] FLIP T5 urban 82,57 4->2(far) d=6 dist=DISTRICT_URBAN cons=["BUILDING_MARKET"] res= units=0 
+[2026-10-05 23:10:25]	[CDH] FLIP T5 urban 59,29 22->5(far) d=6 dist=DISTRICT_URBAN cons=["BUILDING_BRICKYARD"] res= units=0 
+[2026-10-05 23:10:25]	[CDH] FLIP T5 resource 20,24 7->8(far) d=5 dist=DISTRICT_RURAL cons=["IMPROVEMENT_PLANTATION"] res=RESOURCE_WINE units=1 
+[2026-10-05 23:10:25]	[CDH] FLIP T5 resource 81,26 3->0(far) d=8 dist=DISTRICT_RURAL cons=["IMPROVEMENT_PLANTATION"] res=RESOURCE_RICE units=0 
+[2026-10-05 23:10:25]	[CDH] FLIP T5 resource 83,26 3->0(far) d=6 dist=none cons=[] res=RESOURCE_CRABS units=0 
+[2026-10-05 23:10:25]	[CDH] FLIP T5 unit 66,19 1->5 d=7 dist=none cons=[] res= units=0 
+[2026-10-05 23:10:25]	[CDH] FLIP T5 unit 67,20 1->5(far) d=6 dist=DISTRICT_RURAL cons=["IMPROVEMENT_WOODCUTTER"] res= units=0 
+[2026-10-05 23:10:26]	[CDH] FLIP T5 unit 61,23 44->5(far) d=4 dist=DISTRICT_WILDERNESS cons=["IMPROVEMENT_ENCAMPMENT"] res= units=1 
+[2026-10-05 23:10:32]	[CDH] LANDED T5: 12/12 u:y u:y u:y u:y u:y u:y r:y r:y r:y u:y u:y u:y 
+[2026-10-05 23:10:34]	[CDH] TURN k=6 turn=142 
+[2026-10-05 23:10:34]	[CDH] URBAN candidates T6: 0 (adjacent buyer 0) 
+[2026-10-05 23:10:34]	[CDH] FLIP T6 resource 12,27 7->8(far) d=8 dist=DISTRICT_RURAL cons=["IMPROVEMENT_CAMP"] res=RESOURCE_IVORY units=0 
+[2026-10-05 23:10:35]	[CDH] FLIP T6 resource 62,27 5->1(far) d=8 dist=DISTRICT_RURAL cons=["IMPROVEMENT_QUARRY"] res=RESOURCE_JADE units=0 
+[2026-10-05 23:10:35]	[CDH] FLIP T6 resource 80,27 3->0 d=8 dist=DISTRICT_RURAL cons=["IMPROVEMENT_CAMP"] res=RESOURCE_IVORY units=0 
+[2026-10-05 23:10:36]	[CDH] FLIP T6 unit 23,4 13->7 d=5 dist=DISTRICT_RURAL cons=["IMPROVEMENT_FARM"] res= units=1 
+[2026-10-05 23:10:36]	[CDH] FLIP T6 unit 66,20 1->5 d=6 dist=DISTRICT_RURAL cons=["IMPROVEMENT_CLAY_PIT"] res= units=0 
+[2026-10-05 23:10:36]	[CDH] FLIP T6 unit 70,20 1->3 d=8 dist=DISTRICT_RURAL cons=["IMPROVEMENT_WOODCUTTER"] res= units=0 
+[2026-10-05 23:10:42]	[CDH] LANDED T6: 6/6 r:y r:y r:y u:y u:y u:y 
+[2026-10-05 23:10:45]	[CDH] TURN k=7 turn=143 
+[2026-10-05 23:10:45]	[CDH] URBAN candidates T7: 1 (adjacent buyer 1) 
+[2026-10-05 23:10:45]	[CDH] FLIP T7 urban 25,50 9->8 d=4 dist=DISTRICT_URBAN cons=["BUILDING_BLACKSMITH"] res= units=0 
+[2026-10-05 23:10:45]	[CDH] FLIP T7 resource 14,20 7->8(far) d=7 dist=DISTRICT_RURAL cons=["IMPROVEMENT_PLANTATION"] res=RESOURCE_FLAX units=0 
+[2026-10-05 23:10:45]	[CDH] FLIP T7 resource 14,26 7->8(far) d=4 dist=none cons=[] res=RESOURCE_GOLD units=0 
+[2026-10-05 23:10:45]	[CDH] FLIP T7 resource 14,29 28->8(far) d=4 dist=DISTRICT_RURAL cons=["IMPROVEMENT_MINE_RESOURCE"] res=RESOURCE_GOLD units=0 
+[2026-10-05 23:10:45]	[CDH] FLIP T7 unit 13,19 7->8 d=8 dist=DISTRICT_RURAL cons=["IMPROVEMENT_WOODCUTTER"] res= units=1 
+[2026-10-05 23:10:46]	[CDH] FLIP T7 unit 64,21 1->5 d=5 dist=none cons=[] res= units=1 
+[2026-10-05 23:10:46]	[CDH] FLIP T7 unit 15,24 7->8(far) d=4 dist=none cons=[] res= units=1 
+[2026-10-05 23:10:52]	[CDH] LANDED T7: 7/7 u:y r:y r:y r:y u:y u:y u:y 
+[2026-10-05 23:10:54]	[CDH] TURN k=8 turn=144 
+[2026-10-05 23:10:54]	[CDH] DONE harness valuable finished, survived 8 turns, 0 flips 

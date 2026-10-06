@@ -26,6 +26,14 @@ REPO="$(cd "$HERE/../.." && pwd)"
 DEST="$MODS/cultural-diffusion"; MI="$DEST/cultural-diffusion.modinfo"
 BAK="$S/cd-harness-backup/auto-$LABEL"
 say() { echo "[$(date +%H:%M:%S)] $*"; }
+# Nothing is deleted: whatever a run replaces is moved into this run's trash folder, which can be cleared by hand.
+TRASH="$S/cd-harness-backup/trash/$LABEL-$(date +%Y%m%d-%H%M%S)"
+STASHED=0
+stash() {
+  [ -e "$1" ] || return 0
+  mkdir -p "$TRASH"; STASHED=$((STASHED+1))
+  mv "$1" "$TRASH/$STASHED-$(basename "$1")"
+}
 
 [ -f "$HERE/$SCRIPT" ] || { say "missing script $HERE/$SCRIPT"; exit 1; }
 [ -f "$S/Saves/Single/$SAVE" ] || { say "missing save $S/Saves/Single/$SAVE"; exit 1; }
@@ -44,7 +52,7 @@ if [ "${AI_VERBOSE:-0}" = "1" ] && [ -f "$OPTS" ]; then
   say "AIVerboseLogging -> $(grep -c '^AIVerboseLogging 1' "$OPTS") (AppOptions.txt backed up)"
 fi
 
-rm -rf "$BAK"; mkdir -p "$BAK"; cp -p "$AUTO"/*.Civ7Save "$BAK"/ 2>/dev/null
+stash "$BAK"; mkdir -p "$BAK"; cp -p "$AUTO"/*.Civ7Save "$BAK"/ 2>/dev/null
 say "autosaves backed up: $(ls "$BAK" 2>/dev/null | wc -l | tr -d ' ')"
 
 # Restore by the value, not the row id: redeploying the mod folder makes the game rescan and mint a new
@@ -60,7 +68,7 @@ PRE_DISABLED=$(sqlite3 "$DB" "select max(Disabled) from Mods where ModId='cultur
 say "registry before: $(sqlite3 "$DB" "select ModRowId||'='||Disabled from Mods where ModId='cultural-diffusion'" | tr '\n' ' ') (restoring Disabled=$PRE_DISABLED afterward)"
 
 # Deploy the repo copy, then patch the deployed files only.
-rm -rf "$DEST"; mkdir -p "$DEST"
+stash "$DEST"; mkdir -p "$DEST"
 cp "$REPO/cultural-diffusion.modinfo" "$DEST/"
 cp -R "$REPO/ui" "$DEST/"
 [ -d "$REPO/text" ] && cp -R "$REPO/text" "$DEST/"
@@ -71,11 +79,14 @@ sed -i '' -E 's/^([[:space:]]*)debug: false/\1debug: true/' "$DEST/ui/cd-config.
 # cd-config.js, e.g. the pressure lens, whose default is hardcoded in cd-settings.js, and which has to be off for
 # a clean border capture because touching LensManager to disable its layer redraws the yield-icon overlay.
 if [ -n "${PATCH:-}" ]; then
-  pf="${PATCH%%|*}"; rest="${PATCH#*|}"; pfrom="${rest%%|*}"; pto="${rest##*|}"
-  if [ -f "$DEST/$pf" ]; then
-    sed -i '' "s|$pfrom|$pto|g" "$DEST/$pf"
-    say "patched $pf: '$pfrom' -> '$pto' ($(grep -c "$pto" "$DEST/$pf") hit(s))"
-  else say "PATCH target $pf not found"; fi
+  # Several patches may be given, separated by ";;".
+  for one in ${(s:;;:)PATCH}; do
+    pf="${one%%|*}"; rest="${one#*|}"; pfrom="${rest%%|*}"; pto="${rest##*|}"
+    if [ -f "$DEST/$pf" ]; then
+      sed -i '' "s|$pfrom|$pto|g" "$DEST/$pf"
+      say "patched $pf: '$pfrom' -> '$pto' ($(grep -c "$pto" "$DEST/$pf") hit(s))"
+    else say "PATCH target $pf not found"; fi
+  done
 fi
 say "deployed mod: debug=$(grep -c 'debug: true' "$DEST/ui/cd-config.js") affectsSaves0=$(grep -c AffectsSavedGames "$MI")"
 if [ "${NO_MOD:-0}" = "1" ]; then
@@ -85,7 +96,7 @@ else
   sqlite3 "$DB" "update Mods set Disabled=0 where ModId='cultural-diffusion'"
 fi
 
-rm -rf "$MODS/cd-harness"; mkdir -p "$MODS/cd-harness/ui"
+stash "$MODS/cd-harness"; mkdir -p "$MODS/cd-harness/ui"
 cp "$HERE/cd-harness.modinfo" "$MODS/cd-harness/"
 sed -e "s/AugustusAnt136.Civ7Save/$SAVE/" "$HERE/${SHELL_SRC:-cdh-shell.js}" > "$MODS/cd-harness/ui/cdh-shell.js"
 cp "$HERE/$SCRIPT" "$MODS/cd-harness/ui/cdh-game.js"
@@ -144,22 +155,25 @@ grep -i "error\|exception" "$LOG" | grep -iv "\[CDH\]\|\[CulturalDiffusion\]" | 
 if [ "$result" = crashed ]; then
   say "waiting 60s for the crash report to land"   # .ips files appear 20-50s after the fault
   sleep 60
-  latest=$(ls -t "$HOME/Library/Logs/DiagnosticReports"/CivilizationVII*.ips 2>/dev/null | head -1)
+  # With null_glob on (above), an empty glob would leave `ls -t` with no arguments, listing the current directory and
+  # copying the newest file there as the crash report. Only list when a report exists.
+  reports=("$HOME/Library/Logs/DiagnosticReports"/CivilizationVII*.ips)
+  latest=""; [ ${#reports[@]} -gt 0 ] && latest=$(ls -t "${reports[@]}" 2>/dev/null | head -1)
   [ -n "$latest" ] && { cp "$latest" "$HERE/$LABEL-crash.ips"; say "crash report: $(basename $latest)"; } || say "no .ips found"
 fi
 
 pkill -TERM CivilizationVII; sleep 8; pgrep -x CivilizationVII >/dev/null && { sleep 10; pkill -KILL CivilizationVII; }
 sqlite3 "$DB" "update Mods set Disabled=$PRE_DISABLED where ModId='cultural-diffusion'"
 [ -f "$OPTS.cdh-bak" ] && { mv "$OPTS.cdh-bak" "$OPTS"; say "AppOptions.txt restored"; }
-rm -rf "$MODS/cd-harness"
+stash "$MODS/cd-harness"
 # Redeploy the unpatched repo copy so the next real session runs the shipped config.
-rm -rf "$DEST"; mkdir -p "$DEST"; cp "$REPO/cultural-diffusion.modinfo" "$DEST/"; cp -R "$REPO/ui" "$DEST/"
+stash "$DEST"; mkdir -p "$DEST"; cp "$REPO/cultural-diffusion.modinfo" "$DEST/"; cp -R "$REPO/ui" "$DEST/"
 [ -d "$REPO/text" ] && cp -R "$REPO/text" "$DEST/"
 [ -d "$REPO/data" ] && cp -R "$REPO/data" "$DEST/"
 say "restored: registry $(sqlite3 "$DB" "select ModRowId||'='||Disabled from Mods where ModId='cultural-diffusion'" | tr '\n' ' ') harness present: $([ -d "$MODS/cd-harness" ] && echo yes || echo no) debugPatched: $(grep -c 'debug: true' "$DEST/ui/cd-config.js")"
 
 if [ "$(ls "$AUTO"/*.Civ7Save 2>/dev/null | xargs -n1 basename | sort)" != "$(ls "$BAK" 2>/dev/null | sort)" ]; then
   say "autosaves changed during the run; putting the player's back"
-  rm -f "$AUTO"/*.Civ7Save; cp -p "$BAK"/*.Civ7Save "$AUTO"/ 2>/dev/null
+  for f in "$AUTO"/*.Civ7Save; do stash "$f"; done; cp -p "$BAK"/*.Civ7Save "$AUTO"/ 2>/dev/null
 fi
 say "FINISHED result=$result  log: $HERE/$LABEL-UI.log"

@@ -1,0 +1,31 @@
+[2026-10-05 23:02:13]	[CDH] shell attached 
+[2026-10-05 23:02:14]	[CDH] shell query complete 
+[2026-10-05 23:02:14]	[CDH] shell found AugustusAnt136.Civ7Save turn 136 age AGE_ANTIQUITY missingMods=0 unowned=0 
+[2026-10-05 23:02:14]	[CDH] shell handleLoadSave returned true 
+[2026-10-05 23:02:32]	[CDH] attached valuable 
+[2026-10-05 23:02:37]	[CDH] LOAD GameStarted 
+[2026-10-05 23:02:47]	[CDH] VALUABLE start turn=136 age=AGE_ANTIQUITY majors=[0,1,2,3,4,5,6,7,8,9] 
+[2026-10-05 23:02:47]	[CDH] FLIP T0 resource 22,4 13->7(far) d=6 dist=? cons=["IMPROVEMENT_QUARRY"] res=RESOURCE_JADE units=0 
+[2026-10-05 23:02:47]	[CDH] FLIP T0 resource 81,5 11->1(far) d=8 dist=? cons=["IMPROVEMENT_CAMP"] res=RESOURCE_HIDES units=0 
+[2026-10-05 23:02:47]	[CDH] FLIP T0 resource 82,7 11->1(far) d=7 dist=? cons=["IMPROVEMENT_CAMP"] res=RESOURCE_HIDES units=1 
+[2026-10-05 23:02:47]	[CDH] FLIP T0 unit 73,2 21->1(far) d=8 dist=? cons=["IMPROVEMENT_VILLAGE"] res= units=1 
+[2026-10-05 23:02:48]	[CDH] FLIP T0 unit 68,6 10->1(far) d=6 dist=? cons=["IMPROVEMENT_VILLAGE"] res= units=1 
+[2026-10-05 23:02:48]	[CDH] FLIP T0 unit 82,6 11->1 d=7 dist=? cons=["IMPROVEMENT_MINE"] res= units=1 
+[2026-10-05 23:02:54]	[CDH] LANDED T0: 6/6 r:y r:y r:y u:y u:y u:y 
+[2026-10-05 23:03:02]	[CDH] TURN k=1 turn=137 
+[2026-10-05 23:03:08]	[CDH] LANDED T1: 0/0  
+[2026-10-05 23:03:13]	[CDH] TURN k=2 turn=138 
+[2026-10-05 23:03:19]	[CDH] LANDED T2: 0/0  
+[2026-10-05 23:03:26]	[CDH] TURN k=3 turn=139 
+[2026-10-05 23:03:32]	[CDH] LANDED T3: 0/0  
+[2026-10-05 23:03:41]	[CDH] TURN k=4 turn=140 
+[2026-10-05 23:03:47]	[CDH] LANDED T4: 0/0  
+[2026-10-05 23:03:54]	[CDH] TURN k=5 turn=141 
+[2026-10-05 23:03:54]	[CDH] FLIP T5 unit 22,2 13->7(far) d=7 dist=? cons=["BUILDING_CITY_HALL"] res= units=1 
+[2026-10-05 23:04:00]	[CDH] LANDED T5: 1/1 u:y 
+[2026-10-05 23:04:04]	[CDH] TURN k=6 turn=142 
+[2026-10-05 23:04:10]	[CDH] LANDED T6: 0/0  
+[2026-10-05 23:04:14]	[CDH] TURN k=7 turn=143 
+[2026-10-05 23:04:20]	[CDH] LANDED T7: 0/0  
+[2026-10-05 23:04:24]	[CDH] TURN k=8 turn=144 
+[2026-10-05 23:04:24]	[CDH] DONE harness valuable finished, survived 8 turns, 0 flips 

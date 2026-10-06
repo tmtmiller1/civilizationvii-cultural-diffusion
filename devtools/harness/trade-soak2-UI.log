@@ -1,0 +1,351 @@
+[2026-10-05 19:36:59]	[CDH] shell attached 
+[2026-10-05 19:37:00]	[CDH] shell query complete 
+[2026-10-05 19:37:00]	[CDH] shell found AugustusExp64.Civ7Save turn 64 age AGE_EXPLORATION missingMods=0 unowned=0 
+[2026-10-05 19:37:00]	[CDH] shell handleLoadSave returned true 
+[2026-10-05 19:37:19]	[CDH] attached soak 
+[2026-10-05 19:37:19]	[CulturalDiffusion] boot (turnInterval 1, verb purchasePlot, enabled true) 
+[2026-10-05 19:37:24]	[CDH] LOAD GameStarted 
+[2026-10-05 19:37:34]	[CDH] SOAK start turn=64 age=AGE_EXPLORATION local=0 majors=[0,2,4,6,7,8,9] claimOnly=false 
+[2026-10-05 19:37:34]	[CDH] ROUTES T0 p0: count=0 current=0 
+[2026-10-05 19:37:34]	[CDH] ROUTES T0 p2: count=0 current=0 
+[2026-10-05 19:37:34]	[CDH] ROUTE shape p4: targetCityId:object nearestCityId:object pathPlots:object domain:number status:object id:undefined fromCityId:undefined toCityId:undefined owner:undefined keys=["status","domain","targetCityId","nearestCityId","importPayloads","exportYields","pathPlots"] 
+[2026-10-05 19:37:34]	[CDH] ROUTES T0 p4: count=2 current=2 
+[2026-10-05 19:37:34]	[CDH] ROUTE p4#0 0->4 dom=2 len=7 owners=[4,4,4,0,0,0,0] 
+[2026-10-05 19:37:34]	[CDH] ROUTE p4#1 8->4 dom=0 len=22 owners=[4,4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,8,8] 
+[2026-10-05 19:37:34]	[CDH] ROUTE shape p6: targetCityId:object nearestCityId:object pathPlots:object domain:number status:object id:undefined fromCityId:undefined toCityId:undefined owner:undefined keys=["status","domain","targetCityId","nearestCityId","importPayloads","exportYields","pathPlots"] 
+[2026-10-05 19:37:34]	[CDH] ROUTES T0 p6: count=2 current=2 
+[2026-10-05 19:37:34]	[CDH] ROUTE p6#0 9->6 dom=2 len=18 owners=[6,6,6,6,-1,-1,25,25,25,-1,63,-1,-1,-1,9,9,9,9] 
+[2026-10-05 19:37:34]	[CDH] ROUTE p6#1 25->6 dom=2 len=8 owners=[6,6,6,6,-1,-1,25,25] 
+[2026-10-05 19:37:34]	[CDH] ROUTE shape p7: targetCityId:object nearestCityId:object pathPlots:object domain:number status:object id:undefined fromCityId:undefined toCityId:undefined owner:undefined keys=["status","domain","targetCityId","nearestCityId","importPayloads","exportYields","pathPlots"] 
+[2026-10-05 19:37:34]	[CDH] ROUTES T0 p7: count=1 current=1 
+[2026-10-05 19:37:34]	[CDH] ROUTE p7#0 25->7 dom=2 len=16 owners=[7,7,7,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,25,25] 
+[2026-10-05 19:37:34]	[CDH] ROUTE shape p8: targetCityId:object nearestCityId:object pathPlots:object domain:number status:object id:undefined fromCityId:undefined toCityId:undefined owner:undefined keys=["status","domain","targetCityId","nearestCityId","importPayloads","exportYields","pathPlots"] 
+[2026-10-05 19:37:34]	[CDH] ROUTES T0 p8: count=2 current=2 
+[2026-10-05 19:37:34]	[CDH] ROUTE p8#0 11->8 dom=0 len=37 owners=[8,8,8,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,9,9,9,11] 
+[2026-10-05 19:37:34]	[CDH] ROUTE p8#1 9->8 dom=0 len=30 owners=[8,8,8,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,8,9] 
+[2026-10-05 19:37:34]	[CDH] ROUTE shape p9: targetCityId:object nearestCityId:object pathPlots:object domain:number status:object id:undefined fromCityId:undefined toCityId:undefined owner:undefined keys=["status","domain","targetCityId","nearestCityId","importPayloads","exportYields","pathPlots"] 
+[2026-10-05 19:37:34]	[CDH] ROUTES T0 p9: count=5 current=5 
+[2026-10-05 19:37:34]	[CDH] ROUTE p9#0 8->9 dom=2 len=6 owners=[9,9,9,8,8,8] 
+[2026-10-05 19:37:34]	[CDH] ROUTE p9#1 25->9 dom=2 len=11 owners=[9,9,9,9,-1,-1,-1,63,-1,25,25] 
+[2026-10-05 19:37:34]	[CDH] ROUTE p9#2 7->9 dom=0 len=48 owners=[9,8,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,8,8,8,8,8,8,-1,-1,-1,-1,14,-1,-1,-1,7,7,7] 
+[2026-10-05 19:37:34]	[CDH] ROUTE p9#3 6->9 dom=0 len=21 owners=[9,-1,63,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,6,6,6] 
+[2026-10-05 19:37:34]	[CDH] ROUTE p9#4 11->9 dom=0 len=3 owners=[9,9,11] 
+[2026-10-05 19:37:34]	[CDH] ROUTES T0 total=12 pathPlots=157 
+[2026-10-05 19:37:34]	[CDH] ENDTURN turn1 try 1 blocker=UNITS 
+[2026-10-05 19:37:50]	[CulturalDiffusion] inject 92,32 civ=0 culture=114.4 vitality=108.49 strength=54.36 stock=10 cap=108710.3 
+[2026-10-05 19:37:50]	[CulturalDiffusion] inject 86,20 civ=0 culture=12 vitality=51.06 strength=9.64 stock=10 cap=19284.33 
+[2026-10-05 19:37:50]	[CulturalDiffusion] inject 77,21 civ=0 culture=0 vitality=23.88 strength=0 stock=1 cap=0 
+[2026-10-05 19:37:50]	[CulturalDiffusion] inject 82,23 civ=0 culture=0.6 vitality=18.92 strength=0.97 stock=10 cap=1947.14 
+[2026-10-05 19:37:50]	[CulturalDiffusion] inject 93,26 civ=0 culture=3.6 vitality=9.79 strength=2.47 stock=10 cap=4947.79 
+[2026-10-05 19:37:50]	[CulturalDiffusion] inject 80,31 civ=0 culture=1.6 vitality=21.3 strength=1.92 stock=10 cap=3835.43 
+[2026-10-05 19:37:50]	[CulturalDiffusion] inject 87,32 civ=0 culture=17.4 vitality=29.88 strength=10.18 stock=10 cap=20355.81 
+[2026-10-05 19:37:50]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=27.75 strength=1.55 stock=10 cap=3097.76 
+[2026-10-05 19:37:50]	[CulturalDiffusion] inject 90,37 civ=0 culture=4.75 vitality=18.73 strength=3.72 stock=10 cap=7432.98 
+[2026-10-05 19:37:50]	[CulturalDiffusion] inject 77,36 civ=0 culture=0 vitality=12.99 strength=0 stock=1 cap=0 
+[2026-10-05 19:37:50]	[CulturalDiffusion] inject 81,18 civ=0 culture=0.59 vitality=25.08 strength=1.07 stock=10 cap=2130.67 
+[2026-10-05 19:37:50]	[CulturalDiffusion] inject 79,39 civ=0 culture=0 vitality=17.27 strength=0 stock=1 cap=0 
+[2026-10-05 19:37:50]	[CulturalDiffusion] inject 78,13 civ=0 culture=0.5 vitality=12.94 strength=0.76 stock=10 cap=1511.42 
+[2026-10-05 19:37:50]	[CulturalDiffusion] inject 75,41 civ=0 culture=0.42 vitality=13.4 strength=0.68 stock=10 cap=1362.04 
+[2026-10-05 19:37:50]	[CulturalDiffusion] inject 75,14 civ=0 culture=0 vitality=11.8 strength=0 stock=1 cap=0 
+[2026-10-05 19:37:50]	[CulturalDiffusion] inject 71,44 civ=0 culture=0.47 vitality=22.81 strength=0.88 stock=10 cap=1767.46 
+[2026-10-05 19:37:50]	[CulturalDiffusion] inject 71,39 civ=0 culture=0 vitality=12.37 strength=0 stock=1 cap=0 
+[2026-10-05 19:37:50]	[CulturalDiffusion] inject 71,15 civ=0 culture=0 vitality=21.2 strength=0 stock=1 cap=0 
+[2026-10-05 19:37:50]	[CulturalDiffusion] inject 72,10 civ=0 culture=2.4 vitality=12.32 strength=2.06 stock=10 cap=4121.36 
+[2026-10-05 19:37:50]	[CulturalDiffusion] inject 68,19 civ=0 culture=4 vitality=32.81 strength=4.04 stock=10 cap=8088.22 
+[2026-10-05 19:37:50]	[CulturalDiffusion] inject 67,41 civ=0 culture=16.51 vitality=70.82 strength=13.3 stock=10 cap=26604.23 
+[2026-10-05 19:37:50]	[CulturalDiffusion] inject 67,35 civ=0 culture=2 vitality=27.4 strength=2.42 stock=10 cap=4839.36 
+[2026-10-05 19:37:50]	[CulturalDiffusion] inject 71,33 civ=0 culture=0 vitality=22.9 strength=0 stock=1 cap=0 
+[2026-10-05 19:37:50]	[CulturalDiffusion] inject 68,30 civ=0 culture=0 vitality=18.4 strength=0 stock=1 cap=0 
+[2026-10-05 19:37:50]	[CulturalDiffusion] inject 64,19 civ=0 culture=4.42 vitality=19.14 strength=3.57 stock=10 cap=7144.59 
+[2026-10-05 19:37:50]	[CulturalDiffusion] inject 64,45 civ=0 culture=5 vitality=38.32 strength=4.94 stock=10 cap=9872.43 
+[2026-10-05 19:37:50]	[CulturalDiffusion] inject 64,26 civ=0 culture=2 vitality=18.3 strength=2.1 stock=10 cap=4201.78 
+[2026-10-05 19:37:50]	[CulturalDiffusion] inject 62,32 civ=0 culture=1 vitality=19.3 strength=1.36 stock=10 cap=2728.04 
+[2026-10-05 19:37:50]	[CulturalDiffusion] inject 64,14 civ=0 culture=6.61 vitality=31.13 strength=5.5 stock=10 cap=11005.88 
+[2026-10-05 19:37:50]	[CulturalDiffusion] inject 60,50 civ=2 culture=10.65 vitality=15.36 strength=9.71 stock=10 cap=19420.97 
+[2026-10-05 19:37:50]	[CulturalDiffusion] inject 67,50 civ=2 culture=5.92 vitality=9.51 strength=5.6 stock=10 cap=11208.49 
+[2026-10-05 19:37:50]	[CulturalDiffusion] inject 74,52 civ=2 culture=74.8 vitality=51.21 strength=52.55 stock=10 cap=105099.07 
+[2026-10-05 19:37:50]	[CulturalDiffusion] inject 83,44 civ=4 culture=8.8 vitality=24.73 strength=13.95 stock=10 cap=27908.23 
+[2026-10-05 19:37:50]	[CulturalDiffusion] inject 79,47 civ=4 culture=8.8 vitality=30.85 strength=15.08 stock=10 cap=30154.11 
+[2026-10-05 19:37:50]	[CulturalDiffusion] inject 75,48 civ=4 culture=14.3 vitality=43.15 strength=23.25 stock=10 cap=46501.77 
+[2026-10-05 19:37:50]	[CulturalDiffusion] frontier city=65536 ring=4 best=1 bar=375 over=0/23 center=10 
+[2026-10-05 19:37:50]	[CulturalDiffusion] frontier city=131073 ring=4 best=1 bar=375 over=0/24 center=10 
+[2026-10-05 19:37:50]	[CulturalDiffusion] frontier city=196610 ring=4 best=1 bar=375 over=0/24 center=1 
+[2026-10-05 19:37:50]	[CulturalDiffusion] frontier city=262147 ring=4 best=1 bar=375 over=0/24 center=10 
+[2026-10-05 19:37:50]	[CulturalDiffusion] frontier city=327684 ring=4 best=1 bar=375 over=0/19 center=10 
+[2026-10-05 19:37:50]	[CulturalDiffusion] frontier city=393221 ring=4 best=1 bar=375 over=0/24 center=10 
+[2026-10-05 19:37:50]	[CulturalDiffusion] frontier city=458758 ring=4 best=10 bar=375 over=0/24 center=10 
+[2026-10-05 19:37:50]	[CulturalDiffusion] frontier city=524295 ring=4 best=10 bar=375 over=0/24 center=10 
+[2026-10-05 19:37:50]	[CulturalDiffusion] frontier city=589832 ring=4 best=1 bar=375 over=0/24 center=10 
+[2026-10-05 19:37:50]	[CulturalDiffusion] frontier city=655369 ring=4 best=1 bar=375 over=0/24 center=1 
+[2026-10-05 19:37:50]	[CulturalDiffusion] frontier city=720906 ring=4 best=1 bar=375 over=0/24 center=10 
+[2026-10-05 19:37:50]	[CulturalDiffusion] frontier city=786443 ring=4 best=1 bar=375 over=0/24 center=1 
+[2026-10-05 19:37:50]	[CulturalDiffusion] frontier city=851980 ring=4 best=1 bar=375 over=0/24 center=10 
+[2026-10-05 19:37:50]	[CulturalDiffusion] frontier city=917517 ring=4 best=1 bar=375 over=0/24 center=10 
+[2026-10-05 19:37:50]	[CulturalDiffusion] frontier city=983054 ring=4 best=10 bar=375 over=0/24 center=1 
+[2026-10-05 19:37:50]	[CulturalDiffusion] frontier city=1048591 ring=4 best=1 bar=375 over=0/24 center=10 
+[2026-10-05 19:37:50]	[CulturalDiffusion] frontier city=1114128 ring=4 best=1 bar=375 over=0/24 center=1 
+[2026-10-05 19:37:50]	[CulturalDiffusion] frontier city=1179665 ring=4 best=1 bar=375 over=0/24 center=1 
+[2026-10-05 19:37:50]	[CulturalDiffusion] frontier city=1245202 ring=4 best=1 bar=375 over=0/24 center=10 
+[2026-10-05 19:37:50]	[CulturalDiffusion] frontier city=1310739 ring=4 best=10 bar=375 over=0/24 center=10 
+[2026-10-05 19:37:50]	[CulturalDiffusion] frontier city=1376276 ring=4 best=1 bar=375 over=0/24 center=10 
+[2026-10-05 19:37:50]	[CulturalDiffusion] frontier city=1441813 ring=4 best=1 bar=375 over=0/24 center=10 
+[2026-10-05 19:37:50]	[CulturalDiffusion] frontier city=1507350 ring=4 best=1 bar=375 over=0/24 center=1 
+[2026-10-05 19:37:50]	[CulturalDiffusion] frontier city=1572887 ring=4 best=1 bar=375 over=0/24 center=1 
+[2026-10-05 19:37:50]	[CulturalDiffusion] frontier city=1638424 ring=4 best=10 bar=375 over=0/24 center=10 
+[2026-10-05 19:37:50]	[CulturalDiffusion] frontier city=1703961 ring=4 best=1 bar=375 over=0/24 center=10 
+[2026-10-05 19:37:50]	[CulturalDiffusion] frontier city=1769498 ring=4 best=1 bar=375 over=0/24 center=10 
+[2026-10-05 19:37:50]	[CulturalDiffusion] frontier city=1835035 ring=4 best=1 bar=375 over=0/24 center=10 
+[2026-10-05 19:37:50]	[CulturalDiffusion] frontier city=1900572 ring=4 best=1 bar=375 over=0/24 center=10 
+[2026-10-05 19:37:50]	[CulturalDiffusion] state bytes=13407 field=831 claims=0 locked=0 passMs=32 
+[2026-10-05 19:37:50]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), 0 AI flip(s) (0 pending), 0 conquest(s) (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 831 active field tile(s) 
+[2026-10-05 19:37:50]	[CulturalDiffusion] pass (turn 65): flips=0 field tiles=59 
+[2026-10-05 19:37:54]	[CDH] TURN n=2 turn=65 owners= 
+[2026-10-05 19:37:54]	[CDH] ROUTES T2 p0: count=0 current=0 
+[2026-10-05 19:37:54]	[CDH] ROUTES T2 p2: count=0 current=0 
+[2026-10-05 19:37:54]	[CDH] ROUTES T2 p4: count=2 current=2 
+[2026-10-05 19:37:54]	[CDH] ROUTES T2 p6: count=2 current=2 
+[2026-10-05 19:37:54]	[CDH] ROUTES T2 p7: count=1 current=1 
+[2026-10-05 19:37:54]	[CDH] ROUTES T2 p8: count=2 current=2 
+[2026-10-05 19:37:54]	[CDH] ROUTES T2 p9: count=5 current=5 
+[2026-10-05 19:37:54]	[CDH] ROUTES T2 total=12 pathPlots=157 
+[2026-10-05 19:37:54]	[CDH] ENDTURN turn2 try 1 blocker=NEW_POPULATION 
+[2026-10-05 19:37:58]	[CDH] TURN n=3 turn=65 owners= 
+[2026-10-05 19:37:58]	[CDH] ROUTES T3 p0: count=0 current=0 
+[2026-10-05 19:37:58]	[CDH] ROUTES T3 p2: count=0 current=0 
+[2026-10-05 19:37:58]	[CDH] ROUTES T3 p4: count=2 current=2 
+[2026-10-05 19:37:58]	[CDH] ROUTES T3 p6: count=2 current=2 
+[2026-10-05 19:37:58]	[CDH] ROUTES T3 p7: count=1 current=1 
+[2026-10-05 19:37:58]	[CDH] ROUTES T3 p8: count=2 current=2 
+[2026-10-05 19:37:58]	[CDH] ROUTES T3 p9: count=5 current=5 
+[2026-10-05 19:37:58]	[CDH] ROUTES T3 total=12 pathPlots=157 
+[2026-10-05 19:37:58]	[CDH] ENDTURN turn3 try 1 blocker=NEW_POPULATION 
+[2026-10-05 19:38:02]	[CDH] TURN n=4 turn=65 owners= 
+[2026-10-05 19:38:02]	[CDH] ROUTES T4 p0: count=0 current=0 
+[2026-10-05 19:38:02]	[CDH] ROUTES T4 p2: count=0 current=0 
+[2026-10-05 19:38:02]	[CDH] ROUTES T4 p4: count=2 current=2 
+[2026-10-05 19:38:02]	[CDH] ROUTES T4 p6: count=2 current=2 
+[2026-10-05 19:38:02]	[CDH] ROUTES T4 p7: count=1 current=1 
+[2026-10-05 19:38:02]	[CDH] ROUTES T4 p8: count=2 current=2 
+[2026-10-05 19:38:02]	[CDH] ROUTES T4 p9: count=5 current=5 
+[2026-10-05 19:38:02]	[CDH] ROUTES T4 total=12 pathPlots=157 
+[2026-10-05 19:38:02]	[CDH] ENDTURN turn4 try 1 blocker=NEW_POPULATION 
+[2026-10-05 19:38:06]	[CDH] TURN n=5 turn=65 owners= 
+[2026-10-05 19:38:06]	[CDH] ROUTES T5 p0: count=0 current=0 
+[2026-10-05 19:38:06]	[CDH] ROUTES T5 p2: count=0 current=0 
+[2026-10-05 19:38:06]	[CDH] ROUTES T5 p4: count=2 current=2 
+[2026-10-05 19:38:06]	[CDH] ROUTES T5 p6: count=2 current=2 
+[2026-10-05 19:38:06]	[CDH] ROUTES T5 p7: count=1 current=1 
+[2026-10-05 19:38:06]	[CDH] ROUTES T5 p8: count=2 current=2 
+[2026-10-05 19:38:06]	[CDH] ROUTES T5 p9: count=5 current=5 
+[2026-10-05 19:38:06]	[CDH] ROUTES T5 total=12 pathPlots=157 
+[2026-10-05 19:38:06]	[CDH] ENDTURN turn5 try 1 blocker=NEW_POPULATION 
+[2026-10-05 19:38:10]	[CDH] TURN n=6 turn=65 owners= 
+[2026-10-05 19:38:10]	[CDH] ROUTES T6 p0: count=0 current=0 
+[2026-10-05 19:38:10]	[CDH] ROUTES T6 p2: count=0 current=0 
+[2026-10-05 19:38:10]	[CDH] ROUTES T6 p4: count=2 current=2 
+[2026-10-05 19:38:10]	[CDH] ROUTES T6 p6: count=2 current=2 
+[2026-10-05 19:38:10]	[CDH] ROUTES T6 p7: count=1 current=1 
+[2026-10-05 19:38:10]	[CDH] ROUTES T6 p8: count=2 current=2 
+[2026-10-05 19:38:10]	[CDH] ROUTES T6 p9: count=5 current=5 
+[2026-10-05 19:38:10]	[CDH] ROUTES T6 total=12 pathPlots=157 
+[2026-10-05 19:38:10]	[CDH] ENDTURN turn6 try 1 blocker=NEW_POPULATION 
+[2026-10-05 19:38:14]	[CDH] TURN n=7 turn=65 owners= 
+[2026-10-05 19:38:14]	[CDH] ROUTES T7 p0: count=0 current=0 
+[2026-10-05 19:38:14]	[CDH] ROUTES T7 p2: count=0 current=0 
+[2026-10-05 19:38:14]	[CDH] ROUTES T7 p4: count=2 current=2 
+[2026-10-05 19:38:14]	[CDH] ROUTES T7 p6: count=2 current=2 
+[2026-10-05 19:38:14]	[CDH] ROUTES T7 p7: count=1 current=1 
+[2026-10-05 19:38:14]	[CDH] ROUTES T7 p8: count=2 current=2 
+[2026-10-05 19:38:14]	[CDH] ROUTES T7 p9: count=5 current=5 
+[2026-10-05 19:38:14]	[CDH] ROUTES T7 total=12 pathPlots=157 
+[2026-10-05 19:38:14]	[CDH] ENDTURN turn7 try 1 blocker=NEW_POPULATION 
+[2026-10-05 19:38:19]	[CDH] TURN n=8 turn=65 owners= 
+[2026-10-05 19:38:19]	[CDH] ROUTES T8 p0: count=0 current=0 
+[2026-10-05 19:38:19]	[CDH] ROUTES T8 p2: count=0 current=0 
+[2026-10-05 19:38:19]	[CDH] ROUTES T8 p4: count=2 current=2 
+[2026-10-05 19:38:19]	[CDH] ROUTES T8 p6: count=2 current=2 
+[2026-10-05 19:38:19]	[CDH] ROUTES T8 p7: count=1 current=1 
+[2026-10-05 19:38:19]	[CDH] ROUTES T8 p8: count=2 current=2 
+[2026-10-05 19:38:19]	[CDH] ROUTES T8 p9: count=5 current=5 
+[2026-10-05 19:38:19]	[CDH] ROUTES T8 total=12 pathPlots=157 
+[2026-10-05 19:38:19]	[CDH] ENDTURN turn8 try 1 blocker=NEW_POPULATION 
+[2026-10-05 19:38:23]	[CDH] TURN n=9 turn=65 owners= 
+[2026-10-05 19:38:23]	[CDH] ROUTES T9 p0: count=0 current=0 
+[2026-10-05 19:38:23]	[CDH] ROUTES T9 p2: count=0 current=0 
+[2026-10-05 19:38:23]	[CDH] ROUTES T9 p4: count=2 current=2 
+[2026-10-05 19:38:23]	[CDH] ROUTES T9 p6: count=2 current=2 
+[2026-10-05 19:38:23]	[CDH] ROUTES T9 p7: count=1 current=1 
+[2026-10-05 19:38:23]	[CDH] ROUTES T9 p8: count=2 current=2 
+[2026-10-05 19:38:23]	[CDH] ROUTES T9 p9: count=5 current=5 
+[2026-10-05 19:38:23]	[CDH] ROUTES T9 total=12 pathPlots=157 
+[2026-10-05 19:38:23]	[CDH] ENDTURN turn9 try 1 blocker=NEW_POPULATION 
+[2026-10-05 19:38:27]	[CDH] TURN n=10 turn=65 owners= 
+[2026-10-05 19:38:27]	[CDH] ROUTES T10 p0: count=0 current=0 
+[2026-10-05 19:38:27]	[CDH] ROUTES T10 p2: count=0 current=0 
+[2026-10-05 19:38:27]	[CDH] ROUTES T10 p4: count=2 current=2 
+[2026-10-05 19:38:27]	[CDH] ROUTES T10 p6: count=2 current=2 
+[2026-10-05 19:38:27]	[CDH] ROUTES T10 p7: count=1 current=1 
+[2026-10-05 19:38:27]	[CDH] ROUTES T10 p8: count=2 current=2 
+[2026-10-05 19:38:27]	[CDH] ROUTES T10 p9: count=5 current=5 
+[2026-10-05 19:38:27]	[CDH] ROUTES T10 total=12 pathPlots=157 
+[2026-10-05 19:38:27]	[CDH] ENDTURN turn10 try 1 blocker=NEW_POPULATION 
+[2026-10-05 19:38:31]	[CDH] TURN n=11 turn=65 owners= 
+[2026-10-05 19:38:31]	[CDH] ROUTES T11 p0: count=0 current=0 
+[2026-10-05 19:38:31]	[CDH] ROUTES T11 p2: count=0 current=0 
+[2026-10-05 19:38:31]	[CDH] ROUTES T11 p4: count=2 current=2 
+[2026-10-05 19:38:31]	[CDH] ROUTES T11 p6: count=2 current=2 
+[2026-10-05 19:38:31]	[CDH] ROUTES T11 p7: count=1 current=1 
+[2026-10-05 19:38:31]	[CDH] ROUTES T11 p8: count=2 current=2 
+[2026-10-05 19:38:31]	[CDH] ROUTES T11 p9: count=5 current=5 
+[2026-10-05 19:38:31]	[CDH] ROUTES T11 total=12 pathPlots=157 
+[2026-10-05 19:38:31]	[CDH] ENDTURN turn11 try 1 blocker=NEW_POPULATION 
+[2026-10-05 19:38:35]	[CDH] TURN n=12 turn=65 owners= 
+[2026-10-05 19:38:35]	[CDH] ROUTES T12 p0: count=0 current=0 
+[2026-10-05 19:38:35]	[CDH] ROUTES T12 p2: count=0 current=0 
+[2026-10-05 19:38:35]	[CDH] ROUTES T12 p4: count=2 current=2 
+[2026-10-05 19:38:35]	[CDH] ROUTES T12 p6: count=2 current=2 
+[2026-10-05 19:38:35]	[CDH] ROUTES T12 p7: count=1 current=1 
+[2026-10-05 19:38:35]	[CDH] ROUTES T12 p8: count=2 current=2 
+[2026-10-05 19:38:35]	[CDH] ROUTES T12 p9: count=5 current=5 
+[2026-10-05 19:38:35]	[CDH] ROUTES T12 total=12 pathPlots=157 
+[2026-10-05 19:38:35]	[CDH] ENDTURN turn12 try 1 blocker=NEW_POPULATION 
+[2026-10-05 19:38:39]	[CDH] TURN n=13 turn=65 owners= 
+[2026-10-05 19:38:39]	[CDH] ROUTES T13 p0: count=0 current=0 
+[2026-10-05 19:38:39]	[CDH] ROUTES T13 p2: count=0 current=0 
+[2026-10-05 19:38:39]	[CDH] ROUTES T13 p4: count=2 current=2 
+[2026-10-05 19:38:39]	[CDH] ROUTES T13 p6: count=2 current=2 
+[2026-10-05 19:38:39]	[CDH] ROUTES T13 p7: count=1 current=1 
+[2026-10-05 19:38:39]	[CDH] ROUTES T13 p8: count=2 current=2 
+[2026-10-05 19:38:39]	[CDH] ROUTES T13 p9: count=5 current=5 
+[2026-10-05 19:38:39]	[CDH] ROUTES T13 total=12 pathPlots=157 
+[2026-10-05 19:38:39]	[CDH] ENDTURN turn13 try 1 blocker=NEW_POPULATION 
+[2026-10-05 19:38:43]	[CDH] TURN n=14 turn=65 owners= 
+[2026-10-05 19:38:43]	[CDH] ROUTES T14 p0: count=0 current=0 
+[2026-10-05 19:38:43]	[CDH] ROUTES T14 p2: count=0 current=0 
+[2026-10-05 19:38:43]	[CDH] ROUTES T14 p4: count=2 current=2 
+[2026-10-05 19:38:43]	[CDH] ROUTES T14 p6: count=2 current=2 
+[2026-10-05 19:38:43]	[CDH] ROUTES T14 p7: count=1 current=1 
+[2026-10-05 19:38:43]	[CDH] ROUTES T14 p8: count=2 current=2 
+[2026-10-05 19:38:43]	[CDH] ROUTES T14 p9: count=5 current=5 
+[2026-10-05 19:38:43]	[CDH] ROUTES T14 total=12 pathPlots=157 
+[2026-10-05 19:38:43]	[CDH] ENDTURN turn14 try 1 blocker=NEW_POPULATION 
+[2026-10-05 19:38:47]	[CDH] TURN n=15 turn=65 owners= 
+[2026-10-05 19:38:47]	[CDH] ROUTES T15 p0: count=0 current=0 
+[2026-10-05 19:38:47]	[CDH] ROUTES T15 p2: count=0 current=0 
+[2026-10-05 19:38:47]	[CDH] ROUTES T15 p4: count=2 current=2 
+[2026-10-05 19:38:47]	[CDH] ROUTES T15 p6: count=2 current=2 
+[2026-10-05 19:38:47]	[CDH] ROUTES T15 p7: count=1 current=1 
+[2026-10-05 19:38:47]	[CDH] ROUTES T15 p8: count=2 current=2 
+[2026-10-05 19:38:47]	[CDH] ROUTES T15 p9: count=5 current=5 
+[2026-10-05 19:38:47]	[CDH] ROUTES T15 total=12 pathPlots=157 
+[2026-10-05 19:38:47]	[CDH] ENDTURN turn15 try 1 blocker=NEW_POPULATION 
+[2026-10-05 19:38:51]	[CDH] TURN n=16 turn=65 owners= 
+[2026-10-05 19:38:51]	[CDH] ROUTES T16 p0: count=0 current=0 
+[2026-10-05 19:38:51]	[CDH] ROUTES T16 p2: count=0 current=0 
+[2026-10-05 19:38:51]	[CDH] ROUTES T16 p4: count=2 current=2 
+[2026-10-05 19:38:51]	[CDH] ROUTES T16 p6: count=2 current=2 
+[2026-10-05 19:38:51]	[CDH] ROUTES T16 p7: count=1 current=1 
+[2026-10-05 19:38:51]	[CDH] ROUTES T16 p8: count=2 current=2 
+[2026-10-05 19:38:51]	[CDH] ROUTES T16 p9: count=5 current=5 
+[2026-10-05 19:38:51]	[CDH] ROUTES T16 total=12 pathPlots=157 
+[2026-10-05 19:38:51]	[CDH] ENDTURN turn16 try 1 blocker=NEW_POPULATION 
+[2026-10-05 19:38:55]	[CDH] TURN n=17 turn=65 owners= 
+[2026-10-05 19:38:55]	[CDH] ROUTES T17 p0: count=0 current=0 
+[2026-10-05 19:38:55]	[CDH] ROUTES T17 p2: count=0 current=0 
+[2026-10-05 19:38:55]	[CDH] ROUTES T17 p4: count=2 current=2 
+[2026-10-05 19:38:55]	[CDH] ROUTES T17 p6: count=2 current=2 
+[2026-10-05 19:38:55]	[CDH] ROUTES T17 p7: count=1 current=1 
+[2026-10-05 19:38:55]	[CDH] ROUTES T17 p8: count=2 current=2 
+[2026-10-05 19:38:55]	[CDH] ROUTES T17 p9: count=5 current=5 
+[2026-10-05 19:38:55]	[CDH] ROUTES T17 total=12 pathPlots=157 
+[2026-10-05 19:38:55]	[CDH] ENDTURN turn17 try 1 blocker=NEW_POPULATION 
+[2026-10-05 19:38:59]	[CDH] TURN n=18 turn=65 owners= 
+[2026-10-05 19:38:59]	[CDH] ROUTES T18 p0: count=0 current=0 
+[2026-10-05 19:38:59]	[CDH] ROUTES T18 p2: count=0 current=0 
+[2026-10-05 19:38:59]	[CDH] ROUTES T18 p4: count=2 current=2 
+[2026-10-05 19:38:59]	[CDH] ROUTES T18 p6: count=2 current=2 
+[2026-10-05 19:38:59]	[CDH] ROUTES T18 p7: count=1 current=1 
+[2026-10-05 19:38:59]	[CDH] ROUTES T18 p8: count=2 current=2 
+[2026-10-05 19:38:59]	[CDH] ROUTES T18 p9: count=5 current=5 
+[2026-10-05 19:38:59]	[CDH] ROUTES T18 total=12 pathPlots=157 
+[2026-10-05 19:38:59]	[CDH] ENDTURN turn18 try 1 blocker=NEW_POPULATION 
+[2026-10-05 19:39:03]	[CDH] TURN n=19 turn=65 owners= 
+[2026-10-05 19:39:03]	[CDH] ROUTES T19 p0: count=0 current=0 
+[2026-10-05 19:39:03]	[CDH] ROUTES T19 p2: count=0 current=0 
+[2026-10-05 19:39:03]	[CDH] ROUTES T19 p4: count=2 current=2 
+[2026-10-05 19:39:03]	[CDH] ROUTES T19 p6: count=2 current=2 
+[2026-10-05 19:39:03]	[CDH] ROUTES T19 p7: count=1 current=1 
+[2026-10-05 19:39:03]	[CDH] ROUTES T19 p8: count=2 current=2 
+[2026-10-05 19:39:03]	[CDH] ROUTES T19 p9: count=5 current=5 
+[2026-10-05 19:39:03]	[CDH] ROUTES T19 total=12 pathPlots=157 
+[2026-10-05 19:39:03]	[CDH] ENDTURN turn19 try 1 blocker=NEW_POPULATION 
+[2026-10-05 19:39:07]	[CDH] TURN n=20 turn=65 owners= 
+[2026-10-05 19:39:07]	[CDH] ROUTES T20 p0: count=0 current=0 
+[2026-10-05 19:39:07]	[CDH] ROUTES T20 p2: count=0 current=0 
+[2026-10-05 19:39:07]	[CDH] ROUTES T20 p4: count=2 current=2 
+[2026-10-05 19:39:07]	[CDH] ROUTES T20 p6: count=2 current=2 
+[2026-10-05 19:39:07]	[CDH] ROUTES T20 p7: count=1 current=1 
+[2026-10-05 19:39:07]	[CDH] ROUTES T20 p8: count=2 current=2 
+[2026-10-05 19:39:07]	[CDH] ROUTES T20 p9: count=5 current=5 
+[2026-10-05 19:39:07]	[CDH] ROUTES T20 total=12 pathPlots=157 
+[2026-10-05 19:39:07]	[CDH] ENDTURN turn20 try 1 blocker=NEW_POPULATION 
+[2026-10-05 19:39:11]	[CDH] TURN n=21 turn=65 owners= 
+[2026-10-05 19:39:11]	[CDH] ROUTES T21 p0: count=0 current=0 
+[2026-10-05 19:39:11]	[CDH] ROUTES T21 p2: count=0 current=0 
+[2026-10-05 19:39:11]	[CDH] ROUTES T21 p4: count=2 current=2 
+[2026-10-05 19:39:11]	[CDH] ROUTES T21 p6: count=2 current=2 
+[2026-10-05 19:39:11]	[CDH] ROUTES T21 p7: count=1 current=1 
+[2026-10-05 19:39:11]	[CDH] ROUTES T21 p8: count=2 current=2 
+[2026-10-05 19:39:11]	[CDH] ROUTES T21 p9: count=5 current=5 
+[2026-10-05 19:39:11]	[CDH] ROUTES T21 total=12 pathPlots=157 
+[2026-10-05 19:39:11]	[CDH] ENDTURN turn21 try 1 blocker=NEW_POPULATION 
+[2026-10-05 19:39:15]	[CDH] TURN n=22 turn=65 owners= 
+[2026-10-05 19:39:15]	[CDH] ROUTES T22 p0: count=0 current=0 
+[2026-10-05 19:39:15]	[CDH] ROUTES T22 p2: count=0 current=0 
+[2026-10-05 19:39:15]	[CDH] ROUTES T22 p4: count=2 current=2 
+[2026-10-05 19:39:15]	[CDH] ROUTES T22 p6: count=2 current=2 
+[2026-10-05 19:39:15]	[CDH] ROUTES T22 p7: count=1 current=1 
+[2026-10-05 19:39:15]	[CDH] ROUTES T22 p8: count=2 current=2 
+[2026-10-05 19:39:15]	[CDH] ROUTES T22 p9: count=5 current=5 
+[2026-10-05 19:39:15]	[CDH] ROUTES T22 total=12 pathPlots=157 
+[2026-10-05 19:39:15]	[CDH] ENDTURN turn22 try 1 blocker=NEW_POPULATION 
+[2026-10-05 19:39:19]	[CDH] TURN n=23 turn=65 owners= 
+[2026-10-05 19:39:19]	[CDH] ROUTES T23 p0: count=0 current=0 
+[2026-10-05 19:39:19]	[CDH] ROUTES T23 p2: count=0 current=0 
+[2026-10-05 19:39:19]	[CDH] ROUTES T23 p4: count=2 current=2 
+[2026-10-05 19:39:19]	[CDH] ROUTES T23 p6: count=2 current=2 
+[2026-10-05 19:39:19]	[CDH] ROUTES T23 p7: count=1 current=1 
+[2026-10-05 19:39:19]	[CDH] ROUTES T23 p8: count=2 current=2 
+[2026-10-05 19:39:19]	[CDH] ROUTES T23 p9: count=5 current=5 
+[2026-10-05 19:39:19]	[CDH] ROUTES T23 total=12 pathPlots=157 
+[2026-10-05 19:39:19]	[CDH] ENDTURN turn23 try 1 blocker=NEW_POPULATION 
+[2026-10-05 19:39:24]	[CDH] TURN n=24 turn=65 owners= 
+[2026-10-05 19:39:24]	[CDH] ROUTES T24 p0: count=0 current=0 
+[2026-10-05 19:39:24]	[CDH] ROUTES T24 p2: count=0 current=0 
+[2026-10-05 19:39:24]	[CDH] ROUTES T24 p4: count=2 current=2 
+[2026-10-05 19:39:24]	[CDH] ROUTES T24 p6: count=2 current=2 
+[2026-10-05 19:39:24]	[CDH] ROUTES T24 p7: count=1 current=1 
+[2026-10-05 19:39:24]	[CDH] ROUTES T24 p8: count=2 current=2 
+[2026-10-05 19:39:24]	[CDH] ROUTES T24 p9: count=5 current=5 
+[2026-10-05 19:39:24]	[CDH] ROUTES T24 total=12 pathPlots=157 
+[2026-10-05 19:39:24]	[CDH] ENDTURN turn24 try 1 blocker=NEW_POPULATION 
+[2026-10-05 19:39:28]	[CDH] TURN n=25 turn=65 owners= 
+[2026-10-05 19:39:28]	[CDH] ROUTES T25 p0: count=0 current=0 
+[2026-10-05 19:39:28]	[CDH] ROUTES T25 p2: count=0 current=0 
+[2026-10-05 19:39:28]	[CDH] ROUTES T25 p4: count=2 current=2 
+[2026-10-05 19:39:28]	[CDH] ROUTES T25 p6: count=2 current=2 
+[2026-10-05 19:39:28]	[CDH] ROUTES T25 p7: count=1 current=1 
+[2026-10-05 19:39:28]	[CDH] ROUTES T25 p8: count=2 current=2 
+[2026-10-05 19:39:28]	[CDH] ROUTES T25 p9: count=5 current=5 
+[2026-10-05 19:39:28]	[CDH] ROUTES T25 total=12 pathPlots=157 
+[2026-10-05 19:39:28]	[CDH] ENDTURN turn25 try 1 blocker=NEW_POPULATION 
+[2026-10-05 19:39:32]	[CDH] TURN n=26 turn=65 owners= 
+[2026-10-05 19:39:32]	[CDH] ROUTES T26 p0: count=0 current=0 
+[2026-10-05 19:39:32]	[CDH] ROUTES T26 p2: count=0 current=0 
+[2026-10-05 19:39:32]	[CDH] ROUTES T26 p4: count=2 current=2 
+[2026-10-05 19:39:32]	[CDH] ROUTES T26 p6: count=2 current=2 
+[2026-10-05 19:39:32]	[CDH] ROUTES T26 p7: count=1 current=1 
+[2026-10-05 19:39:32]	[CDH] ROUTES T26 p8: count=2 current=2 
+[2026-10-05 19:39:32]	[CDH] ROUTES T26 p9: count=5 current=5 
+[2026-10-05 19:39:32]	[CDH] ROUTES T26 total=12 pathPlots=157 
+[2026-10-05 19:39:32]	[CDH] DONE harness soak finished, survived 25 turns 

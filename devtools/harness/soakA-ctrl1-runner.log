@@ -1,0 +1,32 @@
+[23:46:36] autosaves backed up: 10
+[23:46:36] registry before: 2299=0  (restoring Disabled=0 afterward)
+[23:46:36] deployed mod: debug=1 affectsSaves0=1
+[23:46:36] NO_MOD=1: Cultural Diffusion left DISABLED for this run (control)
+[23:46:36] harness installed: cdh-game-soak-control.js on AugustusAnt136.Civ7Save
+[23:46:36] previous UI.log kept at /Users/USER/Library/Application Support/Civilization VII/cd-harness-backup/UI-before-soakA-ctrl1-20261005-234636.log (12272 lines)
+[23:46:38] game pid 27957
+[23:57:40] result=crashed after 612s
+[23:57:40] collected AI_Behavior_Tree_Events.csv (59 lines)
+[23:57:40] collected AI_Behavior_Trees.csv (44206 lines)
+[23:57:40] collected AI_CityStrategy.csv (218 lines)
+[23:57:40] collected AI_CombatPlanning.csv (15597 lines)
+[23:57:40] collected AI_Commander_Promotions.csv (163 lines)
+[23:57:40] collected AI_Dedications.csv (68 lines)
+[23:57:40] collected AI_DiplomaticActions.csv (2361 lines)
+[23:57:40] collected AI_Leader.csv (11 lines)
+[23:57:40] collected AI_Market.csv (783 lines)
+[23:57:40] collected AI_MayhemTracker.csv (1209 lines)
+[23:57:40] collected AI_MovementPlanning.csv (25677 lines)
+[23:57:40] collected AI_Operation.csv (19205 lines)
+[23:57:40] collected AI_Operation_Eval.csv (1746 lines)
+[23:57:40] collected AI_Recruiting.csv (87190 lines)
+[23:57:40] collected AI_Tactical.csv (7320 lines)
+[23:57:40] collected AI_Targets.csv (127723 lines)
+[23:57:40] collected AI_UnitEfficiency.csv (256 lines)
+[23:57:40] collected AI_Victories.csv (56 lines)
+[23:57:40] waiting 60s for the crash report to land
+[23:58:41] crash report: CivilizationVII-2026-10-05-234437.ips
+[23:58:49] restored: registry 2301=0  harness present: no debugPatched: 0
+[23:58:49] autosaves changed during the run; putting the player's back
+[23:58:49] FINISHED result=crashed  log: /Users/USER/Repos/civilization_mods/civilization_vii_mods/tower_mods/cultural_diffusion/devtools/harness/soakA-ctrl1-UI.log
+RUN_EXIT=0

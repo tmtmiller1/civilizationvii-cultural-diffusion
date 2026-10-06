@@ -1,0 +1,22 @@
+[2026-10-06 09:10:24]	[CDH] shell attached 
+[2026-10-06 09:10:25]	[CDH] shell query complete 
+[2026-10-06 09:10:26]	[CDH] shell found CDH-Ant159.Civ7Save turn 159 age AGE_ANTIQUITY missingMods=0 unowned=0 
+[2026-10-06 09:10:26]	[CDH] shell handleLoadSave returned true 
+[2026-10-06 09:10:43]	[CDH] attached transition-district 
+[2026-10-06 09:10:49]	[CDH] LOAD GameStarted 
+[2026-10-06 09:10:59]	[CDH] VALUABLE start turn=159 age=AGE_ANTIQUITY majors=[0,1,2,3,4,5,6,7,8,9] 
+[2026-10-06 09:10:59]	[CDH] DISTRICT READ check: 92,32 probe=DISTRICT_CITY_CENTER mod=null(getDistrictType undefined) | 64,14 probe=DISTRICT_CITY_CENTER mod=null(getDistrictType undefined) | 70,54 probe=DISTRICT_CITY_CENTER mod=null(getDistrictType undefined) 
+[2026-10-06 09:10:59]	[CDH] WINDOW none age=AGE_ANTIQUITY flipping=false 
+[2026-10-06 09:11:07]	[CDH] TURN k=1 turn=160 
+[2026-10-06 09:11:07]	[CDH] AGE T1 AGE_ANTIQUITY 
+[2026-10-06 09:11:34]	[CDH] attached transition-district 
+[2026-10-06 09:11:39]	[CDH] LOAD GameStarted 
+[2026-10-06 09:11:49]	[CDH] VALUABLE start turn=1 age=AGE_EXPLORATION majors=[0,1,2,3,4,5,6,7,8,9] 
+[2026-10-06 09:11:49]	[CDH] DISTRICT READ check: 92,32 probe=DISTRICT_CITY_CENTER mod=null(getDistrictType undefined) | 64,14 probe=DISTRICT_CITY_CENTER mod=null(getDistrictType undefined) | 70,54 probe=DISTRICT_CITY_CENTER mod=null(getDistrictType undefined) 
+[2026-10-06 09:11:49]	[CDH] WINDOW none age=AGE_EXPLORATION flipping=false 
+[2026-10-06 09:11:57]	[CDH] TURN k=1 turn=2 
+[2026-10-06 09:11:57]	[CDH] AGE T1 AGE_EXPLORATION 
+[2026-10-06 09:12:05]	[CDH] TURN k=2 turn=3 
+[2026-10-06 09:12:05]	[CDH] AGE T2 AGE_EXPLORATION 
+[2026-10-06 09:12:16]	[CDH] TURN k=3 turn=4 
+[2026-10-06 09:12:16]	[CDH] DONE harness window finished, survived 3 turns, 0 flips 
