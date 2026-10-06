@@ -1,12 +1,12 @@
-// cdh-game-control.js - game scope, deployed as ui/cdh-game.js. Cultural Diffusion harness CONTROL (dev only).
+// cdh-game-control.js: game scope, deployed as ui/cdh-game.js. Cultural Diffusion harness control (dev only).
 //
-// Imports NOTHING from the mod, so it runs with Cultural Diffusion disabled (NO_MOD=1). Its only job is to
-// end turns on the same save for the same number of turns as the stress run, so a crash can be attributed -
-// or not - to the mod.
+// Imports nothing from the mod, so it runs with Cultural Diffusion disabled (NO_MOD=1). Its only job is to
+// end turns on the same save for the same number of turns as the stress run, so a crash can be attributed,
+// or not, to the mod.
 //
 // Why a separate script: a harness cannot simply switch the mod off from script. applyTunableOverrides()
 // pulls the player's saved settings into CONFIG on every pass, so `CONFIG.diffusionEnabled = false` is
-// clobbered within a turn - run 31 was meant to be a control and finished holding 37 claims.
+// clobbered within a turn, run 31 was meant to be a control and finished holding 37 claims.
 //
 // Tagged [CDH] in Logs/UI.log.
 

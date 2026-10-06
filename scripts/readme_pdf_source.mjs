@@ -67,13 +67,13 @@ function figure(src, alt) {
 }
 
 /**
- * The before/after pair as ONE figure with two panels. Stacked as separate figures they can land on
+ * The before/after pair as one figure with two panels. Stacked as separate figures they can land on
  * different pages, and a pair the reader cannot see at once is not a comparison.
  * @param {{alt:string,src:string}[]} panels The two staged pictures, in order.
  * @returns {string} A `{=latex}` raw block (gfm carries raw LaTeX through +raw_attribute).
  */
 function pairFigure(panels) {
-  // Raw LaTeX is NOT resolved through pandoc's --resource-path, so these paths must be absolute or
+  // Raw LaTeX is not resolved through pandoc's --resource-path, so these paths must be absolute or
   // tectonic cannot find the pictures ("Unable to load picture or PDF file").
   const panel = (p, label) =>
     "\\begin{minipage}[t]{0.49\\linewidth}\\centering\n" +

@@ -1,12 +1,12 @@
 // cd-ai-flips.js
 //
 // Every civilization gains land by culture (opt-in, CONFIG.aiCultureFlips; docs/civ-v-parity-spec.md §2). Inside the
-// simulated region, a tile whose culture leader is a living MAJOR other than the local player and other than its
+// simulated region, a tile whose culture leader is a living major other than the local player and other than its
 // owner flips to that leader through the leader's nearest city, under exactly the gates our own flips pass (peace
 // with the incumbent, the incumbent's core protection, adjacency to the leader's land, flipMaxDistance from one of
 // the leader's cities, the strand guard, the leader's per-city cap) and with the same commit (cd-flip.js). The
 // leader's own natural ring is left to the base game, as ours is. Independent Powers and city-states never lead a
-// flip. Watched 2026-09-25: a rival city's purchasePlot lands like ours and charges nothing.
+// flip. A rival city's purchasePlot lands like ours and charges nothing.
 //
 // Only tiles within the field region can move, so AI-versus-AI borders far from the player stay as the base game
 // leaves them; that asymmetry is documented in the README. No import from cd-pass.js.
@@ -26,7 +26,7 @@ function unkey(k) {
 }
 
 /**
- * One region tile as an AI flip candidate, or null: its culture leader must be a living MAJOR other than us and
+ * One region tile as an AI flip candidate, or null: its culture leader must be a living major other than us and
  * other than its owner, the tile outside that leader's own natural ring and within flipMaxDistance of one of the
  * leader's cities. Independent Powers and city-states never lead a flip.
  */
@@ -63,7 +63,7 @@ function aiFlipCandidates(p, cityList) {
 
 /**
  * Every civilization gains land by culture (opt-in, aiCultureFlips; docs/civ-v-parity-spec.md §2): the same gates
- * and the same commit as our own flips, with the culture LEADER as the claimant. The leader's per-city cap and
+ * and the same commit as our own flips, with the culture leader as the claimant. The leader's per-city cap and
  * in-flight claims are tracked per leader; the per-pass ceiling is the AI's own, so neither side starves the other.
  * @returns {{flips:number, pending:number}} AI flips booked now and sent awaiting the map.
  */

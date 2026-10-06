@@ -1,13 +1,13 @@
-// cdh-game-build.js - game scope, deployed as ui/cdh-game.js. The Civ V parity BUILD against the real engine (dev only).
+// cdh-game-build.js: game scope, deployed as ui/cdh-game.js. The Civ V parity build against the real engine (dev only).
 //
 // Run with the deployed config patched to `conquestFlip: true, aiCultureFlips: true` (run-harness.sh PATCH). The point
 // is to watch the new modules load and run inside GameFace and to see each new path act on the real map at least once:
 //
 //   B0 BOOT      the mod booted (its boot line), culturalDiffusion.config() shows the toggles, no module error
-//   B1 AI FLIP   seed a mature RIVAL stock on an unowned tile beside a rival major's land, inside our region and
+//   B1 AI FLIP   seed a mature rival stock on an unowned tile beside a rival major's land, inside our region and
 //                within flipMaxDistance of that rival's city; one pass; the rival's city must take it (aiFlips or
 //                aiPending in the result, then the owner read at +5 s)
-//   B2 FOREIGN   seed a foreign stock on OUR capital's tile; one pass; the foreign stock must grow past decay
+//   B2 FOREIGN   seed a foreign stock on our capital's tile; one pass; the foreign stock must grow past decay
 //                (population-strength injection) and the owner's stock must gain the converted share
 //   B3 FLOOR     after a pass, owned region tiles carry the owner floor (rows valued 1)
 //   B4 CAPTURE   call the CityTransfered handler with a real city's ComponentID (a transfer to its own owner, which
@@ -135,7 +135,7 @@ async function run() {
   setTimeout(endTurn, 3000);
 }
 
-// ---------------------------------------------------------------- turns (no Autoplay; see cdh-game-gold2.js)
+// turns (no Autoplay; see cdh-game-gold2.js)
 let n = 0; let endTimer = null; let tries = 0;
 function endTurn() {
   try {

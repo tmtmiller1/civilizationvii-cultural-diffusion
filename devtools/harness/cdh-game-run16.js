@@ -1,25 +1,25 @@
-// cdh-game-run16.js - game scope, deployed as ui/cdh-game.js. Cultural Diffusion harness run 16 (dev only).
+// cdh-game-run16.js: game scope, deployed as ui/cdh-game.js. Cultural Diffusion harness run 16 (dev only).
 //
-// The reporter's TWO anomalies, each with the mistake that spoiled the earlier runs corrected.
+// The reporter's two anomalies, each with the mistake that spoiled the earlier runs corrected.
 //
-// I  THE ABSORBED INDEPENDENT (read-only). Run 15 found that `Players.get(pid).Cities.getCities()` enumerates NOTHING
+// I  THE ABSORBED INDEPENDENT (read-only). Run 15 found that `Players.get(pid).Cities.getCities()` enumerates nothing
 //    for an Independent Power (its settlement map listed only majors and city-states), while run 13 watched the mod
-//    flip tiles "was owner 33" - so in this save `atWar(me, 33)` is FALSE and independent land is claimable. If
-//    getCities() cannot see a village, then `isCoreProtected` - which finds city centers by walking getCities() -
-//    cannot protect a village CENTER, and taking a minor's center plot absorbs the settlement (the mod's own Phase-5
-//    probe note). This stage calls the SHIPPED gates against a REAL village center and reports what they say. No writes.
+//    flip tiles "was owner 33", so in this save `atWar(me, 33)` is false and independent land is claimable. If
+//    getCities() cannot see a village, then `isCoreProtected`, which finds city centers by walking getCities(),
+//    cannot protect a village center, and taking a minor's center plot absorbs the settlement (the mod's own Phase-5
+//    probe note). This stage calls the shipped gates against a real village center and reports what they say. No writes.
 //
 // II THE TRAPPED SETTLER. Runs 14-15 used Independent Powers' units, which are hostile-by-default and may enter our
 //    borders freely, so they could never be trapped by trespass. The report says "another civilization's Settler",
-//    i.e. a MAJOR AT PEACE with us - the only kind trespass binds. This stage builds a REAL enclosure around one:
+//    i.e. a major at peace with us, the only kind trespass binds. This stage builds a real enclosure around one:
 //    every neighbor of its plot must be ours or buyable, so `enclosed` is a map fact, not a hope. Then it watches five
-//    turns: a unit that never moves while enclosed is the reported symptom, caused by us. A unit that walks out proves
+//    turns: a unit that never moves while enclosed is the reported symptom, caused by us. A unit that walks out shows
 //    trespass does not strand it. Run 15's pen had one neighbor owned by a third player and the unit left through it.
 //
-// Purchases are issued in one batch and confirmed in ONE pass, so the whole pen is built inside a single turn of ours
+// Purchases are issued in one batch and confirmed in one pass, so the whole pen is built inside a single turn of ours
 // (AI units do not move during our turn) instead of taking a minute of confirm waits.
 //
-// The mod's own pass stays disabled: this measures the ENGINE and the mod's PURE gates, not the pass.
+// The mod's own pass stays disabled: this measures the engine and the mod's pure gates, not the pass.
 // Tagged [CDH] in Logs/UI.log.
 
 import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
@@ -99,7 +99,7 @@ function whereIsUnit(cid) {
   return u && u.location ? { x: u.location.x, y: u.location.y } : null;
 }
 
-// --- I: the independent's village against the SHIPPED gates (read-only) -----------------------------------------------
+// I: the independent's village against the shipped gates (read-only)
 function playerKinds() {
   return safe(() => (Players.getAlive() || []).map((p) => ({
     pid: safe(() => p.id, -1),
@@ -147,7 +147,7 @@ function stageI() {
   if (!centres.length) emit("I no minor settlement center within 8 rings of our cities - cannot test the gates here");
 }
 
-// --- II: a true enclosure around a MAJOR-AT-PEACE unit -----------------------------------------------------------------
+// II: a true enclosure around a major-at-peace unit
 let pen = null;
 function peacefulMajors(kinds) {
   return new Set(kinds.filter((k) => k.major === true && k.pid !== local && k.war === false).map((k) => k.pid));
@@ -179,7 +179,7 @@ async function buildPen(kinds) {
   if (!site) { emit("II no site where a peaceful major's unit can be fully enclosed"); return false; }
   const centre = { x: site.u.loc.x, y: site.u.loc.y };
   const plots = [centre, ...site.ring];
-  // One batch, then ONE confirm pass: the whole pen closes inside this turn of ours.
+  // One batch, then one confirm pass: the whole pen closes inside this turn of ours.
   for (const p of plots) {
     if (owner(p) === local) continue;
     const near = nearest(p, localCities());

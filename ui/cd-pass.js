@@ -3,7 +3,7 @@
 // The per-turn pass: over a bounded region around the local player's cities it injects culture
 // into each city tile (fused CPI/prosperity strength), diffuses and decays the persisted per-tile
 // stock, then flips a tile to the local player once its culture there passes the ownership bar.
-// Ownership is mutated for the local player, and - with aiCultureFlips on - for any living major whose culture
+// Ownership is mutated for the local player, and, with aiCultureFlips on, for any living major whose culture
 // leads a tile inside the region, under the same gates. See docs/current-model.md and docs/civ-v-parity-spec.md.
 
 import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
@@ -113,8 +113,8 @@ function ageWaterEase(ageKey) {
 }
 
 /**
- * The waterEase to use right now: this age's anchor, optionally ramped CONTINUOUSLY toward the
- * NEXT age's anchor by progress through the current age (Game.turn / Game.maxTurns). So water
+ * The waterEase to use right now: this age's anchor, optionally ramped continuously toward the
+ * next age's anchor by progress through the current age (Game.turn / Game.maxTurns). So water
  * crossing improves smoothly across an age instead of stepping at the boundary.
  * @param {string} ageKey Current age key.
  * @returns {number} Effective waterEase in [0,1].
@@ -131,7 +131,7 @@ function effectiveWaterEase(ageKey) {
 
 /**
  * Per-age injection scaling + a time-re-paced copy of CONFIG. Diffusion/decay scale together, so
- * the reach EXTENT is unchanged and only the SPEED of approach is re-timed.
+ * the reach extent is unchanged and only the speed of approach is re-timed.
  * @returns {{ageInject:number, pace:number, ageCfg:import("/cultural-diffusion/ui/cd-config.js").CdConfig}}
  */
 function ageContext() {
@@ -290,7 +290,7 @@ function flipCandidates(region, next, cities, maxDist) {
   for (const k of region) {
     if (!next[k]) continue;
     const loc = unkey(k);
-    if (withinOwnNaturalRing(loc, cities)) continue; // base game owns/works your inner rings - never claim them
+    if (withinOwnNaturalRing(loc, cities)) continue; // base game owns/works your inner rings: never claim them
     const near = nearestCity(loc, cities);
     if (!near || near.d > maxDist) continue;
     candidates.push({ k, loc, near });
@@ -307,13 +307,13 @@ function tryFlipCandidate(cand, fx) {
   if (state.locked[cand.k] > 0) return false;           // anti-flicker cooldown
   if (isPending(state, cand.k)) return false;           // a verb on this tile is still landing
   const verdict = resolveOwner(next[cand.k], owner, deadOwners, ageCfg);
-  if (!verdict.flip || !passCanAct(verdict.owner, owner, me, false, false)) return false; // only tiles OUR culture won
+  if (!verdict.flip || !passCanAct(verdict.owner, owner, me, false, false)) return false; // only tiles our culture won
   if (!flipEligible(cand, owner, me, claimCount, fx.inFlight)) return false;
   return commitFlip(cand, owner, verdict, fx);
 }
 
 /**
- * Ownership resolution: flip in-region tiles to the LOCAL player, nearest-first, honoring every eligibility gate
+ * Ownership resolution: flip in-region tiles to the local player, nearest-first, honoring every eligibility gate
  * and per-turn/per-city caps; then, with aiCultureFlips on, to any other major whose culture leads.
  * @param {{state:*, region:Set<string>, next:*, cities:*, me:number, ageCfg:*, alive:Set<number>}} p Pass state.
  * @returns {{flips:number, pending:number, tiles:number, deadOwners:number[], aiFlips:number, aiPending:number}}
@@ -366,8 +366,8 @@ function commitBuffer(state, c, T, me) {
 }
 
 /**
- * Event-driven "+1 ring" cultural buffer: when the LOCAL player completes a rural improvement on
- * `devLoc`, claim the UNOWNED tiles adjacent to it for the nearest city via the integrated verb.
+ * Event-driven "+1 ring" cultural buffer: when the local player completes a rural improvement on
+ * `devLoc`, claim the unowned tiles adjacent to it for the nearest city via the integrated verb.
  * Never takes another player's tile; capped to baseGrowthRadius+1 rings from the nearest city center.
  * @param {{x:number,y:number}} devLoc The just-developed tile.
  * @returns {number} Buffer tiles claimed.
@@ -375,7 +375,7 @@ function commitBuffer(state, c, T, me) {
 export function claimBufferAt(devLoc) {
   if (!CONFIG.growthBuffer) return 0;
   const me = localPlayerId();
-  if (me < 0 || ownerAt(devLoc) !== me) return 0;   // only OUR own development
+  if (me < 0 || ownerAt(devLoc) !== me) return 0;   // only our own development
   const cities = localCityList(me);
   if (!cities.length) return 0;
   const state = loadState();
@@ -394,23 +394,23 @@ export function claimBufferAt(devLoc) {
 }
 
 /**
- * The nearest local city an UNOWNED neighbor tile should attach to as a +1 buffer, or null when
+ * The nearest local city an unowned neighbor tile should attach to as a +1 buffer, or null when
  * ineligible (the dev tile itself, already-owned, cooldown-locked, or past the +1 ring cap). Unlike
- * the land-only diffusion field, the buffer claims adjacent UNOWNED water too (coastal borders).
+ * the land-only diffusion field, the buffer claims adjacent unowned water too (coastal borders).
  */
 function bufferTarget(n, state, ctx) {
-  if (ownerAt(n) >= 0) return null;                 // UNOWNED only - never take a tile another player owns
+  if (ownerAt(n) >= 0) return null;                 // unowned only; never take a tile another player owns
   if (state.locked[key(n.x, n.y)] > 0) return null; // anti-flicker cooldown
   if (isPending(state, key(n.x, n.y))) return null; // a verb on this tile is still landing
   if (distantLandsGated(n, ctx.me)) return null;    // no distant-lands claims before Exploration
-  if (withinOwnNaturalRing(n, ctx.cities)) return null; // base game owns inner rings; buffer only BEYOND them
+  if (withinOwnNaturalRing(n, ctx.cities)) return null; // base game owns inner rings; buffer only beyond them
   if (claimGateBlocked(n, ownerAt(n), ctx.me, CONFIG, ctx.inFlight)) return null; // same gates as the flip path
   const nc = nearestCity(n, ctx.cities);
   return (nc && nc.d <= ctx.maxR) ? nc : null;
 }
 
 /**
- * Heal ORPHAN tiles (owner === me, owningCity < 0), which the setOwnership verb produces: they are
+ * Heal orphan tiles (owner === me, owningCity < 0), which the setOwnership verb produces: they are
  * unworkable and block base-game border growth. Each orphan in the region is released, then re-bought
  * through the integrated verb; if the re-buy fails the tile stays released. Idempotent.
  * @returns {number} Orphan tiles healed this pass.
@@ -421,8 +421,8 @@ function repairOrphans(state, region, cities, me) {
   for (const k of region) {
     const loc = unkey(k);
     if (ownerAt(loc) !== me) continue;       // only our own tiles
-    if (owningCityIdAt(loc) >= 0) continue;  // already a real city tile - not an orphan
-    // An orphan inside our own natural ring goes BACK to the base game rather than the nearest city,
+    if (owningCityIdAt(loc) >= 0) continue;  // already a real city tile, not an orphan
+    // An orphan inside our own natural ring goes back to the base game rather than the nearest city,
     // so it is re-assigned to the city that can actually work it.
     if (withinOwnNaturalRing(loc, cities)) {
       unclaim(loc);
@@ -438,12 +438,12 @@ function repairOrphans(state, region, cities, me) {
 /** Drop a tile's claim + lock bookkeeping (used when a tile is handed back to the base game). */
 function forgetClaim(state, k) {
   delete state.claims[k];
-  // The cooldown stays: it is the anti-flicker guard (and a conquest's hold), not part of the claim record. Watched
-  // 2026-09-26: a conquered ring-3 tile lost its hold here the pass after it was taken.
+  // The cooldown stays: it is the anti-flicker guard (and a conquest's hold), not part of the claim record.
+  // Dropping it here once cost a conquered ring-3 tile its hold the pass after it was taken.
 }
 
 /**
- * Re-integrate a FRONTIER orphan (beyond the base-game natural ring) into its nearest city: release
+ * Re-integrate a frontier orphan (beyond the base-game natural ring) into its nearest city: release
  * it, then re-buy via purchasePlot on the now-unowned tile. On failure the tile stays released so the
  * base game can grow into it. @returns {boolean} True when the orphan was processed (false = no city to attach to).
  */
@@ -462,8 +462,8 @@ function reintegrateOrphan(state, k, loc, cities, me) {
 }
 
 /**
- * Release any MOD-CLAIMED tile within a local city's base-game natural ring back to the base game, so
- * it is re-assigned to the city that can actually WORK it (unlike repairOrphans, this covers tiles that
+ * Release any mod-claimed tile within a local city's base-game natural ring back to the base game, so
+ * it is re-assigned to the city that can actually work it (unlike repairOrphans, this covers tiles that
  * did attach to a city, just the wrong one). One-shot: the claim record is dropped, so it is never released again.
  * @param {*} state Persisted state (mutated). @param {*} cities Local cities. @param {number} me Local player id.
  * @returns {number} Inner claims released this pass.

@@ -3,7 +3,7 @@
 // The Cultural Pressure lens's cursor panel: while the lens is active and the cursor is over a
 // simulated tile, a readout shows each contending culture's stock, the target the leader must reach,
 // the capture progress and a rough turns-to-flip, all from the same cd-field pressureVerdict the lens
-// and the pass use. Self-contained DOM panel + cursor wiring, loaded as its OWN <UIScripts> entry in
+// and the pass use. Self-contained DOM panel + cursor wiring, loaded as its own <UIScripts> entry in
 // the HUD context; it reads the hovered plot's field row directly. Reads only.
 
 import LensManager from "/core/ui/lenses/lens-manager.js";
@@ -22,9 +22,9 @@ import { LENS } from "/cultural-diffusion/ui/cd-pressure-lens.js";
 const PANEL_ID = "cd-pressure-panel";
 const STYLE_ID = "cd-pressure-panel-style";
 const CURSOR_OFFSET = 36; // px gap from the cursor so the panel clears the tile being read
-// ms the loaded field snapshot is cached before a reload. The snapshot carries the claim CONTEXT too
+// ms the loaded field snapshot is cached before a reload. The snapshot carries the claim context too
 // (cd-eligibility), so for up to this long the readout can still offer progress on a tile that has just gone
-// on cooldown or had a verb sent. Sub-second staleness in a hover panel is the deliberate trade for not
+// on cooldown or had a verb sent. Sub-second staleness in a hover panel is the trade for not
 // re-reading the whole field on every mouse move; `__test.clearSnapshot` exists so the parity suite can pin
 // the fresh behavior rather than the cache.
 const FIELD_TTL = 1500;
@@ -80,7 +80,7 @@ function ageAdjustedCfg() {
   try {
     applyTunableOverrides();
   } catch (_) {
-    /* Options layer unavailable - fall back to CONFIG defaults. */
+    /* Options layer unavailable; fall back to CONFIG defaults. */
   }
   let bar = 1;
   try {
@@ -225,7 +225,7 @@ function actionableHere(plot, owner, v, snap, k) {
   const flags = { recede: snap.cfg.recedeBorders, aiFlips: aiLead };
   if (!passCanAct(v.leader, owner, snap.me, snap.claims[k]?.by === snap.me, flags)) return false;
   if (v.leader !== snap.me && !aiLead) return true; // a recede cession: the recede step's business, not this gate's
-  // Our own claim, or - with AI flips on - the leader's: the same gates, asked for whoever would claim.
+  // Our own claim, or, with AI flips on, the leader's: the same gates, asked for whoever would claim.
   const ctx = v.leader === snap.me
     ? snap.ctx
     : { me: v.leader, cities: cityListOf(v.leader), state: snap.state, cfg: snap.cfg };
@@ -371,7 +371,7 @@ function wire() {
 /** Introspection for the in-game harness (devtools/harness), which checks the shipped logic directly. */
 export const __test = { resolve, clearSnapshot: () => { _snap = null; } };
 
-// -- Self-registration (runs on UIScript load, in the HUD context) ---------------------------
+// self-registration (runs on UIScript load, in the HUD context)
 try {
   wire();
 } catch (e) {

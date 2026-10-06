@@ -1,4 +1,4 @@
-// cdh-shell-run5.js - shell scope, deployed as ui/cdh-shell.js for run 5. Auto-loads AugustusAnt136 from the main
+// cdh-shell-run5.js: shell scope, deployed as ui/cdh-shell.js for run 5. Auto-loads AugustusAnt136 from the main
 // menu. (Run 3's autosaves AutoSave_00_0160 and AutoSave_01_0001 rotated out: the game keeps only ten autosaves.
 // AugustusAnt136 is also a hand-played save, so it does not resume Autoplay when loaded.) File names are matched by
 // substring, since the save list may report them with or without the extension.

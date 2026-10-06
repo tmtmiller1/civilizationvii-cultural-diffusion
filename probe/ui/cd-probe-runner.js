@@ -5,11 +5,11 @@
 //   Q-FLIP       - does setOwnership actually reassign a plot + redraw borders?
 //   Q-YIELD      - is a flipped tile integrated (worked/yields) or cosmetic?
 //   Q-PERSIST    - does a flip survive save -> reload?
-//   Q-BEYOND-CAP - can we claim a plot the city could NOT claim via normal growth?
+//   Q-BEYOND-CAP - can we claim a plot the city could not claim via normal growth?
 //
-// SAFETY MODEL: only the READ-ONLY diagnostics run automatically. Any call that
-// MUTATES the map (an actual tile flip) is manual, invoked from the console, so the
-// player controls exactly when - and on which plot - the game state is touched.
+// Safety model: only the read-only diagnostics run automatically. Any call that
+// mutates the map (an actual tile flip) is manual, invoked from the console, so the
+// player controls exactly when, and on which plot, the game state is touched.
 // Every flip records a reversible entry and the runner can restore it.
 
 import { emitLine, emitSection, newRunId } from "./cd-probe-emit.js";
@@ -37,21 +37,21 @@ import { runLensProbe } from "./cd-probe-lens.js";
 const PROBE_VERSION = "0.9.30"; // cache-bust marker: log must read 0.9.30
 const RINGS = 6;               // search out to 6 rings so we can test tiles BEYOND the normal 3-ring footprint
 const SCHEMA = "v10-outer-yield"; // re-arm token: if stored meta.schema differs, the probe clears + re-runs the new tests
-// How long to wait for an async ownership/district write to settle before the FIRST verb
+// How long to wait for an async ownership/district write to settle before the first verb
 // classify. The 2026-07-09 run proved 2.5s is too short (every tile read no-change/FAILS then,
-// yet was owned/integrated post-reload), so the seed read waits longer AND every turn-refresh
+// yet was owned/integrated post-reload), so the seed read waits longer and every turn-refresh
 // re-classifies (runVerbRead), upgrading a verdict as a slow write finally lands.
 const VERB_SETTLE_MS = 6000;
 
-// Q-INTEGRATE / Q-CODEX buildability probes. If a flipped tile is REAL city land, the
-// player can place these on it - which is exactly how the Han would develop science on
+// Q-INTEGRATE / Q-CODEX buildability probes. If a flipped tile is real city land, the
+// player can place these on it, which is exactly how the Han would develop science on
 // diffused land and then Shi-Dafu-codex it. LIBRARY/ACADEMY are the science buildings the
-// codex targets; MONUMENT is a generic "can I build ANYTHING here" control.
+// codex targets; MONUMENT is a generic "can I build anything here" control.
 const TEST_BUILDINGS = ["BUILDING_LIBRARY", "BUILDING_ACADEMY", "BUILDING_MONUMENT"];
 
-// Auto-run behavior. All destructive tests target EMPTY frontier land by default
+// Auto-run behavior. All destructive tests target empty frontier land by default
 // (fully reversible / non-disruptive). Set AUTO_FLIP_RIVAL true to also test one
-// rival-owned flip (the "contest" case) - it takes a tile from an AI, so it is off
+// rival-owned flip (the "contest" case); it takes a tile from an AI, so it is off
 // by default; start a fresh game afterward to discard the change.
 const AUTO = {
   ENABLED: true,
@@ -59,87 +59,87 @@ const AUTO = {
   FLIP_BUY_UNOWNED: true,   // Q-YIELD(integrated) via city.purchasePlot (near)
   FLIP_FAR: true,           // Q-BEYOND-CAP: flip an unowned tile OUTSIDE ring 3 (both verbs)
   FLIP_RIVAL: true,         // contest case: take a tile from another civ (destructive to AI; throwaway save)
-  // Q-WORK: after the flips, read (safely) whether the BEYOND-RING-3 owned tiles can be
+  // Q-WORK: after the flips, read (safely) whether the beyond-ring-3 owned tiles can be
   // worked/settled. WORK_MUTATE actually assigns a worker / places a rural district to
-  // CONFIRM the read - destructive, so OFF by default (start a fresh game after enabling).
+  // confirm the read, destructive, so off by default (start a fresh game after enabling).
   WORK_READ: true,
   WORK_MUTATE: false,
-  // Q-OUTER-YIELD (read-only): confirm the mod's BEYOND-RING-3 owned tiles are not merely
-  // workable (Q-WORK) but ACTUALLY worked and BEARING yields. Non-mutating; on by default.
+  // Q-OUTER-YIELD (read-only): confirm the mod's beyond-ring-3 owned tiles are not merely
+  // workable (Q-WORK) but actually worked and bearing yields. Non-mutating; on by default.
   YIELD_READ: true,
-  // Q-VERB (Phase 0 gate): claim a DISTINCT tile per candidate verb (Growth.claimPlot,
+  // Q-VERB (Phase 0 gate): claim a distinct tile per candidate verb (Growth.claimPlot,
   // CREATE_ELEMENT DISTRICT_RURAL) and classify FREE-INTEGRATED / COSTS-GOLD / FAILS. This
-  // MUTATES (claims tiles / creates rural districts) - on by default because deciding the
+  // mutates (claims tiles / creates rural districts), on by default because deciding the
   // verb is the whole point of Phase 0; every target is empty/frontier land (reversible) or
   // a rival tile (throwaway save). Turn off to run the probe read-only.
   VERB_PROBE: true,
-  // DIFFUSION DEMO: the earlier stages claim a few DISCONNECTED beyond-ring-3 tiles (great for
-  // the verb test, invisible as "border growth"). This claims the CONTIGUOUS front - land tiles
-  // adjacent to your existing territory - a few per turn, so the border visibly creeps outward
+  // diffusion demo: the earlier stages claim a few disconnected beyond-ring-3 tiles (great for
+  // the verb test, invisible as "border growth"). This claims the contiguous front, land tiles
+  // adjacent to your existing territory, a few per turn, so the border visibly creeps outward
   // ring by ring, and eats into a rival where the front touches one (the visible rival-capture
   // test). Unowned land -> DISTRICT_RURAL (free, integrated); rival land -> purchasePlot (the
-  // verb proven to capture rival tiles). MUTATES every turn; on by default so growth is visible.
+  // verb proven to capture rival tiles). Mutates every turn; on by default so growth is visible.
   DIFFUSION_DEMO: true,
   DEMO_PER_TURN: 6,         // contiguous frontier tiles claimed per turn
   DEMO_CAPTURE_RIVAL: true, // also claim rival tiles on the front (visible capture; spends gold)
-  // Verb for UNOWNED front tiles:
-  //   "purchasePlot" = visible AND integrated (real City plot-acquisition path). Spends gold, but
-  //                    DEMO_REFUND_GOLD grants the cost back so it nets ZERO - visible + integrated
-  //                    + no treasury drain, the current-model.md §4 ideal. DEFAULT.
+  // Verb for unowned front tiles:
+  //   "purchasePlot" = visible and integrated (real City plot-acquisition path). Spends gold, but
+  //                    DEMO_REFUND_GOLD grants the cost back so it nets zero, visible + integrated
+  //                    + no treasury drain, the current-model.md §4 ideal. Default.
   //   "setOwnership" = free + player-owned + repaints, but ORPHAN (no owning city, not workable).
-  //   "stack"        = setOwnership+DISTRICT_RURAL - PROVEN not to integrate: both orders orphan
+  //   "stack"        = setOwnership+DISTRICT_RURAL, proven not to integrate: both orders orphan
   //                    the tile (the two ownership models are mutually exclusive). Kept for ref.
   // Rival tiles always use purchasePlot (also refunded when DEMO_REFUND_GOLD).
   DEMO_UNOWNED_VERB: "purchasePlot",
-  // Refund whatever purchasePlot spent this turn (via Players.grantYield GOLD), so the claim is
+  // Refund whatever purchasePlot spent this turn (via Players.grantYield gold), so the claim is
   // net-free. Proven write path (emigration mod). The player's gold dips for ~2.5s then restores.
   DEMO_REFUND_GOLD: true,
   DEMO_MIN_MS: 2500,        // min gap between demo advances (PlayerTurnActivated re-fires ~7x/s)
-  // DESIGN RULE: cultural borders never annex tiles/cities held by a MINOR/independent (city-state).
-  // City-states are won via suzerainty/diplomacy, not cultural conquest - so diffusion skips their
+  // Design rule: cultural borders never annex tiles/cities held by a minor/independent (city-state).
+  // City-states are won via suzerainty/diplomacy, not cultural conquest, so diffusion skips their
   // tiles and Phase-5 targets majors only. Off => diffusion may also contest city-states.
   EXCLUDE_CITY_STATES: true,
-  // Q-COST (one-shot): the 2026-07-09 run showed purchasePlot is FREE even beyond ring 3 + on
-  // rival tiles - so distance isn't the cost driver. Every free claim was CONTIGUOUS (adjacent to
-  // owned). This measures purchasePlot's cost on a CONTIGUOUS vs a DISCONNECTED tile to decide the
+  // Q-COST (one-shot): the 2026-07-09 run showed purchasePlot is free even beyond ring 3 + on
+  // rival tiles, so distance isn't the cost driver. Every free claim was contiguous (adjacent to
+  // owned). This measures purchasePlot's cost on a contiguous vs a disconnected tile to decide the
   // rule: contiguity-required / contiguity-gated-pricing / unconditionally-free. Self-refunds.
   COST_PROBE: true,
   // Q-RECEDE (one-shot per session): the mod's opt-in recedeBorders needs two verbs nobody has watched -
-  // a RIVAL city's purchasePlot on a tile WE own beyond ring 3 (cede), and setOwnership(NO_PLAYER) on an
+  // a rival city's purchasePlot on a tile we own beyond ring 3 (cede), and setOwnership(NO_PLAYER) on an
   // INTEGRATED tile of ours (release). Moves one tile each, reads the result, then buys both back (refunded).
   RECEDE_PROBE: true,
-  // Phase 5 (one-shot DISCOVERY): taking a rival/minor CITY-CENTER tile should ANNEX/ABSORB the
+  // Phase 5 (one-shot discovery): taking a rival/minor city-center tile should annex/absorb the
   // whole settlement, but there's no known runtime cede API. This reflects the API surface for a
-  // city-transfer op + canStart-tests it READ-ONLY on a target city center. Non-destructive by
+  // city-transfer op + canStart-tests it read-only on a target city center. Non-destructive by
   // default; CITY_TRANSFER_MUTATE actually sends the op (destructive; throwaway save).
   CITY_TRANSFER: true,
   CITY_TRANSFER_MUTATE: false,
-  // Phase 5 REAL path (base-game CityRevolt): place a hidden CityRevolt marker on a rival city
+  // Phase 5 real path (base-game CityRevolt): place a hidden CityRevolt marker on a rival city
   // center -> the base-game revolt system transfers the settlement (to a candidate = us, since
   // diffusion surrounded it). REVOLT_MARKER_PLACE actually places the marker (destructive: it
-  // triggers a real revolt on an enemy city - throwaway save). It has its OWN gate, separate from
+  // triggers a real revolt on an enemy city, throwaway save). It has its own gate, separate from
   // CITY_TRANSFER_MUTATE (which drives the war/DiplomacyDeals experiments), so enabling the revolt
   // doesn't also declare war. On by default now that the data file is confirmed loaded.
   REVOLT_MARKER: true,
   REVOLT_MARKER_PLACE: true,
   // Which city to target for the Phase-5 test: "auto" (prefer a city-state = force-acceptable),
-  // "minor" (only city-states), or "major" (test whether force-accept BINDS a major civ's city).
+  // "minor" (only city-states), or "major" (test whether force-accept binds a major civ's city).
   CITY_TRANSFER_KIND: "auto",
   // The "annex at the cost of war" design: DECLARE WAR on the owner before the transfer, then
-  // re-check cede-ability + take the city. War may be the ENABLER for majors (CEDE_OCCUPIED opens
+  // re-check cede-ability + take the city. War may be the enabler for majors (CEDE_OCCUPIED opens
   // at war). Only fires under CITY_TRANSFER_MUTATE (very destructive: real war on a throwaway save).
   CITY_TRANSFER_WAR_COST: false,
 };
 
-// --- Frontier discovery (read-only) -----------------------------------------
+// Frontier discovery (read-only)
 
-// A "candidate" plot is one within `rings` of a local city that is NOT already
-// owned by the local player - i.e. exactly the frontier the mod would diffuse into.
+// A "candidate" plot is one within `rings` of a local city that is not already
+// owned by the local player, i.e. exactly the frontier the mod would diffuse into.
 // Returns the first N candidates classified by current owner so the tester can pick.
 function findCandidates(rings, limit) {
   const me = localPlayerId();
   const cities = localCities();
-  // "beyondCap" = a plot outside ring 3 of EVERY local city, i.e. one a city could
+  // "beyondCap" = a plot outside ring 3 of every local city, i.e. one a city could
   // not reach through its normal 3-ring footprint. This is the Q-BEYOND-CAP set.
   const near3 = new Set();
   for (const city of cities) {
@@ -159,16 +159,16 @@ function findCandidates(rings, limit) {
       const key = `${p.x},${p.y}`;
       if (seen.has(key)) continue;
       seen.add(key);
-      // Culture claims LAND, not ocean - and an ocean/fog flip produces no visible border
+      // Culture claims land, not ocean, and an ocean/fog flip produces no visible border
       // growth (the 2026-07-09 coastal-city run claimed only water/hidden tiles, so nothing
       // showed on the map). Skip water and fully-hidden tiles so every claim lands on visible
-      // land the player can watch change owner (and so rival LAND tiles are the capture set).
+      // land the player can watch change owner (and so rival land tiles are the capture set).
       if (isWaterAt(p)) { skippedWater += 1; continue; }
       if (revealedStateAt(p) === 0) { skippedHidden += 1; continue; }
       const ownerCity = owningCityIdAt(p);
       const ownerPlayer = owningPlayerIdAt(p);
       const beyondCap = !near3.has(key); // outside the normal 3-ring footprint
-      // Owner id -1 (or a null/-1 owning city) means NOBODY owns the plot - the empty
+      // Owner id -1 (or a null/-1 owning city) means nobody owns the plot, the empty
       // frontier. Anything owned by another player is rival.
       const isUnowned =
         ownerPlayer === -1 || ownerPlayer == null ||
@@ -178,7 +178,7 @@ function findCandidates(rings, limit) {
       } else if (ownerPlayer !== me) {
         // ringDepth = how deep the tile sits in the RIVAL's own footprint (1=core,
         // <=3=inside their worked ring, >3=their frontier). This is the frontier-vs-inside
-        // distinction, independent of beyondCap (which is measured from MY city).
+        // distinction, independent of beyondCap (which is measured from my city).
         const ringDepth = ownerRingDepth(p);
         rival.push({ ...p, ownerPlayer, ownerCity, beyondCap, ringDepth });
       }
@@ -200,7 +200,7 @@ function findCandidates(rings, limit) {
   };
 }
 
-// --- Auto diagnostics (READ-ONLY, safe) -------------------------------------
+// Auto diagnostics (read-only, safe)
 
 export function runDiagnostics(trigger) {
   const runId = newRunId();
@@ -209,7 +209,7 @@ export function runDiagnostics(trigger) {
   const cands = findCandidates(RINGS, 12);
   const priorFlips = readFlips();
   // Q-PERSIST re-check: for every flip we recorded in a previous session, read the
-  // plot's CURRENT owner and compare to what we set it to.
+  // plot's current owner and compare to what we set it to.
   const persistCheck = priorFlips.map((f) => ({
     loc: f.loc,
     setTo: f.setTo,
@@ -234,7 +234,7 @@ export function runDiagnostics(trigger) {
   return { presence, candidates: cands, persistCheck };
 }
 
-// --- Manual mutation tests (invoked from the console) -----------------------
+// Manual mutation tests (invoked from the console)
 
 // Pick a target: explicit {x,y}, else the first candidate of the requested kind.
 function resolveTarget(kind, loc) {
@@ -301,18 +301,18 @@ function doFlip(verb, kind, loc) {
   return { ok: true, flipped, target, before, after };
 }
 
-// --- Automatic staged sequence (NO CONSOLE REQUIRED) ------------------------
+// Automatic staged sequence (no console required)
 //
 // A persisted state machine so the probe can answer every question hands-off:
 //   phase "init"    - each turn, run diagnostics; once a frontier candidate is
-//                     available, perform the configured flips ONCE, then advance
+//                     available, perform the configured flips once, then advance
 //                     to "flipped". (Retries across turns until the map is ready.)
 //   phase "flipped" - flips are done and recorded; emit a banner telling the
-//                     player to SAVE and RELOAD so persistence can be judged.
+//                     player to save and reload so persistence can be judged.
 //   phase "done"    - on a later session the persist re-check ran; report and stop.
 //
-// Persistence is judged by comparing the plot's CURRENT owner to what we recorded
-// setting it to, on a session AFTER the flips (readMeta().flippedSession differs
+// Persistence is judged by comparing the plot's current owner to what we recorded
+// setting it to, on a session after the flips (readMeta().flippedSession differs
 // from the live session nonce). runDiagnostics already emits the persistCheck block.
 
 function sessionNonce() {
@@ -325,9 +325,9 @@ function sessionNonce() {
   return g.__cdProbeSession;
 }
 
-// Pick DISTINCT plots up front so a setOwnership tile is never ALSO purchased. The
+// Pick distinct plots up front so a setOwnership tile is never also purchased. The
 // original probe re-resolved "the first candidate" per flip; because ownership writes
-// are async, the same plot could receive both verbs in one tick - exactly what muddied
+// are async, the same plot could receive both verbs in one tick, exactly what muddied
 // the spec's Q-YIELD read. Assigning distinct plots here isolates each verb cleanly.
 function pickTargets(cands) {
   const unowned = (cands.unowned || []).slice();
@@ -337,14 +337,14 @@ function pickTargets(cands) {
     return i >= 0 ? unowned.splice(i, 1)[0] : (unowned.shift() || null);
   };
   const next = () => unowned.shift() || null;
-  // Prefer a rival tile that already has a DISTRICT (developed) so the capture test (D) has
-  // something to measure - does the improvement come across, or get stripped?
+  // Prefer a rival tile that already has a district (developed) so the capture test (D) has
+  // something to measure: does the improvement come across, or get stripped?
   const nextRival = () => {
     const i = rival.findIndex((r) => districtAt(r).present);
     return i >= 0 ? rival.splice(i, 1)[0] : (rival.shift() || null);
   };
-  // The most INTERIOR rival tile (smallest ringDepth from THEIR city) - to test flipping a
-  // tile INSIDE their 3-ring, not just their frontier.
+  // The most interior rival tile (smallest ringDepth from their city), to test flipping a
+  // tile inside their 3-ring, not just their frontier.
   const nextDeepRival = () => {
     const inside = rival.filter((r) => typeof r.ringDepth === "number" && r.ringDepth >= 1 && r.ringDepth <= 3);
     inside.sort((a, b) => a.ringDepth - b.ringDepth);
@@ -379,15 +379,15 @@ function performAutoFlips() {
   return done;
 }
 
-// --- Q-INTEGRATE / Q-CODEX: is a flipped tile real, buildable city land? ------
+// Q-INTEGRATE / Q-CODEX: is a flipped tile real, buildable city land?
 //
-// Settles the spec's open Q-YIELD question AND the Han-codex report in one hands-off
+// Settles the spec's open Q-YIELD question and the Han-codex report in one hands-off
 // pass. For each recorded flip we read (deferred, after the async write settles):
 //   owner        - does the plot read as owned by us?
-//   owningCity   - does getOwningCityFromXY return a REAL city (id != -1)?
+//   owningCity   - does getOwningCityFromXY return a real city (id != -1)?
 //   inCityPlots  - is the plot inside that city's getPurchasedPlots() set?
 //   buildable[]  - can we actually place a Library / Academy / Monument on it?
-// INTEGRATED = a real owning city AND (in its plot set OR something buildable there) =
+// INTEGRATED = a real owning city and (in its plot set or something buildable there) =
 // the world where the Han builds a science building on diffused land and codexes it.
 // ORPHAN = owner set but no owning city / nothing buildable = empty-tile codex impossible.
 
@@ -395,14 +395,14 @@ function euclid2(a, b) { const dx = a.x - b.x, dy = a.y - b.y; return dx * dx + 
 
 function cidNum(cid) { return cid ? ((typeof cid.id === "number") ? cid.id : cid.id?.id) : -1; }
 
-// The local city that OWNS the plot (matched by owning-city id), else the nearest one.
+// The local city that owns the plot (matched by owning-city id), else the nearest one.
 function cityForPlot(loc) {
   const cid = owningCityCID(loc);
   const cities = localCities();
   if (cid) {
     const idNum = cidNum(cid);
-    // Resolve to the local City OBJECT and use ITS .id ComponentID for canStart - the
-    // exact shape the base UI passes - rather than the raw getOwningCityFromXY return,
+    // Resolve to the local City object and use its .id ComponentID for canStart, the
+    // exact shape the base UI passes, rather than the raw getOwningCityFromXY return,
     // whose object shape we don't want to depend on.
     const owned = cities.find((c) => (c?.id?.id) === idNum);
     if (owned) return { city: owned, buildCID: owned.id, owns: true };
@@ -460,12 +460,12 @@ export function runIntegration(trigger) {
       + `owningCity=${r.owningCityReal ? r.owningCityId : "NONE"} inCityPlots=${r.inCityPlots} `
       + `buildable[${b}] => ${r.verdict}`);
   }
-  // Rollup on the bare-setOwnership verdict - the mod's DEFAULT flip verb, and the one
+  // Rollup on the bare-setOwnership verdict, the mod's default flip verb, and the one
   // that determines whether the Han-codex report is real.
   const setRows = rows.filter((r) => r.verb === "setOwnership");
   const anySetIntegrated = setRows.some((r) => r.verdict === "INTEGRATED");
   const anySetBuildable = setRows.some((r) => r.buildableHere);
-  // Pinned on-screen headline (+ toast) - the one answer the player is here for.
+  // Pinned on-screen headline (+ toast), the one answer the player is here for.
   hudVerdict(`CODEX: setOwnership => ${setRows.length
     ? (anySetIntegrated ? "INTEGRATED - Han CAN build science + codex (report CONFIRMED)" : "ORPHAN - empty-tile codex REFUTED")
     : "pending (no flip yet)"} | buildable science here: ${anySetBuildable ? "YES" : "no"}`);
@@ -482,18 +482,18 @@ export function runIntegration(trigger) {
   return rows;
 }
 
-// --- Q-VERB (Phase 0): FREE-INTEGRATED / COSTS-GOLD / FAILS per candidate verb ---
+// Q-VERB (Phase 0): FREE-INTEGRATED / COSTS-GOLD / FAILS per candidate verb
 //
 // The gate for the whole redesign (probe-history.md §2). setOwnership is retired (proven to
-// orphan / fail on rival), purchasePlot works but spends gold. This test claims a DISTINCT
-// tile per candidate free verb - Growth.claimPlot and CREATE_ELEMENT DISTRICT_RURAL - reads
-// the player's gold SYNCHRONOUSLY around the call (a cost is deducted at call time), and,
+// orphan / fail on rival), purchasePlot works but spends gold. This test claims a distinct
+// tile per candidate free verb, Growth.claimPlot and CREATE_ELEMENT DISTRICT_RURAL, reads
+// the player's gold synchronously around the call (a cost is deducted at call time), and,
 // deferred (the ownership write settles ~2s later), reads whether the tile INTEGRATED
 // (owner=me, real owning city, inCityPlots / rural district). Verdict per verb:
 //   FREE-INTEGRATED - integrated with no gold spent  => adopt it (best case)
 //   COSTS-GOLD      - integrated but gold was spent   => fall back to purchasePlot + cap
 //   FAILS           - never integrated                => not a usable verb
-// MUTATES (claims tiles); gated by AUTO.VERB_PROBE.
+// mutates (claims tiles); gated by AUTO.VERB_PROBE.
 
 const VERB_TESTS = [
   { key: "growthClaimPlot", label: "Growth.claimPlot", call: (t, me) => growthClaimPlot(t.city, t.loc) },
@@ -522,11 +522,11 @@ function classifyVerb(integrated, goldSpent) {
   return goldSpent > 0 ? "COSTS-GOLD" : "FREE-INTEGRATED";
 }
 
-// Pick a DISTINCT tile per (verb, kind) so no two verbs fight over one plot and the gold read
+// Pick a distinct tile per (verb, kind) so no two verbs fight over one plot and the gold read
 // isolates a single claim. near = ring 1-2 unowned, far = beyond ring 3 unowned, rival = a
-// rival-owned tile (the capture case). CRUCIALLY, exclude any tile a flip already touched: in
+// rival-owned tile (the capture case). Exclude any tile a flip already touched: in
 // the 2026-07-09 run the flips reported no-change (so those tiles still read unowned) and the
-// verb probe re-picked them, so DISTRICT_RURAL's tile ALSO carried a purchasePlot flip and the
+// verb probe re-picked them, so DISTRICT_RURAL's tile also carried a purchasePlot flip and the
 // integration couldn't be attributed to one verb. Excluding flip tiles gives each verb a virgin
 // plot.
 function pickVerbTargets() {
@@ -555,8 +555,8 @@ function pickVerbTargets() {
 const VERB_RANK = { "FREE-INTEGRATED": 3, "COSTS-GOLD": 2, "INTEGRATED-GOLD-UNKNOWN": 2, "FAILS": 1, PENDING: 0 };
 const VERB_LABEL = { growthClaimPlot: "Growth.claimPlot", districtRural: "DISTRICT_RURAL" };
 
-// Best verdict per verb PER KIND: { verb: { near, far, rival } }. Keeping the kind split is
-// essential - the 2026-07-09 run showed Growth.claimPlot free-integrates a NEAR tile but FAILS
+// Best verdict per verb per kind: { verb: { near, far, rival } }. Keeping the kind split is
+// essential: the 2026-07-09 run showed Growth.claimPlot free-integrates a near tile but FAILS
 // beyond ring 3, so a "best across all tiles" rollup masks the fact that it can't claim the
 // frontier the mod actually targets.
 function verdictByVerbKind(markers) {
@@ -570,7 +570,7 @@ function verdictByVerbKind(markers) {
   return out;
 }
 
-// The mod claims the frontier BEYOND ring 3, so the FAR verdict decides; fall back to near/rival
+// The mod claims the frontier beyond ring 3, so the far verdict decides; fall back to near/rival
 // only when no far tile has been tested yet (e.g. no beyond-ring-3 candidate on this map).
 function frontierVerdict(vk) {
   if (!vk) return "PENDING";
@@ -587,7 +587,7 @@ function verbSummary(byKind) {
   }).join(" | ");
 }
 
-// The probe-history.md §2 / reference-and-conventions.md §9 decision tree, driven by the FRONTIER (beyond-ring-3) verdict.
+// The probe-history.md §2 / reference-and-conventions.md §9 decision tree, driven by the frontier (beyond-ring-3) verdict.
 function verbDecision(byKind) {
   const claim = frontierVerdict(byKind.growthClaimPlot);
   const rural = frontierVerdict(byKind.districtRural);
@@ -663,11 +663,11 @@ function verbGoldSpent(m) {
   return (typeof m.goldSpent === "number") ? m.goldSpent : null;
 }
 
-// READ-ONLY refresh / Q-VERB-PERSIST: re-read every recorded verb marker's tile and RE-CLASSIFY
+// read-only refresh / Q-VERB-PERSIST: re-read every recorded verb marker's tile and re-classify
 // with the current integration state. Async ownership/district writes can settle turns after the
 // claim (the 2026-07-09 run's seed read said FAILS but the tile was integrated post-reload), so
-// each turn we upgrade a marker's persisted verdict when it finally integrates - "did this verb
-// EVER free-integrate the tile" is the capability signal, so we only ever raise a verdict, never
+// each turn we upgrade a marker's persisted verdict when it finally integrates, "did this verb
+// ever free-integrate the tile" is the capability signal, so we only ever raise a verdict, never
 // lower it. On a reload this doubles as the persistence signal (did the claim survive?).
 export function runVerbRead(trigger) {
   const markers = readVerb();
@@ -702,16 +702,16 @@ export function runVerbRead(trigger) {
   return rows;
 }
 
-// --- DIFFUSION DEMO: visible, contiguous border growth (and rival capture) -------------------
+// diffusion demo: visible, contiguous border growth (and rival capture)
 //
-// The Q-* stages claim a handful of DISCONNECTED beyond-ring-3 tiles - correct for the verb
+// The Q-* stages claim a handful of disconnected beyond-ring-3 tiles, correct for the verb
 // decision, but invisible as "the border grew" (the 2026-07-09 run claimed a 4-tile speck at
 // row 13, far from a city whose ring 1-3 was already fully owned). This stage instead claims the
-// CONTIGUOUS FRONT: land tiles directly adjacent to the local player's existing territory. Doing
-// a few per turn makes the colored border visibly creep outward ring by ring - and where that
+// contiguous front: land tiles directly adjacent to the local player's existing territory. Doing
+// a few per turn makes the colored border visibly creep outward ring by ring, and where that
 // front touches a rival, it captures the rival's tile, which is the visible rival-capture test.
 
-// Is a player id a MINOR/independent (city-state)? Memoized by id - a player's major/minor kind
+// Is a player id a minor/independent (city-state)? Memoized by id, a player's major/minor kind
 // doesn't change, so caching is safe and keeps the per-tile frontier scan cheap.
 const __cityStateMemo = new Map();
 function ownerIsCityState(owner) {
@@ -722,9 +722,9 @@ function ownerIsCityState(owner) {
   return v;
 }
 
-// LAND tiles adjacent to a tile the local player already owns, i.e. the true diffusion front
-// (unowned OR rival). Skips water/hidden so every claim is visible land. Rival tiles are tagged.
-// DESIGN RULE (EXCLUDE_CITY_STATES): never annex a minor/independent's tile - city-states are won
+// land tiles adjacent to a tile the local player already owns, i.e. the true diffusion front
+// (unowned or rival). Skips water/hidden so every claim is visible land. Rival tiles are tagged.
+// Design rule (EXCLUDE_CITY_STATES): never annex a minor/independent's tile, city-states are won
 // via suzerainty, not cultural conquest.
 function frontierRing(rings, limit) {
   const me = localPlayerId();
@@ -743,7 +743,7 @@ function frontierRing(rings, limit) {
       if (isCityCenterAt(p)) continue;                  // never tile-flip a settlement core (Phase 5 handles cities)
       const owner = owningPlayerIdAt(p);
       if (owner === me) continue;                       // already ours
-      // Adjacent to a tile I own? (that is what makes the growth CONTIGUOUS / visible).
+      // Adjacent to a tile I own? (that is what makes the growth contiguous / visible).
       let touchesMine = false;
       for (const n of plotsInRadius(p, 1)) {
         if (n.x === p.x && n.y === p.y) continue;
@@ -761,7 +761,7 @@ function frontierRing(rings, limit) {
 
 // Throttle: PlayerTurnActivated fired ~7x/second in the 2026-07-09 run, so an un-throttled demo
 // blasted ~56 claims/second. Advance the front at most once per DEMO_MIN_MS so it creeps one
-// ring per turn - watchable, and it can't hammer the engine.
+// ring per turn, watchable, and it can't hammer the engine.
 function demoThrottled() {
   const g = (typeof globalThis !== "undefined") ? globalThis : {};
   const now = (typeof Date !== "undefined" && Date.now) ? Date.now() : 0;
@@ -770,8 +770,8 @@ function demoThrottled() {
   return false;
 }
 
-// Q-OUTER-YIELD scans a radius around every city, so - unlike the cheap flip-record reads in
-// runWork - it must NOT run on every ~7x/sec PlayerTurnActivated. Throttle the turn-refresh scan
+// Q-OUTER-YIELD scans a radius around every city, so, unlike the cheap flip-record reads in
+// runWork, it must not run on every ~7x/sec PlayerTurnActivated. Throttle the turn-refresh scan
 // to at most once per ~2.5s. Explicit post-flip / reload / manual runs are one-shot, never throttled.
 function yieldThrottled() {
   const g = (typeof globalThis !== "undefined") ? globalThis : {};
@@ -781,7 +781,7 @@ function yieldThrottled() {
   return false;
 }
 
-// purchasePlot whose gold cost is refunded in the SAME TICK, so the live gold counter never
+// purchasePlot whose gold cost is refunded in the same tick, so the live gold counter never
 // visibly moves. purchasePlot's cost is applied synchronously at the call (only tile ownership
 // settles async), so reading the balance immediately after gives the exact cost, and a same-tick
 // changeGoldBalance restores it before the frame renders => player-invisible. Returns the spent
@@ -811,8 +811,8 @@ export function runDiffusionDemo(trigger) {
   }
   const runId = newRunId();
   emitLine(`RUN_START diffusion-demo ${runId} trigger=${trigger} front=${front.length} verb=${AUTO.DEMO_UNOWNED_VERB}`);
-  // Snapshot the two values the demographics mod reads for its gold metrics - the Treasury BALANCE
-  // and the net-gold-yield RATE - so we can REFUND purchasePlot's cost (net-zero balance) AND prove
+  // Snapshot the two values the demographics mod reads for its gold metrics, the Treasury balance
+  // and the net-gold-yield rate, so we can refund purchasePlot's cost (net-zero balance) and prove
   // the yield-rate metric never moved.
   const goldBefore = playerGold(me);
   const yieldBefore = netGoldYield(me);
@@ -831,9 +831,9 @@ export function runDiffusionDemo(trigger) {
     if (t.rival) {
       if (!AUTO.DEMO_CAPTURE_RIVAL) { skippedRival += 1; continue; }
       verb = "purchasePlot";                       // proven to capture rival tiles (spends gold; refunded same-tick)
-      // Snapshot the rival tile's improvement BEFORE capture, so the deferred read can tell whether
-      // it TRANSFERRED (came across developed) or was STRIPPED - and whether it was a RURAL improvement
-      // (tile-bound, should transfer) or an URBAN building (city-bound, expected to strip). Points 1 & 2.
+      // Snapshot the rival tile's improvement before capture, so the deferred read can tell whether
+      // it TRANSFERRED (came across developed) or was STRIPPED, and whether it was a rural improvement
+      // (tile-bound, should transfer) or an urban building (city-bound, expected to strip). Points 1 & 2.
       const distName = districtTypeNameAt(t) || String(districtAt(t).type ?? "");
       const consBefore = constructiblesAt(t).length;
       const kind = /RURAL/.test(distName) ? "rural" : (/URBAN/.test(distName) ? "urban" : (consBefore > 0 ? "other" : "bare"));
@@ -846,13 +846,13 @@ export function runDiffusionDemo(trigger) {
       r = pr.r; syncRefunded += pr.cost; spentAny = true;
     } else if (AUTO.DEMO_UNOWNED_VERB === "stack") {
       // The stack hypothesis: setOwnership repaints the border, DISTRICT_RURAL attaches an owning
-      // city + rural district (free integration) - together => visible + integrated + free. Order
+      // city + rural district (free integration), together => visible + integrated + free. Order
       // matters and forward failed (setOwnership claims the tile, so DISTRICT_RURAL then refuses),
-      // so test BOTH orders on alternating tiles; the read-back reports integration per order.
+      // so test both orders on alternating tiles; the read-back reports integration per order.
       const reverse = (stackIdx % 2) === 1;
       stackIdx += 1;
       if (reverse) {
-        // rural FIRST (claims + integrates the unowned tile), then setOwnership (repaint) - does
+        // rural first (claims + integrates the unowned tile), then setOwnership (repaint), does
         // the owning-city attachment survive setOwnership, or does setOwnership re-orphan it?
         verb = "stack:rural->set";
         const rRural = createRuralDistrict(t, me, buildCID);
@@ -875,9 +875,9 @@ export function runDiffusionDemo(trigger) {
   hudVerdict(`DIFFUSION: +${claimed} contiguous frontier tile(s) this turn${rivalClaimed ? ` (${rivalClaimed} CAPTURED from a rival)` : ""}`
     + ` via ${AUTO.DEMO_UNOWNED_VERB}${rivalClaimed ? "/purchasePlot" : ""} - watch the border grow`, "demo");
   emitLine(`RUN_END diffusion-demo ${runId} claimed=${claimed} rivalCaptured=${rivalClaimed} skippedRival=${skippedRival}`);
-  // Deferred CAPTURE read (points 1 & 2): for each captured rival tile, did its improvement come
-  // across? RURAL improvements are tile-bound (expect TRANSFERRED); URBAN buildings are city-bound
-  // (expect STRIPPED - a building can't survive its plot leaving the losing city).
+  // Deferred capture read (points 1 & 2): for each captured rival tile, did its improvement come
+  // across? rural improvements are tile-bound (expect TRANSFERRED); urban buildings are city-bound
+  // (expect STRIPPED, a building can't survive its plot leaving the losing city).
   if (captures.length) {
     const readCap = () => {
       const by = { rural: { t: 0, s: 0 }, urban: { t: 0, s: 0 }, other: { t: 0, s: 0 } };
@@ -901,11 +901,11 @@ export function runDiffusionDemo(trigger) {
     };
     try { setTimeout(readCap, 2500); } catch (_) { readCap(); }
   }
-  // Deferred: did the stack keep INTEGRATION (owner=me + real owning city + rural), or did
-  // setOwnership re-orphan the tile? Your eyes confirm the PAINT; this confirms the integration.
+  // Deferred: did the stack keep integration (owner=me + real owning city + rural), or did
+  // setOwnership re-orphan the tile? Your eyes confirm the paint; this confirms the integration.
   if (stackedLocs.length) {
     const check = () => {
-      // Tally integration per ORDER so we know which (if either) stack keeps the owning city.
+      // Tally integration per order so we know which (if either) stack keeps the owning city.
       const by = { "set->rural": { ok: 0, n: 0 }, "rural->set": { ok: 0, n: 0 } };
       for (const loc of stackedLocs) {
         const intg = verbIntegration(loc);
@@ -925,9 +925,9 @@ export function runDiffusionDemo(trigger) {
     };
     try { setTimeout(check, 2500); } catch (_) { check(); }
   }
-  // Per-tile refund already restored the balance IN-TICK (invisible). The deferred pass is a
-  // BACKSTOP: if any of purchasePlot's cost turned out to be async (landed after our same-tick
-  // refund), reconcile it now, and re-read the two demographics metrics to PROVE neither moved.
+  // Per-tile refund already restored the balance in-tick (invisible). The deferred pass is a
+  // backstop: if any of purchasePlot's cost turned out to be async (landed after our same-tick
+  // refund), reconcile it now, and re-read the two demographics metrics to prove neither moved.
   if (AUTO.DEMO_REFUND_GOLD && spentAny && goldBefore != null) {
     const check = () => {
       const goldNow = playerGold(me);
@@ -954,14 +954,14 @@ export function runDiffusionDemo(trigger) {
   return { claimed, rivalClaimed, stacked: stackedLocs.length };
 }
 
-// --- Q-COST: is purchasePlot free because of CONTIGUITY, or unconditionally? -----------------
+// Q-COST: is purchasePlot free because of contiguity, or unconditionally?
 //
-// The 2026-07-09 run showed purchasePlot free even beyond ring 3 and on rival tiles - so distance
-// isn't the cost driver. Every free claim was CONTIGUOUS (adjacent to owned). This one-shot test
-// measures purchasePlot's gold cost on a CONTIGUOUS tile vs a DISCONNECTED tile (unowned, NOT
+// The 2026-07-09 run showed purchasePlot free even beyond ring 3 and on rival tiles, so distance
+// isn't the cost driver. Every free claim was contiguous (adjacent to owned). This one-shot test
+// measures purchasePlot's gold cost on a contiguous tile vs a disconnected tile (unowned, not
 // touching our territory) and classifies the rule. It refunds its own spend (net-zero, metric-safe).
 
-// An unowned, revealed LAND tile with NO neighbor owned by the local player - the inverse of
+// An unowned, revealed land tile with no neighbor owned by the local player, the inverse of
 // frontierRing's contiguity test (a "jump" the border can't reach by creeping).
 function disconnectedTile() {
   const me = localPlayerId();
@@ -1049,28 +1049,28 @@ export function runCostProbe(trigger) {
   return { measured: true, contig, discon };
 }
 
-// --- Phase 5: cultural CITY CAPTURE - can a mod cede a whole settlement at runtime? ----------
+// Phase 5: cultural city capture, can a mod cede a whole settlement at runtime?
 //
-// Taking a city-center TILE just moves the plot; the CITY stays with its owner (the broken half-
+// Taking a city-center tile just moves the plot; the city stays with its owner (the broken half-
 // state the user saw). Real annexation needs a city-transfer subsystem. No such runtime call is
-// known (EFFECT_CITY_TRANSFER_OWNER is a DATA modifier; WorldBuilder = MapPlots only; Cities.* are
-// getters). So this DISCOVERS: reflect the API surface for transfer-ish names, enumerate transfer
-// operation-type enums, and canStart-test (READ-ONLY) each against a target rival/minor city center.
+// known (EFFECT_CITY_TRANSFER_OWNER is a data modifier; WorldBuilder = MapPlots only; Cities.* are
+// getters). So this discovers: reflect the API surface for transfer-ish names, enumerate transfer
+// operation-type enums, and canStart-test (read-only) each against a target rival/minor city center.
 
 const XFER_RE = /transfer|annex|captur|cede|cession|acquire|raze|liberat|conquer|occup/i;
 
-// Find a city-transfer target. A MINOR/city-state is the force-acceptable win, so it is ALWAYS
-// preferred over a major - even an adjacent major (the 2026-07-09 run wrongly tested an adjacent
+// Find a city-transfer target. A MINOR/city-state is the force-acceptable win, so it is always
+// preferred over a major, even an adjacent major (the 2026-07-09 run wrongly tested an adjacent
 // major, which returns 0 offerable items at peace). Enumerate every player's cities directly
-// (city.location IS the center), rank minor > any rival, adjacency only as a same-kind tiebreak.
+// (city.location is the center), rank minor > any rival, adjacency only as a same-kind tiebreak.
 function findCityCenterTarget() {
   const me = localPlayerId();
   const isNearMe = (loc) => {
     for (const n of plotsInRadius(loc, 1)) { if (owningPlayerIdAt(n) === me) return true; }
     return false;
   };
-  // How many of a city center's neighbors WE own = our cultural pressure on it. The base loyalty
-  // petition needs an adjacent claimant (us) to defect TO, so a MORE-surrounded city is a far
+  // How many of a city center's neighbors we own = our cultural pressure on it. The base loyalty
+  // petition needs an adjacent claimant (us) to defect to, so a more-surrounded city is a far
   // better revolt target than a random enemy capital.
   const surround = (loc) => {
     let n = 0;
@@ -1092,14 +1092,14 @@ function findCityCenterTarget() {
   if (!cands.length) return null;
   const pref = AUTO.CITY_TRANSFER_KIND || "auto";
   let pool = cands;
-  // DESIGN RULE: with city-states excluded, Phase 5 only ever targets majors (unless the user
+  // Design rule: with city-states excluded, Phase 5 only ever targets majors (unless the user
   // explicitly forces "minor" to test the city-state path).
   if (AUTO.EXCLUDE_CITY_STATES && pref !== "minor") {
     const majors = cands.filter((t) => t.kind !== "minor");
     if (majors.length) pool = majors;
   }
   if (pref === "minor") pool = pool.filter((t) => t.kind === "minor").length ? pool.filter((t) => t.kind === "minor") : pool;
-  // Rank primarily by SURROUNDEDNESS (our cultural pressure / the defection recipient), then by
+  // Rank primarily by surroundedness (our cultural pressure / the defection recipient), then by
   // preferred kind. A city we hug is the one the loyalty petition can actually hand to us.
   const kindBonus = (t) => (pref === "major" ? (t.kind === "major" ? 1 : 0) : (t.kind === "minor" ? 1 : 0));
   const rank = (t) => (t.surround || 0) * 10 + kindBonus(t) + (t.near ? 1 : 0);
@@ -1130,7 +1130,7 @@ export function runCityTransfer(trigger) {
     + `city[${cityMethods.join(",")}] playerOps[${surface.playerOps.map((o) => o.key).join(",")}] `
     + `cityOps[${surface.cityOps.map((o) => o.key).join(",")}] cityCommands[${surface.cityCommands.map((o) => o.key).join(",")}]`);
 
-  // The DiplomacyDeals API surface is target-independent - report it even before we have a target.
+  // The DiplomacyDeals API surface is target-independent, report it even before we have a target.
   const dd = diplomacyDealsPresence();
   emitLine(`Q-XFER-DEALS present=${dd.present} methods=[${dd.methods.join(",")}] `
     + `cityTransferTypes=[${dd.cityTransferTypes.join(",")}] proposalActions=[${dd.proposalActions.join(",")}]`);
@@ -1144,7 +1144,7 @@ export function runCityTransfer(trigger) {
   g.__cdXferDone = true;
   const targetCityIdNum = (typeof target.cityId === "number" && target.cityId >= 0) ? target.cityId : cidNum(cityAt(target.loc)?.id);
   // Suzerainty: Fealty's default only lets you transfer a city-state's city when you're its
-  // SUZERAIN, so this says whether the target is takeable per the native relationship rules.
+  // suzerain, so this says whether the target is takeable per the native relationship rules.
   const suz = target.kind === "minor" ? suzerainOf(target.owner) : null;
   const iAmSuzerain = suz === me;
   let cede = { ok: false, item: null, count: 0, subTypes: [], dealId: null, synthetic: false };
@@ -1155,7 +1155,7 @@ export function runCityTransfer(trigger) {
       + `enumeratedCityItems=${cede.count} subTypes=[${(cede.subTypes || []).join(",")}] item=${cede.item ? (cede.synthetic ? "SYNTHETIC" : "enumerated") : "none"}`);
   }
 
-  // --- SECONDARY context: reflect op-type enums + canStart (kept for completeness) --------------
+  // secondary context: reflect op-type enums + canStart (kept for completeness)
   const cid = cityAt(target.loc)?.id || null;
   const argShapes = [{ City: cid }, { CityID: cid }, { X: target.loc.x, Y: target.loc.y }, { Location: plotIndex(target.loc) }];
   const attempts = [];
@@ -1178,14 +1178,14 @@ export function runCityTransfer(trigger) {
   emitLine(`Q-XFER-OCCUPY-OPS player=[${occ.player.map((o) => o.key).join(",")}] city=[${occ.city.map((o) => o.key).join(",")}] `
     + `cityCommand=[${occ.cityCommand.map((o) => o.key).join(",")}] unit=[${occ.unit.map((o) => o.key).join(",")}] unitCommand=[${occ.unitCommand.map((o) => o.key).join(",")}]`);
 
-  // --- DESTRUCTIVE attempt (opt-in): "game it" - add the city item (enumerated OR synthetic) and
-  // force-accept via sendWorkingDeal(ACCEPTED). Fealty only force-accepts minor/IP and merely
-  // PROPOSES to majors - but that is its design choice, not a proven engine limit. So we attempt
-  // for ALL kinds under MUTATE, to learn whether ACCEPTED also FORCES a major's city (the open door).
+  // destructive attempt (opt-in): "game it", add the city item (enumerated or synthetic) and
+  // force-accept via sendWorkingDeal(accepted). Fealty only force-accepts minor/IP and merely
+  // proposes to majors, but that is its design choice, not a proven engine limit. So we attempt
+  // for all kinds under mutate, to learn whether accepted also forces a major's city (the open door).
   const canForce = dd.present && cede.item;
   if (AUTO.CITY_TRANSFER_MUTATE && canForce) {
     const ownerBefore = owningPlayerIdAt(target.loc);
-    // "Annex at the cost of war": optionally DECLARE WAR first (may be the ENABLER for a major -
+    // "Annex at the cost of war": optionally DECLARE WAR first (may be the enabler for a major -
     // CEDE_OCCUPIED opens at war), then re-check cede-ability, then take the city.
     let warRes = null;
     let atWar = isAtWarWith(me, target.owner);
@@ -1193,7 +1193,7 @@ export function runCityTransfer(trigger) {
     if (AUTO.CITY_TRANSFER_WAR_COST && !atWar) {
       warRes = declareWar(me, target.owner);
       atWar = isAtWarWith(me, target.owner);
-      // At war the correct transfer type is CEDE_OCCUPIED - re-check preferring it (and build a
+      // At war the correct transfer type is CEDE_OCCUPIED, re-check preferring it (and build a
       // synthetic CEDE_OCCUPIED item if the engine still surfaces nothing).
       const reCede = cityCedeItem(me, target.owner, targetCityIdNum, { cede: true });
       if (reCede.item) useCede = reCede;
@@ -1220,7 +1220,7 @@ export function runCityTransfer(trigger) {
     return { attempted: "diplomacyDeals", forced: true, synthetic: cede.synthetic, kind: target.kind };
   }
 
-  // --- READ-ONLY verdict ------------------------------------------------------------------------
+  // read-only verdict
   const enumerated = cede.item && !cede.synthetic;
   let rule;
   if (enumerated) {
@@ -1247,10 +1247,10 @@ export function runCityTransfer(trigger) {
   return { discovered: true, cedeable: enumerated, kind: target.kind, suzerain: iAmSuzerain, synthetic: cede.synthetic };
 }
 
-// --- Phase 5 REAL path #2: REVOLT MARKER (base-game CityRevolt) ------------------------------
+// Phase 5 real path #2: revolt marker (base-game CityRevolt)
 // Place a hidden CityRevolt marker constructible on a rival city center; the vanilla revolt system
 // then transfers the settlement. This is the cleanest cultural city-capture: no war, works on
-// majors, and the recipient is an adjacency/culture candidate - us, since diffusion surrounded it.
+// majors, and the recipient is an adjacency/culture candidate, us, since diffusion surrounded it.
 
 const REVOLT_MARKER_TYPE = "BUILDING_CD_REVOLT_MARKER";
 
@@ -1261,7 +1261,7 @@ export function runRevoltMarker(trigger) {
   const me = localPlayerId();
   const runId = newRunId();
   const markerIdx = constructibleIndexByType(REVOLT_MARKER_TYPE);
-  // DECISIVE CHECK: do the base-game LOYALTY petition stories exist, and did our AllowDuplicates
+  // decisive check: do the base-game loyalty petition stories exist, and did our AllowDuplicates
   // un-gate take? None found -> the revolt path is impossible here. Found but FirstOnly=true -> our
   // un-gate didn't apply, and that's the fix.
   if (!g.__cdStoriesDumped) {
@@ -1277,7 +1277,7 @@ export function runRevoltMarker(trigger) {
       }
     } catch (_) { /* ignore */ }
     emitLine(`Q-REVOLT-STORIES ${rows.length ? rows.join(" ") : "NONE found in GameInfo.NarrativeStories matching LOYALTY/REVOLT/REBEL - the base petition may not exist here."}`);
-    // Dump full columns (read keys directly - GameInfo rows do NOT JSON.stringify) of every
+    // Dump full columns (read keys directly, GameInfo rows do not JSON.stringify) of every
     // GameInfo table row referencing LOYALTY001, to reveal the trigger/requirement that fires it.
     try {
       const gi = (typeof GameInfo !== "undefined") ? GameInfo : null;
@@ -1328,11 +1328,11 @@ export function runRevoltMarker(trigger) {
     return { ready: true };
   }
 
-  // DESTRUCTIVE: place the marker on the rival city center.
+  // destructive: place the marker on the rival city center.
   g.__cdRevoltDone = true;
   const city = cityAt(target.loc);
   const ownerBefore = owningPlayerIdAt(target.loc);
-  // FORCE-SURROUND: claim the city's neighbor tiles so WE are the adjacent claimant the loyalty
+  // FORCE-SURROUND: claim the city's neighbor tiles so we are the adjacent claimant the loyalty
   // petition defects to. The demo may not have crept around this city, so do it directly here.
   let mineAdj = 0;
   let totalAdj = 0;
@@ -1348,18 +1348,18 @@ export function runRevoltMarker(trigger) {
   }
   emitLine(`Q-REVOLT-SURROUND claimed ${claimed} neighbor tile(s) around ${target.loc.x},${target.loc.y} => now ${mineAdj}/${totalAdj} ours`);
   const hBefore = cityHappiness(city);
-  // REQUESTER = the LOCAL player. Proven by evidence: placing as the city's owner (an AI we don't
-  // control) silently no-ops - a -9999 happiness drain did NOT apply (net stayed positive), so the
-  // constructible/modifier never attached. Placing as `me` DID attach the modifier (net crashed to
-  // -916 in an earlier build). The Owner ARG stays the settlement owner (base-game revolt context).
+  // requester = the local player. Proven by evidence: placing as the city's owner (an AI we don't
+  // control) silently no-ops, a -9999 happiness drain did not apply (net stayed positive), so the
+  // constructible/modifier never attached. Placing as `me` did attach the modifier (net crashed to
+  // -916 in an earlier build). The Owner arg stays the settlement owner (base-game revolt context).
   const placeRequester = me;
   const place = createCityMarker(me, city, markerIdx);
   emitLine(`Q-REVOLT-PLACE marker on ${target.loc.x},${target.loc.y} owner=${target.owner}(${target.kind}) requester=${placeRequester} `
     + `surroundContext=${mineAdj}/${totalAdj} happinessBefore=${hBefore ? `val=${hBefore.value},unhappy=${hBefore.unhappiness},unrest=${hBefore.hasUnrest},turns=${hBefore.turnsOfUnrest},net=${hBefore.netPerTurn}` : "n/a"} `
     + `=> sent=${place.ok}(${place.reason}) canStart=${place.canStart}`);
   // Record a watch. Store the target's exact city id + starting owner so the watch can match a
-  // CityTransfered event to THIS city (id alone is ambiguous - it's per-player-indexed). Reset the
-  // transfer log so only transfers AFTER placement count against us.
+  // CityTransfered event to this city (id alone is ambiguous, it's per-player-indexed). Reset the
+  // transfer log so only transfers after placement count against us.
   g.__cdTransfers = [];
   g.__cdRevoltWatch = { loc: target.loc, ownerBefore, kind: target.kind, cityIdNum: target.cityId, placedTrigger: trigger };
   hudVerdict(`REVOLT: marker placed on ${target.kind} city ${target.loc.x},${target.loc.y} (id ${target.cityId}) - watching (may take turns)`, "revolt");
@@ -1367,19 +1367,19 @@ export function runRevoltMarker(trigger) {
   return { placed: place.ok, loc: target.loc };
 }
 
-// READ-ONLY per-turn watch: after a marker is placed, re-read the city each turn - owner, its
+// read-only per-turn watch: after a marker is placed, re-read the city each turn, owner, its
 // HAPPINESS/unrest (is the marker applying CityRevolt pressure, or inert?), and surroundedness
-// (recipient CONTEXT only, NOT a trigger). The CityTransfered event (bootstrap) is independent proof.
+// (recipient context only, not a trigger). The CityTransfered event (bootstrap) is independent proof.
 export function runRevoltWatch(trigger) {
   const g = (typeof globalThis !== "undefined") ? globalThis : {};
   const w = g.__cdRevoltWatch;
   if (!w) return { none: true };
   const me = localPlayerId();
-  // Authoritative owner reads: the CITY object's owner (not just the laggy plot getOwner), plus a
-  // CityTransfered event matched to OUR exact city (fromPlayer == starting owner AND matching id).
+  // Authoritative owner reads: the city object's owner (not just the laggy plot getOwner), plus a
+  // CityTransfered event matched to our exact city (fromPlayer == starting owner and matching id).
   const plotOwner = owningPlayerIdAt(w.loc);
   const cityObj = cityAt(w.loc);
-  // One-time dump of the REAL Happiness surface, so if the city still won't revolt we can see the
+  // One-time dump of the real Happiness surface, so if the city still won't revolt we can see the
   // actual unrest/value fields + threshold instead of guessing which lever drives it.
   if (!g.__cdHappyDumped && cityObj) {
     g.__cdHappyDumped = true;
@@ -1387,8 +1387,8 @@ export function runRevoltWatch(trigger) {
     const cn = reflectNames(cityObj, /unrest|revolt|happ|unhapp|conquer|independ|loyal|rebel|value|disorder/i);
     emitLine(`Q-REVOLT-HAPPY-SURFACE Happiness=[${hn.join(",")}] city=[${cn.join(",")}]`);
     // Confirm our StandardCityRevolt Duration=0 override actually landed. Per the nasuellia dossier,
-    // the vanilla revolt runs over SEVERAL turns unless Duration is forced to 0. If this reads a
-    // non-zero Duration, the override never applied and THAT is why the city never flips instantly.
+    // the vanilla revolt runs over several turns unless Duration is forced to 0. If this reads a
+    // non-zero Duration, the override never applied and that is why the city never flips instantly.
     try {
       const gi = (typeof GameInfo !== "undefined") ? GameInfo : null;
       const tbl = gi && gi.UnhappinessEffects;
@@ -1437,11 +1437,11 @@ export function runRevoltWatch(trigger) {
   return { changed, toMe, ownerNow };
 }
 
-// --- Q-WORK: can a BEYOND-RING-3 owned tile be worked / settled? --------------
+// Q-WORK: can a beyond-ring-3 owned tile be worked / settled?
 //
-// The (1a)/(1c) make-or-break. For each recorded flip we read (SAFELY - all canStart /
+// The (1a)/(1c) make-or-break. For each recorded flip we read (safely, all canStart /
 // GetTilePlacementInfo / getYieldsWithCity are non-mutating) whether the engine would let
-// the owning city WORK or EXPAND into the tile. WORK_MUTATE additionally performs the
+// the owning city work or EXPAND into the tile. WORK_MUTATE additionally performs the
 // worker/rural-district placement to confirm the read (destructive; throwaway save).
 
 // beyondCap is recorded on flip.loc (record.loc = the candidate), with the "far*" kind as
@@ -1465,9 +1465,9 @@ function workSnapshot(flip) {
   const yld = yieldsWithCity(loc, buildCID);        // read-only: yields as worked by this city
   const cons = constructiblesAt(loc);               // rural district present?
 
-  // A far tile is WORKABLE only on an AUTHORITATIVE engine signal: the engine will accept
+  // A far tile is WORKABLE only on an authoritative engine signal: the engine will accept
   // a worker there (canStart ASSIGN_WORKER), or it already reads as an unblocked worker
-  // tile in THIS city's placement set. NOTE: getYieldsWithCity is a hypothetical
+  // tile in this city's placement set. getYieldsWithCity is a hypothetical
   // "if-worked" yield that is >0 for almost any land tile, so it is informational only -
   // never a workability signal (it would produce false positives).
   const workable = !!worker.success || (place && place.isBlocked === false);
@@ -1483,9 +1483,9 @@ function workSnapshot(flip) {
   };
 }
 
-// DESTRUCTIVE (opt-in, C+E): actually work each far owned tile (assign worker + rural
+// destructive (opt-in, C+E): actually work each far owned tile (assign worker + rural
 // district + Growth.claimPlot), recording before/after cap+workers (C) and a persistence
-// marker (E) so a later session can prove the WORKED state - not just ownership - survived.
+// marker (E) so a later session can prove the WORKED state, not just ownership, survived.
 function runWorkMutate(trigger) {
   if (!AUTO.WORK_MUTATE || !guardSP()) return [];
   const session = sessionNonce();
@@ -1517,8 +1517,8 @@ function runWorkMutate(trigger) {
   return out;
 }
 
-// Per-verb near/far workability, so the control holds the CLAIM VERB constant and isolates
-// distance: a far BLOCKED only implicates RANGE if the SAME verb's near tile was workable
+// Per-verb near/far workability, so the control holds the claim verb constant and isolates
+// distance: a far BLOCKED only implicates range if the same verb's near tile was workable
 // (else the block is the verb not attaching a city, not the distance).
 function perVerbWork(rows) {
   const byVerb = {};
@@ -1534,9 +1534,9 @@ function perVerbWork(rows) {
 export function runWork(trigger) {
   const runId = newRunId();
   const flips = readFlips();
-  // Process ALL recorded flips so we keep a NEAR (ring 1-2) CONTROL alongside the far tiles.
+  // Process all recorded flips so we keep a near (ring 1-2) control alongside the far tiles.
   // canStart(ASSIGN_WORKER) is also false when no worker/pop is pending (nothing to do with
-  // range), so a far-blocked result only implicates RANGE if the same verb's near control is
+  // range), so a far-blocked result only implicates range if the same verb's near control is
   // workable.
   const rows = flips.map(workSnapshot);
   const farOwned = rows.filter((r) => r.beyondCap && r.ownerIsMe);
@@ -1574,8 +1574,8 @@ export function runWork(trigger) {
     + `BLOCKED => (1c) not achievable; ship territory + rival-capture only. `
     + `INCONCLUSIVE => no worker was pending / claim did not attach; grow a pop and re-run cd_probe.work().`);
 
-  // (E) worked-state persistence: for any mutate-marker from a PRIOR session, re-read the
-  // tile NOW and report whether the placed worker/rural district survived the reload.
+  // (E) worked-state persistence: for any mutate-marker from a prior session, re-read the
+  // tile now and report whether the placed worker/rural district survived the reload.
   const reloadedMarks = readWork().filter((m) => m.session && m.session !== sessionNonce());
   for (const m of reloadedMarks) {
     const { city } = cityForPlot(m.loc);
@@ -1596,18 +1596,18 @@ export function runWork(trigger) {
   return rows;
 }
 
-// --- Q-OUTER-YIELD: do BEYOND-RING-3 owned tiles ACTUALLY bear yields? ---------
+// Q-OUTER-YIELD: do beyond-ring-3 owned tiles actually bear yields?
 //
 // Q-WORK proves a far tile is WORKABLE (the engine would accept a worker). This proves the
 // stronger, player-visible claim the mod actually makes: an outer-ring tile it claimed is
-// WORKED and CONTRIBUTES yields to its city. All reads here are non-mutating.
+// WORKED and contributes yields to its city. All reads here are non-mutating.
 //
-// "Bears yields" needs TWO signals together, because getYieldsWithCity ALONE is a hypothetical
+// "Bears yields" needs two signals together, because getYieldsWithCity alone is a hypothetical
 // "if-worked" value (>0 for almost any land tile), so it can't distinguish worked from idle:
 //   (1) WORKED  - a rural improvement sits on the tile (constructiblesAt), or a worker is
-//                 actually placed (tilePlacement.numWorkers > 0) - NOT merely workable.
-//   (2) YIELD>0 - getYieldsWithCity, as worked by the OWNING city, is positive.
-// Scans the local player's OWN beyond-ring-3 owned+attached tiles around every city (not just
+//                 actually placed (tilePlacement.numWorkers > 0), not merely workable.
+//   (2) YIELD>0 - getYieldsWithCity, as worked by the owning city, is positive.
+// Scans the local player's own beyond-ring-3 owned+attached tiles around every city (not just
 // probe claims), so it confirms the MOD's real in-game result regardless of how a tile was got.
 const YIELD_MAX_RINGS = 6; // scan rings 4..6 (beyond the 3-ring footprint) around each city
 
@@ -1712,7 +1712,7 @@ export function runYield(trigger) {
   return { verdict, rows };
 }
 
-// --- Q-CAPTURE (D): does capturing a DEVELOPED rival tile bring the improvement across? --
+// Q-CAPTURE (D): does capturing a developed rival tile bring the improvement across?
 export function runCapture(trigger) {
   const runId = newRunId();
   const me = localPlayerId();
@@ -1734,7 +1734,7 @@ export function runCapture(trigger) {
     return { loc, verb: f.verb, ringDepth: f.ringDepth, ownerNowMe, developedBefore, consBefore: f.consBefore, consNow: now.constructibleCount, verdict: v };
   });
 
-  // Q-DEEP: did a tile INSIDE the rival's 3-ring (ringDepth 1-3) actually flip to us and hold?
+  // Q-DEEP: did a tile inside the rival's 3-ring (ringDepth 1-3) actually flip to us and hold?
   const inside = rows.filter((r) => typeof r.ringDepth === "number" && r.ringDepth >= 1 && r.ringDepth <= 3);
   const insideHeld = inside.filter((r) => r.ownerNowMe);
   for (const r of inside) {
@@ -1764,10 +1764,10 @@ export function runCapture(trigger) {
   return rows;
 }
 
-// --- Q-RECEDE: can recedeBorders' verbs actually move a tile AWAY from us? ----------------------
-// ui/cd-pass.js recedeOwnership cedes a claimed tile to a rival via the RIVAL city's purchasePlot, and
+// Q-RECEDE: can recedeBorders' verbs actually move a tile away from us?
+// ui/cd-pass.js recedeOwnership cedes a claimed tile to a rival via the rival city's purchasePlot, and
 // releases a faded claim via setOwnership(NO_PLAYER). Neither has been watched on an integrated tile we own
-// beyond ring 3. This moves one tile each way, reads the owner INLINE (what the pass checks) and again after
+// beyond ring 3. This moves one tile each way, reads the owner inline (what the pass checks) and again after
 // the write settles, then buys both tiles back with our own purchasePlot. Gold is refunded both ways.
 
 function safeCities(pid) {
@@ -1903,8 +1903,8 @@ export function runRecedeProbe(trigger) {
   return { cede: cedeLoc, release: release && release.loc };
 }
 
-// --- Q-FOUND (1a-found): can the owner found a NEW settlement on an owned outer tile? -----
-// Opportunistic - needs a settler unit (VII has no settler-free settle check). Reflects the
+// Q-FOUND (1a-found): can the owner found a new settlement on an owned outer tile?
+// Opportunistic, needs a settler unit (VII has no settler-free settle check). Reflects the
 // engine's own min-city-range / owned-territory rules.
 export function runFound(trigger) {
   const runId = newRunId();
@@ -1938,11 +1938,11 @@ export function runFound(trigger) {
   return { settler: true, legalCount: legal.length, rows };
 }
 
-// --- Q-SWAP (1b): can a tile be re-parented between the player's OWN cities? --------------
+// Q-SWAP (1b): can a tile be re-parented between the player's own cities?
 // VII has no base-game "transfer tile" UI, but city.purchasePlot / Growth.claimPlot re-parent
-// a plot to the city they are called on - so a swap is buildable if the owning city actually
+// a plot to the city they are called on, so a swap is buildable if the owning city actually
 // changes A->B. Destructive (moves a real tile between your own cities), gated under
-// AUTO.WORK_MUTATE; ownership writes are ASYNC so the verdict is read on a deferred re-read.
+// AUTO.WORK_MUTATE; ownership writes are async so the verdict is read on a deferred re-read.
 export function runSwap(trigger) {
   const runId = newRunId();
   if (!AUTO.WORK_MUTATE) { emitLine("Q-SWAP: skipped (AUTO.WORK_MUTATE off - it moves a real tile)"); return { skipped: true }; }
@@ -1953,7 +1953,7 @@ export function runSwap(trigger) {
     emitLine(`Q-SWAP: only ${cities.length} local city - inter-city transfer needs 2+.`);
     return { cities: cities.length };
   }
-  // A near owned tile that currently belongs to one of our cities, plus a DIFFERENT target city.
+  // A near owned tile that currently belongs to one of our cities, plus a different target city.
   let loc = null, fromId = -1;
   for (const f of readFlips().filter((r) => !isBeyond3(r))) {
     const c = owningCityIdAt(f.loc);
@@ -1986,8 +1986,8 @@ export function runSwap(trigger) {
 }
 
 // Once-per-isolate re-arm guard. Even with the globalThis-mirrored store, if a mirror miss
-// ever let meta read stale, this stops a SECOND destructive clearAll in the same session (the
-// per-tick thrash the probe-history.md §2 calls out) - we re-arm at most once per isolate.
+// ever let meta read stale, this stops a second destructive clearAll in the same session (the
+// per-tick thrash the probe-history.md §2 calls out), we re-arm at most once per isolate.
 function armReset() {
   const g = (typeof globalThis !== "undefined") ? globalThis : {};
   if (g.__cdProbeArmed === SCHEMA) return false; // already re-armed this session
@@ -1999,7 +1999,7 @@ export function autoRun(trigger) {
   if (!AUTO.ENABLED) return { phase: "disabled" };
   let meta = readMeta();
   // Re-arm: if the test schema changed (new probe build with new tests), wipe the prior
-  // phase/flip log so the new tests actually run instead of reporting "done" - but ONLY the
+  // phase/flip log so the new tests actually run instead of reporting "done", but only the
   // first time this session, so a mid-session mirror miss can't wipe the flip log every turn
   // (the "schema changed x107" thrash). After the one-time reset, subsequent schema mismatches
   // just adopt the new schema without clearing.
@@ -2021,14 +2021,14 @@ export function autoRun(trigger) {
   // any flips recorded in a prior session).
   const diag = runDiagnostics(trigger);
 
-  // Cultural Pressure lens feasibility (docs section 1), READ-ONLY: can this HUD-context UIScript read
+  // Cultural Pressure lens feasibility (docs section 1), read-only: can this HUD-context UIScript read
   // the persisted culture field the lens paints from (H1), and does the verdict math + colour/name
   // resolution look sane on real data (H2)? Runs every tick so the CD-LENS headline stays live as the
-  // real mod's pass populates the field. Never mutates - independent of the flip phase machine below.
+  // real mod's pass populates the field. Never mutates, independent of the flip phase machine below.
   try { runLensProbe(trigger); } catch (e) { emitLine(`lens-probe failed ${String(e)}`); }
 
-  // "Waiting" HUD line (probe-history.md §2): PENDING verb/capture verdicts are EXPECTED on
-  // a fresh/interior map with no rival or beyond-ring-3 tiles - say so on screen so PENDING
+  // "Waiting" HUD line (probe-history.md §2): PENDING verb/capture verdicts are expected on
+  // a fresh/interior map with no rival or beyond-ring-3 tiles, say so on screen so PENDING
   // isn't mistaken for broken.
   const counts = (diag.candidates && diag.candidates.counts) || {};
   const rivalN = counts.rival || 0;
@@ -2037,14 +2037,14 @@ export function autoRun(trigger) {
     hudVerdict("WAITING: play toward an AI border - no rival / beyond-ring-3 tiles yet (verb & capture stay PENDING until then)", "waiting");
   } else if (rivalN === 0) {
     // Far tiles exist but no rival border, so the rival-capture branch of the verb/capture
-    // tests can't run - the unowned verb verdict is still valid, but say what's missing.
+    // tests can't run, the unowned verb verdict is still valid, but say what's missing.
     hudVerdict(`BORDER: beyondRing3=${beyond3N}, rival=0 - verb tests run on unowned tiles; play toward an AI to test rival capture`, "waiting");
   } else {
     hudVerdict(`BORDER: rival=${rivalN} beyondRing3=${beyond3N} - running verb/capture tests`, "waiting");
   }
 
-  // Read-only REFRESH every turn, so the on-screen verdicts stay live WITHOUT a console or
-  // any button - and so Q-FOUND catches the turn a settler happens to sit next to an outer
+  // Read-only refresh every turn, so the on-screen verdicts stay live without a console or
+  // any button, and so Q-FOUND catches the turn a settler happens to sit next to an outer
   // tile. Safe to repeat: none of these mutate (the destructive stages are only in postFlip).
   if (readFlips().length) {
     if (AUTO.WORK_READ) runWork("turn-refresh");
@@ -2058,13 +2058,13 @@ export function autoRun(trigger) {
   if (AUTO.COST_PROBE && trigger !== "retry") runCostProbe(trigger);
   // One-shot Phase 5 discovery: is there a runtime city-transfer API? (self-guards; read-only)
   if (AUTO.CITY_TRANSFER && trigger !== "retry") runCityTransfer(trigger);
-  // Phase 5 REAL path: place a loyalty revolt marker (one-shot) + watch the recipient each turn.
+  // Phase 5 real path: place a loyalty revolt marker (one-shot) + watch the recipient each turn.
   if (AUTO.REVOLT_MARKER && trigger !== "retry") runRevoltMarker(trigger);
   runRevoltWatch(trigger);
   // recedeBorders verb check (one-shot per session; waits until a far owned tile + a rival major city exist).
   if (AUTO.RECEDE_PROBE && trigger !== "retry") runRecedeProbe(trigger);
 
-  // Visible, contiguous border growth (+ rival capture on contact) every turn - independent of
+  // Visible, contiguous border growth (+ rival capture on contact) every turn, independent of
   // the one-shot Q-* tests. Skipped on the fast "retry" ticks so it advances ~once per turn.
   if (AUTO.DIFFUSION_DEMO && trigger !== "retry") runDiffusionDemo(trigger);
 
@@ -2081,7 +2081,7 @@ export function autoRun(trigger) {
     const flips = performAutoFlips();
     writeMeta({ phase: "flipped", schema: SCHEMA, flippedSession: session, ts: new Date().toISOString() });
     // Q-INTEGRATE / Q-CODEX: read integration once the async ownership writes settle
-    // (~2s per flip; give a wide margin). This answers - hands-off - whether a bare
+    // (~2s per flip; give a wide margin). This answers, hands-off, whether a bare
     // setOwnership tile is real, buildable city land (Han-codex CONFIRMED) or inert.
     const postFlip = (tag) => {
       runIntegration(tag);
@@ -2104,12 +2104,12 @@ export function autoRun(trigger) {
 
   if (meta.phase === "flipped") {
     if (meta.flippedSession && meta.flippedSession !== session) {
-      // We are in a NEW session after the flips -> the persistCheck above is the
+      // We are in a new session after the flips -> the persistCheck above is the
       // authoritative Q-PERSIST answer.
       const flips = readFlips();
       const survived = flips.filter((f) => owningPlayerIdAt(f.loc) === f.setTo).length;
       emitLine(`autoRun: Q-PERSIST - ${survived}/${flips.length} recorded flips survived reload`);
-      // Re-read integration across the reload: confirms the tile is STILL real, buildable
+      // Re-read integration across the reload: confirms the tile is still real, buildable
       // city land after a save round-trip (writes are already settled post-load).
       runIntegration("reload");
       if (AUTO.VERB_PROBE) runVerbRead("reload"); // Q-VERB-PERSIST: did the FREE-INTEGRATED claim survive?

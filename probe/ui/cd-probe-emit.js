@@ -1,18 +1,17 @@
 // cd-probe-emit.js
 //
-// Minimal log emitter for the Cultural Diffusion feasibility probe. console.error
-// is the only console channel the Civ VII UI runtime captures into UI.log on
-// macOS, so every line goes through it. We reuse the existing [Civ7Probe] fence
-// format so scripts/extract_dump.js from the modding-probe toolchain can parse
-// this probe's output too.
+// Log emitter for the probe. console.error is the only console channel the Civ VII UI
+// runtime writes into UI.log on macOS, so every line goes through it. The [Civ7Probe]
+// fence format is the one scripts/extract_dump.js from the modding-probe toolchain
+// already parses.
 
 import { hud } from "./cd-probe-hud.js";
 
 const TAG = "[Civ7Probe]";
 const CHUNK_BYTES = 3500;
 
-// Base64 section-transport lines (BEGIN/END + numbered chunks) are noise on screen;
-// everything else is a human-readable status/verdict line worth showing in the overlay.
+// Base64 transport lines (BEGIN/END + numbered chunks) are noise on screen; everything
+// else is a status or verdict line the overlay should show.
 function isTransportLine(line) {
   return /^BEGIN /.test(line) || /^END /.test(line)
     || /^RUN_START /.test(line) || /^RUN_END /.test(line)
@@ -42,7 +41,7 @@ function sha(str) {
 
 function emitLine(line) {
   try { console.error(`${TAG} ${line}`); } catch (_) { /* give up */ }
-  // Mirror meaningful lines to the on-screen overlay (the player has no console/log).
+  // mirror to the overlay; the player has no console or log open
   try { if (!isTransportLine(line)) hud(line); } catch (_) { /* ignore */ }
 }
 

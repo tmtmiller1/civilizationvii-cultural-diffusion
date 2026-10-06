@@ -1,12 +1,12 @@
-// tests/ownership.mjs - flip verb routing + gold refund + no-orphan-fallback.
+// tests/ownership.mjs: flip verb routing + gold refund + no-orphan-fallback.
 //
-// The core regression this guards: the shipping verb is the INTEGRATED purchasePlot, and a
-// FAILED purchase must NOT fall back to setOwnership (which would re-create the orphan tile that
+// The core regression this guards: the shipping verb is the integrated purchasePlot, and a
+// failed purchase must not fall back to setOwnership (which would re-create the orphan tile that
 // blocks the base game's own border growth). Also verifies purchasePlot's gold cost is refunded
 // the same tick so integrated claims net zero gold.
 import assert from "node:assert/strict";
 
-// --- minimal engine stubs -------------------------------------------------------
+// minimal engine stubs
 let setOwnershipCalls = 0;
 let purchaseCalls = 0;
 let goldBalance = 1000;
@@ -38,7 +38,7 @@ const { performFlip, flipViaPurchasePlotRefunded, grantGold, playerGold } =
 
 const loc = { x: 3, y: 4 };
 
-// 1. purchasePlot success integrates AND refunds the spent gold (net zero).
+// 1. purchasePlot success integrates and refunds the spent gold (net zero).
 setOwnershipCalls = 0; purchaseCalls = 0; goldBalance = 1000; goldWrites.length = 0;
 let r = performFlip({ playerId: 0, city: buyingCity, loc, verb: "purchasePlot", refund: true });
 assert.equal(r.ok, true, "purchasePlot succeeds");
@@ -54,7 +54,7 @@ r = performFlip({ playerId: 0, city: buyingCity, loc, verb: "purchasePlot", refu
 assert.equal(r.ok, true);
 assert.equal(goldBalance, 975, "no refund => gold stays spent");
 
-// 3. FAILED purchase does NOT fall back to setOwnership (the orphan-prevention invariant).
+// 3. Failed purchase does not fall back to setOwnership (the orphan-prevention invariant).
 setOwnershipCalls = 0; goldBalance = 1000;
 r = performFlip({ playerId: 0, city: failingCity, loc, verb: "purchasePlot", refund: true });
 assert.equal(r.ok, false, "failed buy reports failure");

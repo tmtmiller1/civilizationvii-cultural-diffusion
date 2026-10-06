@@ -1,13 +1,13 @@
 // cd-civ-tuning.js
 //
-// The per-leader / per-civilization / per-memento VARIANCE layer: a deliberately tiny, bounded
-// registry of nudges to a civ's cultural INJECTION STRENGTH. Magnitude outliers (culture / wonder /
-// celebration engines) are flattened structurally by the geometric injection base and are NOT listed;
-// this table is reserved for REDUNDANCY, i.e. kits that ALREADY grow territory and would double-dip.
+// The per-leader / per-civilization / per-memento variance layer: a small, bounded registry of
+// nudges to a civ's cultural injection strength. Magnitude outliers (culture / wonder /
+// celebration engines) are flattened structurally by the geometric injection base and are not listed;
+// this table is only for redundancy, kits that already grow territory and would double-dip.
 // Grounded in mods_research_and_analysis/cultural-diffusion-leader-civ-memento-and-age-tuning.md.
 // Keys are GameInfo string types: leaderType via GameInfo.Leaders.lookup(...).LeaderType
 // (persona `_ALT` normalized), civilizationType via GameInfo.Civilizations.lookup(...).CivilizationType.
-// GATED by CONFIG.civTuningEnabled; compressed toward neutral by CONFIG.civTuningStrength.
+// Gated by CONFIG.civTuningEnabled; compressed toward neutral by CONFIG.civTuningStrength.
 
 import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
 import { LEADER_ROSTER, CIV_ROSTER, MEMENTO_ROSTER } from "/cultural-diffusion/ui/cd-civ-roster.js";
@@ -20,20 +20,20 @@ const MEMENTO_BOUNDS = [0.8, 1.2];   // a memento stack (they compose multiplica
 const FINAL_BOUNDS = [0.55, 1.6];    // the resolved product
 
 /**
- * Per-leader injection nudges - REDUNDANCY only. (Culture/celebration/suzerainty magnitude is
+ * Per-leader injection nudges, redundancy only. (Culture/celebration/suzerainty magnitude is
  * flattened by the composite injection base, so those leaders are intentionally absent.)
  * @type {Record<string, {injectionScale:number}>}
  */
 export const BY_LEADER = {
-  // Culture-on-capture MANUFACTURES the culture the mod then spreads onto conquered land - a
+  // Culture-on-capture manufactures the culture the mod then spreads onto conquered land, a
   // war-expansion x culture-expansion loop the score can't untangle. Settlement cap adds injectors.
   LEADER_XERXES: { injectionScale: 0.8 }
 };
 
 /**
- * Per-civilization injection nudges - REDUNDANCY only: civs whose kit ALREADY grows territory,
+ * Per-civilization injection nudges, redundancy only: civs whose kit already grows territory,
  * so diffusion on the same cities double-dips on border value. Pure culture/wonder engines
- * (Greece, Rome, Maya, Ming, Qing, Siam, ...) are NOT listed - the composite base handles them.
+ * (Greece, Rome, Maya, Ming, Qing, Siam, ...) are not listed; the composite base handles them.
  * @type {Record<string, {injectionScale:number}>}
  */
 export const BY_CIV = {
@@ -46,13 +46,13 @@ export const BY_CIV = {
 };
 
 /**
- * Per-memento injection nudges. EMPTY: no memento grants territory (no redundancy), and every
+ * Per-memento injection nudges. Empty: no memento grants territory (no redundancy), and every
  * culture/happiness memento's magnitude is already flattened by the composite injection base.
  * @type {Record<string, {injectionScale:number}>}
  */
 export const BY_MEMENTO = {};
 
-/** Roster keys with no tuning entry (for the completeness test - informational, not an error). */
+/** Roster keys with no tuning entry (for the completeness test; informational, not an error). */
 export const UNTUNED_LEADERS = LEADER_ROSTER.filter((k) => !Object.hasOwn(BY_LEADER, k));
 export const UNTUNED_CIVS = CIV_ROSTER.filter((k) => !Object.hasOwn(BY_CIV, k));
 export const UNTUNED_MEMENTOS = MEMENTO_ROSTER.filter((k) => !Object.hasOwn(BY_MEMENTO, k));
@@ -120,7 +120,7 @@ function flatten(scale) {
 
 /**
  * The clamped civ/leader base scale x memento multiplier for a player, or null when neither the
- * civ nor leader table has an entry AND no memento applies (caller returns NEUTRAL).
+ * civ nor leader table has an entry and no memento applies (caller returns NEUTRAL).
  * @param {number} pid Player id.
  * @param {number} mem Memento multiplier.
  * @returns {number|null} Combined pre-flatten scale, or null.

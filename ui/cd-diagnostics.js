@@ -2,7 +2,7 @@
 //
 // Debug-only per-pass diagnostics for otherwise silent failures: an injector whose engine reads come
 // back 0, a first claimable ring whose stock never reaches the ownership bar, and a persisted state
-// blob that keeps growing. Every line is a dlog except the state-size WARNING, which is logged
+// blob that keeps growing. Every line is a dlog except the state-size warning, which is logged
 // unconditionally once the blob passes STATE_WARN_BYTES. Read-only.
 
 import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
@@ -70,7 +70,7 @@ export function logFieldDiagnostics(injectors, cities, next, me, ageCfg) {
 }
 
 /**
- * Persisted-state size + pass time: a dlog every pass, and ALWAYS logged once the blob passes
+ * Persisted-state size + pass time: a dlog every pass, and always logged once the blob passes
  * STATE_WARN_BYTES.
  * @param {{field:Object, claims:Object, locked:Object}} state Saved state.
  * @param {number} bytes Length of the persisted blob (saveState's return).

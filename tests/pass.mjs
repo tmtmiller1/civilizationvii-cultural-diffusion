@@ -1,24 +1,24 @@
-// tests/pass.mjs - the per-turn pass ORCHESTRATION (runPass), off-engine.
+// tests/pass.mjs: the per-turn pass orchestration (runPass), off-engine.
 //
 // The pure modules (cd-field, cd-pressure, cd-cpi, cd-civ-tuning) are unit-tested in isolation and
-// prove the MATH. This suite covers what only the pass can get wrong: the bail-out guards, the fixed
-// step ORDER inside runPass, the flip DECISION gates, the bookkeeping that follows a flip, and the
-// bounds on persisted state. A bug here doesn't produce a slightly wrong number - it takes a tile it
+// cover the math. This suite covers what only the pass can get wrong: the bail-out guards, the fixed
+// step order inside runPass, the flip decision gates, the bookkeeping that follows a flip, and the
+// bounds on persisted state. A bug here doesn't produce a slightly wrong number, it takes a tile it
 // must not, or oscillates the border every turn.
 //
-// SCOPE / HONEST LIMIT: this stubs the engine, so it tests the mod's MODEL of the engine, not the
+// Limit: this stubs the engine, so it tests the mod's model of the engine, not the
 // engine. Sentinels are mirrored from the probe (see cd-plots.js header: unowned => getOwner() -1
 // and getOwningCityFromXY().id -1). Engine-contract drift still needs the probe mod + in-game runs.
 import assert from "node:assert/strict";
 import { hexDistance } from "/cultural-diffusion/ui/cd-pressure.js";
 
-// --- controllable engine stub over an (x,y) -> {owner, city} tile map ------------
+// controllable engine stub over an (x,y) -> {owner, city} tile map
 const tiles = new Map();
 const water = new Set();
 let savedState = null;
 let multiplayer = false;
 let purchaseNoOps = false; // simulate purchasePlot reporting ok but not actually changing owner
-// deferWrites = the REAL engine (watched in-game, 1.4.2): purchasePlot's owner change lands after the call, so the
+// deferWrites = the real engine (watched in-game, 1.4.2): purchasePlot's owner change lands after the call, so the
 // same-tick read still shows the old owner. Queued writes apply when the test calls flushWrites().
 let deferWrites = false;
 const writeQueue = [];
@@ -176,9 +176,7 @@ function seedState(extra) {
 /** A mature culture stock for ME on a tile, comfortably above minimumOwner after one decay step. */
 const mature = (pid = ME) => ({ [String(pid)]: 5000 });
 
-// ================================================================================
-// 1. The bail-out guards. Each must return a zero summary AND change no ownership.
-// ================================================================================
+// 1. The bail-out guards. Each must return a zero summary and change no ownership.
 reset(); seedState();
 CONFIG.diffusionEnabled = false;
 let r = runPass();
@@ -201,8 +199,8 @@ assert.deepEqual({ flips: r.flips, tiles: r.tiles }, { flips: 0, tiles: 0 }, "no
 assert.equal(savedState.monoTurn, 5, "no local cities -> state untouched");
 
 // Multiplayer: cd-ownership's guardSP blocks every mutating verb. runPass has no MP check of its
-// own (its JSDoc says it "bails in multiplayer" - it does not; it runs and simply cannot mutate).
-// What matters is the SAFETY property, so that is what is asserted here.
+// own (its JSDoc says it "bails in multiplayer", it does not; it runs and simply cannot mutate).
+// What matters is the safety property, so that is what is asserted here.
 reset(); seedState({ field: { [tk(TARGET.x, TARGET.y)]: mature() } });
 multiplayer = true;
 r = runPass();
@@ -210,9 +208,7 @@ assert.equal(r.flips, 0, "multiplayer -> no flips (guardSP blocks the verbs)");
 assert.equal(getTile(TARGET.x, TARGET.y).owner, -1, "multiplayer -> no ownership change");
 multiplayer = false;
 
-// ================================================================================
-// 2. A flip happens, and for the RIGHT reason.
-// ================================================================================
+// 2. A flip happens, and for the right reason.
 reset(); seedState({ field: { [tk(TARGET.x, TARGET.y)]: mature() } });
 r = runPass();
 assert.equal(r.flips, 1, "a mature culture stock on an eligible frontier tile flips exactly one tile");
@@ -225,23 +221,21 @@ assert.equal(savedState.claims[tk(TARGET.x, TARGET.y)].city, CITY_ID, "claim att
 assert.equal(savedState.locked[tk(TARGET.x, TARGET.y)], CONFIG.flipCooldownTurns,
   "the flipped tile is locked for flipCooldownTurns (anti-flicker)");
 // The flipped tile keeps a stock above the ownership bar, so the next pass does not immediately
-// un-resolve it. NOTE: this does NOT pin commitFlip's `Math.max(..., ageCfg.minimumOwner)` seed
-// line - that line is a provable no-op (a flip requires value > ageCfg.minimumOwner, and that
-// value IS next[k][me], so the max never raises anything; instrumented over this suite: 14 flips,
+// un-resolve it. this does not pin commitFlip's `Math.max(..., ageCfg.minimumOwner)` seed
+// line, that line is a provable no-op (a flip requires value > ageCfg.minimumOwner, and that
+// value is next[k][me], so the max never raises anything; instrumented over this suite: 14 flips,
 // 14 no-ops, 0 raises). Documented in docs/BACKLOG.md rather than deleted from the flip path.
 assert.ok(savedState.field[tk(TARGET.x, TARGET.y)][String(ME)] >= CONFIG.minimumOwner,
   "the flipped tile retains a stock above the bar, so it does not immediately flip back");
 
-// The same tile, with culture BELOW the ownership bar, does not flip.
+// The same tile, with culture below the ownership bar, does not flip.
 reset(); seedState({ field: { [tk(TARGET.x, TARGET.y)]: { [String(ME)]: 100 } } });
 r = runPass();
 assert.equal(r.flips, 0, "culture below minimumOwner does not flip the tile");
 assert.equal(getTile(TARGET.x, TARGET.y).owner, -1, "...and the tile stays unowned");
 
-// ================================================================================
 // 3. The base game's inner rings are never claimed.
-// ================================================================================
-// An inner (ring-2) tile with a huge stock must NOT be claimed by the mod, even though its culture
+// An inner (ring-2) tile with a huge stock must not be claimed by the mod, even though its culture
 // dwarfs the bar: the base game owns and assigns those tiles (the "can't work my 3-ring" regression).
 reset();
 const innerT = getTileMut(INNER.x, INNER.y); innerT.owner = -1; innerT.city = -1; // pretend it is not yet grown
@@ -251,9 +245,7 @@ assert.equal(r.flips, 0, "a tile inside our own natural growth ring is never fli
 assert.equal(getTile(INNER.x, INNER.y).owner, -1, "...the base game keeps it");
 assert.equal(savedState.claims[tk(INNER.x, INNER.y)], undefined, "...and no claim is recorded for it");
 
-// ================================================================================
-// 4. Eligibility gates on a RIVAL-owned tile.
-// ================================================================================
+// 4. Eligibility gates on a rival-owned tile.
 /** Make TARGET a rival-owned tile with our culture dominant over theirs. */
 function seedRivalTarget() {
   reset();
@@ -280,7 +272,7 @@ assert.equal(r.flips, 0, "at war -> no peaceful diffusion across an active front
 assert.equal(getTile(TARGET.x, TARGET.y).owner, RIVAL, "...the rival keeps it");
 atWarWithRival = false;
 
-// Core protection: a rival's CITY CENTER is protected at coreProtectRadius 0.
+// Core protection: a rival's city center is protected at coreProtectRadius 0.
 reset();
 const NEAR_RIVAL = { x: 16, y: 10 }; // in our region (<= fieldRadius 8), beyond our ring-3
 assert.ok(hexDistance(CENTER, NEAR_RIVAL) <= CONFIG.fieldRadius, "fixture: the rival outpost is in our region");
@@ -296,8 +288,8 @@ assert.equal(getTile(NEAR_RIVAL.x, NEAR_RIVAL.y).owner, RIVAL, "...the rival kee
 
 // A VILLAGE center is protected too, even though its owner reports no cities. Watched on 1.5.0 (harness
 // runs 15-17): an Independent Power reads `cities: 0` through Players.Cities.getCities(), so the
-// city-list route sees nothing and the MAP route is the only thing standing between diffusion and a
-// settlement core. Here the owner has NO city object at all, exactly as in game.
+// city-list route sees nothing and the map route is the only thing standing between diffusion and a
+// settlement core. Here the owner has no city object at all, exactly as in game.
 reset();
 const VILLAGE = { x: 16, y: 10 };
 const INDEP = 33;
@@ -309,7 +301,7 @@ seedState({ field: { [tk(VILLAGE.x, VILLAGE.y)]: { [String(ME)]: 5000, [String(I
 r = runPass();
 assert.equal(r.flips, 0, "a village center is core-protected even though its owner reports no cities");
 assert.equal(getTile(VILLAGE.x, VILLAGE.y).owner, INDEP, "...the independent keeps its settlement");
-// And with the map read blind (no center reported) the same tile flips - so the test pins the MAP route,
+// And with the map read blind (no center reported) the same tile flips, so the test pins the map route,
 // not some other gate.
 reset();
 const vt2 = getTileMut(VILLAGE.x, VILLAGE.y); vt2.owner = INDEP; vt2.city = 55;
@@ -318,10 +310,10 @@ seedState({ field: { [tk(VILLAGE.x, VILLAGE.y)]: { [String(ME)]: 5000, [String(I
 r = runPass();
 assert.equal(r.flips, 1, "without the map center read the same village tile flips (pins the new route)");
 
-// A MINOR's ring-1 is protected too, not just its center plot. Watched in harness run 13: with
+// A minor's ring-1 is protected too, not just its center plot. Watched in harness run 13: with
 // coreProtectRadius 0 the pass took 89,41 and 90,42, both ring-1 of city-state 33's center at 89,42,
 // which strips a minor to the single plot it stands on and reads as the settlement being absorbed.
-// minorProtectRadius (1) is the floor that stops it; a MAJOR's ring-1 is still claimable.
+// minorProtectRadius (1) is the floor that stops it; a major's ring-1 is still claimable.
 const MINOR = 18;
 const MINOR_CENTRE = { x: 16, y: 10 };
 const MINOR_RING1 = { x: 15, y: 10 };                  // ring-1 of the minor center, ring-5 of ours
@@ -349,23 +341,23 @@ r = runPass();
 assert.equal(r.flips, 1, "floor off -> the minor's ring-1 flips again (pins minorProtectRadius)");
 CONFIG.minorProtectRadius = 1;
 
-// A MAJOR's ring-1 is still claimable: the floor must not quietly protect everyone.
+// A major's ring-1 is still claimable: the floor must not quietly protect everyone.
 seedMinorNeighbour(7, true);
 r = runPass();
 assert.equal(r.flips, 1, "a MAJOR's ring-1 still flips at coreProtectRadius 0");
 
-// requireAdjacency and flipMaxDistance must be pinned SEPARATELY. A tile that is both out of range
-// AND non-adjacent proves neither gate: each one masks the other's removal. (Found exactly that way
+// requireAdjacency and flipMaxDistance must be pinned separately. A tile that is both out of range
+// and non-adjacent shows neither gate: each one masks the other's removal. (Found exactly that way
 // - the first draft of this suite passed with either gate deleted.)
 
-// requireAdjacency: a dominated tile IN range but NOT touching our land is skipped...
+// requireAdjacency: a dominated tile in range but not touching our land is skipped...
 const NOTADJ = { x: 15, y: 10 }; // ring-5: inside flipMaxDistance 6, but no tile of ours adjacent
 assert.equal(hexDistance(CENTER, NOTADJ), 5, "fixture: NOTADJ is ring-5, within flipMaxDistance 6");
 reset(); seedState({ field: { [tk(NOTADJ.x, NOTADJ.y)]: mature() } });
 runPass();
 assert.equal(getTile(NOTADJ.x, NOTADJ.y).owner, -1,
   "requireAdjacency: an in-range tile not touching our land is not flipped (the contiguous front)");
-// ...and with adjacency off, that SAME tile is taken (enclaves allowed) - proving the gate is
+// ...and with adjacency off, that same tile is taken (enclaves allowed), showing the gate is
 // conditional, not a blanket refusal.
 reset(); seedState({ field: { [tk(NOTADJ.x, NOTADJ.y)]: mature() } });
 CONFIG.requireAdjacency = false;
@@ -373,17 +365,15 @@ runPass();
 assert.equal(getTile(NOTADJ.x, NOTADJ.y).owner, ME, "requireAdjacency off -> the same tile IS taken (enclave)");
 CONFIG.requireAdjacency = true;
 
-// flipMaxDistance: a tile ADJACENT to our land but beyond the distance cap is not a candidate.
+// flipMaxDistance: a tile adjacent to our land but beyond the distance cap is not a candidate.
 reset(); seedState({ field: { [tk(TARGET.x, TARGET.y)]: mature() } }); // ring-4, adjacent to our ring-3
 CONFIG.flipMaxDistance = 3;
 runPass();
 assert.equal(getTile(TARGET.x, TARGET.y).owner, -1, "a tile beyond flipMaxDistance is not a flip candidate");
 CONFIG.flipMaxDistance = 6;
 
-// ================================================================================
 // 5. The silent no-op guard: performFlip "succeeding" without a real owner change
-//    must book NOTHING (no claim, no lock, no budget spend, no toast).
-// ================================================================================
+//    must book nothing (no claim, no lock, no budget spend, no toast).
 reset(); seedState({ field: { [tk(TARGET.x, TARGET.y)]: mature() } });
 purchaseNoOps = true;
 r = runPass();
@@ -392,10 +382,8 @@ assert.equal(savedState.claims[tk(TARGET.x, TARGET.y)], undefined, "...no phanto
 assert.equal(savedState.locked[tk(TARGET.x, TARGET.y)], undefined, "...and the tile is not locked");
 purchaseNoOps = false;
 
-// ================================================================================
 // 6. Anti-flicker: a locked tile does not flip, and prepareState ticks locks down.
-// ================================================================================
-// NOTE: assert on the LOCKED TILE, not on the pass-wide flip count. A mature seed diffuses ~40% of
+// assert on the locked tile, not on the pass-wide flip count. A mature seed diffuses ~40% of
 // its stock to each neighbor in one pass, so those neighbors legitimately flip on later passes.
 reset();
 seedState({ field: { [tk(TARGET.x, TARGET.y)]: mature() }, locked: { [tk(TARGET.x, TARGET.y)]: 3 } });
@@ -406,7 +394,7 @@ runPass();
 assert.equal(getTile(TARGET.x, TARGET.y).owner, -1, "still locked -> still not ours");
 assert.equal(savedState.locked[tk(TARGET.x, TARGET.y)], 1, "...and it keeps ticking");
 // On this pass prepareState ticks the lock to 0 and removes it, so the tile becomes flippable
-// again in the SAME pass - and the fresh flip immediately re-locks it.
+// again in the same pass, and the fresh flip immediately re-locks it.
 runPass();
 assert.equal(getTile(TARGET.x, TARGET.y).owner, ME, "once the lock expires the tile flips");
 assert.equal(savedState.locked[tk(TARGET.x, TARGET.y)], CONFIG.flipCooldownTurns,
@@ -417,9 +405,7 @@ reset(); seedState({ locked: { "5,5": 1 } });
 runPass();
 assert.equal(savedState.locked["5,5"], undefined, "a lock reaching 0 is deleted from persisted state");
 
-// ================================================================================
 // 7. Caps: maxFlipsPerTurn and the per-city maxDiffusionPlots budget.
-// ================================================================================
 /** Seed N mature ring-4/5 tiles that are all individually eligible. */
 function seedManyTargets() {
   reset();
@@ -445,15 +431,13 @@ seedManyTargets();
 CONFIG.maxDiffusionPlots = 1;
 r = runPass();
 assert.equal(r.flips, 1, "the per-city maxDiffusionPlots budget caps claims for that city");
-// The budget counts EXISTING claims, so a second pass adds nothing.
+// The budget counts existing claims, so a second pass adds nothing.
 const before = Object.keys(savedState.claims).length;
 runPass();
 assert.equal(Object.keys(savedState.claims).length, before, "an exhausted per-city budget blocks further claims");
 CONFIG.maxDiffusionPlots = 80;
 
-// ================================================================================
 // 8. Sequencing + state hygiene inside runPass.
-// ================================================================================
 // releaseInnerClaims: a stale claim inside our natural ring is handed back to the base game.
 reset();
 seedState({ claims: { [tk(INNER.x, INNER.y)]: { by: ME, city: CITY_ID, turn: 1 } } });
@@ -492,23 +476,21 @@ const t0 = savedState.monoTurn;
 runPass();
 assert.ok(savedState.monoTurn > t0, "the pass advances the monotonic turn and saves state");
 
-// ================================================================================
-// 9. Field MECHANICS at pass level (values, not just decisions).
-// ================================================================================
-// cd-field unit-tests the formulas; this pins that the pass WIRES them to the right tiles with the
+// 9. Field mechanics at pass level (values, not just decisions).
+// cd-field unit-tests the formulas; this pins that the pass wires them to the right tiles with the
 // right operands. Everything above asserts decisions (flips/ownership/bookkeeping), which leaves the
 // arithmetic free to be wrong in ways no flip assertion would notice.
 const CITY_K = tk(CENTER.x, CENTER.y);
 const NB = { x: 15, y: 10 }; // a neighbor of TARGET(14,10), in-region, not adjacent to our land
 
-// Injection: an empty field gains a stock on the CITY tile, and it accumulates across passes.
+// Injection: an empty field gains a stock on the city tile, and it accumulates across passes.
 reset(); seedState();
 runPass();
 const inj1 = savedState.field[CITY_K][String(ME)];
 assert.ok(inj1 > 0, `the city tile is injected on the first pass (got ${inj1})`);
 runPass(); runPass();
 assert.ok(savedState.field[CITY_K][String(ME)] > inj1, "the city stock accumulates across passes");
-// It injects for the CITY's owner, not some other civ.
+// It injects for the city's owner, not some other civ.
 assert.deepEqual(Object.keys(savedState.field[CITY_K]), [String(ME)], "the city injects only its own civ's culture");
 
 // Diffusion: a mature source delivers sourceValue * diffusionRate to a fresh neighbor on step one.
@@ -518,7 +500,7 @@ const delivered = savedState.field[tk(NB.x, NB.y)][String(ME)];
 assert.ok(Math.abs(delivered - 5000 * CONFIG.diffusionRate) < 1e-6,
   `a fresh neighbor receives sourceValue * diffusionRate (expected ${5000 * CONFIG.diffusionRate}, got ${delivered})`);
 
-// Diffusion ACCUMULATES onto the neighbor's decayed stock - it does not overwrite it.
+// Diffusion accumulates onto the neighbor's decayed stock, it does not overwrite it.
 // (A fresh neighbor cannot show this: with prev = 0, `= add` and `+= add` are identical. That is
 // exactly how the first draft of this assertion passed with the accumulation deleted.)
 reset(); seedState({ field: { [tk(TARGET.x, TARGET.y)]: { [String(ME)]: 5000 }, [tk(NB.x, NB.y)]: { [String(ME)]: 100 } } });
@@ -529,7 +511,7 @@ const got = savedState.field[tk(NB.x, NB.y)][String(ME)];
 assert.ok(Math.abs(got - expected) < 1e-6,
   `diffusion adds to the neighbor's decayed stock (expected ${expected}, got ${got})`);
 
-// Threshold: a source AT cultureThreshold diffuses nothing (the guard is >, not >=).
+// Threshold: a source at cultureThreshold diffuses nothing (the guard is >, not >=).
 reset(); seedState({ field: { [tk(TARGET.x, TARGET.y)]: { [String(ME)]: CONFIG.cultureThreshold } } });
 runPass();
 assert.equal(savedState.field[tk(NB.x, NB.y)], undefined,
@@ -543,11 +525,9 @@ assert.ok(d1 < 200, `an isolated stock decays (200 -> ${d1})`);
 runPass();
 assert.ok(savedState.field[tk(NOTADJ.x, NOTADJ.y)][String(ME)] < d1, "...and keeps decaying");
 
-// ================================================================================
 // 10. Map bounds: the region never leaves the grid.
-// ================================================================================
 // fieldRadius (8) reaches past the edge of a small map. Region building must drop out-of-bounds
-// plots - otherwise the pass reads/writes tiles that do not exist. Both halves of the bounds test
+// plots, otherwise the pass reads/writes tiles that do not exist. Both halves of the bounds test
 // are exercised: the upper rail (x < w) and the lower rail (x >= 0).
 reset();
 gridW = 12; gridH = 12; // CENTER(10,10) + radius 8 would otherwise reach x,y = 18
@@ -560,7 +540,7 @@ for (const k of Object.keys(savedState.field)) {
 assert.equal(savedState.field[tk(12, 10)], undefined, "a plot at x === gridWidth is out of bounds and never enters the field");
 
 // Lower rail: a source ON the origin edge must not diffuse into negative coordinates.
-// The source has to sit AT x=0 - a source at x=1 only ever reaches x>=0 anyway, so it proves
+// The source has to sit at x=0, a source at x=1 only ever reaches x>=0 anyway, so it shows
 // nothing (the first draft did exactly that and passed with the `p.x >= 0` rail deleted).
 reset();
 myCity = makeCity(CITY_ID, { x: 2, y: 2 }, ME, 40);
@@ -576,12 +556,10 @@ for (const k of Object.keys(savedState.field)) {
 }
 assert.equal(savedState.field[tk(-1, 2)], undefined, "a plot at x === -1 is out of bounds and never enters the field");
 
-// ================================================================================
 // 11. Per-age scaling (byAge): the ownership bar and injection both move with the age.
-// ================================================================================
-// A stock that clears the ANTIQUITY bar (300) must NOT clear EXPLORATION's (300 * ownerBar 1.25 =
-// 375). This is the anti-snowball damping, and nothing above exercises it - every earlier case runs
-// in ANTIQUITY with a stock so large the bar is irrelevant.
+// A stock that clears the Antiquity bar (300) must not clear Exploration's (300 * ownerBar 1.25 =
+// 375). This is the anti-snowball damping, and nothing above exercises it, every earlier case runs
+// in Antiquity with a stock so large the bar is irrelevant.
 const MID = 350; // decays to ~331.5: over the ANTIQUITY bar, under EXPLORATION's
 reset(); seedState({ field: { [tk(TARGET.x, TARGET.y)]: { [String(ME)]: MID } } });
 globalThis.Game = { age: "AGE_ANTIQUITY", turn: 10, maxTurns: 90 };
@@ -593,8 +571,8 @@ assert.equal(runPass().flips, 0, "the same stock does NOT clear EXPLORATION's ra
 assert.equal(getTile(TARGET.x, TARGET.y).owner, -1, "...so the tile stays unowned");
 
 // The real engine exposes Game.age as a numeric HASH (watched in-game, 1.4.2), resolved via
-// GameInfo.Ages.lookup(...).AgeType. A hashed EXPLORATION must raise the bar exactly like the string form -
-// before the fix every hashed age read as ANTIQUITY, so this stock flipped in every age.
+// GameInfo.Ages.lookup(...).AgeType. A hashed Exploration must raise the bar exactly like the string form,
+// before the fix every hashed age read as Antiquity, so this stock flipped in every age.
 reset(); seedState({ field: { [tk(TARGET.x, TARGET.y)]: { [String(ME)]: MID } } });
 const AGE_HASH = 2077444219;
 globalThis.GameInfo = { Ages: { lookup: (h) => (h === AGE_HASH ? { AgeType: "AGE_EXPLORATION" } : null) } };
@@ -616,9 +594,9 @@ reset(); seedState({ field: { [tk(TARGET.x, TARGET.y)]: { [String(ME)]: MID } } 
 assert.equal(runPass().flips, 1, "a byAge table with no entry for this age -> the same neutral fallback");
 CONFIG.byAge = savedByAge;
 
-// injectionScale damps later-age injection: the same city builds stock more slowly in MODERN (0.65)
-// than in ANTIQUITY (1.0). (Pass one is identical either way - injectionAmount is strength-
-// independent at zero stock - so this needs several passes.)
+// injectionScale damps later-age injection: the same city builds stock more slowly in Modern (0.65)
+// than in Antiquity (1.0). (Pass one is identical either way, injectionAmount is strength-
+// independent at zero stock, so this needs several passes.)
 const stockAfter3 = (age) => {
   reset(); seedState();
   globalThis.Game = { age, turn: 10, maxTurns: 90 };
@@ -631,9 +609,7 @@ assert.ok(modernStock < antiquityStock,
   `MODERN injectionScale 0.65 damps injection vs ANTIQUITY 1.0 (${modernStock} < ${antiquityStock})`);
 globalThis.Game = { age: "AGE_ANTIQUITY", turn: 10, maxTurns: 90 };
 
-// ================================================================================
 // 12. Region membership: water and unreadable map dimensions.
-// ================================================================================
 // diffuseAcrossWater off -> water tiles are not in the region and receive no culture.
 reset();
 water.add(tk(NB.x, NB.y));
@@ -657,9 +633,7 @@ seedState({ field: { [tk(TARGET.x, TARGET.y)]: { [String(ME)]: 5000 } } });
 r = runPass();
 assert.equal(r.flips, 1, "unreadable grid dims (0x0) -> the bounds test is skipped, the pass still runs");
 
-// ================================================================================
-// 13. Claim budget counts OUR claims only; dead civs' culture is ignored.
-// ================================================================================
+// 13. Claim budget counts our claims only; dead civs' culture is ignored.
 // Another player's claim record must not consume our city's maxDiffusionPlots budget.
 reset();
 seedState({
@@ -671,7 +645,7 @@ assert.equal(runPass().flips, 1, "a rival's claim does not count against our cit
 CONFIG.maxDiffusionPlots = 80;
 
 // A civ with no living settlements is a dead owner: its culture is skipped when resolving the tile,
-// so OUR weaker stock still wins the plot.
+// so our weaker stock still wins the plot.
 const DEAD = 7; // never appears in Players.getAlive()
 reset();
 seedState({ field: { [tk(TARGET.x, TARGET.y)]: { [String(ME)]: 400, [String(DEAD)]: 5000 } } });
@@ -679,11 +653,9 @@ r = runPass();
 assert.equal(r.flips, 1, "a dead civ's dominant culture is ignored, so our weaker stock wins the tile");
 assert.equal(getTile(TARGET.x, TARGET.y).owner, ME, "...and the tile becomes ours");
 
-// ================================================================================
 // 14. The FUSED model (the shipped default) drives a pass end-to-end.
-// ================================================================================
 // Everything above runs with fusedModel off to isolate the orchestration. But fusedModel:true is
-// the DEFAULT, and it swaps the injection-strength function for the CPI/prosperity/ethnic stack
+// the default, and it swaps the injection-strength function for the CPI/prosperity/ethnic stack
 // (cd-metrics -> cd-cpi -> powerMultipliers, plus buildEthnicContext). That path has to survive a
 // real pass over the stub engine, not just its own unit tests.
 reset(); seedState({ field: { [tk(TARGET.x, TARGET.y)]: mature() } });
@@ -697,7 +669,7 @@ for (const [k, row] of Object.entries(savedState.field)) {
     assert.ok(typeof v === "number" && isFinite(v) && v >= 0, `fused pass leaves a finite stock at ${k}/${civ} (got ${v})`);
   }
 }
-// It also survives an engine with NO metrics to read (gatherCivMetrics -> empty -> no multiplier).
+// It also survives an engine with no metrics to read (gatherCivMetrics -> empty -> no multiplier).
 const savedGetAlive = globalThis.Players.getAlive;
 reset(); seedState({ field: { [tk(TARGET.x, TARGET.y)]: mature() } });
 globalThis.Players = { ...globalThis.Players, getAlive: () => [] };
@@ -705,12 +677,10 @@ assert.doesNotThrow(() => runPass(), "the fused model degrades cleanly when no p
 globalThis.Players = { ...globalThis.Players, getAlive: savedGetAlive };
 CONFIG.fusedModel = false;
 
-// ================================================================================
 // 15. No churn on an already-owned tile.
-// ================================================================================
-// The field is FROZEN here (no diffusion, no decay) so the board genuinely settles. With a live
-// field it never would - and should not: the culture wave is meant to keep traveling outward,
-// so "no flips on the next pass" is NOT a property of a healthy pass.
+// The field is frozen here (no diffusion, no decay) so the board genuinely settles. With a live
+// field it never would, and should not: the culture wave is meant to keep traveling outward,
+// so "no flips on the next pass" is not a property of a healthy pass.
 const liveRates = { d: CONFIG.diffusionRate, r: CONFIG.decayRate, f: CONFIG.decayFlat };
 CONFIG.diffusionRate = 0; CONFIG.decayRate = 0; CONFIG.decayFlat = 0;
 reset(); seedState({ field: { [tk(TARGET.x, TARGET.y)]: mature() } });
@@ -724,9 +694,7 @@ assert.equal(savedState.claims[tk(TARGET.x, TARGET.y)].turn, claimTurn,
   "...and the original claim record is not rewritten");
 CONFIG.diffusionRate = liveRates.d; CONFIG.decayRate = liveRates.r; CONFIG.decayFlat = liveRates.f;
 
-// ================================================================================
 // 16. Borders RECEDE (opt-in): a mod-claimed tile can be ceded to a rival.
-// ================================================================================
 // Only tiles recorded in state.claims are ever touched. A rival must beat our stock on the tile by the
 // same decisive margin a claim needs (resolveOwner), be at peace with us, have a city within
 // flipMaxDistance, and (with requireAdjacency) own land touching the tile. There is no release to no one:
@@ -762,7 +730,7 @@ seedRecede(rivalWins());
 r = runPass();
 assert.equal(getTile(TARGET.x, TARGET.y).owner, ME, "recedeBorders off -> a claimed tile is kept even when out-cultured");
 assert.equal(r.ceded, 0, "...and nothing is reported as ceded");
-// With the shipped defaults the same out-cultured tile IS lost: not ceded by recede, taken by the rival's AI flip.
+// With the shipped defaults the same out-cultured tile is lost: not ceded by recede, taken by the rival's AI flip.
 CONFIG.aiCultureFlips = aiFlipsDefault;
 seedRecede(rivalWins());
 r = runPass();
@@ -861,9 +829,7 @@ assert.equal(r.ceded, 2, "cession is capped by maxFlipsPerTurn");
 CONFIG.maxFlipsPerTurn = 8;
 CONFIG.recedeBorders = false;
 
-// ================================================================================
 // 17. Debug diagnostics run on a live pass without disturbing it.
-// ================================================================================
 // In-game, cd-bootstrap mirrors CONFIG.debug into cd-log's own gate (setLogDebug) before each pass, so
 // both switches must be on here: CONFIG.debug gates the diagnostics work, cd-log gates the output.
 const { setDebug: setLogDebug } = await import("/cultural-diffusion/ui/cd-log.js");
@@ -887,11 +853,9 @@ assert.ok(lines.some((l) => /frontier city=42 ring=4 best=\S+ bar=300 over=\d+\/
 assert.ok(lines.some((l) => /state bytes=[1-9]\d* field=\d+ claims=1 locked=1 passMs=\d+/.test(l)),
   "debug logs the persisted state size after the flip");
 
-// ================================================================================
-// 18. Deferred ownership writes - how the real engine behaves (watched in-game on 1.4.2).
-// ================================================================================
-// purchasePlot's owner change lands AFTER the call. Before cd-pending.js the pass booked a flip only on the
-// same-tick read, so every real flip was logged NOT APPLIED and nothing was ever recorded.
+// 18. Deferred ownership writes, how the real engine behaves (watched in-game on 1.4.2).
+// purchasePlot's owner change lands after the call. Before cd-pending.js the pass booked a flip only on the
+// same-tick read, so every real flip was logged not APPLIED and nothing was ever recorded.
 reset(); seedState({ field: { [TK]: mature() } });
 deferWrites = true;
 r = runPass();
@@ -918,7 +882,7 @@ assert.equal(r.confirmed, 0, "a pending claim the live map does not show is not 
 assert.equal(savedState.claims[TK], undefined, "...no claim is booked");
 assert.ok(savedState.pending[TK], "...and the still-dominated tile is sent again, pending once more");
 
-// Unconfirmed flips still count toward maxFlipsPerTurn - no runaway while writes are in flight.
+// Unconfirmed flips still count toward maxFlipsPerTurn, no runaway while writes are in flight.
 seedManyTargets();
 deferWrites = true;
 CONFIG.maxFlipsPerTurn = 2;
@@ -927,7 +891,7 @@ assert.equal(r.flips + r.pending, 2, "pending flips count toward maxFlipsPerTurn
 assert.equal(r.pending, 2, "...and on the deferred engine they are all pending");
 CONFIG.maxFlipsPerTurn = 8;
 
-// A deferred cession: pending first, then confirmed from the live map - and never also released.
+// A deferred cession: pending first, then confirmed from the live map, and never also released.
 CONFIG.recedeBorders = true;
 seedRecede(rivalWins());
 deferWrites = true;
@@ -943,9 +907,7 @@ assert.equal(savedState.claims[TK], undefined, "...and drops our claim");
 assert.equal(savedState.locked[TK], CONFIG.flipCooldownTurns, "...locking the tile against an immediate flip back");
 CONFIG.recedeBorders = false;
 
-// ================================================================================
 // 19. The strand guard: the pass must not close the last way out on a peaceful civ's unit.
-// ================================================================================
 // Watched in game (harness run 17): claims closed every exit around a peaceful major's Scout and it sat
 // frozen for five turns. The engine cannot move a unit we do not own, so the claim is the only lever.
 const nbrs = (loc) => {
@@ -993,9 +955,7 @@ r = runPass();
 assert.equal(r.flips, 1, "protectTrappedUnits off -> the claim goes ahead (pre-guard behavior)");
 CONFIG.protectTrappedUnits = true;
 
-// ================================================================================
-// 20. Foreign culture IN cities (spec §3 + §4): a mixed city pumps every group present and converts some back.
-// ================================================================================
+// 20. Foreign culture in cities (spec §3 + §4): a mixed city pumps every group present and converts some back.
 const CK = tk(CENTER.x, CENTER.y);
 CONFIG.foreignCultureInCities = true;
 reset(); myCity.population = 10;
@@ -1026,7 +986,7 @@ runPass();
 centre = savedState.field[CK];
 const decayedR = 1000 - 1000 * CONFIG.decayRate - CONFIG.decayFlat; // 949
 assert.ok(Math.abs(centre[String(RIVAL)] - decayedR * (1 - CONFIG.convertBase)) < 1e-9, "0.5% of the foreign stock converts");
-// The cap bounds the TOTAL on the tile: with a tiny cap nobody injects, and the foreign group is only converted.
+// The cap bounds the total on the tile: with a tiny cap nobody injects, and the foreign group is only converted.
 CONFIG.cityCapFactor = 1;
 reset(); myCity.population = 10;
 seedState({ field: { [CK]: { [String(ME)]: 5000, [String(RIVAL)]: 500 } } });
@@ -1035,9 +995,7 @@ assert.ok(Math.abs(savedState.field[CK][String(RIVAL)] - decayedRival * (1 - CON
   "at the total cap the foreign group is not pumped, only converted");
 CONFIG.cityCapFactor = 2000;
 
-// ================================================================================
 // 21. The owner floor (spec §8): owned land in the region always carries at least 1 of its owner's culture.
-// ================================================================================
 reset(); seedState({});
 runPass();
 assert.ok(savedState.field[tk(12, 10)] && savedState.field[tk(12, 10)][String(ME)] >= CONFIG.ownerFloor,
@@ -1050,9 +1008,7 @@ runPass();
 assert.equal(savedState.field[tk(12, 10)], undefined, "ownerFloor 0 writes nothing");
 CONFIG.ownerFloor = 1;
 
-// ================================================================================
 // 22. The mountain source threshold (spec §8): culture on a peak needs 7.5x the threshold before it leaks.
-// ================================================================================
 const mountains = new Set();
 globalThis.GameplayMap.isMountain = (x, y) => mountains.has(tk(x, y));
 const PEAK = { x: 16, y: 10 }, FOOT = { x: 17, y: 10 }; // ring 6-7 from CENTER: in the region, never adjacent to us
@@ -1065,9 +1021,7 @@ reset(); seedState({ field: { [tk(PEAK.x, PEAK.y)]: { [String(ME)]: 500 } } });
 runPass();
 assert.ok(savedState.field[tk(FOOT.x, FOOT.y)][String(ME)] > 0, "the same 500 on flat land diffuses");
 
-// ================================================================================
 // 23. Every civilization gains land by culture (spec §2, opt-in aiCultureFlips).
-// ================================================================================
 const AI_T = { x: 17, y: 10 }; // 7 from our center (in the region), 5 from the rival's (within flipMaxDistance, past its ring 3)
 assert.equal(hexDistance(RIVAL_CENTER, AI_T), 5, "fixture: AI target is 5 from the rival city");
 /** Rival land beside AI_T, and a mature RIVAL stock on AI_T itself. */
@@ -1102,7 +1056,7 @@ assert.equal(r.confirmed, 1, "next pass confirms it from the map");
 assert.equal(savedState.claims[tk(AI_T.x, AI_T.y)].by, RIVAL, "...as the rival's claim");
 deferWrites = false;
 
-// An AI can take OUR tile when its culture decisively leads there, at peace and outside our protected core.
+// An AI can take our tile when its culture decisively leads there, at peace and outside our protected core.
 const OURS = { x: 16, y: 10 }; // 6 from us, 6 from the rival: reachable by both
 reset();
 { const t = getTileMut(OURS.x, OURS.y); t.owner = ME; t.city = CITY_ID; }
@@ -1138,9 +1092,7 @@ assert.equal(r.aiFlips, 1, "...and the AI flip its own, so neither starves the o
 CONFIG.maxFlipsPerTurn = 8;
 CONFIG.aiCultureFlips = false;
 
-// ================================================================================
 // 24. Unit conquest (spec §6, opt-in conquestFlip): hold an enemy tile through the buffer and it is yours.
-// ================================================================================
 const HELD = { x: 17, y: 10 };
 const HK = tk(HELD.x, HELD.y);
 /** A rival tile at HELD with one of OUR units (combat unless told otherwise) standing on it, at war. */
@@ -1231,7 +1183,7 @@ assert.equal(r.conquests, 0, "a settlement center is never taken by occupation")
 assert.equal(getTile(HELD.x, HELD.y).owner, RIVAL, "...it stays the rival's");
 centresOnMap.clear();
 
-// Another civilization's army takes OUR tile only when AI flips are on too.
+// Another civilization's army takes our tile only when AI flips are on too.
 /** A rival combat unit on our ring-4 claimed tile, at war. */
 function seedRivalHold() {
   reset();

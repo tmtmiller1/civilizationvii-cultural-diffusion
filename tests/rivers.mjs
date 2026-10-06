@@ -1,10 +1,10 @@
-// tests/rivers.mjs - rivers in stepMods: a highway ALONG a river, a wall ACROSS it (docs/civ-v-parity-spec.md §1).
+// tests/rivers.mjs: rivers in stepMods: a highway along a river, a wall across it (docs/civ-v-parity-spec.md §1).
 //
-// Both Civ VII river kinds are tiles. Tile to tile down the same river FOLLOWS it (bigger bonus on a navigable
-// river); stepping onto a river from anywhere else CROSSES into it (gated malus); stepping off a river is free.
+// Both Civ VII river kinds are tiles. Tile to tile down the same river follows it (bigger bonus on a navigable
+// river); stepping onto a river from anywhere else crosses into it (gated malus); stepping off a river is free.
 import assert from "node:assert/strict";
 
-// --- stub map: per-tile terrain, biome, river kind and river name ------------------
+// stub map: per-tile terrain, biome, river kind and river name
 const tiles = new Map(); // "x,y" -> { terrain, biome, river: 0|1|2, name, water }
 const tk = (x, y) => `${x},${y}`;
 const RT = { NO_RIVER: 0, RIVER_MINOR: 1, RIVER_NAVIGABLE: 2 };
@@ -50,7 +50,7 @@ const P = (x, y) => ({ x, y });
 const STRONG = 1000; // above every river gate (200)
 const near = (a, b) => Math.abs(a - b) < 1e-9;
 
-// --- following: tile to tile down the same river -----------------------------------
+// following: tile to tile down the same river
 const minorFollow = stepMods(P(1, 0), P(2, 0), STRONG, cfg);
 assert.deepEqual(minorFollow, { blocked: false, bonus: 0.65, malus: 0, maxFactor: 1.8 }, "minor river follow = Civ V river values");
 const navFollow = stepMods(P(1, 2), P(2, 2), STRONG, cfg);
@@ -59,8 +59,8 @@ assert.ok(navFollow.bonus > minorFollow.bonus && navFollow.maxFactor > minorFoll
   "the navigable highway is stronger than the minor one");
 assert.equal(navFollow.malus, 0, "a navigable channel takes none of its desert biome's malus");
 
-// --- crossing: onto a river from a bank ---------------------------------------------
-// Regression for the old rule, which gave the follow bonus to ANY step onto a river tile.
+// crossing: onto a river from a bank
+// Regression for the old rule, which gave the follow bonus to any step onto a river tile.
 for (const [label, dst] of [["minor", P(2, 0)], ["navigable", P(2, 2)]]) {
   const gate = cfg.cultureThreshold * 2.0;
   assert.equal(stepMods(P(2, 1), dst, gate, cfg).blocked, true, `${label}: culture at the gate cannot cross`);
@@ -78,13 +78,13 @@ assert.equal(stepMods(P(4, 1), P(4, 0), cfg.cultureThreshold * 1.9, cfg).blocked
 const followUpHill = stepMods(P(3, 0), P(4, 0), STRONG, cfg);
 assert.deepEqual(followUpHill, { blocked: false, bonus: 0.65, malus: 0.15, maxFactor: 1.8 * 0.6 }, "follow onto hills: bonus and hills");
 
-// --- leaving a river: no river modifier ----------------------------------------------
+// leaving a river: no river modifier
 const offMinor = stepMods(P(2, 0), P(2, 1), 1, cfg);
 assert.deepEqual(offMinor, { blocked: false, bonus: 0, malus: 0, maxFactor: 1 }, "off a minor river: plain land step");
 const offNav = stepMods(P(2, 2), P(2, 3), 1, cfg);
 assert.deepEqual(offNav, { blocked: false, bonus: 0, malus: 0, maxFactor: 1 }, "off a navigable river: plain land step");
 
-// --- confluences and different rivers are crossings, not follows ---------------------
+// confluences and different rivers are crossings, not follows
 tiles.get(tk(1, 4)).river = RT.RIVER_MINOR; tiles.get(tk(1, 4)).name = "LOC_RIVER_A";
 assert.equal(stepMods(P(1, 4), P(1, 5), STRONG, cfg).malus, 0.5, "minor A onto minor B = crossing");
 tiles.get(tk(1, 4)).name = "";
@@ -100,7 +100,7 @@ assert.equal(stepMods(P(1, 1), P(1, 2), STRONG, cfg).malus, 0.9, "the two crossi
 cfg.terrainNavigableCross = CONFIG.terrainNavigableCross;
 tiles.get(tk(1, 1)).river = 0;
 
-// --- navigable detection survives a missing API or a wet isWater ---------------------
+// navigable detection survives a missing API or a wet isWater
 navigableApi = false;
 assert.equal(stepMods(P(1, 2), P(2, 2), STRONG, cfg).bonus, 1.0, "navigable read from RiverTypes without isNavigableRiver");
 navigableApi = true;
@@ -110,7 +110,7 @@ waterSaysNavIsWet = false;
 assert.equal(stepMods(P(5, 5), P(5, 6), 400, { ...cfg, diffuseAcrossWater: true }).malus, cfg.terrainCoast.malus,
   "real water keeps the water path");
 
-// --- end to end: along a river delivers more than land, across delivers less -------------
+// end to end: along a river delivers more than land, across delivers less
 const deliver = (src, dst, value) => diffusionDelivered(value, 0, stepMods(src, dst, value, cfg), cfg);
 const v = 500;
 const plain = deliver(P(0, 4), P(0, 5), v);

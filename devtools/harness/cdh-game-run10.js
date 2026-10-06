@@ -1,4 +1,4 @@
-// cdh-game-run10.js - game scope, deployed as ui/cdh-game.js. Run 10 (dev only): does the Cultural Pressure lens paint
+// cdh-game-run10.js: game scope, deployed as ui/cdh-game.js. Run 10 (dev only): does the Cultural Pressure lens paint
 // contested tiles? Run 9 switched the lens on after 12 turns, but no tile was contested yet, so nothing could be painted.
 // Loads AugustusAnt136 (via cdh-shell-run5.js) and ends turns one at a time. Each turn it rebuilds the lens's own
 // contested-tile list with the lens's own imports and gates. Once enough tiles are contested, or at the turn cap (before

@@ -1,5 +1,5 @@
-// cdh-shell.js - shell scope. Auto-loads TARGET_SAVE from the main menu so the harness runs hands-free.
-// Pattern proven by the Emigration engine probe (tower_mods/emigration/devtools/engine-probe/eep-shell.js).
+// cdh-shell.js: shell scope. Auto-loads TARGET_SAVE from the main menu so the harness runs hands-free.
+// Pattern from the Emigration engine probe (tower_mods/emigration/devtools/engine-probe/eep-shell.js).
 import SaveLoadData from "/core/ui/save-load/model-save-load.js";
 
 const TARGET_SAVE = "AugustusAnt136.Civ7Save";

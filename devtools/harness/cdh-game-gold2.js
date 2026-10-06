@@ -1,8 +1,8 @@
-// cdh-game-gold2.js - game scope, deployed as ui/cdh-game.js. Does a script claim cost gold at the turn roll? (dev only)
+// cdh-game-gold2.js: game scope, deployed as ui/cdh-game.js. Does a script claim cost gold at the turn roll? (dev only)
 //
 // Gold run 1 (cdh-game-gold.js) left one question open: the claim showed cost 0 on the tick, at +3 s and at +10 s,
 // but our gold fell 515 beyond income across that turn. The engine log shows "Autoplay started" in every one of that
-// run's turns, so the AI played our turns and may have spent it. This run rolls turns WITHOUT Autoplay wherever the
+// run's turns, so the AI played our turns and may have spent it. This run rolls turns without Autoplay wherever the
 // engine allows: when the end-turn blocker is not NONE it names the blocker and sends sendTurnComplete anyway, and
 // only after 90 s of no progress falls back to Autoplay, saying so on a line of its own.
 //
@@ -104,7 +104,7 @@ function finish() {
   emit("DONE harness gold2 finished");
 }
 
-// ---------------------------------------------------------------- turns, without Autoplay where the engine allows
+// turns, without Autoplay where the engine allows
 let n = 0; let endTimer = null; let tries = 0;
 function endTurn() {
   try {

@@ -1,22 +1,22 @@
-// tests/lens-parity.mjs - the lens/tooltip must promise exactly what the pass delivers.
+// tests/lens-parity.mjs: the lens/tooltip must promise exactly what the pass delivers.
 //
-// This does NOT test the lens in isolation. It drives the SAME fixture through both `pressureTiles()` and
+// This does not test the lens in isolation. It drives the same fixture through both `pressureTiles()` and
 // `runPass()` and asserts they agree, tile by tile, for every gate in turn. That invariant is the point:
-// "the lens paints a tile IF AND ONLY IF the pass would take it" cannot rot even when both sides change,
+// "the lens paints a tile if and only if the pass would take it" cannot rot even when both sides change,
 // whereas a test of the lens's own logic would just re-encode today's rules twice.
 //
 // It exists because the drift was real and long-lived. `passCanAct` was shared, so the lens knew whose
-// culture led - but every other gate lived privately inside the pass, so the overlay tinted, and the hover
+// culture led, but every other gate lived privately inside the pass, so the overlay tinted, and the hover
 // readout counted down turns on, tiles the pass would never take: a rival's protected core, a war front, a
 // tile out of range or on cooldown. Adding the minor-settlement floor made it worse, because a city-state's
 // ring-1 would show progress that never resolves. All of it now goes through cd-eligibility.js.
 //
-// SCOPE / HONEST LIMIT: this proves the two agree about WHICH tiles. It cannot prove the overlay renders -
+// Limit: this shows the two agree about which tiles. It cannot show the overlay renders,
 // painting goes through WorldUI, which no off-engine test reaches. A lens run in the harness covers that.
 import assert from "node:assert/strict";
 import { hexDistance } from "/cultural-diffusion/ui/cd-pressure.js";
 
-// --- engine stub (same shape as tests/pass.mjs) ----------------------------------
+// engine stub (same shape as tests/pass.mjs)
 const tiles = new Map();
 const water = new Set();
 const units = new Map();          // "x,y" -> [{owner, type}]
@@ -96,7 +96,7 @@ globalThis.Game = { age: "AGE_ANTIQUITY", turn: 10, maxTurns: 90 };
 globalThis.WorldUI = { addPlots: () => {}, clearPlots: () => {} };
 // The settings store both sides read. applyTunableOverrides() pulls these into CONFIG, so a fixture that
 // wants a SETTINGS-driven knob (diffusionEnabled, claimOnlyUnowned, fusedModel, preset keys) must set it
-// here - writing CONFIG directly is clobbered the moment the lens reads, which is exactly how the first
+// here, writing CONFIG directly is clobbered the moment the lens reads, which is exactly how the first
 // draft of this suite created a state the game cannot be in.
 const modSettings = { "cultural-diffusion": {} };
 globalThis.localStorage = {
@@ -162,7 +162,7 @@ function tipShowsProgress(loc) {
 }
 
 // Knobs a fixture sets. Reading the LENS calls applyTunableOverrides(), which pulls saved settings into the
-// shared CONFIG - in game the lens runs in the HUD isolate with its own copy, but in one test process it
+// shared CONFIG, in game the lens runs in the HUD isolate with its own copy, but in one test process it
 // clobbers the fixture. So snapshot these around the lens/tooltip reads.
 const KNOBS = ["claimOnlyUnowned", "requireAdjacency", "coreProtectRadius", "minorProtectRadius",
   "protectTrappedUnits", "flipMaxDistance", "baseGrowthRadius", "maxDiffusionPlots", "maxFlipsPerTurn",
@@ -220,7 +220,7 @@ atWarWith = new Set([RIVAL]);
 seed({ field: { [tk(RIVAL_TILE.x, RIVAL_TILE.y)]: { [String(ME)]: 5000, [String(RIVAL)]: 10 } } });
 assertParity("at war with the owner", RIVAL_TILE, false);
 
-// 6. A MINOR's ring-1, protected by minorProtectRadius.
+// 6. A minor's ring-1, protected by minorProtectRadius.
 reset();
 const MINOR_CENTRE = { x: 16, y: 10 };
 const MINOR_RING1 = { x: 15, y: 10 };

@@ -1,6 +1,6 @@
-// cdh-game-conquest-toggle.js - game scope, deployed as ui/cdh-game.js. WATCH the Options checkbox drive conquest.
+// cdh-game-conquest-toggle.js: game scope, deployed as ui/cdh-game.js. Watch the Options checkbox drive conquest.
 //
-// The conquest runs switched the feature on by patching the deployed cd-config.js. This run uses NO patch: the only
+// The conquest runs switched the feature on by patching the deployed cd-config.js. This run uses no patch: the only
 // way the feature turns on is the real "armies hold the ground they occupy" checkbox in the Options screen, clicked
 // through its fxs-checkbox component (the same toggle() a mouse click runs) and committed with the screen's Confirm.
 //
@@ -10,7 +10,7 @@
 //   O2   open Options, click the checkbox, SHOT, Confirm; saved setting + live config after the next pass
 //   ON   keep holding: the tile should be taken once the hold reaches conquestBufferTurns
 //   O3   click it off again the same way; the live config should read false after the next pass
-// Turns are rolled the gold2 way (send anyway, no Autoplay - Autoplay would move our unit).
+// Turns are rolled the gold2 way (send anyway, no Autoplay, Autoplay would move our unit).
 
 import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
 import { getConquestFlip } from "/cultural-diffusion/ui/cd-settings.js";
@@ -95,7 +95,7 @@ async function plant(site) {
   return null;
 }
 
-// ---------------------------------------------------------------- the Options screen, driven like a player
+// the Options screen, driven like a player
 let CM = null;
 async function waitFor(fn, ms) {
   const end = Date.now() + ms;
@@ -145,7 +145,7 @@ async function optionsPass(label, click) {
   return { before, after, clicked: click };
 }
 
-// ---------------------------------------------------------------- the hold
+// the hold
 let site = null;
 let phase = "OFF";
 let n = 0;             // turns rolled in the current phase
@@ -221,7 +221,7 @@ function finish() {
   emit("DONE harness conquest-toggle finished");
 }
 
-// ---------------------------------------------------------------- turns, no Autoplay
+// turns, no Autoplay
 let endTimer = null; let tries = 0; let rolling = false;
 function endTurn() {
   rolling = true;

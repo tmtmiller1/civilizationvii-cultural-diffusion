@@ -20,7 +20,7 @@
         </Criteria>
     </ActionCriteria>
     <ActionGroups>
-        <!-- Phase 5: the hidden revolt-marker constructible (data). Kept in its OWN ActionGroup so
+        <!-- Phase 5: the hidden revolt-marker constructible (data). It has its own ActionGroup so
              a schema error can't take down the JS probe stages below. -->
         <ActionGroup id="cultural-diffusion-probe-data" scope="game" criteria="always">
             <Properties>

@@ -2,11 +2,11 @@
 //
 // The ethnic-affinity layer (docs/current-model.md §3, term C): a frontier tile
 // surrounded by a civ's diaspora feels that civ's pull even when its culture output is
-// modest - borders follow people. This reads emigration's per-settlement population
+// modest; borders follow people. This reads emigration's per-settlement population
 // composition (via the import-free cd-emigration bridge) and turns it into an affinity
 // closure the pass folds into pressure.
 //
-// STANDALONE-SAFE: if the fused model is off, emigration is disabled/absent, or no
+// Standalone-safe: if the fused model is off, emigration is disabled/absent, or no
 // composition has been recorded yet, buildEthnicContext returns null -> the pass applies no
 // ethnic multiplier (neutral x1). The mod never depends on emigration being installed.
 
@@ -16,7 +16,7 @@ import { loadComposition, shareOfCiv } from "/cultural-diffusion/ui/cd-emigratio
 /**
  * Build the per-pass ethnic-affinity context. Attaches emigration's composition entries to
  * the current settlements by city-center location, then answers, for any (civ, plot), the
- * diaspora share of that civ in the composition of the settlement NEAREST the plot - the
+ * diaspora share of that civ in the composition of the settlement nearest the plot, the
  * best available read of "whose people live around here."
  * @param {{loc:{x:number,y:number}}[]} settlements Settlement rows (need a `.loc`).
  * @param {import("/cultural-diffusion/ui/cd-config.js").CdConfig} cfg Live config.

@@ -1,4 +1,4 @@
-// tests/pressure.mjs - the pure injection-strength math (3b).
+// tests/pressure.mjs: the pure injection-strength math (3b).
 import assert from "node:assert/strict";
 import {
   hexDistance, happinessFactor, wonderFactor, prosperityFactor, ethnicFactor, projectionOf
@@ -38,8 +38,8 @@ assert.ok(projectionOf({ ...base, celebrating: true }, cfg) > projectionOf(base,
 assert.ok(projectionOf({ ...base, culture: 40 }, cfg) > projectionOf(base, cfg), "more culture, more injection");
 assert.ok(projectionOf({ ...base, vitality: 60 }, cfg) > projectionOf(base, cfg), "a more prosperous society injects harder");
 
-// The flattener: a culture spike raises injection SUBLINEARLY (concave), and by strictly less
-// than the raw-culture (alpha=1) model would - this is what tames culture-engine snowball.
+// The flattener: a culture spike raises injection sublinearly (concave), and by strictly less
+// than the raw-culture (alpha=1) model would, this is what tames culture-engine snowball.
 const rawCfg = { ...cfg, cultureExponent: 1.0 };
 const spike = { ...base, culture: 40 }; // doubled culture
 const compBoost = projectionOf(spike, cfg) / projectionOf(base, cfg);

@@ -1,16 +1,16 @@
-// cdh-game-run18.js - game scope, deployed as ui/cdh-game.js. Cultural Diffusion harness run 18 (dev only).
+// cdh-game-run18.js: game scope, deployed as ui/cdh-game.js. Cultural Diffusion harness run 18 (dev only).
 //
-// CONFIRMATION run: watch the two fixes WORK, with the mod's own pass ENABLED (runs 14-17 disabled it to
-// measure the engine; this one measures the MOD).
+// Confirmation run: watch the two fixes work, with the mod's own pass enabled (runs 14-17 disabled it to
+// measure the engine; this one measures the mod).
 //
-//   G  THE STRAND GUARD. Run 17 proved the mod can freeze a peaceful major's unit by claiming every plot
-//      around it (enclosedTurns 5/5). Rebuild that situation with ONE gap left open, seed the mod's field
-//      so the pass wants that gap, then run the pass. The fix works if the pass REFUSES it
+//   G  THE STRAND GUARD. Run 17 showed the mod can freeze a peaceful major's unit by claiming every plot
+//      around it (enclosedTurns 5/5). Rebuild that situation with one gap left open, seed the mod's field
+//      so the pass wants that gap, then run the pass. The fix works if the pass refuses it
 //      (`skip flip ...: would strand a foreign unit`), the plot stays unowned, and the unit keeps moving
 //      over the following turns instead of freezing.
 //   V  VILLAGE CORE PROTECTION. An Independent Power reports `cities: 0`, so `isCoreProtected`'s city-list
-//      route is blind to a village center; the fix adds a MAP read (`isCityCenterAt`). Validate that read
-//      against the live engine on our OWN centers first - it failed twice in earlier harnesses - then find
+//      route is blind to a village center; the fix adds a map read (`isCityCenterAt`). Validate that read
+//      against the live engine on our own centers first, it failed twice in earlier harnesses, then find
 //      any minor-owned center, report what the gates now say, and seed the mod's field on the center to see
 //      whether the pass refuses it.
 //
@@ -98,7 +98,7 @@ function playerKinds() {
   })), []);
 }
 
-// --- G: the strand guard, with the mod's pass doing the claiming ------------------------------------------------------
+// G: the strand guard, with the mod's pass doing the claiming
 let gap = null;
 function penWithOneGap(kinds) {
   const peaceful = new Set(kinds.filter((k) => k.major === true && k.pid !== local && k.war === false).map((k) => k.pid));
@@ -146,7 +146,7 @@ function gapState() {
     onCentre: !!(at && at.x === gap.centre.x && at.y === gap.centre.y) };
 }
 
-// --- V: village core protection ---------------------------------------------------------------------------------------
+// V: village core protection
 function stageV(kinds) {
   // The map read failed twice in earlier harnesses, so validate it on the live engine first.
   const own = localCities().map((c) => ({ at: key(c.location), name: cityName(c), centre: isCityCenterAt(c.location),

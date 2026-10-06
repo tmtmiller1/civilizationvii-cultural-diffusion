@@ -1,28 +1,28 @@
-// cdh-game-shots.js - game scope, deployed as ui/cdh-game.js. Release imagery for v1.2.0 (dev only).
+// cdh-game-shots.js: game scope, deployed as ui/cdh-game.js. Release imagery for v1.2.0 (dev only).
 //
 // Produces the captures for the GitHub release and the Workshop page. Nothing here is a test; it drives the game
 // into states worth photographing and emits `SHOT <name>` when a view has settled, which run-harness.sh grabs by
-// WINDOW ID (never the whole display).
+// window ID (never the whole display).
 //
 // The pattern is run 11's, which is the one that worked: close the queued tech/civic popup first (it sits centered
 // over the map and ruined earlier captures), aim the camera beside the subject rather than at it so the tile is not
 // under any centered UI, switch the lens, and wait long enough for the overlay to redraw before shooting.
 //
 // Shots, in order:
-//   01-borders     the culture-expanded frontier, lens off - what the mod does to a map
+//   01-borders     the culture-expanded frontier, lens off, what the mod does to a map
 //   02-lens-off    a contested frontier, lens off
-//   03-lens-on     the same view with the Cultural Pressure lens on - the pair shows what the lens adds
+//   03-lens-on     the same view with the Cultural Pressure lens on, the pair shows what the lens adds
 //   04-lens-wide   the same lens, pulled back, so the whole contested front reads
 //
-// Culture is SEEDED so the front is photogenic on the first local turn instead of waiting ~18 passes for organic
+// Culture is seeded so the front is photogenic on the first local turn instead of waiting ~18 passes for organic
 // contest (run 3's first organic claim was pass 18).
 //
-// The seed sits BELOW the ownership bar on purpose. The first version of this script seeded high and then ran a pass,
-// which CLAIMED the very tiles it wanted to photograph: once a tile is ours the lens correctly paints nothing, so the
+// The seed sits below the ownership bar on purpose. The first version of this script seeded high and then ran a pass,
+// which claimed the very tiles it wanted to photograph: once a tile is ours the lens correctly paints nothing, so the
 // lens-on and lens-off shots came out identical (measured: 1.44% vs 1.47% lens-colored pixels). A contested frontier
-// is what the lens is for, so the seed aims at roughly 70% of the bar - high progress, no flip.
+// is what the lens is for, so the seed aims at roughly 70% of the bar, high progress, no flip.
 //
-// The lens-off shot also must NOT switch to another lens: `fxs-default-lens` turns on the YIELD ICON overlay and
+// The lens-off shot also must not switch to another lens: `fxs-default-lens` turns on the yield-icon overlay and
 // buried the first attempt's map under badges. Leave the game's own view alone instead.
 
 import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
@@ -107,7 +107,7 @@ async function run() {
   if (!seeded) { emit("SHOTS no seedable frontier; aborting"); return; }
   const subject = seeded.city.location;
 
-  // NO pass. Running one claimed the seeded tiles and left the lens with nothing to paint.
+  // No pass. Running one claimed the seeded tiles and left the lens with nothing to paint.
   emit("PASS skipped on purpose: a claimed tile is no longer contested and the lens would paint nothing");
   await later(3000);
 
@@ -115,7 +115,7 @@ async function run() {
   safe(() => UI.Player.deselectAllUnits());
   await later(2000);
 
-  // 01: the border and the front as the player sees them - no lens call at all. Switching to
+  // 01: the border and the front as the player sees them, no lens call at all. Switching to
   // "fxs-default-lens" here turned ON the yield-icon overlay and buried the map in badges.
   emit(`LENS at start=${safe(() => LensManager.getActiveLens(), "?")}`);
   aimAt(subject, 0.5);
@@ -123,7 +123,7 @@ async function run() {
   emit("SHOT 01-borders");
   await later(3000);
 
-  // 02 / 03: the contested front, lens off then on, same framing - the pair is the point.
+  // 02 / 03: the contested front, lens off then on, same framing, the pair is the point.
   aimAt(subject, 0.35);
   await later(8000);
   emit("SHOT 02-lens-off");

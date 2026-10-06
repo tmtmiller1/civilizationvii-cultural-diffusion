@@ -1,21 +1,21 @@
-// cdh-game-borders.js - game scope, deployed as ui/cdh-game.js. Border-expansion imagery (dev only).
+// cdh-game-borders.js: game scope, deployed as ui/cdh-game.js. Border-expansion imagery (dev only).
 //
-// The lens shots show the mod's READOUT. This shows the mod's EFFECT: a border pushed out past the normal city
-// footprint. A single frame cannot say "this border grew", so the pair is the point - the same camera, before and
+// The lens shots show the mod's readout. This shows the mod's effect: a border pushed out past the normal city
+// footprint. A single frame cannot say "this border grew", so the pair is the point, the same camera, before and
 // after the mod claims a batch of tiles.
 //
 //   01-border-before   the city's border as the base game left it
 //   02-border-after    the same view once culture has taken the frontier ring
 //   03-border-edge     close on the new edge, where the border bulges past the city's own rings
 //
-// Unlike the lens shots this seeds ABOVE the ownership bar and DOES run passes: here the claims are the subject.
+// Unlike the lens shots this seeds above the ownership bar and does run passes: here the claims are the subject.
 // Claims land about three seconds after `purchasePlot` (cd-pending.js), so each pass is followed by a wait before
 // anything is photographed.
 //
-// Two things learned the hard way about getting a CLEAN map:
-//   * The layer is DISABLED here rather than swapped away from. (This comment used to say the layer paints
-//     whenever it is ENABLED, on the strength of suite shot 01 showing paint before any lens call. That was
-//     wrong - cdh-game-lenscheck.js measured the gating as correct, and the paint came from the PREVIOUS run
+// Two things learned the hard way about getting a clean map:
+//   * The layer is disabled here rather than swapped away from. (This comment used to say the layer paints
+//     whenever it is enabled, on the strength of suite shot 01 showing paint before any lens call. That was
+//     wrong, cdh-game-lenscheck.js measured the gating as correct, and the paint came from the previous run
 //     leaving cd-pressure-lens selected, since the active lens survives a restart. See the harness README.)
 //   * Never call `setActiveLens`. `fxs-default-lens` is the yield-icon view, and calling it is what put badges over
 //     three earlier attempts. Leaving the loaded view alone gives a clean map.
@@ -90,7 +90,7 @@ async function run() {
   emit(`S0 borders city=${cityName(pick.city)} at=${key(center)} claimable=${pick.ring.length} ` +
     `ownedWithin6=${ourTiles(center, 6)}`);
 
-  // LensManager is NOT touched at all: disabling the layer through it redraws the default lens's yield-icon
+  // LensManager is not touched at all: disabling the layer through it redraws the default lens's yield-icon
   // overlay, which is what put badges over every earlier attempt. The lens is off because the runner patched its
   // default in the deployed cd-settings.js (PATCH=...), so nothing here has to ask the UI for anything.
   emit(`LENS untouched; active=${safe(() => LensManager.getActiveLens(), "?")} ` +

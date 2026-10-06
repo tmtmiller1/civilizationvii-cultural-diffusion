@@ -7,18 +7,10 @@
 #         dist/cultural-diffusion/            (the content folder steamcmd uploads)
 #         dist/workshop_item.vdf              (steamcmd build manifest)
 #
-# What this does:
-#   1. Runs the quality gate (npm run release:gate: lint + syntax + esm + tests).
-#   2. Mirrors the mod source into dist/cultural-diffusion/, excluding all dev cruft
-#      (tests, scripts, docs, node_modules, the probe, tooling configs).
-#   3. Forces debug logging off in the shipped copy (source stays dev-friendly).
-#   4. Ships readable JS (no minification; transparent source is a property of the mod).
-#   5. Syntax-checks every shipped JS file.
-#   6. Zips with cultural-diffusion/ as the content root (modinfo at its root).
-#   7. Audits the zip against an allow-list so stray files can't silently ship.
-#   8. Writes a Steam Workshop .vdf (change note pulled from CHANGELOG.md on updates).
-#
-# Run from the mod source directory.
+# Runs the release gate, copies the mod into dist/ without the dev files (tests, scripts, docs,
+# node_modules, the probe, tooling configs), turns debug logging off in that copy, syntax-checks
+# and zips it, audits the zip against an allow-list, and writes the Workshop .vdf. The JS ships
+# readable, not minified. Run from the mod source directory.
 
 set -euo pipefail
 cd "$(dirname "$0")"
@@ -26,7 +18,7 @@ cd "$(dirname "$0")"
 MOD="cultural-diffusion"
 MODINFO="$MOD.modinfo"
 
-# Quality gate: never package a red build. Set SKIP_VERIFY=1 to bypass (emergency only).
+# never package a red build. SKIP_VERIFY=1 bypasses the gate (emergency only).
 if [ "${SKIP_VERIFY:-0}" != "1" ]; then
   echo "release: running 'npm run release:gate' (set SKIP_VERIFY=1 to skip)..."
   npm run release:gate || { echo "release: 'npm run release:gate' FAILED - aborting."; exit 1; }
@@ -42,9 +34,9 @@ case "$AUTHORS" in
     ""|"Your Name"|"TODO") echo "error: set a real <Authors> in the modinfo first (got '$AUTHORS')."; exit 1 ;;
 esac
 
-# -- Steam Workshop published file id -----------------------------------------
-# The publishedfileid makes steamcmd UPDATE the existing item instead of creating a
-# duplicate. It lives OUTSIDE dist/ (which is wiped below) in steam_workshop_id.txt.
+# Steam Workshop published file id.
+# The publishedfileid makes steamcmd update the existing item instead of creating a
+# duplicate. It lives outside dist/ (which is wiped below) in steam_workshop_id.txt.
 WORKSHOP_ID_FILE="steam_workshop_id.txt"
 PUBLISHED_FILE_ID="${WORKSHOP_PUBLISHED_FILE_ID:-}"
 SAVED_ID=""
@@ -105,7 +97,7 @@ echo "==> Zip contents:"
 unzip -l "$ZIP_PATH" | head -40 || true
 SIZE="$(du -h "$ZIP_PATH" | cut -f1)"
 
-# -- Workshop preview card (optional) -----------------------------------------
+# Workshop preview card (optional).
 # If docs/workshop-preview.svg exists and rsvg-convert is installed, render a
 # 1024x1024 preview.png (uploaded separately via the .vdf, so it never ships in the zip).
 PREVIEW_SRC="docs/workshop-preview.svg"
@@ -119,7 +111,7 @@ else
     echo "==> No workshop preview (add docs/workshop-preview.svg + 'brew install librsvg', or set one on the Workshop page)."
 fi
 
-# -- Steam Workshop manifest (.vdf) -------------------------------------------
+# Steam Workshop manifest (.vdf).
 VDF_PATH="$DIST_DIR/workshop_item.vdf"
 VDF_NO_PREVIEW_PATH="$DIST_DIR/workshop_item_no_preview.vdf"
 ABS_CONTENT="$(cd "$TARGET_DIR" && pwd)"
@@ -142,7 +134,7 @@ fi
     [ -n "$ABS_PREVIEW" ] && echo "    \"previewfile\"    \"$ABS_PREVIEW\""
     echo '    "visibility"     "0"'
     echo '    "title"          "Cultural Diffusion"'
-    # "description" intentionally omitted so steamcmd keeps the Workshop page description.
+    # no "description", so steamcmd keeps the Workshop page description.
     echo "    \"changenote\"     \"${CHANGENOTE}\""
     echo '}'
 } > "$VDF_PATH"

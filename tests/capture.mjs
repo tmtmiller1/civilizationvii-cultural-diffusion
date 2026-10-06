@@ -1,4 +1,4 @@
-// tests/capture.mjs - the CityTransfered handler (cd-capture.js) against a stubbed engine: it rewrites only the
+// tests/capture.mjs: the CityTransfered handler (cd-capture.js) against a stubbed engine: it rewrites only the
 // captured city's tiles, uses getPurchasedPlots when present and a radius scan when not, saves at once, and is a
 // no-op when off or when the payload is unreadable. The arithmetic itself is pinned in tests/parity.mjs.
 import assert from "node:assert/strict";

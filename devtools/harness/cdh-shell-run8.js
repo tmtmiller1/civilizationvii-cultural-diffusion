@@ -1,4 +1,4 @@
-// cdh-shell-run8.js - shell scope, deployed as ui/cdh-shell.js for run 8. Starts a genuinely NEW single-player game the
+// cdh-shell-run8.js: shell scope, deployed as ui/cdh-shell.js for run 8. Starts a genuinely new single-player game the
 // way the main menu's "Play Now" does: reset the game configuration to single player, then engine.call("startGame").
 // (The first stand-in, the turn-1 save AugustusAnt1, cannot load: it requires an uninstalled dev mod.) If the game is
 // still in the shell 90s later, fall back to the earliest early-Antiquity save that has no missing or unowned mods.

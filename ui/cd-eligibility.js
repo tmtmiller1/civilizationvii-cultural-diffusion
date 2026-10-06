@@ -1,17 +1,17 @@
 // cd-eligibility.js
 //
-// The ONE answer to "may the pass claim this plot right now?", asked by the pass, the Cultural Pressure
+// The one answer to "may the pass claim this plot right now?", asked by the pass, the Cultural Pressure
 // lens and the hover readout alike.
 //
-// This exists for the same reason `passCanAct` does (docs/current-model.md §5): what the map SHOWS and what
-// the pass DOES cannot drift if they ask the same question. `passCanAct` only ever covered "whose culture
-// leads and can the pass move this tile at all" - every other gate lived privately inside the pass, so the
+// This exists for the same reason `passCanAct` does (docs/current-model.md §5): what the map shows and what
+// the pass does cannot drift if they ask the same question. `passCanAct` only ever covered "whose culture
+// leads and can the pass move this tile at all"; every other gate lived privately inside the pass, so the
 // lens happily tinted, and the tooltip counted down turns on, tiles the pass would never take: a rival's
 // protected core, a war front, a tile beyond `flipMaxDistance`, a tile still on cooldown. Adding the minor
 // settlement floor made that worse, because a city-state's ring-1 would have shown capture progress that
 // never resolves.
 //
-// Order matters: the cheap map reads come first and the UNIT read last, exactly as in the pass, so the
+// Order matters: the cheap map reads come first and the unit read last, exactly as in the pass, so the
 // expensive check only runs for a tile that has already won everything else.
 
 import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
@@ -69,7 +69,7 @@ export function nearestCity(plot, cities) {
 }
 
 /**
- * True when a plot lies within any LOCAL city's base-game growth ring, which the base game owns and assigns
+ * True when a plot lies within any local city's base-game growth ring, which the base game owns and assigns
  * to the city that can work it. The mod only ever claims beyond them.
  * @param {{x:number,y:number}} loc Plot.
  * @param {{loc:{x:number,y:number}}[]} cities Local cities.
@@ -96,7 +96,7 @@ export function adjacentToMe(plot, me) {
 }
 
 /**
- * True when claiming this plot is forbidden because it is in the local player's DISTANT LANDS before the
+ * True when claiming this plot is forbidden because it is in the local player's distant lands before the
  * Exploration age (the base game's own ocean gating).
  * @param {{x:number,y:number}} loc Plot.
  * @param {number} me Local player id.
@@ -127,7 +127,7 @@ export function claimInScope(loc, ctx) {
 }
 
 /**
- * Whether a plot our culture has WON is nevertheless blocked from being claimed: distant lands, the owner's
+ * Whether a plot our culture has won is nevertheless blocked from being claimed: distant lands, the owner's
  * protection (safety mode, war, core protection including the minor-settlement floor), adjacency, or a
  * foreign unit this claim would strand. The per-city `maxDiffusionPlots` cap is the caller's, because only
  * the pass tracks claims in flight per city.

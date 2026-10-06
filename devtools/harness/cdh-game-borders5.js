@@ -1,24 +1,24 @@
-// cdh-game-borders5.js - game scope, deployed as ui/cdh-game.js. Border-expansion imagery, take 5 (dev only).
+// cdh-game-borders5.js: game scope, deployed as ui/cdh-game.js. Border-expansion imagery, take 5 (dev only).
 //
-// Take 4 proved the SAVE was never the problem: every one of the local player's cities measured
+// Take 4 showed the save was never the problem: every one of the local player's cities measured
 // maxOwnedRing=3, the base game's limit, so the "before" state was vanilla all along. What failed was the
-// PICTURE. Two things made a wide frame unreadable:
+// picture. Two things made a wide frame unreadable:
 //   * A neighboring civ's territory sat in frame in a near-identical purple, so tiles four and five rings
-//     out - none of them ours - read as this city's. That is what the rejected 04-border-before.jpg showed.
+//     out, none of them ours, read as this city's. That is what the rejected 04-border-before.jpg showed.
 //   * `lookAtPlot` was called again before the "after" shot, and the camera did not land identically, so the
 //     pair was not the same view twice.
 //
-// So take 5: pick the city with the FEWEST foreign-owned tiles near it (a frontier that faces open land, not
-// another empire), aim ONCE at the midpoint between the city and the land culture is about to take, and never
-// touch the camera again - the two shots differ only by what the mod did between them.
+// So take 5: pick the city with the fewest foreign-owned tiles near it (a frontier that faces open land, not
+// another empire), aim once at the midpoint between the city and the land culture is about to take, and never
+// touch the camera again, the two shots differ only by what the mod did between them.
 //
 //   01-border-before   the city's vanilla footprint, with the open frontier it faces
 //   02-border-after    the identical camera, once culture has claimed that frontier
 //
-// Seeds ABOVE the ownership bar and DOES run passes: the claims are the subject. Claims land about three
+// Seeds above the ownership bar and does run passes: the claims are the subject. Claims land about three
 // seconds after `purchasePlot` (cd-pending.js), so every pass is followed by a wait. Never call
-// `setActiveLens` - `fxs-default-lens` is the yield-icon view. The pressure layer is off because the runner
-// patched its default in the DEPLOYED cd-settings.js (PATCH=...).
+// `setActiveLens`, `fxs-default-lens` is the yield-icon view. The pressure layer is off because the runner
+// patched its default in the deployed cd-settings.js (PATCH=...).
 
 import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
 import { runPass } from "/cultural-diffusion/ui/cd-pass.js";
@@ -181,7 +181,7 @@ async function run() {
   await new Promise((done) => closePopups(6, done));
   safe(() => UI.Player.deselectAllUnits());
 
-  // ONE aim for both shots. The midpoint between the city and the land about to be claimed keeps the city
+  // One aim for both shots. The midpoint between the city and the land about to be claimed keeps the city
   // and the frontier in the same frame; the camera is never touched again, so the pair is the same view.
   const target = centroid(pick.ring);
   const frame = target ? { x: Math.round((centre.x + target.x) / 2), y: Math.round((centre.y + target.y) / 2) } : centre;
@@ -204,7 +204,7 @@ async function run() {
   emit(`AFTER city=${pick.city.name} maxOwnedRing=${a.maxRing} rings=[${a.counts.join(",")}] ` +
     `ownedWithin6=${ourTiles(center, 6)}`);
 
-  // NO second aim: the camera has not moved since the before shot.
+  // No second aim: the camera has not moved since the before shot.
   await later(6000);
   emit("SHOT 02-border-after");
   await later(3000);

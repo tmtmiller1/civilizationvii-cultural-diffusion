@@ -1,24 +1,21 @@
 // cd-probe-hud.js
 //
-// ON-SCREEN output for the probe. The player has no dev console and does not read
-// UI.log, so every meaningful probe line is ALSO painted into a fixed overlay panel
-// injected straight into the game's Gameface DOM (the base UI itself uses
-// document.createElement thousands of times, so a UIScript can append to document.body).
+// On-screen output for the probe. The player has no dev console and does not read UI.log,
+// so every probe line is also painted into a fixed overlay appended to document.body (the
+// base UI creates elements the same way, so a UIScript may too).
 //
-// Everything here is best-effort and guarded: if the DOM isn't ready yet (cold start
-// injects HTML late) it retries on the next animation frame; if there is no DOM at all
-// it silently no-ops so the log path still works. Gameface-safe styling only: hex
-// colors + flex, never hsl()/grid (per the repo UI gotchas).
+// Best-effort throughout: if the DOM is not ready yet (cold start injects HTML late) it
+// retries on the next animation frame; with no DOM at all it no-ops and the log path still
+// works. Gameface styling only: hex colors and flex, no hsl() or grid.
 
 const MAX_LINES = 28;
 let _panel = null;
 let _body = null;
 let _lines = [];
-// Multiple pinned headlines, keyed so independent stages (codex vs outer-tiles) each keep
-// their own line instead of clobbering one another. Insertion order preserved.
+// Pinned headlines keyed by stage (codex, outer-tiles, ...) so they don't clobber each
+// other. Insertion order is kept.
 let _verdicts = {};
-// Last toasted text per key, so re-running a stage every turn only toasts when the verdict
-// actually CHANGES (no per-turn notification spam).
+// last toasted text per key; a stage re-run every turn only toasts when its verdict changes
 let _lastToast = {};
 
 function raf(fn) {
@@ -28,7 +25,7 @@ function raf(fn) {
   try { return setTimeout(fn, 100); } catch (_) { return null; }
 }
 
-// Create the overlay once <body> exists. Returns the body element or null.
+// Create the overlay once <body> exists; null until then.
 function ensurePanel() {
   try {
     if (typeof document === "undefined" || !document || !document.body) return null;
@@ -91,8 +88,8 @@ function render() {
   } catch (_) { /* ignore */ }
 }
 
-// Best-effort in-game notification/toast so the VERDICT pops even if the overlay is
-// somehow not visible (e.g. a different DOM isolate).
+// In-game toast, so a verdict still pops if the overlay is not visible (a different DOM
+// isolate, say).
 function toast(text) {
   try {
     const g = /** @type {*} */ (globalThis);
@@ -101,7 +98,6 @@ function toast(text) {
   } catch (_) { /* ignore */ }
 }
 
-// Append one line to the on-screen panel.
 export function hud(line) {
   try {
     _lines.push(String(line));
@@ -110,16 +106,15 @@ export function hud(line) {
   } catch (_) { /* ignore */ }
 }
 
-// Pin a headline verdict at the top of the panel AND fire a toast. `key` lets independent
-// stages keep separate headlines (default "main" preserves single-line callers).
+// Pin a headline at the top of the panel and toast it. `key` gives each stage its own
+// headline; the default "main" keeps single-line callers working.
 export function hudVerdict(line, key) {
   try {
     const k = key || "main";
     const text = String(line);
     _verdicts[k] = text;
     render();
-    // Only toast when THIS key's verdict changed - the panel updates every turn, but a
-    // notification should only pop on a real change (avoids per-turn spam from refreshes).
+    // the panel refreshes every turn; only a changed verdict deserves a notification
     if (_lastToast[k] !== text) { _lastToast[k] = text; toast(text); }
   } catch (_) { /* ignore */ }
 }

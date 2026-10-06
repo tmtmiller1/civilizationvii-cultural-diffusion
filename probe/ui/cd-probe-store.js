@@ -1,23 +1,19 @@
 // cd-probe-store.js
 //
-// Q-PERSIST helper. Records what the probe flipped (plot + verb + run id) into a
-// SHELL-READABLE, save-independent store so that after a save->reload (or a menu
-// round-trip) the probe can re-read its own record and re-inspect whether the
-// flipped plot kept its new owner.
+// Q-PERSIST bookkeeping. Records what the probe flipped (plot, verb, run id) in a
+// save-independent store so that after a reload the probe can re-read its own record and
+// check whether the plot kept its new owner. The game's tile ownership is what is under
+// test; this store only remembers what to re-check.
 //
-// IMPORTANT (repo crash gotcha): we must NEVER write GameConfiguration via
-// Configuration.editGame().setValue at runtime - it poisons the persisted config
-// and crashes the game on next launch. localStorage is confirmed shell-readable
-// and safe, so the probe's own bookkeeping lives there. The GAME's tile ownership
-// itself is what we are testing for persistence; this store only remembers what to
-// re-check.
+// Never write GameConfiguration via Configuration.editGame().setValue at runtime: it
+// poisons the persisted config and crashes the game on the next launch. localStorage is
+// shell-readable and safe, so the bookkeeping lives there.
 //
-// THRASH FIX (probe-history.md §2): the game-scope isolate's localStorage was
-// observed NOT to round-trip between ticks ("schema changed x107" - the state machine
-// reset every turn and destroyed the flip->reload flow). globalThis DOES survive
-// between ticks within a session (same isolate), so every write is cached there and
-// reads are served from it; localStorage is still written best-effort for CROSS-session
-// persistence (the actual Q-PERSIST signal) and seeds the mirror once per isolate.
+// The game-scope isolate's localStorage does not round-trip reliably between ticks
+// (probe-history.md §2: the state machine reset every turn and broke the flip-then-reload
+// flow). globalThis does survive between ticks in one isolate, so every write is cached
+// there and reads come from the cache; localStorage is still written for cross-session
+// persistence and seeds the cache once per isolate.
 
 const KEY = "cd-probe-flips-v1";
 const META_KEY = "cd-probe-meta-v1";
@@ -28,8 +24,7 @@ function safe(fn, fallback) {
   try { return fn(); } catch (_) { return fallback; }
 }
 
-// Within-session mirror. Survives between ticks in one isolate even when localStorage
-// silently fails to round-trip; seeded from localStorage on the first read of each key.
+// Within-session mirror, seeded from localStorage on the first read of each key.
 function mirror() {
   const g = (typeof globalThis !== "undefined") ? globalThis : {};
   if (!g.__cdProbeStore) g.__cdProbeStore = {};
@@ -42,10 +37,9 @@ function ls() {
   return null;
 }
 
-// Mirror-first read: once a key is in the session mirror it is authoritative (prevents the
-// per-tick reset thrash if localStorage returns stale/absent data mid-session). On a cold
-// isolate the mirror is empty, so we seed it from localStorage - which may have survived a
-// save/reload, exactly the cross-session persistence we want to detect.
+// Once a key is in the mirror it is authoritative, so stale or absent localStorage reads
+// mid-session cannot reset the state machine. A cold isolate seeds the mirror from
+// localStorage, which may have survived a reload: that is the cross-session signal.
 function getRaw(key) {
   const m = mirror();
   if (Object.prototype.hasOwnProperty.call(m, key)) return m[key];
@@ -93,12 +87,11 @@ export function readFlips() { return readList(KEY); }
 export function recordFlip(entry) { return appendList(KEY, entry); }
 export function clearFlips() { removeRaw(KEY); return true; }
 
-// --- Phase / bookkeeping meta -----------------------------------------------
-// The auto-runner is a small state machine persisted here so it flips a plot
-// exactly ONCE (not every turn) and knows, on a later session, that it should be
-// running the persistence re-check instead of flipping again.
+// phase meta
+// The auto-runner's state machine lives here so it flips a plot once, not every turn, and
+// knows on a later session to run the persistence re-check instead of flipping again.
 //   phase: "init"    -> nothing flipped yet; keep trying each turn until it can
-//          "flipped" -> flips done; awaiting a save/reload to prove persistence
+//          "flipped" -> flips done; waiting for a save/reload
 //          "done"    -> persistence re-checked and reported
 export function readMeta() {
   return safe(() => {
@@ -118,24 +111,24 @@ export function clearAll() {
   return true;
 }
 
-// --- Q-WORK persistence markers (E) -----------------------------------------
-// When the destructive confirm places a worker / rural district on a far tile, we
-// record what we placed (+ the session nonce) so a later session can re-read the tile
-// and prove the WORKED state - not just ownership - survived the save/reload.
+// Q-WORK persistence markers (E)
+// When the destructive confirm places a worker or rural district on a far tile, record
+// what was placed (plus the session nonce) so a later session can re-read the tile and
+// see whether the worked state, not just ownership, survived the reload.
 export function readWork() { return readList(WORK_KEY); }
 export function recordWork(entry) { return appendList(WORK_KEY, entry); }
 export function clearWork() { removeRaw(WORK_KEY); return true; }
 
-// --- Q-VERB markers (Phase 0) -----------------------------------------------
-// The verb probe claims a DISTINCT tile per candidate verb (Growth.claimPlot /
-// DISTRICT_RURAL) and records the gold read + resolved verdict, so a later session can
-// re-read whether the FREE-INTEGRATED claim survived the save/reload.
+// Q-VERB markers (Phase 0)
+// The verb probe claims a distinct tile per candidate verb (Growth.claimPlot,
+// DISTRICT_RURAL) and records the gold read and verdict, so a later session can re-read
+// whether a FREE-INTEGRATED claim survived the reload.
 export function readVerb() { return readList(VERB_KEY); }
 export function recordVerb(entry) { return appendList(VERB_KEY, entry); }
 export function clearVerb() { removeRaw(VERB_KEY); return true; }
 
-// Patch an already-recorded verb marker in place (matched by runId+verb+kind) once its
-// deferred integration read resolves. Keeps the persisted verdict for the reload re-check.
+// Patch a recorded verb marker in place (matched by runId+verb+kind) once its deferred
+// integration read resolves, so the reload re-check sees the final verdict.
 export function updateVerb(runId, verb, kind, patch) {
   const list = readVerb();
   let changed = false;

@@ -1,9 +1,9 @@
-# Civ V parity spec — the original's algorithms this mod does not yet carry
+# Civ V parity spec: the original's algorithms this mod does not yet carry
 
-Written 2026-09-25. Status: #1 built and watched in game; #2, #3, #4, #5, #6 and #8 built on 2026-09-26 against the
+Written 2026-09-25. Status: #1 built and checked in game; #2, #3, #4, #5, #6 and #8 built on 2026-09-26 against the
 probe results, unit-tested and run once in game (see "Build record" at the end); #7 stays open. Every verdict below is
-static analysis unless it says "watched"; the probes in the last section were run on 2026-09-25 (game 1.5.0) and their
-results are recorded there and in [probe-history.md §6](probe-history.md).
+static analysis unless it says it was seen in game; the probes in the last section were run on 2026-09-25 (game
+1.5.0) and their results are recorded there and in [probe-history.md §6](probe-history.md).
 
 The README credits Gedemon's Civilization V *Cultural Diffusion* (v18) and says its "terrain and ownership rules follow
 that design". A side-by-side read of the v18 Lua against this mod shows the culture field (inject, diffuse, decay,
@@ -18,13 +18,13 @@ Line numbers below refer to those files.
 
 | # | Feature (Civ V function) | Verdict | Blocking question | Player impact | Effort |
 | --- | --- | --- | --- | --- | --- |
-| 1 | River follow vs cross (`DiffuseCulture`) | Built and watched in game 2026-09-25: every row of the table delivered exactly what the field math predicts | P1-P3 answered: both river kinds are tiles, no edge read exists | Medium: rivers used to speed culture across, the opposite of V | Small |
+| 1 | River follow vs cross (`DiffuseCulture`) | Built 2026-09-25; in game every row of the table delivered what the field math predicts | P1-P3 answered: both river kinds are tiles, no edge read exists | Medium: rivers used to speed culture across, the opposite of V | Small |
 | 2 | Every civ gains land by culture (`UpdatePlotOwnership`) | Built 2026-09-26, opt-in `aiCultureFlips` (`ui/cd-ai-flips.js`) | P4 answered: no refund needed, purchase is free; `grantYield` if ever | High: AI empires never grow by culture today | Medium |
 | 3 | Foreign culture groups pump in cities (`GetCityCulturalOutput`) | Built 2026-09-26, on by default with #4 (`ui/cd-inject.js`) | none | Medium, only with #4 | Small |
 | 4 | Conversion in cities (`ConvertCulture`) | Built 2026-09-26, on by default with #3 (`ui/cd-conversion.js`) | none | Medium, only with #3 | Medium |
-| 5 | Culture transfer on city capture (`CityCultureOnCapture`) | Built 2026-09-26, on by default (`ui/cd-capture.js`) | P5 answered: `CityTransfered` reaches the UI for transfers with no local party (watched, major to independent) | Medium in war games | Small |
-| 6 | Unit culture conquest (`UnitCaptureTile`) | Built 2026-09-26, opt-in `conquestFlip` (`ui/cd-conquest.js`), and watched: a five-turn hold took an enemy tile, confirmed next pass | P6 answered: `Units.get(data.unit).Combat.isCombat` classifies every moved unit (watched) | Medium, opt-in | Medium |
-| 7 | Release a dead civ's land (`UpdateCultureMap`) | PARKED 2026-09-26 as a future idea: heritage culture ([potential-future-features.md](potential-future-features.md), "Heritage culture"). Cannot build as V did; the mod already excludes dead civs from winning | P7 partly answered: no defeated major in the test save; the only dead plot owner is the engine's wilderness pseudo-player | Low | None or tiny |
+| 5 | Culture transfer on city capture (`CityCultureOnCapture`) | Built 2026-09-26, on by default (`ui/cd-capture.js`) | P5 answered: `CityTransfered` reaches the UI for transfers with no local party (seen in game, major to independent) | Medium in war games | Small |
+| 6 | Unit culture conquest (`UnitCaptureTile`) | Built 2026-09-26, opt-in `conquestFlip` (`ui/cd-conquest.js`); in game a five-turn hold took an enemy tile, confirmed next pass | P6 answered: `Units.get(data.unit).Combat.isCombat` classifies every moved unit | Medium, opt-in | Medium |
+| 7 | Release a dead civ's land (`UpdateCultureMap`) | Parked 2026-09-26 as a future idea: heritage culture ([potential-future-features.md](potential-future-features.md), "Heritage culture"). Cannot build as V did; the mod already excludes dead civs from winning | P7 partly answered: no defeated major in the test save; the only dead plot owner is the engine's wilderness pseudo-player | Low | None or tiny |
 | 8 | Small rules: source threshold on mountains, owner floor of 1, total-culture city cap | Built 2026-09-26 (`sourceThresholdMountain`, `ownerFloor`, total cap in `ui/cd-inject.js`) | none | Low | Tiny |
 
 Not specced because they were off by default in v18 or depend on a mod that has no Civ VII counterpart: the log10
@@ -39,9 +39,9 @@ mod already does more than that stub intended.
 Rivers in Civ V run along tile edges. `DiffuseCulture` (lines 414-634) checks the edge between the source and the
 neighbor in the direction of travel:
 
-- **Following a river** (`plot:IsRiverConnection(direction) and not plot:IsRiverCrossing(direction)`): the step runs
+- Following a river (`plot:IsRiverConnection(direction) and not plot:IsRiverCrossing(direction)`): the step runs
   along the river on one bank. Rate bonus +65%, neighbor cap ×1.8 (`CULTURE_FOLLOW_RIVER_BONUS`, `_MAX`).
-- **Crossing a river** (`plot:IsRiverCrossing(direction)`): the step jumps the river. The source must exceed 200
+- Crossing a river (`plot:IsRiverCrossing(direction)`): the step jumps the river. The source must exceed 200
   (2× the base threshold), then the rate takes a +50% malus and the cap ×0.35 (`CULTURE_CROSS_RIVER_*`). Below the
   gate nothing crosses.
 
@@ -51,12 +51,12 @@ So a river was a highway along its bank and a wall across it. Water tiles receiv
 
 Civ VII has two river kinds, and neither is an edge.
 
-- **Minor rivers** are a property of a land tile. `GameplayMap.getRiverType(x, y)` returns `RiverTypes.RIVER_MINOR`
+- Minor rivers are a property of a land tile. `GameplayMap.getRiverType(x, y)` returns `RiverTypes.RIVER_MINOR`
   on the tile, the tile keeps its own terrain (flat or hill), and it can be worked and built on. Map scripts write them
   tile by tile with `TerrainBuilder.setRiverInfo(x, y, direction, RiverTypes.RIVER_MINOR)`, where the direction is the
   flow toward the next tile. Evidence: static, from `feature-biome-generator.js` (`isRiver` on land tiles) and the
   Earth maps' `setRiverInfo` calls.
-- **Navigable rivers** are their own terrain, `TERRAIN_NAVIGABLE_RIVER`. `getRiverType` returns
+- Navigable rivers are their own terrain, `TERRAIN_NAVIGABLE_RIVER`. `getRiverType` returns
   `RiverTypes.RIVER_NAVIGABLE` and `GameplayMap.isNavigableRiver(x, y)` is true. The compiled `Terrains` table gives it
   `Water = 0`, so the engine does not class it as water even though ships sail it. Evidence: static, from
   `Debug/gameplay-copy.sqlite` (`_debug-db` snapshot) and `discovery-generator.js`.
@@ -68,15 +68,15 @@ Civ VII has two river kinds, and neither is an edge.
 
 ### What this mod does today (a defect, not only a gap)
 
-`routeRiverBonus` in [`cd-terrain.js`](../ui/cd-terrain.js) grants the follow bonus whenever the **destination** is a
+`routeRiverBonus` in [`cd-terrain.js`](../ui/cd-terrain.js) grants the follow bonus whenever the destination is a
 river tile of either kind (`onRiver(dst)`), whatever the source is. `isWater` is false on navigable river tiles
 (`Water = 0`), so they take the land path and get the bonus too. Result: a step from a dry bank straight onto a river
-gets +65% rate and a ×1.8 cap. Rivers of both kinds currently **speed culture across them**, which inverts the Civ V
+gets +65% rate and a ×1.8 cap. Rivers of both kinds currently speed culture across them, which inverts the Civ V
 rule. Nothing ever takes the crossing malus.
 
 ### Built model (decided 2026-09-25)
 
-Status: built, unit-tested, and watched in game on 2026-09-25 (harness runs `parity` and `parity2`,
+Status: built, unit-tested, and checked in game on 2026-09-25 (harness runs `parity` and `parity2`,
 [probe-history.md §6](probe-history.md)). Both kinds of river now copy the Civ V behavior, a highway
 along the river and a wall across it, and the highway along a navigable river is stronger than along a minor one
 (user decision). Code: `riverStep` in [`cd-terrain.js`](../ui/cd-terrain.js); tests:
@@ -102,27 +102,27 @@ keys with the same Civ V values, so a wider navigable river can be made a strong
 The cap `maxPercent` (75% of the source) still bounds every step, so along a river the two kinds differ mainly in rate:
 a minor follow reaches a cap of 72% of the source, a navigable follow is clipped at 75%.
 
-**One crossing cost per river.** On tiles, crossing a river is two steps, bank onto river and river onto the far bank.
+One crossing cost per river. On tiles, crossing a river is two steps, bank onto river and river onto the far bank.
 The cost is charged on the way in only. Charging both steps would make a river cost twice what Civ V charged. The
 consequence: once a culture is established on the river itself, it spills onto either bank at the normal rate. A river
 divides two cultures until one of them is strong enough to hold the river, then it stops being a border. That is the
 tile-based reading of Civ V's edge rule, where the river line itself held no culture.
 
-**Minor rivers are tiles here too.** Civ V's minor-river rule was about edges. The static evidence says Civ VII stores
+Minor rivers are tiles here too. Civ V's minor-river rule was about edges. The static evidence says Civ VII stores
 minor rivers per tile, so the same follow-and-cross rule is applied to them. If probe P3 finds an edge-level river read,
 or P1 shows minor rivers are really stored on edges, switch minor rivers to the Civ V edge rule and use the edge read.
 
-**Detection.** A navigable river is recognized by `isNavigableRiver`, by its terrain type, or by
+Detection: a navigable river is recognized by `isNavigableRiver`, by its terrain type, or by
 `RiverTypes.RIVER_NAVIGABLE`, so a missing API on one build never demotes it to a minor river. It always takes the
 river path, even if `isWater` calls it wet on some build (probe P2), so it can never be mistaken for coast.
 
 ### Verdict
 
-Built and watched. Pure field math, no engine writes. `tests/rivers.mjs` covers every row of the table, the stacking
+Built. Pure field math, no engine writes. `tests/rivers.mjs` covers every row of the table, the stacking
 with hills, confluences, the detection fallbacks, and an end-to-end check that along a navigable river delivers more
 than along a minor one, which delivers more than plain land, while either crossing delivers less. The same tests fail
 against the previous rule. In game (2026-09-25, AugustusAnt136, one pass from a cleared and seeded field) each row
-delivered exactly the value `diffusionDelivered` predicts from the live `stepMods` of that step: the weak bank source
+delivered the value `diffusionDelivered` predicts from the live `stepMods` of that step: the weak bank source
 put nothing onto the river (gate), the minor-river follow gave 1.65× the plain-land step, the navigable follow 2.0×,
 the bank-onto-navigable crossing 0.67×, and the bank-onto-minor-river-on-hills crossing 0.61× with both gates stacked.
 P1-P3 confirmed the reads the rule relies on: both river kinds are per-tile named chains, a navigable tile is not
@@ -146,16 +146,16 @@ notices: AI borders never move by culture.
 
 ### Engine surface
 
-- **The verb works for a rival.** The recede cession calls `purchasePlot` on the rival's nearest city, and harness run 1
-  (game 1.4.2) watched a rival city take a tile back with the same deferred landing as our own claims
+- The verb works for a rival. The recede cession calls `purchasePlot` on the rival's nearest city, and harness run 1
+  (game 1.4.2) saw a rival city take a tile back with the same deferred landing as our own claims
   ([probe-history.md §5](probe-history.md)). So an AI flip is the same call with a different city.
-- **Gold.** Watched 2026-09-25 (P4 and the gold runs, [probe-history.md §6](probe-history.md)): a script
+- Gold. As of 2026-09-25 (P4 and the gold runs, [probe-history.md §6](probe-history.md)), a script
   `purchasePlot` charges nobody on 1.5.0, `Treasury.changeGoldBalance` is a no-op for every player, and
   `Players.grantYield(pid, YIELD_GOLD, n)` is the verb that moves gold, for an AI as for us. An AI flip therefore needs
   no refund; if one is ever needed, `grantGold` must use `grantYield` first.
-- **Multiplayer.** `guardSP()` blocks every mutating verb in multiplayer, so this stays single-player like the rest of
+- Multiplayer. `guardSP()` blocks every mutating verb in multiplayer, so this stays single-player like the rest of
   the mod.
-- **Region.** The field is simulated only within `fieldRadius` (8) of the local player's cities, because a whole-map
+- Region. The field is simulated only within `fieldRadius` (8) of the local player's cities, because a whole-map
   sweep each turn is too slow in Gameface. AI flips can therefore only happen inside that region.
 
 ### Design
@@ -181,15 +181,15 @@ The recede step becomes a special case of this and can be folded in.
 Inside the region AI civs grow by culture; outside it nothing moves. AI-versus-AI borders far from the player stay
 frozen. Two ways out, both measured before chosen:
 
-- **Accept it** (recommended first). The player sees borders move where they are looking, and that is where the rule
+- Accept it (recommended first). The player sees borders move where they are looking, and that is where the rule
   matters. Document it in the README's limitations.
-- **Rolling far-field.** Simulate one extra slice of the map each turn (for example a band of rows) so every region
+- Rolling far-field. Simulate one extra slice of the map each turn (for example a band of rows) so every region
   is updated every N turns at N× the step size. Needs a timing measurement of the current pass first, since the
   constraint is Gameface frame time.
 
 ### Verdict
 
-Can build inside the field region. Verb watched working for a rival; refund to an AI is probe P4. If P4 fails, the AI
+Can build inside the field region. The verb works for a rival; refund to an AI is probe P4. If P4 fails, the AI
 flip still works but costs the AI gold, which is acceptable as a documented behavior or can be avoided by refunding
 through `grantYield`. Opt-in toggle `aiCultureFlips`, default on only after a balance pass, since it changes how the
 AI's territory evolves. Tests: pass tests with a rival leader winning an unowned tile, a rival leader taking our tile,
@@ -199,10 +199,10 @@ an Independent Power leader being skipped, and the global ceiling.
 
 ### What Civ V did
 
-`GetCityCulturalOutput` (lines 84-162) injected into the city plot for **every** culture present there, not only the
+`GetCityCulturalOutput` (lines 84-162) injected into the city plot for every culture present there, not only the
 owner's. The owner's group grew by `(population + culture per turn) × sqrt(stock × 0.15) + 10`. Every foreign group
 grew by `population × sqrt(stock × 0.15) + 10`, using population alone. The Liberty policy let foreign groups use the
-full formula. The cap `(population + culture per turn) × 2000` applied to the **total** culture on the plot; once it
+full formula. The cap `(population + culture per turn) × 2000` applied to the total culture on the plot; once it
 was reached, nothing was injected for anyone.
 
 The effect: a captured or mixed city kept producing its old culture, which diffused outward and contested the
@@ -322,7 +322,7 @@ Nothing. The Steam description lists "tile ownership flip on conquest" as planne
 - `engine.on("UnitMoved", data)` carries `data.unit` (a component id) and is used by the base game. The unit's owner and
   location are readable from the unit object. Whether a combat test is available on the unit (`isCombat` appears once
   in the shipped scripts) is probe P6.
-- The flip verb is `purchasePlot` on the conqueror's nearest city, watched working on rival land.
+- The flip verb is `purchasePlot` on the conqueror's nearest city, which works on rival land.
 - War: `isAtWarWith`, restricted to majors, since every Independent Power reads as at war.
 - The lock map exists (`flipCooldownTurns`).
 
@@ -352,7 +352,7 @@ excluded from winning a plot.
 
 Excluding dead civs from winning is already done (`findDeadOwners`, `resolveOwner`). Releasing land to no one cannot be
 done: `setOwnership(NO_PLAYER)` never un-owns a city-attached tile ([engine-closed list](../../../engine-closed.md),
-watched on 1.4.2). But in Civ VII territory belongs to cities, and a defeated player has none, so there should be no
+seen on 1.4.2). But in Civ VII territory belongs to cities, and a defeated player has none, so there should be no
 dead-owned land to release. Probe P7 confirms that with one read after a defeat.
 
 ### Verdict
@@ -362,12 +362,12 @@ living claimant through the normal flip path rather than releasing them.
 
 ## 8. Three small rules
 
-- **Mountain source threshold.** `PlotCultureThreshold` (lines 76-82) made a mountain tile need 750 before it diffused
+- Mountain source threshold. `PlotCultureThreshold` (lines 76-82) made a mountain tile need 750 before it diffused
   at all; other tiles need 100. This mod uses 100 everywhere. Add `sourceThresholdMountain` (7.5× the base). Effect is
   small because mountains already hold at most 10% of their source.
-- **Owner floor.** Civ V kept at least 1 of the owner's culture on its own plots (`MINIMAL_CULTURE_ON_OWNED_PLOT`). This
+- Owner floor. Civ V kept at least 1 of the owner's culture on its own plots (`MINIMAL_CULTURE_ON_OWNED_PLOT`). This
   mod decays owned plots to zero. Only matters for the lens's "no culture" state on owned land; add it for parity.
-- **Total-culture cap on the city tile.** Covered in #3.
+- Total-culture cap on the city tile. Covered in #3.
 
 All three can be built in a few lines each, with a unit test apiece.
 
@@ -393,26 +393,26 @@ design it guards. Run them before building the feature that depends on them, one
 | P1 | Yes. 236 minor and 116 navigable river tiles on a 96×60 map, 350 of 352 named, forming 1-wide chains (mean 1.3 same-name river neighbors per tile, never a 2-wide band); 24 adjacent pairs carry different names (confluences) | The tile rule for minor rivers stands; the "unnamed counts as the same river" and "different name is a crossing" rules cover the real cases |
 | P2 | No. `isWater` false, terrain `TERRAIN_NAVIGABLE_RIVER`, `isNavigableRiver` true, `isImpassable` false, `isCoastalLand` true | The channel takes the land path; the isWater override is a safety net this build never needs |
 | P3 | No. `GameplayMap` has only tile reads (`getRiverName`, `getRiverType`, `isAdjacentToRivers`, `isNavigableRiver`, `isRiver`); `MapRivers` speaks in plots; `RiverTypes` is `NO_RIVER -1, RIVER_MINOR 0, RIVER_NAVIGABLE 1` | No edge rule to switch to. `isAdjacentToRivers` is true on the river tile itself, so it cannot tell bank from river |
-| P4 | `Treasury.changeGoldBalance` moves nothing, on a rival OR on the local player, within 60 s or across a turn. `Players.grantYield(pid, YIELD_GOLD, n)` lands at +3 s on both. And a script `purchasePlot` costs nothing: 0 on the tick, through +60 s, and at the turn roll (a clean roll with no Autoplay) | An AI can be refunded, through `grantYield`; the mod's preferred refund verb is dead on this build, which costs nothing today because the purchase is free. #2 needs no refund at all unless the engine prices script purchases again |
-| P5 | Yes. Two transfers watched: our Glasgow to player 3 (a capture; `CityRemovedFromMap` + `CityAddedToMap` accompany it), and player 6's Tendirma to independent 12 with no local party | #5 can subscribe; payload `{ fromPlayer, transferType, cityID }` with the city already under its new owner |
+| P4 | `Treasury.changeGoldBalance` moves nothing, on a rival or on the local player, within 60 s or across a turn. `Players.grantYield(pid, YIELD_GOLD, n)` lands at +3 s on both. And a script `purchasePlot` costs nothing: 0 on the tick, through +60 s, and at the turn roll (a clean roll with no Autoplay) | An AI can be refunded, through `grantYield`; the mod's preferred refund verb is dead on this build, which costs nothing today because the purchase is free. #2 needs no refund at all unless the engine prices script purchases again |
+| P5 | Yes. Two transfers seen: our Glasgow to player 3 (a capture; `CityRemovedFromMap` + `CityAddedToMap` accompany it), and player 6's Tendirma to independent 12 with no local party | #5 can subscribe; payload `{ fromPlayer, transferType, cityID }` with the city already under its new owner |
 | P6 | Yes. `UnitMoved` fires for every player's units (8,615 foreign of 9,072); `Units.get(data.unit).Combat.isCombat` split them 8,067 combat to 988 civilian | #6 has its combat test |
-| P7 | No defeated major in the save. The two dead ids are a placeholder city-state with no plots and pseudo-player 63 (`CIVILIZATION_NONE`), which owns six `DISTRICT_WILDERNESS` plots (coast, wreckage, campfire, tents, cave improvements) with no owning city | Still open for a real defeat. Note that `getOwner` returns a dead id on wilderness plots, so the district check is what keeps them out of the claim path |
+| P7 | No defeated major in the save. The two dead ids are a placeholder city-state with no plots and pseudo-player 63 (`CIVILIZATION_NONE`), which owns six `DISTRICT_WILDERNESS` plots (coast, wreckage, campfire, tents, cave improvements) with no owning city | Still open for a real defeat. `getOwner` returns a dead id on wilderness plots, so the district check is what keeps them out of the claim path |
 
 ## Suggested order
 
-1. **#1 rivers**. Built; P1-P3 are the in-game check.
-2. **#8 small rules**, alongside #1, since both are field-math only.
-3. **#5 capture transfer**, small and independent.
-4. **#3 and #4 together**, then a balance pass with the pacing simulator.
-5. **#2 AI flips**, after P4 and a timing measurement of the pass. This is the change players will feel most, so it
+1. #1 rivers. Built; P1-P3 are the in-game check.
+2. #8 small rules, alongside #1, since both are field-math only.
+3. #5 capture transfer, small and independent.
+4. #3 and #4 together, then a balance pass with the pacing simulator.
+5. #2 AI flips, after P4 and a timing measurement of the pass. This is the change players will feel most, so it
    ships opt-in first.
-6. **#6 unit conquest**, last, opt-in.
+6. #6 unit conquest, last, opt-in.
 
 When any of these lands, update the README credits line so it states which Civ V rules are carried and which differ.
 
 ## Build record (2026-09-26)
 
-Built in one change against the probe results above (the conquest watch followed the same day): #2 (`ui/cd-ai-flips.js`, opt-in `aiCultureFlips`), #3 and #4
+Built in one change against the probe results above (the conquest run followed the same day): #2 (`ui/cd-ai-flips.js`, opt-in `aiCultureFlips`), #3 and #4
 (`ui/cd-inject.js` + `ui/cd-conversion.js`, `foreignCultureInCities`, on by default), #5 (`ui/cd-capture.js`,
 `captureTransfer`, on by default), #6 (`ui/cd-conquest.js`, opt-in `conquestFlip`), #8 (`sourceThresholdMountain`,
 `ownerFloor`, the total cap in `cd-inject.js`). The flip commit shared by the player and the AI moved to
@@ -423,18 +423,18 @@ player. Gold writes go through `Players.grantYield` (P4). Unit tests: `tests/par
 
 Run once in game (`devtools/harness/cdh-game-build.js`, log `build-UI.log`, both opt-in toggles patched on):
 
-| Item | Watched |
+| Item | Result |
 | --- | --- |
 | #2 AI flip | A rival city took a seeded tile (pending, then `claim confirmed on the live map` next pass), and kept claiming from the diffusing stock on later turns |
 | #3 foreign injection | On our capital (population 24) a rival stock of 500 rose to 681 in one pass where decay alone leaves 474 |
 | #4 conversion | The same pass converted the foreign share to the owner (the arithmetic pinned in `tests/parity.mjs`) |
 | #5 capture transfer | The handler on a real city read 24 purchased plots and rewrote the center's 1000 to exactly 862.5 |
 | #8 owner floor | 158 owned region tiles carried the floor after one pass |
-| #6 conquest | Watched in a second run (`cdh-game-conquest.js`, `conquest-UI.log`): at war with player 3, a Spearman created on their tile 83,32 beside our land held it; the counter read 1, 2, 3, 4 on turns 136-139; on turn 140 the pass logged `conquest 83,32: taken from player 3 by player 0's unit`, the tile read as ours at +5 s, and turn 141's pass logged `pending 83,32 claim confirmed on the live map`. The unit stood there unharmed throughout. The tile sat inside our city's ring 3, so the inner-ring rule then dropped the claim record and, in that build, the lock too; the tile stayed ours. Fixed the same day: the release keeps the lock, and a conquest now applies its own `conquestHoldTurns` (10) hold against culture, which another army never waits on. Retake rules, decided the same day: an army at any time; culture only after peace and after the hold, by the standard method, for any civilization whose culture leads, not only the original owner |
-| #7 | Not built. No defeated major has been watched; the only dead plot owner seen is the engine's wilderness pseudo-player |
+| #6 conquest | A second run (`cdh-game-conquest.js`, `conquest-UI.log`): at war with player 3, a Spearman created on their tile 83,32 beside our land held it; the counter read 1, 2, 3, 4 on turns 136-139; on turn 140 the pass logged `conquest 83,32: taken from player 3 by player 0's unit`, the tile read as ours at +5 s, and turn 141's pass logged `pending 83,32 claim confirmed on the live map`. The unit stood there unharmed throughout. The tile sat inside our city's ring 3, so the inner-ring rule then dropped the claim record and, in that build, the lock too; the tile stayed ours. Fixed the same day: the release keeps the lock, and a conquest now applies its own `conquestHoldTurns` (10) hold against culture, which another army never waits on. Retake rules, decided the same day: an army at any time; culture only after peace and after the hold, by the standard method, for any civilization whose culture leads, not only the original owner |
+| #7 | Not built. No defeated major has been seen; the only dead plot owner seen is the engine's wilderness pseudo-player |
 
 What differs from the spec text above: the AI has its own per-pass ceiling rather than sharing ours; the conquest
 buffer counts passes and is not scaled to game speed; a foreign group without Emigration data is pumped only once it
 holds `foreignGroupMinStock` on the tile (Civ V pumped any group above zero), to keep a neighbor's trickle from being
-amplified by the city's own people; and no refund is made for an AI flip, because a script purchase was watched
-charging nothing.
+amplified by the city's own people; and no refund is made for an AI flip, because a script purchase
+charges nothing.

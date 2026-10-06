@@ -62,7 +62,7 @@ This mod is developed with [url=https://github.com/tmtmiller1/civilizationvii_to
 [h2]Credits[/h2]
 [list]
 [*][b]Tower[/b], for design and Civilization VII implementation.
-[*][b]Gedemon[/b], creator of the Civilization V [i]Cultural Diffusion[/i] mod (v18), whose reaction-diffusion culture model — the inject / diffuse / decay / flip loop over a per-tile stock, plus its terrain and ownership rules — is the core layer this mod builds on.
+[*][b]Gedemon[/b], creator of the Civilization V [i]Cultural Diffusion[/i] mod (v18), whose reaction-diffusion culture model (the inject / diffuse / decay / flip loop over a per-tile stock, plus its terrain and ownership rules) is the core layer this mod builds on.
 [/list]
 [h2]Special Thanks[/h2]
 [list]

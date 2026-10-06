@@ -5,7 +5,7 @@
   finds the mod. Loaded through the modinfo <UpdateDatabase> in the game-scope ActionGroup; the text lives in
   text/en_us/PediaText.xml.
 
-  Every page uses its own layout and NO CivilopediaPageChapterParagraphs rows: the pedia resolves each chapter's
+  Every page uses its own layout and no CivilopediaPageChapterParagraphs rows: the pedia resolves each chapter's
   title and paragraphs by key convention (base-standard ui/civilopedia/model-civilopedia.js findChapterTextKey),
   LOC_PEDIA_<section>_PAGE_<page>_CHAPTER_<chapter>_TITLE and ..._PARA_1, _PARA_2, ... until the first gap. A
   chapter with no PARA_1 is skipped; a chapter with no TITLE row draws untitled (each page's CONTENT opening).

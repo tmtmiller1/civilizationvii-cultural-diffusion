@@ -1,7 +1,7 @@
-// cdh-game.js - game scope. Cultural Diffusion hands-free harness (dev only, never shipped).
+// cdh-game.js: game scope. Cultural Diffusion hands-free harness (dev only, never shipped).
 // Loaded into the save by cdh-shell.js. Presses Begin Game itself, then, in the first local turn:
-//   T1 FLIP     our city's purchasePlot on an unowned tile beyond ring 3 (owner read inline AND after 3s -
-//               cd-pass.js books a flip on the INLINE read, so an async-only write would silently book nothing)
+//   T1 FLIP     our city's purchasePlot on an unowned tile beyond ring 3 (owner read inline and after 3s,
+//               cd-pass.js books a flip on the inline read, so an async-only write would silently book nothing)
 //   T2 RIVAL    our purchasePlot on a rival tile touching our land, then CEDE it back via the rival's own city
 //   T3 RELEASE  setOwnership(NO_PLAYER) on a second tile we just bought (the recede release verb)
 //   T4 SETTLE   a spawned settler's FOUND_CITY check: unowned plot vs neighboring rival-owned plot vs our own
@@ -88,7 +88,7 @@ function snap(c) {
     pending: safe(() => c.pendingPopulation, null), plots: safe(() => c.getPurchasedPlots().length, null), net };
 }
 
-// --- improvement choice: the rural district's own terrain table, resource > river > feature > terrain -------
+// improvement choice: the rural district's own terrain table, resource > river > feature > terrain
 let FREE = null;
 function freeRows() {
   if (!FREE) {
@@ -112,7 +112,7 @@ function improvementFor(l) {
   return { res, feat, ter, bio, nav, pick: rows.length ? rows[0].ConstructibleType : null, rows: (freeRows() || []).length };
 }
 
-// --- candidates ---------------------------------------------------------------------------------------------
+// candidates
 function unownedFrontier(cities, all) {
   const seen = new Set(); const out = [];
   for (const c of cities) {
@@ -145,7 +145,7 @@ function rivalFrontier(cities, all, majors) {
   return out.sort((a, b) => a.d - b.d);
 }
 
-// --- tests --------------------------------------------------------------------------------------------------
+// tests
 async function flipTest(label, l, pid, city) {
   const before = { owner: owner(l), city: owningCity(l) };
   const buy = refundBuy(pid, city, l);

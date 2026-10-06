@@ -1,21 +1,21 @@
-// cdh-game-lenscheck.js - game scope, deployed as ui/cdh-game.js. Does the pressure overlay leak? (dev only)
+// cdh-game-lenscheck.js: game scope, deployed as ui/cdh-game.js. Does the pressure overlay leak? (dev only)
 //
-// THE QUESTION: does the Cultural Pressure shading appear when the player has a DIFFERENT lens selected?
+// The question: does the Cultural Pressure shading appear when the player has a different lens selected?
 //
 // Why it is open: while shooting release imagery, a frame taken before any `setActiveLens` call already showed the
 // shading, with `getActiveLens()` reporting `fxs-default-lens`. That is either a leak or a misread of the image.
-// The code looks correctly gated - `PressureLens.activeLayers` holds the layer, and the layer implements
-// `applyLayer` / `removeLayer` - so this measures the behavior instead of re-reading the source.
+// The code looks correctly gated, `PressureLens.activeLayers` holds the layer, and the layer implements
+// `applyLayer` / `removeLayer`, so this measures the behavior instead of re-reading the source.
 //
 // Sequence, with the layer's own enabled flag logged at every step and a frame at each:
 //   A  untouched at load        - the state a player opens the game in
-//   B  Cultural Pressure active - the shading SHOULD be here
-//   C  switched AWAY to another lens - the shading MUST be gone. If it is still painted, `removeLayer` is not
+//   B  Cultural Pressure active, the shading should be here
+//   C  switched away to another lens, the shading must be gone. If it is still painted, `removeLayer` is not
 //      clearing the overlay, and a player on another lens keeps seeing culture shading.
 //   D  switched away a second time via the mod's own Shift+C path (toggleLens), which is how a player turns it off
 //
 // Seeds a contested block first, because with nothing contested there is nothing to paint and every frame would
-// look identical - the mistake that cost two imagery runs.
+// look identical, the mistake that cost two imagery runs.
 
 import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
 import { currentAgeKey } from "/cultural-diffusion/ui/cd-polity.js";

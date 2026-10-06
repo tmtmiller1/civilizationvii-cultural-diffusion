@@ -18,7 +18,7 @@ function safe(fn, fallback) {
 }
 
 /**
- * Whether a plot sits within `radius` rings of a protected city CENTER (the "downtown" shield that
+ * Whether a plot sits within `radius` rings of a protected city center (the "downtown" shield that
  * never flips): radius 1 = center + ring-1; 0 = only the city-center plot; < 0 = nothing protected.
  * @param {{x:number,y:number}} plot Target plot.
  * @param {number} protectOwner Owner id whose core to protect (-1 = protect every owner's core).
@@ -28,14 +28,14 @@ function safe(fn, fallback) {
 export function isCoreProtected(plot, protectOwner, radius = 1) {
   if (typeof radius === "number" && radius < 0) return false;
   const r = Math.max(0, radius || 0);
-  // Two routes on purpose. The player-list route sees a major's or city-state's cities; the MAP route
-  // also sees settlements no city list reports - watched: an Independent Power reads `cities: 0`, so
-  // the list route alone leaves every village center unprotected (docs/BACKLOG.md).
+  // Two routes on purpose. The player-list route sees a major's or city-state's cities; the map route
+  // also sees settlements no city list reports: an Independent Power reads `cities: 0`, so the list
+  // route alone leaves every village center unprotected (docs/BACKLOG.md).
   return _cityCenterWithin(plot, protectOwner, r) || _centerOnMapWithin(plot, protectOwner, r);
 }
 
 /**
- * Whether a settlement center read off the MAP sits within `radius` rings of the plot, optionally
+ * Whether a settlement center read off the map sits within `radius` rings of the plot, optionally
  * filtered to one owner. Catches villages that no player's city list enumerates.
  * @param {{x:number,y:number}} plot Target plot.
  * @param {number} protectOwner Owner filter (-1 = any).
@@ -129,9 +129,9 @@ export function atWar(a, b) {
 }
 
 /**
- * Whether a plot owned by ANOTHER player may be taken at all: safety mode off, no active war with
+ * Whether a plot owned by another player may be taken at all: safety mode off, no active war with
  * the owner (borders do not diffuse across a front), and outside that owner's protected city core.
- * Unowned plots never reach this test - the caller gates on `owner >= 0`.
+ * Unowned plots never reach this test: the caller gates on `owner >= 0`.
  * @param {{x:number,y:number}} loc Target plot.
  * @param {number} owner Current owner player id.
  * @param {number} me Local player id.
@@ -142,7 +142,7 @@ export function rivalClaimAllowed(loc, owner, me, cfg) {
   if (cfg.claimOnlyUnowned) return false;          // safety mode: empty land only
   if (atWar(me, owner)) return false;              // no peaceful diffusion across an active front
   // Protect within coreProtectRadius rings of the owner's city center (0 = just the center plot, so
-  // culture bites a major's ring-1+ inward; -1 = protect nothing) - but a MINOR gets at least
+  // culture bites a major's ring-1+ inward; -1 = protect nothing); a minor gets at least
   // minorProtectRadius, because its whole territory is that small.
   return !isCoreProtected(loc, owner, protectRadiusFor(owner, cfg));
 }
@@ -163,7 +163,7 @@ export function protectRadiusFor(owner, cfg) {
 }
 
 /**
- * Whether a player id belongs to a MINOR: a city-state or an Independent Power. Both read
+ * Whether a player id belongs to a minor: a city-state or an Independent Power. Both read
  * `isMajor === false`; `isMinor` alone is false for Independent Powers (engine-closed.md).
  * @param {number} pid Player id.
  * @returns {boolean} True when the player is not a major civ.
@@ -176,7 +176,7 @@ export function isMinorOwner(pid) {
 }
 
 /**
- * Whether a player id belongs to a LIVING MAJOR civilization: the only players that may gain land by culture or
+ * Whether a player id belongs to a living major civilization: the only players that may gain land by culture or
  * conquest. `isMajor === true` is required (not merely "not minor"), and a dead player never qualifies.
  * @param {number} pid Player id.
  * @returns {boolean} True when the player is an alive major.

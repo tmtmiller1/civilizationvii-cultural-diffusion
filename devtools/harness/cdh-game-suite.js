@@ -1,21 +1,21 @@
-// cdh-game-suite.js - game scope, deployed as ui/cdh-game.js. The full release-imagery suite (dev only).
+// cdh-game-suite.js: game scope, deployed as ui/cdh-game.js. The full release-imagery suite (dev only).
 //
 // Six captures covering what a player actually sees. Each emits `SHOT <name>` once its view has settled;
-// run-harness.sh grabs the game WINDOW by id (never the display).
+// run-harness.sh grabs the game window by id (never the display).
 //
-//   01-hero-borders     culture-expanded border, no overlays - the mod's effect on a map
-//   02-lens-contested   the Cultural Pressure lens, camera ON the painted front and zoomed in
+//   01-hero-borders     culture-expanded border, no overlays, the mod's effect on a map
+//   02-lens-contested   the Cultural Pressure lens, camera on the painted front and zoomed in
 //   03-lens-panel       the same, with the game's Lenses list open on Cultural Pressure
 //   04-frontier-rival   our cultural border meeting a rival's territory
 //   05-options          Options > Mods > Cultural Diffusion, the whole settings surface
 //   06-lens-wide        the front in context, for a header image
 //
 // Framing lessons from the first two attempts, both of which wasted a run:
-//   * Aim AT the subject. Run 11's recipe aims four columns east to dodge centered pop-ups, which put the paint in
+//   * Aim at the subject. Run 11's recipe aims four columns east to dodge centered pop-ups, which put the paint in
 //     the top-left corner and made the cities the subject instead.
-//   * Seed BELOW the ownership bar and never run a pass: a claimed tile is not contested, so the lens has nothing
+//   * Seed below the ownership bar and never run a pass: a claimed tile is not contested, so the lens has nothing
 //     to paint (the first attempt's lens-on and lens-off frames measured 1.44% and 1.47% colored pixels).
-//   * Do not switch to `fxs-default-lens` for a clean map - it is the yield-icon overlay.
+//   * Do not switch to `fxs-default-lens` for a clean map, it is the yield-icon overlay.
 
 import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
 import { currentAgeKey } from "/cultural-diffusion/ui/cd-polity.js";
@@ -130,7 +130,7 @@ async function run() {
   emit("SHOT 01-hero-borders");
   await later(2000);
 
-  // 02 lens, camera ON the painted block and close.
+  // 02 lens, camera on the painted block and close.
   const set = safe(() => { LensManager.setActiveLens("cd-pressure-lens"); return "called"; }, "throw");
   emit(`LENS set=${set} active=${safe(() => LensManager.getActiveLens(), "?")} paints=${lensCount()}`);
   aim(block.centre, 0.3, "lens-close");

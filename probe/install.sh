@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# install.sh - copy the cultural-diffusion probe into the Civ VII Mods directory (macOS).
+# install.sh: copy the cultural-diffusion probe into the Civ VII Mods directory (macOS).
 set -euo pipefail
 
 HERE="$(cd "$(dirname "$0")" && pwd)"

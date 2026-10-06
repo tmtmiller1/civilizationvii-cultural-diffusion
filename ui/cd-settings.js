@@ -4,7 +4,7 @@
 // choices through a cascade-safe per-mod localStorage store and pushes them into CONFIG at boot
 // and at the start of every pass, so a change in the Options screen takes effect next pass.
 //
-// The store is INLINED here (not imported from a standalone file): GameFace's module
+// The store is inlined here (not imported from a standalone file): GameFace's module
 // linker treats an import-less UIScript as a classic script and won't expose its
 // exports, so the store must live in a module that always has imports.
 
@@ -35,7 +35,7 @@ const CORE_RADIUS_BY_INDEX = [1, 0, -1];
  */
 class ModOptionsStore {
   /**
-   * Read the shared root for a WRITE without ever destroying a sibling's slice.
+   * Read the shared root for a write without ever destroying a sibling's slice.
    * @returns {{root: Record<string, *>, safe: boolean}} Root + whether it is safe to write.
    * @private
    */
@@ -55,9 +55,9 @@ class ModOptionsStore {
       return { root: {}, safe: false };
     }
     if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return { root: {}, safe: false };
-    // Coherent's getItem() in this UI context IGNORES the key and returns the FIRST key's value, so
+    // Coherent's getItem() in this UI context ignores the key and returns the first key's value, so
     // this read can hand back another mod's blob; writing that back would copy it into the shared key.
-    // A real settings root has only object values, so on a mismatch decline to persist - never rewrite.
+    // A real settings root has only object values, so on a mismatch decline to persist; never rewrite.
     const looksLikeSettingsRoot = Object.keys(parsed).every((k) => {
       const v = parsed[k];
       return !!v && typeof v === "object" && !Array.isArray(v);
@@ -100,7 +100,7 @@ class ModOptionsStore {
 
 const ModOptions = new ModOptionsStore();
 
-// -- preset ---------------------------------------------------------
+// preset
 
 /**
  * The saved intensity-preset index (0 = Custom). Defaults to Medium (index 2) on a
@@ -122,7 +122,7 @@ export function setPresetIndex(index) {
   ModOptions.save(MOD_ID, OPT_PRESET, i);
 }
 
-// -- boolean / verb toggles -----------------------------------------
+// boolean / verb toggles
 
 /** @param {string} opt Option id. @param {boolean} dflt Default. @returns {boolean} Stored bool. */
 function loadBool(opt, dflt) {
@@ -205,8 +205,8 @@ export function setRequireAdjacency(on) {
 
 /**
  * Whether the read-only Cultural Pressure map lens registers its lens-panel button + hotkey. Default
- * ON. This is a pure UI toggle (the lens changes nothing about the sim), so - unlike the territory
- * toggles - it does NOT feed into CONFIG or the pass; the lens UIScript reads it directly.
+ * on. This is a pure UI toggle (the lens changes nothing about the sim), so, unlike the territory
+ * toggles, it does not feed into CONFIG or the pass; the lens UIScript reads it directly.
  * @returns {boolean} Whether the pressure lens is enabled.
  */
 export function getPressureLensEnabled() {
@@ -218,7 +218,7 @@ export function setPressureLensEnabled(on) {
 }
 
 /**
- * Whether claimed tiles can be lost again (ceded to a decisive rival). Opt-in, OFF by default.
+ * Whether claimed tiles can be lost again (ceded to a decisive rival). Opt-in, off by default.
  * @returns {boolean} Whether borders recede.
  */
 export function getRecedeBorders() {
@@ -244,7 +244,7 @@ export function setGrowthBuffer(on) {
 
 /**
  * Whether every living major civilization gains land by culture inside the simulated region, under the same gates
- * as the local player. Opt-in, OFF by default.
+ * as the local player. Opt-in, off by default.
  * @returns {boolean} Whether AI culture flips are on.
  */
 export function getAiCultureFlips() {
@@ -256,7 +256,7 @@ export function setAiCultureFlips(on) {
 }
 
 /**
- * Whether a combat unit that holds an enemy tile for the occupation buffer during a war takes it. Opt-in, OFF by
+ * Whether a combat unit that holds an enemy tile for the occupation buffer during a war takes it. Opt-in, off by
  * default.
  * @returns {boolean} Whether conquest flips are on.
  */
@@ -281,7 +281,7 @@ export function setForeignCultureInCities(on) {
   ModOptions.save(MOD_ID, OPT_FOREIGN, on ? 1 : 0);
 }
 
-// -- apply to live CONFIG -------------------------------------------
+// apply to live CONFIG
 
 /**
  * Reset the preset-controlled keys to their shipped defaults (so switching from a
@@ -310,7 +310,7 @@ export function applyTunableOverrides() {
   }
   CONFIG.diffusionEnabled = getDiffusionEnabled();
   CONFIG.claimOnlyUnowned = getClaimOnlyUnowned();
-  // flipVerb is intentionally NOT overridden from settings: it stays at its CONFIG default
+  // flipVerb is intentionally not overridden from settings: it stays at its CONFIG default
   // ("purchasePlot", integrated). Change it only in code (cd-config.js) for testing.
   CONFIG.fusedModel = getFusedModel();
   CONFIG.useEmigration = getUseEmigration();

@@ -1,15 +1,13 @@
 #!/usr/bin/env node
 // hotspot-score.mjs
 //
-// Churn x complexity hotspot scoring for the Cultural Diffusion ui/ tree. Dependency-free
-// (Node built-ins + git). Prioritizes files that combine frequent change (churn) with
-// structural risk (complexity). Mirrors emigration/scripts/hotspot-score.mjs.
+// Churn x complexity hotspot scoring for the ui/ tree, using only Node built-ins and git.
+// It ranks files that change often and are also complex. Same as
+// emigration/scripts/hotspot-score.mjs.
 //
-// GIT-AWARE: this mod folder is not always a git working tree. When git history is
-// available, churn(f) = commits touching f in the sample window. When it is NOT (no .git
-// above this folder), churn is reported as unavailable and files are ranked by complexity
-// alone, with an explicit note - so the tool still produces a usable hotspot ordering and
-// degrades honestly rather than failing.
+// This mod folder is not always a git working tree. With git history, churn(f) = commits
+// touching f in the sample window. Without it (no .git above this folder), churn is reported
+// as unavailable and files are ranked by complexity alone, with a note saying so.
 //
 // Definitions
 //   churn(f)      = commits in the sample window that touched f (git log), or 0 if no git.
@@ -52,7 +50,7 @@ function listUiJs() {
   return out;
 }
 
-// True when ROOT is inside a git working tree WITH at least one commit (git log needs a HEAD).
+// True when ROOT is inside a git working tree with at least one commit (git log needs a HEAD).
 function gitAvailable() {
   try {
     const inTree = execFileSync("git", ["rev-parse", "--is-inside-work-tree"], {
