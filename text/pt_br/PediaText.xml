@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database>
+    <LocalizedText>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_TITLE" Language="pt_BR"><Text>Difusão Cultural</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_GROUP_START_TITLE" Language="pt_BR"><Text>Começando</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_GROUP_SPREAD_TITLE" Language="pt_BR"><Text>Propagação Cultural</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_GROUP_POWER_TITLE" Language="pt_BR"><Text>Poder Cultural</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_GROUP_RIVALS_TITLE" Language="pt_BR"><Text>Rivais, Cidades e Guerra</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_GROUP_INTERFACE_TITLE" Language="pt_BR"><Text>Interface e Opções</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_TITLE" Language="pt_BR"><Text>Difusão Cultural</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_CONTENT_PARA_1" Language="pt_BR"><Text>Cada painel perto das suas cidades guarda quanta [icon:YIELD_CULTURE] Cultura cada civilização tem nele. A cada turno, as cidades adicionam cultura ao próprio painel, a cultura se espalha para os painéis vizinhos e todo painel perde um pouco.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_CONTENT_PARA_2" Language="pt_BR"><Text>Quando a sua cultura em um painel além do terceiro anel de uma cidade é grande o bastante, você reivindica o painel. As fronteiras crescem devagar, principalmente a partir do meio da partida, e podem tomar painéis de fronteira de rivais cuja cultura ali é bem mais fraca.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_WHERE_TITLE" Language="pt_BR"><Text>Na Partida</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_WHERE_PARA_1" Language="pt_BR"><Text>[BLIST][LI][B]Lente de Pressão Cultural[/B] (menu de lentes ou Shift+C): sombreia painéis prestes a mudar de dono. Veja [B]Lente de Pressão[/B].[LI][B]Notificações[/B]: quando você reivindica território ou perde um painel para outra civilização.[LI][B]Opções, Complementos, Difusão Cultural[/B]: intensidade e todas as chaves. Veja [B]Opções e Predefinições[/B].[/LIST]</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_TITLE" Language="pt_BR"><Text>Perguntas e Respostas</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_NOTHING_TITLE" Language="pt_BR"><Text>Por que minhas fronteiras não cresceram?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_NOTHING_PARA_1" Language="pt_BR"><Text>Uma cidade precisa de uma cultura grande e constante para chegar ao quarto anel. Cidades do início da partida em geral não reivindicam nada. A lente mostra quais painéis você está vencendo e quantos turnos cada um precisa. Veja [B]Ritmo e Terras Obtidas[/B].</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_WORK_TITLE" Language="pt_BR"><Text>Minhas cidades podem trabalhar painéis reivindicados?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_WORK_PARA_1" Language="pt_BR"><Text>Não. As cidades só trabalham painéis dentro de três anéis, e os painéis reivindicados ficam mais longe. Eles contam como seu território e bloqueiam colonos rivais.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_AILAND_TITLE" Language="pt_BR"><Text>A IA pode tomar minhas terras?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_AILAND_PARA_1" Language="pt_BR"><Text>Sim. Por padrão, um rival cuja cultura lidera claramente um painel perto das suas terras o toma com as mesmas regras das suas reivindicações, e você é notificado. Desligue Todas as civilizações ganham terras pela cultura para impedir isso. Veja [B]Expansão Rival[/B]; [B]Recuo de Fronteiras[/B] e [B]Terreno Ocupado[/B] são outras opções.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_FLIPBACK_TITLE" Language="pt_BR"><Text>Por que um painel que domino não muda?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_FLIPBACK_PARA_1" Language="pt_BR"><Text>Ele não cumpre outra regra de reivindicação: está longe demais das suas cidades, não toca suas terras, está dentro do núcleo protegido de uma cidade, pertence a uma civilização com quem você está em guerra, fica nas suas Terras Distantes antes da Era da Exploração, mudou de dono há pouco ou tomá-lo prenderia uma unidade estrangeira. Veja [B]Reivindicar Painéis[/B].</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_TURNOFF_TITLE" Language="pt_BR"><Text>E se eu desligar o mod?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_TURNOFF_PARA_1" Language="pt_BR"><Text>Novas reivindicações param. Painéis já reivindicados continuam seus.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_SAVES_TITLE" Language="pt_BR"><Text>Posso adicioná-lo a uma partida em andamento?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_SAVES_PARA_1" Language="pt_BR"><Text>Não. O mod precisa estar habilitado quando a partida começa. Apenas um jogador.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_TITLE" Language="pt_BR"><Text>O Campo Cultural</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_CONTENT_PARA_1" Language="pt_BR"><Text>Todo painel a até oito anéis das suas cidades guarda a cultura de cada civilização. Esse estoque muda uma vez por turno, e a posse do painel o acompanha (veja [B]Reivindicar Painéis[/B]).</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_INJECT_TITLE" Language="pt_BR"><Text>As Cidades Adicionam Cultura</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_INJECT_PARA_1" Language="pt_BR"><Text>Cada cidade adiciona cultura ao próprio painel. Quanto mais cultura já houver ali, mais rápido ela cresce, até um limite definido pela força da cidade (veja [B]Força Cultural[/B]). As cidades também adicionam cultura para os outros povos que vivem nelas (veja [B]Cidades Mistas e Tomadas[/B]).</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_DIFFUSE_TITLE" Language="pt_BR"><Text>A Cultura se Espalha</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_DIFFUSE_PARA_1" Language="pt_BR"><Text>Um painel com pelo menos 100 de cultura dá cerca de 5.5% dela a cada vizinho por turno. Um vizinho pode chegar no máximo a 40% da quantidade de origem, ou 75% ao longo de uma estrada ou rio. O terreno retarda ou bloqueia a propagação (veja [B]Terreno e Rios[/B]).</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_DECAY_TITLE" Language="pt_BR"><Text>A Cultura Enfraquece</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_DECAY_PARA_1" Language="pt_BR"><Text>Todo painel perde 5% da sua cultura mais 1 ponto por turno. Isso limita até onde uma fronteira chega, e a cultura recua quando a cidade enfraquece ou é perdida. Painéis que você possui mantêm pelo menos 1 ponto da sua cultura.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_TITLE" Language="pt_BR"><Text>Terreno e Rios</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_CONTENT_PARA_1" Language="pt_BR"><Text>O painel para onde a cultura vai decide o quanto ela se espalha. Efeitos no mesmo painel se acumulam.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROUGH_TITLE" Language="pt_BR"><Text>Terreno Difícil</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROUGH_PARA_1" Language="pt_BR"><Text>Do mais fácil ao mais difícil:[BLIST][LI][B]Floresta, taiga[/B]: leve redução.[LI][B]Terreno acidentado[/B]: redução moderada.[LI][B]Tundra[/B]: redução moderada; precisa de uma origem mais forte para atravessar.[LI][B]Deserto[/B]: grande redução.[LI][B]Floresta tropical, pântano[/B]: grande redução; só uma origem forte atravessa.[LI][B]Montanhas[/B]: quase intransponíveis. A cultura em um pico precisa de 7.5 vezes a quantidade normal para sair dele.[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROADS_TITLE" Language="pt_BR"><Text>Estradas</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROADS_PARA_1" Language="pt_BR"><Text>Entre dois painéis com estrada, a cultura se espalha duas vezes mais rápido e mais longe.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_RIVERS_TITLE" Language="pt_BR"><Text>Rios</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_RIVERS_PARA_1" Language="pt_BR"><Text>Ao longo de um rio, a cultura se espalha mais rápido e mais longe, mais em um Rio Navegável do que em um Rio Pequeno. Passar para um rio a partir da margem ou de outro rio exige o dobro da quantidade normal, e a cultura chega enfraquecida. Uma cultura que domina o rio chega às duas margens.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_WATER_TITLE" Language="pt_BR"><Text>Costa e Oceano</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_WATER_PARA_1" Language="pt_BR"><Text>Só uma cultura forte atravessa a água, a costa com mais facilidade que o oceano. Atravessar fica mais fácil a cada Era, de quase impossível na Antiguidade até o mais fácil na Era Moderna. Painéis de Terras Distantes não podem ser reivindicados antes da Era da Exploração.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_TITLE" Language="pt_BR"><Text>Reivindicar Painéis</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_CONTENT_PARA_1" Language="pt_BR"><Text>Um painel reivindicado passa para a sua cidade mais próxima.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_RULES_TITLE" Language="pt_BR"><Text>Requisitos</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_RULES_PARA_1" Language="pt_BR"><Text>[BLIST][LI]A sua cultura é a maior no painel.[LI]Ela é de pelo menos 300 (375 na Exploração, 480 na Era Moderna).[LI]Se um rival possui o painel, a cultura dele é menor que dois terços da sua.[LI]O painel está a até seis painéis da sua cidade e além do terceiro anel dela.[LI]O painel toca suas terras (opção Apenas fronteira contígua).[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_TITLE" Language="pt_BR"><Text>Painéis Protegidos</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_1" Language="pt_BR"><Text>A opção Proteção de cidades rivais define quanto de uma cidade rival fica a salvo: o centro e o primeiro anel, só o centro (padrão) ou nada.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_2" Language="pt_BR"><Text>Cidades-Estados e Povos Independentes sempre mantêm o centro e o primeiro anel.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_3" Language="pt_BR"><Text>Com Reivindicar apenas terras vazias ligado (padrão em Baixa), a cultura nunca toma um painel com dono.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_4" Language="pt_BR"><Text>Na troca de Era, um painel com dono que tenha uma Melhoria, um Distrito Urbano ou uma Maravilha não muda durante a contagem regressiva do Fim de uma Era nem nos dois primeiros turnos da seguinte. Painéis sem melhorias não são afetados.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_SAFE_TITLE" Language="pt_BR"><Text>Limites</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_SAFE_PARA_1" Language="pt_BR"><Text>[BLIST][LI]A cultura nunca toma painéis de uma civilização com quem você está em guerra.[LI]Um painel que mudou de dono fica travado por 15 turnos.[LI]Uma reivindicação que deixaria sem saída uma unidade estrangeira, de uma civilização em paz com você, é recusada.[LI]No máximo 8 painéis mudam de dono por turno, e cada cidade tem no máximo 80 painéis reivindicados (40 em Baixa).[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_BUFFER_TITLE" Language="pt_BR"><Text>Terras Junto a Novas Melhorias</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_BUFFER_PARA_1" Language="pt_BR"><Text>Com esta opção ligada (desligada por padrão), concluir uma Melhoria Rural perto da sua fronteira também reivindica os painéis sem dono ao lado dela, até um anel além do alcance normal da cidade.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_TITLE" Language="pt_BR"><Text>Ritmo e Terras Obtidas</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_CONTENT_PARA_1" Language="pt_BR"><Text>A cultura se acumula um anel por vez, então as fronteiras crescem devagar. Uma cultura mais forte chega mais longe e mais rápido.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_RINGS_TITLE" Language="pt_BR"><Text>Anéis</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_RINGS_PARA_1" Language="pt_BR"><Text>[BLIST][LI][B]Anéis 1-3[/B]: regras do jogo base; a sua própria cultura nunca os reivindica, mas a de um rival pode, quando Todas as civilizações ganham terras pela cultura está ligado.[LI][B]Anel 4[/B]: o primeiro anel que a cultura reivindica.[LI][B]Anel 5+[/B]: só culturas fortes e consolidadas.[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_EARLY_TITLE" Language="pt_BR"><Text>Início da Partida</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_EARLY_PARA_1" Language="pt_BR"><Text>Uma cidade jovem que produz pouca [icon:YIELD_CULTURE] Cultura não reivindica nada. As reivindicações começam conforme as cidades se fortalecem. A predefinição Alta chega mais longe mais cedo.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_VALUE_TITLE" Language="pt_BR"><Text>Painéis Reivindicados</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_VALUE_PARA_1" Language="pt_BR"><Text>Painéis reivindicados são seus, mas não podem ser trabalhados nem receber construções, pois as cidades só trabalham os três primeiros anéis. Eles impedem que rivais se assentem perto de você: colonos não podem fundar nas terras de outra civilização nem ao lado delas.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_TITLE" Language="pt_BR"><Text>Força Cultural</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_CONTENT_PARA_1" Language="pt_BR"><Text>A força de uma cidade define quanta cultura ela adiciona a cada turno. Com a opção Modelo cultural completo ligada (padrão), a força vem dos fatores abaixo.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_BLEND_TITLE" Language="pt_BR"><Text>Força da Cidade</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_BLEND_PARA_1" Language="pt_BR"><Text>A força da cidade combina [icon:YIELD_CULTURE] Cultura com [icon:YIELD_FOOD] Alimento, [icon:YIELD_PRODUCTION] Produção, [icon:YIELD_HAPPINESS] Felicidade e crescimento. Um único bônus grande conta menos que rendimentos equilibrados. Cidades de uma civilização em Celebração ganham 25%.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_CPI_TITLE" Language="pt_BR"><Text>Índice de Poder Cultural</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_CPI_PARA_1" Language="pt_BR"><Text>O índice de cada civilização a compara com a líder em seis áreas:[BLIST][LI][B]Legado[/B]: maravilhas, Grandes Obras.[LI][B]Fluxo[/B]: [icon:YIELD_CULTURE] Cultura por turno.[LI][B]Alcance[/B]: [icon:YIELD_DIPLOMACY] Influência, suseranias de Cidades-Estados.[LI][B]Vitalidade[/B]: [icon:YIELD_HAPPINESS] Felicidade, Celebrações.[LI][B]Prosperidade[/B]: riqueza e crescimento do império.[LI][B]Identidade[/B]: tradições, antiguidade.[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_CPI_PARA_2" Language="pt_BR"><Text>Força nas seis áreas vale mais que destaque em uma só. O índice multiplica a força de cada cidade por 0.6 a 1.6.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_SIMPLE_TITLE" Language="pt_BR"><Text>Modelo Simples</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_SIMPLE_PARA_1" Language="pt_BR"><Text>Com Modelo cultural completo desligado, a força é a [icon:YIELD_CULTURE] Cultura da cidade, mais o bônus de Celebração.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_TITLE" Language="pt_BR"><Text>Líderes, Eras e Mapas</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_CONTENT_PARA_1" Language="pt_BR"><Text>A força da cidade é ajustada conforme o líder, a Era, a velocidade da partida e o tamanho do mapa.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_LEADERS_TITLE" Language="pt_BR"><Text>Líderes, Civilizações e Lembranças</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_LEADERS_PARA_1" Language="pt_BR"><Text>Líderes, civilizações e lembranças com bônus fortes de cultura, maravilhas, Celebração ou suserania, ou com habilidades que já concedem território, têm força um pouco menor. Civilizações com cultura fraca recebem um pequeno aumento.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_AGES_TITLE" Language="pt_BR"><Text>Eras</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_AGES_PARA_1" Language="pt_BR"><Text>As Eras posteriores têm mais cidades e mais cultura, então as cidades adicionam menos cultura na Exploração e na Era Moderna, e é preciso mais para reivindicar um painel.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_SPEED_TITLE" Language="pt_BR"><Text>Velocidade da Partida e Tamanho do Mapa</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_SPEED_PARA_1" Language="pt_BR"><Text>A velocidade de propagação acompanha a duração da Era, então as fronteiras crescem no mesmo ritmo em relação à Era em qualquer velocidade da partida. As cidades adicionam um pouco menos de cultura em mapas pequenos e um pouco mais em mapas grandes.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_TITLE" Language="pt_BR"><Text>Com Emigração</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_CHAPTER_CONTENT_PARA_1" Language="pt_BR"><Text>Se o mod Emigração estiver instalado, Difusão Cultural usa os dados de população dele. Sem Emigração, estas regras não fazem nada.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_CHAPTER_AFFINITY_TITLE" Language="pt_BR"><Text>Diáspora</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_CHAPTER_AFFINITY_PARA_1" Language="pt_BR"><Text>Com Seguir a diáspora ligado (padrão; exige Modelo cultural completo), a sua cultura se espalha mais rápido em direção aos painéis onde o seu povo se assentou.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_CHAPTER_PEOPLES_TITLE" Language="pt_BR"><Text>Populações Mistas</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_CHAPTER_PEOPLES_PARA_1" Language="pt_BR"><Text>A cultura de cada povo estrangeiro em uma cidade é ponderada pela sua parcela da população. Veja [B]Cidades Mistas e Tomadas[/B].</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_TITLE" Language="pt_BR"><Text>Cidades Mistas e Tomadas</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CONTENT_PARA_1" Language="pt_BR"><Text>Uma cidade capturada ou mista continua produzindo a cultura antiga, que disputa os painéis próximos e aos poucos se converte à do dono.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_FOREIGN_TITLE" Language="pt_BR"><Text>Cultura Estrangeira</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_FOREIGN_PARA_1" Language="pt_BR"><Text>Com Cidades carregam todas as culturas que abrigam ligado (padrão), a cidade adiciona cultura para cada povo no seu painel. A cultura do dono entra com força total, e cada cultura estrangeira em proporção à população da cidade. Com Emigração, cada uma é ponderada pela sua parcela da população; sem ele, uma cultura estrangeira conta quando tem 100 no painel da cidade. Com a opção desligada, a cidade adiciona só a cultura do dono.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CONVERT_TITLE" Language="pt_BR"><Text>Conversão</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CONVERT_PARA_1" Language="pt_BR"><Text>A cada turno, a cidade converte à do dono 0.5% de cada cultura estrangeira no seu painel. Edificações adicionam:[BLIST][LI][B]+0.25%[/B]: Biblioteca, Monumento, Anfiteatro.[LI][B]+0.5%[/B]: Academia, Universidade, Observatório, Museu, Ópera.[LI][B]+1%[/B]: Escola, Laboratório.[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CONVERT_PARA_2" Language="pt_BR"><Text>Ideologias da Era Moderna adicionam +1% (Democracia), +1.25% (Comunismo) ou +1.75% (Fascismo).</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CAPTURE_TITLE" Language="pt_BR"><Text>Captura</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CAPTURE_PARA_1" Language="pt_BR"><Text>Quando uma cidade muda de dono, cada cultura nos painéis dela perde 55%, e o novo dono ganha 75% do total perdido. Isso vale para todas as civilizações.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RECEDE_TITLE" Language="pt_BR"><Text>Recuo de Fronteiras</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RECEDE_CHAPTER_CONTENT_PARA_1" Language="pt_BR"><Text>Opção experimental, desligada por padrão. Você pode perder painéis que a sua cultura reivindicou. Com Todas as civilizações ganham terras pela cultura ligado, os rivais já tomam painéis reivindicados onde a cultura deles supera a sua, então isto importa principalmente quando essa opção está desligada.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RECEDE_CHAPTER_RULES_TITLE" Language="pt_BR"><Text>Regras</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RECEDE_CHAPTER_RULES_PARA_1" Language="pt_BR"><Text>Se a cultura de um rival em um painel reivindicado supera a sua pela margem que uma reivindicação exige, o painel passa para a cidade mais próxima desse rival. Painéis ganhos pelo crescimento normal da cidade nunca são perdidos assim. Um painel reivindicado mantém o dono se a cultura ali enfraquecer sem nenhum rival à frente.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_TITLE" Language="pt_BR"><Text>Expansão Rival</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_CHAPTER_CONTENT_PARA_1" Language="pt_BR"><Text>Com Todas as civilizações ganham terras pela cultura ligado (padrão), as outras civilizações reivindicam painéis pela cultura com as suas regras, inclusive painéis seus. Você é notificado quando perde um. Com a opção desligada, só as suas fronteiras crescem pela cultura.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_CHAPTER_RULES_TITLE" Language="pt_BR"><Text>Regras</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_CHAPTER_RULES_PARA_1" Language="pt_BR"><Text>Um rival toma um painel que lidera quando está em paz com o dono, o painel está fora do núcleo protegido do dono e o painel toca as terras do rival dentro do alcance das cidades dele. Todos os limites de [B]Reivindicar Painéis[/B] também valem, e os rivais têm um limite por turno separado.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_CHAPTER_LIMITS_TITLE" Language="pt_BR"><Text>Limites</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_CHAPTER_LIMITS_PARA_1" Language="pt_BR"><Text>Cidades-Estados e Povos Independentes nunca reivindicam painéis assim. A cultura só é registrada a até oito anéis das suas cidades, então as fronteiras em outros lugares seguem as regras do jogo base.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_TITLE" Language="pt_BR"><Text>Terreno Ocupado</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_CONTENT_PARA_1" Language="pt_BR"><Text>Opção desligada por padrão. Os exércitos de outras civilizações só seguem estas regras se Todas as civilizações ganham terras pela cultura também estiver ligado.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_TAKING_TITLE" Language="pt_BR"><Text>Tomar Painéis</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_TAKING_PARA_1" Language="pt_BR"><Text>Durante uma guerra, uma unidade de combate que fica em um painel inimigo por 5 turnos seguidos o toma, seja qual for a cultura. Sair dele zera a contagem. Centros da Cidade e Distritos Urbanos não podem ser tomados assim.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_HOLD_TITLE" Language="pt_BR"><Text>Período de Posse</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_HOLD_PARA_1" Language="pt_BR"><Text>Por 10 turnos após a captura, a cultura não pode retomar o painel. Outro exército ainda pode tomá-lo da mesma forma a qualquer momento.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_AFTER_TITLE" Language="pt_BR"><Text>Depois da Guerra</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_AFTER_PARA_1" Language="pt_BR"><Text>Durante a guerra, a cultura nunca move um painel conquistado. Depois da paz e do fim do período de posse, a cultura pode reivindicá-lo pelas regras normais para qualquer civilização.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_TITLE" Language="pt_BR"><Text>Lente de Pressão</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_CONTENT_PARA_1" Language="pt_BR"><Text>Abra pelo menu de lentes ou pressione Shift+C. Só mostra informações. A opção Lente de pressão (ligada por padrão) a adiciona.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_COLORS_TITLE" Language="pt_BR"><Text>Cores</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_COLORS_PARA_1" Language="pt_BR"><Text>Um painel é sombreado com a cor da civilização que lidera quando uma cultura diferente da do dono lidera e poderia reivindicá-lo. O sombreado fica mais forte conforme a reivindicação se aproxima.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_COLORS_PARA_2" Language="pt_BR"><Text>Com Todas as civilizações ganham terras pela cultura ligado, painéis que outras civilizações poderiam reivindicar também são sombreados.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_READOUT_TITLE" Language="pt_BR"><Text>Informações do Painel</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_READOUT_PARA_1" Language="pt_BR"><Text>Passar o cursor sobre um painel mostra:[BLIST][LI]as três maiores culturas nele, com o dono marcado;[LI][B]Progresso de captura[/B];[LI][B]No ritmo atual[/B]: turnos restantes, pronto para mudar de dono ou parado.[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_READOUT_PARA_2" Language="pt_BR"><Text>Painéis que não podem ser reivindicados mostram só as quantidades de cultura.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_ALERTS_TITLE" Language="pt_BR"><Text>Notificações</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_ALERTS_PARA_1" Language="pt_BR"><Text>No máximo uma notificação por turno: quando você reivindica território ou quando outra civilização toma um dos seus painéis.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_TITLE" Language="pt_BR"><Text>Opções e Predefinições</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_CONTENT_PARA_1" Language="pt_BR"><Text>Opções, Complementos, Difusão Cultural. As configurações podem ser alteradas durante a partida.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_PRESETS_TITLE" Language="pt_BR"><Text>Intensidade</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_PRESETS_PARA_1" Language="pt_BR"><Text>[BLIST][LI][B]Baixa[/B]: propagação 4%, perda 7%, 400 para reivindicar, alcance 5, só terras vazias.[LI][B]Média[/B] (padrão): propagação 5.5%, perda 5%, 300 para reivindicar, alcance 6.[LI][B]Alta[/B]: propagação 7.5%, perda 4%, 220 para reivindicar, alcance 8.[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_TOGGLES_TITLE" Language="pt_BR"><Text>Chaves</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_TOGGLES_PARA_1" Language="pt_BR"><Text>[BLIST][LI][B]Habilitado[/B]: desligado, volta às fronteiras do jogo base.[LI][B]Reivindicar apenas terras vazias[/B]: veja [B]Reivindicar Painéis[/B].[LI][B]Proteção de cidades rivais[/B]: veja [B]Reivindicar Painéis[/B].[LI][B]Apenas fronteira contígua[/B]: ligado por padrão. Desligado, permite reivindicar bolsões dentro de outro território.[LI][B]Reivindicar terras junto a novas melhorias[/B]: desligado. Veja [B]Reivindicar Painéis[/B].[LI][B]Recuo de fronteiras[/B]: desligado. Veja [B]Recuo de Fronteiras[/B].[LI][B]Todas as civilizações ganham terras pela cultura[/B]: ligado. Veja [B]Expansão Rival[/B].[LI][B]Exércitos mantêm o terreno que ocupam[/B]: desligado. Veja [B]Terreno Ocupado[/B].[LI][B]Cidades carregam todas as culturas que abrigam[/B]: ligado. Veja [B]Cidades Mistas e Tomadas[/B].[LI][B]Modelo cultural completo[/B]: ligado. Veja [B]Força Cultural[/B].[LI][B]Seguir a diáspora[/B]: ligado. Veja [B]Com Emigração[/B].[LI][B]Lente de pressão[/B]: ligado. Veja [B]Lente de Pressão[/B].[LI][B]Registro de depuração[/B]: desligado. Grava diagnósticos de cada turno no registro da interface.[/LIST]</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_ABOUT_TITLE" Language="pt_BR"><Text>Sobre Este Mod</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_ABOUT_CHAPTER_CONTENT_PARA_1" Language="pt_BR"><Text>Uma versão para Civilization VII do mod de Civilization V Cultural Diffusion, com regras adicionais.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_ABOUT_CHAPTER_CREDITS_TITLE" Language="pt_BR"><Text>Créditos</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_ABOUT_CHAPTER_CREDITS_PARA_1" Language="pt_BR"><Text>Feito por Tower. Baseado no Cultural Diffusion de Gedemon para Civilization V (v18), a origem do campo cultural e de várias regras deste mod: rios, cultura estrangeira nas cidades, transferência na captura, reivindicações de rivais e exércitos, o limiar das montanhas e a cultura mínima do dono.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_CD_CULTURAL_BORDERS_TITLE" Language="pt_BR"><Text>Fronteiras (Mod)</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_CD_CULTURAL_BORDERS_CHAPTER_CONTENT_PARA_1" Language="pt_BR"><Text>Com o mod Difusão Cultural, a cultura se espalha das cidades painel a painel e pode estender as fronteiras além do terceiro anel de uma cidade, inclusive sobre painéis de fronteira rivais. As regras estão na aba [B]Difusão Cultural[/B].</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CD_TERM_CULTURAL_DIFFUSION" Language="pt_BR"><Text>Difusão Cultural</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_BORDERS" Language="pt_BR"><Text>Fronteiras</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_FORWARD_SETTLING" Language="pt_BR"><Text>Assentamento avançado</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_TERRITORY" Language="pt_BR"><Text>Território</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_HELP" Language="pt_BR"><Text>Ajuda</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_DIFFUSION" Language="pt_BR"><Text>Difusão</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_DECAY" Language="pt_BR"><Text>Perda de cultura</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CULTURE_STOCK" Language="pt_BR"><Text>Estoque de cultura</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_RIVERS" Language="pt_BR"><Text>Rios</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_ROADS" Language="pt_BR"><Text>Estradas</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_MOUNTAINS" Language="pt_BR"><Text>Montanhas</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_WATER" Language="pt_BR"><Text>Travessia de água</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_TILE_FLIP" Language="pt_BR"><Text>Troca de painel</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CITY_PROTECTION" Language="pt_BR"><Text>Proteção de cidades rivais</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CITY_STATES" Language="pt_BR"><Text>Cidades-Estados</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_IMPROVEMENT_BUFFER" Language="pt_BR"><Text>Terras junto a melhorias</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_RING" Language="pt_BR"><Text>Quarto anel</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_WORK_TILES" Language="pt_BR"><Text>Trabalhar painéis</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CPI" Language="pt_BR"><Text>IPC</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CPI_FULL" Language="pt_BR"><Text>Índice de Poder Cultural</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CELEBRATION" Language="pt_BR"><Text>Celebração</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_LEADERS" Language="pt_BR"><Text>Equilíbrio de líderes</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_AGES" Language="pt_BR"><Text>Eras</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_GAME_SPEED" Language="pt_BR"><Text>Velocidade da partida</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_EMIGRATION" Language="pt_BR"><Text>Emigração</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_DIASPORA" Language="pt_BR"><Text>Diáspora</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CONVERSION" Language="pt_BR"><Text>Conversão</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CAPTURED_CITY" Language="pt_BR"><Text>Cidade capturada</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_FOREIGN_CULTURE" Language="pt_BR"><Text>Cultura estrangeira</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_RECEDE" Language="pt_BR"><Text>Recuo</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_AI" Language="pt_BR"><Text>Fronteiras da IA</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CONQUEST" Language="pt_BR"><Text>Conquista</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_OCCUPATION" Language="pt_BR"><Text>Ocupação</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_LENS" Language="pt_BR"><Text>Lente</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_PRESSURE" Language="pt_BR"><Text>Pressão Cultural</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_HOTKEY" Language="pt_BR"><Text>Shift+C</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_NOTIFICATIONS" Language="pt_BR"><Text>Notificações</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_INTENSITY" Language="pt_BR"><Text>Intensidade</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_SETTINGS" Language="pt_BR"><Text>Configurações</Text></Replace>
+    </LocalizedText>
+</Database>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database>
+    <LocalizedText>
+        <Replace Tag="LOC_MOD_CULTURAL_DIFFUSION_NAME" Language="pt_BR"><Text>Difusão Cultural</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_GROUP_CULTURAL_DIFFUSION" Language="pt_BR"><Text>Difusão Cultural</Text></Replace>
+        <Replace Tag="LOC_MOD_CULTURAL_DIFFUSION_DESCRIPTION" Language="pt_BR"><Text>A cultura vira um campo vivo que se espalha das suas cidades painel a painel. Uma cultura forte e consolidada expande aos poucos as fronteiras além da área normal da cidade, avança sobre terras livres e pode tomar painéis de fronteira de um rival quando a sua cultura ali vence com clareza, o que dá uma resposta sistêmica aos assentamentos agressivos da IA. O crescimento é lento: as fronteiras avançam ao longo da partida e recuam quando uma cultura enfraquece, e uma cultura dominante chega mais longe. Uma releitura e ampliação do mod de Civ V Cultural Diffusion, refeita para Civ VII com um modelo de poder cultural mais profundo e integração opcional com Emigração. Um jogador, com intensidade Baixa/Média/Alta e opção de desligar. Funciona sozinho e lê os dados de diáspora do mod Emigração quando ele está instalado. Todas as regras estão explicadas na seção Difusão Cultural da Civilopédia do jogo.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_PRESET" Language="pt_BR"><Text>Difusão Cultural - intensidade</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_PRESET_DESCRIPTION" Language="pt_BR"><Text>Com que força a cultura expande suas fronteiras. Baixa só avança sobre terras vazias; Média disputa painéis de fronteira rivais; Alta chega mais longe e toma painéis mais rápido. Civilopédia: Difusão Cultural, Opções e Predefinições.</Text></Replace>
+        <Replace Tag="LOC_CD_PRESET_CUSTOM" Language="pt_BR"><Text>Personalizada</Text></Replace>
+        <Replace Tag="LOC_CD_PRESET_LOW" Language="pt_BR"><Text>Baixa</Text></Replace>
+        <Replace Tag="LOC_CD_PRESET_MEDIUM" Language="pt_BR"><Text>Média</Text></Replace>
+        <Replace Tag="LOC_CD_PRESET_HIGH" Language="pt_BR"><Text>Alta</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_ENABLED" Language="pt_BR"><Text>Difusão Cultural - habilitado</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_ENABLED_DESCRIPTION" Language="pt_BR"><Text>Chave geral. Desligada, as fronteiras funcionam exatamente como no jogo base. Regras completas na Civilopédia, seção Difusão Cultural.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_CLAIM_ONLY" Language="pt_BR"><Text>Difusão Cultural - reivindicar apenas terras vazias</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CLAIM_ONLY_DESCRIPTION" Language="pt_BR"><Text>Modo seguro. A difusão só reivindica painéis de fronteira sem dono e nunca toma um painel de outra civilização. Civilopédia: Difusão Cultural, Reivindicar Painéis.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_CORE" Language="pt_BR"><Text>Difusão Cultural - proteção de cidades rivais</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_DESCRIPTION" Language="pt_BR"><Text>Até onde a cultura pode avançar em uma cidade rival. Todo o anel central mantém o centro e o anel interno a salvo. Só o Centro da Cidade protege apenas o painel do Centro da Cidade e deixa a cultura tomar os painéis ao redor. Nada deixa até o centro mudar de dono. Civilopédia: Difusão Cultural, Reivindicar Painéis.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_FULL" Language="pt_BR"><Text>Proteger todo o anel central</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_CENTER" Language="pt_BR"><Text>Proteger só o Centro da Cidade (tomar painéis internos)</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_NONE" Language="pt_BR"><Text>Não proteger nada</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_ADJACENCY" Language="pt_BR"><Text>Difusão Cultural - apenas fronteira contígua</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_ADJACENCY_DESCRIPTION" Language="pt_BR"><Text>Ligado (recomendado): a cultura só reivindica painéis que tocam suas terras, então o território rival é tomado de fora para dentro. Desligado: a cultura pode reivindicar qualquer painel que domine, inclusive um bolsão isolado dentro de outra civilização. Civilopédia: Difusão Cultural, Reivindicar Painéis.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_FUSED" Language="pt_BR"><Text>Difusão Cultural - modelo cultural completo</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_FUSED_DESCRIPTION" Language="pt_BR"><Text>A expansão das fronteiras usa todo o poder cultural de uma civilização (maravilhas, cultura, influência, felicidade, prosperidade, tradições) em vez de apenas a cultura por turno. Uma cultura mais forte leva as fronteiras mais longe. Desligado = o modelo simples de cultura do assentamento. Civilopédia: Difusão Cultural, Força Cultural.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_EMIGRATION" Language="pt_BR"><Text>Difusão Cultural - seguir a diáspora (mod Emigração)</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_EMIGRATION_DESCRIPTION" Language="pt_BR"><Text>Com o mod Emigração instalado, um painel de fronteira onde seu povo se assentou sente a sua atração, então as fronteiras seguem a diáspora. Sem efeito se Emigração não estiver presente. Exige o modelo cultural completo. Civilopédia: Difusão Cultural, Com Emigração.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_BUFFER" Language="pt_BR"><Text>Difusão Cultural - reivindicar terras junto a novas melhorias (+1 anel)</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_BUFFER_DESCRIPTION" Language="pt_BR"><Text>Desligado por padrão. Ligado, concluir uma Melhoria Rural perto da sua fronteira também reivindica os painéis sem dono ao lado dela, um anel além do alcance normal da cidade. Desligado, suas fronteiras só crescem pelo campo cultural. Civilopédia: Difusão Cultural, Reivindicar Painéis.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_RECEDE" Language="pt_BR"><Text>Difusão Cultural - recuo de fronteiras (experimental)</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_RECEDE_DESCRIPTION" Language="pt_BR"><Text>Desligado por padrão. Painéis que sua cultura reivindicou podem ser perdidos de novo: se a cultura de um rival superar claramente a sua em um deles, ele passa para a cidade mais próxima desse rival. Painéis que suas cidades ganharam pelo crescimento normal nunca são afetados. Civilopédia: Difusão Cultural, Recuo de Fronteiras.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_AI_FLIPS" Language="pt_BR"><Text>Difusão Cultural - todas as civilizações ganham terras pela cultura</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_AI_FLIPS_DESCRIPTION" Language="pt_BR"><Text>Ligado por padrão. As fronteiras das outras civilizações também se movem pela cultura, com as mesmas regras que as suas: um rival cuja cultura lidera claramente um painel perto das suas terras o toma, inclusive painéis seus, e pode perder painéis da mesma forma. Cidades-Estados e Povos Independentes nunca ganham terras assim. Você é avisado quando um rival toma um dos seus painéis. Desligado = só as suas fronteiras crescem pela cultura. Civilopédia: Difusão Cultural, Expansão Rival.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_CONQUEST" Language="pt_BR"><Text>Difusão Cultural - exércitos mantêm o terreno que ocupam</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CONQUEST_DESCRIPTION" Language="pt_BR"><Text>Desligado por padrão. Ligado, durante uma guerra, uma unidade de combate que ocupa um painel inimigo por cinco turnos seguidos o toma para o seu dono, seja qual for a cultura ali; sair zera a contagem, e Centros da Cidade e Distritos Urbanos nunca são tomados assim. O painel conquistado fica protegido da cultura por dez turnos, mas outro exército ainda pode tomá-lo. Os exércitos de outras civilizações só fazem o mesmo se "todas as civilizações ganham terras pela cultura" também estiver ligado. Civilopédia: Difusão Cultural, Terreno Ocupado.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_FOREIGN_CULTURE" Language="pt_BR"><Text>Difusão Cultural - cidades carregam todas as culturas que abrigam</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_FOREIGN_CULTURE_DESCRIPTION" Language="pt_BR"><Text>Ligado por padrão. Uma cidade produz cultura para cada povo presente no seu painel, não só para o dono: uma cidade capturada ou mista continua produzindo a cultura antiga, que disputa as terras ao redor, enquanto a cada turno uma pequena parte dessa cultura estrangeira se converte à do dono (mais rápido com bibliotecas, universidades, museus e, na Era Moderna, uma ideologia). Desligado = a cidade produz só a cultura do dono. Civilopédia: Difusão Cultural, Cidades Mistas e Tomadas.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_DEBUG" Language="pt_BR"><Text>Difusão Cultural - registro de depuração</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_DEBUG_DESCRIPTION" Language="pt_BR"><Text>Grava diagnósticos detalhados de cada passagem em UI.log (para ajustes e solução de problemas).</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_PRESSURE_LENS" Language="pt_BR"><Text>Difusão Cultural - lente de pressão</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_PRESSURE_LENS_DESCRIPTION" Language="pt_BR"><Text>Adiciona uma lente de mapa somente leitura, "Pressão Cultural" (e o atalho Shift+C), que sombreia painéis de fronteira disputados conforme a sua cultura, ou a de um rival, está perto de reivindicá-los. Só mostra informações; não muda nada em como as fronteiras se movem. Civilopédia: Difusão Cultural, Lente de Pressão.</Text></Replace>
+
+        <Replace Tag="LOC_CD_LENS_PRESSURE" Language="pt_BR"><Text>Pressão Cultural</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_TITLE" Language="pt_BR"><Text>Pressão Cultural</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_PROGRESS" Language="pt_BR"><Text>Progresso de captura</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_TURNS" Language="pt_BR"><Text>No ritmo atual</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_TURNS_COUNT" Language="pt_BR"><Text>~{1_Turns} {1_Turns: plural 1?turno; other?turnos;}</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_READY" Language="pt_BR"><Text>pronto para mudar de dono</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_STALLED" Language="pt_BR"><Text>parado</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_OWNER_SUFFIX" Language="pt_BR"><Text> (dono)</Text></Replace>
+        <Replace Tag="LOC_CD_TOAST_GAINED" Language="pt_BR"><Text>Difusão Cultural: sua cultura reivindicou novo território.</Text></Replace>
+        <Replace Tag="LOC_CD_TOAST_LOST" Language="pt_BR"><Text>Difusão Cultural: outra civilização tomou um dos seus painéis.</Text></Replace>
+    </LocalizedText>
+</Database>

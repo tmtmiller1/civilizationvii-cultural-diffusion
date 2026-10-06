@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database>
+    <LocalizedText>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_TITLE" Language="es_ES"><Text>Difusión cultural</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_GROUP_START_TITLE" Language="es_ES"><Text>Primeros pasos</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_GROUP_SPREAD_TITLE" Language="es_ES"><Text>Propagación cultural</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_GROUP_POWER_TITLE" Language="es_ES"><Text>Poder cultural</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_GROUP_RIVALS_TITLE" Language="es_ES"><Text>Rivales y guerra</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_GROUP_INTERFACE_TITLE" Language="es_ES"><Text>Interfaz y opciones</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_TITLE" Language="es_ES"><Text>Difusión cultural</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_CONTENT_PARA_1" Language="es_ES"><Text>Cada casilla cerca de tus ciudades guarda cuánta [icon:YIELD_CULTURE] Cultura tiene en ella cada civilización. Cada turno, las ciudades añaden cultura a su propia casilla, la cultura se propaga a las casillas vecinas y todas las casillas pierden algo.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_CONTENT_PARA_2" Language="es_ES"><Text>Cuando tu cultura en una casilla más allá del tercer anillo de una ciudad es lo bastante grande, reclamas la casilla. Las fronteras crecen despacio, sobre todo a partir de la mitad de la partida, y pueden quitar casillas fronterizas a rivales cuya cultura allí es mucho más débil.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_WHERE_TITLE" Language="es_ES"><Text>En la partida</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_WHERE_PARA_1" Language="es_ES"><Text>[BLIST][LI][B]Lente de presión cultural[/B] (menú de lentes o Shift+C): sombrea las casillas a punto de cambiar de manos. Consulta [B]Lente de presión[/B].[LI][B]Notificaciones[/B]: cuando reclamas territorio o pierdes una casilla ante otra civilización.[LI][B]Opciones, Complementos, Difusión cultural[/B]: intensidad y todos los interruptores. Consulta [B]Opciones y preajustes[/B].[/LIST]</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_TITLE" Language="es_ES"><Text>Preguntas y respuestas</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_NOTHING_TITLE" Language="es_ES"><Text>¿Por qué no crecen mis fronteras?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_NOTHING_PARA_1" Language="es_ES"><Text>Una ciudad necesita una cultura grande y constante para llegar a su cuarto anillo. Las ciudades del principio de la partida no suelen reclamar nada. La lente muestra qué casillas vas ganando y cuántos turnos necesita cada una. Consulta [B]Ritmo y tierra reclamada[/B].</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_WORK_TITLE" Language="es_ES"><Text>¿Mis ciudades pueden trabajar las casillas reclamadas?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_WORK_PARA_1" Language="es_ES"><Text>No. Las ciudades solo trabajan casillas dentro de tres anillos, y las casillas reclamadas están más lejos. Cuentan como tu territorio y bloquean a los colonos rivales.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_AILAND_TITLE" Language="es_ES"><Text>¿La IA puede quitarme tierras?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_AILAND_PARA_1" Language="es_ES"><Text>Sí. Por defecto, un rival cuya cultura domina claramente una casilla cerca de tus tierras la toma con las mismas reglas que tus reclamaciones, y se te avisa. Desactiva Todas las civilizaciones ganan tierras por cultura para evitarlo. Consulta [B]Expansión rival[/B]; [B]Retroceso de fronteras[/B] y [B]Terreno ocupado[/B] son otras opciones.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_FLIPBACK_TITLE" Language="es_ES"><Text>¿Por qué no cambia una casilla que domino?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_FLIPBACK_PARA_1" Language="es_ES"><Text>No cumple otra regla de reclamación: está demasiado lejos de tus ciudades, no toca tus tierras, está dentro del núcleo protegido de una ciudad, pertenece a una civilización con la que estás en guerra, está en tus Tierras lejanas antes de la era de los Descubrimientos, cambió de manos hace poco o tomarla dejaría atrapada a una unidad extranjera. Consulta [B]Reclamar casillas[/B].</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_TURNOFF_TITLE" Language="es_ES"><Text>¿Y si desactivo el mod?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_TURNOFF_PARA_1" Language="es_ES"><Text>Las nuevas reclamaciones se detienen. Las casillas ya reclamadas siguen siendo tuyas.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_SAVES_TITLE" Language="es_ES"><Text>¿Puedo añadirlo a una partida en curso?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_SAVES_PARA_1" Language="es_ES"><Text>No. El mod debe estar activado al empezar la partida. Solo para un jugador.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_TITLE" Language="es_ES"><Text>El campo cultural</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_CONTENT_PARA_1" Language="es_ES"><Text>Cada casilla a menos de ocho anillos de tus ciudades guarda la cultura de cada civilización. Esa reserva cambia una vez por turno, y la propiedad de la casilla la sigue (consulta [B]Reclamar casillas[/B]).</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_INJECT_TITLE" Language="es_ES"><Text>Las ciudades añaden cultura</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_INJECT_PARA_1" Language="es_ES"><Text>Cada ciudad añade cultura a su propia casilla. Cuanta más cultura hay ya, más rápido crece, hasta un límite que fija la fuerza de la ciudad (consulta [B]Fuerza cultural[/B]). Las ciudades también añaden cultura para los otros pueblos que viven en ellas (consulta [B]Mixtas y tomadas[/B]).</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_DIFFUSE_TITLE" Language="es_ES"><Text>La cultura se propaga</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_DIFFUSE_PARA_1" Language="es_ES"><Text>Una casilla con al menos 100 de cultura da alrededor del 5.5% a cada vecina por turno. Una vecina puede llegar como máximo al 40% de la cantidad de origen, o al 75% a lo largo de una carretera o un río. El terreno frena o bloquea la propagación (consulta [B]Terreno y ríos[/B]).</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_DECAY_TITLE" Language="es_ES"><Text>La cultura se desvanece</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_DECAY_PARA_1" Language="es_ES"><Text>Cada casilla pierde el 5% de su cultura más 1 punto por turno. Esto limita hasta dónde llega una frontera, y la cultura retrocede cuando su ciudad se debilita o se pierde. Las casillas que posees conservan al menos 1 punto de tu cultura.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_TITLE" Language="es_ES"><Text>Terreno y ríos</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_CONTENT_PARA_1" Language="es_ES"><Text>La casilla a la que llega la cultura decide lo bien que se propaga. Los efectos de una misma casilla se acumulan.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROUGH_TITLE" Language="es_ES"><Text>Terreno difícil</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROUGH_PARA_1" Language="es_ES"><Text>De más fácil a más difícil:[BLIST][LI][B]Bosque, taiga[/B]: frena un poco.[LI][B]Terreno abrupto[/B]: frena moderadamente.[LI][B]Tundra[/B]: frena moderadamente; hace falta un origen más fuerte para cruzarla.[LI][B]Desierto[/B]: frena mucho.[LI][B]Selva tropical, ciénaga[/B]: frena mucho; solo la cruza un origen fuerte.[LI][B]Montañas[/B]: casi infranqueables. La cultura en una cumbre necesita 7.5 veces la cantidad habitual para salir de ella.[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROADS_TITLE" Language="es_ES"><Text>Carreteras</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROADS_PARA_1" Language="es_ES"><Text>Entre dos casillas con carretera, la cultura se propaga el doble de rápido y más lejos.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_RIVERS_TITLE" Language="es_ES"><Text>Ríos</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_RIVERS_PARA_1" Language="es_ES"><Text>A lo largo de un río, la cultura se propaga más rápido y más lejos, más en un río navegable que en un río menor. Pasar a un río desde su orilla o desde otro río requiere el doble de la cantidad habitual, y la cultura llega debilitada. Una cultura que domina el río llega a ambas orillas.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_WATER_TITLE" Language="es_ES"><Text>Costa y océano</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_WATER_PARA_1" Language="es_ES"><Text>Solo una cultura fuerte cruza el agua, la costa con más facilidad que el océano. Cruzar es más fácil en cada era, desde casi imposible en la Antigüedad hasta lo más fácil en la Modernidad. Las casillas de Tierras lejanas no se pueden reclamar antes de la era de los Descubrimientos.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_TITLE" Language="es_ES"><Text>Reclamar casillas</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_CONTENT_PARA_1" Language="es_ES"><Text>Una casilla reclamada se une a tu ciudad más cercana.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_RULES_TITLE" Language="es_ES"><Text>Requisitos</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_RULES_PARA_1" Language="es_ES"><Text>[BLIST][LI]Tu cultura es la más alta de la casilla.[LI]Es de al menos 300 (375 en los Descubrimientos, 480 en la Modernidad).[LI]Si un rival posee la casilla, su cultura es inferior a dos tercios de la tuya.[LI]La casilla está a seis casillas o menos de tu ciudad y más allá de su tercer anillo.[LI]La casilla toca tus tierras (opción Solo frontera contigua).[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_TITLE" Language="es_ES"><Text>Casillas protegidas</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_1" Language="es_ES"><Text>La opción Protección de ciudades rivales fija qué parte de una ciudad rival está a salvo: el centro y su primer anillo, solo el centro (por defecto) o nada.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_2" Language="es_ES"><Text>Las ciudades-estado y los pueblos independientes siempre conservan su centro y su primer anillo.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_3" Language="es_ES"><Text>Con Reclamar solo tierras vacías activado (por defecto en Baja), la cultura nunca toma una casilla con dueño.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_4" Language="es_ES"><Text>En torno a un cambio de era, una casilla con dueño que tiene una mejora, un distrito urbano o una maravilla no cambia durante la cuenta atrás del final de la era y los dos primeros turnos de la siguiente. Las casillas sin mejoras no se ven afectadas.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_SAFE_TITLE" Language="es_ES"><Text>Límites</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_SAFE_PARA_1" Language="es_ES"><Text>[BLIST][LI]La cultura nunca quita casillas a una civilización con la que estás en guerra.[LI]Una casilla que cambió de manos queda bloqueada durante 15 turnos.[LI]Se rechaza una reclamación que dejaría sin salida a una unidad extranjera de una civilización en paz contigo.[LI]Como máximo cambian de manos 8 casillas por turno, y cada ciudad tiene como máximo 80 casillas reclamadas (40 en Baja).[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_BUFFER_TITLE" Language="es_ES"><Text>Tierras junto a mejoras nuevas</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_BUFFER_PARA_1" Language="es_ES"><Text>Con esta opción activada (desactivada por defecto), terminar una mejora rural cerca de tu frontera también reclama las casillas sin dueño contiguas a ella, hasta un anillo más allá del alcance normal de la ciudad.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_TITLE" Language="es_ES"><Text>Ritmo y tierra reclamada</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_CONTENT_PARA_1" Language="es_ES"><Text>La cultura se acumula anillo a anillo, así que las fronteras crecen despacio. Una cultura más fuerte llega más lejos y más rápido.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_RINGS_TITLE" Language="es_ES"><Text>Anillos</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_RINGS_PARA_1" Language="es_ES"><Text>[BLIST][LI][B]Anillos 1-3[/B]: reglas del juego base; tu propia cultura nunca los reclama, pero la de un rival sí puede cuando Todas las civilizaciones ganan tierras por cultura está activado.[LI][B]Anillo 4[/B]: el primer anillo que reclama la cultura.[LI][B]Anillo 5+[/B]: solo culturas fuertes y asentadas.[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_EARLY_TITLE" Language="es_ES"><Text>Principio de la partida</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_EARLY_PARA_1" Language="es_ES"><Text>Una ciudad joven que produce poca [icon:YIELD_CULTURE] Cultura no reclama nada. Las reclamaciones empiezan a medida que las ciudades se fortalecen. El preajuste Alta llega más lejos antes.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_VALUE_TITLE" Language="es_ES"><Text>Casillas reclamadas</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_VALUE_PARA_1" Language="es_ES"><Text>Las casillas reclamadas son tuyas, pero no se pueden trabajar ni construir en ellas, porque las ciudades solo trabajan los tres primeros anillos. Impiden que los rivales se asienten junto a ti: los colonos no pueden fundar en las tierras de otra civilización ni junto a ellas.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_TITLE" Language="es_ES"><Text>Fuerza cultural</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_CONTENT_PARA_1" Language="es_ES"><Text>La fuerza de una ciudad fija cuánta cultura añade cada turno. Con la opción Modelo cultural completo activada (por defecto), la fuerza viene de los factores siguientes.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_BLEND_TITLE" Language="es_ES"><Text>Fuerza de la ciudad</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_BLEND_PARA_1" Language="es_ES"><Text>La fuerza de la ciudad combina [icon:YIELD_CULTURE] Cultura con [icon:YIELD_FOOD] Alimentos, [icon:YIELD_PRODUCTION] Producción, [icon:YIELD_HAPPINESS] Felicidad y crecimiento. Una sola bonificación grande cuenta menos que unos rendimientos equilibrados. Las ciudades de una civilización en celebración ganan un 25%.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_CPI_TITLE" Language="es_ES"><Text>Índice de poder cultural</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_CPI_PARA_1" Language="es_ES"><Text>El índice de cada civilización la compara con la líder en seis áreas:[BLIST][LI][B]Legado[/B]: maravillas, grandes obras.[LI][B]Flujo[/B]: [icon:YIELD_CULTURE] Cultura por turno.[LI][B]Alcance[/B]: [icon:YIELD_DIPLOMACY] Influencia, suzeranías de ciudades-estado.[LI][B]Vitalidad[/B]: [icon:YIELD_HAPPINESS] Felicidad, celebraciones.[LI][B]Prosperidad[/B]: riqueza y crecimiento del imperio.[LI][B]Identidad[/B]: tradiciones, antigüedad.[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_CPI_PARA_2" Language="es_ES"><Text>La fuerza repartida en las seis áreas puntúa más que destacar en una sola. El índice multiplica la fuerza de cada ciudad por entre 0.6 y 1.6.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_SIMPLE_TITLE" Language="es_ES"><Text>Modelo simple</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_SIMPLE_PARA_1" Language="es_ES"><Text>Con Modelo cultural completo desactivado, la fuerza es la [icon:YIELD_CULTURE] Cultura de la ciudad, más la bonificación de celebración.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_TITLE" Language="es_ES"><Text>Líderes, eras y mapas</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_CONTENT_PARA_1" Language="es_ES"><Text>La fuerza de la ciudad se ajusta según el líder, la era, la velocidad de juego y el tamaño del mapa.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_LEADERS_TITLE" Language="es_ES"><Text>Líderes, civilizaciones y recuerdos</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_LEADERS_PARA_1" Language="es_ES"><Text>Los líderes, civilizaciones y recuerdos con bonificaciones fuertes de cultura, maravillas, celebraciones o suzeranía, o con habilidades que ya otorgan territorio, tienen una fuerza algo menor. Las civilizaciones con una cultura débil reciben un pequeño aumento.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_AGES_TITLE" Language="es_ES"><Text>Eras</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_AGES_PARA_1" Language="es_ES"><Text>Las eras posteriores tienen más ciudades y más cultura, así que en los Descubrimientos y en la Modernidad las ciudades añaden menos cultura y hace falta más para reclamar una casilla.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_SPEED_TITLE" Language="es_ES"><Text>Velocidad de juego y tamaño del mapa</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_SPEED_PARA_1" Language="es_ES"><Text>La velocidad de propagación depende de la duración de la era, así que las fronteras crecen al mismo ritmo en relación con la era en cualquier velocidad de juego. Las ciudades añaden algo menos de cultura en mapas pequeños y algo más en mapas grandes.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_TITLE" Language="es_ES"><Text>Con Emigración</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_CHAPTER_CONTENT_PARA_1" Language="es_ES"><Text>Si el mod Emigración está instalado, Difusión cultural usa sus datos de población. Sin Emigración, estas reglas no hacen nada.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_CHAPTER_AFFINITY_TITLE" Language="es_ES"><Text>Diáspora</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_CHAPTER_AFFINITY_PARA_1" Language="es_ES"><Text>Con Seguir la diáspora activado (por defecto; requiere Modelo cultural completo), tu cultura se propaga más rápido hacia las casillas donde se ha asentado tu pueblo.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_CHAPTER_PEOPLES_TITLE" Language="es_ES"><Text>Poblaciones mixtas</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_CHAPTER_PEOPLES_PARA_1" Language="es_ES"><Text>La cultura de cada pueblo extranjero en una ciudad se pondera según su parte de la población. Consulta [B]Mixtas y tomadas[/B].</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_TITLE" Language="es_ES"><Text>Mixtas y tomadas</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CONTENT_PARA_1" Language="es_ES"><Text>Una ciudad capturada o mixta sigue produciendo su antigua cultura, que compite por las casillas cercanas y se convierte poco a poco a la del dueño.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_FOREIGN_TITLE" Language="es_ES"><Text>Cultura extranjera</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_FOREIGN_PARA_1" Language="es_ES"><Text>Con Las ciudades llevan todas las culturas que viven en ellas activado (por defecto), una ciudad añade cultura para cada pueblo de su casilla. La cultura del dueño se añade con toda su fuerza, y cada cultura extranjera en proporción a la población de la ciudad. Con Emigración, cada una se pondera según su parte de la población; sin él, una cultura extranjera cuenta cuando tiene 100 en la casilla de la ciudad. Con la opción desactivada, una ciudad solo añade la cultura de su dueño.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CONVERT_TITLE" Language="es_ES"><Text>Conversión</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CONVERT_PARA_1" Language="es_ES"><Text>Cada turno, una ciudad convierte a la del dueño el 0.5% de cada cultura extranjera de su casilla. Los edificios añaden:[BLIST][LI][B]+0.25%[/B]: Biblioteca, Monumento, Anfiteatro.[LI][B]+0.5%[/B]: Academia, Universidad, Observatorio, Museo, Teatro de la Ópera.[LI][B]+1%[/B]: Escuela, Laboratorio.[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CONVERT_PARA_2" Language="es_ES"><Text>Las ideologías de la Modernidad añaden +1% (Democracia), +1.25% (Comunismo) o +1.75% (Fascismo).</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CAPTURE_TITLE" Language="es_ES"><Text>Captura</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CAPTURE_PARA_1" Language="es_ES"><Text>Cuando una ciudad cambia de manos, cada cultura de sus casillas pierde el 55%, y el nuevo dueño gana el 75% del total perdido. Esto se aplica a todas las civilizaciones.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RECEDE_TITLE" Language="es_ES"><Text>Retroceso de fronteras</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RECEDE_CHAPTER_CONTENT_PARA_1" Language="es_ES"><Text>Opción experimental, desactivada por defecto. Puedes perder casillas que reclamó tu cultura. Con Todas las civilizaciones ganan tierras por cultura activado, los rivales ya toman las casillas reclamadas en las que su cultura supera a la tuya, así que esto importa sobre todo cuando esa opción está desactivada.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RECEDE_CHAPTER_RULES_TITLE" Language="es_ES"><Text>Reglas</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RECEDE_CHAPTER_RULES_PARA_1" Language="es_ES"><Text>Si la cultura de un rival en una casilla reclamada supera a la tuya por el margen que exige una reclamación, la casilla pasa a la ciudad más cercana de ese rival. Las casillas ganadas con el crecimiento normal de la ciudad nunca se pierden así. Una casilla reclamada conserva su dueño si su cultura se desvanece sin ningún rival por delante.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_TITLE" Language="es_ES"><Text>Expansión rival</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_CHAPTER_CONTENT_PARA_1" Language="es_ES"><Text>Con Todas las civilizaciones ganan tierras por cultura activado (por defecto), las demás civilizaciones reclaman casillas por cultura con tus mismas reglas, incluidas casillas tuyas. Se te avisa cuando pierdes una. Con la opción desactivada, solo tus fronteras crecen por cultura.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_CHAPTER_RULES_TITLE" Language="es_ES"><Text>Reglas</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_CHAPTER_RULES_PARA_1" Language="es_ES"><Text>Un rival toma una casilla que domina cuando está en paz con el dueño, la casilla está fuera del núcleo protegido del dueño y la casilla toca las tierras del rival dentro del alcance de sus ciudades. También se aplican todos los límites de [B]Reclamar casillas[/B], y los rivales tienen un límite por turno aparte.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_CHAPTER_LIMITS_TITLE" Language="es_ES"><Text>Límites</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_CHAPTER_LIMITS_PARA_1" Language="es_ES"><Text>Las ciudades-estado y los pueblos independientes nunca reclaman casillas así. La cultura solo se registra a menos de ocho anillos de tus ciudades, así que en otros lugares las fronteras siguen las reglas del juego base.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_TITLE" Language="es_ES"><Text>Terreno ocupado</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_CONTENT_PARA_1" Language="es_ES"><Text>Opción desactivada por defecto. Los ejércitos de otras civilizaciones solo siguen estas reglas si Todas las civilizaciones ganan tierras por cultura también está activado.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_TAKING_TITLE" Language="es_ES"><Text>Tomar casillas</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_TAKING_PARA_1" Language="es_ES"><Text>Durante una guerra, una unidad de combate que permanece en una casilla enemiga 5 turnos seguidos la toma, sea cual sea la cultura. Si se mueve, la cuenta vuelve a empezar. Los centros urbanos y los distritos urbanos no se pueden tomar así.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_HOLD_TITLE" Language="es_ES"><Text>Periodo de control</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_HOLD_PARA_1" Language="es_ES"><Text>Durante 10 turnos tras la captura, la cultura no puede recuperar la casilla. Otro ejército aún puede tomarla de la misma forma en cualquier momento.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_AFTER_TITLE" Language="es_ES"><Text>Después de la guerra</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_AFTER_PARA_1" Language="es_ES"><Text>Durante la guerra, la cultura nunca mueve una casilla conquistada. Tras la paz y cuando termina el periodo de control, la cultura puede reclamarla con las reglas normales para cualquier civilización.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_TITLE" Language="es_ES"><Text>Lente de presión</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_CONTENT_PARA_1" Language="es_ES"><Text>Ábrela desde el menú de lentes o pulsa Shift+C. Solo muestra información. La opción Lente de presión (activada por defecto) la añade.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_COLORS_TITLE" Language="es_ES"><Text>Colores</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_COLORS_PARA_1" Language="es_ES"><Text>Una casilla se sombrea con el color de la civilización que va en cabeza cuando una cultura distinta de la del dueño domina y podría reclamarla. El sombreado se intensifica a medida que se acerca la reclamación.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_COLORS_PARA_2" Language="es_ES"><Text>Con Todas las civilizaciones ganan tierras por cultura activado, también se sombrean las casillas que podrían reclamar otras civilizaciones.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_READOUT_TITLE" Language="es_ES"><Text>Información de la casilla</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_READOUT_PARA_1" Language="es_ES"><Text>Al pasar el cursor sobre una casilla se muestra:[BLIST][LI]las tres culturas mayores que hay en ella, con el dueño marcado;[LI][B]Progreso de captura[/B];[LI][B]Al ritmo actual[/B]: turnos restantes, lista para cambiar de manos o estancada.[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_READOUT_PARA_2" Language="es_ES"><Text>Las casillas que no se pueden reclamar solo muestran cantidades de cultura.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_ALERTS_TITLE" Language="es_ES"><Text>Notificaciones</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_ALERTS_PARA_1" Language="es_ES"><Text>Como máximo una notificación por turno: cuando reclamas territorio o cuando otra civilización toma una de tus casillas.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_TITLE" Language="es_ES"><Text>Opciones y preajustes</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_CONTENT_PARA_1" Language="es_ES"><Text>Opciones, Complementos, Difusión cultural. Los ajustes se pueden cambiar durante la partida.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_PRESETS_TITLE" Language="es_ES"><Text>Intensidad</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_PRESETS_PARA_1" Language="es_ES"><Text>[BLIST][LI][B]Baja[/B]: propagación 4%, desvanecimiento 7%, 400 para reclamar, alcance 5, solo tierras vacías.[LI][B]Media[/B] (por defecto): propagación 5.5%, desvanecimiento 5%, 300 para reclamar, alcance 6.[LI][B]Alta[/B]: propagación 7.5%, desvanecimiento 4%, 220 para reclamar, alcance 8.[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_TOGGLES_TITLE" Language="es_ES"><Text>Interruptores</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_TOGGLES_PARA_1" Language="es_ES"><Text>[BLIST][LI][B]Activado[/B]: desactivado, vuelven las fronteras del juego base.[LI][B]Reclamar solo tierras vacías[/B]: consulta [B]Reclamar casillas[/B].[LI][B]Protección de ciudades rivales[/B]: consulta [B]Reclamar casillas[/B].[LI][B]Solo frontera contigua[/B]: activado por defecto. Desactivado, permite reclamar bolsas dentro de otro territorio.[LI][B]Reclamar tierras junto a mejoras nuevas[/B]: desactivado. Consulta [B]Reclamar casillas[/B].[LI][B]Retroceso de fronteras[/B]: desactivado. Consulta [B]Retroceso de fronteras[/B].[LI][B]Todas las civilizaciones ganan tierras por cultura[/B]: activado. Consulta [B]Expansión rival[/B].[LI][B]Los ejércitos conservan el terreno que ocupan[/B]: desactivado. Consulta [B]Terreno ocupado[/B].[LI][B]Las ciudades llevan todas las culturas que viven en ellas[/B]: activado. Consulta [B]Mixtas y tomadas[/B].[LI][B]Modelo cultural completo[/B]: activado. Consulta [B]Fuerza cultural[/B].[LI][B]Seguir la diáspora[/B]: activado. Consulta [B]Con Emigración[/B].[LI][B]Lente de presión[/B]: activado. Consulta [B]Lente de presión[/B].[LI][B]Registro de depuración[/B]: desactivado. Escribe diagnósticos de cada turno en el registro de la interfaz.[/LIST]</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_ABOUT_TITLE" Language="es_ES"><Text>Acerca de este mod</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_ABOUT_CHAPTER_CONTENT_PARA_1" Language="es_ES"><Text>Una versión para Civilization VII del mod de Civilization V Cultural Diffusion, con reglas adicionales.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_ABOUT_CHAPTER_CREDITS_TITLE" Language="es_ES"><Text>Créditos</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_ABOUT_CHAPTER_CREDITS_PARA_1" Language="es_ES"><Text>Creado por Tower. Basado en Cultural Diffusion de Gedemon para Civilization V (v18), origen del campo cultural y de varias reglas de este mod: ríos, cultura extranjera en las ciudades, transferencia por captura, reclamaciones de rivales y ejércitos, el umbral de las montañas y la cultura mínima del dueño.</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_CD_CULTURAL_BORDERS_TITLE" Language="es_ES"><Text>Fronteras (mod)</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_CD_CULTURAL_BORDERS_CHAPTER_CONTENT_PARA_1" Language="es_ES"><Text>Con el mod Difusión cultural, la cultura se propaga desde las ciudades casilla a casilla y puede extender las fronteras más allá del tercer anillo de una ciudad, incluso a casillas fronterizas rivales. Las reglas están en la pestaña [B]Difusión cultural[/B].</Text></Replace>
+
+        <Replace Tag="LOC_PEDIA_CD_TERM_CULTURAL_DIFFUSION" Language="es_ES"><Text>Difusión cultural</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_BORDERS" Language="es_ES"><Text>Fronteras</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_FORWARD_SETTLING" Language="es_ES"><Text>Asentamiento agresivo</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_TERRITORY" Language="es_ES"><Text>Territorio</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_HELP" Language="es_ES"><Text>Ayuda</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_DIFFUSION" Language="es_ES"><Text>Difusión</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_DECAY" Language="es_ES"><Text>Desvanecimiento</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CULTURE_STOCK" Language="es_ES"><Text>Reserva de cultura</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_RIVERS" Language="es_ES"><Text>Ríos</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_ROADS" Language="es_ES"><Text>Carreteras</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_MOUNTAINS" Language="es_ES"><Text>Montañas</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_WATER" Language="es_ES"><Text>Cruzar el agua</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_TILE_FLIP" Language="es_ES"><Text>Cambio de casilla</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CITY_PROTECTION" Language="es_ES"><Text>Protección de ciudades rivales</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CITY_STATES" Language="es_ES"><Text>Ciudades-estado</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_IMPROVEMENT_BUFFER" Language="es_ES"><Text>Tierras junto a mejoras</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_RING" Language="es_ES"><Text>Cuarto anillo</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_WORK_TILES" Language="es_ES"><Text>Trabajar casillas</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CPI" Language="es_ES"><Text>IPC</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CPI_FULL" Language="es_ES"><Text>Índice de poder cultural</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CELEBRATION" Language="es_ES"><Text>Celebración</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_LEADERS" Language="es_ES"><Text>Equilibrio de líderes</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_AGES" Language="es_ES"><Text>Eras</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_GAME_SPEED" Language="es_ES"><Text>Velocidad de juego</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_EMIGRATION" Language="es_ES"><Text>Emigración</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_DIASPORA" Language="es_ES"><Text>Diáspora</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CONVERSION" Language="es_ES"><Text>Conversión</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CAPTURED_CITY" Language="es_ES"><Text>Ciudad capturada</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_FOREIGN_CULTURE" Language="es_ES"><Text>Cultura extranjera</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_RECEDE" Language="es_ES"><Text>Retroceso</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_AI" Language="es_ES"><Text>Fronteras de la IA</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CONQUEST" Language="es_ES"><Text>Conquista</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_OCCUPATION" Language="es_ES"><Text>Ocupación</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_LENS" Language="es_ES"><Text>Lente</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_PRESSURE" Language="es_ES"><Text>Presión cultural</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_HOTKEY" Language="es_ES"><Text>Shift+C</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_NOTIFICATIONS" Language="es_ES"><Text>Notificaciones</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_INTENSITY" Language="es_ES"><Text>Intensidad</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_SETTINGS" Language="es_ES"><Text>Configuración</Text></Replace>
+    </LocalizedText>
+</Database>

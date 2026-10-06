@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database>
+    <LocalizedText>
+        <Replace Tag="LOC_MOD_CULTURAL_DIFFUSION_NAME" Language="ja_JP"><Text>文化の伝播</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_GROUP_CULTURAL_DIFFUSION" Language="ja_JP"><Text>文化の伝播</Text></Replace>
+        <Replace Tag="LOC_MOD_CULTURAL_DIFFUSION_DESCRIPTION" Language="ja_JP"><Text>文化は都市からタイルごとに広がる生きた場になります。強く根付いた文化は、通常の都市の範囲を越えてゆっくりと境界を広げ、空いた土地に浸透し、そこで自文化が明確に勝れば他文明の辺境タイルを奪うこともできます。これにより、AIが自国のすぐ近くに入植してくる行為に、ゲームの仕組みとして対抗できます。拡大はゆっくりです。境界はゲームを通じて少しずつ外へ広がり、文化が弱まれば後退し、圧倒的な文化ほど遠くまで届きます。Civilization V のMOD「Cultural Diffusion」をCivilization VII向けに作り直して拡張したもので、より深い文化の力のモデルと、任意の移住MODとの連携を備えています。シングルプレイ専用で、強度は低/中/高から選べ、オフにもできます。単体で動作し、移住MODが導入されていればそのディアスポラのデータを読み込みます。すべてのルールはゲーム内のシヴィロペディアの「文化の伝播」セクションで説明しています。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_PRESET" Language="ja_JP"><Text>文化の伝播 - 強度</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_PRESET_DESCRIPTION" Language="ja_JP"><Text>文化が境界をどれだけ積極的に広げるか。「低」は空き地にのみ少しずつ広がり、「中」は他文明の辺境タイルを争い、「高」はより遠くまで広がり、より早く奪います。シヴィロペディア: 文化の伝播、オプションとプリセット。</Text></Replace>
+        <Replace Tag="LOC_CD_PRESET_CUSTOM" Language="ja_JP"><Text>カスタム</Text></Replace>
+        <Replace Tag="LOC_CD_PRESET_LOW" Language="ja_JP"><Text>低</Text></Replace>
+        <Replace Tag="LOC_CD_PRESET_MEDIUM" Language="ja_JP"><Text>中</Text></Replace>
+        <Replace Tag="LOC_CD_PRESET_HIGH" Language="ja_JP"><Text>高</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_ENABLED" Language="ja_JP"><Text>文化の伝播 - 有効</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_ENABLED_DESCRIPTION" Language="ja_JP"><Text>全体のスイッチ。オフにすると、境界は基本ゲームとまったく同じように動作します。詳しいルールはシヴィロペディアの「文化の伝播」セクションにあります。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CLAIM_ONLY" Language="ja_JP"><Text>文化の伝播 - 空き地のみ獲得</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CLAIM_ONLY_DESCRIPTION" Language="ja_JP"><Text>安全モード。伝播は所有者のいない辺境のタイルだけを獲得し、他文明が所有するタイルを奪うことはありません。シヴィロペディア: 文化の伝播、タイルの獲得。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE" Language="ja_JP"><Text>文化の伝播 - 他文明の都市の保護</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_DESCRIPTION" Language="ja_JP"><Text>文化が他文明の都市にどこまで入り込めるか。「都心と内周を保護」では都心とそのすぐ内側のリングが守られます。「都心のみ保護」では都心のタイルだけが守られ、周囲のタイルは文化で獲得できます。「保護なし」では都心さえも奪われます。シヴィロペディア: 文化の伝播、タイルの獲得。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_FULL" Language="ja_JP"><Text>都心と内周を保護</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_CENTER" Language="ja_JP"><Text>都心のみ保護（内側のタイルは獲得可）</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_NONE" Language="ja_JP"><Text>保護なし</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_ADJACENCY" Language="ja_JP"><Text>文化の伝播 - 隣接タイルのみ</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_ADJACENCY_DESCRIPTION" Language="ja_JP"><Text>オン（推奨）: 文化は自領に接するタイルだけを獲得するため、他文明の領土は外側から順に奪われます。オフ: 文化は優勢なタイルならどこでも獲得でき、他文明の中にある飛び地も含まれます。シヴィロペディア: 文化の伝播、タイルの獲得。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_FUSED" Language="ja_JP"><Text>文化の伝播 - 総合文化モデル</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_FUSED_DESCRIPTION" Language="ja_JP"><Text>ターンごとの文化力だけでなく、文明の文化の力全体（遺産、文化力、影響力、幸福度、繁栄、伝統）で境界の広がりを決めます。強い文化ほど境界を遠くまで押し広げます。オフ = 居住地の文化力だけを使う単純なモデル。シヴィロペディア: 文化の伝播、文化の強さ。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_EMIGRATION" Language="ja_JP"><Text>文化の伝播 - ディアスポラに従う（移住MOD）</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_EMIGRATION_DESCRIPTION" Language="ja_JP"><Text>移住MODが導入されている場合、自国民が移り住んだ辺境のタイルが自文化に引き寄せられ、境界がディアスポラを追うようになります。移住MODがなければ効果はありません。「総合文化モデル」が必要です。シヴィロペディア: 文化の伝播、移住との連携。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_BUFFER" Language="ja_JP"><Text>文化の伝播 - 新しい施設の隣の土地を獲得（+1リング）</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_BUFFER_DESCRIPTION" Language="ja_JP"><Text>デフォルトはオフ。オンにすると、境界の近くで郊外の施設が完成したとき、そのすぐ隣にある所有者のいないタイルも獲得します。範囲は都市の通常の範囲より1リング先までです。オフのときは、境界は文化フィールドによってのみ広がります。シヴィロペディア: 文化の伝播、タイルの獲得。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_RECEDE" Language="ja_JP"><Text>文化の伝播 - 境界の後退（実験的）</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_RECEDE_DESCRIPTION" Language="ja_JP"><Text>デフォルトはオフ。自文化が獲得したタイルを再び失うことがあります。他文明の文化がそのタイルで自文化を明確に上回ると、そのタイルは相手の最も近い都市に移ります。都市が通常の成長で得たタイルは影響を受けません。シヴィロペディア: 文化の伝播、境界の後退。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_AI_FLIPS" Language="ja_JP"><Text>文化の伝播 - 全文明が文化で土地を獲得</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_AI_FLIPS_DESCRIPTION" Language="ja_JP"><Text>デフォルトはオン。他文明の境界も、あなたと同じルールで文化によって動きます。あなたの領土の近くのタイルで文化が明確に上回った他文明はそのタイルを獲得し、あなたのタイルも対象になります。同じように他文明がタイルを失うこともあります。都市国家と独立勢力がこの方法で土地を得ることはありません。他文明があなたのタイルを奪うと通知が届きます。オフ = 文化で広がるのはあなたの境界だけです。シヴィロペディア: 文化の伝播、他文明の拡大。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CONQUEST" Language="ja_JP"><Text>文化の伝播 - 軍が占領地を保持</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CONQUEST_DESCRIPTION" Language="ja_JP"><Text>デフォルトはオフ。オンにすると、戦争中に戦闘ユニットが敵のタイルに5ターン連続でとどまると、そこの文化に関係なく、そのタイルは所有者のものになります。離れるとカウントはリセットされ、都心と市街区域はこの方法では奪えません。占領したタイルはその後10ターンの間、文化から守られますが、別の軍がそれを奪うことはできます。他文明の軍が同じことをするのは、「全文明が文化で土地を獲得」もオンの場合だけです。シヴィロペディア: 文化の伝播、軍の占領地保持。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_FOREIGN_CULTURE" Language="ja_JP"><Text>文化の伝播 - 都市に住むすべての文化を反映</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_FOREIGN_CULTURE_DESCRIPTION" Language="ja_JP"><Text>デフォルトはオン。都市は所有者の文化だけでなく、そのタイルにいるすべての民族の文化を生み出します。占領した都市や混成都市は元の文化を生み出し続け、それが周囲の土地を争います。一方で、毎ターンその外国文化の一部が所有者の文化に変わります（図書館、大学、博物館があると、また近代ではイデオロギーがあると速くなります）。オフ = 都市は所有者の文化だけを生み出します。シヴィロペディア: 文化の伝播、混成都市と占領都市。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_DEBUG" Language="ja_JP"><Text>文化の伝播 - デバッグログ</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_DEBUG_DESCRIPTION" Language="ja_JP"><Text>処理ごとの詳細な診断情報をUI.logに書き込みます（調整とトラブルシューティング用）。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_PRESSURE_LENS" Language="ja_JP"><Text>文化の伝播 - 圧力レンズ</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_PRESSURE_LENS_DESCRIPTION" Language="ja_JP"><Text>閲覧専用の「文化圧力」マップレンズ（とShift+Cのホットキー）を追加します。争われている辺境のタイルを、あなたまたは他文明の文化がそのタイルの獲得にどれだけ近いかで色分けします。情報を表示するだけで、境界の動きには一切影響しません。シヴィロペディア: 文化の伝播、文化圧力レンズ。</Text></Replace>
+        <Replace Tag="LOC_CD_LENS_PRESSURE" Language="ja_JP"><Text>文化圧力</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_TITLE" Language="ja_JP"><Text>文化圧力</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_PROGRESS" Language="ja_JP"><Text>獲得の進捗</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_TURNS" Language="ja_JP"><Text>現在のペースで</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_TURNS_COUNT" Language="ja_JP"><Text>約{1_Turns}{1_Turns: plural other?ターン;}</Text></Replace>
+        <Replace Tag="LOC_CD_TOAST_GAINED" Language="ja_JP"><Text>文化の伝播: あなたの文化が新たな領土を獲得しました。</Text></Replace>
+        <Replace Tag="LOC_CD_TOAST_LOST" Language="ja_JP"><Text>文化の伝播: 他文明があなたのタイルを1つ奪いました。</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_READY" Language="ja_JP"><Text>獲得可能</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_STALLED" Language="ja_JP"><Text>停滞</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_OWNER_SUFFIX" Language="ja_JP"><Text>（所有者）</Text></Replace>
+    </LocalizedText>
+</Database>

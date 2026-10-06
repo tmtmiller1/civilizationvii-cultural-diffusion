@@ -7,7 +7,7 @@
         <SpecialThanks>Gedemon's "Cultural Diffusion" mod for Civilization V (v18), whose reaction-diffusion culture model is the core layer this mod builds on and extends.</SpecialThanks>
         <Package>CulturalDiffusionMod</Package>
         <PackageSortIndex>1000</PackageSortIndex>
-        <Version>1.4.1</Version>
+        <Version>1.5.0</Version>
     </Properties>
     <Dependencies>
         <Mod id="base-standard" title="LOC_MODULE_BASE_STANDARD_NAME" />
@@ -25,6 +25,17 @@
             <Actions>
                 <UpdateText>
                     <Item>text/en_us/ModText.xml</Item>
+                    <Item locale="de_DE">text/de_de/ModText.xml</Item>
+                    <Item locale="es_ES">text/es_es/ModText.xml</Item>
+                    <Item locale="fr_FR">text/fr_fr/ModText.xml</Item>
+                    <Item locale="it_IT">text/it_it/ModText.xml</Item>
+                    <Item locale="ja_JP">text/ja_jp/ModText.xml</Item>
+                    <Item locale="ko_KR">text/ko_kr/ModText.xml</Item>
+                    <Item locale="pl_PL">text/pl_pl/ModText.xml</Item>
+                    <Item locale="pt_BR">text/pt_br/ModText.xml</Item>
+                    <Item locale="ru_RU">text/ru_ru/ModText.xml</Item>
+                    <Item locale="zh_Hans_CN">text/zh_cn/ModText.xml</Item>
+                    <Item locale="zh_Hant_HK">text/zh_hk/ModText.xml</Item>
                 </UpdateText>
                 <UIScripts>
                     <Item>ui/cd-config.js</Item>
@@ -44,6 +55,28 @@
                 <UpdateText>
                     <Item>text/en_us/ModText.xml</Item>
                     <Item>text/en_us/PediaText.xml</Item>
+                    <Item locale="de_DE">text/de_de/ModText.xml</Item>
+                    <Item locale="de_DE">text/de_de/PediaText.xml</Item>
+                    <Item locale="es_ES">text/es_es/ModText.xml</Item>
+                    <Item locale="es_ES">text/es_es/PediaText.xml</Item>
+                    <Item locale="fr_FR">text/fr_fr/ModText.xml</Item>
+                    <Item locale="fr_FR">text/fr_fr/PediaText.xml</Item>
+                    <Item locale="it_IT">text/it_it/ModText.xml</Item>
+                    <Item locale="it_IT">text/it_it/PediaText.xml</Item>
+                    <Item locale="ja_JP">text/ja_jp/ModText.xml</Item>
+                    <Item locale="ja_JP">text/ja_jp/PediaText.xml</Item>
+                    <Item locale="ko_KR">text/ko_kr/ModText.xml</Item>
+                    <Item locale="ko_KR">text/ko_kr/PediaText.xml</Item>
+                    <Item locale="pl_PL">text/pl_pl/ModText.xml</Item>
+                    <Item locale="pl_PL">text/pl_pl/PediaText.xml</Item>
+                    <Item locale="pt_BR">text/pt_br/ModText.xml</Item>
+                    <Item locale="pt_BR">text/pt_br/PediaText.xml</Item>
+                    <Item locale="ru_RU">text/ru_ru/ModText.xml</Item>
+                    <Item locale="ru_RU">text/ru_ru/PediaText.xml</Item>
+                    <Item locale="zh_Hans_CN">text/zh_cn/ModText.xml</Item>
+                    <Item locale="zh_Hans_CN">text/zh_cn/PediaText.xml</Item>
+                    <Item locale="zh_Hant_HK">text/zh_hk/ModText.xml</Item>
+                    <Item locale="zh_Hant_HK">text/zh_hk/PediaText.xml</Item>
                 </UpdateText>
                 <UIScripts>
                     <Item>ui/cd-bootstrap.js</Item>

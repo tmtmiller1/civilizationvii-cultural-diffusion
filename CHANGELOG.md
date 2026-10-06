@@ -4,6 +4,30 @@ All notable changes to Cultural Diffusion are recorded here. The format follows
 [Keep a Changelog](https://keepachangelog.com/), and the mod uses
 [Semantic Versioning](https://semver.org/).
 
+## [1.5.0] - 2026-10-06
+
+### Added
+
+- The mod in eleven more languages: German, Spanish, French, Italian, Japanese, Korean, Polish, Brazilian Portuguese,
+  Russian, Simplified Chinese and Traditional Chinese. The Options, the Cultural Pressure hover readout, the
+  notifications and every Civilopedia page are translated, using the game's own words for its terms.
+
+### Fixed
+
+- The 1.4.1 crash fix could miss the last turn of an age. It held improved tiles only once the age was two progression
+  points from its end, but a legacy milestone or a Future Tech or Civic adds 5 to 20 points at once, so an age could
+  end on a turn that still read several points away. Improved tiles now hold for the whole Age Ending countdown, and
+  for the first two turns of the next age as before.
+- The Low intensity preset did not keep culture to empty land, although its Options text says it does: the "Claim
+  empty land only" checkbox's own default overrode it. With Low chosen and the checkbox never changed, culture now
+  claims empty land only; a choice you saved on the checkbox still wins.
+
+### Changed
+
+- The notification when culture gains or loses you a tile, and the hover readout's turn estimate, now come from the
+  text files, so they appear in the game's language. The turn estimate uses the right plural form ("~1 turn",
+  "~5 turns").
+
 ## [1.4.1] - 2026-10-06
 
 ### Fixed

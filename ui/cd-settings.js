@@ -141,9 +141,15 @@ export function setDiffusionEnabled(on) {
   ModOptions.save(MOD_ID, OPT_ENABLED, on ? 1 : 0);
 }
 
-/** @returns {boolean} Whether only unowned land may be claimed. */
+/**
+ * Whether only unowned land may be claimed. A choice the player saved wins; with none saved, the intensity preset
+ * decides (Low claims empty land only, as its Options text says), then the code default.
+ * @returns {boolean} Claim-only flag.
+ */
 export function getClaimOnlyUnowned() {
-  return loadBool(OPT_CLAIM_ONLY, CONFIG_DEFAULTS.claimOnlyUnowned);
+  const preset = PRESETS[PRESET_NAMES[getPresetIndex()]];
+  const dflt = preset && typeof preset.claimOnlyUnowned === "boolean" ? preset.claimOnlyUnowned : CONFIG_DEFAULTS.claimOnlyUnowned;
+  return loadBool(OPT_CLAIM_ONLY, dflt);
 }
 /** @param {boolean} on Claim-only flag. */
 export function setClaimOnlyUnowned(on) {

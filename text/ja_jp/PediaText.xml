@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database>
+    <LocalizedText>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_TITLE" Language="ja_JP"><Text>文化の伝播</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_GROUP_START_TITLE" Language="ja_JP"><Text>はじめに</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_GROUP_SPREAD_TITLE" Language="ja_JP"><Text>文化の広がり方</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_GROUP_POWER_TITLE" Language="ja_JP"><Text>文化の力</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_GROUP_RIVALS_TITLE" Language="ja_JP"><Text>他文明・都市・戦争</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_GROUP_INTERFACE_TITLE" Language="ja_JP"><Text>画面とオプション</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_TITLE" Language="ja_JP"><Text>文化の伝播</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>都市の近くの各タイルには、それぞれの文明の [icon:YIELD_CULTURE] 文化力がどれだけあるかが蓄えられます。毎ターン、都市は自身のタイルに文化を加え、文化は隣のタイルへ広がり、すべてのタイルは文化の一部を失います。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_CONTENT_PARA_2" Language="ja_JP"><Text>都市の第3リングより外のタイルで自文化が十分に大きくなると、そのタイルを獲得します。境界は主にゲーム中盤以降にゆっくりと広がり、そこでの文化がはるかに弱い他文明から辺境のタイルを奪うこともあります。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_WHERE_TITLE" Language="ja_JP"><Text>ゲーム内</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_WHERE_PARA_1" Language="ja_JP"><Text>[BLIST][LI][B]「文化圧力」レンズ[/B]（レンズメニューまたはShift+C）: 所有者が変わりそうなタイルに色を付けます。[B]文化圧力レンズ[/B]を参照。[LI][B]通知[/B]: 領土を獲得したとき、または他文明にタイルを奪われたとき。[LI][B]オプション、追加コンテンツ、文化の伝播[/B]: 強度とすべてのスイッチ。[B]オプションとプリセット[/B]を参照。[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_TITLE" Language="ja_JP"><Text>よくある質問</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_NOTHING_TITLE" Language="ja_JP"><Text>境界が広がらないのはなぜ?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_NOTHING_PARA_1" Language="ja_JP"><Text>都市が第4リングに届くには、大きく安定した文化が必要です。序盤の都市はたいてい何も獲得しません。レンズで、優勢なタイルとそれぞれに必要なターン数を確認できます。[B]拡大の速さと獲得地[/B]を参照。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_WORK_TITLE" Language="ja_JP"><Text>獲得したタイルで働ける?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_WORK_PARA_1" Language="ja_JP"><Text>いいえ。都市が働けるのは3リング以内のタイルだけで、獲得したタイルはそれより外にあります。獲得したタイルは自国の領土として扱われ、他文明の開拓者を阻みます。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_AILAND_TITLE" Language="ja_JP"><Text>AIに土地を奪われる?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_AILAND_PARA_1" Language="ja_JP"><Text>はい。デフォルトでは、自領の近くのタイルで文化が明確に上回った他文明は、あなたの獲得と同じルールでそのタイルを奪い、通知が届きます。これを止めるには「全文明が文化で土地を獲得」をオフにしてください。[B]他文明の拡大[/B]を参照。[B]境界の後退[/B]と[B]軍の占領地保持[/B]は追加のオプションです。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_FLIPBACK_TITLE" Language="ja_JP"><Text>優勢なのに奪えないのは?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_FLIPBACK_PARA_1" Language="ja_JP"><Text>別の獲得ルールを満たしていません。都市から遠すぎる、自領に接していない、保護された都市の中心部にある、戦争中の文明が所有している、探検の時代より前の遠隔地にある、最近所有者が変わった、または奪うと他国のユニットが閉じ込められる、のいずれかです。[B]タイルの獲得[/B]を参照。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_TURNOFF_TITLE" Language="ja_JP"><Text>MODをオフにすると?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_TURNOFF_PARA_1" Language="ja_JP"><Text>新たな獲得は止まります。すでに獲得したタイルはそのまま自分のものです。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_SAVES_TITLE" Language="ja_JP"><Text>途中のゲームに追加できる?</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_SAVES_PARA_1" Language="ja_JP"><Text>いいえ。ゲーム開始時にMODを有効にしておく必要があります。シングルプレイ専用です。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_TITLE" Language="ja_JP"><Text>文化フィールド</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>都市から8リング以内のすべてのタイルに、各文明の文化が蓄えられます。蓄えはターンごとに1回変化し、タイルの所有権はそれに従います（[B]タイルの獲得[/B]を参照）。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_INJECT_TITLE" Language="ja_JP"><Text>都市が文化を加える</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_INJECT_PARA_1" Language="ja_JP"><Text>各都市は自身のタイルに文化を加えます。すでにある文化が多いほど速く増え、上限は都市の強さで決まります（[B]文化の強さ[/B]を参照）。都市はそこに住む他の民族の文化も加えます（[B]混成都市と占領都市[/B]を参照）。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_DIFFUSE_TITLE" Language="ja_JP"><Text>文化の広がり</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_DIFFUSE_PARA_1" Language="ja_JP"><Text>文化が100以上あるタイルは、毎ターンその約5.5%を隣接する各タイルに与えます。隣のタイルが達するのは最大で元のタイルの量の40%、道路や河川沿いなら75%までです。地形は広がりを遅らせたり妨げたりします（[B]地形と河川[/B]を参照）。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_DECAY_TITLE" Language="ja_JP"><Text>文化の減衰</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FIELD_CHAPTER_DECAY_PARA_1" Language="ja_JP"><Text>すべてのタイルは毎ターン、文化の5%に加えて1ポイントを失います。これにより境界の届く範囲が限られ、都市が弱まったり失われたりすると文化は後退します。自分が所有するタイルには、自文化が最低1ポイント残ります。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_TITLE" Language="ja_JP"><Text>地形と河川</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>文化がどれだけうまく広がるかは、移り先のタイルで決まります。同じタイルの効果は累積します。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROUGH_TITLE" Language="ja_JP"><Text>険しい地形</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROUGH_PARA_1" Language="ja_JP"><Text>通りやすい順に:[BLIST][LI][B]森林、タイガ[/B]: わずかに遅くなります。[LI][B]荒地[/B]: 中程度に遅くなります。[LI][B]ツンドラ[/B]: 中程度に遅くなり、越えるにはより強い発生源が必要です。[LI][B]砂漠[/B]: 大きく遅くなります。[LI][B]熱帯雨林、湿原[/B]: 大きく遅くなり、強い発生源だけが越えられます。[LI][B]山岳[/B]: ほぼ通れません。山頂の文化がそこから広がるには、通常の7.5倍の量が必要です。[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROADS_TITLE" Language="ja_JP"><Text>道路</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROADS_PARA_1" Language="ja_JP"><Text>道路のあるタイル同士の間では、文化は2倍の速さで、より遠くまで広がります。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_RIVERS_TITLE" Language="ja_JP"><Text>河川</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_RIVERS_PARA_1" Language="ja_JP"><Text>河川沿いでは文化はより速く、より遠くまで広がり、小規模河川より航行可能な河川のほうがその効果は大きくなります。岸から、または別の河川から河川に移るには通常の2倍の量が必要で、届く文化は弱まります。河川を押さえた文化は両岸に届きます。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_WATER_TITLE" Language="ja_JP"><Text>沿岸と外洋</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_WATER_PARA_1" Language="ja_JP"><Text>水域を越えられるのは強い文化だけで、外洋より沿岸のほうが越えやすくなります。越えやすさは時代ごとに増し、古代ではかろうじて可能な程度ですが、近代で最も容易になります。遠隔地のタイルは探検の時代より前には獲得できません。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_TITLE" Language="ja_JP"><Text>タイルの獲得</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>獲得したタイルは最も近い自分の都市に加わります。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_RULES_TITLE" Language="ja_JP"><Text>条件</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_RULES_PARA_1" Language="ja_JP"><Text>[BLIST][LI]そのタイルで自文化が最も多い。[LI]自文化が300以上ある（探検の時代は375、近代は480）。[LI]他文明が所有するタイルの場合、その文明の文化が自文化の3分の2未満。[LI]タイルが自分の都市から6タイル以内で、第3リングより外にある。[LI]タイルが自領に接している（オプション「隣接タイルのみ」）。[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_TITLE" Language="ja_JP"><Text>保護されたタイル</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_1" Language="ja_JP"><Text>オプション「他文明の都市の保護」で、他文明の都市のどこまでを守るかを設定します。都心とその第1リング、都心のみ（デフォルト）、または保護なしです。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_2" Language="ja_JP"><Text>都市国家と独立勢力は、常に都心と第1リングを保持します。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_3" Language="ja_JP"><Text>「空き地のみ獲得」がオンのとき（「低」ではデフォルトでオン）、文化が所有済みのタイルを奪うことはありません。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_4" Language="ja_JP"><Text>時代の移行の前後では、施設、市街区域、遺産のある所有済みのタイルは、時代の終了までのカウントダウン中と次の時代の最初の2ターンの間、所有者が変わりません。施設のないタイルは影響を受けません。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_SAFE_TITLE" Language="ja_JP"><Text>制限</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_SAFE_PARA_1" Language="ja_JP"><Text>[BLIST][LI]文化が戦争中の文明からタイルを奪うことはありません。[LI]所有者が変わったタイルは15ターンの間固定されます。[LI]和平中の文明のユニットが逃げ場を失うことになる獲得は行われません。[LI]1ターンに所有者が変わるタイルは最大8つで、各都市が持てる獲得タイルは最大80（「低」では40）です。[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_BUFFER_TITLE" Language="ja_JP"><Text>新しい施設の隣の土地</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_BUFFER_PARA_1" Language="ja_JP"><Text>このオプションがオンのとき（デフォルトはオフ）、境界の近くで郊外の施設が完成すると、その隣にある所有者のいないタイルも獲得します。範囲は都市の通常の範囲より1リング先までです。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_TITLE" Language="ja_JP"><Text>拡大の速さと獲得地</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>文化は1リングずつ蓄積するため、境界はゆっくり広がります。強い文化ほど遠くまで、速く届きます。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_RINGS_TITLE" Language="ja_JP"><Text>リング</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_RINGS_PARA_1" Language="ja_JP"><Text>[BLIST][LI][B]第1～3リング[/B]: 基本ゲームのルールに従います。自文化がこれを獲得することはありませんが、「全文明が文化で土地を獲得」がオンなら他文明の文化が獲得することはあります。[LI][B]第4リング[/B]: 文化が獲得する最初のリング。[LI][B]第5リング以降[/B]: 強く根付いた文化だけ。[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_EARLY_TITLE" Language="ja_JP"><Text>序盤</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_EARLY_PARA_1" Language="ja_JP"><Text>[icon:YIELD_CULTURE] 文化力をあまり生まない若い都市は何も獲得しません。獲得は都市が強くなるにつれて始まります。プリセット「高」ではより早く、より遠くまで届きます。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_VALUE_TITLE" Language="ja_JP"><Text>獲得したタイル</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_VALUE_PARA_1" Language="ja_JP"><Text>獲得したタイルは自分のものですが、都市が働けるのは最初の3リングだけなので、そこで働いたり建設したりはできません。獲得したタイルは他文明がすぐ隣に入植するのを防ぎます。開拓者は他文明の土地の上やその隣には居住地を建設できません。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_TITLE" Language="ja_JP"><Text>文化の強さ</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>都市の強さによって、毎ターン加える文化の量が決まります。オプション「総合文化モデル」がオン（デフォルト）のとき、強さは以下の要素から決まります。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_BLEND_TITLE" Language="ja_JP"><Text>都市の強さ</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_BLEND_PARA_1" Language="ja_JP"><Text>都市の強さは [icon:YIELD_CULTURE] 文化力に、[icon:YIELD_FOOD] 食料、[icon:YIELD_PRODUCTION] 生産力、[icon:YIELD_HAPPINESS] 幸福度、成長を組み合わせたものです。1つだけ大きいボーナスは、バランスの取れた産出より低く評価されます。祝宴中の文明の都市は25%増えます。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_CPI_TITLE" Language="ja_JP"><Text>文化パワー指数</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_CPI_PARA_1" Language="ja_JP"><Text>各文明の指数は、6つの分野で首位の文明と比較されます:[BLIST][LI][B]遺業[/B]: 遺産、傑作。[LI][B]流れ[/B]: ターンごとの [icon:YIELD_CULTURE] 文化力。[LI][B]影響範囲[/B]: [icon:YIELD_DIPLOMACY] 影響力、都市国家の宗主権。[LI][B]活力[/B]: [icon:YIELD_HAPPINESS] 幸福度、祝宴。[LI][B]繁栄[/B]: 帝国の富と成長。[LI][B]アイデンティティ[/B]: 伝統、時代。[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_CPI_PARA_2" Language="ja_JP"><Text>1つの分野が突出しているより、6つすべてが強いほうが高く評価されます。指数はすべての都市の強さに0.6～1.6を掛けます。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_SIMPLE_TITLE" Language="ja_JP"><Text>単純なモデル</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_SIMPLE_PARA_1" Language="ja_JP"><Text>「総合文化モデル」がオフのとき、強さは都市の [icon:YIELD_CULTURE] 文化力に祝宴のボーナスを加えたものです。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_TITLE" Language="ja_JP"><Text>指導者・時代・マップ</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>都市の強さは、指導者、時代、ゲーム速度、マップのサイズに応じて調整されます。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_LEADERS_TITLE" Language="ja_JP"><Text>指導者、文明、記念品</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_LEADERS_PARA_1" Language="ja_JP"><Text>文化、遺産、祝宴、宗主国に関する強いボーナスを持つ指導者、文明、記念品や、すでに領土を与える能力を持つものは、強さがわずかに下がります。文化が弱い文明は少し増えます。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_AGES_TITLE" Language="ja_JP"><Text>時代</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_AGES_PARA_1" Language="ja_JP"><Text>後の時代ほど都市も文化も多くなるため、探検の時代と近代では都市が加える文化は少なくなり、タイルの獲得により多くの文化が必要になります。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_SPEED_TITLE" Language="ja_JP"><Text>ゲーム速度とマップのサイズ</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_BALANCE_CHAPTER_SPEED_PARA_1" Language="ja_JP"><Text>広がる速さは時代の長さに合わせて変わるため、どのゲーム速度でも、境界は時代に対して同じ割合で広がります。小さいマップでは都市が加える文化はわずかに少なく、大きいマップではわずかに多くなります。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_TITLE" Language="ja_JP"><Text>移住との連携</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>移住MODが導入されている場合、文化の伝播はその人口データを使います。移住MODがなければ、これらのルールは何もしません。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_CHAPTER_AFFINITY_TITLE" Language="ja_JP"><Text>ディアスポラ</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_CHAPTER_AFFINITY_PARA_1" Language="ja_JP"><Text>「ディアスポラに従う」がオンのとき（デフォルト。「総合文化モデル」が必要）、自文化は自国民が移り住んだタイルに向かってより速く広がります。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_CHAPTER_PEOPLES_TITLE" Language="ja_JP"><Text>混成人口</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_EMIGRATION_CHAPTER_PEOPLES_PARA_1" Language="ja_JP"><Text>都市内の各外国民族の文化は、人口に占める割合で重み付けされます。[B]混成都市と占領都市[/B]を参照。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_TITLE" Language="ja_JP"><Text>混成都市と占領都市</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>占領した都市や混成都市は元の文化を生み出し続けます。その文化は近くのタイルを争い、ゆっくりと所有者の文化に変わっていきます。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_FOREIGN_TITLE" Language="ja_JP"><Text>外国の文化</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_FOREIGN_PARA_1" Language="ja_JP"><Text>「都市に住むすべての文化を反映」がオンのとき（デフォルト）、都市はそのタイルにいる各民族の文化を加えます。所有者の文化は全量で加えられ、各外国文化は都市の人口に比例して加えられます。移住MODがある場合は、それぞれ人口に占める割合で重み付けされます。ない場合は、外国文化は都市のタイルで100に達すると数に入ります。このオプションがオフのとき、都市は所有者の文化だけを加えます。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CONVERT_TITLE" Language="ja_JP"><Text>転化</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CONVERT_PARA_1" Language="ja_JP"><Text>都市は毎ターン、タイル上の各外国文化の0.5%を所有者の文化に変えます。建造物による追加:[BLIST][LI][B]+0.25%[/B]: 図書館、モニュメント、円形闘技場。[LI][B]+0.5%[/B]: アカデミー、大学、天文台、博物館、オペラハウス。[LI][B]+1%[/B]: 学舎、研究所。[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CONVERT_PARA_2" Language="ja_JP"><Text>近代のイデオロギーは+1%（民主主義）、+1.25%（共産主義）、+1.75%（ファシズム）を加えます。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CAPTURE_TITLE" Language="ja_JP"><Text>占領</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_CHAPTER_CAPTURE_PARA_1" Language="ja_JP"><Text>都市の所有者が変わると、そのタイル上のすべての文化が55%失われ、新しい所有者は失われた合計の75%を得ます。これはすべての文明に適用されます。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RECEDE_TITLE" Language="ja_JP"><Text>境界の後退</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RECEDE_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>実験的なオプションで、デフォルトはオフです。自文化が獲得したタイルを失うことがあります。「全文明が文化で土地を獲得」がオンなら、他文明はすでに文化で上回った獲得タイルを奪うため、このオプションが主に意味を持つのはそのオプションがオフのときです。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RECEDE_CHAPTER_RULES_TITLE" Language="ja_JP"><Text>ルール</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RECEDE_CHAPTER_RULES_PARA_1" Language="ja_JP"><Text>獲得したタイルで他文明の文化が、獲得に必要な差で自文化を上回ると、そのタイルはその文明の最も近い都市に移ります。都市の通常の成長で得たタイルがこの方法で失われることはありません。上回る他文明がいないまま文化が減衰しても、獲得したタイルの所有者は変わりません。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_TITLE" Language="ja_JP"><Text>他文明の拡大</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>「全文明が文化で土地を獲得」がオンのとき（デフォルト）、他文明もあなたと同じルールで文化によってタイルを獲得し、あなたのタイルも対象になります。タイルを失うと通知が届きます。オフのときは、文化で広がるのはあなたの境界だけです。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_CHAPTER_RULES_TITLE" Language="ja_JP"><Text>ルール</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_CHAPTER_RULES_PARA_1" Language="ja_JP"><Text>他文明が優勢なタイルを奪うのは、その文明が所有者と和平中で、タイルが所有者の保護された中心部の外にあり、かつタイルがその文明の都市の範囲内でその文明の土地に接している場合です。[B]タイルの獲得[/B]の制限もすべて適用され、他文明には別にターンごとの上限があります。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_CHAPTER_LIMITS_TITLE" Language="ja_JP"><Text>制限</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_CHAPTER_LIMITS_PARA_1" Language="ja_JP"><Text>都市国家と独立勢力がこの方法でタイルを獲得することはありません。文化はあなたの都市から8リング以内でのみ記録されるため、それ以外の場所の境界は基本ゲームのルールに従います。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_TITLE" Language="ja_JP"><Text>軍の占領地保持</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>オプションで、デフォルトはオフです。他文明の軍がこのルールに従うのは、「全文明が文化で土地を獲得」もオンの場合だけです。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_TAKING_TITLE" Language="ja_JP"><Text>タイルの奪取</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_TAKING_PARA_1" Language="ja_JP"><Text>戦争中に戦闘ユニットが敵のタイルに5ターン連続でとどまると、文化に関係なくそのタイルを奪います。移動するとカウントはリセットされます。都心と市街区域はこの方法では奪えません。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_HOLD_TITLE" Language="ja_JP"><Text>保持期間</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_HOLD_PARA_1" Language="ja_JP"><Text>奪取後10ターンの間、文化がそのタイルを取り戻すことはできません。別の軍はいつでも同じ方法でそれを奪えます。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_AFTER_TITLE" Language="ja_JP"><Text>戦争の後</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_CHAPTER_AFTER_PARA_1" Language="ja_JP"><Text>戦争中、文化が占領されたタイルを動かすことはありません。和平後、保持期間が終われば、どの文明の文化も通常のルールでそのタイルを獲得できます。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_TITLE" Language="ja_JP"><Text>文化圧力レンズ</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>レンズメニューから開くか、Shift+Cを押します。表示のみです。オプション「圧力レンズ」（デフォルトはオン）で追加されます。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_COLORS_TITLE" Language="ja_JP"><Text>色</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_COLORS_PARA_1" Language="ja_JP"><Text>所有者以外の文化が優勢でタイルを獲得できる場合、そのタイルは優勢な文明の色で塗られます。獲得が近づくほど色は濃くなります。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_COLORS_PARA_2" Language="ja_JP"><Text>「全文明が文化で土地を獲得」がオンのときは、他文明が獲得できるタイルも色が付きます。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_READOUT_TITLE" Language="ja_JP"><Text>タイル情報</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_READOUT_PARA_1" Language="ja_JP"><Text>タイルにカーソルを合わせると次が表示されます:[BLIST][LI]そのタイルで最も大きい3つの文化（所有者には印が付きます）。[LI][B]獲得の進捗[/B]。[LI][B]現在のペースで[/B]: 残りのターン数、獲得可能、または停滞。[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_READOUT_PARA_2" Language="ja_JP"><Text>獲得できないタイルには文化の量だけが表示されます。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_ALERTS_TITLE" Language="ja_JP"><Text>通知</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_LENS_CHAPTER_ALERTS_PARA_1" Language="ja_JP"><Text>通知は1ターンに最大1回です。領土を獲得したとき、または他文明にタイルを奪われたときに届きます。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_TITLE" Language="ja_JP"><Text>オプションとプリセット</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>オプション、追加コンテンツ、文化の伝播。設定はゲーム中に変更できます。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_PRESETS_TITLE" Language="ja_JP"><Text>強度</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_PRESETS_PARA_1" Language="ja_JP"><Text>[BLIST][LI][B]低[/B]: 広がり4%、減衰7%、獲得に400、範囲5、空き地のみ。[LI][B]中[/B]（デフォルト）: 広がり5.5%、減衰5%、獲得に300、範囲6。[LI][B]高[/B]: 広がり7.5%、減衰4%、獲得に220、範囲8。[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_TOGGLES_TITLE" Language="ja_JP"><Text>スイッチ</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_TOGGLES_PARA_1" Language="ja_JP"><Text>[BLIST][LI][B]有効[/B]: オフで基本ゲームの境界に戻ります。[LI][B]空き地のみ獲得[/B]: [B]タイルの獲得[/B]を参照。[LI][B]他文明の都市の保護[/B]: [B]タイルの獲得[/B]を参照。[LI][B]隣接タイルのみ[/B]: デフォルトはオン。オフにすると他の領土の中にある飛び地も獲得できます。[LI][B]新しい施設の隣の土地を獲得[/B]: オフ。[B]タイルの獲得[/B]を参照。[LI][B]境界の後退[/B]: オフ。[B]境界の後退[/B]を参照。[LI][B]全文明が文化で土地を獲得[/B]: オン。[B]他文明の拡大[/B]を参照。[LI][B]軍が占領地を保持[/B]: オフ。[B]軍の占領地保持[/B]を参照。[LI][B]都市に住むすべての文化を反映[/B]: オン。[B]混成都市と占領都市[/B]を参照。[LI][B]総合文化モデル[/B]: オン。[B]文化の強さ[/B]を参照。[LI][B]ディアスポラに従う[/B]: オン。[B]移住との連携[/B]を参照。[LI][B]圧力レンズ[/B]: オン。[B]文化圧力レンズ[/B]を参照。[LI][B]デバッグログ[/B]: オフ。ターンごとの診断情報をUIログに書き込みます。[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_ABOUT_TITLE" Language="ja_JP"><Text>このMODについて</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_ABOUT_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>Civilization V のMOD「Cultural Diffusion」をCivilization VII向けにしたもので、ルールが追加されています。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_ABOUT_CHAPTER_CREDITS_TITLE" Language="ja_JP"><Text>クレジット</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_ABOUT_CHAPTER_CREDITS_PARA_1" Language="ja_JP"><Text>制作: Tower。GedemonによるCivilization V用の「Cultural Diffusion」（v18）を基にしており、文化フィールドと、ここにある次のルールの元になっています: 河川、都市内の外国文化、占領時の移転、他文明と軍による獲得、山岳のしきい値、所有者の最低文化。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_CD_CULTURAL_BORDERS_TITLE" Language="ja_JP"><Text>文化による境界（MOD）</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_CD_CULTURAL_BORDERS_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>文化の伝播MODでは、文化は都市からタイルごとに広がり、都市の第3リングを越えて、他文明の辺境のタイルにまで境界を広げることがあります。ルールは[B]文化の伝播[/B]タブにあります。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CULTURAL_DIFFUSION" Language="ja_JP"><Text>文化の伝播</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_BORDERS" Language="ja_JP"><Text>境界</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_FORWARD_SETTLING" Language="ja_JP"><Text>前線入植</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_TERRITORY" Language="ja_JP"><Text>領土</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_HELP" Language="ja_JP"><Text>ヘルプ</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_DIFFUSION" Language="ja_JP"><Text>伝播</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_DECAY" Language="ja_JP"><Text>減衰</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CULTURE_STOCK" Language="ja_JP"><Text>文化の蓄え</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_RIVERS" Language="ja_JP"><Text>河川</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_ROADS" Language="ja_JP"><Text>道路</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_MOUNTAINS" Language="ja_JP"><Text>山岳</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_WATER" Language="ja_JP"><Text>水域の横断</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_TILE_FLIP" Language="ja_JP"><Text>タイルの奪取</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CITY_PROTECTION" Language="ja_JP"><Text>他文明の都市の保護</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CITY_STATES" Language="ja_JP"><Text>都市国家</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_IMPROVEMENT_BUFFER" Language="ja_JP"><Text>施設の周囲</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_RING" Language="ja_JP"><Text>第4リング</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_WORK_TILES" Language="ja_JP"><Text>タイルで働く</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CPI" Language="ja_JP"><Text>CPI</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CPI_FULL" Language="ja_JP"><Text>文化パワー指数</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CELEBRATION" Language="ja_JP"><Text>祝宴</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_LEADERS" Language="ja_JP"><Text>指導者のバランス</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_AGES" Language="ja_JP"><Text>時代</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_GAME_SPEED" Language="ja_JP"><Text>ゲーム速度</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_EMIGRATION" Language="ja_JP"><Text>移住</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_DIASPORA" Language="ja_JP"><Text>ディアスポラ</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CONVERSION" Language="ja_JP"><Text>転化</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CAPTURED_CITY" Language="ja_JP"><Text>占領都市</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_FOREIGN_CULTURE" Language="ja_JP"><Text>外国の文化</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_RECEDE" Language="ja_JP"><Text>後退</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_AI" Language="ja_JP"><Text>AIの境界</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_CONQUEST" Language="ja_JP"><Text>征服</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_OCCUPATION" Language="ja_JP"><Text>占領</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_LENS" Language="ja_JP"><Text>レンズ</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_PRESSURE" Language="ja_JP"><Text>文化圧力</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_HOTKEY" Language="ja_JP"><Text>Shift+C</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_NOTIFICATIONS" Language="ja_JP"><Text>通知</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_INTENSITY" Language="ja_JP"><Text>強度</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_SETTINGS" Language="ja_JP"><Text>設定</Text></Replace>
+    </LocalizedText>
+</Database>

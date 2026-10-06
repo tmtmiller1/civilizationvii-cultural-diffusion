@@ -154,8 +154,10 @@ and owned land always keeps at least a point of its owner's culture (`ownerFloor
 never reads as empty in the pressure lens.
 
 Around an age change, a tile that carries a district (an improvement, an urban district or a
-wonder) does not change hands in the last two turns of an age or the first two of the next,
-whether by culture, recede or conquest. Moving such a tile in that window crashed the game.
+wonder) does not change hands while the Age Ending countdown runs or in the first two turns
+of the next age, whether by culture, recede or conquest. Moving such a tile in that window
+crashed the game. The whole countdown counts, not just its last turns, because a legacy
+milestone or a Future Tech or Civic can end the age several turns early.
 Unimproved tiles, and every tile the rest of the time, follow the rules above.
 
 ### Why growth is slow
@@ -399,6 +401,10 @@ This mod reimagines and extends Gedemon's work.
 
 ## Notes and limitations
 
+- Languages: English, German, Spanish, French, Italian, Japanese, Korean, Polish, Brazilian
+  Portuguese, Russian, Simplified Chinese and Traditional Chinese, for the Options, the hover
+  readout, the notifications and the Civilopedia. The translations are machine translations that
+  use the game's own words for its terms; corrections are welcome (see `text/README.md`).
 - Terrain (roads, rivers, hills and mountains, tundra and desert biomes, forest,
   rainforest and marsh features) is read with the Civ VII map API
   (`GameplayMap.getTerrainType`/`getBiomeType`/`getFeatureType`/`isMountain`/

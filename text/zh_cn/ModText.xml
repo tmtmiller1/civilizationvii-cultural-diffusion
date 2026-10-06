@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database>
+    <LocalizedText>
+        <Replace Tag="LOC_MOD_CULTURAL_DIFFUSION_NAME" Language="zh_Hans_CN"><Text>文化扩散</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_GROUP_CULTURAL_DIFFUSION" Language="zh_Hans_CN"><Text>文化扩散</Text></Replace>
+        <Replace Tag="LOC_MOD_CULTURAL_DIFFUSION_DESCRIPTION" Language="zh_Hans_CN"><Text>文化成为一片鲜活的场，从你的城市逐格向外传播。强大而稳固的文化会让边界慢慢扩展到城市通常的范围之外，渗入空旷的土地；当你的文化在对手的边境地块上取得决定性优势时，还能夺取这些地块，从而系统性地应对AI的抢先定居。扩张很缓慢：边界在整局游戏中逐渐向外推进，文化衰弱时会退回，而压倒性的文化能延伸得更远。本模组是对《文明V》模组“文化扩散”的重新构想与扩展，为《文明VII》重新打造，带有更深入的文化力量模型，并可选择与“移民”模组联动。单人游戏，提供低/中/高三档强度和关闭开关。可独立运行，安装“移民”模组时会读取其离散族群数据。所有规则都在游戏内文明百科的“文化扩散”部分中说明。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_PRESET" Language="zh_Hans_CN"><Text>文化扩散 - 强度</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_PRESET_DESCRIPTION" Language="zh_Hans_CN"><Text>文化扩展你的边界的力度。低：只向空地推进；中：争夺对手的边境地块；高：传播得更远，夺取得更快。文明百科：文化扩散，选项与预设。</Text></Replace>
+        <Replace Tag="LOC_CD_PRESET_CUSTOM" Language="zh_Hans_CN"><Text>自定义</Text></Replace>
+        <Replace Tag="LOC_CD_PRESET_LOW" Language="zh_Hans_CN"><Text>低</Text></Replace>
+        <Replace Tag="LOC_CD_PRESET_MEDIUM" Language="zh_Hans_CN"><Text>中</Text></Replace>
+        <Replace Tag="LOC_CD_PRESET_HIGH" Language="zh_Hans_CN"><Text>高</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_ENABLED" Language="zh_Hans_CN"><Text>文化扩散 - 已启用</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_ENABLED_DESCRIPTION" Language="zh_Hans_CN"><Text>总开关。关闭时，边界的表现与基础游戏完全相同。完整规则见文明百科的“文化扩散”部分。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CLAIM_ONLY" Language="zh_Hans_CN"><Text>文化扩散 - 仅获取无主土地</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CLAIM_ONLY_DESCRIPTION" Language="zh_Hans_CN"><Text>安全模式。扩散只获取无主的边境地块，绝不夺取其他文明拥有的地块。文明百科：文化扩散，获取地块。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE" Language="zh_Hans_CN"><Text>文化扩散 - 对手城市保护</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_DESCRIPTION" Language="zh_Hans_CN"><Text>文化可以深入对手城市多远。保护完整市区环：其市中心及内环都安全。仅保护市中心：只保护市中心地块，文化可夺取其周围的地块。不保护：连市中心也可能易手。文明百科：文化扩散，获取地块。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_FULL" Language="zh_Hans_CN"><Text>保护完整市区环</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_CENTER" Language="zh_Hans_CN"><Text>仅保护市中心（可夺取内环地块）</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_NONE" Language="zh_Hans_CN"><Text>不保护</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_ADJACENCY" Language="zh_Hans_CN"><Text>文化扩散 - 仅限相连边界</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_ADJACENCY_DESCRIPTION" Language="zh_Hans_CN"><Text>开启（推荐）：文化只获取与你的土地相邻的地块，因此对手的领土会由外向内被夺取。关闭：文化可获取任何由其占优的地块，包括其他文明内部不相连的飞地。文明百科：文化扩散，获取地块。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_FUSED" Language="zh_Hans_CN"><Text>文化扩散 - 丰富文化模型</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_FUSED_DESCRIPTION" Language="zh_Hans_CN"><Text>以文明的整体文化力量（奇观、文化、影响力、幸福值、繁荣、传统）而非仅凭每回合文化值来推动边界扩展。文化越强，边界推得越远。关闭 = 简单的定居点文化模型。文明百科：文化扩散，文化实力。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_EMIGRATION" Language="zh_Hans_CN"><Text>文化扩散 - 追随离散族群（“移民”模组）</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_EMIGRATION_DESCRIPTION" Language="zh_Hans_CN"><Text>安装“移民”模组时，让有你的人民定居的边境地块感受到你的吸引力，使边界追随离散族群。未安装“移民”时无效。需要开启丰富文化模型。文明百科：文化扩散，搭配“移民”。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_BUFFER" Language="zh_Hans_CN"><Text>文化扩散 - 在新改良设施旁获取土地（+1环）</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_BUFFER_DESCRIPTION" Language="zh_Hans_CN"><Text>默认关闭。开启时，在你的边界附近完成乡村改良设施后，还会获取紧邻它的无主地块，比城市通常的范围多一环。关闭时，你的边界只会因文化场而扩展。文明百科：文化扩散，获取地块。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_RECEDE" Language="zh_Hans_CN"><Text>文化扩散 - 边界退缩（实验性）</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_RECEDE_DESCRIPTION" Language="zh_Hans_CN"><Text>默认关闭。你的文化获取的地块可能再次失去：如果对手在某个地块上的文化决定性地超过你，该地块会转归该对手最近的城市。你的城市通过正常成长获得的地块不受影响。文明百科：文化扩散，边界退缩。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_AI_FLIPS" Language="zh_Hans_CN"><Text>文化扩散 - 所有文明均以文化获取土地</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_AI_FLIPS_DESCRIPTION" Language="zh_Hans_CN"><Text>默认开启。其他文明的边界同样会随文化变动，规则与你相同：在你的土地附近的地块上文化取得决定性领先的对手会夺取该地块，包括你的地块，也会以同样方式失去地块。城邦和独立势力绝不会以这种方式获得土地。对手夺取你的地块时，你会收到通知。关闭 = 只有你的边界会随文化扩展。文明百科：文化扩散，对手扩张。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CONQUEST" Language="zh_Hans_CN"><Text>文化扩散 - 军队控制所占领的土地</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CONQUEST_DESCRIPTION" Language="zh_Hans_CN"><Text>默认关闭。开启时，在战争期间，战斗单位连续5回合占据一个敌方地块后，无论该处文化如何，都会为其拥有者夺取该地块；离开会重置计数，市中心和市区区块永远不会以这种方式被夺取。被征服的地块随后10回合内不受文化影响，但其他军队仍可将其夺取。只有在“所有文明均以文化获取土地”也开启时，其他文明的军队才会这样做。文明百科：文化扩散，军队控制土地。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_FOREIGN_CULTURE" Language="zh_Hans_CN"><Text>文化扩散 - 城市保有其居民的所有文化</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_FOREIGN_CULTURE_DESCRIPTION" Language="zh_Hans_CN"><Text>默认开启。城市会为其地块上的每个民族产生文化，而不仅是拥有者的：被占领或混居的城市会继续产生原有文化，与周围的土地争夺，同时每回合有一小部分外来文化转化为拥有者的文化（有图书馆、大学、博物馆时更快，近世时代有意识形态时也更快）。关闭 = 城市只产生拥有者的文化。文明百科：文化扩散，混居与被占城市。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_DEBUG" Language="zh_Hans_CN"><Text>文化扩散 - 调试日志</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_DEBUG_DESCRIPTION" Language="zh_Hans_CN"><Text>将每次处理的详细诊断信息写入UI.log（用于调整和排查问题）。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_PRESSURE_LENS" Language="zh_Hans_CN"><Text>文化扩散 - 压力滤镜</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_PRESSURE_LENS_DESCRIPTION" Language="zh_Hans_CN"><Text>添加只读的“文化压力”地图滤镜（及Shift+C快捷键），为争夺中的边境地块着色，显示你的文化或对手的文化离获取它们还有多近。仅显示信息，不会改变边界的变动方式。文明百科：文化扩散，文化压力滤镜。</Text></Replace>
+        <Replace Tag="LOC_CD_LENS_PRESSURE" Language="zh_Hans_CN"><Text>文化压力</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_TITLE" Language="zh_Hans_CN"><Text>文化压力</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_PROGRESS" Language="zh_Hans_CN"><Text>获取进度</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_TURNS" Language="zh_Hans_CN"><Text>按当前速度</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_TURNS_COUNT" Language="zh_Hans_CN"><Text>约{1_Turns}{1_Turns: plural other?回合;}</Text></Replace>
+        <Replace Tag="LOC_CD_TOAST_GAINED" Language="zh_Hans_CN"><Text>文化扩散：你的文化获取了新的领土。</Text></Replace>
+        <Replace Tag="LOC_CD_TOAST_LOST" Language="zh_Hans_CN"><Text>文化扩散：另一个文明夺取了你的一个地块。</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_READY" Language="zh_Hans_CN"><Text>即将易手</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_STALLED" Language="zh_Hans_CN"><Text>停滞</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_OWNER_SUFFIX" Language="zh_Hans_CN"><Text>（拥有者）</Text></Replace>
+    </LocalizedText>
+</Database>

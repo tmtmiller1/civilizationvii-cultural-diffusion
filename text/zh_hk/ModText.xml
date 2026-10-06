@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database>
+    <LocalizedText>
+        <Replace Tag="LOC_MOD_CULTURAL_DIFFUSION_NAME" Language="zh_Hant_HK"><Text>文化擴散</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_GROUP_CULTURAL_DIFFUSION" Language="zh_Hant_HK"><Text>文化擴散</Text></Replace>
+        <Replace Tag="LOC_MOD_CULTURAL_DIFFUSION_DESCRIPTION" Language="zh_Hant_HK"><Text>文化成為一片鮮活的場，從你的城市逐格向外傳播。強大而穩固的文化會讓邊境慢慢擴展到城市一般的範圍之外，滲入空曠的土地；當你的文化在對手的邊境格位上取得決定性優勢時，還能奪取這些格位，藉此有系統地應對AI搶先建立聚落的做法。擴張很緩慢：邊境在整場遊戲中逐漸向外推進，文化衰弱時會退回，而壓倒性的文化能延伸得更遠。本模組是《文明帝國V》模組「文化擴散」的重新構想與延伸，為《文明帝國VII》重新打造，具備更深入的文化力量模型，並可選擇與「移民」模組整合。單人遊戲，提供低／中／高三種強度與關閉開關。可單獨運作，安裝「移民」模組時會讀取其離散族群資料。所有規則都在遊戲內文明百科的「文化擴散」部分說明。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_PRESET" Language="zh_Hant_HK"><Text>文化擴散 - 強度</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_PRESET_DESCRIPTION" Language="zh_Hant_HK"><Text>文化擴展你邊境的力道。低：只向空地推進；中：爭奪對手的邊境格位；高：傳播得更遠，奪取得更快。文明百科：文化擴散，選項與預設。</Text></Replace>
+        <Replace Tag="LOC_CD_PRESET_CUSTOM" Language="zh_Hant_HK"><Text>自訂</Text></Replace>
+        <Replace Tag="LOC_CD_PRESET_LOW" Language="zh_Hant_HK"><Text>低</Text></Replace>
+        <Replace Tag="LOC_CD_PRESET_MEDIUM" Language="zh_Hant_HK"><Text>中</Text></Replace>
+        <Replace Tag="LOC_CD_PRESET_HIGH" Language="zh_Hant_HK"><Text>高</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_ENABLED" Language="zh_Hant_HK"><Text>文化擴散 - 已啟用</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_ENABLED_DESCRIPTION" Language="zh_Hant_HK"><Text>總開關。關閉時，邊境的運作與基礎遊戲完全相同。完整規則請見文明百科的「文化擴散」部分。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CLAIM_ONLY" Language="zh_Hant_HK"><Text>文化擴散 - 僅取得無主土地</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CLAIM_ONLY_DESCRIPTION" Language="zh_Hant_HK"><Text>安全模式。擴散只會取得無主的邊境格位，絕不奪取其他文明擁有的格位。文明百科：文化擴散，取得格位。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE" Language="zh_Hant_HK"><Text>文化擴散 - 對手城市保護</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_DESCRIPTION" Language="zh_Hant_HK"><Text>文化可以深入對手城市多遠。保護完整市區環：其市中心與內環都安全。僅保護市中心：只保護市中心格位，文化可奪取周圍的格位。不保護：連市中心也可能易手。文明百科：文化擴散，取得格位。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_FULL" Language="zh_Hant_HK"><Text>保護完整市區環</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_CENTER" Language="zh_Hant_HK"><Text>僅保護市中心（可奪取內環格位）</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_NONE" Language="zh_Hant_HK"><Text>不保護</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_ADJACENCY" Language="zh_Hant_HK"><Text>文化擴散 - 僅限相連邊境</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_ADJACENCY_DESCRIPTION" Language="zh_Hant_HK"><Text>開啟（建議）：文化只會取得與你的土地相鄰的格位，因此對手的領土會由外而內被奪取。關閉：文化可取得任何由其占優的格位，包括其他文明境內不相連的飛地。文明百科：文化擴散，取得格位。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_FUSED" Language="zh_Hant_HK"><Text>文化擴散 - 豐富文化模型</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_FUSED_DESCRIPTION" Language="zh_Hant_HK"><Text>以文明的整體文化力量（奇觀、文化、影響力、幸福感、繁榮度、傳統）推動邊境擴展，而非只看每回合的文化值。文化越強，邊境推得越遠。關閉 = 簡單的聚落文化模型。文明百科：文化擴散，文化實力。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_EMIGRATION" Language="zh_Hant_HK"><Text>文化擴散 - 跟隨離散族群（「移民」模組）</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_EMIGRATION_DESCRIPTION" Language="zh_Hant_HK"><Text>安裝「移民」模組時，讓有你的人民定居的邊境格位感受到你的吸引力，使邊境跟隨離散族群。未安裝「移民」時無效。需要開啟豐富文化模型。文明百科：文化擴散，搭配「移民」。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_BUFFER" Language="zh_Hant_HK"><Text>文化擴散 - 在新改良設施旁取得土地（+1環）</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_BUFFER_DESCRIPTION" Language="zh_Hant_HK"><Text>預設為關閉。開啟時，在你的邊境附近完成鄉村改良設施後，也會取得緊鄰它的無主格位，比城市一般的範圍多一環。關閉時，你的邊境只會因文化場而擴展。文明百科：文化擴散，取得格位。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_RECEDE" Language="zh_Hant_HK"><Text>文化擴散 - 邊境退縮（實驗性）</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_RECEDE_DESCRIPTION" Language="zh_Hant_HK"><Text>預設為關閉。你的文化取得的格位可能再度失去：如果對手在某個格位上的文化決定性地超越你，該格位會轉歸該對手最近的城市。你的城市透過正常成長獲得的格位不受影響。文明百科：文化擴散，邊境退縮。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_AI_FLIPS" Language="zh_Hant_HK"><Text>文化擴散 - 所有文明皆以文化取得土地</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_AI_FLIPS_DESCRIPTION" Language="zh_Hant_HK"><Text>預設為開啟。其他文明的邊境同樣會隨文化變動，規則與你相同：在你的土地附近的格位上文化取得決定性領先的對手會奪取該格位，包括你的格位，也會以同樣方式失去格位。城邦與獨立軍勢力絕不會以這種方式獲得土地。對手奪取你的格位時，你會收到通知。關閉 = 只有你的邊境會隨文化擴展。文明百科：文化擴散，對手擴張。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CONQUEST" Language="zh_Hant_HK"><Text>文化擴散 - 軍隊控制所佔領的土地</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CONQUEST_DESCRIPTION" Language="zh_Hant_HK"><Text>預設為關閉。開啟時，在戰爭期間，戰鬥單位連續5回合佔據一個敵方格位後，無論該處文化如何，都會為其擁有者奪取該格位；離開會重設計數，市中心與都會區域永遠不會以這種方式被奪取。被征服的格位在之後10回合內不受文化影響，但其他軍隊仍可將其奪取。只有在「所有文明皆以文化取得土地」也開啟時，其他文明的軍隊才會這麼做。文明百科：文化擴散，軍隊控制土地。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_FOREIGN_CULTURE" Language="zh_Hant_HK"><Text>文化擴散 - 城市保有其居民的所有文化</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_FOREIGN_CULTURE_DESCRIPTION" Language="zh_Hant_HK"><Text>預設為開啟。城市會為其格位上的每個民族產生文化，而不只是擁有者的：被佔領或混居的城市會持續產生原有的文化，與周圍的土地相爭，同時每回合有一小部分外來文化轉化為擁有者的文化（有圖書館、大學、博物館時更快，近代有意識形態時也更快）。關閉 = 城市只產生擁有者的文化。文明百科：文化擴散，混居與被佔城市。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_DEBUG" Language="zh_Hant_HK"><Text>文化擴散 - 除錯記錄</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_DEBUG_DESCRIPTION" Language="zh_Hant_HK"><Text>將每次處理的詳細診斷資訊寫入UI.log（用於調整與疑難排解）。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_PRESSURE_LENS" Language="zh_Hant_HK"><Text>文化擴散 - 壓力濾鏡</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_PRESSURE_LENS_DESCRIPTION" Language="zh_Hant_HK"><Text>新增唯讀的「文化壓力」地圖濾鏡（及Shift+C快速鍵），為爭奪中的邊境格位上色，顯示你的文化或對手的文化離取得它們還有多近。僅顯示資訊，不會改變邊境的變動方式。文明百科：文化擴散，文化壓力濾鏡。</Text></Replace>
+        <Replace Tag="LOC_CD_LENS_PRESSURE" Language="zh_Hant_HK"><Text>文化壓力</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_TITLE" Language="zh_Hant_HK"><Text>文化壓力</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_PROGRESS" Language="zh_Hant_HK"><Text>取得進度</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_TURNS" Language="zh_Hant_HK"><Text>依目前速度</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_TURNS_COUNT" Language="zh_Hant_HK"><Text>約{1_Turns}{1_Turns: plural other?回合;}</Text></Replace>
+        <Replace Tag="LOC_CD_TOAST_GAINED" Language="zh_Hant_HK"><Text>文化擴散：你的文化取得了新的領土。</Text></Replace>
+        <Replace Tag="LOC_CD_TOAST_LOST" Language="zh_Hant_HK"><Text>文化擴散：另一個文明奪取了你的一個格位。</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_READY" Language="zh_Hant_HK"><Text>即將易手</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_STALLED" Language="zh_Hant_HK"><Text>停滯</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_OWNER_SUFFIX" Language="zh_Hant_HK"><Text>（擁有者）</Text></Replace>
+    </LocalizedText>
+</Database>

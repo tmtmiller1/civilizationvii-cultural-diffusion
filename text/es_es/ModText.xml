@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database>
+    <LocalizedText>
+        <Replace Tag="LOC_MOD_CULTURAL_DIFFUSION_NAME" Language="es_ES"><Text>Difusión cultural</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_GROUP_CULTURAL_DIFFUSION" Language="es_ES"><Text>Difusión cultural</Text></Replace>
+        <Replace Tag="LOC_MOD_CULTURAL_DIFFUSION_DESCRIPTION" Language="es_ES"><Text>La cultura se convierte en un campo vivo que se extiende desde tus ciudades casilla a casilla. Una cultura fuerte y asentada amplía poco a poco sus fronteras más allá del área normal de la ciudad, se extiende por las tierras libres y puede quitarle a un rival casillas fronterizas cuando tu cultura allí se impone con claridad, lo que da una respuesta sistémica a los asentamientos agresivos de la IA. El crecimiento es lento: las fronteras avanzan a lo largo de la partida y retroceden cuando una cultura se debilita, y una cultura abrumadora llega más lejos. Una reinterpretación y ampliación del mod de Civ V Cultural Diffusion, rehecha para Civ VII con un modelo de poder cultural más profundo e integración opcional con Emigración. Para un jugador, con intensidad Baja/Media/Alta y un interruptor para desactivarlo. Funciona por sí solo y lee los datos de diáspora del mod Emigración cuando está instalado. Todas las reglas se explican en la sección Difusión cultural de la Civilopedia del juego.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_PRESET" Language="es_ES"><Text>Difusión cultural - intensidad</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_PRESET_DESCRIPTION" Language="es_ES"><Text>Con qué fuerza la cultura extiende tus fronteras. Baja solo avanza por tierras vacías; Media disputa las casillas fronterizas rivales; Alta llega más lejos y quita casillas más rápido. Civilopedia: Difusión cultural, Opciones y preajustes.</Text></Replace>
+        <Replace Tag="LOC_CD_PRESET_CUSTOM" Language="es_ES"><Text>Personalizada</Text></Replace>
+        <Replace Tag="LOC_CD_PRESET_LOW" Language="es_ES"><Text>Baja</Text></Replace>
+        <Replace Tag="LOC_CD_PRESET_MEDIUM" Language="es_ES"><Text>Media</Text></Replace>
+        <Replace Tag="LOC_CD_PRESET_HIGH" Language="es_ES"><Text>Alta</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_ENABLED" Language="es_ES"><Text>Difusión cultural - activado</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_ENABLED_DESCRIPTION" Language="es_ES"><Text>Interruptor general. Desactivado, las fronteras funcionan igual que en el juego base. Reglas completas en la Civilopedia, sección Difusión cultural.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_CLAIM_ONLY" Language="es_ES"><Text>Difusión cultural - reclamar solo tierras vacías</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CLAIM_ONLY_DESCRIPTION" Language="es_ES"><Text>Modo seguro. La difusión solo reclama casillas fronterizas sin dueño y nunca quita una casilla a otra civilización. Civilopedia: Difusión cultural, Reclamar casillas.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_CORE" Language="es_ES"><Text>Difusión cultural - protección de ciudades rivales</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_DESCRIPTION" Language="es_ES"><Text>Hasta dónde puede entrar la cultura en una ciudad rival. Todo el anillo central mantiene a salvo su centro y su anillo interior. Solo el centro urbano protege únicamente la casilla del centro urbano y deja que la cultura tome las casillas de alrededor. Nada permite que incluso el centro cambie de manos. Civilopedia: Difusión cultural, Reclamar casillas.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_FULL" Language="es_ES"><Text>Proteger todo el anillo central</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_CENTER" Language="es_ES"><Text>Proteger solo el centro urbano (tomar casillas interiores)</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_NONE" Language="es_ES"><Text>No proteger nada</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_ADJACENCY" Language="es_ES"><Text>Difusión cultural - solo frontera contigua</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_ADJACENCY_DESCRIPTION" Language="es_ES"><Text>Activado (recomendado): la cultura solo reclama casillas que tocan tus tierras, así que el territorio rival se toma de fuera hacia dentro. Desactivado: la cultura puede reclamar cualquier casilla que domine, incluida una bolsa aislada dentro de otra civilización. Civilopedia: Difusión cultural, Reclamar casillas.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_FUSED" Language="es_ES"><Text>Difusión cultural - modelo cultural completo</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_FUSED_DESCRIPTION" Language="es_ES"><Text>La expansión de las fronteras depende de todo el poder cultural de una civilización (maravillas, cultura, influencia, felicidad, prosperidad, tradiciones) y no solo de la cultura por turno. Una cultura más fuerte lleva sus fronteras más lejos. Desactivado = el modelo simple de cultura del asentamiento. Civilopedia: Difusión cultural, Fuerza cultural.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_EMIGRATION" Language="es_ES"><Text>Difusión cultural - seguir la diáspora (mod Emigración)</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_EMIGRATION_DESCRIPTION" Language="es_ES"><Text>Si el mod Emigración está instalado, una casilla fronteriza donde se ha asentado tu pueblo siente tu atracción, así que las fronteras siguen a la diáspora. Sin efecto si Emigración no está. Requiere el modelo cultural completo. Civilopedia: Difusión cultural, Con Emigración.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_BUFFER" Language="es_ES"><Text>Difusión cultural - reclamar tierras junto a mejoras nuevas (+1 anillo)</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_BUFFER_DESCRIPTION" Language="es_ES"><Text>Desactivado por defecto. Activado, terminar una mejora rural cerca de tu frontera también reclama las casillas sin dueño contiguas a ella, un anillo más allá del alcance normal de tu ciudad. Desactivado, tus fronteras solo crecen por el campo cultural. Civilopedia: Difusión cultural, Reclamar casillas.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_RECEDE" Language="es_ES"><Text>Difusión cultural - retroceso de fronteras (experimental)</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_RECEDE_DESCRIPTION" Language="es_ES"><Text>Desactivado por defecto. Las casillas que reclamó tu cultura pueden volver a perderse: si la cultura de un rival supera claramente a la tuya en una, pasa a la ciudad más cercana de ese rival. Las casillas que tus ciudades ganaron con el crecimiento normal nunca se ven afectadas. Civilopedia: Difusión cultural, Retroceso de fronteras.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_AI_FLIPS" Language="es_ES"><Text>Difusión cultural - todas las civilizaciones ganan tierras por cultura</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_AI_FLIPS_DESCRIPTION" Language="es_ES"><Text>Activado por defecto. Las fronteras de las demás civilizaciones también se mueven por cultura, con las mismas reglas que las tuyas: un rival cuya cultura domina claramente una casilla cerca de tus tierras la toma, incluidas casillas tuyas, y puede perder casillas de la misma forma. Las ciudades-estado y los pueblos independientes nunca ganan tierras así. Se te avisa cuando un rival toma una de tus casillas. Desactivado = solo tus fronteras crecen por cultura. Civilopedia: Difusión cultural, Expansión rival.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_CONQUEST" Language="es_ES"><Text>Difusión cultural - los ejércitos conservan el terreno que ocupan</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CONQUEST_DESCRIPTION" Language="es_ES"><Text>Desactivado por defecto. Activado, durante una guerra, una unidad de combate que ocupa una casilla enemiga durante cinco turnos seguidos la toma para su dueño, sea cual sea la cultura allí; si se va, la cuenta vuelve a empezar, y los centros urbanos y los distritos urbanos nunca se toman así. La casilla conquistada queda protegida de la cultura durante diez turnos, aunque otro ejército aún puede tomarla. Los ejércitos de otras civilizaciones solo hacen lo mismo si "todas las civilizaciones ganan tierras por cultura" también está activado. Civilopedia: Difusión cultural, Terreno ocupado.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_FOREIGN_CULTURE" Language="es_ES"><Text>Difusión cultural - las ciudades llevan todas las culturas que viven en ellas</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_FOREIGN_CULTURE_DESCRIPTION" Language="es_ES"><Text>Activado por defecto. Una ciudad produce cultura para cada pueblo presente en su casilla, no solo para su dueño: una ciudad capturada o mixta sigue produciendo su antigua cultura, que disputa las tierras de alrededor, mientras que cada turno una pequeña parte de esa cultura extranjera se convierte a la del dueño (más rápido con bibliotecas, universidades, museos y, en la Modernidad, una ideología). Desactivado = una ciudad solo produce la cultura de su dueño. Civilopedia: Difusión cultural, Mixtas y tomadas.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_DEBUG" Language="es_ES"><Text>Difusión cultural - registro de depuración</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_DEBUG_DESCRIPTION" Language="es_ES"><Text>Escribe diagnósticos detallados de cada pasada en UI.log (para ajustes y resolución de problemas).</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_PRESSURE_LENS" Language="es_ES"><Text>Difusión cultural - lente de presión</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_PRESSURE_LENS_DESCRIPTION" Language="es_ES"><Text>Añade una lente de mapa de solo lectura, "Presión cultural" (y el atajo Shift+C), que sombrea las casillas fronterizas disputadas según lo cerca que esté tu cultura, o la de un rival, de reclamarlas. Solo muestra información; no cambia nada en cómo se mueven las fronteras. Civilopedia: Difusión cultural, Lente de presión.</Text></Replace>
+
+        <Replace Tag="LOC_CD_LENS_PRESSURE" Language="es_ES"><Text>Presión cultural</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_TITLE" Language="es_ES"><Text>Presión cultural</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_PROGRESS" Language="es_ES"><Text>Progreso de captura</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_TURNS" Language="es_ES"><Text>Al ritmo actual</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_TURNS_COUNT" Language="es_ES"><Text>~{1_Turns} {1_Turns: plural 1?turno; other?turnos;}</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_READY" Language="es_ES"><Text>lista para cambiar de manos</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_STALLED" Language="es_ES"><Text>estancada</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_OWNER_SUFFIX" Language="es_ES"><Text> (dueño)</Text></Replace>
+        <Replace Tag="LOC_CD_TOAST_GAINED" Language="es_ES"><Text>Difusión cultural: tu cultura ha reclamado nuevo territorio.</Text></Replace>
+        <Replace Tag="LOC_CD_TOAST_LOST" Language="es_ES"><Text>Difusión cultural: otra civilización ha tomado una de tus casillas.</Text></Replace>
+    </LocalizedText>
+</Database>

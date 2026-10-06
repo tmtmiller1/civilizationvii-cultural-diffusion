@@ -161,7 +161,9 @@ a null object through an id list (`KERN_INVALID_ADDRESS` at 0x308 and 0x2a8, nei
 | `trade-stress1`, `valuable3`, `valuable-exp2`, mod off, mid-age | 180 rural, 43 + 54 urban (wonders among them) | no crash |
 
 So the danger is a district tile changing hands inside the live age transition, not district moves as such.
-`cd-age-guard.js` holds owned district tiles still for the last two turns of an age and the first two of the next,
+`cd-age-guard.js` holds owned district tiles still for the whole Age Ending countdown and the first two turns of the
+next age (1.5.0; 1.4.1 held only once two progression points were left, which a 5-20 point milestone or a Future Tech
+or Civic can skip past),
 on every path (the shared claim gate, recede, conquest); `tests/age-guard.mjs` pins it. Not yet watched: the
 transition-window replicates (`devtools/harness/cdh-game-win-*.js`, from `CDH-Ant159.Civ7Save`) and a rerun of
 `soakA` with the guard in place are the check. The parked run 31 below (Exploration turn 26, AsyncWorker3, 0x2d8)

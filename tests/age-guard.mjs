@@ -22,7 +22,11 @@ const { claimGateBlocked } = await import("/cultural-diffusion/ui/cd-eligibility
 const base = { countdownStarted: false, ageOver: false, turnsRemaining: null, ageKey: "ANTIQUITY", turn: 50 };
 assert.equal(TRANSITION_GUARD_TURNS, 2);
 assert.equal(transitionWindowOpen(base), false, "mid-age");
-assert.equal(transitionWindowOpen({ ...base, countdownStarted: true, turnsRemaining: 5 }), false, "countdown, 5 turns left");
+// The whole countdown holds: one turn can add 5, 10 or 20 progression points (milestones, Future Tech or Civic), so
+// an age can end from several points out. A guard that waited for 2 points left would miss that last turn.
+assert.equal(transitionWindowOpen({ ...base, countdownStarted: true, turnsRemaining: 10 }), true, "countdown, 10 points left");
+assert.equal(transitionWindowOpen({ ...base, countdownStarted: true, turnsRemaining: 8 }), true, "countdown, 8 left: a 20-point milestone ends the age this turn");
+assert.equal(transitionWindowOpen({ ...base, countdownStarted: true, turnsRemaining: null }), true, "countdown with points unreadable");
 assert.equal(transitionWindowOpen({ ...base, countdownStarted: true, turnsRemaining: 2 }), true, "last two turns");
 assert.equal(transitionWindowOpen({ ...base, countdownStarted: true, turnsRemaining: 0 }), true, "final turn");
 assert.equal(transitionWindowOpen({ ...base, turnsRemaining: 1 }), false, "no countdown: points alone do not open it");

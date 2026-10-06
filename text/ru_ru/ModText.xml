@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database>
+    <LocalizedText>
+        <Replace Tag="LOC_MOD_CULTURAL_DIFFUSION_NAME" Language="ru_RU"><Text>Культурная диффузия</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_GROUP_CULTURAL_DIFFUSION" Language="ru_RU"><Text>Культурная диффузия</Text></Replace>
+        <Replace Tag="LOC_MOD_CULTURAL_DIFFUSION_DESCRIPTION" Language="ru_RU"><Text>Культура становится живым полем, которое распространяется от ваших городов клетка за клеткой. Сильная, устоявшаяся культура медленно расширяет границы за пределы обычной территории города, проникает на свободные земли и может забрать пограничные клетки соперника, когда ваша культура там явно побеждает. Так у ИИ, который строит города вплотную к вашим, появляется системный противовес. Рост медленный: границы ползут наружу в течение игры и отступают, когда культура слабеет, а подавляющая культура достигает дальше. Новое прочтение и расширение мода Cultural Diffusion для Civ V, заново созданное для Civ VII, с более глубокой моделью культурной силы и необязательной интеграцией с модом «Эмиграция». Одиночная игра, интенсивность «Низкая», «Средняя» или «Высокая» и выключатель. Работает самостоятельно, а если установлен мод «Эмиграция», читает его данные о диаспорах. Все правила описаны в разделе «Культурная диффузия» Цивилопедии.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_PRESET" Language="ru_RU"><Text>Культурная диффузия - интенсивность</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_PRESET_DESCRIPTION" Language="ru_RU"><Text>Насколько активно культура расширяет ваши границы. «Низкая»: только понемногу занимает свободные земли. «Средняя»: оспаривает пограничные клетки соперников. «Высокая»: распространяется дальше и забирает клетки быстрее. Цивилопедия: Культурная диффузия, Настройки и уровни.</Text></Replace>
+        <Replace Tag="LOC_CD_PRESET_CUSTOM" Language="ru_RU"><Text>Пользовательская</Text></Replace>
+        <Replace Tag="LOC_CD_PRESET_LOW" Language="ru_RU"><Text>Низкая</Text></Replace>
+        <Replace Tag="LOC_CD_PRESET_MEDIUM" Language="ru_RU"><Text>Средняя</Text></Replace>
+        <Replace Tag="LOC_CD_PRESET_HIGH" Language="ru_RU"><Text>Высокая</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_ENABLED" Language="ru_RU"><Text>Культурная диффузия - включено</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_ENABLED_DESCRIPTION" Language="ru_RU"><Text>Главный выключатель. Когда он выключен, границы ведут себя точно так же, как в основной игре. Все правила описаны в разделе «Культурная диффузия» Цивилопедии.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_CLAIM_ONLY" Language="ru_RU"><Text>Культурная диффузия - только ничейные земли</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CLAIM_ONLY_DESCRIPTION" Language="ru_RU"><Text>Безопасный режим. Диффузия занимает только ничейные пограничные клетки и никогда не забирает клетку у другой цивилизации. Цивилопедия: Культурная диффузия, Захват клеток.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_CORE" Language="ru_RU"><Text>Культурная диффузия - защита городов соперников</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_DESCRIPTION" Language="ru_RU"><Text>Насколько глубоко культура может проникать в город соперника. «Весь центр» защищает центр города и первое кольцо вокруг него. «Только центр города» защищает лишь клетку центра города, а клетки вокруг нее культура может забрать. «Ничего» позволяет забрать даже центр. Цивилопедия: Культурная диффузия, Захват клеток.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_FULL" Language="ru_RU"><Text>Защищать весь центр (первое кольцо)</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_CENTER" Language="ru_RU"><Text>Защищать только центр города (забирать клетки вокруг)</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_NONE" Language="ru_RU"><Text>Ничего не защищать</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_ADJACENCY" Language="ru_RU"><Text>Культурная диффузия - только сплошная граница</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_ADJACENCY_DESCRIPTION" Language="ru_RU"><Text>Вкл. (рекомендуется): культура занимает только клетки, граничащие с вашими землями, поэтому территория соперника забирается снаружи внутрь. Выкл.: культура может занять любую клетку, где она преобладает, включая отрезанный участок внутри другой цивилизации. Цивилопедия: Культурная диффузия, Захват клеток.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_FUSED" Language="ru_RU"><Text>Культурная диффузия - расширенная культурная модель</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_FUSED_DESCRIPTION" Language="ru_RU"><Text>Границы расширяются за счет всей культурной силы цивилизации (чудеса света, культура, влияние, довольство, процветание, традиции), а не только культуры за ход. Более сильная культура продвигает границы дальше. Выкл. = простая модель на основе культуры поселений. Цивилопедия: Культурная диффузия, Сила культуры.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_EMIGRATION" Language="ru_RU"><Text>Культурная диффузия - следовать за диаспорой (мод «Эмиграция»)</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_EMIGRATION_DESCRIPTION" Language="ru_RU"><Text>Если установлен мод «Эмиграция», пограничная клетка, где поселился ваш народ, притягивает вашу культуру, и границы следуют за диаспорой. Без мода «Эмиграция» ничего не меняет. Требует расширенной культурной модели. Цивилопедия: Культурная диффузия, С модом «Эмиграция».</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_BUFFER" Language="ru_RU"><Text>Культурная диффузия - занимать земли у новых улучшений (+1 кольцо)</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_BUFFER_DESCRIPTION" Language="ru_RU"><Text>По умолчанию выкл. Если включено, завершение деревенского улучшения рядом с вашей границей также занимает ничейные клетки вплотную к нему, на одно кольцо дальше обычной досягаемости города. Если выключено, ваши границы растут только за счет поля культуры. Цивилопедия: Культурная диффузия, Захват клеток.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_RECEDE" Language="ru_RU"><Text>Культурная диффузия - отступление границ (экспериментально)</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_RECEDE_DESCRIPTION" Language="ru_RU"><Text>По умолчанию выкл. Клетки, занятые вашей культурой, можно снова потерять: если культура соперника на такой клетке явно превзойдет вашу, клетка перейдет к ближайшему городу этого соперника. Клеток, полученных вашими городами при обычном росте, это не касается. Цивилопедия: Культурная диффузия, Отступление границ.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_AI_FLIPS" Language="ru_RU"><Text>Культурная диффузия - все цивилизации получают земли культурой</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_AI_FLIPS_DESCRIPTION" Language="ru_RU"><Text>По умолчанию вкл. Границы других цивилизаций тоже движутся за счет культуры, по тем же правилам, что и ваши: соперник, чья культура явно лидирует на клетке рядом с вашими землями, забирает ее, в том числе ваши клетки, и может так же их терять. Города-государства и независимые силы никогда не получают земли таким способом. Вы получаете уведомление, когда соперник забирает вашу клетку. Выкл. = культурой растут только ваши границы. Цивилопедия: Культурная диффузия, Экспансия соперников.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_CONQUEST" Language="ru_RU"><Text>Культурная диффузия - армии удерживают занятые земли</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CONQUEST_DESCRIPTION" Language="ru_RU"><Text>По умолчанию выкл. Если включено, во время войны боевой юнит, который удерживает вражескую клетку пять ходов подряд, забирает ее для своего владельца, какой бы ни была там культура. Если юнит уходит, отсчет начинается заново. Центры городов и городские районы так забрать нельзя. Затем завоеванная клетка десять ходов защищена от культуры, хотя другая армия по-прежнему может ее забрать. Армии других цивилизаций действуют так же, только если включен и параметр «Все цивилизации получают земли культурой». Цивилопедия: Культурная диффузия, Армии держат землю.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_FOREIGN_CULTURE" Language="ru_RU"><Text>Культурная диффузия - города несут культуры всех жителей</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_FOREIGN_CULTURE_DESCRIPTION" Language="ru_RU"><Text>По умолчанию вкл. Город производит культуру каждого народа, живущего на его клетке, а не только владельца: захваченный или смешанный город продолжает производить свою прежнюю культуру, которая оспаривает окрестные земли, а каждый ход небольшая доля этой чужой культуры переходит в культуру владельца (быстрее с библиотеками, университетами, музеями и, в эпоху Современности, с идеологией). Выкл. = город производит только культуру владельца. Цивилопедия: Культурная диффузия, Смешанные и захваченные.</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_DEBUG" Language="ru_RU"><Text>Культурная диффузия - отладочный журнал</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_DEBUG_DESCRIPTION" Language="ru_RU"><Text>Записывать подробную диагностику каждого прохода в UI.log (для настройки и поиска неполадок).</Text></Replace>
+
+        <Replace Tag="LOC_OPTIONS_CD_PRESSURE_LENS" Language="ru_RU"><Text>Культурная диффузия - линза давления</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_PRESSURE_LENS_DESCRIPTION" Language="ru_RU"><Text>Добавляет линзу карты «Культурное давление» (и сочетание клавиш Shift+C), только для просмотра. Она затеняет оспариваемые пограничные клетки по тому, насколько ваша культура или культура соперника близка к их захвату. Линза лишь показывает сведения и никак не влияет на движение границ. Цивилопедия: Культурная диффузия, Линза давления.</Text></Replace>
+
+        <Replace Tag="LOC_CD_LENS_PRESSURE" Language="ru_RU"><Text>Культурное давление</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_TITLE" Language="ru_RU"><Text>Культурное давление</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_PROGRESS" Language="ru_RU"><Text>Прогресс захвата</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_TURNS" Language="ru_RU"><Text>При текущем темпе</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_TURNS_COUNT" Language="ru_RU"><Text>~{1_Turns} {1_Turns: plural 1?ход; 2?хода; other?ходов;}</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_READY" Language="ru_RU"><Text>готова к захвату</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_STALLED" Language="ru_RU"><Text>застой</Text></Replace>
+        <Replace Tag="LOC_CD_PRESSURE_OWNER_SUFFIX" Language="ru_RU"><Text> (владелец)</Text></Replace>
+        <Replace Tag="LOC_CD_TOAST_GAINED" Language="ru_RU"><Text>Культурная диффузия: ваша культура заняла новую территорию.</Text></Replace>
+        <Replace Tag="LOC_CD_TOAST_LOST" Language="ru_RU"><Text>Культурная диффузия: другая цивилизация забрала одну из ваших клеток.</Text></Replace>
+    </LocalizedText>
+</Database>
