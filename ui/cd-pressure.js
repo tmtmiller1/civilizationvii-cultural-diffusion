@@ -1,8 +1,8 @@
 // cd-pressure.js
 //
-// The PURE injection-strength math (docs/current-model.md §3); no engine reads, unit-testable in
+// The pure injection-strength math (docs/current-model.md §3); no engine reads, unit-testable in
 // Node. cd-pass.js feeds per-settlement signals through `projectionOf` to get how hard each city
-// PUMPS culture into its own tile; CPI and ethnic affinity are applied by the pass around this base.
+// pumps culture into its own tile; CPI and ethnic affinity are applied by the pass around this base.
 
 /**
  * @typedef {Object} Settlement
@@ -12,7 +12,7 @@
  * @property {number} happiness Net happiness per turn (may be negative).
  * @property {number} wonders Wonder count.
  * @property {boolean} celebrating Whether the owner is in a Golden Age.
- * @property {number} [prosperity] Normalized prosperity signal in [-1,1] (0 = neutral). Optional - absent = neutral.
+ * @property {number} [prosperity] Normalized prosperity signal in [-1,1] (0 = neutral). Optional; absent = neutral.
  * @property {number} [vitality] Positive prosperity/vitality magnitude (cd-polity.vitalityOf); the
  *   aggregate blended with culture in the fused base.
  */
@@ -72,7 +72,7 @@ export function prosperityFactor(prosperity, amp) {
 
 /**
  * Ethnic-affinity factor: diffusion into a tile saturated with a civ's diaspora
- * is accelerated - borders follow people. `affinity` is the diaspora share in [0,1]; null/NaN
+ * is accelerated; borders follow people. `affinity` is the diaspora share in [0,1]; null/NaN
  * (no emigration data) -> neutral 1.
  * @param {number|null|undefined} affinity Diaspora share in [0,1].
  * @param {number} weight Amplitude (config.ethnicWeight).
@@ -85,7 +85,7 @@ export function ethnicFactor(affinity, weight) {
 }
 
 /**
- * The fused GEOMETRIC BLEND base `culture^alpha x vitality^(1-alpha)` (alpha = cultureExponent, clamped to
+ * The fused geometric blend base `culture^alpha x vitality^(1-alpha)` (alpha = cultureExponent, clamped to
  * [0,1]); vitality defaults to culture when absent/non-finite.
  * @param {number} culture Weighted culture (> 0).
  * @param {Settlement} s Settlement.
@@ -101,10 +101,10 @@ function fusedBase(culture, s, cfg) {
 }
 
 /**
- * A settlement's cultural INJECTION strength - how hard it pumps culture into its own tile,
+ * A settlement's cultural injection strength: how hard it pumps culture into its own tile,
  * the source of the diffusion field.
  *
- * The fused base is a GEOMETRIC BLEND `culture^alpha x vitality^(1-alpha)` (alpha = `cultureExponent`),
+ * The fused base is a geometric blend `culture^alpha x vitality^(1-alpha)` (alpha = `cultureExponent`),
  * so a lone +culture ability is a single concave term and powerhouses lead without running away.
  * Wonders feed the CPI and happiness lives inside `vitality` (no double-counts); with `fusedModel`
  * off it degrades to plain culture (x celebration x age).

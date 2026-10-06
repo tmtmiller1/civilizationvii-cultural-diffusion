@@ -1,9 +1,9 @@
-// cdh-game-pedia.js - game scope, deployed as ui/cdh-game.js. First in-game look at the Civilopedia section (1.4.0).
+// cdh-game-pedia.js: game scope, deployed as ui/cdh-game.js. First in-game look at the Civilopedia section (1.4.0).
 //
 // No turns are played. The run answers, from the live game:
 //   DB      did data/cd-civilopedia.xml reach the compiled gameplay DB (section, pages, layouts, search terms)?
 //   MODEL   does the pedia model list the section, and does each page resolve a title and chapter bodies?
-//   RENDER  open each page and read the DRAWN DOM: chapter headers, every paragraph's key, empty or unresolved text.
+//   RENDER  open each page and read the drawn DOM: chapter headers, every paragraph's key, empty or unresolved text.
 //   SEARCH  do the search terms and a bare page id find the right page (the box and open-civilopedia use search())?
 // A page whose text failed the key convention draws a title and nothing else, with no log line, so RENDER is the
 // check that matters. Each page is also photographed: SHOT pedia-<page>.

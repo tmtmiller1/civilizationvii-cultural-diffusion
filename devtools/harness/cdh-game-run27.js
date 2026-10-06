@@ -1,19 +1,19 @@
-// cdh-game-run27.js - game scope, deployed as ui/cdh-game.js. Cultural Diffusion harness run 27 (dev only).
+// cdh-game-run27.js: game scope, deployed as ui/cdh-game.js. Cultural Diffusion harness run 27 (dev only).
 //
-// READ-ONLY survey for the two gaps the strand guard still has.
+// Read-only survey for the two gaps the strand guard still has.
 //
-//   T  THIRD-PARTY BORDERS. The guard counts any plot that is not OURS as a destination. But a unit of civ A
-//      at peace with civ B cannot enter B's borders either - that is the same trespass rule that froze the
-//      Scout in run 17 - so a unit wedged between our land and a third party's can still be immobilised by
-//      our claim. The question is whether "another civ's land is closed to you" is the DEFAULT. Census: for
-//      every foreign unit on the map, is it standing on a plot owned by a DIFFERENT player? If that is
+//   T  THIRD-PARTY BORDERS. The guard counts any plot that is not ours as a destination. But a unit of civ A
+//      at peace with civ B cannot enter B's borders either, that is the same trespass rule that froze the
+//      Scout in run 17, so a unit wedged between our land and a third party's can still be immobilised by
+//      our claim. The question is whether "another civ's land is closed to you" is the default. Census: for
+//      every foreign unit on the map, is it standing on a plot owned by a different player? If that is
 //      common, access is common (alliances, open borders) and the permissive rule is right. If it is close
 //      to zero, third-party land is closed by default and the guard must treat it as blocked.
-//      Also sampled: how often a peaceful unit's only non-ours neighbors belong to one other player - the
+//      Also sampled: how often a peaceful unit's only non-ours neighbors belong to one other player, the
 //      geometry where this would actually bite.
 //   S  NAVAL FIXTURE SURVEY. Run 26 found no bay to pen a ship in: the nearest foreign ships were 10-13
 //      rings out, and a claim only survives inside ~7 rings of the buying city. Report the nearest foreign
-//      ships with their distance and how many of their water neighbors are unowned, so a save that CAN
+//      ships with their distance and how many of their water neighbors are unowned, so a save that can
 //      host the fixture is identifiable instead of guessed at.
 //
 // No writes, no turns, no pass. Tagged [CDH] in Logs/UI.log.

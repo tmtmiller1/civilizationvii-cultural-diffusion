@@ -2,7 +2,7 @@
 //
 // The full Civ VII leader / civilization / memento type rosters (same game data as the
 // sibling Emigration mod). Used only by the balance-tuning layer (cd-civ-tuning.js) and its
-// completeness test - every tuned key must be a real game type. Data-only, no engine reads.
+// completeness test (every tuned key must be a real game type). Data-only, no engine reads.
 
 export const LEADER_ROSTER = Object.freeze([
   "LEADER_ADA_LOVELACE",

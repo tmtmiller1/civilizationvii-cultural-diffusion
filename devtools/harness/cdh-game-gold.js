@@ -1,13 +1,13 @@
-// cdh-game-gold.js - game scope, deployed as ui/cdh-game.js. Does a claim cost gold, and does any refund land? (dev only)
+// cdh-game-gold.js: game scope, deployed as ui/cdh-game.js. Does a claim cost gold, and does any refund land? (dev only)
 //
-// Parity run 2 (cdh-game-parity.js) found Treasury.changeGoldBalance(+37) moved NOTHING within 3 s, even on the
-// LOCAL player, while Players.grantYield(GOLD) reached a rival. changeGoldBalance is the verb the mod's refund uses,
-// and every earlier run logged goldSpent=0 at the same tick as purchasePlot - the tick on which the refund is
+// Parity run 2 (cdh-game-parity.js) found Treasury.changeGoldBalance(+37) moved nothing within 3 s, even on the
+// local player, while Players.grantYield(GOLD) reached a rival. changeGoldBalance is the verb the mod's refund uses,
+// and every earlier run logged goldSpent=0 at the same tick as purchasePlot, the tick on which the refund is
 // measured. Ownership itself lands only seconds after the call, so the purchase cost may land late too, after the
 // refund has already measured zero. If so, every claim quietly costs the player gold.
 //
 // One measurement per turn, so a turn's gold delta minus the player's own net income isolates one effect:
-//   turn 1  ONE refunded claim through the mod's own flipViaPurchasePlotRefunded: gold at +0 / +3 s / +10 s,
+//   turn 1  one refunded claim through the mod's own flipViaPurchasePlotRefunded: gold at +0 / +3 s / +10 s,
 //           owner of the plot at +3 / +10 s, then the across-turn delta
 //   turn 2  changeGoldBalance(+37) on the local player: +0 / +3 / +10 s, then across the turn
 //   turn 3  Players.grantYield(GOLD, +37) on the local player: +0 / +3 / +10 s, then across the turn (reversed after)
@@ -126,7 +126,7 @@ function finish() {
   emit("DONE harness gold finished");
 }
 
-// ---------------------------------------------------------------- turns
+// turns
 let n = 0; let endTurnTimer = null; let blockedTries = 0;
 function endTurn() {
   try {

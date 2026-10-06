@@ -1,4 +1,4 @@
-// tests/state.mjs - persistence schema round-trip + prune/prepare (culture-field model).
+// tests/state.mjs: persistence schema round-trip + prune/prepare (culture-field model).
 import assert from "node:assert/strict";
 
 const KV = {};

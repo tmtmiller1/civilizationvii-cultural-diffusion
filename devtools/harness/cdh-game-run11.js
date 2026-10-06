@@ -1,4 +1,4 @@
-// cdh-game-run11.js - game scope, deployed as ui/cdh-game.js. Run 11 (dev only): does the Cultural Pressure lens paint
+// cdh-game-run11.js: game scope, deployed as ui/cdh-game.js. Run 11 (dev only): does the Cultural Pressure lens paint
 // contested tiles? Run 10 reached five contested tiles, but the camera centered the top tile under the Civic Unlocked
 // popup and the captures came before the lens view had redrawn. Run 11 closes that popup, aims the camera beside the
 // tile, and shoots 20 and 30 seconds after switching the lens on.

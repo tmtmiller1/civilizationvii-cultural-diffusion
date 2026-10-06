@@ -1,4 +1,4 @@
-// tests/options.mjs - the mod's Options registration survives the base OptionsModel's rebuild.
+// tests/options.mjs: the mod's Options registration survives the base OptionsModel's rebuild.
 //
 // A player reported the mod's settings vanishing after closing Settings until the game restarted. The base model's
 // reInitOptions() clears every option and rebuilds only from init callbacks (addInitCallback), so an option added with

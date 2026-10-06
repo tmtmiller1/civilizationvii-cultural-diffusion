@@ -1,7 +1,7 @@
 // cd-polity.js
 //
 // Per-settlement cultural signals the pressure model reads: net culture yield, net happiness,
-// wonder count, and celebration (Golden Age) state. Every read is defensive - an unreadable
+// wonder count, and celebration (Golden Age) state. Every read is defensive: an unreadable
 // value degrades to a neutral default and never throws.
 
 /**
@@ -25,7 +25,7 @@ function yEnum(key) {
 }
 
 /**
- * Read one NET yield off a city (prefer getNetYield, fall back to gross getYield).
+ * Read one net yield off a city (prefer getNetYield, fall back to gross getYield).
  * @param {*} city City object. @param {string} key Yield enum key.
  * @returns {number} The yield, or 0.
  */
@@ -95,7 +95,7 @@ export function wonderCountOf(city) {
   }, 0);
 }
 /**
- * A settlement's POSITIVE prosperity/vitality magnitude in roughly culture-comparable units
+ * A settlement's positive prosperity/vitality magnitude in roughly culture-comparable units
  * (happiness + food + production + a little gold/science): the aggregate the injection base
  * geometrically blends with culture so a lone +culture ability is one concave term. Base-game reads
  * only. @param {*} city City object. @returns {number} Vitality magnitude (>= 0).
@@ -147,7 +147,7 @@ export function isCelebrating(owner) {
 
 /**
  * The current age's type name ("AGE_ANTIQUITY" / "AGE_EXPLORATION" / "AGE_MODERN"), or "" when unreadable.
- * In the shipped engine `Game.age` is a numeric HASH, so it is resolved through
+ * In the shipped engine `Game.age` is a numeric hash, so it is resolved through
  * `GameInfo.Ages.lookup(Game.age).AgeType`; a string is accepted as-is (test stubs).
  * @returns {string} Age type name, or "".
  */

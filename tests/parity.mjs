@@ -1,4 +1,4 @@
-// tests/parity.mjs - the PURE parts of the Civ V parity build (docs/civ-v-parity-spec.md §2-§8), off-engine:
+// tests/parity.mjs: the pure parts of the Civ V parity build (docs/civ-v-parity-spec.md §2-§8), off-engine:
 // passCanAct with the AI-flip flag, conversion arithmetic and rate table, capture transfer arithmetic, the
 // occupation counter, and the mountain source threshold. The engine-facing halves are covered by tests/pass.mjs,
 // tests/capture.mjs and tests/conversion.mjs.
@@ -19,7 +19,7 @@ const { sourceThreshold } = await import("/cultural-diffusion/ui/cd-terrain.js")
 const { CONFIG } = await import("/cultural-diffusion/ui/cd-config.js");
 const near = (a, b) => Math.abs(a - b) < 1e-9;
 
-// --- passCanAct: the AI-flip flag, and the legacy boolean still meaning recede -------------------------
+// passCanAct: the AI-flip flag, and the legacy boolean still meaning recede
 const me = 0, ai = 3, other = 5;
 assert.equal(passCanAct(ai, -1, me, false, { aiFlips: true }), true, "AI flips on: an AI leading unowned land can flip");
 assert.equal(passCanAct(ai, other, me, false, { aiFlips: true }), true, "AI flips on: rival-to-rival flips happen");
@@ -30,7 +30,7 @@ assert.equal(passCanAct(ai, me, me, true, true), true, "legacy boolean flag stil
 assert.equal(passCanAct(ai, me, me, true, { recede: true }), true, "object flag recede");
 assert.equal(passCanAct(ai, me, me, false, { recede: true }), false, "recede still needs a mod-claimed tile");
 
-// --- convertCityCulture: a share of every foreign stock moves to the owner, nothing is created ----------
+// convertCityCulture: a share of every foreign stock moves to the owner, nothing is created
 {
   const row = { 0: 1000, 3: 400, 7: 100 };
   const moved = convertCityCulture(row, 0, 0.01);
@@ -43,7 +43,7 @@ assert.equal(passCanAct(ai, me, me, false, { recede: true }), false, "recede sti
   assert.ok(near(convertCityCulture(r2, 0, 5), 50) && near(r2[0], 50) && r2[3] === 0, "rate clamps at 1 (all of it)");
 }
 
-// --- conversionRateFor: base + known bonuses, unknown names ignored, clamped ------------------------------
+// conversionRateFor: base + known bonuses, unknown names ignored, clamped
 {
   const cfg = { convertBase: 0.005, convertBonuses: { BUILDING_LIBRARY: 0.0025, IDEOLOGY_FASCISM: 0.0175 } };
   assert.ok(near(conversionRateFor([], cfg), 0.005), "base alone");
@@ -55,7 +55,7 @@ assert.equal(passCanAct(ai, me, me, false, { recede: true }), false, "recede sti
     "the shipped table knows the Modern school and an ideology");
 }
 
-// --- applyCaptureTransfer: everyone loses 55%, the conqueror gains 75% of the total lost ----------------
+// applyCaptureTransfer: everyone loses 55%, the conqueror gains 75% of the total lost
 {
   const cfg = { captureLoss: 0.55, captureGain: 0.75 };
   const row = { 3: 1000, 5: 200 };
@@ -68,7 +68,7 @@ assert.equal(passCanAct(ai, me, me, false, { recede: true }), false, "recede sti
   assert.equal(applyCaptureTransfer({}, 0, cfg), 0, "an empty tile transfers nothing");
 }
 
-// --- tickOccupation: continuous hold counts up, leaving resets, a different occupier restarts ----------
+// tickOccupation: continuous hold counts up, leaving resets, a different occupier restarts
 {
   const occ = {};
   assert.equal(tickOccupation(occ, "1,1", [0], 3), -1, "turn 1 of 3: not yet");
@@ -85,7 +85,7 @@ assert.equal(passCanAct(ai, me, me, false, { recede: true }), false, "recede sti
   assert.equal(tickOccupation({}, "2,2", [9], 1), 9, "buffer 1: also the first pass");
 }
 
-// --- sourceThreshold: a mountain source needs 7.5x before it leaks --------------------------------------
+// sourceThreshold: a mountain source needs 7.5x before it leaks
 {
   const cfg = { cultureThreshold: 100, sourceThresholdMountain: 7.5 };
   assert.equal(sourceThreshold({ x: 1, y: 1 }, cfg), 100, "flat: the base threshold");

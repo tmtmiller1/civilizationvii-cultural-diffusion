@@ -1,8 +1,8 @@
 // cd-plots.js
 //
 // All GameplayMap reads the diffusion engine needs. Every read is defensive: an unreadable engine
-// call degrades to a neutral value and never throws into the pass. The verbs that MUTATE ownership
-// live in cd-ownership.js. An UNOWNED plot returns getOwner() === -1 and getOwningCityFromXY().id === -1.
+// call degrades to a neutral value and never throws into the pass. The verbs that mutate ownership
+// live in cd-ownership.js. An unowned plot returns getOwner() === -1 and getOwningCityFromXY().id === -1.
 
 const NO_OWNER = -1;
 
@@ -103,9 +103,9 @@ export function isImpassable(loc) {
 }
 
 /**
- * True when a plot lies in the given player's DISTANT LANDS (the far hemisphere - only reachable
+ * True when a plot lies in the given player's distant lands (the far hemisphere, only reachable
  * from the Exploration age). Base-game Player method: Players.get(pid).isDistantLands({x,y}).
- * Fails OPEN (false = treat as home lands) when unreadable, so a missing API never over-blocks.
+ * Fails open (false = treat as home lands) when unreadable, so a missing API never over-blocks.
  * @param {number} playerId
  * @param {{x:number,y:number}} loc Plot.
  * @returns {boolean} Whether the plot is distant lands for that player.
@@ -118,7 +118,7 @@ export function isDistantLands(playerId, loc) {
 }
 
 /**
- * The district type NAME at a plot ("DISTRICT_CITY_CENTER" / "DISTRICT_URBAN" / "DISTRICT_RURAL"), or
+ * The district type name at a plot ("DISTRICT_CITY_CENTER" / "DISTRICT_URBAN" / "DISTRICT_RURAL"), or
  * null. `getDistrictType` returns a numeric enum, so it is resolved through GameInfo.Districts.
  * @param {{x:number,y:number}} loc Plot.
  * @returns {string|null} District type name, or null when unreadable.
@@ -133,9 +133,9 @@ export function districtTypeNameAt(loc) {
 }
 
 /**
- * Whether a SETTLEMENT CENTER sits on this plot, read straight off the MAP rather than from a player's
- * city list. That distinction matters: an Independent Power reports NO cities through
- * `Players.get(pid).Cities.getCities()` (watched, harness runs 15-17), so anything that finds centers by
+ * Whether a settlement center sits on this plot, read straight off the map rather than from a player's
+ * city list. That distinction matters: an Independent Power reports no cities through
+ * `Players.get(pid).Cities.getCities()`, so anything that finds centers by
  * walking a city list is blind to a village. Three routes, because none is available everywhere:
  * `Cities.getAtLocation`, the owning city's own location, then the district type.
  * @param {{x:number,y:number}} loc Plot.

@@ -5,10 +5,10 @@
 // stock and the new owner gains `captureGain` of the total lost, so a conquered region starts leaning toward its
 // conqueror at once instead of keeping the old owner's full stock against a conqueror starting from zero. The
 // change is to the persisted field only; no engine write happens here, so there is no verb risk and the same
-// arithmetic applies to a capture between two AI civilizations (watched 2026-09-25: the event reaches the UI
-// context for transfers with no local party). Saved immediately, so a save-and-reload before the next pass keeps it.
+// arithmetic applies to a capture between two AI civilizations (the event reaches the UI context for
+// transfers with no local party). Saved immediately, so a save-and-reload before the next pass keeps it.
 //
-// Payload shape (watched): { fromPlayer, transferType, cityID: { owner: <new owner>, id, type } }.
+// Payload shape: { fromPlayer, transferType, cityID: { owner: <new owner>, id, type } }.
 
 import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
 import { dlog, log } from "/cultural-diffusion/ui/cd-log.js";

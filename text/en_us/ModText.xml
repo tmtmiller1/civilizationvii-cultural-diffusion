@@ -8,7 +8,7 @@
             <Text>Cultural Diffusion</Text>
         </Row>
         <Row Tag="LOC_MOD_CULTURAL_DIFFUSION_DESCRIPTION">
-            <Text>Culture becomes a living field that spreads from your cities tile by tile. A strong, established culture slowly grows its borders beyond the normal city footprint, seeps into open land, and can flip a rival's frontier tiles once your culture there decisively wins - a systemic answer to AI forward-settling. Growth is slow and organic: borders creep outward over the game and flow back when a culture weakens; an overwhelming culture reaches farther. A reimagining and extension of the Civ V mod Cultural Diffusion, rebuilt for Civ VII, with a deeper cultural-power model and optional Emigration integration. Single-player, tunable (Low/Medium/High), reversible. Works standalone, and reads diaspora data from the Emigration mod when it is installed. Every rule is explained in the Cultural Diffusion section of the in-game Civilopedia.</Text>
+            <Text>Culture becomes a living field that spreads from your cities tile by tile. A strong, established culture slowly grows its borders beyond the normal city footprint, seeps into open land, and can flip a rival's frontier tiles once your culture there decisively wins, which gives the AI's forward-settling a systemic answer. Growth is slow: borders creep outward over the game and flow back when a culture weakens, and an overwhelming culture reaches farther. A reimagining and extension of the Civ V mod Cultural Diffusion, rebuilt for Civ VII with a deeper cultural-power model and optional Emigration integration. Single-player, with Low/Medium/High intensity and an off switch. Works standalone, and reads diaspora data from the Emigration mod when it is installed. Every rule is explained in the Cultural Diffusion section of the in-game Civilopedia.</Text>
         </Row>
 
         <Row Tag="LOC_OPTIONS_CD_PRESET">
@@ -57,14 +57,14 @@
             <Text>Cultural Diffusion - rich cultural model</Text>
         </Row>
         <Row Tag="LOC_OPTIONS_CD_FUSED_DESCRIPTION">
-            <Text>Drive border spread with a civilization's whole cultural power - wonders, culture, influence, happiness, prosperity, traditions - not culture-per-turn alone. A stronger culture pushes its borders farther. Off = the simple settlement-culture model. Civilopedia: Cultural Diffusion, Cultural Strength.</Text>
+            <Text>Drive border spread with a civilization's whole cultural power (wonders, culture, influence, happiness, prosperity, traditions) rather than culture per turn alone. A stronger culture pushes its borders farther. Off = the simple settlement-culture model. Civilopedia: Cultural Diffusion, Cultural Strength.</Text>
         </Row>
 
         <Row Tag="LOC_OPTIONS_CD_EMIGRATION">
             <Text>Cultural Diffusion - follow diaspora (Emigration mod)</Text>
         </Row>
         <Row Tag="LOC_OPTIONS_CD_EMIGRATION_DESCRIPTION">
-            <Text>When the Emigration mod is installed, let a frontier tile settled by your people feel your pull - borders follow diaspora. No effect if Emigration is absent. Requires the rich cultural model. Civilopedia: Cultural Diffusion, With Emigration.</Text>
+            <Text>When the Emigration mod is installed, let a frontier tile settled by your people feel your pull, so borders follow diaspora. No effect if Emigration is absent. Requires the rich cultural model. Civilopedia: Cultural Diffusion, With Emigration.</Text>
         </Row>
 
         <Row Tag="LOC_OPTIONS_CD_BUFFER">
@@ -113,7 +113,7 @@
             <Text>Cultural Diffusion - pressure lens</Text>
         </Row>
         <Row Tag="LOC_OPTIONS_CD_PRESSURE_LENS_DESCRIPTION">
-            <Text>Add a read-only "Cultural Pressure" map lens (and Shift+C hotkey) that shades contested frontier tiles by how close your - or a rival's - culture is to claiming them. Shows information only; it changes nothing about how borders move. Civilopedia: Cultural Diffusion, Cultural Pressure Lens.</Text>
+            <Text>Add a read-only "Cultural Pressure" map lens (and Shift+C hotkey) that shades contested frontier tiles by how close your culture, or a rival's, is to claiming them. Shows information only; it changes nothing about how borders move. Civilopedia: Cultural Diffusion, Cultural Pressure Lens.</Text>
         </Row>
 
         <!-- Cultural Pressure lens + hover tooltip (potential-future-features.md section 1). -->

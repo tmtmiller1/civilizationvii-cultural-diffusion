@@ -1,13 +1,11 @@
 // scripts/check-esm.mjs
 //
-// Two static checks that `node --check` alone does NOT catch:
-//   1. Duplicate ESM named exports within a single module (e.g. `export function
-//      foo` plus a later `export { foo }`) - this is a load-time SyntaxError in the
-//      GameFace engine but slips past a per-file `node --check`.
-//   2. Unresolved intra-mod import specifiers - an `import ... from
-//      "/cultural-diffusion/ui/xyz.js"` whose target file does not exist on disk.
+// Static checks that `node --check` does not make. A duplicate named export in one module
+// (`export function foo` plus a later `export { foo }`) is a load-time SyntaxError in GameFace
+// but passes a per-file `node --check`. So does an import from "/cultural-diffusion/ui/xyz.js"
+// whose target file does not exist.
 //
-// Exits non-zero (with a report) on any violation so it can gate CI / verify.
+// Exits non-zero with a report on any violation, so it can gate verify.
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -61,9 +59,9 @@ for (const f of files) {
   checkImports(src, `ui/${f}`);
 }
 
-// Every ui/*.js must be DECLARED in the modinfo, as a UIScript (an entry point) or an ImportFile (a
+// Every ui/*.js must be declared in the modinfo, as a UIScript (an entry point) or an ImportFile (a
 // module something imports). The engine only serves declared files, so an undeclared module makes its
-// importer fail at load and takes the whole action group down with it - which looks like "the mod is
+// importer fail at load and takes the whole action group down with it, which looks like "the mod is
 // dead", not like a missing file. cd-units.js shipped undeclared until 2026-09-24.
 function checkModinfoCoverage() {
   const mi = path.join(root, "cultural-diffusion.modinfo");

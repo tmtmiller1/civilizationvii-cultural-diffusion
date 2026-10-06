@@ -1,10 +1,10 @@
 // cd-calibration.js
 //
-// Calibrates the field's per-turn pace to the GAME SETTINGS (docs/current-model.md §2).
-// `Game.maxTurns` is the CURRENT AGE's turn budget, which varies by game speed, so the per-turn
+// Calibrates the field's per-turn pace to the game settings (docs/current-model.md §2).
+// `Game.maxTurns` is the current age's turn budget, which varies by game speed, so the per-turn
 // field advance (diffusion + decay + injection) is scaled by `referenceTurns / Game.maxTurns`:
 // same reach extent, re-timed to span the age. Map size does not scale the diffusion rate; it
-// only nudges injection mildly. Fully defensive: unreadable settings -> neutral 1.
+// only nudges injection mildly. Unreadable settings read as a neutral 1.
 
 import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
 
@@ -20,7 +20,7 @@ function readMaxTurns() {
 }
 
 /**
- * Progress through the CURRENT age in [0,1] - the same `Game.turn / Game.maxTurns` the radial menu
+ * Progress through the current age in [0,1], the same `Game.turn / Game.maxTurns` the radial menu
  * shows as age progress. 0 when unreadable (treated as the start of the age).
  * @returns {number} Age-progress fraction.
  */

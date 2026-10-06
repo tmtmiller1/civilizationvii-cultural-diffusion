@@ -1,8 +1,8 @@
-// cdh-game-conquest.js - game scope, deployed as ui/cdh-game.js. WATCH a conquest flip end to end (dev only).
+// cdh-game-conquest.js: game scope, deployed as ui/cdh-game.js. Watch a conquest flip end to end (dev only).
 //
 // Run with the deployed config patched to `conquestFlip: true` (run-harness.sh PATCH). Scripts cannot move a unit
-// (harness run 13), so the run PLANTS one: a combat unit of ours is created with the CREATE_ELEMENT request the
-// Emigration mod uses for its migrants (watched working), on a tile that an enemy MAJOR owns, that touches our land,
+// (harness run 13), so the run plants one: a combat unit of ours is created with the CREATE_ELEMENT request the
+// Emigration mod uses for its migrants (known to work), on a tile that an enemy major owns, that touches our land,
 // is not a settlement center or urban district, and is as far from that enemy's cities as the frontier allows (so
 // the unit is less likely to be attacked before the buffer runs out). Then the mod's own pass does the rest:
 //
@@ -12,7 +12,7 @@
 //   Cn  each turn: the occupation counter for the tile, its owner, whether our unit is still standing there, the
 //       claim / pending record; the mod's pass log carries `conquest x,y: taken from player ...`
 //   VERDICT  the tile reads as ours (or pending then confirmed) once the hold reaches conquestBufferTurns
-// Turns are rolled the gold2 way (send anyway, no Autoplay - Autoplay would move our unit).
+// Turns are rolled the gold2 way (send anyway, no Autoplay, Autoplay would move our unit).
 
 import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
 import { hostileCombatOccupants, conquerable } from "/cultural-diffusion/ui/cd-conquest.js";
@@ -123,7 +123,7 @@ async function run() {
   setTimeout(endTurn, 3000);
 }
 
-// ---------------------------------------------------------------- turns, no Autoplay
+// turns, no Autoplay
 let n = 0; let endTimer = null; let tries = 0;
 function endTurn() {
   try {

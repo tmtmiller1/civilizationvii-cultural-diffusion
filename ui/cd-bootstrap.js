@@ -1,4 +1,4 @@
-// cd-bootstrap.js - game scope.
+// cd-bootstrap.js, game scope.
 //
 // Boot the Cultural Diffusion engine: run one diffusion pass per local-player turn (honoring
 // CONFIG.turnInterval), refresh settings before each pass, and expose a small console surface.
@@ -23,7 +23,7 @@ let _constructibleHandlerRef = null;
 let _transferHandlerRef = null;
 
 // Kill switch: if our per-turn pass throws repeatedly, unsubscribe so a broken build stops
-// running - and stops spamming errors - on every turn for the rest of the session.
+// running (and spamming errors) on every turn for the rest of the session.
 let _passErrors = 0;
 const KILL_THRESHOLD = 3;
 
@@ -45,8 +45,8 @@ function teardown() {
 }
 
 /**
- * True when a constructible type is a RURAL development (a worked improvement or the rural
- * district) rather than a city-center building/wonder - i.e. a "we improved a tile" growth event.
+ * True when a constructible type is a rural development (a worked improvement or the rural
+ * district) rather than a city-center building/wonder: a "we improved a tile" growth event.
  * @param {*} typeId The event's constructibleType id.
  * @returns {boolean} Whether it counts as rural growth.
  */
@@ -69,7 +69,7 @@ function lookupConstructible(typeId) {
 
 /**
  * ConstructibleAddedToMap handler: when the local player finishes a rural improvement, push the
- * "+1 ring" cultural buffer onto the unowned tiles adjacent to it. Fully guarded.
+ * "+1 ring" cultural buffer onto the unowned tiles adjacent to it.
  * @param {*} data Event payload: { location:{x,y}, constructibleType, percentComplete }.
  */
 function onConstructibleAdded(data) {

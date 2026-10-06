@@ -1,9 +1,9 @@
 // cd-field.js
 //
-// The PURE reaction-diffusion math for the culture field (docs/current-model.md §2, adapted from
+// The pure reaction-diffusion math for the culture field (docs/current-model.md §2, adapted from
 // the Civ V "Cultural Diffusion" model). No engine reads live here, so it is unit-tested in Node;
 // cd-pass.js owns the persisted field and the engine reads and feeds them through these functions.
-// Each turn a tile DECAYS, DIFFUSES to neighbors and cities INJECT; ownership is a read-out of the stock.
+// Each turn a tile decays, diffuses to neighbors and cities inject; ownership is a read-out of the stock.
 
 /** @param {*} v @param {number} [d] @returns {number} */
 function num(v, d = 0) {
@@ -11,7 +11,7 @@ function num(v, d = 0) {
 }
 
 /**
- * Culture a city injects into its OWN tile this turn (Civ V GetCityCulturalOutput, sqrt variant).
+ * Culture a city injects into its own tile this turn (Civ V GetCityCulturalOutput, sqrt variant).
  * Self-amplifying: the stock climbs from `injectBase` toward its cap over many turns, so a mature
  * culture projects a big stock only later in the game.
  * @param {number} strength The city's cultural output (fused projection: culture x CPI x prosperity x celebration).
@@ -54,7 +54,7 @@ export function decayValue(value, cfg) {
 }
 
 /**
- * @typedef {Object} StepMods Terrain/affinity modifiers for ONE source->neighbor step.
+ * @typedef {Object} StepMods Terrain/affinity modifiers for one source->neighbor step.
  * @property {boolean} blocked True when culture cannot cross at all (water, or an ungated feature).
  * @property {number} bonus Additive diffusion-rate bonus fraction (road 1.0 = +100%, river 0.65).
  * @property {number} malus Additive diffusion-rate penalty fraction (0.10 = -ish via 1/(1+malus)).
@@ -62,9 +62,9 @@ export function decayValue(value, cfg) {
  */
 
 /**
- * Culture DELIVERED from a source tile to one neighbor this turn (Civ V DiffuseCulture). The
+ * Culture delivered from a source tile to one neighbor this turn (Civ V DiffuseCulture). The
  * neighbor asymptotes to at most `normalMax x maxFactor` (capped by `maxPercent`) of the source,
- * approached at the diffusion rate. Returns the ADD to the neighbor's stock (never lowers it).
+ * approached at the diffusion rate. Returns the add to the neighbor's stock (never lowers it).
  * @param {number} sourceValue The diffusing civ's culture on the source tile.
  * @param {number} prevTargetValue The same civ's culture already on the neighbor.
  * @param {StepMods} mods Terrain/affinity modifiers for this step.
@@ -152,7 +152,7 @@ export function passCanAct(leader, owner, me, claimedByMe, flags) {
 }
 
 /**
- * Convert a share of every FOREIGN culture on a city tile to the city's owner (Civ V ConvertCulture): the owner's
+ * Convert a share of every foreign culture on a city tile to the city's owner (Civ V ConvertCulture): the owner's
  * stock grows by exactly what the others lose. Mutates and returns the row.
  * @param {Record<string, number>} row civId -> culture on the city tile.
  * @param {number} owner The city's owner.
@@ -202,8 +202,8 @@ export function applyCaptureTransfer(row, newOwner, cfg) {
 }
 
 /**
- * A READ-ONLY view of the flip pressure on a tile, for the Cultural Pressure lens + hover tooltip.
- * Same gates as resolveOwner, re-expressed as a capture PROGRESS in [0,1] plus the raw stocks and the
+ * A read-only view of the flip pressure on a tile, for the Cultural Pressure lens + hover tooltip.
+ * Same gates as resolveOwner, re-expressed as a capture progress in [0,1] plus the raw stocks and the
  * target the leader must reach. Pure, so it is unit-tested alongside resolveOwner and cannot drift.
  * @param {Record<string, number>} civMap civId -> culture value on the tile.
  * @param {number} currentOwner Current owner player id (-1 = unowned).
@@ -225,7 +225,7 @@ export function pressureVerdict(civMap, currentOwner, deadOwners, cfg) {
 }
 
 /**
- * Whether a leader's stock clears both flip gates: past the absolute floor AND (on owned land)
+ * Whether a leader's stock clears both flip gates: past the absolute floor and (on owned land)
  * decisively over the incumbent. Empty land needs only the floor.
  * @param {number} value Leader stock. @param {number} currentOwner Current owner (-1 = unowned).
  * @param {number} incumbent Incumbent stock. @param {number} minOwner Floor. @param {number} ratio flipRatio.
@@ -237,7 +237,7 @@ function clearsFlipGates(value, currentOwner, incumbent, minOwner, ratio) {
 }
 
 /**
- * The stock the leader must reach to TAKE a tile: past the absolute floor AND (on owned land)
+ * The stock the leader must reach to take a tile: past the absolute floor and (on owned land)
  * decisively over the incumbent (value*ratio > incumbent  <=>  value > incumbent/ratio). On empty
  * land only the floor applies. Mirrors resolveOwner's two gates exactly.
  * @param {number} currentOwner Current owner (-1 = unowned). @param {number} incumbent Incumbent stock.
@@ -256,8 +256,8 @@ function clamp01(v) {
 }
 
 /**
- * A rough ONE-STEP-AHEAD estimate of turns until a tile flips to its leader: net gain next turn =
- * diffusion from the leader's strongest neighbor on OPEN ground minus this tile's decay (terrain
+ * A rough one-step-ahead estimate of turns until a tile flips to its leader: net gain next turn =
+ * diffusion from the leader's strongest neighbor on open ground minus this tile's decay (terrain
  * mods, injection and the cap approach are ignored). Pure. Returns null when there is no pending
  * flip, 0 when already over the bar, and Infinity when the front is stalled (net gain <= 0).
  * @param {{leader:number, leaderValue:number, target:number, willFlip:boolean}} verdict A pressureVerdict.

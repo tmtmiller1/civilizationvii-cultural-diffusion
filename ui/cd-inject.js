@@ -1,7 +1,7 @@
 // cd-inject.js
 //
-// Field step 3, the CITY side of the culture field: each settlement pumps culture into its own tile, and - with
-// foreignCultureInCities (docs/civ-v-parity-spec.md §3 and §4) - pumps every other culture group living there too,
+// Field step 3, the city side of the culture field: each settlement pumps culture into its own tile, and, with
+// foreignCultureInCities (docs/civ-v-parity-spec.md §3 and §4), pumps every other culture group living there too,
 // then converts a share of those foreign stocks to its owner each turn. Plus the owner floor (spec §8). Pure field
 // arithmetic over the pass's rows; the only engine reads are the owner of a tile (for the floor) and, through
 // cd-conversion.js, the city's buildings and its owner's traditions. No import from cd-pass.js: a UIScript module
@@ -33,8 +33,8 @@ function sumRow(row) {
 
 /**
  * Inject each city's culture into its own tile, capped (field step 3). With foreignCultureInCities the cap bounds
- * the TOTAL culture on the tile and every other group present is pumped too (Civ V GetCityCulturalOutput).
- * @param {Map<string, *>} injectors Injectors by plot key. @param {*} field The OLD field.
+ * the total culture on the tile and every other group present is pumped too (Civ V GetCityCulturalOutput).
+ * @param {Map<string, *>} injectors Injectors by plot key. @param {*} field The old field.
  * @param {(k:string)=>Record<string, number>} rowOf Row accessor on the new field. @param {number} pace Age pace.
  * @param {{alive:Set<number>, comp:*}} ctx Living owners and the Emigration composition (or null).
  */
@@ -83,7 +83,7 @@ function foreignStrength(entry, pid, stock, base) {
 }
 
 /**
- * Pump every FOREIGN culture group present on a city tile (Civ V: population x sqrt(stock x ratio) + base), inside
+ * Pump every foreign culture group present on a city tile (Civ V: population x sqrt(stock x ratio) + base), inside
  * the room left under the tile's total cap. A dead civilization's culture is not pumped by anyone.
  * @param {{k:string, inj:*, old:Record<string,number>, row:Record<string,number>, pace:number, room:number, ctx:*}} a
  *   The tile: key, injector, old row, new row, age pace, room under the cap, and the pass context.

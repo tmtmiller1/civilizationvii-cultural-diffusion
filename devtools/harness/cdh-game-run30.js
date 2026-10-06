@@ -1,14 +1,14 @@
-// cdh-game-run30.js - game scope, deployed as ui/cdh-game.js. Cultural Diffusion harness run 30 (dev only).
+// cdh-game-run30.js: game scope, deployed as ui/cdh-game.js. Cultural Diffusion harness run 30 (dev only).
 //
-// STRESS / CRASH WATCH. The reporter's campaign crashed unrecoverably, with the mod DISABLED as well, and
-// they could not attribute it - so nothing here diagnoses their save. What this CAN establish is whether
+// Stress / crash watch. The reporter's campaign crashed unrecoverably, with the mod disabled as well, and
+// they could not attribute it, so nothing here diagnoses their save. What this can establish is whether
 // the current build survives the moment this mod family crashed before: harness run 3 took a native
 // EXC_BAD_ACCESS on AsyncWorker1 about thirty seconds after an age transition while the mod held nine
 // claims beyond ring 3, a signature matching the archived emigration enclave crash.
 //
-// So: run the mod with everything on - the pass, the strand guard, the minor floor - for as many turns as
+// So: run the mod with everything on, the pass, the strand guard, the minor floor, for as many turns as
 // the budget allows, logging each turn and each pass summary, and let the runner capture any .ips. A clean
-// long run is not proof the reporter's crash was unrelated; it is evidence that the code added this session
+// long run does not clear the reporter's crash; it only shows that the code added this session
 // does not fault on its own, which is the only crash question we can actually answer.
 //
 // Every turn logs: turn number, pass summary, claim count, and how many guard refusals have been seen, so a

@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 // inventory.mjs
 //
-// Regenerates the file inventory for the monolith snapshot in one reproducible run, so the
-// report stops drifting from the tree (stale rows, moved/split modules). Dependency-free
-// (Node built-ins only). Mirrors emigration/scripts/inventory.mjs.
+// Regenerates the file inventory for the monolith snapshot in one run, so the report stops
+// drifting from the tree (stale rows, moved or split modules). Node built-ins only. Same as
+// emigration/scripts/inventory.mjs.
 //
 // Scope: every file under the mod root, excluding .git, node_modules, and the gitignored build
-// artifacts (dist/, coverage/, reports/, .stryker-tmp/) - matching monoliths-analysis.md.
+// artifacts (dist/, coverage/, reports/, .stryker-tmp/), matching monoliths-analysis.md.
 //
 // Per file it reports: ext, raw line count, bytes, function-declaration count, class count, and
-// the raw-line monolith flag (> 500). The monolith *gate* enforced in CI is eslint's CODE-line
+// the raw-line monolith flag (> 500). The monolith gate enforced in CI is eslint's code-line
 // count (skipBlank + skipComments); this raw-line flag is the report's coarser screen.
 //
 // Usage:  node scripts/inventory.mjs [--md]    (--md prints the markdown table; default = totals)

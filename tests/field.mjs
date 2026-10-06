@@ -1,10 +1,10 @@
-// tests/field.mjs - the pure reaction-diffusion culture-field math (Civ V port).
+// tests/field.mjs: the pure reaction-diffusion culture-field math (Civ V port).
 import assert from "node:assert/strict";
 import {
   injectionAmount, cityCultureCap, decayValue, diffusionDelivered, resolveOwner
 } from "/cultural-diffusion/ui/cd-field.js";
 
-// Civ V-derived constants (kept explicit here so this tests the MATH, not cd-config wiring).
+// Civ V-derived constants (kept explicit here so this tests the math, not cd-config wiring).
 const cfg = {
   injectBase: 10, injectRatio: 0.15, cityCapFactor: 2000,
   decayRate: 0.05, decayFlat: 1,
@@ -46,7 +46,7 @@ assert.equal(resolveOwner({ "0": 400, "1": 380 }, 1, [], cfg).flip, false, "a sl
 assert.equal(resolveOwner({ "0": 900, "1": 380 }, 1, [], cfg).flip, true, "a decisive lead flips it");
 assert.equal(resolveOwner({ "0": 5000 }, -1, [0], cfg).owner, -1, "dead civs are ignored");
 
-// -- Traveling wave: reach is SLOW and emergent (the whole point of the port) --
+// Traveling wave: reach is slow and emergent (the whole point of the port)
 // A 1-D line of tiles; tile 0 is a city injecting each turn; culture diffuses to line
 // neighbors, decays, and we watch how many TURNS until each distance crosses ownership.
 function simulateReach(strength, maxTurns) {
@@ -71,13 +71,13 @@ function simulateReach(strength, maxTurns) {
 }
 const owned = simulateReach(40, 400);
 // The city tile is owned almost immediately; each ring out takes progressively, and
-// substantially, longer - a creeping front, not an instant snap.
+// substantially, longer, a creeping front, not an instant snap.
 assert.ok(owned[1] < owned[2] && owned[2] < owned[3], "each ring is claimed later than the last");
 assert.ok(owned[1] >= 3, "even the first ring takes several turns to build up");
 assert.ok(owned[3] - owned[1] >= 10, "reaching ring 3 lags ring 1 by many turns (slow, organic)");
 assert.ok(owned[3] > 20, `ring 3 is a mid-game event, not turn ~5 (was ${owned[3]})`);
 
-// A far-stronger culture pushes the SAME front out faster and farther (overwhelming culture).
+// A far-stronger culture pushes the same front out faster and farther (overwhelming culture).
 const strongOwned = simulateReach(160, 400);
 assert.ok(strongOwned[3] < owned[3], "an overwhelming culture reaches ring 3 sooner");
 

@@ -1,5 +1,5 @@
-// cdh-game-run6.js - game scope, deployed as ui/cdh-game.js. Run 6 (dev only).
-// Question: does the SHIPPED build, whose modinfo has no AffectsSavedGames override, run inside an existing save that
+// cdh-game-run6.js: game scope, deployed as ui/cdh-game.js. Run 6 (dev only).
+// Question: does the shipped build, whose modinfo has no AffectsSavedGames override, run inside an existing save that
 // was made without it? Deploy dist/cultural-diffusion unchanged and enable it. This harness attaches to any save (its own
 // modinfo sets AffectsSavedGames=0), presses Begin, and reports whether Cultural Diffusion's console object exists. The
 // monitor also watches UI.log for the mod's boot line, and Modding.log lists the mods the load activated.

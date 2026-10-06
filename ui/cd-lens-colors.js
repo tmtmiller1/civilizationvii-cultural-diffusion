@@ -1,13 +1,13 @@
 // cd-lens-colors.js
 //
 // Readable per-civ display colors + a float4 helper for the Cultural Pressure lens/tooltip: prefer a
-// civ's PRIMARY banner color, fall back to SECONDARY when the primary is a dark gray, then lift any
+// civ's primary banner color, fall back to secondary when the primary is a dark gray, then lift any
 // still-dark color to a minimum lightness. Unresolved civs fall back to the caller's hex.
 // Import-less on purpose so it can live in <ImportFiles> and still expose its exports.
 
 const MIN_L_GRAY = 0.65; // grays need more lift (no hue to aid readability)
 const MIN_L_SAT = 0.5;
-const DARK_GRAY_MAX_L = 0.42; // a primary worth replacing with the secondary: dark AND nearly colorless
+const DARK_GRAY_MAX_L = 0.42; // a primary worth replacing with the secondary: dark and nearly colorless
 const DARK_GRAY_MAX_S = 0.3;
 const FALLBACK_HEX = "#888888";
 
@@ -162,7 +162,7 @@ function composeTag(tag) {
 
 /**
  * A `#RRGGBB` color as the engine's plot-overlay float4 {x,y,z,w} (0-1 RGBA). Every channel is
- * finite-clamped - a NaN reaching the Metal plot overlay is a known Mac crash vector.
+ * finite-clamped; a NaN reaching the Metal plot overlay is a known Mac crash vector.
  * @param {string} hex A `#RRGGBB` color.
  * @param {number} [alpha] Alpha 0..1.
  * @returns {{x:number, y:number, z:number, w:number}} Float4 RGBA.

@@ -1,4 +1,4 @@
-// cdh-game-run9.js - game scope, deployed as ui/cdh-game.js. Run 9 (dev only): does the Cultural Pressure lens render?
+// cdh-game-run9.js: game scope, deployed as ui/cdh-game.js. Run 9 (dev only): does the Cultural Pressure lens render?
 // Loads AugustusAnt136 (via cdh-shell-run5.js), ends TURNS turns so the mod's field builds stock around London, then:
 // centers the camera on our largest city, logs LENS OFF SHOT (monitor screenshots), switches the pressure lens on, and
 // logs LENS ACTIVE (monitor screenshots again). No other game actions. Tagged [CDH] in Logs/UI.log.

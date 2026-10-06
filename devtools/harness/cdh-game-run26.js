@@ -1,16 +1,16 @@
-// cdh-game-run26.js - game scope, deployed as ui/cdh-game.js. Cultural Diffusion harness run 26 (dev only).
+// cdh-game-run26.js: game scope, deployed as ui/cdh-game.js. Cultural Diffusion harness run 26 (dev only).
 //
-// The naval half of the strand guard, which is implemented but NOT yet watched. Run 25 established that the
-// domain read resolves and that 126 naval units exist; this checks the guard's own arithmetic against REAL
+// The naval half of the strand guard, which is implemented but not yet watched. Run 25 established that the
+// domain read resolves and that 126 naval units exist; this checks the guard's own arithmetic against real
 // ships, and takes a pen fixture if the map offers one.
 //
 //   N1 READ-ONLY, against every foreign ship near us: does `strandableUnitAt` resolve DOMAIN_SEA, and does
-//      `legalExits` count its WATER neighbors rather than reporting the zero it used to? A ship that still
+//      `legalExits` count its water neighbors rather than reporting the zero it used to? A ship that still
 //      reports 0 exits on open water means the domain rule is not reaching it.
-//   N2 EMBARKED units: a LAND-domain unit standing on water. If the engine models embarkation that way, the
-//      guard would call water blocked for it and read it as immobile - worth knowing even if rare.
+//   N2 EMBARKED units: a land-domain unit standing on water. If the engine models embarkation that way, the
+//      guard would call water blocked for it and read it as immobile, worth knowing even if rare.
 //   N3 PEN (opportunistic): a foreign ship whose water neighbors are all ours-or-buyable inside
-//      flipMaxDistance. Buy all but one, ask the guard, then let the pass run - the naval twin of run 24.
+//      flipMaxDistance. Buy all but one, ask the guard, then let the pass run, the naval twin of run 24.
 //      Reports honestly when the map offers no such fixture.
 //
 // Tagged [CDH] in Logs/UI.log.
@@ -99,7 +99,7 @@ function stageN1N2(units) {
       + "embarked unit reads as already immobile and is never protected - a known limit, recorded"));
 }
 
-// --- N3: the naval pen, if the map offers one ------------------------------------------------------------------------
+// N3: the naval pen, if the map offers one
 let pen = null;
 function seedStock(loc) {
   const k = key(loc);

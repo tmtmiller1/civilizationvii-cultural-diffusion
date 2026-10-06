@@ -1,9 +1,9 @@
-// cdh-game-run12.js - game scope, deployed as ui/cdh-game.js. Cultural Diffusion harness run 12 (dev only).
+// cdh-game-run12.js: game scope, deployed as ui/cdh-game.js. Cultural Diffusion harness run 12 (dev only).
 // Two 1.1.0 release gates, on AugustusAnt136 via cdh-shell-run5.js. Deploy the mod with recedeBorders: true and
 // debug: true.
-//   R9 CEDE   run 4's untested cession: against a rival at PEACE with us, buy an unowned tile beyond ring 3 touching both
+//   R9 CEDE   run 4's untested cession: against a rival at peace with us, buy an unowned tile beyond ring 3 touching both
 //             our land and theirs, then seed the mod's state with our claim on it and a dominant rival stock, so the
-//             mod's OWN recede step cedes it (pending) and confirms it a pass later. Retried each turn until a peaceful
+//             mod's own recede step cedes it (pending) and confirms it a pass later. Retried each turn until a peaceful
 //             rival qualifies (player 3 is at war on turn 136 and at peace from 137, per run 7).
 //   LENS      the shipped lens's pressureTiles() and the tooltip's resolve(), called directly: no painted tile may be
 //             one the pass never acts on (passCanAct), an AI-led unowned tile must show no progress row, and the
@@ -72,7 +72,7 @@ function landClean(l) {
 }
 function atWar(pid) { return safe(() => !!Players.get(local).Diplomacy.isAtWarWith(pid), null); }
 
-// --- R9: the mod's own cession against a rival at peace --------------------------------------------------------------
+// R9: the mod's own cession against a rival at peace
 async function seedPeacefulCede(cities) {
   const majors = safe(() => Players.getAlive().filter((p) => p.id !== local && p.isMajor).map((p) => p.id), []);
   const peace = majors.filter((m) => atWar(m) === false);
@@ -116,7 +116,7 @@ async function seedPeacefulCede(cities) {
 }
 
 
-// --- LENS: the shipped lens list and readout against the pass's reach ---------------------------------------------
+// LENS: the shipped lens list and readout against the pass's reach
 function hasProgressRow(plot) {
   const out = safe(() => TipT.resolve(plot), "ERR");
   if (out === "ERR" || out === null) return { rows: out === null ? 0 : -1, progress: false };

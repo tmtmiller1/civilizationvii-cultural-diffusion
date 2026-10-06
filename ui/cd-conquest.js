@@ -1,23 +1,23 @@
 // cd-conquest.js
 //
-// Unit CONQUEST (opt-in, CONFIG.conquestFlip; docs/civ-v-parity-spec.md §6, potential-future-features.md §2). During a
+// Unit conquest (opt-in, CONFIG.conquestFlip; docs/civ-v-parity-spec.md §6, potential-future-features.md §2). During a
 // war between two majors, a combat unit that holds an enemy tile for `conquestBufferTurns` consecutive passes takes
 // it for its owner, ignoring culture. The buffer is what keeps armies marching through from flickering the border,
 // which Civ V's instant flip caused; leaving the tile resets the count. City centers and urban districts are never
 // taken this way, because capturing a city is the engine's job.
 //
-// The conquered tile is then HELD for `conquestHoldTurns` (the same lock map culture flips honor): culture cannot
+// The conquered tile is then held for `conquestHoldTurns` (the same lock map culture flips honor): culture cannot
 // flip it back during the hold, but the sweep itself never looks at the lock, so another army that holds the tile
 // through the buffer takes it at any time. After the hold the tile works the normal way.
 //
-// Runs LAST in the pass, after the culture flips and the recede step, so occupation is the final territorial word.
+// Runs last in the pass, after the culture flips and the recede step, so occupation is the final territorial word.
 // The flip itself is the integrated verb (purchasePlot through the conqueror's nearest city), which lands after the
-// call and is confirmed next pass like every other claim. For the LOCAL player's units this stands alone; for
+// call and is confirmed next pass like every other claim. For the local player's units this stands alone; for
 // another civ's units it also requires aiCultureFlips, since that is the toggle that lets the mod move AI borders.
 //
-// Engine reads (all watched 2026-09-25): MapUnits.getUnits(x, y) -> array-LIKE ComponentID list (iterate),
+// Engine reads: MapUnits.getUnits(x, y) -> array-like ComponentID list (iterate),
 // Units.get(cid).owner, Units.get(cid).Combat.isCombat (scouts and commanders read true, civilians false),
-// Players.get(pid).Diplomacy.isAtWarWith - restricted to majors because every Independent Power reads at war.
+// Players.get(pid).Diplomacy.isAtWarWith, restricted to majors because every Independent Power reads at war.
 
 import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
 import { dlog } from "/cultural-diffusion/ui/cd-log.js";
@@ -46,7 +46,7 @@ function unkey(k) {
 }
 
 /**
- * The owners (majors, at war with the tile's owner) of the COMBAT units standing on a plot. Civilians never
+ * The owners (majors, at war with the tile's owner) of the combat units standing on a plot. Civilians never
  * conquer; a unit whose owner is not a major, or not at war with the owner, is not an occupier.
  * @param {{x:number,y:number}} loc Plot. @param {number} owner The plot's owner.
  * @returns {number[]} Distinct occupier player ids.
@@ -83,7 +83,7 @@ export function conquerable(loc, owner) {
 }
 
 /**
- * PURE: advance one tile's occupation counter. A continuous hold by the same occupier counts up; a different
+ * Pure: advance one tile's occupation counter. A continuous hold by the same occupier counts up; a different
  * occupier, or none, restarts or clears it.
  * @param {Record<string, {by:number, turns:number}>} occupation state.occupation (mutated).
  * @param {string} k Plot key.

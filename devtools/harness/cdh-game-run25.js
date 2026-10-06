@@ -1,17 +1,17 @@
-// cdh-game-run25.js - game scope, deployed as ui/cdh-game.js. Cultural Diffusion harness run 25 (dev only).
+// cdh-game-run25.js: game scope, deployed as ui/cdh-game.js. Cultural Diffusion harness run 25 (dev only).
 //
-// READ-ONLY. Two questions about the strand guard's notion of "somewhere a unit may go", both raised by the
+// Read-only. Two questions about the strand guard's notion of "somewhere a unit may go", both raised by the
 // mountain bug it already cost four runs to find (runs 19-23).
 //
-//   F  FEATURES. The compiled DB says impassability lives in TWO tables: Terrains has exactly one impassable
-//      row (TERRAIN_MOUNTAIN), while Features has EIGHTEEN - FEATURE_VOLCANO, FEATURE_ICE and sixteen natural
+//   F  FEATURES. The compiled DB says impassability lives in two tables: Terrains has exactly one impassable
+//      row (TERRAIN_MOUNTAIN), while Features has eighteen, FEATURE_VOLCANO, FEATURE_ICE and sixteen natural
 //      wonders (Everest, Uluru, Grand Canyon, Mount Fuji, Thera, ...). The guard calls
-//      GameplayMap.isImpassable(x,y). If that reads TERRAIN only, then a unit whose last neighbor is a
-//      volcano or a natural wonder reads as mobile and the guard permits the claim that freezes it - the
+//      GameplayMap.isImpassable(x,y). If that reads terrain only, then a unit whose last neighbor is a
+//      volcano or a natural wonder reads as mobile and the guard permits the claim that freezes it, the
 //      mountain bug again, in seventeen more flavors. This compares, plot by plot, the engine's
 //      isImpassable against the feature's own Impassable flag from GameInfo.
-//   D  DOMAIN. The guard treats WATER as blocked for every unit, so a naval unit always reads as having zero
-//      exits and is never protected - while the pass CAN own water (diffuseAcrossWater is on by default and
+//   D  DOMAIN. The guard treats water as blocked for every unit, so a naval unit always reads as having zero
+//      exits and is never protected, while the pass can own water (diffuseAcrossWater is on by default and
 //      the +1 buffer claims unowned water). To make blocking domain-aware the mod needs to read a unit's
 //      domain; this reports which of the candidate reads actually resolve on a real unit.
 //

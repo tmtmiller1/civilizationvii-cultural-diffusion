@@ -3,16 +3,16 @@
 Open items not yet addressed. Findings from the 2026-07-10 corpus bug-hunt audit unless
 noted. Each carries [severity · confidence] and enough context to pick up cold.
 
-> **Closed decisions have moved out of this backlog.** Items that were *decided* rather than
-> *pending* now live in their own files, cross-referenced from the entries below:
+> Closed decisions have moved out of this backlog. Items that were decided now live in their own
+> files, cross-referenced from the entries below:
 > - The `commitFlip` / `commitBuffer` seed-stock no-op lines and the kept tested-but-unwired
 >   `*Factor` helpers → [`wont-fix-with-justifications.md`](wont-fix-with-justifications.md)
->   (deliberately left as-is).
+>   (left as they are).
 > - The removed `preventForwardSettle` / `minimalOwnedCulture` targeting flags →
 >   [`wont-build-with-justifications.md`](wont-build-with-justifications.md) (won't build as a
 >   discrete mechanic).
 >
-> The detailed findings remain below for reference; the **verdicts** are canonical in those files.
+> The detailed findings remain below for reference. The verdicts in those files are the ones that count.
 
 ## 2026-09-24 player field report (v1.1.0)
 
@@ -35,23 +35,23 @@ test `value * flipRatio > incumbent` is therefore satisfied against an incumbent
 probe notes predicted the consequence of taking a center plot: it "should annex (major) or **absorb (minor)** the whole
 settlement".
 
-**What should have blocked it:** `atWar(me, owner)` — `Diplomacy.isAtWarWith` is true for *every* Independent Power
-(`civilization_vii_mods/engine-closed.md`), so every IP-owned plot should be vetoed. That is why "befriending" is the
-load-bearing word in the report.
+**What should have blocked it:** `atWar(me, owner)`. `Diplomacy.isAtWarWith` is true for every Independent Power
+(`civilization_vii_mods/engine-closed.md`), so every IP-owned plot should be vetoed. That is why "befriending" matters
+in the report.
 
 **Hypothesis to disprove first:** a befriended Independent Power stops reading as at-war, which opens the war gate on
 its plots, and its village center is not protected because `Cities.getCities()` does not enumerate villages.
 
-**Cheapest disproof (one read, no long game):** on any save with an IP village in view — (1)
+**Cheapest disproof (one read, no long game):** on any save with an IP village in view: (1)
 `isCoreProtected(villageCenter, ipId, 0)`; `true` kills the hypothesis outright. (2)
-`Players.get(ipId).Cities.getCities()` to see why. (3) `GameplayMap.getOwner(villageCenter)` — IP-owned (war gate
+`Players.get(ipId).Cities.getCities()` to see why. (3) `GameplayMap.getOwner(villageCenter)`: IP-owned (war gate
 applies) or unowned (no gate at all). (4) `isAtWarWith` across every IP, hostile vs. befriended.
 
 **Second, zero-game-cost route:** the mod persists `CulturalDiffusionState_v2` through `GameConfiguration`, and
 GameConfiguration sits uncompressed in `.Civ7Save`. Any autosave from the reporter's campaign can be grepped for
 `state.claims` to see directly whether the mod claimed plots at or around that village.
 
-**Note for any reply to a reporter:** disabling the mod cannot undo plots it already took. `purchasePlot` is a real
+**For any reply to a reporter:** disabling the mod cannot undo plots it already took. `purchasePlot` is a real
 engine mutation the save persists, so "it did not happen with the mod off" is weak evidence, and the village ending up
 with no settlement either way is consistent with it having already been crippled before the reload.
 
@@ -59,41 +59,41 @@ with no settlement either way is consistent with it having already been crippled
 `UNITOPERATION_CONVERT_INDEPENDENTS` and `UNITOPERATION_DISPERSE_INDEPENDENT` exist, so "becomes a city-state" is an
 *adjacency-conditioned unit operation*. Whether our claims can change the plots that operation needs is unknown.
 
-## [FIXED + CONFIRMED 2026-09-24] The trapped unit, and the stripped minor settlement
+## [Fixed 2026-09-24] The trapped unit, and the stripped minor settlement
 
-Both of the reporter's territory anomalies are the mod's doing, both are reproduced in game, and both fixes are watched
-working. Harness runs 13-24 on 1.5.0 (`devtools/harness/`).
+Both of the reporter's territory anomalies were the mod's doing, and both are fixed. They were reproduced
+and re-checked in harness runs 13-24 on 1.5.0 (`devtools/harness/`).
 
-**1. The trapped Settler.** Run 17 reproduced it: the mod's claims took every plot around player 4's Scout - a major at
-PEACE - and the unit, which had moved every turn before, sat frozen for five consecutive turns (`enclosedTurns=5/5`).
+**1. The trapped Settler.** Run 17 reproduced it: the mod's claims took every plot around player 4's Scout (a major at
+peace), and the unit, which had moved every turn before, sat frozen for five consecutive turns (`enclosedTurns=5/5`).
 Moving the unit is engine-closed (runs 13, 16: no verb moves a unit we do not own, `UNITOPERATION_TELEPORT_TO` is not in
-the runtime enum), so the fix is to refuse the claim that takes its last legal destination. **Confirmed** in runs 23 and
+the runtime enum), so the fix is to refuse the claim that takes its last legal destination. In runs 23 and
 24: `skip flip 79,37: would strand a foreign unit`, the plot left unowned, and the Scout walked out through it
 (`refusedWhenPenned=true everImmobile=false distinctPositions=3`).
 
-**2. The "absorbed independent" is a stripped minor.** With `coreProtectRadius: 0` only the center PLOT was protected,
-and a city-state or village owns a ring or two in total - so diffusion took the rest and left the settlement alone
-inside our territory. Watched in run 13 (89,41 and 90,42 flipped, both ring-1 of city-state 33's center at 89,42).
-Fixed by `minorProtectRadius` (default 1). **Confirmed** by A/B in runs 19 and 24 on three real ring-1 plots:
-`claimAllowedWithFloor=false withoutFloor=true`. Core protection now also reads the MAP for centers
-(`isCityCenterAt`), because `getCities()` reports nothing for an Independent Power; validated in run 18 against our own
-six centers, and five minor centers were found where the earlier district-type read found none.
+**2. The "absorbed independent" is a stripped minor.** With `coreProtectRadius: 0` only the center plot was protected,
+and a city-state or village owns a ring or two in total, so diffusion took the rest and left the settlement alone
+inside our territory. Seen in run 13 (89,41 and 90,42 flipped, both ring-1 of city-state 33's center at 89,42).
+Fixed by `minorProtectRadius` (default 1). A/B in runs 19 and 24 on three ring-1 plots:
+`claimAllowedWithFloor=false withoutFloor=true`. Core protection now also reads the map for centers
+(`isCityCenterAt`), because `getCities()` reports nothing for an Independent Power. In run 18 it found our own
+six centers and five minor centers, where the earlier district-type read found none.
 
-**Four drafts of the strand guard were watched FAILING in game while the unit tests passed.** Each cause was a way the
+Four drafts of the strand guard failed in game while the unit tests passed. Each cause was a way the
 stub was kinder than the engine, and each is now a regression test:
 
 | Draft | Why it was a no-op in game |
 | --- | --- |
-| Region/cap ("can it reach more than N plots") | Any small pocket read as "already trapped", so the culpable claim was waved through. The rule is IMMOBILITY, not confinement - which is also what the user asked for: a pocket is fine, no legal move is not |
+| Region/cap ("can it reach more than N plots") | Any small pocket read as "already trapped", so the culpable claim was waved through. The rule is immobility. A pocket is fine, no legal move is not |
 | Live-ownership reads only | `purchasePlot` lands seconds after the call, so the second claim in a pass re-counted an exit already taken. Both of a unit's exits went in one pass. Fixed with `pendingClaimKeys` (`cd-pending.js`) |
-| Mountains traversable | A unit whose only remaining neighbor was impassable read as mobile. Blocked now means our land, water OR impassable |
-| (harness) verdict logic | Scored the designed behavior - taking the tile later, after the unit moves on - as a failure |
+| Mountains traversable | A unit whose only remaining neighbor was impassable read as mobile. Blocked now means our land, water or impassable |
+| (harness) verdict logic | Scored the designed behavior (taking the tile later, after the unit moves on) as a failure |
 
 **Method notes that cost a run each:** a fixture must survive a turn roll (claims beyond ~7 rings from the owning city
 are released); Independent Powers are hostile-by-default so they can never be the fixture for a trespass question; and
 `moves`/`reachable` read during our own turn are always 0 for an AI unit.
 
-## [Medium · Known limit, recorded] A unit wedged against a THIRD party's border can still be stranded
+## [Medium · Known limit, recorded] A unit wedged against a third party's border can still be stranded
 
 The strand guard counts any plot that is not ours as a destination. But a unit of civ A at peace with us also cannot
 enter civ B's borders, so a unit with our land on one side and a third party's on the other can still be immobilised by
@@ -105,43 +105,43 @@ any shared frontier.
 one reproduced in run 17, and nothing in the guard covers it.
 
 **Cheapest disproof / next step:** from a probe, find a peaceful major's unit whose non-ours neighbors all belong to
-one other player, then read whether the engine offers that unit any move at all - `Units.getReachableMovement` during
-THAT player's turn, not ours (our-turn reads are always 0, see the method notes). If the engine reports no reachable
+one other player, then read whether the engine offers that unit any move at all: `Units.getReachableMovement` during
+that player's turn, not ours (our-turn reads are always 0, see the method notes). If the engine reports no reachable
 plot, the case is real and the guard needs an "owned by anyone else" test; if it reports moves, third-party borders are
 passable for it and the current rule is right.
 
 ## [Resolved 2026-09-24] Terrain and feature impassability: one read covers all of it
 
-Raised as "are there other terrain types like the mountain bug - coast, volcanoes, natural wonders?". The compiled DB
+Raised as "are there other terrain types like the mountain bug: coast, volcanoes, natural wonders?". The compiled DB
 splits impassability across two tables: `Terrains` has exactly one impassable row (`TERRAIN_MOUNTAIN`) while `Features`
-has eighteen - `FEATURE_VOLCANO`, `FEATURE_ICE` and sixteen natural wonders (Everest, Grand Canyon, Uluru, Mount Fuji,
-Thera, Kilimanjaro, Iguazu, Zhangjiajie, ...). If `GameplayMap.isImpassable` read TERRAIN only, the mountain bug would
+has eighteen: `FEATURE_VOLCANO`, `FEATURE_ICE` and sixteen natural wonders (Everest, Grand Canyon, Uluru, Mount Fuji,
+Thera, Kilimanjaro, Iguazu, Zhangjiajie, ...). If `GameplayMap.isImpassable` read terrain only, the mountain bug would
 have had seventeen more flavors.
 
-**Measured (run 25, read-only): it covers features.** 49 impassable-terrain plots and 7 impassable-feature plots in
-range, **0 missed** by `isImpassable`. No special case needed, and `engine-closed.md` records it.
+It covers features. Run 25 (read-only) had 49 impassable-terrain plots and 7 impassable-feature plots in
+range, and `isImpassable` missed none. No special case needed, and `engine-closed.md` records it.
 
-The same question DID turn up two real gaps, both now fixed: ships (water is their element, not a wall) and embarked
-land units (40 on the test map, reading `DOMAIN_LAND` while afloat). Neither is watched end to end - no map offered a
-bay fixture - so they rest on off-engine tests plus direct reads against real ships.
+The same question did turn up two real gaps, both now fixed: ships (water is their element, not a wall) and embarked
+land units (40 on the test map, reading `DOMAIN_LAND` while afloat). Neither has been run end to end, because no map
+offered a bay fixture, so they rest on off-engine tests plus direct reads against ships in game.
 
 ## [Open · parked 2026-09-24] Non-deterministic native crash in long unattended runs
 
 Two of four long harness runs crashed, on different threads with different fault addresses, and a mod-ON run then
-passed BOTH crash points holding more claims than the run that died. Scoreboard: 2 crashes / 3 runs with the mod,
-0 / 1 without - too weak to act on, and a config bisect at one run per point would be a coin toss dressed as a
-result. Parked with everything needed to resume, including why a bisect was NOT run and what it would cost:
+passed both crash points holding more claims than the run that died. Scoreboard: 2 crashes / 3 runs with the mod,
+0 / 1 without. That is too weak to act on, and a config bisect at one run per point would be a coin
+toss. Parked with everything needed to resume, including why a bisect was not run and what it would cost:
 
-- **[`potential-bug-native-crash.md`](potential-bug-native-crash.md)** - the full evidence, what is and is not
+- [`potential-bug-native-crash.md`](potential-bug-native-crash.md): the full evidence, what is and is not
   established, and what would re-open it.
-- [`../devtools/harness/BISECT-PLAN.md`](../devtools/harness/BISECT-PLAN.md) - the split order if it is resumed.
+- [`../devtools/harness/BISECT-PLAN.md`](../devtools/harness/BISECT-PLAN.md): the split order if it is resumed.
 
 The reporter's own crash remains unattributable (they had it with the mod disabled and kept no artifacts). The
 reply asking for the `.ips` and log tails is drafted in `civilization_vii_mods/steam-comments/`.
 
 ## 2026-09-12 in-game harness findings
 
-Watched on game 1.4.2 with `devtools/harness/` ([`probe-history.md`](probe-history.md) §5). The unrecorded-flip and
+Found on game 1.4.2 with `devtools/harness/` ([`probe-history.md`](probe-history.md) §5). The unrecorded-flip and
 age-hash bugs it found are already fixed (changelog); these two stay open.
 
 ## [High · Cause unconfirmed] Native crash after an age transition in harness run 3
@@ -220,7 +220,7 @@ another of our cities' first three rings, and neighboring city centers, which th
 `over` run high. In run 3 London showed tiles over the bar from pass 8, but its first claim came on pass 18.
 **Fix:** skip tiles within `baseGrowthRadius` of any local city, matching `flipCandidates`.
 
-## [Resolved] War reads disagreed in harness run 3 - it was a peace, not a bug
+## [Resolved] War reads disagreed in harness run 3: it was a peace
 
 **Symptom:** the harness read player 3 as at war on turn 136 through `Diplomacy.isAtWarWith`. Yet on turns 155 and 156
 the mod took two of player 3's tiles, which `flipEligible` blocks at war.
@@ -316,7 +316,7 @@ rival land, or, with recede on, a rival leading on a tile the mod claimed for us
 in `cd-field.js` so the lens, the readout and the pass cannot drift. A rival-led tile can still show its stocks, without
 a progress or turns line.
 **Done (2026-09-18):** `passCanAct` in `cd-field.js` now gates the pass, the recede step, the lens and the readout.
-Watched in harness run 12 (`devtools/harness/run12-cede-and-lens-UI.log`): over four turns the lens painted none of the
+In harness run 12 (`devtools/harness/run12-cede-and-lens-UI.log`), over four turns the lens painted none of the
 seven AI-led tiles the old rule would have painted, and none showed a progress line. The seeded rival-led claim, with
 recede on, was painted and showed one.
 
@@ -325,26 +325,26 @@ recede on, was painted and showed one.
 **Sites:** [ui/cd-ownership.js:40-49](../ui/cd-ownership.js) (`flipViaSetOwnership`),
 [ui/cd-pass.js:337-353](../ui/cd-pass.js) (`commitFlip`)
 **Overlaps existing plan:** this is the problem the verb switch already targeted (switch primary verb
-to `purchasePlot`/`claimPlot`, retire `setOwnership` to `unclaim` only) — now **shipped** (default is
+to `purchasePlot`/`claimPlot`, retire `setOwnership` to `unclaim` only), which has shipped (default is
 `purchasePlot`, [CHANGELOG](../CHANGELOG.md) 1.0.6/1.0.7), so the default-path phantom-claim is moot;
 the note stands for the still-selectable `setOwnership` option.
 **Symptom:** `flipViaSetOwnership` returns `{ok:true}` whenever
 `WorldBuilder.MapPlots.setOwnership(...)` doesn't throw; `commitFlip` acts on `res.ok`
 alone and never re-reads `ownerAt(loc)` to confirm the tile actually changed owner. The
-author's own probe (probe-history.md §2) proves `setOwnership` on rival land **FAILS —
-102/102 no-change** (returns without error, tile stays the rival's), and on empty land
-produces an **orphan** tile (`owningCity=NONE`, not workable/buildable).
+probe (probe-history.md §2) found that `setOwnership` on rival land fails,
+102/102 no-change (returns without error, tile stays the rival's), and on empty land
+produces an orphan tile (`owningCity=NONE`, not workable/buildable).
 **Failure scenario:** with shipping defaults (`flipVerb:"setOwnership"`, Medium preset →
 `claimOnlyUnowned:false`, `coreProtectRadius:0`) the pass targets rival tiles every turn.
 Each attempt silently no-ops but is recorded as a win: `state.claims[k]` set (consuming
 that city's `maxDiffusionPlots`=80 budget on tiles it never took), `state.locked[k]` set
 (15-turn cooldown blocks retry), `next[k][me]` seeded, and a "claimed new territory" toast
-fired — while the rival still owns the tile.
+fired, while the rival still owns the tile.
 **Fix (interim, code-level):** in `commitFlip`, after `performFlip`, verify
 `ownerAt(loc) === me` before recording claim/lock/seed/notify. Full fix = the
 verb switch (shipped, [CHANGELOG](../CHANGELOG.md) 1.0.6/1.0.7).
 
-**Design (interim guard):** in `commitFlip` (`cd-pass.js:336-353`), gate ALL five
+**Design (interim guard):** in `commitFlip` (`cd-pass.js:336-353`), gate all five
 side-effects behind a post-flip ownership read. `ownerAt` (`cd-plots.js:53`) is already
 imported and used at `cd-pass.js:358`, so no new import:
 ```js
@@ -356,13 +356,13 @@ if (!res.ok || ownerAt(loc) !== me) {
 // only now: claimCount.set(...), state.claims[k]=..., state.locked[k]=...,
 //           next[k][String(me)]=..., notifyFlip(...)
 ```
-Effect: on the proven 102/102 rival-land no-change case, nothing is recorded — no
+Effect: on the 102/102 rival-land no-change case, nothing is recorded: no
 `maxDiffusionPlots` budget consumed, no `flipCooldownTurns` lock, no seed stock, no false
 "claimed territory" toast. The tile is simply retried in a future pass as conditions allow.
-**Limitation (state in the entry):** this does NOT fix `setOwnership` on *unowned* land,
-where it sets owner=me but yields an unworkable **orphan** (`owningCity=NONE`) — there
+**Limitation (state in the entry):** this does not fix `setOwnership` on unowned land,
+where it sets owner=me but yields an unworkable orphan (`owningCity=NONE`). There
 `ownerAt(loc) === me` passes, so the guard still records it. That case needs the permanent
-verb switch. So this guard is strictly an interim stop-loss for the rival-land phantom;
+verb switch. So this guard is an interim stop-loss for the rival-land phantom;
 the real fix was the verb switch to `purchasePlot`/`claimPlot` (shipped,
 [CHANGELOG](../CHANGELOG.md) 1.0.6/1.0.7).
 **Verify:** with shipping defaults, drive the pass against a rival's tile and confirm (via
@@ -376,42 +376,42 @@ the real fix was the verb switch to `purchasePlot`/`claimPlot` (shipped,
 [ui/cd-pass.js:66](../ui/cd-pass.js) (`s.prosperity`), `ui/cd-pressure.js`
 (`happinessFactor`/`wonderFactor`/`prosperityFactor`)
 **Symptom:** `preventForwardSettle` and `minimalOwnedCulture` are defined and documented
-("prioritize claiming open buffer plots between rivals") but referenced nowhere in `ui/` —
+("prioritize claiming open buffer plots between rivals") but referenced nowhere in `ui/`:
 a promised behavior that does nothing. `prosperityOf(city)` is read into `s.prosperity`
 every pass but `fusedBase` only uses `s.vitality`; the three `*Factor` helpers are exported
 but never called by `projectionOf`.
-**Failure scenario:** not a crash — dead code / wasted per-pass computation and a stated
+**Failure scenario:** not a crash. Dead code, wasted per-pass computation and a stated
 model input (prosperity) with no effect on behavior.
 **Fix:** either wire prosperity/forward-settle into the pressure model as documented, or
 remove the dead config + exports and update the docs.
 
-**IMPLEMENTED (scaled back from "remove all four").** Only the two config flags were
-genuinely dead. The three `*Factor` helpers turned out to be **tested** API
+Implemented, scaled back from "remove all four". Only the two config flags were
+dead. The three `*Factor` helpers turned out to be tested API
 (`tests/pressure.mjs` + `tests/pressure-branches.mjs` exercise `happinessFactor`,
-`wonderFactor`, `prosperityFactor`), i.e. an intended-but-unwired utility library, not dead
-code — deleting them would drop test coverage, so they were kept. The `prosperityOf`/
+`wonderFactor`, `prosperityFactor`), an intended but unwired utility library. Deleting
+them would drop test coverage, so they were kept. The `prosperityOf`/
 `s.prosperity` row field is the data source for that same (tested) prosperity factor, so it
-was kept too for coherence (its per-pass cost is one function call per settlement — negligible).
-**Removed:** `preventForwardSettle` and `minimalOwnedCulture` (config + JSDoc) — unread and
+was kept too for coherence (its per-pass cost is one function call per settlement).
+**Removed:** `preventForwardSettle` and `minimalOwnedCulture` (config + JSDoc), unread and
 untested. If the tested-but-unwired factors are ever to be retired, that's a separate change
 that must also remove their tests.
 
-**Original design (superseded — see above):**
+**Original design (superseded, see above):**
 - `minimalOwnedCulture` (`cd-config.js:124`), the unused `s.prosperity` row field
-  (`cd-pass.js:66` `prosperity: fused ? prosperityOf(city) : 0` — `prosperityOf` at
+  (`cd-pass.js:66` `prosperity: fused ? prosperityOf(city) : 0`; `prosperityOf` at
   `cd-polity.js:111`), and the exported-but-uncalled `happinessFactor`/`wonderFactor`/
-  `prosperityFactor` (`cd-pressure.js:47/59/70`) → **delete.** The JSDoc at
+  `prosperityFactor` (`cd-pressure.js:47/59/70`) → delete. The JSDoc at
   `cd-pressure.js:115` already states wonders/happiness/prosperity were folded into
-  CPI/`vitality` by the fused model, so these are genuine superseded dead code. Drop the
-  `prosperity` field from the settlement row (nothing reads it — `fusedBase`/`projectionOf`
+  CPI/`vitality` by the fused model, so these are superseded dead code. Drop the
+  `prosperity` field from the settlement row (nothing reads it; `fusedBase`/`projectionOf`
   use only `culture`+`vitality`), remove the three factor exports, and delete the config key
   + its JSDoc.
-- `preventForwardSettle` (`cd-config.js:104`) → **delete as misaligned with the organic
-  model.** The mod is organic reaction-diffusion pacing (its Civ V CultureDiffusion lineage);
-  denying rival forward-settlement is meant to **emerge** from natural cultural pressure
-  organically owning the buffer, not from a special-cased flag that targets/prioritizes the
+- `preventForwardSettle` (`cd-config.js:104`) → delete as misaligned with the organic
+  model. The mod is organic reaction-diffusion pacing (its Civ V CultureDiffusion lineage);
+  denying rival forward-settlement is meant to emerge from natural cultural pressure
+  owning the buffer, not from a special-cased flag that targets/prioritizes the
   plots between rivals. A targeting knob would contradict the organic model, so there is no
-  real feature to wire in — the emergent behavior already covers the intent. Remove the dead
+  real feature to wire in: the emergent behavior already covers the intent. Remove the dead
   flag + its JSDoc, and add a one-line note (in the config doc or spec) that anti-forward-
   settling is an emergent property of the diffusion pass, not a discrete mechanic.
 **Verify:** grep confirms zero read sites for each removed symbol; the mod's field pass and
@@ -467,7 +467,7 @@ release/recover.
 **Sites:** [ui/cd-pass.js](../ui/cd-pass.js) (`claimBufferAt`/`bufferTarget` comments),
 [tests/buffer.mjs](../tests/buffer.mjs)
 **Symptom:** comments near `claimBufferAt` say "UNOWNED land" only, while behavior and tests
-explicitly allow adjacent UNOWNED water claims.
+explicitly allow adjacent unowned water claims.
 **Impact:** maintenance confusion; easy future regression if someone "fixes" to the wrong doc.
 **Fix:** make wording consistent everywhere (CHANGELOG/docs/code comments/tests).
 **Verify:** docs and comments align with tested behavior.
@@ -493,7 +493,7 @@ turn-hook/event payload compatibility in `cd-bootstrap`.
 **Fix:** add bootstrap-focused tests for `PlayerTurnActivated` and `ConstructibleAddedToMap`
 payload variants.
 **Verify:** new tests fail on brittle extraction/completion assumptions and pass after hardening.
-**2026-07-16 update:** PARTIALLY ADDRESSED for the pass itself — `tests/pass.mjs` now covers
+**2026-07-16 update:** partly addressed for the pass itself: `tests/pass.mjs` now covers
 `runPass` orchestration against a stub engine (guards, step order, flip gates, bookkeeping, state
 bounds), and `cd-pass.js` joined the c8 and Stryker scopes. `cd-bootstrap`'s event wiring remains
 uncovered, so this item stays open as originally written.
@@ -506,28 +506,28 @@ uncovered, so this item stays open as originally written.
 `next[k][String(me)] = Math.max(next[k][String(me)] || 0, ageCfg.minimumOwner);`)
 **Symptom:** the comment says it seeds "a stable stock so the tile doesn't immediately fail the
 ownership test", but the `Math.max` can never raise anything. `tryFlipCandidate` only reaches
-`commitFlip` when `resolveOwner` returned `flip:true`, which requires `value > ageCfg.minimumOwner`
-— and when `verdict.owner === me`, that `value` IS `next[k][String(me)]`. So the operand is already
+`commitFlip` when `resolveOwner` returned `flip:true`, which requires `value > ageCfg.minimumOwner`,
+and when `verdict.owner === me`, that `value` is `next[k][String(me)]`. So the operand is already
 strictly greater than the floor being applied.
-**Evidence:** instrumented across the whole `tests/pass.mjs` suite — 14 flips, 14 no-ops, 0 raises.
+**Evidence:** instrumented across the whole `tests/pass.mjs` suite: 14 flips, 14 no-ops, 0 raises.
 Stocks at flip time ranged 379–5000 against a bar of 300.
 **Impact:** none at runtime; it is dead code in the hot flip path that reads as load-bearing. It
 also can't be pinned by any test, so it will keep surfacing as an unkillable mutant.
-**Fix:** either delete the line, or — if the intent was a floor for a path that does NOT come
-through `resolveOwner` (e.g. a future direct-claim route, or protection against `resolveOwner`'s
-bar changing independently) — keep it and correct the comment to say so.
-**Deliberately NOT auto-removed:** unlike the dead constructs cleaned out of `cd-state.js` on the
+**Fix:** either delete the line or, if the intent was a floor for a path that does not come
+through `resolveOwner` (a future direct-claim route, or protection against `resolveOwner`'s
+bar changing independently), keep it and correct the comment to say so.
+**Not auto-removed:** unlike the dead constructs cleaned out of `cd-state.js` on the
 same day, this sits in the flip path and turns on design intent. Author's call.
 **Verify:** the instrumentation above; or delete the line and confirm `tests/pass.mjs` still passes
-(it does — which is the point).
+(it does, which is the point).
 
 ## [Low · Confirmed] `commitBuffer` repeats the same dead seed-stock line
 
 **Site:** [ui/cd-pass.js](../ui/cd-pass.js) (`commitBuffer`:
 `state.field[k][String(me)] = Math.max(state.field[k][String(me)] || 0, CONFIG.minimumOwner);`)
 **Symptom:** the twin of the `commitFlip` item above, reached by the buffer path instead. Here the
-tile is freshly claimed and usually has NO prior stock, so the `Math.max` collapses to
-`= CONFIG.minimumOwner` — i.e. the `|| 0` and the `Math.max` are both doing nothing. Whatever is
+tile is freshly claimed and usually has no prior stock, so the `Math.max` collapses to
+`= CONFIG.minimumOwner`: the `|| 0` and the `Math.max` are both doing nothing. Whatever is
 decided for `commitFlip`'s line should be applied here for consistency.
 **Impact:** none at runtime; dead-ish code in the buffer claim path.
 **Fix:** resolve alongside the `commitFlip` item; they are the same decision.
@@ -537,11 +537,11 @@ decided for `commitFlip`'s line should be applied here for consistency.
 **Sites:** [tests/buffer.mjs](../tests/buffer.mjs), [ui/cd-pass.js](../ui/cd-pass.js)
 (`commitBuffer` / `claimBufferAt`)
 **Symptom:** `buffer.mjs` asserts tile ownership after `claimBufferAt`, but never the persisted
-state it writes (`claims`, `locked`, `field` seed) and never the FAILURE path
-(`if (!res.ok || ownerAt(T) !== me)` — the silent-no-op guard, the buffer's copy of the one
+state it writes (`claims`, `locked`, `field` seed) and never the failure path
+(`if (!res.ok || ownerAt(T) !== me)`, the silent-no-op guard, the buffer's copy of the one
 `tests/pass.mjs` pins for flips).
 **Evidence:** with `cd-pass.js` in the Stryker scope (2026-07-16), ~13 of its 189 survivors sit on
-those buffer lines (L481, L489, L518) — the only cd-pass survivors attributable to a suite other
+those buffer lines (L481, L489, L518), the only cd-pass survivors attributable to a suite other
 than `pass.mjs`.
 **Fix:** extend `buffer.mjs` with a `purchaseNoOps`-style stub (copy the pattern from
 `tests/pass.mjs`) plus claim/lock/field assertions after a successful buffer claim.
@@ -551,11 +551,11 @@ than `pass.mjs`.
 
 **Site:** [ui/cd-pass.js](../ui/cd-pass.js) (`runPass` doc comment: "bails cleanly when disabled,
 in multiplayer, or with no local cities")
-**Symptom:** `runPass` checks `CONFIG.diffusionEnabled`, `me < 0`, and `cities.length` — there is no
+**Symptom:** `runPass` checks `CONFIG.diffusionEnabled`, `me < 0`, and `cities.length`. There is no
 multiplayer check. MP safety is real but comes from elsewhere: `cd-ownership`'s `guardSP()` blocks
 every mutating verb, so a MP pass runs the whole field simulation, attempts flips, fails them all,
 and still writes state each turn.
-**Impact:** cosmetic/doc accuracy, plus wasted per-turn work in MP. No incorrect ownership occurs —
+**Impact:** cosmetic/doc accuracy, plus wasted per-turn work in MP. No incorrect ownership occurs;
 `tests/pass.mjs` pins that safety property directly.
 **Fix:** either add an early `if (isMultiplayer()) return { flips: 0, tiles: 0 };` to `runPass`
 (cheap, and makes the doc true), or reword the comment to say the guard lives in the verbs.

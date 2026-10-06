@@ -1,22 +1,22 @@
-// cdh-game-run14.js - game scope, deployed as ui/cdh-game.js. Cultural Diffusion harness run 14 (dev only).
+// cdh-game-run14.js: game scope, deployed as ui/cdh-game.js. Cultural Diffusion harness run 14 (dev only).
 //
-// ONE QUESTION, the one run 13 failed to execute: when a plot's owner ACTUALLY CHANGES under a foreign unit, does the
-// ENGINE move that unit off by itself?
+// One question, the one run 13 failed to execute: when a plot's owner actually changes under a foreign unit, does the
+// engine move that unit off by itself?
 //
 // Run 13 settled only the script surface: no callable unit operation moves any unit (ours or a rival's), and
 // UNITOPERATION_TELEPORT_TO is not even in the runtime enum. That says nothing about the engine's own C++ behavior on
-// an ownership change - and the base game plainly does relocate units when borders close. If it does that for OUR
+// an ownership change, and the base game plainly does relocate units when borders close. If it does that for our
 // claim too, then cd-units.js is unnecessary rather than impossible, and the mod should simply claim and let the engine
 // sort the occupant out.
 //
 // Run 13's S4 never tested it: the purchase on the occupied plot never landed, so no ownership change was ever
-// observed. This run fixes exactly that - it does not conclude anything until it has CONFIRMED we own the plot.
+// observed. This run fixes exactly that, it does not conclude anything until it has confirmed we own the plot.
 //
 //   A CANDIDATES  every foreign unit standing on an unowned land plot near our cities, with the nearest city that
 //                 might buy it. Logged so a failure to find a fixture is visible rather than silent.
-//   B BUY+CONFIRM refunded purchasePlot on that plot, then owner re-read at +2/+5/+8 s and next turn. NOT a fixture
+//   B BUY+CONFIRM refunded purchasePlot on that plot, then owner re-read at +2/+5/+8 s and next turn. Not a fixture
 //                 until the owner reads as us. Tries the next candidate, and the next turn, until one lands.
-//   C WATCH       once the plot IS ours: where is the unit at +2/+5/+8 s, does it still have legal moves
+//   C WATCH       once the plot is ours: where is the unit at +2/+5/+8 s, does it still have legal moves
 //                 (Movement/getReachableMovement), and where is it over the following turns.
 //   D VERDICT     NATIVE-BUMP (engine moved it off within seconds) / LEFT-ON-ITS-TURN / STUCK-ON-OUR-PLOT (the
 //                 reported symptom, and the only case where the mod needs to do anything at all).
@@ -77,7 +77,7 @@ function refundBuy(city, l) {
   return { call, spent };
 }
 
-// --- units -----------------------------------------------------------------------------------------------------------
+// units
 function unitRow(u, cid) {
   return u ? { cid: u.id || cid, owner: u.owner, type: safe(() => GameInfo.Units.lookup(u.type).UnitType, "?"),
     loc: u.location ? { x: u.location.x, y: u.location.y } : null } : null;
@@ -104,7 +104,7 @@ function mobility(cid) {
   };
 }
 
-// --- A: candidates ---------------------------------------------------------------------------------------------------
+// A: candidates
 function candidates() {
   const cities = localCities();
   const others = safe(() => Players.getAlive().filter((p) => p.id !== local).map((p) => p.id), []);
@@ -121,7 +121,7 @@ function candidates() {
   return out.sort((a, b) => a.ring - b.ring);
 }
 
-// --- B: buy and CONFIRM ----------------------------------------------------------------------------------------------
+// B: buy and CONFIRM
 /** Buy the plot and only report success once the OWNER READS AS US. Nothing is concluded from the call itself. */
 async function buyAndConfirm(c) {
   const before = { owner: owner(c.loc), unit: whereIsUnit(c.unit.cid) };
@@ -137,7 +137,7 @@ async function buyAndConfirm(c) {
   return landed;
 }
 
-// --- C/D: what the engine does with the occupant ----------------------------------------------------------------------
+// C/D: what the engine does with the occupant
 let fixture = null;         // { loc, cid, type, unitOwner, claimedAtTurn, seen: [] }
 async function takeFixture(c) {
   const ok = await buyAndConfirm(c);
@@ -160,7 +160,7 @@ async function takeFixture(c) {
   return true;
 }
 
-// --- run -------------------------------------------------------------------------------------------------------------
+// run
 let tried = 0;
 async function tryFixture() {
   if (fixture && fixture.startedOnPlot) return;

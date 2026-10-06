@@ -47,7 +47,7 @@ build on them.
 Each city adds culture to the tile it sits on, using a self-amplifying curve
 (`strength x sqrt(current x injectRatio) + injectBase`): the more culture already
 present, the faster it grows, climbing over many turns toward a cap
-(`strength x cityCapFactor`). **Strength** is a *fused* measure of the city's cultural
+(`strength x cityCapFactor`). Strength is a fused measure of the city's cultural
 power rather than its raw culture per turn (see below), so an established or prosperous
 city pumps a much bigger stock.
 
@@ -74,8 +74,8 @@ the Exploration age (`blockDistantLandsBeforeExploration`).
 ### 3. Decay: every tile slowly loses culture
 Each tile sheds `decayRate` (5%) plus a flat point per turn. Decay is the constant brake that
 diffusion has to push against. It gives the border a stable equilibrium, keeps growth slow,
-and lets culture ebb when the source city weakens or is lost. With the opt-in **borders
-recede** option, a rival whose culture overtakes yours on a claimed tile can take it (see
+and lets culture ebb when the source city weakens or is lost. With the opt-in borders
+recede option, a rival whose culture overtakes yours on a claimed tile can take it (see
 step 5).
 
 ### 4. Flip: ownership follows the stock
@@ -93,7 +93,7 @@ The game applies an ownership change a moment after the mod asks for it, so each
 recorded as pending and confirmed from the map at the start of the next pass before it counts
 as a claim.
 
-With the opt-in **+1 ring buffer** (`growthBuffer`, off by default), finishing a rural
+With the opt-in +1 ring buffer (`growthBuffer`, off by default), finishing a rural
 improvement near your border also claims the unowned tiles right next to it, one ring past
 your city's normal reach.
 
@@ -163,14 +163,13 @@ outward from each city:
 | Ring 4 | The first ring the mod claims, once a city's culture stock is large enough |
 | Ring 5+ | Only a mature, entrenched culture |
 
-In test games on a mature save, the strongest city made its first ring-4 claim 18 turns after
-the mod started from an empty field. The mod held 29 claims after 45 turns, across an age
-change, and a town with little culture never came close.
+For scale: on a mature save, starting from an empty field, the strongest city made its first
+ring-4 claim after 18 turns. The mod held 29 claims after 45 turns, across an age change, and a
+town with little culture never came close.
 
-Early in a new game, expect nothing for a long while. In a 70-turn test game at the default
-settings, a capital making 8 Culture claimed no tiles at all. At that strength, the pacing model
-puts ring 4 out of reach. The mod starts claiming once a city's cultural power grows, so it
-matters most from the mid-game onward.
+Early in a new game, expect nothing for a long while. At the default settings a capital making
+8 Culture claims no tiles in 70 turns: at that strength ring 4 is out of reach. The mod starts
+claiming once a city's cultural power grows, so it matters most from the mid-game onward.
 
 An overwhelming culture injects a far bigger stock, so it pushes the same front out faster
 and farther, with no special rule for the leading civilization. A weak or stagnant culture
@@ -183,8 +182,8 @@ and that limit lives in the engine, where no mod data can change it (see
 this mod claims lies beyond ring 3, so it is territory without yield: it is attached to your
 nearest city and shows as yours, but no citizen can work it and nothing can be built on it.
 Its value is strategic. It is a buffer against rivals settling next to you, and it includes
-frontier tiles taken from a rival. In a test game a settler could found on an empty plot but
-not on the plot beside it once another civilization owned it.
+frontier tiles taken from a rival. A settler can found on an empty plot, but not on one beside
+another civilization's land.
 
 ---
 
@@ -196,17 +195,17 @@ decides how far your borders reach, and a single big +culture or +happiness abil
 one diluted term instead of a linear multiplier. This keeps culture-focused leaders and
 civilizations ahead without letting them run away:
 
-- **Culture and a prosperity aggregate (food, production, happiness, growth):** a happy,
+- Culture and a prosperity aggregate (food, production, happiness, growth): a happy,
   prosperous, growing city pumps much harder than a struggling one, but the blend flattens a
   lone culture spike.
-- **Celebration:** a golden age gives a pulse of extra cultural projection.
-- **Cultural Power Index (CPI):** a per-civilization multiplier built from your standing
+- Celebration: a golden age gives a pulse of extra cultural projection.
+- Cultural Power Index (CPI): a per-civilization multiplier built from your standing
   across six dimensions (wonders and great works, culture per turn, influence and city-state
   suzerainties, happiness and golden ages, empire prosperity, traditions and age). Each is
   measured as your share of the strongest civilization's, and they are combined so that
   breadth of cultural power beats a single-stat spike. A cultural hegemon's cities inject
   harder and reach farther.
-- **Ethnic affinity** *(requires Emigration)*: diffusion is pulled toward frontier tiles
+- Ethnic affinity (requires Emigration): diffusion is pulled toward frontier tiles
   settled by your people.
 
 CPI and prosperity are computed from base-game data alone, and the ethnic-affinity layer is
@@ -223,85 +222,85 @@ needs less culture to own a tile, so borders reach farther, sooner.
 
 | Preset | Diffusion | Decay | Ownership bar | Max distance |
 | --- | --- | --- | --- | --- |
-| **Low** (gentle nudge, empty land only) | 4.0% | 7% | 400 | 5 |
-| **Medium** (default) | 5.5% | 5% | 300 | 6 |
-| **High** (assertive) | 7.5% | 4% | 220 | 8 |
+| Low (gentle nudge, empty land only) | 4.0% | 7% | 400 | 5 |
+| Medium (default) | 5.5% | 5% | 300 | 6 |
+| High (assertive) | 7.5% | 4% | 220 | 8 |
 
 ### Options toggles
-- **Enabled:** master switch (off = vanilla borders).
-- **Claim empty land only:** never flip a tile owned by another civilization.
-- **Rival city protection:** how deep culture may push into a rival's city (full downtown
+- Enabled: master switch (off = vanilla borders).
+- Claim empty land only: never flip a tile owned by another civilization.
+- Rival city protection: how deep culture may push into a rival's city (full downtown
   ring, center tile only, or nothing).
-- **Contiguous border only:** only claim tiles touching your land.
-- **Claim land beside new improvements (+1 ring):** off by default; when on, finishing a rural
+- Contiguous border only: only claim tiles touching your land.
+- Claim land beside new improvements (+1 ring): off by default; when on, finishing a rural
   improvement near your border also claims the unowned tiles right next to it.
-- **Borders recede (experimental):** off by default; claimed tiles can be ceded to a rival
+- Borders recede (experimental): off by default; claimed tiles can be ceded to a rival
   whose culture overtakes yours (step 5 above).
-- **Every civilization gains land by culture:** on by default; other civilizations' borders
+- Every civilization gains land by culture: on by default; other civilizations' borders
   move by culture under the same rules as yours (step 8 above). Off = only your borders grow
   by culture.
-- **Armies hold the ground they occupy:** off by default; a combat unit holding an enemy
+- Armies hold the ground they occupy: off by default; a combat unit holding an enemy
   tile through a war takes it after five turns (step 9 above).
-- **Cities carry every culture living in them:** on by default; a city produces culture for
+- Cities carry every culture living in them: on by default; a city produces culture for
   every people present on its tile and slowly converts foreign culture to its own (step 6).
-- **Rich cultural model:** fold CPI and prosperity into a city's cultural power. Off = raw
+- Rich cultural model: fold CPI and prosperity into a city's cultural power. Off = raw
   culture only.
-- **Follow diaspora (Emigration mod):** read Emigration for ethnic-affinity diffusion. No
+- Follow diaspora (Emigration mod): read Emigration for ethnic-affinity diffusion. No
   effect if Emigration is absent.
-- **Pressure lens:** on by default; a read-only map lens (Shift+C) that shades the frontier
+- Pressure lens: on by default; a read-only map lens (Shift+C) that shades the frontier
   tiles about to change hands, with a hover readout of each civilization's stock. With
   "every civilization gains land by culture" on, it also shades a tile another civilization's
   culture is winning, but only when that civilization's own rules would let it take the tile.
-- **Debug logging:** per-pass diagnostics to `UI.log`: every injector's strength and
+- Debug logging: per-pass diagnostics to `UI.log`: every injector's strength and
   city-tile stock (`inject`), each city's best ring-4 stock against the ownership bar
   (`frontier`), and the saved state size and pass time (`state bytes=`).
 
 ### Full tunables (`ui/cd-config.js`, all overridable)
-- **Claiming:** `diffusionEnabled`, `claimOnlyUnowned`, `flipVerb` (`purchasePlot`, code-only),
+- Claiming: `diffusionEnabled`, `claimOnlyUnowned`, `flipVerb` (`purchasePlot`, code-only),
   `refundGold` (restores any gold a claim costs, through `Players.grantYield`),
   `repairOrphans`, `growthBuffer`, `baseGrowthRadius`, `recedeBorders`.
-- **Pacing and safety:** `turnInterval`, `fieldRadius`, `maxDiffusionPlots`,
+- Pacing and safety: `turnInterval`, `fieldRadius`, `maxDiffusionPlots`,
   `maxFlipsPerTurn`, `flipCooldownTurns`, `coreProtectRadius`, `requireAdjacency`.
-- **Field:** `cultureThreshold`, `diffusionRate`, `decayRate`, `decayFlat`,
+- Field: `cultureThreshold`, `diffusionRate`, `decayRate`, `decayFlat`,
   `normalMax`, `maxPercent`, `injectBase`, `injectRatio`, `cityCapFactor`,
   `minimumOwner`, `flipRatio`, `flipMaxDistance`, `sourceThresholdMountain`, `ownerFloor`.
-- **Cities and capture:** `foreignCultureInCities`, `foreignInjectScale`,
+- Cities and capture: `foreignCultureInCities`, `foreignInjectScale`,
   `foreignGroupMinStock`, `convertBase`, `convertBonuses` (a table keyed by building,
   tradition or ideology type name), `captureTransfer`, `captureLoss`, `captureGain`.
-- **Other civilizations and war:** `aiCultureFlips`, `conquestFlip`, `conquestBufferTurns`,
+- Other civilizations and war: `aiCultureFlips`, `conquestFlip`, `conquestBufferTurns`,
   `conquestHoldTurns`.
-- **Terrain and water:** `roadBonus`, `riverFollowBonus`/`riverFollowMax` (along a minor
+- Terrain and water: `roadBonus`, `riverFollowBonus`/`riverFollowMax` (along a minor
   river), `navigableFollowBonus`/`navigableFollowMax` (along a navigable river), and a
   `{ malus, max, threshold }` entry per terrain (`terrainHills`, `terrainMountain`,
   `terrainTundra`, `terrainDesert`, `terrainForest`, `terrainJungle`, `terrainMarsh`,
   `terrainRiverCross`, `terrainNavigableCross`, `terrainCoast`, `terrainOcean`), plus
   `diffuseAcrossWater`, `blockDistantLandsBeforeExploration` and `waterEaseRamp`.
-- **Injection shaping (fused):** `fusedModel`, `useEmigration`, `cultureWeight`,
+- Injection shaping (fused): `fusedModel`, `useEmigration`, `cultureWeight`,
   `cultureExponent` (the geometric-blend alpha that dilutes lone culture spikes),
   `happinessAmp`, `wonderBonus`, `ageFactor`, `prosperityAmp`,
   `cpiPowerMin`/`cpiPowerMax`, the six CPI dimension weights
   (`wLegacy` ... `wIdentity`), `ethnicWeight`.
-- **Game-settings calibration:** `calibrateToGameSettings`, `paceReferenceTurns`,
+- Game-settings calibration: `calibrateToGameSettings`, `paceReferenceTurns`,
   `paceBounds`, `mapSizeScale`. These re-time the field to the current age's length
   (`Game.maxTurns`) so borders grow at the same pace across game speeds, and scale injection
   by map size so small maps are not overrun.
-- **Per-age balance:** `byAge`, a `{ injectionScale, ownerBar, waterEase }` entry for each of
+- Per-age balance: `byAge`, a `{ injectionScale, ownerBar, waterEase }` entry for each of
   `ANTIQUITY`, `EXPLORATION` and `MODERN`. Later ages have about 8x the cities and 3x the
   culture, so injection is damped and the ownership bar raised to keep a single city's reach
   comparable across ages.
-- **Leader, civilization and memento tuning:** `civTuningEnabled`, `civTuningStrength`
+- Leader, civilization and memento tuning: `civTuningEnabled`, `civTuningStrength`
   (1 = full table, 0 = every civilization neutral). A bounded registry (`cd-civ-tuning.js`)
   damps culture, wonder, celebration and suzerainty snowball kits and civilizations whose
   bonuses already grant territory (such as Xerxes' culture on capture), and gently lifts
   culture-poor ones. See
   [`mod_ideas_tested/mods_research_and_analysis/cultural-diffusion-leader-civ-memento-and-age-tuning.md`](../../mod_ideas_tested/mods_research_and_analysis/cultural-diffusion-leader-civ-memento-and-age-tuning.md).
-- **Diagnostics:** `debug`, which turns on the per-pass log lines listed under Options.
+- Diagnostics: `debug`, which turns on the per-pass log lines listed under Options.
 
 ---
 
 ## Architecture
 
-The runtime is a set of small, single-responsibility UI-script modules (`ui/`):
+The runtime is a set of small UI-script modules in `ui/`:
 
 | Module | Responsibility |
 | --- | --- |
@@ -316,10 +315,10 @@ The runtime is a set of small, single-responsibility UI-script modules (`ui/`):
 | `cd-capture.js` | On a city capture, culture on its tiles passes partly to the conqueror. |
 | `cd-conquest.js` | Opt-in: a combat unit holding an enemy tile through a war takes it after a buffer. |
 | `cd-diagnostics.js` | Debug-only injector, frontier-ring, and state-size log lines. |
-| `cd-field.js` | **Pure** field math (injection, decay, diffusion, ownership resolution). |
+| `cd-field.js` | Pure field math (injection, decay, diffusion, ownership resolution). |
 | `cd-terrain.js` | Per-step terrain diffusion modifiers (roads, following or crossing a river, rough ground). |
-| `cd-pressure.js` | **Pure** injection-strength math (`projectionOf` and factors). |
-| `cd-cpi.js` | **Pure** Cultural Power Index (share of the strongest -> geometric mean -> power). |
+| `cd-pressure.js` | Pure injection-strength math (`projectionOf` and factors). |
+| `cd-cpi.js` | Pure Cultural Power Index (share of the strongest -> geometric mean -> power). |
 | `cd-metrics.js` | Base-game per-civilization CPI dimension reads. |
 | `cd-polity.js` | Per-settlement culture, happiness, wonder and prosperity reads. |
 | `cd-emigration.js` | Optional, import-free bridge to the Emigration mod's data. |
@@ -359,7 +358,7 @@ layer is neutral and everything else works unchanged.
 
 This mod reimagines and extends Gedemon's work.
 
-- **Gedemon**: the *Cultural Diffusion* mod for Civilization V (v18), whose reaction-diffusion
+- Gedemon: the *Cultural Diffusion* mod for Civilization V (v18), whose reaction-diffusion
   culture model is the core layer this mod builds on: the inject / diffuse / decay / flip loop
   over a per-tile culture stock. Many later rules start from his ideas too: rivers as a
   highway along them and a barrier across them, cities producing every culture living in them
@@ -367,26 +366,26 @@ This mod reimagines and extends Gedemon's work.
   culture, armies taking ground, the mountain threshold and the owner floor. Several of them
   work differently here.
 - What this Civ VII version adds or changes:
-  - **navigable and minor rivers** carry culture at different strengths, where Civ V had
+  - navigable and minor rivers carry culture at different strengths, where Civ V had
     one kind of river;
-  - foreign culture in a city is weighted by **each people's share of the population**
+  - foreign culture in a city is weighted by each people's share of the population
     when the Emigration mod records one, and a neighbor's trickle is not amplified;
-  - **armies take ground by holding it** through a war for several turns, rather than on
+  - armies take ground by holding it through a war for several turns, rather than on
     entry; the tile is then held against culture for a while, and culture can take it
     back only after peace, for whichever civilization leads there;
-  - **rivals gain land by culture** only while at peace with the owner, never strand a
+  - rivals gain land by culture only while at peace with the owner, never strand a
     unit, never claim for city-states or independent peoples, and have their own per-turn
     limit;
-  - a per-civilization **Cultural Power Index** built from wonders, great works,
+  - a per-civilization Cultural Power Index built from wonders, great works,
     culture, influence, city-state suzerainties, happiness, golden ages, traditions,
     and age;
-  - the **prosperity and vitality composite** injection base that flattens lone culture
+  - the prosperity and vitality composite injection base that flattens lone culture
     and happiness spikes so culture leaders lead without running away;
-  - **ethnic-affinity** diffusion that reads the Emigration mod's diaspora data so
+  - ethnic-affinity diffusion that reads the Emigration mod's diaspora data so
     borders follow people, and stays neutral when Emigration is absent;
-  - the **per-leader, civilization and memento** balance-tuning layer and the
-    **per-age** damping for Civ VII's three-age structure;
-  - the **game-settings calibration** (age length, map size) reworked for Civ VII;
+  - the per-leader, civilization and memento balance-tuning layer and the
+    per-age damping for Civ VII's three-age structure;
+  - the game-settings calibration (age length, map size) reworked for Civ VII;
   - the Civ VII engine adaptation: terrain, biome and feature reads, `purchasePlot`
     integration, bounded-region simulation, saving, the Options screen, and
     notifications.

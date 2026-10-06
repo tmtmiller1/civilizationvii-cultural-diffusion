@@ -1,24 +1,13 @@
-// cdh-game-run31.js - game scope, deployed as ui/cdh-game.js. Cultural Diffusion harness run 30 (dev only).
+// cdh-game-run31.js: game scope, deployed as ui/cdh-game.js. Cultural Diffusion harness run 31 (dev only).
 //
-// A/B CONTROL for run 30, which took a SIGSEGV at turn 150 with the top frame CivilizationVII+0x21081fc on the
-// AppHost application thread - the signature recorded as appearing WITH AND WITHOUT mod code, and NOT the
+// A/B control for run 30, which took a SIGSEGV at turn 150 with the top frame CivilizationVII+0x21081fc on the
+// AppHost application thread, the signature recorded as appearing with and without mod code, and not the
 // AsyncWorker1 / 0x2a8 broker fault associated with this mod family's claims. The mod held zero claims and zero
 // pending writes at the time, and the base game's own unit-flag script was throwing just before it.
 //
 // "It matches the known signature" is not isolation, so this run is identical to run 30 except the mod's pass is
-// DISABLED. Same save, same turns, same harness. Crash again at about the same point => not ours. Clean run =>
+// disabled. Same save, same turns, same harness. Crash again at about the same point => not ours. Clean run =>
 // suspicion lands on the pass and it needs narrowing.
-//
-// STRESS / CRASH WATCH. The reporter's campaign crashed unrecoverably, with the mod DISABLED as well, and
-// they could not attribute it - so nothing here diagnoses their save. What this CAN establish is whether
-// the current build survives the moment this mod family crashed before: harness run 3 took a native
-// EXC_BAD_ACCESS on AsyncWorker1 about thirty seconds after an age transition while the mod held nine
-// claims beyond ring 3, a signature matching the archived emigration enclave crash.
-//
-// So: run the mod with everything on - the pass, the strand guard, the minor floor - for as many turns as
-// the budget allows, logging each turn and each pass summary, and let the runner capture any .ips. A clean
-// long run is not proof the reporter's crash was unrelated; it is evidence that the code added this session
-// does not fault on its own, which is the only crash question we can actually answer.
 //
 // Every turn logs: turn number, pass summary, claim count, and how many guard refusals have been seen, so a
 // crash can be placed against what the mod was doing at the time.

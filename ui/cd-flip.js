@@ -1,6 +1,6 @@
 // cd-flip.js
 //
-// The COMMIT half of a culture flip, shared by the local player's flips (cd-pass.js) and the AI's (cd-ai-flips.js):
+// The commit half of a culture flip, shared by the local player's flips (cd-pass.js) and the AI's (cd-ai-flips.js):
 // the per-city claim budget, the eligibility gates that sit on top of cd-eligibility's shared ones, and the
 // bookkeeping that follows the integrated verb (pending when the write has not landed, else claim + lock + seed +
 // notification). Written in terms of a claimant `me`, which is the local player or the culture leader. No import
@@ -62,7 +62,7 @@ export function commitFlip(cand, owner, verdict, fx) {
     return false;
   }
   if (ownerAt(loc) !== me) {
-    // The engine applies ownership AFTER the call, so the same-tick read is still the old owner. Book it
+    // The engine applies ownership after the call, so the same-tick read is still the old owner. Book it
     // next pass from the live map (cd-pending.js); it counts toward the budget and cap immediately.
     markPending(state, k, { kind: "claim", by: me, city: near.id, was: owner });
     claimCount.set(near.id, (claimCount.get(near.id) || 0) + 1);

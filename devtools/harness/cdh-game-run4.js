@@ -1,10 +1,10 @@
-// cdh-game-run4.js - game scope, deployed as ui/cdh-game.js. Cultural Diffusion harness run 4 (dev only).
-// Deploy the mod with recedeBorders: true AND debug: true. In the first local turn:
-//   R8 SWAP     one of our cities re-buys a tile attached to ANOTHER of our cities (owner stays us, owning city should
+// cdh-game-run4.js: game scope, deployed as ui/cdh-game.js. Cultural Diffusion harness run 4 (dev only).
+// Deploy the mod with recedeBorders: true and debug: true. In the first local turn:
+//   R8 SWAP     one of our cities re-buys a tile attached to another of our cities (owner stays us, owning city should
 //               change, landing after the call). If it works, releaseInnerClaims can heal a 1.0.6-damaged save by
 //               re-parenting instead of the unclaim that does nothing.
-//   R9 CEDE     against a rival at PEACE with us: buy an unowned tile beyond ring 3 that touches both our land and theirs,
-//               then seed the mod's state with our claim on it and a dominant rival stock, so the mod's OWN recede step
+//   R9 CEDE     against a rival at peace with us: buy an unowned tile beyond ring 3 that touches both our land and theirs,
+//               then seed the mod's state with our claim on it and a dominant rival stock, so the mod's own recede step
 //               cedes it (pending) and confirms it next pass.
 // then ends TURNS turns. Tagged [CDH] in Logs/UI.log.
 
@@ -61,7 +61,7 @@ function landClean(l) {
 }
 function atWar(pid) { return safe(() => !!Players.get(local).Diplomacy.isAtWarWith(pid), null); }
 
-// --- R8: re-parent a tile between two of our own cities ------------------------------------------------------------
+// R8: re-parent a tile between two of our own cities
 async function swapTest(cities) {
   for (const a of cities) {
     for (const b of cities) {
@@ -88,7 +88,7 @@ async function swapTest(cities) {
   return null;
 }
 
-// --- R9: the mod's own cession against a rival at peace --------------------------------------------------------------
+// R9: the mod's own cession against a rival at peace
 async function seedPeacefulCede(cities) {
   const majors = safe(() => Players.getAlive().filter((p) => p.id !== local && p.isMajor).map((p) => p.id), []);
   const peace = majors.filter((m) => atWar(m) === false);

@@ -103,8 +103,8 @@ assert.equal(CONFIG.minimumOwner, PRESETS.High.minimumOwner);
 assert.equal(CONFIG.maxDiffusionPlots, PRESETS.High.maxDiffusionPlots);
 assert.equal(CONFIG.diffusionEnabled, false);
 assert.equal(CONFIG.claimOnlyUnowned, true);
-// flipVerb is no longer settings-driven: applyTunableOverrides must NOT touch it (it stays
-// whatever the code set it to - here the "setOwnership" we forced above).
+// flipVerb is no longer settings-driven: applyTunableOverrides must not touch it (it stays
+// whatever the code set it to, here the "setOwnership" we forced above).
 assert.equal(CONFIG.flipVerb, "setOwnership");
 assert.equal(CONFIG.fusedModel, false);
 assert.equal(CONFIG.useEmigration, false);

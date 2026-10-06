@@ -1,4 +1,4 @@
-// tests/cpi.mjs - the pure Cultural Power Index math (3.1a term A).
+// tests/cpi.mjs: the pure Cultural Power Index math (3.1a term A).
 import assert from "node:assert/strict";
 import { sharesVsMax, computeCPI, fPower, powerMultipliers, CPI_DIMENSIONS } from "/cultural-diffusion/ui/cd-cpi.js";
 import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";

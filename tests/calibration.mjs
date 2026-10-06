@@ -1,4 +1,4 @@
-// tests/calibration.mjs - game-settings calibration (age length + map size).
+// tests/calibration.mjs: game-settings calibration (age length + map size).
 import assert from "node:assert/strict";
 
 // Stubs (mutated per case).

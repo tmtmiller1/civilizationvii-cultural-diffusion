@@ -1,35 +1,30 @@
-// cd-probe-lens.js - game scope, READ-ONLY.
+// cd-probe-lens.js, game scope, read-only.
 //
-// Feasibility probe for the Cultural Pressure lens + hover tooltip (docs/potential-future-features.md
-// section 1). The lens paints from the mod's persisted culture field, read in the HUD context via
-// cd-state.loadState(). Two things were built but never watched in-game; this stage disproves-or-
-// confirms them cheaply, from engine reads only (it NEVER mutates the map):
+// Feasibility stage for the Cultural Pressure lens and hover tooltip
+// (docs/potential-future-features.md section 1). The lens paints from the mod's persisted culture
+// field, read in the HUD context via cd-state.loadState(). Two questions, answered from engine
+// reads only:
 //
-//   H1  CD-LENS-STATE   - can a HUD-context UIScript actually READ the GameConfiguration-persisted
-//                         culture field the lens paints from? This is the whole feature's load-bearing
-//                         assumption. If this stage (itself a HUD UIScript, same isolate kind as the
-//                         lens) reads 0 field tiles while the Cultural Diffusion mod is enabled and has
-//                         played a few turns, the lens is a no-op and must be rethought.
-//   H2  CD-LENS-VERDICT - does the shared flip-gate math produce a sane leader / capture-progress on
-//                         REAL field data, and do a contender's banner color + display name resolve
-//                         (the two best-effort bits: civDisplayColor / civLabel)?
+//   H1  CD-LENS-STATE    can a HUD-context UIScript read the GameConfiguration-persisted field at
+//                        all? If this stage (same isolate kind as the lens) reads 0 field tiles
+//                        while Cultural Diffusion is enabled and a few turns in, the lens is a no-op.
+//   H2  CD-LENS-VERDICT  does the flip-gate math give a sane leader and capture progress on real
+//                        field data, and do a contender's banner color and display name resolve?
 //
-// SELF-CONTAINED on purpose: it replicates loadState()'s exact read and a trim of cd-field
-// pressureVerdict rather than importing /cultural-diffusion/... - a cross-mod import that FAILED to
-// resolve would take down the whole probe. The replica is deliberately tiny and marked below; it uses
-// the SHIPPED default flip constants (the Medium preset), enough to prove the read + math, not to
-// match the live sim's age-adjusted bar exactly.
+// Self-contained: it copies loadState()'s read and a trim of cd-field pressureVerdict instead of
+// importing /cultural-diffusion/..., because a cross-mod import that fails to resolve takes the
+// whole probe down. The copy uses the shipped default flip constants (the Medium preset), enough
+// for the read and the math, not the live sim's age-adjusted bar.
 //
-// Requires: enable BOTH "Cultural Diffusion" and this probe, then play a few turns so the real mod's
-// pass populates the field. This stage only reads what that pass wrote.
+// Needs both "Cultural Diffusion" and this probe enabled, and a few turns played so the mod's pass
+// has populated the field.
 
 import { emitLine, emitSection, newRunId } from "./cd-probe-emit.js";
 import { hudVerdict } from "./cd-probe-hud.js";
 
-const STATE_KEY = "CulturalDiffusionState_v2"; // MUST match cd-state.js STATE_KEY
-// Shipped flip constants (cd-config.js defaults / Medium preset). The live lens age-adjusts
-// minimumOwner by the current age's ownerBar; the probe uses the base value - close enough to prove
-// the read + verdict shape without importing the mod's config.
+const STATE_KEY = "CulturalDiffusionState_v2"; // must match cd-state.js STATE_KEY
+// Shipped flip constants (cd-config.js defaults, Medium preset). The live lens age-adjusts
+// minimumOwner by the current age's ownerBar; the base value is close enough here.
 const MIN_OWNER = 300;
 const FLIP_RATIO = 0.65;
 const MIN_PROGRESS = 0.08; // must match cd-pressure-lens.js so "contested" counts agree
@@ -50,7 +45,7 @@ function num(v, d) {
 }
 
 /**
- * Read the persisted culture field EXACTLY as cd-state.loadState() does, from the HUD context:
+ * Read the persisted culture field the way cd-state.loadState() does, from the HUD context:
  * Configuration.getGame().getValue(STATE_KEY) -> JSON.parse -> unwrap the {v,data} envelope -> .field.
  * @returns {{readable:boolean, present:boolean, rawLen:number, field:Record<string,Record<string,number>>}}
  */
@@ -85,7 +80,7 @@ function aliveIds() {
   return set;
 }
 
-/** The strongest LIVING culture on a tile. @param {Record<string,number>} civMap @param {Set<number>} alive */
+/** The strongest living culture on a tile. @param {Record<string,number>} civMap @param {Set<number>} alive */
 function strongest(civMap, alive) {
   let owner = -1;
   let value = 0;
@@ -102,8 +97,7 @@ function strongest(civMap, alive) {
 }
 
 /**
- * A trim of cd-field.pressureVerdict (the unit-tested original). Kept in lockstep with it: if the flip
- * gates ever change there, mirror them here.
+ * A trim of cd-field.pressureVerdict. If the flip gates change there, change them here.
  * @param {Record<string,number>} civMap @param {number} currentOwner @param {Set<number>} alive
  * @returns {{leader:number, leaderValue:number, incumbent:number, target:number, progress:number, willFlip:boolean}}
  */
@@ -143,9 +137,9 @@ function nameOf(pid) {
 
 /**
  * Read the persisted field, score every tile, and report whether the HUD can see the field (H1) and
- * whether the verdict math + colour/name resolution look sane on real data (H2). READ-ONLY.
+ * whether the verdict math and colour/name resolution look sane on real data (H2).
  * @param {string} trigger Why the stage ran.
- * @returns {{ok:boolean, tiles:number, contested:number}} Summary.
+ * @returns {{ok:boolean, tiles:number, contested:number}}
  */
 export function runLensProbe(trigger) {
   const runId = newRunId();
@@ -170,7 +164,7 @@ export function runLensProbe(trigger) {
     return { ok: true, tiles: 0, contested: 0 };
   }
 
-  // H1 CONFIRMED: the HUD isolate sees a populated field. Now score it (H2).
+  // H1 holds: the HUD isolate sees a populated field. Now score it (H2).
   const alive = aliveIds();
   let contested = 0;
   const samples = [];

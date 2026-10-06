@@ -1,14 +1,14 @@
 // cd-emigration.js
 //
-// The OPTIONAL bridge to the emigration mod, which enriches the fused model with ethnic affinity.
-// Import-free: it reads the data emigration PERSISTS to the shared game-config store and
+// The optional bridge to the emigration mod, which enriches the fused model with ethnic affinity.
+// Import-free: it reads the data emigration persists to the shared game-config store and
 // feature-detects its console surface. Every path degrades to null/neutral when emigration is absent.
 //
 // Data channels:
 //   - Configuration.getGame().getValue("EmigrationEthnos_v1")
 //       -> JSON { cities: { "x,y": { owner, byCiv: { <civId>: pts }, total, name } } }
 //       keyed by the city-center plot "x,y" (emigration-composition.js locKey).
-//   - globalThis.EmigrationData - per-player migration stats (presence signal / future use).
+//   - globalThis.EmigrationData: per-player migration stats (presence signal / future use).
 
 const COMPOSITION_KEY = "EmigrationEthnos_v1";
 

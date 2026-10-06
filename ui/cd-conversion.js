@@ -1,12 +1,12 @@
 // cd-conversion.js
 //
-// The per-turn CONVERSION rate of a city (Civ V ConvertCulture, docs/civ-v-parity-spec.md §4): the fraction of
+// The per-turn conversion rate of a city (Civ V ConvertCulture, docs/civ-v-parity-spec.md §4): the fraction of
 // every foreign culture group's stock on the city tile that passes to the city's owner each turn. A flat base
 // (`convertBase`, Civ V's 0.5%) plus a bonus per constructible in the city and per tradition or ideology its owner
-// holds, all from the data table `convertBonuses` keyed by type NAME, so an age or DLC with different buildings
-// needs no code change. A type the table does not know is simply ignored; nothing here throws into the pass.
+// holds, all from the data table `convertBonuses` keyed by type name, so an age or DLC with different buildings
+// needs no code change. A type the table does not know is ignored; nothing here throws into the pass.
 //
-// Engine reads (all defensive): city.Constructibles.getIds() -> ComponentID[] (array-LIKE, iterate, never
+// Engine reads (all defensive): city.Constructibles.getIds() -> ComponentID[] (array-like, iterate, never
 // Array.isArray), Constructibles.get(id).type -> GameInfo.Constructibles.lookup(type).ConstructibleType;
 // Players.get(pid).Culture.getActiveTraditions(slot) -> GameInfo.Traditions.lookup(t).TraditionType;
 // Culture.getChosenIdeology() -> GameInfo.Ideologies.lookup(i).IdeologyType (Modern age only).
@@ -93,7 +93,7 @@ function ideologyName(culture) {
 }
 
 /**
- * PURE: the conversion rate for a set of type names: `convertBase` plus every matching `convertBonuses` entry,
+ * Pure: the conversion rate for a set of type names: `convertBase` plus every matching `convertBonuses` entry,
  * clamped to [0,1]. Unknown names contribute nothing.
  * @param {string[]} typeNames Constructible, tradition and ideology type names.
  * @param {import("/cultural-diffusion/ui/cd-config.js").CdConfig} cfg Live config.

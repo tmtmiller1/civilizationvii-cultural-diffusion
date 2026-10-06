@@ -1,5 +1,5 @@
-// tests/pressure-verdict.mjs - the pure read-only pressure helpers that drive the Cultural Pressure
-// lens + hover tooltip (docs/potential-future-features.md section 1). These MUST agree with
+// tests/pressure-verdict.mjs: the pure read-only pressure helpers that drive the Cultural Pressure
+// lens + hover tooltip (docs/potential-future-features.md section 1). These must agree with
 // resolveOwner's flip gates, so they are tested against the same constants and cross-checked.
 import assert from "node:assert/strict";
 import {
@@ -13,7 +13,7 @@ const cfg = {
   decayRate: 0.05, decayFlat: 1
 };
 
-// -- pressureVerdict: empty land ------------------------------------------------------------------
+// pressureVerdict: empty land
 {
   // A leader below the floor: some progress, no flip.
   const v = pressureVerdict({ "5": 150 }, -1, [], cfg);
@@ -31,7 +31,7 @@ const cfg = {
   assert.equal(resolveOwner({ "5": 350 }, -1, [], cfg).flip, v2.willFlip, "matches resolveOwner (empty)");
 }
 
-// -- pressureVerdict: owned land (the out-culture gate binds) --------------------------------------
+// pressureVerdict: owned land (the out-culture gate binds)
 {
   // Leader 500 vs incumbent 400: needs value*0.65 > 400 => value > ~615. target = 400/0.65 ~= 615.4.
   const civMap = { "7": 500, "3": 400 };
@@ -51,7 +51,7 @@ const cfg = {
   assert.equal(resolveOwner(civMap2, 3, [], cfg).flip, true, "matches resolveOwner (decisive)");
 }
 
-// -- pressureVerdict: leader IS the owner => no pending shift --------------------------------------
+// pressureVerdict: leader is the owner => no pending shift
 {
   const v = pressureVerdict({ "3": 900, "7": 100 }, 3, [], cfg);
   assert.equal(v.leader, 3, "owner also leads");
@@ -59,14 +59,14 @@ const cfg = {
   assert.equal(v.willFlip, false, "owner keeping its tile does not 'flip'");
 }
 
-// -- pressureVerdict: dead owners are ignored -----------------------------------------------------
+// pressureVerdict: dead owners are ignored
 {
   const v = pressureVerdict({ "9": 9999, "7": 350 }, -1, [9], cfg);
   assert.equal(v.leader, 7, "a dead civ's stock is skipped");
   assert.equal(v.willFlip, true, "the living leader clears the floor");
 }
 
-// -- estimateTurnsToFlip --------------------------------------------------------------------------
+// estimateTurnsToFlip
 {
   // Already decisive => 0 turns.
   const ready = pressureVerdict({ "7": 700, "3": 400 }, 3, [], cfg);
@@ -90,7 +90,7 @@ const cfg = {
   assert.equal(estimateTurnsToFlip({ leader: -1 }, 100, cfg), null, "no leader => null");
 }
 
-// -- passCanAct: the lens, readout, pass and recede share one "can the pass act here" test ---------------
+// passCanAct: the lens, readout, pass and recede share one "can the pass act here" test
 {
   const me = 0;
   const ai = 3;

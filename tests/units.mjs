@@ -1,22 +1,22 @@
-// tests/units.mjs - never close the last way out on a foreign unit (cd-units.js).
+// tests/units.mjs: never close the last way out on a foreign unit (cd-units.js).
 //
-// The rule exists because it was WATCHED failing: harness run 17 (1.5.0, 2026-09-24) claimed the whole
+// The rule exists because the mod broke it in game: harness run 17 (1.5.0, 2026-09-24) claimed the whole
 // ring around a peaceful major's Scout and it sat frozen on that plot for five consecutive turns,
 // having moved every turn before. Moving the unit is engine-closed, so the claim is the only lever.
 //
 // Three properties this suite pins, all learned in game:
-//   * the test is IMMOBILITY, not confinement: a unit that can still step somewhere legal is fine even
-//     inside a small pocket. An earlier draft asked whether it could reach a REGION bigger than a cap,
-//     which read "already trapped" for any small pocket and let the culpable claim through - watched
+//   * the test is immobility, not confinement: a unit that can still step somewhere legal is fine even
+//     inside a small pocket. An earlier draft asked whether it could reach a region bigger than a cap,
+//     which read "already trapped" for any small pocket and let the culpable claim through, watched
 //     failing in harness runs 19 and 20 with the guard enabled;
-//   * a unit whose owner is AT WAR with us (which includes every Independent Power) is never protected,
-//     because it crosses our territory freely - run 17's first two fixtures were void for this reason;
-//   * a claim is refused only when IT takes the last legal destination, so a unit that was already
+//   * a unit whose owner is at war with us (which includes every Independent Power) is never protected,
+//     because it crosses our territory freely, run 17's first two fixtures were void for this reason;
+//   * a claim is refused only when it takes the last legal destination, so a unit that was already
 //     immobile does not block anything.
 import assert from "node:assert/strict";
 import { hexDistance } from "/cultural-diffusion/ui/cd-pressure.js";
 
-// --- engine stub ----------------------------------------------------------------
+// engine stub
 const tiles = new Map();     // "x,y" -> owner id
 const water = new Set();
 const units = new Map();     // "x,y" -> [{owner}]
@@ -63,9 +63,7 @@ function reset() {
 }
 reset();
 
-// ================================================================================
-// 1. legalExits - how many plots the unit could actually move to.
-// ================================================================================
+// 1. legalExits, how many plots the unit could actually move to.
 reset();
 const EXITS = { x: 10, y: 10 };
 assert.equal(legalExits(EXITS, ME, null), 6, "open ground: all six neighbors are legal destinations");
@@ -77,7 +75,7 @@ reset();
 for (const n of neighborsOf(EXITS)) water.add(tk(n.x, n.y));
 assert.equal(legalExits(EXITS, ME, null), 0, "water counts as no destination for a land unit");
 
-// A MOUNTAIN is not an escape (harness run 22): with it counted as traversable, a unit whose last
+// A mountain is not an escape (harness run 22): with it counted as traversable, a unit whose last
 // neighbor was impassable read as mobile and the guard let the freezing claim through.
 reset();
 for (const n of neighborsOf(EXITS).slice(0, 5)) tiles.set(tk(n.x, n.y), ME);
@@ -91,9 +89,7 @@ impassable.add(tk(ex[5].x, ex[5].y));
 assert.equal(wouldStrandForeignUnit(ex[0], ME), true,
   "claiming the last passable neighbor is refused even when a mountain remains");
 
-// ================================================================================
-// 2. hasStrandableUnit - only a PEACEFUL foreign owner counts.
-// ================================================================================
+// 2. hasStrandableUnit, only a peaceful foreign owner counts.
 reset();
 const P = { x: 10, y: 10 };
 assert.equal(hasStrandableUnit(P, ME), false, "empty plot");
@@ -125,12 +121,10 @@ globalThis.MapUnits = {
 assert.equal(hasStrandableUnit(P, ME), true, "an array-LIKE unit list is read, not skipped");
 globalThis.MapUnits = { getUnits: realGetUnits };
 
-// ================================================================================
-// 2b. ELEMENTS: what blocks a unit depends on which element it is in.
-// ================================================================================
-// Measured in run 26: 54 foreign ships read DOMAIN_SEA, and 40 LAND-domain units were standing ON water
+// 2b. Elements: what blocks a unit depends on which element it is in.
+// Measured in run 26: 54 foreign ships read DOMAIN_SEA, and 40 land-domain units were standing ON water
 // (embarked). Treating water as blocked for everyone made every ship and every embarked unit read as
-// already immobile, so the guard never protected any of them - while the pass can own water.
+// already immobile, so the guard never protected any of them, while the pass can own water.
 const SEA_ONLY = { water: true, land: false };
 const LAND_ONLY = { water: false, land: true };
 const BOTH = { water: true, land: true };
@@ -144,7 +138,7 @@ assert.equal(legalExits(BAY, ME, null, null, SEA_ONLY), 6, "a ship's exits are t
 assert.equal(legalExits(BAY, ME, null, null, LAND_ONLY), 0, "...and none of it is an exit for a land unit ashore");
 assert.equal(legalExits(BAY, ME, null, null, BOTH), 6, "an embarked unit may use the water too");
 
-// A ship is read as sea-going, and an embarked LAND unit as able to use both elements.
+// A ship is read as sea-going, and an embarked land unit as able to use both elements.
 reset();
 water.add(tk(BAY.x, BAY.y));
 units.set(tk(BAY.x, BAY.y), [{ owner: PEACEFUL, type: "SEA" }]);
@@ -176,7 +170,7 @@ for (const n of shipNbrs.slice(1)) tiles.set(tk(n.x, n.y), ME);
 units.set(tk(BAY.x, BAY.y), [{ owner: PEACEFUL, type: "LAND" }]);
 assert.equal(wouldStrandForeignUnit(shipNbrs[0], ME), true, "an embarked unit's last open water is protected too");
 
-// A land unit ASHORE ringed by water was already immobile: it blocks nothing.
+// A land unit ashore ringed by water was already immobile: it blocks nothing.
 reset();
 for (const n of shipNbrs) water.add(tk(n.x, n.y));
 units.set(tk(BAY.x, BAY.y), [{ owner: PEACEFUL, type: "LAND" }]);
@@ -199,15 +193,13 @@ units.set(tk(BAY.x, BAY.y), [{ owner: PEACEFUL, type: "SEA" }, { owner: PEACEFUL
 assert.equal(strandableUnitsAt(BAY, ME).length, 2, "both occupants of a stack are considered");
 assert.equal(wouldStrandForeignUnit(shipNbrs[0], ME), true, "claiming the last ice-free water is refused");
 
-// ================================================================================
-// 3. wouldStrandForeignUnit - the claim decision.
-// ================================================================================
+// 3. wouldStrandForeignUnit, the claim decision.
 reset();
 assert.equal(wouldStrandForeignUnit(P, ME), false, "open land, no units: claim allowed");
 
-// THE RUN-17 PREVENTION CASE. The pen that trapped player 4's Scout in game was five plots bought in
+// THE RUN-17 prevention CASE. The pen that trapped player 4's Scout in game was five plots bought in
 // one batch, outside the mod. Through the mod, each plot passes this gate, and the one that would close
-// the LAST gap in the ring is the culpable claim - so that is the one that must be refused.
+// the last gap in the ring is the culpable claim, so that is the one that must be refused.
 reset();
 const CENTRE = { x: 10, y: 10 };
 const ring = neighborsOf(CENTRE);
@@ -230,7 +222,7 @@ for (const n of ring.slice(2)) tiles.set(tk(n.x, n.y), ME);
 units.set(tk(CENTRE.x, CENTRE.y), [{ owner: PEACEFUL }]);
 assert.equal(wouldStrandForeignUnit(ring[0], ME), false, "closing one of TWO gaps is allowed");
 
-// Claiming the ground UNDER a unit is never the culpable claim: its options are its neighbors, which
+// Claiming the ground under a unit is never the culpable claim: its options are its neighbors, which
 // this claim does not change. With the ring already ours the unit was stuck before we touched its plot.
 reset();
 units.set(tk(P.x, P.y), [{ owner: PEACEFUL }]);
@@ -267,7 +259,7 @@ assert.equal(wouldStrandForeignUnit(P, ME), false, "a unit already penned in by 
 
 // IN-FLIGHT CLAIMS (harness run 21): a claim already sent this pass is not on the live map yet, so
 // without counting it the guard re-counts an exit the mod has already taken and lets the second claim
-// through - which is how a Scout with two exits ended up with none in one pass.
+// through, which is how a Scout with two exits ended up with none in one pass.
 reset();
 const TWOEXIT = { x: 10, y: 10 };
 const exits = neighborsOf(TWOEXIT);
@@ -293,10 +285,8 @@ assert.equal(wouldStrandForeignUnit(P, ME), false, "protectTrappedUnits off -> n
 CONFIG.protectTrappedUnits = true;
 assert.equal(wouldStrandForeignUnit(P, -1), false, "no local player -> inert");
 
-// ================================================================================
 // 4. FAIL OPEN: an unreadable engine must not stall the pass.
-// ================================================================================
-// The last-gap shape again, so there is something for the guard to refuse when it CAN read the map.
+// The last-gap shape again, so there is something for the guard to refuse when it can read the map.
 function lastGapFixture() {
   reset();
   for (const n of ring) if (!(n.x === LASTGAP.x && n.y === LASTGAP.y)) tiles.set(tk(n.x, n.y), ME);

@@ -1,14 +1,14 @@
-// cdh-game-run2.js - game scope, deployed as ui/cdh-game.js. Cultural Diffusion harness run 2 (dev only).
+// cdh-game-run2.js: game scope, deployed as ui/cdh-game.js. Cultural Diffusion harness run 2 (dev only).
 // Run 1 (cdh-game.js, run1-antiquity-turn136-UI.log) settled: purchasePlot works for us and for a rival but lands
-// AFTER the call; owned territory blocks founding; setOwnership(NO_PLAYER) does not release a city-attached tile;
+// after the call; owned territory blocks founding; setOwnership(NO_PLAYER) does not release a city-attached tile;
 // Game.age is a hash. Run 2, in the first local turn:
-//   R1 SEED     write a mature Cultural Diffusion stock onto a frontier tile, so the mod's OWN pass shows the new
+//   R1 SEED     write a mature Cultural Diffusion stock onto a frontier tile, so the mod's own pass shows the new
 //               pending -> confirmed path on the real engine over the next turns
 //   R2 RELEASE  three variants on tiles we buy: setOwnership(me) then (NO_PLAYER); destroy the plot's district then
 //               (NO_PLAYER); plain (NO_PLAYER) read after 10s
 //   R3 EXPAND   give a city a pending citizen, then order it onto a far claimed tile directly (the offered list may
 //               be advisory); control = an offered plot
-//   R4 CREATE   destroy + recreate a ring<=3 improvement (proven control), then create the same type on a far tile
+//   R4 CREATE   destroy + recreate a ring<=3 improvement (known control), then create the same type on a far tile
 //   R5 AGE      GameInfo.Ages.lookup(Game.age).AgeType on the real engine
 // then ends TURNS turns so the seeded flip is sent, lands, and is confirmed. Tagged [CDH] in Logs/UI.log.
 
@@ -124,7 +124,7 @@ function cdTile(k) {
   }, { state: "ERR" });
 }
 
-// --- R1: seed a mature stock the mod's own pass will act on -----------------------------------------------------
+// R1: seed a mature stock the mod's own pass will act on
 function seedStock(t) {
   const k = key(t.loc);
   const raw = cdRaw();
@@ -138,7 +138,7 @@ function seedStock(t) {
   return k;
 }
 
-// --- R2: release variants ---------------------------------------------------------------------------------------
+// R2: release variants
 async function releaseVariants(tiles) {
   const [v1, v2, v3] = tiles;
   if (v1) { setOwner(local, v1.loc); await later(1500); emit(`R2 V1 after setOwnership(me) ${key(v1.loc)} ${J(where(v1.loc))}`); setOwner(NO_PLAYER, v1.loc); }
@@ -157,7 +157,7 @@ async function releaseVariants(tiles) {
   emit(`R2 VERDICT at 10s V1=${verdict(v1)} ${v1 ? J(where(v1.loc)) : ""} V2=${verdict(v2)} ${v2 ? J(where(v2.loc)) : ""} V3=${verdict(v3)} ${v3 ? J(where(v3.loc)) : ""}`);
 }
 
-// --- R3: order a pending citizen onto a far claimed tile ---------------------------------------------------------
+// R3: order a pending citizen onto a far claimed tile
 async function expandFar(F) {
   const c = F.city;
   const idx = safe(() => GameplayMap.getIndexFromLocation(F.loc), -1);
@@ -186,7 +186,7 @@ async function expandFar(F) {
   emit("R3 VERDICT " + verdict);
 }
 
-// --- R4: recreate control, then the same improvement on a far tile ------------------------------------------------
+// R4: recreate control, then the same improvement on a far tile
 function improvedPlot(c) {
   return safe(() => {
     for (const p of c.getPurchasedPlots()) {

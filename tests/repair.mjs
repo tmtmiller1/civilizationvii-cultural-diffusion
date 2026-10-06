@@ -1,19 +1,19 @@
-// tests/repair.mjs - orphan-tile healing + inner-ring reconciliation.
+// tests/repair.mjs: orphan-tile healing + inner-ring reconciliation.
 //
-// An orphan is a tile owner === me with NO owning city (owningCity < 0), produced by the legacy
-// setOwnership verb. repairOrphans handles orphans by POSITION:
-//   - Inside our own base-game natural ring (<= baseGrowthRadius of a local city): RELEASE it back
-//     to the map so the base game re-acquires it and assigns it to the city that can WORK it. (Re-
-//     buying an inner orphan would attach it to the geometrically nearest city - often the wrong
-//     one - the "can't work some inner tiles" regression.)
+// An orphan is a tile owner === me with no owning city (owningCity < 0), produced by the legacy
+// setOwnership verb. repairOrphans handles orphans by position:
+//   - Inside our own base-game natural ring (<= baseGrowthRadius of a local city): release it back
+//     to the map so the base game re-acquires it and assigns it to the city that can work it. (Re-
+//     buying an inner orphan would attach it to the geometrically nearest city, often the wrong
+//     one, the "can't work some inner tiles" regression.)
 //   - Beyond the natural ring (the frontier buffer): re-integrate into its nearest city via the
 //     integrated verb; if the re-buy can't take, release it. Integrated tiles are left untouched.
-// releaseInnerClaims separately reconciles tiles the mod ALREADY force-bought inside the natural
-// ring (owner=me, real owning city, but the WRONG one): it releases them so the base game re-owns
+// releaseInnerClaims separately reconciles tiles the mod already force-bought inside the natural
+// ring (owner=me, real owning city, but the wrong one): it releases them so the base game re-owns
 // and re-assigns them correctly.
 import assert from "node:assert/strict";
 
-// --- controllable engine stub over an (x,y) -> {owner, city} tile map ------------
+// controllable engine stub over an (x,y) -> {owner, city} tile map
 const tiles = new Map();
 const tk = (x, y) => `${x},${y}`;
 const setTile = (x, y, owner, city) => tiles.set(tk(x, y), { owner, city });
@@ -45,7 +45,7 @@ const CITY_ID = 42;
 const city = { purchasePlot: (loc) => { const t = getTileMut(loc.x, loc.y); t.owner = ME; t.city = CITY_ID; } };
 const cities = [{ city, id: CITY_ID, loc: { x: 5, y: 5 } }];
 
-// --- scenario 1: inner orphans RELEASED, frontier orphan RE-INTEGRATED -----------
+// scenario 1: inner orphans released, frontier orphan RE-INTEGRATED
 tiles.clear();
 setTile(5, 5, ME, CITY_ID);   // city center (integrated) - must be left alone
 setTile(5, 6, ME, -1);        // INNER ORPHAN (d=1) - must be released back to the base game
@@ -61,11 +61,11 @@ const state = {
 const healed = repairOrphans(state, region, cities, ME);
 
 assert.equal(healed, 3, "all three orphans processed");
-// Inner orphans handed BACK to the map (base game re-acquires + assigns to the workable city).
+// Inner orphans handed back to the map (base game re-acquires + assigns to the workable city).
 assert.equal(getTile(5, 6).owner, -1, "inner orphan (5,6) released to the base game");
 assert.equal(getTile(6, 6).owner, -1, "inner orphan (6,6) released to the base game");
 assert.equal(state.claims["5,6"], undefined, "inner orphan claim dropped");
-// The lock is NOT part of the claim record: it stays (anti-flicker, and a conquest's hold). Changed 2026-09-26 after a
+// The lock is not part of the claim record: it stays (anti-flicker, and a conquest's hold). Changed 2026-09-26 after a
 // conquered ring-3 tile lost its hold through this helper.
 assert.equal(state.locked["5,6"], 5, "inner orphan lock kept");
 // Frontier orphan re-integrated into the nearest city (owned border, beyond the base-game ring).
@@ -80,7 +80,7 @@ assert.deepEqual(getTile(7, 7), { owner: 3, city: 9 }, "rival tile untouched");
 const healed2 = repairOrphans(state, region, cities, ME);
 assert.equal(healed2, 0, "second pass heals nothing (idempotent)");
 
-// --- scenario 2: a frontier orphan whose re-buy FAILS is released ----------------
+// scenario 2: a frontier orphan whose re-buy fails is released
 tiles.clear();
 setTile(5, 11, ME, -1);       // frontier orphan (d=6)
 const noBuyCity = { purchasePlot: () => { /* fails to integrate: owner stays released */ } };
@@ -91,9 +91,9 @@ assert.equal(getTile(5, 11).owner, -1, "frontier orphan released back to the map
 assert.equal(state2.claims["5,11"], undefined, "dropped claim on release");
 assert.equal(state2.locked["5,11"], 5, "the lock is kept on release (it is not part of the claim record)");
 
-// --- scenario 3: releaseInnerClaims heals a mis-deeded inner tile ----------------
-// The 1.0.6 regression: an inner tile the mod force-bought to the WRONG city (real owning city,
-// but not the one whose ring it sits in). It is NOT an orphan (owningCity >= 0), so repairOrphans
+// scenario 3: releaseInnerClaims heals a mis-deeded inner tile
+// The 1.0.6 regression: an inner tile the mod force-bought to the wrong city (real owning city,
+// but not the one whose ring it sits in). It is not an orphan (owningCity >= 0), so repairOrphans
 // skips it; releaseInnerClaims must hand it back so the base game re-assigns it correctly.
 tiles.clear();
 setTile(5, 6, ME, 77);        // inner tile (d=1) attached to some city 77 (the "wrong" city)
@@ -110,7 +110,7 @@ assert.ok(state3.claims["5,11"], "frontier claim record kept");
 // Idempotent: the claim is gone, so a second pass releases nothing.
 assert.equal(releaseInnerClaims(state3, cities, ME), 0, "second pass releases nothing (idempotent)");
 
-// --- scenario 4: disabled flag is respected -------------------------------------
+// scenario 4: disabled flag is respected
 CONFIG.repairOrphans = false;
 tiles.clear();
 setTile(5, 6, ME, -1);

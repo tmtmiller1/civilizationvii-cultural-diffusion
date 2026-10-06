@@ -1,31 +1,31 @@
-// cdh-game-run15.js - game scope, deployed as ui/cdh-game.js. Cultural Diffusion harness run 15 (dev only).
+// cdh-game-run15.js: game scope, deployed as ui/cdh-game.js. Cultural Diffusion harness run 15 (dev only).
 //
-// TWO questions, both left open by runs 13-14, and they have to be answered together because the first one
-// CONFOUNDED the second one last time.
+// Two questions, both left open by runs 13-14, and they have to be answered together because the first one
+// confounded the second one last time.
 //
 //   Q1 REVERSION  A plot we bought stopped being ours. Both earlier runs: plot 90,41 read owner=3 on the turn after a
-//                 CONFIRMED purchase (owner=us, attached to a city, 2 s after the call), with the mod's own pass
-//                 disabled. Is that general - does a claim near a rival silently revert - or is it about that plot?
-//   Q2 TRAP       Can a foreign unit actually be STUCK inside our borders? Run 14 looked like "no, it walks out", but
+//                 confirmed purchase (owner=us, attached to a city, 2 s after the call), with the mod's own pass
+//                 disabled. Is that general, does a claim near a rival silently revert, or is it about that plot?
+//   Q2 TRAP       Can a foreign unit actually be stuck inside our borders? Run 14 looked like "no, it walks out", but
 //                 the plot had reverted by the turn it moved, so the unit was never in our territory when it left.
 //                 The report also allows three different mechanisms, only one of which is ours:
 //                   (a) our border closed over/around it; (b) it entered legally and lost access later; (c) it was
-//                   never stuck - an idle AI Settler looks identical from outside, and war ejects it either way.
-//                 (c) is separated by a MAP fact, not a unit API: a unit standing on our land with all six neighbors
+//                   never stuck, an idle AI Settler looks identical from outside, and war ejects it either way.
+//                 (c) is separated by a map fact, not a unit API: a unit standing on our land with all six neighbors
 //                 ours is enclosed by definition. One with an unowned neighbor that still does not move was idle.
 //
 // Instruments, rather than inferring from turn snapshots:
-//   EV   engine.on PlotOwnershipChanged / CityTransfered / CityAddedToMap / CityRemovedFromMap - every ownership
-//        change with its location and owner, so a reversion is WATCHED as it happens, with a timestamp and a culprit.
+//   EV   engine.on PlotOwnershipChanged / CityTransfered / CityAddedToMap / CityRemovedFromMap, every ownership
+//        change with its location and owner, so a reversion is watched as it happens, with a timestamp and a culprit.
 //   MAP  every settlement on the map once (owner, isMajor/isMinor/isIndependent, location) so "near a rival" is a
 //        measured distance rather than a guess.
 //   A    three plots bought at different distances from the nearest rival settlement, each confirmed, then owner +
-//        owningCity re-read every turn: does reversion track distance to THEIR settlement rather than to ours?
-//   B    the enclosure: buy the plot a foreign unit stands on AND all six of its neighbors, confirm each, then watch.
+//        owningCity re-read every turn: does reversion track distance to their settlement rather than to ours?
+//   B    the enclosure: buy the plot a foreign unit stands on and all six of its neighbors, confirm each, then watch.
 //        Every turn: where is the unit, how many of the seven plots are still ours, and does it have a non-ours
 //        neighbor to step to. Verdict distinguishes TRAPPED-BY-US / LEFT-WHILE-ENCLOSED / ENCLOSURE-BROKE.
 //
-// The mod's own pass stays disabled: this measures the ENGINE, not the mod.
+// The mod's own pass stays disabled: this measures the engine, not the mod.
 // Tagged [CDH] in Logs/UI.log.
 
 import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
@@ -93,7 +93,7 @@ function whereIsUnit(cid) {
   return u && u.location ? { x: u.location.x, y: u.location.y } : null;
 }
 
-// --- EV: watch ownership change as it happens ------------------------------------------------------------------------
+// EV: watch ownership change as it happens
 const evts = [];
 function hookEvents() {
   const add = (name, fn) => safe(() => engine.on(name, (d) => {
@@ -109,7 +109,7 @@ function hookEvents() {
 }
 const watched = new Set();   // plot keys we care about, so the log is not flooded
 
-// --- MAP: the geography, measured ------------------------------------------------------------------------------------
+// Map: the geography, measured
 let settlements = [];
 function mapSettlements() {
   settlements = [];
@@ -135,7 +135,7 @@ function nearestForeignSettlement(l) {
   return best;
 }
 
-// --- A: does a confirmed claim stay ours? ---------------------------------------------------------------------------
+// A: does a confirmed claim stay ours?
 const tracked = [];   // {k, loc, label, boughtTurn, cityId, history:[]}
 async function buyAndConfirm(loc, city, label) {
   const before = { owner: owner(loc), city: owningCity(loc) };
@@ -175,7 +175,7 @@ function reversionTargets() {
   return [near, mid, far].filter(Boolean);
 }
 
-// --- B: the enclosure ------------------------------------------------------------------------------------------------
+// B: the enclosure
 let pen = null;   // {cid, type, unitOwner, center, ring:[loc], boughtTurn, history:[]}
 async function buildPen() {
   const cities = localCities();
@@ -216,7 +216,7 @@ function penState() {
     nonOursNeighbours: escapes, enclosed: onCentre && owner(pen.centre) === local && escapes === 0 };
 }
 
-// --- run -------------------------------------------------------------------------------------------------------------
+// run
 async function run() {
   local = GameContext.localPlayerID;
   CONFIG.diffusionEnabled = false;

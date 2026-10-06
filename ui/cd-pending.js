@@ -1,10 +1,10 @@
 // cd-pending.js
 //
-// Ownership writes land AFTER the call returns: the same-tick owner read still shows the OLD owner.
-// A verb whose same-tick read does not yet show the result is recorded as PENDING; the next pass
+// Ownership writes land after the call returns: the same-tick owner read still shows the old owner.
+// A verb whose same-tick read does not yet show the result is recorded as pending; the next pass
 // confirms every pending entry from the live map before anything else runs.
-//   claim   - we asked for the tile (diffusion flip, +1 buffer, orphan re-integration): confirmed when owner === by
-//   cede    - a rival's city was asked to take our claimed tile: confirmed when owner === by (that rival)
+//   claim: we asked for the tile (diffusion flip, +1 buffer, orphan re-integration); confirmed when owner === by
+//   cede: a rival's city was asked to take our claimed tile; confirmed when owner === by (that rival)
 // A pending tile is skipped by every candidate scan until it resolves; an unconfirmed entry is dropped
 // so the tile is retried later.
 
@@ -95,10 +95,10 @@ export function confirmPending(state) {
 }
 
 /**
- * Plot keys a caller must already treat as OURS although the live map does not show them yet: claims from
+ * Plot keys a caller must already treat as ours although the live map does not show them yet: claims from
  * an earlier pass still landing. `purchasePlot` applies seconds after the call, so a gate that reads only
- * live ownership re-counts a plot the mod has already taken - watched in harness run 21, where both of a
- * unit's escape plots were claimed in one pass because the first had not landed when the second was judged.
+ * live ownership re-counts a plot the mod has already taken; both of a unit's escape plots were once claimed
+ * in one pass because the first had not landed when the second was judged.
  * @param {import("/cultural-diffusion/ui/cd-state.js").CdState} state Persisted state.
  * @param {number} me Local player id.
  * @returns {Set<string>} Plot keys with a claim in flight for `me`.

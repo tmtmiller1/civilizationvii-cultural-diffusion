@@ -1,4 +1,4 @@
-// cdh-game-run8.js - game scope, deployed as ui/cdh-game.js. Run 8 (dev only): early-game pacing and AI forward-settling.
+// cdh-game-run8.js: game scope, deployed as ui/cdh-game.js. Run 8 (dev only): early-game pacing and AI forward-settling.
 // Loads the turn-1 save AugustusAnt1 as a stand-in for a new game, with the mod at shipped defaults plus debug logging.
 // Ends TURNS turns one at a time (sendTurnComplete, one-turn Autoplay fallback), and logs:
 //   CITY    every settlement founded after load: owner, turn, and its distance to our nearest city

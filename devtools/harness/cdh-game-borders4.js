@@ -1,12 +1,12 @@
-// cdh-game-borders4.js - game scope, deployed as ui/cdh-game.js. Border-expansion imagery, take 4 (dev only).
+// cdh-game-borders4.js: game scope, deployed as ui/cdh-game.js. Border-expansion imagery, take 4 (dev only).
 //
-// Why a fourth take: the borders3 pair was rejected. Its "before" frame showed tiles FOUR rings out from the city
+// Why a fourth take: the borders3 pair was rejected. Its "before" frame showed tiles four rings out from the city
 // center, and the base game stops at three (`baseGrowthRadius: 3`), so the frame everyone was meant to read as
 // "the vanilla footprint" already looked like the mod had been at work. A before/after pair only means anything
-// when the BEFORE is unmistakably vanilla.
+// when the before is unmistakably vanilla.
 //
-// So this run does not trust the eye. It censuses every one of the local player's cities first - owned tiles by
-// ring, each tile attributed to its NEAREST local city so a neighbor's territory cannot be read as this city's -
+// So this run does not trust the eye. It censuses every one of the local player's cities first, owned tiles by
+// ring, each tile attributed to its nearest local city so a neighbor's territory cannot be read as this city's,
 // and picks a city whose own footprint reaches no further than ring 3. The census goes in the log next to the
 // shot, so the claim "this is the vanilla footprint" is a measurement, not a description of a JPEG.
 //
@@ -14,13 +14,13 @@
 //   02-border-after    the same camera once culture has claimed the frontier past ring 3
 //   03-border-edge     closer on the new edge
 //
-// Seeds ABOVE the ownership bar and DOES run passes: here the claims are the subject, not the readout. Claims land
+// Seeds above the ownership bar and does run passes: here the claims are the subject, not the readout. Claims land
 // about three seconds after `purchasePlot` (cd-pending.js), so every pass is followed by a wait.
 //
-// Camera: LOWER zoom is CLOSER (0.65 framed three cities and was too wide to tell whose border was whose; 0.40
-// frames one city). Never call `setActiveLens` - `fxs-default-lens` is the yield-icon view, and asking for it is
+// Camera: Lower zoom is closer (0.65 framed three cities and was too wide to tell whose border was whose; 0.40
+// frames one city). Never call `setActiveLens`, `fxs-default-lens` is the yield-icon view, and asking for it is
 // what put badges over earlier attempts. The pressure layer is off because the runner patched its default in the
-// DEPLOYED cd-settings.js (PATCH=...), so nothing here has to ask the UI for anything.
+// deployed cd-settings.js (PATCH=...), so nothing here has to ask the UI for anything.
 
 import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
 import { runPass } from "/cultural-diffusion/ui/cd-pass.js";

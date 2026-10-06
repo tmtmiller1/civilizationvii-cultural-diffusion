@@ -1,4 +1,4 @@
-// tests/config.mjs - presets and defaults integrity.
+// tests/config.mjs: presets and defaults integrity.
 import assert from "node:assert/strict";
 import { CONFIG, CONFIG_DEFAULTS, PRESETS, PRESET_NAMES } from "/cultural-diffusion/ui/cd-config.js";
 
@@ -22,8 +22,8 @@ for (const name of PRESET_NAMES) {
   }
 }
 
-// Intensity should scale: Low diffuses SLOWER, decays FASTER, and needs MORE culture to own
-// a tile than High - so Low reaches less far, less quickly.
+// Intensity should scale: Low diffuses slower, decays faster, and needs more culture to own
+// a tile than High, so Low reaches less far, less quickly.
 assert.ok(PRESETS.Low.diffusionRate < PRESETS.High.diffusionRate, "Low diffuses slower than High");
 assert.ok(PRESETS.Low.decayRate > PRESETS.High.decayRate, "Low decays faster than High");
 assert.ok(PRESETS.Low.minimumOwner > PRESETS.High.minimumOwner, "Low has a higher ownership bar");

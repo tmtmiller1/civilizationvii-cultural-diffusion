@@ -1,8 +1,8 @@
 // cd-state.js
 //
-// Persistence for the reaction-diffusion culture field (docs/current-model.md §2). State survives
-// save/reload through GameConfiguration, wrapped in a versioned `{ v, data }` envelope and fully
-// sanitized on load so a corrupt blob can never throw into the pass. The math lives in cd-field.js.
+// Persistence for the culture field (docs/current-model.md §2). State survives save/reload
+// through GameConfiguration, in a versioned `{ v, data }` envelope, and is sanitized on load so
+// a corrupt blob cannot throw into the pass. The math lives in cd-field.js.
 
 const STATE_KEY = "CulturalDiffusionState_v2"; // v2 = culture-field model
 const STATE_SCHEMA_VERSION = 2;
@@ -180,10 +180,7 @@ function readStateRaw() {
   }
 }
 
-/**
- * Load persisted diffusion state.
- * @returns {CdState} The state.
- */
+/** @returns {CdState} The saved state, or a fresh one. */
 export function loadState() {
   try {
     const raw = readStateRaw();
@@ -195,8 +192,8 @@ export function loadState() {
 }
 
 /**
- * Persist diffusion state (versioned envelope, sanitized).
- * @param {*} state State object.
+ * Save the state (versioned envelope, sanitized).
+ * @param {*} state
  * @returns {number} Length of the persisted JSON string (0 when nothing was written), so the pass can
  *   log how large the save blob has grown.
  */
@@ -245,5 +242,5 @@ export function pruneState(state) {
   }
 }
 
-/** Test/introspection helpers. */
+// for tests
 export const __test = { defaultState, normalizeFieldRow, normalizeClaim, STATE_KEY };

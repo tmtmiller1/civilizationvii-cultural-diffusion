@@ -1,18 +1,18 @@
-// cdh-game-run29.js - game scope, deployed as ui/cdh-game.js. Cultural Diffusion harness run 28 (dev only).
+// cdh-game-run29.js: game scope, deployed as ui/cdh-game.js. Cultural Diffusion harness run 29 (dev only).
 //
-// Closes the last two gaps in the strand guard. Works on ANY save, and says plainly when a save cannot host
+// Closes the last two gaps in the strand guard. Works on any save, and says plainly when a save cannot host
 // the fixture rather than passing quietly.
 //
 //   A  ACCESS API. The guard counts any plot that is not ours as a destination for a foreign unit. Run 27's
-//      census says that is roughly right - 9 of 10 sampled units standing in a third party's territory were
-//      at PEACE with its owner, so access is routinely granted and blocking third-party land outright would
+//      census says that is roughly right, 9 of 10 sampled units standing in a third party's territory were
+//      at peace with its owner, so access is routinely granted and blocking third-party land outright would
 //      refuse claims along every shared frontier. But "roughly right" leaves units wedged against a third
 //      party's border unprotected (run 27: 7 such units, none near us). If the engine exposes an access read
 //      - open borders, alliance, treaty - the guard can judge those plots exactly instead of defaulting.
-//      This reflects the Diplomacy / Player surface for anything access-shaped and TRIES the promising names
+//      This reflects the Diplomacy / Player surface for anything access-shaped and tries the promising names
 //      read-only against a real pair of players.
 //   N  NAVAL PEN. Run 26 and 27 found no bay on AugustusAnt136: nearest peaceful ship 10 rings out, claims
-//      only survive inside about 7. This reports the nearest peaceful ships on WHATEVER save it is run
+//      only survive inside about 7. This reports the nearest peaceful ships on whatever save it is run
 //      against and, if one is pennable, buys all but one of its water neighbors and asks the guard.
 //
 // Tagged [CDH] in Logs/UI.log.
@@ -54,7 +54,7 @@ function refundBuy(city, l) {
 }
 function atWar(a, b) { return safe(() => !!Players.get(a).Diplomacy.isAtWarWith(b), null); }
 
-// --- A: is there an access read? ---------------------------------------------------------------------------------
+// A: is there an access read?
 function reflectNames(obj, label) {
   const hits = safe(() => {
     const out = [];
@@ -87,7 +87,7 @@ function stageA() {
     : "candidate names above - a name that separates the peaceful pair from the hostile one is the access read"));
 }
 
-// --- N: the naval pen, on whatever save this is ------------------------------------------------------------------
+// N: the naval pen, on whatever save this is
 function foreignShips() {
   const out = [];
   for (const p of safe(() => Players.getAlive() || [], [])) {

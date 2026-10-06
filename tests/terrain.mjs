@@ -1,10 +1,10 @@
-// tests/terrain.mjs - water crossing in stepMods (diffuseAcrossWater).
+// tests/terrain.mjs: water crossing in stepMods (diffuseAcrossWater).
 //
 // Culture crosses water only when strong enough: shallow coast has a lower gate than deep ocean,
 // and with diffuseAcrossWater off, water stays hard-blocked (legacy land-only behavior).
 import assert from "node:assert/strict";
 
-// --- stub the map: one coast tile, one ocean tile, everything else land ----------
+// stub the map: one coast tile, one ocean tile, everything else land
 const terrainAt = new Map(); // "x,y" -> "TERRAIN_COAST" | "TERRAIN_OCEAN" | "" (land)
 const tk = (x, y) => `${x},${y}`;
 globalThis.GameplayMap = {
@@ -50,7 +50,7 @@ assert.equal(oceanOpen.malus, 0.80, "ocean malus applied");
 const landOnly = { ...cfg, diffuseAcrossWater: false };
 assert.equal(stepMods(SRC, COAST, 100000, landOnly).blocked, true, "water blocked when diffuseAcrossWater is off");
 
-// --- per-age water easing (waterEase) -------------------------------------------
+// per-age water easing (waterEase)
 // Age stubs for the ramp: currentAgeKey reads Game.age; ageProgress reads Game.turn/maxTurns.
 let ageStr = "AGE_ANTIQUITY", turnNow = 0, maxTurnsNow = 100;
 globalThis.Game = { get age() { return ageStr; }, get turn() { return turnNow; }, get maxTurns() { return maxTurnsNow; } };
@@ -75,7 +75,7 @@ const modernOcean = stepMods(SRC, OCEAN, 1, modernCfg);
 assert.equal(modernOcean.blocked, false, "Modern (waterEase 1) crosses ocean at any strength");
 assert.equal(modernOcean.malus, 0, "Modern has no ocean malus");
 
-// --- continuous ramp of waterEase across an age (effectiveWaterEase) -------------
+// continuous ramp of waterEase across an age (effectiveWaterEase)
 CONFIG.waterEaseRamp = true;
 const A = CONFIG.byAge.ANTIQUITY.waterEase;   // 0.0
 const E = CONFIG.byAge.EXPLORATION.waterEase; // 0.65

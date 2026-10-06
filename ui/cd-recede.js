@@ -1,9 +1,9 @@
 // cd-recede.js
 //
-// Borders RECEDE (opt-in, CONFIG.recedeBorders). Once per pass, after the flips, it walks only the tiles this mod
-// CLAIMED (state.claims) and CEDES a claim to a rival whose culture beat ours past resolveOwner's gates, via that
+// Borders recede (opt-in, CONFIG.recedeBorders). Once per pass, after the flips, it walks only the tiles this mod
+// claimed (state.claims) and cedes a claim to a rival whose culture beat ours past resolveOwner's gates, via that
 // rival's nearest city's refunded purchasePlot; peace, flipMaxDistance, requireAdjacency, the cooldown lock and
-// maxFlipsPerTurn all apply. Cession is the ONLY way a claimed tile leaves (setOwnership(NO_PLAYER) never un-owns a
+// maxFlipsPerTurn all apply. Cession is the only way a claimed tile leaves (setOwnership(NO_PLAYER) never un-owns a
 // city-attached tile; see docs/wont-build-with-justifications.md); an unlanded cession is confirmed next pass.
 // Free of any import from cd-pass.js: a UIScript module cycle can take down the whole graph in GameFace.
 
@@ -45,7 +45,7 @@ function touchesOwner(loc, owner) {
   return false;
 }
 
-/** Rival MAJOR settlements as {city, id, loc, owner} rows. City-states never take tiles. */
+/** Rival major settlements as {city, id, loc, owner} rows. City-states never take tiles. */
 function rivalCityRows(me) {
   const out = [];
   for (const { city, owner } of allSettlements(false)) {

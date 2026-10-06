@@ -1,21 +1,21 @@
-// cdh-game-run13.js - game scope, deployed as ui/cdh-game.js. Cultural Diffusion harness run 13 (dev only).
+// cdh-game-run13.js: game scope, deployed as ui/cdh-game.js. Cultural Diffusion harness run 13 (dev only).
 //
-// ONE QUESTION: can a mod move a unit it does not own off a plot the border is taking, and if not, what does the
-// engine do instead? The 1.1.1 eviction (ui/cd-units.js) is built on UNITOPERATION_TELEPORT_TO and is UNWATCHED.
-// Three recorded signals say it may not work, so this run does not test one verb - it bakes off every candidate and
-// reads the UNIT'S LOCATION afterward rather than trusting canStart:
-//   - engine-closed.md: an operation sent under another player's id is refused, and `canStart` SUCCEEDS anyway.
+// One question: can a mod move a unit it does not own off a plot the border is taking, and if not, what does the
+// engine do instead? The 1.1.1 eviction (ui/cd-units.js) is built on UNITOPERATION_TELEPORT_TO and is unwatched.
+// Three recorded signals say it may not work, so this run does not test one verb, it bakes off every candidate and
+// reads the unit's location afterward rather than trusting canStart:
+//   - engine-closed.md: an operation sent under another player's id is refused, and `canStart` succeeds anyway.
 //   - engine-closed.md: canStart checks request shape, not placement; confirm every write with a deferred re-read.
-//   - emigration engine-probe README: canStart(UNITOPERATION_TELEPORT_TO) answered FALSE for one of our own units.
+//   - emigration engine-probe README: canStart(UNITOPERATION_TELEPORT_TO) answered false for one of our own units.
 //
 // Stages (each emits its own VERDICT line; the tail of the log answers the whole question):
 //   S1 SURFACE   read-only: which move/teleport/place names exist on Game.UnitOperations / UnitCommands /
-//                WorldBuilder / Units on THIS build, plus the UnitOperationTypes enum members.
-//   S2 OWN       control: the bake-off against one of OUR units. Tells us whether each verb works AT ALL.
-//   S3 FOREIGN   the decisive stage: the same bake-off against a FOREIGN unit (civilian preferred).
-//   S4 OVERRUN   claim the plot a foreign unit stands on with the mod's eviction OFF, then watch 3 turns: does the
-//                BASE GAME eject it, does it walk out, or is it stuck? (The reported symptom, never yet watched.)
-//   S5 MOD       the same fixture with the eviction ON: did cd-units fire, did the unit move, was the claim skipped?
+//                WorldBuilder / Units on this build, plus the UnitOperationTypes enum members.
+//   S2 OWN       control: the bake-off against one of our units. Tells us whether each verb works at all.
+//   S3 FOREIGN   the decisive stage: the same bake-off against a foreign unit (civilian preferred).
+//   S4 OVERRUN   claim the plot a foreign unit stands on with the mod's eviction off, then watch 3 turns: does the
+//                base game eject it, does it walk out, or is it stuck? (The reported symptom, never yet watched.)
+//   S5 MOD       the same fixture with the eviction on: did cd-units fire, did the unit move, was the claim skipped?
 //
 // Deploy the mod with debug: true. S4/S5 relax requireAdjacency/flipMaxDistance so a plot a real foreign unit happens
 // to stand on can be claimed at all; nothing else about the claim path is changed.
@@ -59,7 +59,7 @@ function landClean(l) {
   }, false);
 }
 
-// --- unit reads (the shapes watched in the emigration probe) ---------------------------------------------------------
+// unit reads (the shapes seen in the emigration probe)
 function unitsAt(l) {
   return safe(() => (MapUnits.getUnits(l.x, l.y) || []).map((cid) => {
     const u = Units.get(cid);
@@ -80,7 +80,7 @@ function whereIsUnit(cid) {
 }
 function isCivilian(type) { return /SETTLER|MIGRANT|MERCHANT|MISSIONARY|SCOUT|TRADE|EXPLORER/.test(type || ""); }
 
-// --- S1: what this build actually exposes ----------------------------------------------------------------------------
+// S1: what this build actually exposes
 function reflect(obj, label) {
   const names = safe(() => {
     const out = [];
@@ -101,7 +101,7 @@ function surface() {
   emit(`S1 UnitOperationTypes moveish=${J(enums)}`);
 }
 
-// --- S2/S3: the bake-off -------------------------------------------------------------------------------------------
+// S2/S3: the bake-off
 /** A plot near `from` that looks like somewhere a land unit could legally stand, and is not ours. */
 function candidateDest(from, wantForeign) {
   for (const r of [1, 2, 3]) {
@@ -167,7 +167,7 @@ function pickForeignUnit() {
   return civ.sort(byNearness)[0] || all.sort(byNearness)[0] || null;
 }
 
-// --- S4/S5: claim the plot a foreign unit is standing on -------------------------------------------------------------
+// S4/S5: claim the plot a foreign unit is standing on
 /** A foreign unit standing on a plot this mod could be made to claim (unowned land within reach of our city). */
 function overrunFixture() {
   const cities = localCities();
@@ -214,7 +214,7 @@ function overrunStatus(t) {
     unitStillOnPlot: !!(at && at.x === t.loc.x && at.y === t.loc.y), state: st };
 }
 
-// --- run ------------------------------------------------------------------------------------------------------------
+// run
 let ownRows = null; let foreignRows = null;
 let tracked = [];           // S4/S5 fixtures being watched
 let s4Turn = -1; let s5Done = false;
@@ -240,7 +240,7 @@ async function run() {
   emit(`S3 VERDICT ownMoved=${J(ownWorked)} foreignMoved=${J(foreignWorked)} canStartSaidYesButNothingMoved=${J(lied)} `
     + `=> ${foreignWorked.length ? "FOREIGN-UNIT-MOVABLE via " + foreignWorked[0] : "NO VERB MOVED A FOREIGN UNIT"}`);
 
-  // S4: the overrun, with the mod's eviction OFF - what does the base game do?
+  // S4: the overrun, with the mod's eviction off, what does the base game do?
   CONFIG.requireAdjacency = false;      // the fixture is wherever a real foreign unit happens to stand
   CONFIG.flipMaxDistance = 12;
   CONFIG.bumpForeignUnits = false;

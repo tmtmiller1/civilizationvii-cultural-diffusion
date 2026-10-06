@@ -1,9 +1,8 @@
 // cd-log.js
 //
-// Minimal debug logger for the Cultural Diffusion mod. Mod `console.log` does not
-// reach the game's UI.log, but `console.error` does (via the GameFace CSS-parse
-// channel), so every line is emitted with a stable `[CulturalDiffusion]` prefix.
-// Grep it in:
+// Debug logger. A mod's `console.log` does not reach the game's UI.log, but
+// `console.error` does (via the GameFace CSS-parse channel), so every line goes out
+// that way with a `[CulturalDiffusion]` prefix. Grep for it in:
 //   ~/Library/Application Support/Civilization VII/Logs/UI.log
 
 const PREFIX = "[CulturalDiffusion]";
@@ -11,17 +10,14 @@ const PREFIX = "[CulturalDiffusion]";
 /** @type {boolean} Verbose gate; flipped on by cd-config's debug flag at boot. */
 let _debug = false;
 
-/**
- * Enable/disable verbose logging.
- * @param {boolean} on Whether to log debug lines.
- */
+/** @param {boolean} on */
 export function setDebug(on) {
   _debug = !!on;
 }
 
 /**
- * Emit one debug line (only when debug logging is enabled).
- * @param {string} msg The message.
+ * One line, only when debug logging is on.
+ * @param {string} msg
  */
 export function dlog(msg) {
   if (!_debug) return;
@@ -33,8 +29,8 @@ export function dlog(msg) {
 }
 
 /**
- * Emit one line unconditionally (used for boot + errors that should always show).
- * @param {string} msg The message.
+ * One line whatever the debug flag says: boot and errors.
+ * @param {string} msg
  */
 export function log(msg) {
   try {

@@ -1,9 +1,9 @@
 // cd-ownership.js
 //
-// The ONE place that MUTATES plot ownership. Every flip is single-player-guarded and routed
+// The one place that mutates plot ownership. Every flip is single-player-guarded and routed
 // through the configured verb (docs/current-model.md §4): purchasePlot attaches the tile to the
 // nearest city (a real, workable plot; refundGold nets the cost to zero), while setOwnership
-// leaves an ORPHAN (owned but city-less, unworkable, blocks base-game growth) and serves `unclaim`.
+// leaves an orphan (owned but city-less, unworkable, blocks base-game growth) and serves `unclaim`.
 
 import { isMultiplayer } from "/cultural-diffusion/ui/cd-plots.js";
 import { log } from "/cultural-diffusion/ui/cd-log.js";
@@ -79,10 +79,10 @@ export function playerGold(pid) {
 }
 
 /**
- * Grant (amount>0) or deduct (amount<0) gold to a player - the WRITE twin of playerGold. Prefers
- * Players.grantYield(YIELD_GOLD), the one gold write that works on this engine (watched 2026-09-25: it lands
- * about 3 s after the call, for a rival as for us), over Treasury.changeGoldBalance, which was watched changing
- * nothing for anyone and is kept only as a fallback for a build without grantYield.
+ * Grant (amount>0) or deduct (amount<0) gold to a player, the write twin of playerGold. Prefers
+ * Players.grantYield(YIELD_GOLD), the one gold write that works on this engine (it lands about 3 s after
+ * the call, for a rival as for us), over Treasury.changeGoldBalance, which changes nothing for anyone and
+ * is kept only as a fallback for a build without grantYield.
  * @param {number} pid Player id. @param {number} amount Gold delta.
  * @returns {{ok:boolean, reason:string}} Result.
  */
@@ -152,8 +152,8 @@ export function unclaim(loc) {
 /**
  * Perform a diffusion flip using the configured verb.
  *
- * For the default integrated verb (`purchasePlot`) there is deliberately NO setOwnership fallback,
- * since that would re-introduce the orphan tile. A failed purchase simply skips the tile this turn
+ * For the default integrated verb (`purchasePlot`) there is no setOwnership fallback,
+ * since that would re-introduce the orphan tile. A failed purchase skips the tile this turn
  * and the pass retries.
  * @param {Object} args Flip arguments.
  * @param {number} args.playerId New owner.

@@ -1,4 +1,4 @@
-// cdh-game-run7.js - game scope, deployed as ui/cdh-game.js. Run 7 (dev only).
+// cdh-game-run7.js: game scope, deployed as ui/cdh-game.js. Run 7 (dev only).
 // Deploy the mod with debug, recedeBorders and growthBuffer on, as run 3 had. Three questions in one route:
 //   CRASH  Run 3 crashed at the Antiquity -> Exploration transition; run 5 replayed the route with the current build and
 //          no harness tests and did not crash. This run replays run 3's first-turn harness tests (R3 citizen EXPAND to a
@@ -102,7 +102,7 @@ function ruralPick(l) {
   return row ? row.ConstructibleType : null;
 }
 
-// --- WAR: the engine's reading and the mod's reading, every turn ---------------------------------------------------
+// WAR: the engine's reading and the mod's reading, every turn
 function majors() { return safe(() => Players.getAlive().filter((p) => p.id !== local && p.isMajor).map((p) => p.id), []); }
 function warLine(turn) {
   const rows = majors().map((pid) => {
@@ -113,7 +113,7 @@ function warLine(turn) {
   emit(`WAR turn=${turn} engine/mod ${rows.join(" ")}`);
 }
 
-// --- run 3's first-turn tests, unchanged in substance ---------------------------------------------------------------
+// run 3's first-turn tests, unchanged in substance
 function frontierByCity(cities) {
   const seen = new Set(); const by = new Map();
   for (const c of cities) {
@@ -273,7 +273,7 @@ engine.on("PlayerTurnActivated", (d) => {
   setTimeout(endTurn, 8000);
 });
 
-// --- after the transition: watch only, then the lens smoke test ------------------------------------------------------
+// after the transition: watch only, then the lens smoke test
 function explorationWatch() {
   mode = "exploration";
   local = GameContext.localPlayerID;

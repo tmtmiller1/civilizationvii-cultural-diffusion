@@ -1,9 +1,9 @@
-// cdh-game-parity.js - game scope, deployed as ui/cdh-game.js. The Civ V parity probes P1-P7 (dev only).
+// cdh-game-parity.js: game scope, deployed as ui/cdh-game.js. The Civ V parity probes P1-P7 (dev only).
 //
 // One run answers every probe in docs/civ-v-parity-spec.md and watches the new river rule (§1) against the real
 // map. Every stage prints its own VERDICT line, so the log tail answers the questions without reading the run.
 //
-//   P3  SURFACE   every GameplayMap member with "river" in its name, and whether any EDGE-level river read exists
+//   P3  SURFACE   every GameplayMap member with "river" in its name, and whether any edge-level river read exists
 //   P1  RIVERS    a whole-map scan of getRiverType / isRiver / isNavigableRiver / getRiverName: are minor rivers
 //                 stored per tile, do tiles of one river share a name, do river tiles form 1-wide chains (tiles) or
 //                 2-wide bands (edge flags on both banks)? Plus an 11x11 text window and a SHOT of the same spot.
@@ -12,9 +12,9 @@
 //   P5  CAPTURE   log every CityTransfered (and city add/remove, war declarations) over the run
 //   P7  DEAD      owners present on the map vs Players alive: does any defeated player still own plots?
 //   P4  GOLD      Treasury.changeGoldBalance on a rival: inline, +3 s, and after a turn, then reversed
-//   E   RIVER     the §1 rule end to end: clear the field, seed known stocks next to real river tiles, run ONE pass
+//   E   RIVER     the §1 rule end to end: clear the field, seed known stocks next to real river tiles, run one pass
 //                 with culturalDiffusion.runNow(), read what each neighbor received. Expected with defaults
-//                 (rate 0.055): follow 1.65x plain, cross 1/1.5x plain, and NOTHING crosses below 2x threshold.
+//                 (rate 0.055): follow 1.65x plain, cross 1/1.5x plain, and nothing crosses below 2x threshold.
 //
 // Seeds are placed beyond flipMaxDistance from every local city and away from our land, so a pass can never turn a
 // seed into a purchasePlot. The whole field is cleared first; the run's autosaves are restored by run-harness.sh.
@@ -66,7 +66,7 @@ function kindOf(l) {
   return (typeof rt === "number" && rt >= 0 && rt !== none) ? "M" : "";
 }
 
-// ---------------------------------------------------------------- P3 surface
+// P3 surface
 function p3Surface() {
   const names = new Set();
   safe(() => { for (const k in GameplayMap) names.add(k); });
@@ -102,7 +102,7 @@ function p3Surface() {
   return edgeReads;
 }
 
-// ---------------------------------------------------------------- P1 scan
+// P1 scan
 let SCAN = null; // { w, h, at: Map key->{l,kind,name,isR,rt,own} }
 function scanMap() {
   const w = safe(() => GameplayMap.getGridWidth(), 0);
@@ -205,7 +205,7 @@ async function p1Window() {
   return { x: cx, y: cy };
 }
 
-// ---------------------------------------------------------------- P2 channel
+// P2 channel
 function p2Channel() {
   let pick = null;
   const cities = localCities();
@@ -223,7 +223,7 @@ function p2Channel() {
   emit(`P2 VERDICT navigable tile isWater=${isWater(l)} -> ${isWater(l) ? "WATER to the engine (cd-terrain must keep its river override)" : "NOT water (Terrains.Water=0 holds at runtime)"}`);
 }
 
-// ---------------------------------------------------------------- P6 combat
+// P6 combat
 const moved = { total: 0, local: 0, foreign: 0, logged: 0, combatTrue: 0, combatFalse: 0, combatUnknown: 0 };
 function describeUnit(u) {
   return safe(() => {
@@ -255,7 +255,7 @@ function p6Units() {
   }));
 }
 
-// ---------------------------------------------------------------- P5 capture + P7 dead
+// P5 capture + P7 dead
 const events = { CityTransfered: 0, CityAddedToMap: 0, CityRemovedFromMap: 0, PlayerDefeat: 0, DiplomacyDeclareWar: 0 };
 function p5Subscribe() {
   for (const ev of Object.keys(events)) {
@@ -297,10 +297,10 @@ function p7Dead() {
     + (defeated.length ? (dead.length ? "-> a defeated player KEEPS plots" : "-> defeated players hold NO plots") : "-> no defeated player in this save; open"));
 }
 
-// ---------------------------------------------------------------- P4 gold
-// Run 1: Treasury.changeGoldBalance(+37) on rival 1 changed NOTHING (inline, +3 s, and the across-turn delta was
+// P4 gold
+// Run 1: Treasury.changeGoldBalance(+37) on rival 1 changed nothing (inline, +3 s, and the across-turn delta was
 // exactly the rival's own net income), and the -37 reversal did nothing either. Run 2 adds the controls that
-// make that a verdict: the same verb on the LOCAL player (the mod's own refund path), the grantYield fallback on
+// make that a verdict: the same verb on the local player (the mod's own refund path), the grantYield fallback on
 // the rival, and a member listing of both Treasury objects.
 const gold = { pid: -1, trials: [], expectedNet: null };
 function goldOf(pid) { return safe(() => Players.get(pid).Treasury.goldBalance, null); }
@@ -336,7 +336,7 @@ async function p4Gold() {
   emit(`P4 Treasury members local=[${members(safe(() => Players.get(local).Treasury, {})).join(",")}]`);
   emit(`P4 Treasury members rival=[${members(safe(() => rival.Treasury, {})).join(",")}] Players.grantYield=${typeof Players.grantYield}`);
   emit(`P4 rival=${rival.id} gold=${r2(goldOf(rival.id))} net/turn=${netGold(rival.id)} local gold=${r2(goldOf(local))} net/turn=${netGold(local)}`);
-  // control: the verb the mod uses on OUR OWN treasury
+  // control: the verb the mod uses on our own treasury
   await trial("A local changeGoldBalance(+37)", local, () => Players.get(local).Treasury.changeGoldBalance(GOLD_DELTA));
   await trial("A' local changeGoldBalance(-37) restore", local, () => Players.get(local).Treasury.changeGoldBalance(-GOLD_DELTA));
   // the rival, both verbs
@@ -362,7 +362,7 @@ function p4AfterTurn() {
     : (gold.trials[0] && Math.abs(gold.trials[0].g2 - gold.trials[0].g0) > 0.01 ? "NEITHER verb reaches an AI treasury from the UI context, although the same verb moves OUR gold" : "no verb moved any gold, including ours - the read or the verb is off")));
 }
 
-// ---------------------------------------------------------------- E river field
+// E river field
 function readField() {
   return safe(() => { const raw = Configuration.getGame().getValue(STATE_KEY); const s = raw ? JSON.parse(raw) : null; return (s && (s.data || s)).field || {}; }, {});
 }
@@ -483,7 +483,7 @@ async function riverField() {
   for (const line of verdicts) emit("E VERDICT " + line);
 }
 
-// ---------------------------------------------------------------- turns
+// turns
 let n = 0; let endTurnTimer = null; let blockedTries = 0;
 function endTurn() {
   try {

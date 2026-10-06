@@ -12,14 +12,14 @@
 //   - GameplayMap.isNavigableRiver(x,y) -> bool; GameplayMap.getRiverName(x,y) -> LOC key or ""
 //   - GameplayMap.getRouteType(x,y)   -> route id (0 / none when absent)
 //
-// Civ VII splits TERRAIN from BIOME (no "snow"); terrain, biome and feature modifiers on the
-// destination tile STACK.
+// Civ VII splits terrain from biome (no "snow"); terrain, biome and feature modifiers on the
+// destination tile stack.
 //
-// Rivers (docs/civ-v-parity-spec.md §1). Civ V rivers ran along tile edges and were a highway ALONG a
-// bank and a wall ACROSS it. Civ VII rivers are tiles, of two kinds: a minor river is a property of a
+// Rivers (docs/civ-v-parity-spec.md §1). Civ V rivers ran along tile edges and were a highway along a
+// bank and a wall across it. Civ VII rivers are tiles, of two kinds: a minor river is a property of a
 // land tile, a navigable river is its own terrain (TERRAIN_NAVIGABLE_RIVER, Water=0 in Terrains). The
-// same rule is kept on tiles: a step from one tile of a river to the next FOLLOWS it (bonus, bigger for
-// a navigable river), a step onto a river from anywhere else CROSSES into it (a gated malus, paid once
+// same rule is kept on tiles: a step from one tile of a river to the next follows it (bonus, bigger for
+// a navigable river), a step onto a river from anywhere else crosses into it (a gated malus, paid once
 // on the way in), and a step off a river carries no river modifier.
 //
 // Every read is defensive: an unreadable value omits that modifier (or, for
@@ -74,7 +74,7 @@ function isMountainAt(x, y) {
 }
 
 /**
- * The stock a SOURCE tile needs before it diffuses at all (Civ V PlotCultureThreshold): the base threshold, or
+ * The stock a source tile needs before it diffuses at all (Civ V PlotCultureThreshold): the base threshold, or
  * `sourceThresholdMountain` times it on a mountain. Culture parked on a peak barely leaks off it.
  * @param {{x:number,y:number}} src Source plot.
  * @param {import("/cultural-diffusion/ui/cd-config.js").CdConfig} cfg Live config.
@@ -151,16 +151,9 @@ function featureMod(x, y, cfg) {
 }
 
 /**
- * Accumulate every crossing modifier that applies to the DESTINATION tile (terrain + biome +
- * feature stack). Mountains dominate (near-impassable), matching their gameplay role.
- * @param {number} x @param {number} y
- * @param {import("/cultural-diffusion/ui/cd-config.js").CdConfig} cfg
- * @returns {import("/cultural-diffusion/ui/cd-config.js").CrossMod[]} Applicable modifiers.
- */
-/**
- * Crossing result for a WATER destination (only reached when diffuseAcrossWater): deep ocean uses
+ * Crossing result for a water destination (only reached when diffuseAcrossWater): deep ocean uses
  * the near-impassable terrainOcean gate, shallow water the easier terrainCoast gate. Below the
- * gate, culture cannot cross yet - so only an established/overwhelming culture spans open water.
+ * gate, culture cannot cross yet, so only an established/overwhelming culture spans open water.
  * @param {{x:number,y:number}} dst @param {number} sourceValue
  * @param {import("/cultural-diffusion/ui/cd-config.js").CdConfig} cfg
  * @returns {{blocked:boolean, bonus:number, malus:number, maxFactor:number}} Step result.
@@ -172,7 +165,7 @@ function waterStep(dst, sourceValue, cfg) {
   return { blocked: false, bonus: 0, malus: Math.max(0, wm.malus), maxFactor: Math.max(0, wm.max) };
 }
 
-/** The crossing modifiers that apply to the DESTINATION land tile (terrain + biome + feature). */
+/** The crossing modifiers that apply to the destination land tile (terrain + biome + feature). Mountains dominate. */
 function crossingMods(x, y, cfg) {
   if (safe(() => !!GameplayMap?.isMountain?.(x, y), false)) return [cfg.terrainMountain];
   const terr = terrainType(x, y);
@@ -205,7 +198,7 @@ export function stepMods(src, dst, sourceValue, cfg) {
 }
 
 /**
- * Crossing result for a LAND or RIVER destination: road and river-follow carry bonus, then the stacked
+ * Crossing result for a land or river destination: road and river-follow carry bonus, then the stacked
  * gates (a river crossing, plus the destination's terrain, biome and feature; a navigable channel has
  * no land terrain of its own, so only the crossing applies to it).
  */
@@ -238,9 +231,9 @@ function roadBonus(src, dst, cfg) {
 /**
  * The river part of one step, by the kinds of the two tiles:
  * - no river on the destination (off a river, or away from one): no river modifier;
- * - same kind and same river on both tiles: FOLLOW - navigableFollow* for a navigable channel,
+ * - same kind and same river on both tiles: follow, navigableFollow* for a navigable channel,
  *   riverFollow* for a minor river;
- * - anything else onto a river (a bank, the other kind, a different river): CROSS into it with that
+ * - anything else onto a river (a bank, the other kind, a different river): cross into it with that
  *   kind's gate (terrainNavigableCross / terrainRiverCross).
  * @param {{x:number,y:number}} src @param {{x:number,y:number}} dst
  * @param {""|"minor"|"navigable"} dstRiver Destination river kind.

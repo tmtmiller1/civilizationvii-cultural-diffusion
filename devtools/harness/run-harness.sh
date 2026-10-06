@@ -7,8 +7,8 @@
 #     (a second harness hijacks the launch and contaminates both runs)
 #   - backs up the player's autosaves, and puts them back if the run churned the 10-slot rotation
 #   - remembers every cultural-diffusion registry row's Disabled flag and restores it exactly afterward
-#   - deploys the REPO copy of the mod into Mods/ with AffectsSavedGames=0 and debug: true patched into the
-#     DEPLOYED copy only (the repo is never edited)
+#   - deploys the repo copy of the mod into Mods/ with AffectsSavedGames=0 and debug: true patched into the
+#     deployed copy only (the repo is never edited)
 #   - installs the throwaway cd-harness mod with the chosen game script, launches via Steam, waits for DONE,
 #     collects the [CDH] log, any crash report, then quits and restores everything
 #
@@ -34,8 +34,8 @@ FOREIGN=$(ls "$MODS" 2>/dev/null | grep -iE "probe|harness" | grep -v "^cd-harne
 [ -n "$FOREIGN" ] && { say "another session's probe mod(s) are installed: $FOREIGN"; say "move them out first, or they hijack this launch"; exit 1; }
 
 # AI_VERBOSE=1 turns on the engine's AI scoring logs (AppOptions.txt AIVerboseLogging), which is what makes
-# the AI_ConstructibleBroker CSV tail appear - the evidence an AI-turn crash report needs. The file
-# is the player's, so it is backed up and restored. Mechanism proven by firaxis-bug-reports/repro/run-repro.sh.
+# the AI_ConstructibleBroker CSV tail appear, the evidence an AI-turn crash report needs. The file
+# is the player's, so it is backed up and restored. Mechanism from firaxis-bug-reports/repro/run-repro.sh.
 OPTS="$S/AppOptions.txt"
 if [ "${AI_VERBOSE:-0}" = "1" ] && [ -f "$OPTS" ]; then
   cp -p "$OPTS" "$OPTS.cdh-bak"
@@ -47,10 +47,10 @@ fi
 rm -rf "$BAK"; mkdir -p "$BAK"; cp -p "$AUTO"/*.Civ7Save "$BAK"/ 2>/dev/null
 say "autosaves backed up: $(ls "$BAK" 2>/dev/null | wc -l | tr -d ' ')"
 
-# Restore by the VALUE, not the row id: redeploying the mod folder makes the game rescan and mint a NEW
+# Restore by the value, not the row id: redeploying the mod folder makes the game rescan and mint a new
 # ModRowId, so a restore keyed on the pre-run row id misses the live row and leaves the mod enabled
 # (watched on run 13: row 639 before, row 1015 after).
-# NO_MOD=1 runs the harness with Cultural Diffusion left DISABLED - the only honest A/B control, because
+# NO_MOD=1 runs the harness with Cultural Diffusion left disabled, the only honest A/B control, because
 # asking the mod to stand down from a script does not work: applyTunableOverrides() pulls saved settings into
 # CONFIG on every pass, so `CONFIG.diffusionEnabled = false` set by a harness is clobbered within a turn
 # (watched: run 31 was meant to be a control and finished holding 37 claims). A control script must import
@@ -59,7 +59,7 @@ PRE_DISABLED=$(sqlite3 "$DB" "select max(Disabled) from Mods where ModId='cultur
 [ -n "$PRE_DISABLED" ] || PRE_DISABLED=1
 say "registry before: $(sqlite3 "$DB" "select ModRowId||'='||Disabled from Mods where ModId='cultural-diffusion'" | tr '\n' ' ') (restoring Disabled=$PRE_DISABLED afterward)"
 
-# Deploy the repo copy, then patch the DEPLOYED files only.
+# Deploy the repo copy, then patch the deployed files only.
 rm -rf "$DEST"; mkdir -p "$DEST"
 cp "$REPO/cultural-diffusion.modinfo" "$DEST/"
 cp -R "$REPO/ui" "$DEST/"
@@ -67,8 +67,8 @@ cp -R "$REPO/ui" "$DEST/"
 [ -d "$REPO/data" ] && cp -R "$REPO/data" "$DEST/"
 grep -q AffectsSavedGames "$MI" || sed -i '' -E 's#(<Version>[^<]+</Version>)#\1\n        <AffectsSavedGames>0</AffectsSavedGames>#' "$MI"
 sed -i '' -E 's/^([[:space:]]*)debug: false/\1debug: true/' "$DEST/ui/cd-config.js"
-# PATCH="<file>|<from>|<to>" edits ONE deployed file, never the repo. Used for defaults that do not live in
-# cd-config.js - e.g. the pressure lens, whose default is hardcoded in cd-settings.js, and which has to be off for
+# PATCH="<file>|<from>|<to>" edits one deployed file, never the repo. Used for defaults that do not live in
+# cd-config.js, e.g. the pressure lens, whose default is hardcoded in cd-settings.js, and which has to be off for
 # a clean border capture because touching LensManager to disable its layer redraws the yield-icon overlay.
 if [ -n "${PATCH:-}" ]; then
   pf="${PATCH%%|*}"; rest="${PATCH#*|}"; pfrom="${rest%%|*}"; pto="${rest##*|}"
@@ -107,9 +107,9 @@ mkdir -p "$HERE/shots"
 t=0; result=timeout; typeset -A shot
 while [ $t -lt $TIMEOUT ]; do
   sleep 4; t=$((t+4))
-  # Captures: the game script emits "SHOT <name>" when a view is ready. Grab the game WINDOW by id - never the
+  # Captures: the game script emits "SHOT <name>" when a view is ready. Grab the game window by id, never the
   # whole display. A full-screen grab once caught the user's Messages window (2026-09-14), so if no game window is
-  # listed the shot is SKIPPED and said so, rather than falling back to the screen.
+  # listed the shot is skipped and said so, rather than falling back to the screen.
   setopt local_options null_glob
   for name in $(grep -oE "\[CDH\] SHOT [A-Za-z0-9_-]+" "$LOG" 2>/dev/null | awk '{print $3}'); do
     [ -n "${shot[$name]:-}" ] && continue
@@ -133,7 +133,7 @@ say "result=$result after ${t}s"
 
 grep "\[CDH\]\|\[CulturalDiffusion\]" "$LOG" | cut -c1-1200 > "$HERE/$LABEL-UI.log"
 # The AI scoring logs: the ConstructibleBroker tail names the last-evaluated constructible before a fault.
-# setopt nullglob for this loop: zsh ABORTS a for-loop whose glob matches nothing, which silently skipped
+# setopt nullglob for this loop: zsh aborts a for-loop whose glob matches nothing, which silently skipped
 # collection on run 32 even though AI_ConstructibleBroker.csv existed.
 setopt local_options null_glob
 for ai in "$S/Logs/"*onstructible*.csv "$S/Logs/"*AI*.csv "$S/Logs/"*onstructible*.log; do

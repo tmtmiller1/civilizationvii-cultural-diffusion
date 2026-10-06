@@ -1,21 +1,21 @@
-// cdh-game-run23.js - game scope, deployed as ui/cdh-game.js. Cultural Diffusion harness run 18 (dev only).
+// cdh-game-run23.js: game scope, deployed as ui/cdh-game.js. Cultural Diffusion harness run 23 (dev only).
 //
-// CONFIRMATION run: watch the two fixes WORK, with the mod's own pass ENABLED (runs 14-17 disabled it to
-// measure the engine; this one measures the MOD).
+// Confirmation run: watch the two fixes work, with the mod's own pass enabled (runs 14-17 disabled it to
+// measure the engine; this one measures the mod).
 //
-//   RUN-18 CORRECTION: stage G checked the UNIT's distance from our cities but not the GAP's, and the gap it
-//   left (79,39) was ~7 rings from Megiddo - outside flipMaxDistance (6), so the pass ignored it for a
+//   Run-18 correction: stage G checked the unit's distance from our cities but not the gap's, and the gap it
+//   left (79,39) was ~7 rings from Megiddo, outside flipMaxDistance (6), so the pass ignored it for a
 //   reason that had nothing to do with the guard. Run 18's "guard held" line measured nothing. Every ring
-//   plot must now be inside flipMaxDistance, and the run asserts the guard's own debug line as the proof.
+//   plot must now be inside flipMaxDistance, and the run asserts the guard's own debug line as the evidence.
 //
-//   G  THE STRAND GUARD. Run 17 proved the mod can freeze a peaceful major's unit by claiming every plot
-//      around it (enclosedTurns 5/5). Rebuild that situation with ONE gap left open, seed the mod's field
-//      so the pass wants that gap, then run the pass. The fix works if the pass REFUSES it
+//   G  THE STRAND GUARD. Run 17 showed the mod can freeze a peaceful major's unit by claiming every plot
+//      around it (enclosedTurns 5/5). Rebuild that situation with one gap left open, seed the mod's field
+//      so the pass wants that gap, then run the pass. The fix works if the pass refuses it
 //      (`skip flip ...: would strand a foreign unit`), the plot stays unowned, and the unit keeps moving
 //      over the following turns instead of freezing.
 //   V  VILLAGE CORE PROTECTION. An Independent Power reports `cities: 0`, so `isCoreProtected`'s city-list
-//      route is blind to a village center; the fix adds a MAP read (`isCityCenterAt`). Validate that read
-//      against the live engine on our OWN centers first - it failed twice in earlier harnesses - then find
+//      route is blind to a village center; the fix adds a map read (`isCityCenterAt`). Validate that read
+//      against the live engine on our own centers first, it failed twice in earlier harnesses, then find
 //      any minor-owned center, report what the gates now say, and seed the mod's field on the center to see
 //      whether the pass refuses it.
 //
@@ -104,7 +104,7 @@ function playerKinds() {
   })), []);
 }
 
-// --- G: the strand guard, with the mod's pass doing the claiming ------------------------------------------------------
+// G: the strand guard, with the mod's pass doing the claiming
 let gap = null;
 function penWithOneGap(kinds) {
   const peaceful = new Set(kinds.filter((k) => k.major === true && k.pid !== local && k.war === false).map((k) => k.pid));
@@ -118,7 +118,7 @@ function penWithOneGap(kinds) {
       const ring = neighbours(u.loc).filter((p) => landClean(p));
       const usable = ring.filter((p) => owner(p) === local || owner(p) === -1);
       if (ring.length < 3 || usable.length !== ring.length) continue;
-      // Every ring plot must be a plot the PASS could claim, or "it was left alone" proves nothing about
+      // Every ring plot must be a plot the pass could claim, or "it was left alone" shows nothing about
       // the guard (run 18's gap was outside flipMaxDistance and was skipped for that reason instead).
       const reach = ring.map((p) => ({ p, d: nearest(p, cities)?.d ?? 99 }));
       const tooFar = reach.filter((x) => x.d > CONFIG.flipMaxDistance || x.d <= CONFIG.baseGrowthRadius);
@@ -136,7 +136,7 @@ async function buildGapPen(kinds) {
   const centre = { x: site.u.loc.x, y: site.u.loc.y };
   const theGap = site.ring[0];                       // the one plot we leave open for the mod to want
   for (const p of site.ring.slice(1)) if (owner(p) !== local) refundBuy(nearest(p, localCities()).city, p);
-  // Run 21: the ring's LAND plots were bought but the unit still had a second exit (water/edge plots are
+  // Run 21: the ring's land plots were bought but the unit still had a second exit (water/edge plots are
   // not in `ring`), so the pass legitimately took the gap and then the other exit in the same pass. Buy
   // every non-ours neighbor except the gap, so exactly one exit remains.
   for (const p of neighbours(centre)) {
@@ -151,7 +151,7 @@ async function buildGapPen(kinds) {
   gap = { cid: site.u.cid, type: site.u.type, unitOwner: site.u.owner, centre, loc: theGap, ring: site.ring, history: [] };
   emit(`G PEN center=${key(center)} unit=${site.u.type} owner=${site.u.owner} gap=${key(theGap)} seed=${write} ring=${J(ringState)}`);
   // Run 19 failed here with no explanation in the log, so ask the guard directly, and look at the shape
-  // of the engine's unit list - `Array.isArray` on it was the suspected cause.
+  // of the engine's unit list, `Array.isArray` on it was the suspected cause.
   const raw = safe(() => MapUnits?.getUnits?.(centre.x, centre.y), null);
   emit(`G SHAPE MapUnits.getUnits(${key(center)}) typeof=${typeof raw} isArray=${Array.isArray(raw)} `
     + `ctor=${safe(() => raw && raw.constructor && raw.constructor.name, "?")} length=${safe(() => raw && raw.length, "?")} `
@@ -182,7 +182,7 @@ function gapState() {
     onCentre: !!(at && at.x === gap.centre.x && at.y === gap.centre.y) };
 }
 
-// --- V: village core protection ---------------------------------------------------------------------------------------
+// V: village core protection
 function stageV(kinds) {
   // The map read failed twice in earlier harnesses, so validate it on the live engine first.
   const own = localCities().map((c) => ({ at: key(c.location), name: cityName(c), centre: isCityCenterAt(c.location),

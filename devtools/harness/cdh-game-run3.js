@@ -1,12 +1,12 @@
-// cdh-game-run3.js - game scope, deployed as ui/cdh-game.js. Cultural Diffusion harness run 3 (dev only).
-// Deploy the mod with recedeBorders: true AND debug: true for this run. In the first local turn:
+// cdh-game-run3.js: game scope, deployed as ui/cdh-game.js. Cultural Diffusion harness run 3 (dev only).
+// Deploy the mod with recedeBorders: true and debug: true for this run. In the first local turn:
 //   R3 EXPAND   give the city with the most frontier a pending citizen, order it onto a far tile we just bought
 //               (the offered list may be advisory); control = an offered plot
 //   R4 CREATE   destroy + recreate a ring<=3 improvement (control), then create on a far tile both that type and the
 //               rural table's own pick for the far tile's terrain
 //   R7 RECEDE   buy a rival tile touching our land, then seed the mod's state with a claim on it and a dominant rival
-//               stock, so the mod's OWN recede step cedes it (pending) and confirms it next pass
-// then ends TURNS turns with NO culture seeding, so the mod's natural pace to a first claim is measured.
+//               stock, so the mod's own recede step cedes it (pending) and confirms it next pass
+// then ends TURNS turns with no culture seeding, so the mod's natural pace to a first claim is measured.
 // Tagged [CDH] in Logs/UI.log.
 
 const TAG = "[CDH]";

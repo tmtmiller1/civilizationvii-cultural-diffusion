@@ -1,12 +1,12 @@
-// tests/buffer.mjs - the event-driven "+1 ring" cultural buffer (claimBufferAt).
+// tests/buffer.mjs: the event-driven "+1 ring" cultural buffer (claimBufferAt).
 //
 // When the local player completes a rural improvement on a tile, the mod must claim only the
-// UNOWNED land tiles ADJACENT to that tile (not the whole ring), attach them to the nearest city,
-// and NEVER take a tile owned by another player, water, or a tile past the +1 ring cap.
+// unowned land tiles adjacent to that tile (not the whole ring), attach them to the nearest city,
+// and never take a tile owned by another player, water, or a tile past the +1 ring cap.
 import assert from "node:assert/strict";
 import { hexDistance } from "/cultural-diffusion/ui/cd-pressure.js";
 
-// --- controllable engine stub over an (x,y) -> {owner, city} tile map ------------
+// controllable engine stub over an (x,y) -> {owner, city} tile map
 const tiles = new Map();
 const water = new Set();
 let savedState = null;
@@ -66,11 +66,11 @@ function seedFootprint() {
   }
 }
 
-// --- 1. develop a ring-3 tile -> claim its UNOWNED neighbors only ---------------
+// 1. develop a ring-3 tile -> claim its unowned neighbors only
 seedFootprint();
 const DEV = { x: 13, y: 10 };                 // a ring-3 (base-game frontier) tile we just improved
 assert.equal(hexDistance(CENTER, DEV), 3);
-// Its neighbors split between ring-2/3 (owned) and ring-4 (unowned) - only the unowned get claimed.
+// Its neighbors split between ring-2/3 (owned) and ring-4 (unowned), only the unowned get claimed.
 const neighbours = [];
 for (let y = DEV.y - 1; y <= DEV.y + 1; y++) for (let x = DEV.x - 1; x <= DEV.x + 1; x++) {
   if ((x === DEV.x && y === DEV.y) || hexDistance(DEV, { x, y }) !== 1) continue;
@@ -84,12 +84,12 @@ assert.equal(claimed, unownedNbrs.length, "claimed exactly the unowned neighbors
 for (const n of unownedNbrs) {
   assert.deepEqual(getTile(n.x, n.y), { owner: ME, city: CITY_ID }, `neighbor ${n.x},${n.y} claimed + integrated`);
 }
-// It did NOT claim the whole ring 4 - a distant ring-4 tile not adjacent to DEV stays unowned.
+// It did not claim the whole ring 4, a distant ring-4 tile not adjacent to DEV stays unowned.
 const FARRING4 = { x: 6, y: 10 };
 assert.equal(hexDistance(CENTER, FARRING4), 4);
 assert.equal(getTile(FARRING4.x, FARRING4.y).owner, -1, "far ring-4 tile NOT claimed (not adjacent to the dev tile)");
 
-// --- 2. never take a rival's tile; DO claim unowned water -----------------------
+// 2. never take a rival's tile; do claim unowned water
 seedFootprint();
 const RIVAL = { x: 14, y: 10 }, WET = { x: 13, y: 11 };
 getTileMut(RIVAL.x, RIVAL.y).owner = 3; getTileMut(RIVAL.x, RIVAL.y).city = 9;  // rival-owned neighbor of DEV
@@ -99,23 +99,23 @@ claimBufferAt(DEV);
 assert.deepEqual(getTile(RIVAL.x, RIVAL.y), { owner: 3, city: 9 }, "rival neighbor NOT taken");
 assert.deepEqual(getTile(WET.x, WET.y), { owner: ME, city: CITY_ID }, "unowned water neighbor IS claimed");
 
-// --- 3. developing an INNER tile claims nothing (all neighbors already owned) ---
+// 3. developing an inner tile claims nothing (all neighbors already owned)
 seedFootprint();
 assert.equal(claimBufferAt({ x: 10, y: 10 }), 0, "developing the city center claims nothing");
 assert.equal(claimBufferAt({ x: 11, y: 10 }), 0, "developing a ring-1 tile claims nothing");
 
-// --- 4. only OUR development triggers it ----------------------------------------
+// 4. only our development triggers it
 seedFootprint();
 getTileMut(DEV.x, DEV.y).owner = 3;           // pretend the dev tile is a rival's
 assert.equal(claimBufferAt(DEV), 0, "a rival's rural growth does not trigger our buffer");
 
-// --- 5. disabled flag is respected ----------------------------------------------
+// 5. disabled flag is respected
 seedFootprint();
 CONFIG.growthBuffer = false;
 assert.equal(claimBufferAt(DEV), 0, "no-op when disabled");
 CONFIG.growthBuffer = true;
 
-// --- 6. Distant Lands are off-limits before the Exploration age ------------------
+// 6. Distant Lands are off-limits before the Exploration age
 CONFIG.blockDistantLandsBeforeExploration = true;
 seedFootprint();
 distant.clear();

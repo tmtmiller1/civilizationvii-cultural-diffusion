@@ -1,6 +1,6 @@
 // cd-metrics.js
 //
-// Civilization-level cultural signals for the CPI (docs/current-model.md §3). Reads ONLY base-game
+// Civilization-level cultural signals for the CPI (docs/current-model.md §3). Reads only base-game
 // engine surfaces, so the civ multiplier needs no other mod. Every read is defensive: an unreadable
 // subsystem degrades to 0 for that dimension, and cd-cpi drops any dimension that is 0 across all civs.
 //
@@ -123,7 +123,7 @@ function ageDepth() {
 }
 
 /**
- * The eligible MAJOR-civ player id, or NO_OWNER when the player should be skipped (dead, minor,
+ * The eligible major-civ player id, or NO_OWNER when the player should be skipped (dead, minor,
  * idless, or absent from the alive-majors list).
  * @param {*} player Engine player.
  * @param {number[]|null} majorIds Alive-major id list (or null when unavailable).
@@ -164,8 +164,8 @@ function civMetricRow(player, pid, alive, depth) {
 }
 
 /**
- * Gather raw CPI dimensions for every alive MAJOR civ. City-states are excluded (they do
- * not project diffusion pressure) but ARE scanned for suzerainty counts.
+ * Gather raw CPI dimensions for every alive major civ. City-states are excluded (they do
+ * not project diffusion pressure) but are scanned for suzerainty counts.
  * @returns {Map<number, Record<string, number>>} owner id -> raw dimension values.
  */
 export function gatherCivMetrics() {

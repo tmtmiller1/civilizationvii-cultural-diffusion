@@ -1,8 +1,8 @@
 // cd-pressure-lens.js
 //
-// The CULTURAL PRESSURE lens: a read-only map overlay that tints every simulated frontier tile whose
-// LEADING culture differs from its owner in the leader's banner color, deepening as the tile nears
-// capture. Pressure is read off the persisted culture field and scored with the SAME flip gates the
+// The Cultural Pressure lens: a read-only map overlay that tints every simulated frontier tile whose
+// leading culture differs from its owner in the leader's banner color, deepening as the tile nears
+// capture. Pressure is read off the persisted culture field and scored with the same flip gates the
 // pass uses (cd-field pressureVerdict), age-adjusted, so the map and the sim agree. It never touches
 // ownership. Self-registers from its own <UIScripts> entry in the HUD context (LensManager/WorldUI).
 
@@ -34,7 +34,7 @@ function unkey(k) {
 }
 
 /**
- * A COPY of CONFIG with the ownership bar raised for the current age, matching the pass's ageContext
+ * A copy of CONFIG with the ownership bar raised for the current age, matching the pass's ageContext
  * (cd-pass.js), so the verdict the lens computes matches what the pass would decide this turn. Also
  * pulls the player's saved preset into CONFIG first (the HUD isolate boots CONFIG at its shipped defaults).
  * @returns {import("/cultural-diffusion/ui/cd-config.js").CdConfig} Age-adjusted config.
@@ -43,7 +43,7 @@ function ageAdjustedCfg() {
   try {
     applyTunableOverrides();
   } catch (_) {
-    /* Options layer unavailable in this context - fall back to CONFIG defaults. */
+    /* Options layer unavailable in this context; fall back to CONFIG defaults. */
   }
   let bar = 1;
   try {
@@ -151,8 +151,8 @@ function leaderContexts(state, cfg) {
 }
 
 /**
- * Whether the pass could actually TAKE this tile, asking cd-eligibility rather than a private copy of the
- * rules - the lens used to tint a rival's protected core, a war front, a tile out of range or on cooldown,
+ * Whether the pass could actually take this tile, asking cd-eligibility rather than a private copy of the
+ * rules; the lens used to tint a rival's protected core, a war front, a tile out of range or on cooldown,
  * and (once minor settlements gained a protection floor) a city-state's ring-1 that would never resolve.
  * Only asked for tiles our culture leads; a recede cession is the recede step's business, not this gate's.
  * @param {{x:number,y:number}} loc Plot. @param {number} owner Current owner. @param {*} ctx Lens context.
@@ -295,7 +295,7 @@ function toggleLens() {
 /** Introspection for the in-game harness (devtools/harness), which checks the shipped logic directly. */
 export const __test = { pressureTiles };
 
-// -- Self-registration (runs on UIScript load, in the HUD context) --------------------------
+// self-registration (runs on UIScript load, in the HUD context)
 try {
   LensManager.registerLensLayer(LAYER, new PressureLensLayer());
   LensManager.registerLens(LENS, new PressureLens());

@@ -1,7 +1,7 @@
-// tests/civ-tuning.mjs - the bounded per-leader/civ/memento injection variance layer.
+// tests/civ-tuning.mjs: the bounded per-leader/civ/memento injection variance layer.
 import assert from "node:assert/strict";
 
-// Stub the minimal engine surface BEFORE import (mirrors how the mod reads leader/civ/mementos).
+// Stub the minimal engine surface before import (mirrors how the mod reads leader/civ/mementos).
 const players = new Map();
 globalThis.Players = { get: (pid) => players.get(pid) || null };
 globalThis.GameInfo = {
@@ -17,7 +17,7 @@ const { civTuning, NEUTRAL, BY_LEADER, BY_CIV, BY_MEMENTO, __test } =
 const { CONFIG } = await import("/cultural-diffusion/ui/cd-config.js");
 const { LEADER_ROSTER, CIV_ROSTER, MEMENTO_ROSTER } = await import("/cultural-diffusion/ui/cd-civ-roster.js");
 
-// Completeness: every tuned key is a REAL game type (in the roster).
+// Completeness: every tuned key is a real game type (in the roster).
 for (const k of Object.keys(BY_LEADER)) assert.ok(LEADER_ROSTER.includes(k), `${k} is a real leader`);
 for (const k of Object.keys(BY_CIV)) assert.ok(CIV_ROSTER.includes(k), `${k} is a real civilization`);
 for (const k of Object.keys(BY_MEMENTO)) assert.ok(MEMENTO_ROSTER.includes(k), `${k} is a real memento`);
@@ -32,11 +32,11 @@ for (const t of [...Object.values(BY_LEADER), ...Object.values(BY_CIV)]) {
 setPlayer(0, {});
 assert.equal(civTuning(0), NEUTRAL, "untuned player is neutral");
 
-// A pure culture engine is NOT in the table - the composite base flattens it structurally.
+// A pure culture engine is not in the table, the composite base flattens it structurally.
 setPlayer(1, { civ: "CIVILIZATION_GREECE" });
 assert.equal(civTuning(1), NEUTRAL, "culture engines are handled by the composite, not damped here");
 
-// A territory-redundant civ IS damped (< 1).
+// A territory-redundant civ is damped (< 1).
 setPlayer(6, { civ: "CIVILIZATION_MONGOLIA" });
 assert.ok(civTuning(6).injectionScale < 1, "territory-redundant civ is damped");
 

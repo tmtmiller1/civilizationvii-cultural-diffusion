@@ -1,18 +1,16 @@
 // cd-probe-api.js
 //
-// Thin, single-player-guarded wrappers around the plot-ownership engine calls the
-// Cultural Diffusion mod would use. This is the ONE place the probe touches the
-// engine, so any API drift is a one-file fix. All calls are verified against the
-// shipping 1.4.1 UI and the published cheat panels:
-//   - WorldBuilder.MapPlots.setOwnership(playerId, {x,y})   (base tuner-input.js:96,206)
-//   - city.purchasePlot({x,y})                               (tuner City-panel PurchasePlot)
-//   - Game.CityCommands.canStart/sendRequest(id, EXPAND, {X,Y})  (native adjacency grow)
-//   - GameplayMap.getOwningCityFromXY(x,y) -> city ComponentID   (emigration-events.js)
-//   - GameplayMap.getPlotIndicesInRadius / getLocationFromIndex  (radius enumeration)
+// Single-player-guarded wrappers around the plot-ownership engine calls the mod would use.
+// The probe touches the engine only here, so API drift is a one-file fix. Call shapes come
+// from the shipping 1.4.1 UI and the published cheat panels:
+//   WorldBuilder.MapPlots.setOwnership(playerId, {x,y})       base tuner-input.js:96,206
+//   city.purchasePlot({x,y})                                   tuner City-panel PurchasePlot
+//   Game.CityCommands.canStart/sendRequest(id, EXPAND, {X,Y})  native adjacency grow
+//   GameplayMap.getOwningCityFromXY(x,y) -> city ComponentID   emigration-events.js
+//   GameplayMap.getPlotIndicesInRadius / getLocationFromIndex  radius enumeration
 //
-// Ambient engine globals (Players, Cities, Game, GameContext, GameplayMap,
-// WorldBuilder, Configuration, UI, PlayerIds) are provided by the UI isolate and
-// need no import.
+// Engine globals (Players, Cities, Game, GameContext, GameplayMap, WorldBuilder,
+// Configuration, UI, PlayerIds) come from the UI isolate and need no import.
 
 import { emitLine } from "./cd-probe-emit.js";
 
@@ -22,7 +20,7 @@ function safe(fn, fallback) {
   try { return fn(); } catch (_) { return fallback; }
 }
 
-// --- Single-player guard (same detection as the cheat panel) --------------
+// single-player guard, same detection as the cheat panel
 export function isMultiplayer() {
   return safe(() => {
     const cfg = (typeof Configuration !== "undefined") ? Configuration.getGame?.() : null;
@@ -44,7 +42,7 @@ export function localPlayerId() {
   return safe(() => GameContext.localPlayerID, -1);
 }
 
-// --- Reads ----------------------------------------------------------------
+// reads
 
 // Owning city ComponentID at a plot (null if unowned, undefined if unavailable).
 export function owningCityIdAt(loc) {
@@ -72,7 +70,7 @@ export function mapDims() {
   }, null);
 }
 
-// All plot {x,y} within `r` rings of a center, using the verified index helpers.
+// All plot {x,y} within `r` rings of a center.
 export function plotsInRadius(center, r) {
   return safe(() => {
     if (!GameplayMap?.getPlotIndicesInRadius) return [];

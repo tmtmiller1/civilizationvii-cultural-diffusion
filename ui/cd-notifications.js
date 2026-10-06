@@ -54,7 +54,7 @@ function localId() {
 }
 
 /**
- * Notify that a plot changed hands. The local player hears about a tile they GAINED and a tile they LOST (to
+ * Notify that a plot changed hands. The local player hears about a tile they gained and a tile they lost (to
  * another civilization's culture or its army); a change between two other civilizations is only logged.
  * Coalesces multiple changes in the same turn into a single throttled toast, but logs each individually.
  * @param {Object} args Flip.
@@ -75,7 +75,7 @@ export function notifyFlip({ x, y, wasOwner, newOwner }) {
   }
   _pendingThisTurn++;
   if (_pendingThisTurn === 1) {
-    // First change of the turn - one summary toast.
+    // First change of the turn: one summary toast.
     raiseToast(gained
       ? "Cultural Diffusion: your culture has claimed new territory."
       : "Cultural Diffusion: another civilization has taken one of your tiles.");

@@ -2,16 +2,16 @@
 //
 // Civilopedia page-resolution gate: every page the mod adds must actually have text to draw.
 //
-// The pedia resolves a chaptered page's body WITHOUT any database row: for each chapter of the page's layout it
+// The pedia resolves a chaptered page's body without any database row: for each chapter of the page's layout it
 // looks for that chapter's paragraphs by key convention and stops at the first gap (base-standard
-// ui/civilopedia/model-civilopedia.js, getChapterBody → findChapterTextKey):
+// ui/civilopedia/model-civilopedia.js: getChapterBody → findChapterTextKey):
 //
 //     <prefix>_CHAPTER_<chapter>_BODY            one paragraph, or
 //     <prefix>_CHAPTER_<chapter>_PARA_1, _PARA_2, …   until a number is missing
 //
 // where <prefix> is tried as LOC_PEDIA_<section>_PAGE_<page>, then LOC_PEDIA_<section>_PAGE, then
 // LOC_PEDIA_PAGE_<page>, then LOC_PEDIA_PAGE. A chapter with no text is skipped silently and a page whose
-// chapters are all empty renders as a title with nothing under it — no error, no log line, nothing to notice
+// chapters are all empty renders as a title with nothing under it: no error, no log line, nothing to notice
 // short of opening the page in game. The same is true of a mistyped page Name. So this gate walks the shipped
 // data exactly as the engine does and fails on a page that would come up blank, a paragraph sequence with a hole
 // in it (PARA_1 and PARA_3 silently drops PARA_3), a layout or page group that is referenced but never defined,
@@ -20,7 +20,7 @@
 // It also checks the search terms (every Term key has text and names a real page) and that each page and group
 // title fits the sidebar, which truncates long names with an ellipsis.
 //
-// It does NOT prove the engine draws them; only opening the Civilopedia in game does that. It proves the mod's
+// It does not show the engine draws them; only opening the Civilopedia in game does that. It covers the mod's
 // side of the contract. Ported from the Emigration mod's gate of the same name.
 //
 // Run as a plain node script (no engine loader needed): `node ./tests/pedia-pages.mjs`.
@@ -83,7 +83,7 @@ const BASE_GROUPS = ["CONCEPTS|SETTLEMENTS"];
 // Longest sidebar name that draws without an ellipsis ("Notifications & the City R..." was cut at 26).
 const MAX_TAB_CHARS = 24;
 
-// Base-game layouts the mod reuses rather than defines. "Concept" is a single CONTENT chapter
+// Base-game layouts the mod reuses rather than defines. "Concept" is a single content chapter
 // (base-standard/data/civilopedia.xml), so a page on it needs an explicit paragraph row.
 const BASE_LAYOUTS = { Concept: ["CONTENT"] };
 
@@ -114,7 +114,7 @@ function conventionParagraphs(page, chapter) {
     const found = [];
     for (let i = 1; defined.has(`${stem}_PARA_${i}`); i++) found.push(`${stem}_PARA_${i}`);
     // A hole in the sequence is silent data loss: the engine stops at the gap and never reads past it. This has
-    // to run even when NOTHING was found, because the commonest way to make the hole is to lose PARA_1 itself,
+    // to run even when nothing was found, because the commonest way to make the hole is to lose PARA_1 itself,
     // which strands the whole chapter while leaving its text in the file.
     const stranded = [];
     for (let i = found.length + 2; i <= found.length + 20; i++) if (defined.has(`${stem}_PARA_${i}`)) stranded.push(i);

@@ -1,8 +1,8 @@
-// cdh-game-run5.js - game scope, deployed as ui/cdh-game.js. Crash disproof run 5 (dev only).
+// cdh-game-run5.js: game scope, deployed as ui/cdh-game.js. Crash disproof run 5 (dev only).
 //
 // Question: does playing AugustusAnt136 through the Antiquity -> Exploration transition with Cultural Diffusion
-// ENABLED crash, with NO harness test actions? Run 3 crashed about 30s into the new age's startup, before GameStarted.
-// The Emigration session played the same transition with Cultural Diffusion DISABLED and did not crash. Run 3's
+// enabled crash, with no harness test actions? Run 3 crashed about 30s into the new age's startup, before GameStarted.
+// The Emigration session played the same transition with Cultural Diffusion disabled and did not crash. Run 3's
 // autosaves have rotated out, so this replays run 3's route from the turn-136 save:
 //   Antiquity: press Begin, then end every turn exactly as run 3 did (sendTurnComplete, falling back to a one-turn
 //     Autoplay when a blocker persists), and nothing else, until the age ends.
@@ -24,7 +24,7 @@ function loadStateName() {
   return safe(() => { const s = UI.getGameLoadingState(); for (const k of Object.keys(UIGameLoadingState)) if (UIGameLoadingState[k] === s) return k; return String(s); }, "?");
 }
 
-// Game-scope check of the Options fix, run only AFTER the crash test is over so it cannot disturb the isolation.
+// Game-scope check of the Options fix, run only after the crash test is over so it cannot disturb the isolation.
 function optionsCheck(where) {
   try {
     const ids = ["cd-preset", "cd-growth-buffer", "cd-recede", "cd-debug"];
@@ -41,7 +41,7 @@ function optionsCheck(where) {
   } catch (e) { emit("OPTIONS check threw " + e); }
 }
 
-// --- Antiquity: end turns exactly as run 3 did, nothing else --------------------------------------------------------
+// Antiquity: end turns exactly as run 3 did, nothing else
 let mode = "loading";
 let local = -1;
 let endTurnTimer = null;
@@ -85,7 +85,7 @@ engine.on("PlayerTurnActivated", (d) => {
   setTimeout(endTurn, 8000);
 });
 
-// --- Exploration: press Begin only, then watch -----------------------------------------------------------------------
+// Exploration: press Begin only, then watch
 function explorationWatch() {
   mode = "exploration";
   emit(`E1 new age started turn=${safe(() => Game.turn)} age=${ageType()} since=${since()}`);

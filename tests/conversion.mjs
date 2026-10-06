@@ -1,6 +1,6 @@
-// tests/conversion.mjs - the engine-facing half of conversion (cd-conversion.js): constructible ids resolve to type
+// tests/conversion.mjs: the engine-facing half of conversion (cd-conversion.js): constructible ids resolve to type
 // names through Constructibles.get + GameInfo.Constructibles.lookup, traditions and the ideology through the
-// owner's Culture component, array-LIKE lists are iterated, and every unreadable surface degrades to the base rate.
+// owner's Culture component, array-like lists are iterated, and every unreadable surface degrades to the base rate.
 import assert from "node:assert/strict";
 
 const instances = new Map(); // constructible id -> { type }
@@ -26,7 +26,7 @@ globalThis.Players = {
 const { cityConstructibleTypes, playerCultureTypes, conversionRate } =
   await import("/cultural-diffusion/ui/cd-conversion.js");
 
-// An array-LIKE id list (no Array.prototype), as the engine hands back.
+// An array-like id list (no Array.prototype), as the engine hands back.
 instances.set("c1", { type: 101 }); instances.set("c2", { type: 102 }); instances.set("c3", { type: 103 });
 types.set(101, "BUILDING_LIBRARY"); types.set(102, "BUILDING_GRANARY");
 const ids = { 0: "c1", 1: "c2", 2: "c3", length: 3, [Symbol.iterator]: function* () { yield "c1"; yield "c2"; yield "c3"; } };
