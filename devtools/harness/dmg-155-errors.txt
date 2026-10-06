@@ -1,0 +1,5 @@
+[2026-10-06 14:50:30]	HTML Parser Error@:fs://game/root-game.html@1:2043: Premature end of file  Currently open tags: html, div, div..
+[2026-10-06 14:50:30]	HTML Parser Error@:fs://game/root-game.html@1:2043: Premature end of file  Currently open tags: html, div, div..
+[2026-10-06 14:50:47]	HTML Parser Error@:fs://game/root-game.html@49:43: Tokenizer error with an unimplemented error message.
+[2026-10-06 14:50:47]	Unhandled Promise Rejection: TypeError: Cannot read properties of null (reading 'cityId').  Re-run with inspector attached for callstack. 
+[2026-10-06 14:50:47]	Unhandled rejection error value: TypeError: Cannot read properties of null (reading 'cityId')

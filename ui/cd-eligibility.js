@@ -22,6 +22,7 @@ import { rivalClaimAllowed } from "/cultural-diffusion/ui/cd-borders.js";
 import { wouldStrandForeignUnit } from "/cultural-diffusion/ui/cd-units.js";
 import { isPending } from "/cultural-diffusion/ui/cd-pending.js";
 import { districtTransferPaused } from "/cultural-diffusion/ui/cd-age-guard.js";
+import { plotInventory, flipRefusedFor } from "/cultural-diffusion/ui/cd-teardown.js";
 
 /** @param {number} x @param {number} y @returns {string} Plot key. */
 function key(x, y) {
@@ -142,6 +143,12 @@ export function claimInScope(loc, ctx) {
 export function claimGateBlocked(loc, owner, me, cfg, inFlight) {
   if (distantLandsGated(loc, me)) return "distant-lands";
   if (owner >= 0 && !rivalClaimAllowed(loc, owner, me, cfg)) return "protected-or-at-war";
+  // Culture moves rural land: an urban district, a city center or a wonder stays with its city. The same test
+  // performFlip applies last, read here so the pass, the lens and the hover readout never offer such a tile.
+  if (owner >= 0) {
+    const refused = flipRefusedFor(plotInventory(loc));
+    if (refused) return refused;
+  }
   if (districtTransferPaused(loc, owner)) return "age-transition";
   if (cfg.requireAdjacency && !adjacentToMe(loc, me)) return "not-adjacent";
   if (wouldStrandForeignUnit(loc, me, inFlight)) return "would-strand-a-unit";

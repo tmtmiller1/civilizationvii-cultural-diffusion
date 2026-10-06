@@ -125,6 +125,55 @@ The same question did turn up two real gaps, both now fixed: ships (water is the
 land units (40 on the test map, reading `DOMAIN_LAND` while afloat). Neither has been run end to end, because no map
 offered a bay fixture, so they rest on off-engine tests plus direct reads against ships in game.
 
+## [Fixed, watched twice · 2026-10-06] Every flip of an improved tile damaged the save; the next age change crashed
+
+The two entries below were right about the crash and wrong about the mechanism. Watched on game 1.5.0 with the
+harness (`devtools/harness/`, logs named here), with every mod off unless stated:
+
+- `city.purchasePlot` on a rival's tile that carries a rural district destroys the district and the improvement, and
+  leaves the plot's `MapCities.getDistrict` pointing at a district record for the BUYER that is never completed
+  (`Districts.get` returns null; the id carries the buyer's player id). 6 of 8 such moves, `dflip-district1`; bare
+  tiles 0 of 8. The record persists across turns, and bz-map-trix's religion layer throws on it.
+- A game that has collected enough of these crashes the Antiquity->Exploration setup, AsyncWorker1 0x308, frames
+  `+0xac64a0 +0xb01210 +0xb11124`. The shipped 1.4.1 (`amsoak-ant1`) and the released 1.5.0 (`cd150-ant1`) both did,
+  from `AugustusAnt136`. The turn-155 autosave of that run crashes with no mod and no further move (`a155-none`), so
+  the guards cannot help: the damage is done mid-age, long before any countdown.
+- Repairing the tiles in place afterwards does not help: `CREATE_ELEMENT DISTRICT_RURAL`, with or without the
+  engine-chosen improvement, or after destroying the half-made record by its id, clears every pointer and then the
+  transition crashes elsewhere (0x210, `+0xc7bd68`; `dangle-heal-1`, `a155-heal`, `a155-heal2`, `a155-heal3`). Moving
+  the damaged tiles to a neighbour does help (`dangle-clear-1/-2`, 2 of 2), which pointed at the purchase itself.
+- The flip-method A/B (`flipfix-*`, 4 improved rival tiles a turn from turn 136, 53-56 moves, then the transition):
+  `plain` purchasePlot crashed (43 damaged); purchasePlot then rebuild crashed (every tile read whole); DESTROY_ELEMENT
+  of the constructibles and the district first, then purchasePlot, then CREATE_ELEMENT of the district and the
+  original improvement passed, 2 of 2, every tile keeping its farm or mine; demolish-then-buy with no rebuild passed too.
+  So the damage happens inside a purchase of a tile that still has a district, and tearing it down first is the fix.
+
+The fix is `ui/cd-teardown.js`, called from `performFlip` (every flip path): a tile with a district or an improvement
+is torn down with the engine's own DESTROY_ELEMENT, bought once the teardown shows on the map, and the district and
+the original improvement are recreated for the new owner, so a farm arrives as a farm (the improvement used to vanish
+on every flip). Urban districts, city centers and wonders are refused outright. `tests/flip-teardown.mjs` pins the
+order and the refusals. Watched once (`cdfix-ant1`, the shipped mod with the fix, `AugustusAnt136` turn 136 into
+Exploration turn 16): no crash, 199 flips, 23 improved tiles moved by teardown, 21 of them rebuilt with their
+improvement, 60 urban tiles refused, no half-made district left on the map. Two buys never landed and left the previous
+owner a bare tile; the chain now gives such a tile back to its owner, improvement included (`restored` in the log).
+Replicate with the final code (`cdfix-ant2`, same save): no crash, 189 flips, 29 improved tiles moved by teardown, 28
+rebuilt, the one buy that never landed restored to its owner with its camp. The urban/center/wonder refusal now sits in
+the shared claim gate too, so the pass, the lens and the hover readout never offer such a tile.
+
+Still open: a save that already holds damaged tiles has no in-place repair. `DESTROY_ELEMENT` by the half-made record's
+id is a no-op (`a155-heal3b`: all 21 pointers unchanged), and every rebuild on top crashes the transition. The only
+watched repair is buying the tile again: moving it to a neighbouring civilization cleared 22 of 24 and the transition
+passed (`dangle-clear-1/-2`, and `a155-landmine`: 3 of 3). A city of the tile's own owner cannot buy it back
+(`a155-rebuy`: no-op). Flipping the tile away and then back to its owner, by the same city or by another city of
+theirs, brings every pointer back (`a155-flipflip`, `a155-flipflip2`: 21 of 21 and 18 of 18), so the stale record is
+the PLAYER's for that plot, and no repair within the age keeps the owner. The age transition itself purges most of it:
+after ceding the 21 tiles and crossing into Exploration, the original owners bought all 21 back and only 2 showed the
+record again (`a155-landmine`; those were plain purchases, possibly of tiles the transition had re-improved). So the
+only heal for a save made with 1.4.1 or 1.5.0 would be to cede its damaged tiles to a neighbouring civilization before
+the age ends and win them back after it. `PlayerOperationTypes.LAND_CLAIM`, the engine's own plot-transfer verb, needs
+a Legatus charge and refuses a script (`landclaim-155`). Decision 2026-10-06: 1.5.1 ships the fix without a heal, and
+the changelog says that such saves cannot be repaired.
+
 ## [Fixed, watched once · 2026-10-06] Age-transition crash from district tiles changing hands
 
 **Watched 2026-10-06** (runs from `CDH-Ant159.Civ7Save`, one turn before Antiquity ends):

@@ -4,6 +4,28 @@ All notable changes to Cultural Diffusion are recorded here. The format follows
 [Keep a Changelog](https://keepachangelog.com/), and the mod uses
 [Semantic Versioning](https://semver.org/).
 
+## [1.5.1] - 2026-10-06
+
+### Fixed
+
+- The age-change crash, at its source. Every time culture moved a farm, mine or other improved tile between
+  civilizations, the engine's purchase destroyed the improvement and left the tile half-attached to its new owner; a
+  game that had collected enough such tiles crashed while setting up the next age, and the 1.4.1 and 1.5.0 guards
+  could not prevent it because the damage was done mid-age. Improved tiles are now demolished before they change
+  hands and rebuilt for their new owner, improvement included: a farm that flips is still a farm, now worked by the
+  city that won it. Watched through the Antiquity-to-Exploration change four times, with up to 199 flips a game.
+- Culture no longer moves urban districts, city centers or wonders. Buildings stay with their city.
+
+### Known issue: games played with 1.4.1 or 1.5.0
+
+A save in which those versions already moved improved tiles still carries the damage, and no repair exists: the
+broken record belongs to the owning player and the engine exposes no way to clear it short of the tile changing
+civilizations before the age ends. Rebuilding the tile, destroying the record or buying the tile back all left the
+crash in place in testing. If such a game crashes while an age ends, the tiles at fault are the ones culture took
+from a rival since 1.4.1; starting the age change with "Claim empty land only" on does not help, because the damage
+is already in the save. Games started on 1.5.1, and saves in which no rival improved tile has yet changed hands, are
+not affected.
+
 ## [1.5.0] - 2026-10-06
 
 ### Added

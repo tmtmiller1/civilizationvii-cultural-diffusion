@@ -1,0 +1,20 @@
+[2026-10-06 17:15:47]	JS Error (Stack): Error: Expected this.unit to be non-null.
+[2026-10-06 17:15:51]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags.js:348: Error: Expected this.unit to be non-null.
+[2026-10-06 17:15:51]	JS Error (Line):       throw new Error(`Expected this.unit to be non-null.`);
+[2026-10-06 17:15:51]	JS Error (Stack): Error: Expected this.unit to be non-null.
+[2026-10-06 17:16:00]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags.js:348: Error: Expected this.unit to be non-null.
+[2026-10-06 17:16:00]	JS Error (Line):       throw new Error(`Expected this.unit to be non-null.`);
+[2026-10-06 17:16:00]	JS Error (Stack): Error: Expected this.unit to be non-null.
+[2026-10-06 17:16:04]	HTML Parser Error@:fs://game/root-game.html@1:25: Premature end of file  Currently open tags: html, div..
+[2026-10-06 17:16:04]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags.js:348: Error: Expected this.unit to be non-null.
+[2026-10-06 17:16:04]	JS Error (Line):       throw new Error(`Expected this.unit to be non-null.`);
+[2026-10-06 17:16:04]	JS Error (Stack): Error: Expected this.unit to be non-null.
+[2026-10-06 17:16:07]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags.js:348: Error: Expected this.unit to be non-null.
+[2026-10-06 17:16:07]	JS Error (Line):       throw new Error(`Expected this.unit to be non-null.`);
+[2026-10-06 17:16:07]	JS Error (Stack): Error: Expected this.unit to be non-null.
+[2026-10-06 17:16:09]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags.js:348: Error: Expected this.unit to be non-null.
+[2026-10-06 17:16:09]	JS Error (Line):       throw new Error(`Expected this.unit to be non-null.`);
+[2026-10-06 17:16:09]	JS Error (Stack): Error: Expected this.unit to be non-null.
+[2026-10-06 17:16:47]	HTML Parser Error@:fs://game/root-game.html@49:43: Tokenizer error with an unimplemented error message.
+[2026-10-06 17:16:47]	Unhandled Promise Rejection: TypeError: Cannot read properties of null (reading 'cityId').  Re-run with inspector attached for callstack. 
+[2026-10-06 17:16:47]	Unhandled rejection error value: TypeError: Cannot read properties of null (reading 'cityId')

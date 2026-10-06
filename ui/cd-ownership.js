@@ -6,7 +6,8 @@
 // leaves an orphan (owned but city-less, unworkable, blocks base-game growth) and serves `unclaim`.
 
 import { isMultiplayer } from "/cultural-diffusion/ui/cd-plots.js";
-import { log } from "/cultural-diffusion/ui/cd-log.js";
+import { log, dlog } from "/cultural-diffusion/ui/cd-log.js";
+import { plotInventory, flipRefusedFor, needsTeardown, flipWithTeardown } from "/cultural-diffusion/ui/cd-teardown.js";
 
 /**
  * @param {()=>*} fn Thunk. @param {*} fallback @returns {*} fn() or fallback.
@@ -155,13 +156,20 @@ export function unclaim(loc) {
  * For the default integrated verb (`purchasePlot`) there is no setOwnership fallback,
  * since that would re-introduce the orphan tile. A failed purchase skips the tile this turn
  * and the pass retries.
+ *
+ * A tile that carries a district or an improvement is not bought as it stands: the purchase would destroy them and
+ * leave the save damaged (cd-teardown.js). It is torn down first, bought once the teardown shows, and rebuilt for
+ * the new owner with its improvement; the purchase then happens a few seconds after this call, and the caller
+ * books the flip as pending from the same-tick owner read as it already does. Urban districts, city centers and
+ * wonders are refused: culture moves rural land.
  * @param {Object} args Flip arguments.
  * @param {number} args.playerId New owner.
  * @param {*} args.city Nearest owned city of the new owner (required for purchasePlot).
  * @param {{x:number,y:number}} args.loc Plot.
  * @param {string} args.verb "purchasePlot" | "setOwnership".
  * @param {boolean} [args.refund] Refund purchasePlot's gold cost the same tick (default true).
- * @returns {{ok:boolean, reason:string, verb:string, cost?:number}} Result.
+ * @returns {{ok:boolean, reason:string, verb:string, cost?:number, settled?:Promise<*>}} Result; `settled` reports
+ *   the teardown chain's outcome when the tile needed one.
  */
 export function performFlip({ playerId, city, loc, verb, refund = true }) {
   if (verb === "setOwnership") {
@@ -169,7 +177,34 @@ export function performFlip({ playerId, city, loc, verb, refund = true }) {
   }
   // Default: the integrated verb. No orphan-producing fallback (see above).
   if (!city) return { ok: false, reason: "no-city", verb: "purchasePlot" };
-  return { ...flipViaPurchasePlotRefunded(playerId, city, loc, refund !== false), verb: "purchasePlot" };
+  const inv = plotInventory(loc);
+  const refused = flipRefusedFor(inv);
+  if (refused) return { ok: false, reason: refused, verb: "purchasePlot" };
+  if (!needsTeardown(inv)) {
+    return { ...flipViaPurchasePlotRefunded(playerId, city, loc, refund !== false), verb: "purchasePlot" };
+  }
+  return flipImprovedTile(playerId, city, loc, refund !== false, inv);
+}
+
+/**
+ * The improved-tile branch of performFlip: teardown, buy, rebuild (cd-teardown.js). Returns at once with the
+ * chain's promise under `settled`; the purchase itself goes out a few seconds later.
+ * @param {number} playerId New owner. @param {*} city City object or id. @param {{x:number,y:number}} loc Plot.
+ * @param {boolean} refund Whether to refund the buy's gold. @param {*} inv The plot inventory already read.
+ * @returns {{ok:boolean, reason:string, verb:string, cost?:number, settled?:Promise<*>}} Result.
+ */
+function flipImprovedTile(playerId, city, loc, refund, inv) {
+  if (!guardSP()) return { ok: false, reason: "guard", verb: "purchasePlot" };
+  const cityObj = typeof city?.purchasePlot === "function" ? city : safe(() => Cities?.get?.(city), null);
+  if (typeof cityObj?.purchasePlot !== "function") return { ok: false, reason: "no-api", verb: "purchasePlot" };
+  const settled = flipWithTeardown({
+    loc, playerId, city: cityObj, inv,
+    buy: () => flipViaPurchasePlotRefunded(playerId, cityObj, loc, refund)
+  });
+  settled.then((r) => dlog(`flip ${loc.x},${loc.y} with teardown: torn=${r.torn} cleared=${r.cleared} ` +
+    `buy=${r.buy.reason} landed=${r.landed} rebuilt=${r.rebuilt} restored=${r.restored} ` +
+    `improvement=${r.improvement || "none"}`));
+  return { ok: true, reason: "teardown-purchase", verb: "purchasePlot", cost: 0, settled };
 }
 
 export { log };

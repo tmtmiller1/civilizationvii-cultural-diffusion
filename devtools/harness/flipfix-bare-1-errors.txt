@@ -1,0 +1,20 @@
+[2026-10-06 15:31:40]	JS Error (Stack): Error: Expected this.unit to be non-null.
+[2026-10-06 15:31:40]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags.js:348: Error: Expected this.unit to be non-null.
+[2026-10-06 15:31:40]	JS Error (Line):       throw new Error(`Expected this.unit to be non-null.`);
+[2026-10-06 15:31:40]	JS Error (Stack): Error: Expected this.unit to be non-null.
+[2026-10-06 15:31:40]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags.js:348: Error: Expected this.unit to be non-null.
+[2026-10-06 15:31:40]	JS Error (Line):       throw new Error(`Expected this.unit to be non-null.`);
+[2026-10-06 15:31:40]	JS Error (Stack): Error: Expected this.unit to be non-null.
+[2026-10-06 15:31:41]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags.js:348: Error: Expected this.unit to be non-null.
+[2026-10-06 15:31:41]	JS Error (Line):       throw new Error(`Expected this.unit to be non-null.`);
+[2026-10-06 15:31:41]	JS Error (Stack): Error: Expected this.unit to be non-null.
+[2026-10-06 15:31:41]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags.js:348: Error: Expected this.unit to be non-null.
+[2026-10-06 15:31:41]	JS Error (Line):       throw new Error(`Expected this.unit to be non-null.`);
+[2026-10-06 15:31:41]	JS Error (Stack): Error: Expected this.unit to be non-null.
+[2026-10-06 15:31:41]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags.js:348: Error: Expected this.unit to be non-null.
+[2026-10-06 15:31:41]	JS Error (Line):       throw new Error(`Expected this.unit to be non-null.`);
+[2026-10-06 15:31:41]	JS Error (Stack): Error: Expected this.unit to be non-null.
+[2026-10-06 15:31:41]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags.js:348: Error: Expected this.unit to be non-null.
+[2026-10-06 15:31:41]	JS Error (Line):       throw new Error(`Expected this.unit to be non-null.`);
+[2026-10-06 15:31:41]	JS Error (Stack): Error: Expected this.unit to be non-null.
+[2026-10-06 15:32:19]	HTML Parser Error@:fs://game/root-game.html@49:43: Tokenizer error with an unimplemented error message.
