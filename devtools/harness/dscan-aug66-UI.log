@@ -1,0 +1,10 @@
+[2026-10-06 13:13:58]	[CDH] shell attached 
+[2026-10-06 13:13:59]	[CDH] shell query complete 
+[2026-10-06 13:14:00]	[CDH] shell found AugustusExp66.Civ7Save turn 66 age AGE_EXPLORATION missingMods=0 unowned=0 
+[2026-10-06 13:14:00]	[CDH] shell handleLoadSave returned true 
+[2026-10-06 13:14:18]	[CDH] attached district-scan 
+[2026-10-06 13:14:23]	[CDH] LOAD GameStarted 
+[2026-10-06 13:14:33]	[CDH] DSCAN start turn=66 age=AGE_EXPLORATION 
+[2026-10-06 13:14:33]	[CDH] SCAN T0: grid=96x60 plotsWithDistrictId=1062 dangling=0 villages(noCity)=58 
+[2026-10-06 13:14:54]	[CDH] SCAN T1: grid=96x60 plotsWithDistrictId=1061 dangling=0 villages(noCity)=58 
+[2026-10-06 13:14:54]	[CDH] RELIGION events so far 0 

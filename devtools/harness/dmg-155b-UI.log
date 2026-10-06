@@ -1,0 +1,72 @@
+[2026-10-06 14:52:15]	[CDH] shell attached 
+[2026-10-06 14:52:16]	[CDH] shell query complete 
+[2026-10-06 14:52:16]	[CDH] shell found CDH-AM-Ant155.Civ7Save turn 155 age AGE_ANTIQUITY missingMods=0 unowned=0 
+[2026-10-06 14:52:16]	[CDH] shell handleLoadSave returned true 
+[2026-10-06 14:52:41]	[CDH] attached damage-read 
+[2026-10-06 14:52:55]	[CDH] DAMAGE turn=155 dangling=21 
+[2026-10-06 14:52:55]	[CDH] TILE 85,18 owner=3 id={"owner":3,"id":6160473,"type":4} idOwnerPlayer=3 owningCity=p3:Hilo inDistrictListOf=[] inPurchasedPlotsOf=["p3:Hilo"] cons=0 districtAtLoc=null idAtLoc={"owner":-1,"id":-1,"type":0} 
+[2026-10-06 14:52:55]	[CDH] TILE 87,18 owner=3 id={"owner":3,"id":5636177,"type":4} idOwnerPlayer=3 owningCity=p3:Hilo inDistrictListOf=[] inPurchasedPlotsOf=["p3:Hilo"] cons=0 districtAtLoc=null idAtLoc={"owner":-1,"id":-1,"type":0} 
+[2026-10-06 14:52:55]	[CDH] TILE 86,19 owner=3 id={"owner":3,"id":4980807,"type":4} idOwnerPlayer=3 owningCity=p3:Lihu'e inDistrictListOf=[] inPurchasedPlotsOf=["p3:Lihu'e"] cons=0 districtAtLoc=null idAtLoc={"owner":-1,"id":-1,"type":0} 
+[2026-10-06 14:52:55]	[CDH] TILE 85,21 owner=3 id={"owner":3,"id":5111881,"type":4} idOwnerPlayer=3 owningCity=p3:Lihu'e inDistrictListOf=[] inPurchasedPlotsOf=["p3:Lihu'e"] cons=0 districtAtLoc=null idAtLoc={"owner":-1,"id":-1,"type":0} 
+[2026-10-06 14:52:55]	[CDH] TILE 87,21 owner=3 id={"owner":3,"id":5767251,"type":4} idOwnerPlayer=3 owningCity=p3:Lihu'e inDistrictListOf=[] inPurchasedPlotsOf=["p3:Lihu'e"] cons=0 districtAtLoc=null idAtLoc={"owner":-1,"id":-1,"type":0} 
+[2026-10-06 14:52:55]	[CDH] TILE 88,22 owner=3 id={"owner":3,"id":5898325,"type":4} idOwnerPlayer=3 owningCity=p3:Lihu'e inDistrictListOf=[] inPurchasedPlotsOf=["p3:Lihu'e"] cons=0 districtAtLoc=null idAtLoc={"owner":-1,"id":-1,"type":0} 
+[2026-10-06 14:52:55]	[CDH] TILE 84,29 owner=0 id={"owner":0,"id":327683,"type":4} idOwnerPlayer=0 owningCity=p0:Birmingham inDistrictListOf=[] inPurchasedPlotsOf=["p0:Birmingham"] cons=0 districtAtLoc=null idAtLoc={"owner":-1,"id":-1,"type":0} 
+[2026-10-06 14:52:55]	[CDH] TILE 84,30 owner=0 id={"owner":0,"id":393220,"type":4} idOwnerPlayer=0 owningCity=p0:Birmingham inDistrictListOf=[] inPurchasedPlotsOf=["p0:Birmingham"] cons=0 districtAtLoc=null idAtLoc={"owner":-1,"id":-1,"type":0} 
+[2026-10-06 14:52:55]	[CDH] TILE 81,31 owner=0 id={"owner":0,"id":3932212,"type":4} idOwnerPlayer=0 owningCity=p0:Megiddo inDistrictListOf=[] inPurchasedPlotsOf=["p0:Megiddo"] cons=0 districtAtLoc=null idAtLoc={"owner":-1,"id":-1,"type":0} 
+[2026-10-06 14:52:55]	[CDH] TILE 82,31 owner=0 id={"owner":0,"id":4063286,"type":4} idOwnerPlayer=0 owningCity=p0:Megiddo inDistrictListOf=[] inPurchasedPlotsOf=["p0:Megiddo"] cons=0 districtAtLoc=null idAtLoc={"owner":-1,"id":-1,"type":0} 
+[2026-10-06 14:52:55]	[CDH] TILE 83,31 owner=0 id={"owner":0,"id":4128823,"type":4} idOwnerPlayer=0 owningCity=p0:Birmingham inDistrictListOf=[] inPurchasedPlotsOf=["p0:Birmingham"] cons=0 districtAtLoc=null idAtLoc={"owner":-1,"id":-1,"type":0} 
+[2026-10-06 14:52:55]	[CDH] TILE 80,32 owner=0 id={"owner":0,"id":4390950,"type":4} idOwnerPlayer=0 owningCity=p0:Megiddo inDistrictListOf=[] inPurchasedPlotsOf=["p0:Megiddo"] cons=0 districtAtLoc=null idAtLoc={"owner":-1,"id":-1,"type":0} 
+[2026-10-06 14:52:55]	[CDH] CITY near-dangling p3 Hilo@81,18 pop(u/r)=17/5/12 purchased=43 ppDangling=2 ppOwnedByOthers=0 ppOwningCityMismatch=0 districtIds=16 unresolvable=0 districtLocs=16 workers=4 workersOnForeignPlots=0 keysWorkers=PlotIndex,CityID,NumWorkers,MaxWorkers,IsBlocked,CurrentYields,CurrentMaintenance,NextYields,NextMaintenance 
+[2026-10-06 14:52:55]	[CDH] CITY near-dangling p3 Lihu'e@82,23 pop(u/r)=10/1/9 purchased=39 ppDangling=4 ppOwnedByOthers=0 ppOwningCityMismatch=0 districtIds=9 unresolvable=0 districtLocs=9 workers=1 workersOnForeignPlots=0 keysWorkers=PlotIndex,CityID,NumWorkers,MaxWorkers,IsBlocked,CurrentYields,CurrentMaintenance,NextYields,NextMaintenance 
+[2026-10-06 14:52:55]	[CDH] CITY near-dangling p0 Birmingham@87,32 pop(u/r)=23/6/17 purchased=45 ppDangling=4 ppOwnedByOthers=0 ppOwningCityMismatch=0 districtIds=21 unresolvable=0 districtLocs=21 workers=4 workersOnForeignPlots=0 keysWorkers=PlotIndex,CityID,NumWorkers,MaxWorkers,IsBlocked,CurrentYields,CurrentMaintenance,NextYields,NextMaintenance 
+[2026-10-06 14:52:55]	[CDH] CITY near-dangling p0 Megiddo@84,35 pop(u/r)=12/1/11 purchased=48 ppDangling=5 ppOwnedByOthers=0 ppOwningCityMismatch=0 districtIds=11 unresolvable=0 districtLocs=11 workers=1 workersOnForeignPlots=0 keysWorkers=PlotIndex,CityID,NumWorkers,MaxWorkers,IsBlocked,CurrentYields,CurrentMaintenance,NextYields,NextMaintenance 
+[2026-10-06 14:52:55]	[CDH] PLAYER p0 districtIds=78 unresolvable=0 districtObjs=78 nullObjs=0 danglingTilesOwned=15 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p1 districtIds=59 unresolvable=0 districtObjs=59 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p2 districtIds=60 unresolvable=0 districtObjs=60 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p3 districtIds=51 unresolvable=0 districtObjs=51 nullObjs=0 danglingTilesOwned=6 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p4 districtIds=71 unresolvable=0 districtObjs=71 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p5 districtIds=108 unresolvable=0 districtObjs=108 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p6 districtIds=88 unresolvable=0 districtObjs=88 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p7 districtIds=73 unresolvable=0 districtObjs=73 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p8 districtIds=81 unresolvable=0 districtObjs=81 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p9 districtIds=68 unresolvable=0 districtObjs=68 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p10 districtIds=0 unresolvable=0 districtObjs=0 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p11 districtIds=6 unresolvable=0 districtObjs=6 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p12 districtIds=0 unresolvable=0 districtObjs=0 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p13 districtIds=7 unresolvable=0 districtObjs=7 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p14 districtIds=0 unresolvable=0 districtObjs=0 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p15 districtIds=4 unresolvable=0 districtObjs=4 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p16 districtIds=0 unresolvable=0 districtObjs=0 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p17 districtIds=0 unresolvable=0 districtObjs=0 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p18 districtIds=7 unresolvable=0 districtObjs=7 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p19 districtIds=1 unresolvable=0 districtObjs=1 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p20 districtIds=1 unresolvable=0 districtObjs=1 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p21 districtIds=1 unresolvable=0 districtObjs=1 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p22 districtIds=10 unresolvable=0 districtObjs=10 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p23 districtIds=8 unresolvable=0 districtObjs=8 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p24 districtIds=4 unresolvable=0 districtObjs=4 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p25 districtIds=1 unresolvable=0 districtObjs=1 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p26 districtIds=1 unresolvable=0 districtObjs=1 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p27 districtIds=9 unresolvable=0 districtObjs=9 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p28 districtIds=7 unresolvable=0 districtObjs=7 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p29 districtIds=0 unresolvable=0 districtObjs=0 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p30 districtIds=1 unresolvable=0 districtObjs=1 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p31 districtIds=9 unresolvable=0 districtObjs=9 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p32 districtIds=1 unresolvable=0 districtObjs=1 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p33 districtIds=5 unresolvable=0 districtObjs=5 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p34 districtIds=1 unresolvable=0 districtObjs=1 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p35 districtIds=6 unresolvable=0 districtObjs=6 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p36 districtIds=10 unresolvable=0 districtObjs=10 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p37 districtIds=5 unresolvable=0 districtObjs=5 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p38 districtIds=1 unresolvable=0 districtObjs=1 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p40 districtIds=1 unresolvable=0 districtObjs=1 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p41 districtIds=1 unresolvable=0 districtObjs=1 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p42 districtIds=1 unresolvable=0 districtObjs=1 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p43 districtIds=1 unresolvable=0 districtObjs=1 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p44 districtIds=1 unresolvable=0 districtObjs=1 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p45 districtIds=0 unresolvable=0 districtObjs=0 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p46 districtIds=0 unresolvable=0 districtObjs=0 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p47 districtIds=1 unresolvable=0 districtObjs=1 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] PLAYER p48 districtIds=1 unresolvable=0 districtObjs=1 nullObjs=0 danglingTilesOwned=0 danglingIdsInList=0  
+[2026-10-06 14:52:55]	[CDH] CITY control p0 London@92,32 pop(u/r)=27/14/11 purchased=50 ppDangling=6 ppOwnedByOthers=0 ppOwningCityMismatch=0 districtIds=25 unresolvable=0 districtLocs=25 workers=9 workersOnForeignPlots=0 keysWorkers=PlotIndex,CityID,NumWorkers,MaxWorkers,IsBlocked,CurrentYields,CurrentMaintenance,NextYields,NextMaintenance 
+[2026-10-06 14:52:55]	[CDH] DONE harness damage-read finished 

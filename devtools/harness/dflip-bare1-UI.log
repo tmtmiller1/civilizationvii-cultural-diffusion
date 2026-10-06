@@ -1,0 +1,64 @@
+[2026-10-06 13:28:32]	[CDH] shell attached 
+[2026-10-06 13:28:33]	[CDH] shell query complete 
+[2026-10-06 13:28:33]	[CDH] shell found AugustusExp66.Civ7Save turn 66 age AGE_EXPLORATION missingMods=0 unowned=0 
+[2026-10-06 13:28:33]	[CDH] shell handleLoadSave returned true 
+[2026-10-06 13:28:52]	[CDH] attached district-scan 
+[2026-10-06 13:28:57]	[CDH] LOAD GameStarted 
+[2026-10-06 13:29:07]	[CDH] DSCAN start turn=66 age=AGE_EXPLORATION 
+[2026-10-06 13:29:07]	[CDH] SCAN T0: grid=96x60 plotsWithDistrictId=1062 dangling=0 villages(noCity)=58 
+[2026-10-06 13:29:07]	[CDH] FLIPS sent 8 mode=bare 
+[2026-10-06 13:29:11]	[CDH] FLIPPED 4s 20,25 7->8 owner=8 idBefore=none idNow=none resolves=false dist=none city=- 
+[2026-10-06 13:29:11]	[CDH] FLIPPED 4s 19,26 7->8 owner=8 idBefore=none idNow=none resolves=false dist=none city=- 
+[2026-10-06 13:29:11]	[CDH] FLIPPED 4s 21,26 8->7 owner=7 idBefore=none idNow=none resolves=false dist=none city=- 
+[2026-10-06 13:29:11]	[CDH] FLIPPED 4s 22,26 7->8 owner=8 idBefore=none idNow=none resolves=false dist=none city=- 
+[2026-10-06 13:29:11]	[CDH] FLIPPED 4s 19,27 8->7 owner=7 idBefore=none idNow=none resolves=false dist=none city=- 
+[2026-10-06 13:29:11]	[CDH] FLIPPED 4s 21,27 8->7 owner=7 idBefore=none idNow=none resolves=false dist=none city=- 
+[2026-10-06 13:29:11]	[CDH] FLIPPED 4s 22,27 8->7 owner=7 idBefore=none idNow=none resolves=false dist=none city=- 
+[2026-10-06 13:29:11]	[CDH] FLIPPED 4s 19,28 8->7 owner=7 idBefore=none idNow=none resolves=false dist=none city=- 
+[2026-10-06 13:29:11]	[CDH] CHECK 4s: landed=8/8 danglingOnFlipped=0 
+[2026-10-06 13:29:11]	[CDH] SCAN T0+4s: grid=96x60 plotsWithDistrictId=1059 dangling=0 villages(noCity)=58 
+[2026-10-06 13:29:22]	[CDH] FLIPPED 15s 20,25 7->8 owner=8 idBefore=none idNow=none resolves=false dist=none city=- 
+[2026-10-06 13:29:22]	[CDH] FLIPPED 15s 19,26 7->8 owner=8 idBefore=none idNow=none resolves=false dist=none city=- 
+[2026-10-06 13:29:22]	[CDH] FLIPPED 15s 21,26 8->7 owner=7 idBefore=none idNow=none resolves=false dist=none city=- 
+[2026-10-06 13:29:22]	[CDH] FLIPPED 15s 22,26 7->8 owner=8 idBefore=none idNow=none resolves=false dist=none city=- 
+[2026-10-06 13:29:22]	[CDH] FLIPPED 15s 19,27 8->7 owner=7 idBefore=none idNow=none resolves=false dist=none city=- 
+[2026-10-06 13:29:22]	[CDH] FLIPPED 15s 21,27 8->7 owner=7 idBefore=none idNow=none resolves=false dist=none city=- 
+[2026-10-06 13:29:22]	[CDH] FLIPPED 15s 22,27 8->7 owner=7 idBefore=none idNow=none resolves=false dist=none city=- 
+[2026-10-06 13:29:22]	[CDH] FLIPPED 15s 19,28 8->7 owner=7 idBefore=none idNow=none resolves=false dist=none city=- 
+[2026-10-06 13:29:22]	[CDH] CHECK 15s: landed=8/8 danglingOnFlipped=0 
+[2026-10-06 13:29:22]	[CDH] SCAN T0+15s: grid=96x60 plotsWithDistrictId=1061 dangling=0 villages(noCity)=58 
+[2026-10-06 13:29:30]	[CDH] SCAN T1: grid=96x60 plotsWithDistrictId=1061 dangling=0 villages(noCity)=58 
+[2026-10-06 13:29:30]	[CDH] FLIPPED T1 20,25 7->8 owner=8 idBefore=none idNow=none resolves=false dist=none city=- 
+[2026-10-06 13:29:30]	[CDH] FLIPPED T1 19,26 7->8 owner=8 idBefore=none idNow=none resolves=false dist=none city=- 
+[2026-10-06 13:29:30]	[CDH] FLIPPED T1 21,26 8->7 owner=7 idBefore=none idNow=none resolves=false dist=none city=- 
+[2026-10-06 13:29:30]	[CDH] FLIPPED T1 22,26 7->8 owner=8 idBefore=none idNow=none resolves=false dist=none city=- 
+[2026-10-06 13:29:30]	[CDH] FLIPPED T1 19,27 8->7 owner=7 idBefore=none idNow=none resolves=false dist=none city=- 
+[2026-10-06 13:29:30]	[CDH] FLIPPED T1 21,27 8->7 owner=7 idBefore=none idNow=none resolves=false dist=none city=- 
+[2026-10-06 13:29:30]	[CDH] FLIPPED T1 22,27 8->7 owner=7 idBefore=none idNow=none resolves=false dist=none city=- 
+[2026-10-06 13:29:30]	[CDH] FLIPPED T1 19,28 8->7 owner=7 idBefore=none idNow=none resolves=false dist=none city=- 
+[2026-10-06 13:29:30]	[CDH] CHECK T1: landed=8/8 danglingOnFlipped=0 
+[2026-10-06 13:29:30]	[CDH] RELIGION events so far 0 
+[2026-10-06 13:30:17]	[CDH] ENDTURN stuck: one Autoplay turn 
+[2026-10-06 13:30:40]	[CDH] SCAN T2: grid=96x60 plotsWithDistrictId=1061 dangling=0 villages(noCity)=58 
+[2026-10-06 13:30:40]	[CDH] FLIPPED T2 20,25 7->8 owner=8 idBefore=none idNow=none resolves=false dist=none city=- 
+[2026-10-06 13:30:40]	[CDH] FLIPPED T2 19,26 7->8 owner=8 idBefore=none idNow=none resolves=false dist=none city=- 
+[2026-10-06 13:30:40]	[CDH] FLIPPED T2 21,26 8->7 owner=7 idBefore=none idNow=none resolves=false dist=none city=- 
+[2026-10-06 13:30:40]	[CDH] FLIPPED T2 22,26 7->8 owner=8 idBefore=none idNow=none resolves=false dist=none city=- 
+[2026-10-06 13:30:40]	[CDH] FLIPPED T2 19,27 8->7 owner=7 idBefore=none idNow=none resolves=false dist=none city=- 
+[2026-10-06 13:30:40]	[CDH] FLIPPED T2 21,27 8->7 owner=7 idBefore=none idNow=none resolves=false dist=none city=- 
+[2026-10-06 13:30:40]	[CDH] FLIPPED T2 22,27 8->7 owner=7 idBefore=none idNow=none resolves=false dist=none city=- 
+[2026-10-06 13:30:40]	[CDH] FLIPPED T2 19,28 8->7 owner=7 idBefore=none idNow=none resolves=false dist=none city=- 
+[2026-10-06 13:30:40]	[CDH] CHECK T2: landed=8/8 danglingOnFlipped=0 
+[2026-10-06 13:30:40]	[CDH] RELIGION events so far 3 
+[2026-10-06 13:31:06]	[CDH] SCAN T3: grid=96x60 plotsWithDistrictId=1058 dangling=0 villages(noCity)=58 
+[2026-10-06 13:31:06]	[CDH] FLIPPED T3 20,25 7->8 owner=8 idBefore=none idNow=none resolves=false dist=none city=- 
+[2026-10-06 13:31:06]	[CDH] FLIPPED T3 19,26 7->8 owner=8 idBefore=none idNow=none resolves=false dist=none city=- 
+[2026-10-06 13:31:06]	[CDH] FLIPPED T3 21,26 8->7 owner=7 idBefore=none idNow=none resolves=false dist=none city=- 
+[2026-10-06 13:31:06]	[CDH] FLIPPED T3 22,26 7->8 owner=8 idBefore=none idNow=none resolves=false dist=none city=- 
+[2026-10-06 13:31:06]	[CDH] FLIPPED T3 19,27 8->7 owner=7 idBefore=none idNow=none resolves=false dist=none city=- 
+[2026-10-06 13:31:06]	[CDH] FLIPPED T3 21,27 8->7 owner=7 idBefore=none idNow=none resolves=false dist=none city=- 
+[2026-10-06 13:31:06]	[CDH] FLIPPED T3 22,27 8->7 owner=7 idBefore=none idNow=none resolves=false dist=none city=- 
+[2026-10-06 13:31:06]	[CDH] FLIPPED T3 19,28 8->7 owner=7 idBefore=none idNow=none resolves=false dist=none city=- 
+[2026-10-06 13:31:06]	[CDH] CHECK T3: landed=8/8 danglingOnFlipped=0 
+[2026-10-06 13:31:06]	[CDH] RELIGION events so far 6 
+[2026-10-06 13:31:06]	[CDH] DONE harness district-scan finished 

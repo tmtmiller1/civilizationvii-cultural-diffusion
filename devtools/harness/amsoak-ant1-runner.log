@@ -1,0 +1,34 @@
+[13:32:08] LocalStorage.sqlite backed up
+[13:32:08] autosaves backed up: 10
+[13:32:08] registry before: 2356=0  (restoring Disabled=0 afterward)
+[13:32:09] deployed mod: debug=1 affectsSaves0=1
+[13:32:09] harness installed: cdh-game-am-soak.js on AugustusAnt136.Civ7Save
+[13:32:09] extra mod installed: AutoMissionary (1 modinfo)
+[13:32:09] previous UI.log kept at /Users/USER/Library/Application Support/Civilization VII/cd-harness-backup/UI-before-amsoak-ant1-20261006-133209.log (1680 lines)
+[13:32:11] game pid 15553
+[13:42:51] result=crashed after 632s
+[13:42:51] collected AI_Behavior_Tree_Events.csv (60 lines)
+[13:42:51] collected AI_Behavior_Trees.csv (42172 lines)
+[13:42:51] collected AI_CityStrategy.csv (99 lines)
+[13:42:51] collected AI_CombatPlanning.csv (13901 lines)
+[13:42:51] collected AI_Commander_Promotions.csv (127 lines)
+[13:42:51] collected AI_DiplomaticActions.csv (2068 lines)
+[13:42:51] collected AI_Leader.csv (10 lines)
+[13:42:51] collected AI_Market.csv (846 lines)
+[13:42:51] collected AI_MayhemTracker.csv (1173 lines)
+[13:42:51] collected AI_MovementPlanning.csv (23827 lines)
+[13:42:51] collected AI_Operation.csv (18004 lines)
+[13:42:51] collected AI_Operation_Eval.csv (1707 lines)
+[13:42:51] collected AI_Recruiting.csv (78413 lines)
+[13:42:51] collected AI_Tactical.csv (6564 lines)
+[13:42:51] collected AI_Targets.csv (114625 lines)
+[13:42:51] collected AI_UnitEfficiency.csv (256 lines)
+[13:42:51] collected AI_Victories.csv (30 lines)
+[13:42:51] waiting 60s for the crash report to land
+[13:43:51] crash report: CivilizationVII-2026-10-06-134316.ips
+[13:43:59] LocalStorage.sqlite restored (the run had changed it; its copy is in the trash folder)
+[13:43:59] extra mod removed: AutoMissionary
+[13:43:59] restored: registry 2358=0  harness present: no debugPatched: 0
+[13:43:59] autosaves changed during the run; putting the player's back
+[13:44:00] FINISHED result=crashed  log: /Users/USER/Repos/civilization_mods/civilization_vii_mods/tower_mods/cultural_diffusion/devtools/harness/amsoak-ant1-UI.log
+RUN_EXIT=0

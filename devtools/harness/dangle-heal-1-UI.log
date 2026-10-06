@@ -1,0 +1,36 @@
+[2026-10-06 14:25:19]	[CDH] shell attached 
+[2026-10-06 14:25:20]	[CDH] shell query complete 
+[2026-10-06 14:25:20]	[CDH] shell found CDH-AM-Ant159.Civ7Save turn 159 age AGE_ANTIQUITY missingMods=0 unowned=0 
+[2026-10-06 14:25:20]	[CDH] shell handleLoadSave returned true 
+[2026-10-06 14:25:38]	[CDH] attached dangle-heal 
+[2026-10-06 14:25:43]	[CDH] LOAD GameStarted 
+[2026-10-06 14:25:51]	[CDH] DANGLE start mode=heal turn=159 age=AGE_ANTIQUITY countdown=true cur=159 max=160 
+[2026-10-06 14:25:51]	[CDH] HEAL round 1: dangling=24 
+[2026-10-06 14:25:51]	[CDH] HEAL 85,18 owner=3 city=81,18 d=4 r=true 
+[2026-10-06 14:25:51]	[CDH] HEAL 87,18 owner=3 city=81,18 d=6 r=true 
+[2026-10-06 14:25:51]	[CDH] HEAL 86,19 owner=3 city=82,23 d=6 r=true 
+[2026-10-06 14:25:51]	[CDH] HEAL 85,21 owner=3 city=82,23 d=4 r=true 
+[2026-10-06 14:25:51]	[CDH] HEAL 87,21 owner=3 city=82,23 d=6 r=true 
+[2026-10-06 14:25:51]	[CDH] HEAL 88,22 owner=3 city=82,23 d=6 r=true 
+[2026-10-06 14:25:51]	[CDH] HEAL 84,29 owner=0 city=87,32 d=4 r=true 
+[2026-10-06 14:25:51]	[CDH] HEAL 84,30 owner=0 city=87,32 d=4 r=true 
+[2026-10-06 14:25:51]	[CDH] HEAL 81,31 owner=0 city=84,35 d=5 r=true 
+[2026-10-06 14:25:51]	[CDH] HEAL 82,31 owner=0 city=84,35 d=4 r=true 
+[2026-10-06 14:25:51]	[CDH] HEAL 83,31 owner=0 city=87,32 d=4 r=true 
+[2026-10-06 14:25:51]	[CDH] HEAL 80,32 owner=0 city=84,35 d=6 r=true 
+[2026-10-06 14:25:51]	[CDH] HEAL 82,32 owner=0 city=84,35 d=4 r=true 
+[2026-10-06 14:25:51]	[CDH] HEAL 90,36 owner=0 city=92,32 d=4 r=true 
+[2026-10-06 14:25:51]	[CDH] HEAL 91,36 owner=0 city=92,32 d=4 r=true 
+[2026-10-06 14:25:51]	[CDH] HEAL 92,36 owner=0 city=92,32 d=4 r=true 
+[2026-10-06 14:25:51]	[CDH] HEAL 79,37 owner=0 city=84,35 d=6 r=true 
+[2026-10-06 14:25:51]	[CDH] HEAL 88,37 owner=0 city=87,32 d=5 r=true 
+[2026-10-06 14:25:51]	[CDH] HEAL 89,37 owner=0 city=92,32 d=5 r=true 
+[2026-10-06 14:25:51]	[CDH] HEAL 91,37 owner=0 city=92,32 d=5 r=true 
+[2026-10-06 14:25:51]	[CDH] HEAL 88,38 owner=0 city=89,42 d=4 r=true 
+[2026-10-06 14:25:51]	[CDH] HEAL 92,38 owner=0 city=89,42 d=5 r=true 
+[2026-10-06 14:25:51]	[CDH] HEAL 91,39 owner=0 city=89,42 d=4 r=true 
+[2026-10-06 14:25:51]	[CDH] HEAL 90,43 owner=3 city=90,37 d=6 r=true 
+[2026-10-06 14:25:57]	[CDH] HEAL round 2: dangling=0 
+[2026-10-06 14:25:57]	[CDH] CLEARED all=true 
+[2026-10-06 14:25:57]	[CDH] TURN turn=159 age=AGE_ANTIQUITY 
+[2026-10-06 14:26:10]	[CDH] TURN turn=160 age=AGE_ANTIQUITY 

@@ -1,0 +1,32 @@
+[14:35:51] LocalStorage.sqlite backed up
+[14:35:51] autosaves backed up: 10
+[14:35:51] registry before: 2391=0  (restoring Disabled=0 afterward)
+[14:35:51] deployed mod: debug=1 affectsSaves0=1
+[14:35:51] NO_MOD=1: Cultural Diffusion left DISABLED for this run (control)
+[14:35:51] harness installed: cdh-game-dangle-heal.js on CDH-AM-Ant155.Civ7Save
+[14:35:51] previous UI.log kept at /Users/USER/Library/Application Support/Civilization VII/cd-harness-backup/UI-before-a155-heal-20261006-143551.log (2091 lines)
+[14:35:54] game pid 95629
+[14:37:55] result=crashed after 116s
+[14:37:55] collected AI_Behavior_Tree_Events.csv (15 lines)
+[14:37:55] collected AI_Behavior_Trees.csv (8490 lines)
+[14:37:55] collected AI_CityStrategy.csv (15 lines)
+[14:37:55] collected AI_CombatPlanning.csv (2300 lines)
+[14:37:55] collected AI_Commander_Promotions.csv (27 lines)
+[14:37:55] collected AI_DiplomaticActions.csv (401 lines)
+[14:37:55] collected AI_Leader.csv (4 lines)
+[14:37:55] collected AI_Market.csv (267 lines)
+[14:37:55] collected AI_MayhemTracker.csv (210 lines)
+[14:37:55] collected AI_MovementPlanning.csv (4905 lines)
+[14:37:55] collected AI_Operation.csv (3534 lines)
+[14:37:55] collected AI_Operation_Eval.csv (339 lines)
+[14:37:55] collected AI_Recruiting.csv (16721 lines)
+[14:37:55] collected AI_Tactical.csv (1325 lines)
+[14:37:55] collected AI_Targets.csv (24979 lines)
+[14:37:55] collected AI_UnitEfficiency.csv (256 lines)
+[14:37:55] collected AI_Victories.csv (4 lines)
+[14:37:55] waiting 60s for the crash report to land
+[14:38:55] crash report: CivilizationVII-2026-10-06-143758.ips
+[14:39:03] LocalStorage.sqlite restored (the run had changed it; its copy is in the trash folder)
+[14:39:03] restored: registry 2393=0  harness present: no debugPatched: 0
+[14:39:03] autosaves changed during the run; putting the player's back
+[14:39:04] FINISHED result=crashed  log: /Users/USER/Repos/civilization_mods/civilization_vii_mods/tower_mods/cultural_diffusion/devtools/harness/a155-heal-UI.log

@@ -1,0 +1,185 @@
+[2026-10-06 12:31:29]	[CDH] shell attached 
+[2026-10-06 12:31:30]	[CDH] shell query complete 
+[2026-10-06 12:31:30]	[CDH] shell found AugustusExp66.Civ7Save turn 66 age AGE_EXPLORATION missingMods=0 unowned=0 
+[2026-10-06 12:31:30]	[CDH] shell handleLoadSave returned true 
+[2026-10-06 12:31:48]	[CDH] attached missionary-flip 
+[2026-10-06 12:31:53]	[CDH] LOAD GameStarted 
+[2026-10-06 12:32:03]	[CDH] SETUP mode=flip turn=66 age=AGE_EXPLORATION religion=-1596605022:RELIGION_CUSTOM_12 missionaries=0 cities=29 majors=[0,2,4,6,7,8,9] 
+[2026-10-06 12:32:03]	[CDH] TARGETS turn=66 candidates=11 adjacent=1 first=["67,48/p2/adj","75,45/p4","76,45/p4","75,46/p4","76,46/p4"] 
+[2026-10-06 12:32:03]	[CDH] BUY UNIT_MISSIONARY in Madrid at 64,45 
+[2026-10-06 12:32:03]	[CDH] BUY UNIT_MISSIONARY in Chicago at 71,44 
+[2026-10-06 12:32:03]	[CDH] BUY UNIT_MISSIONARY in London at 92,32 
+[2026-10-06 12:32:07]	[CDH] SETUP after buy: missionaries=3 
+[2026-10-06 12:32:07]	[CDH] TURN k=1 turn=66 age=AGE_EXPLORATION 
+[2026-10-06 12:32:07]	[CDH] ASSIGN 6815815 at 64,45 -> 67,48 rival=2 d=4 city=Kazan 
+[2026-10-06 12:32:07]	[CDH] ASSIGN 6881352 at 71,44 -> 75,45 rival=4 d=5 city=Acmonia 
+[2026-10-06 12:32:07]	[CDH] ASSIGN 6946889 at 92,32 -> 76,45 rival=4 d=22 city=Acmonia 
+[2026-10-06 12:32:07]	[CDH] TRAVEL T1 6815815 at 64,45 -> 67,48 d=4: move-sent 
+[2026-10-06 12:32:07]	[CDH] TRAVEL T1 6881352 at 71,44 -> 75,45 d=5: move-sent 
+[2026-10-06 12:32:07]	[CDH] TRAVEL T1 6946889 at 92,32 -> 76,45 d=22: move-sent 
+[2026-10-06 12:32:13]	[CDH] TALLY T1 mode=flip ready=0 flips=0 pairs=0 orders=0 
+[2026-10-06 12:32:34]	[CDH] TURN k=2 turn=67 age=AGE_EXPLORATION 
+[2026-10-06 12:32:34]	[CDH] TRAVEL T2 6815815 at 64,45 -> 67,48 d=4: move-sent 
+[2026-10-06 12:32:34]	[CDH] TRAVEL T2 6881352 at 71,44 -> 75,45 d=5: move-sent 
+[2026-10-06 12:32:34]	[CDH] TRAVEL T2 6946889 at 92,32 -> 76,45 d=22: move-sent 
+[2026-10-06 12:32:40]	[CDH] TALLY T2 mode=flip ready=0 flips=0 pairs=0 orders=0 
+[2026-10-06 12:33:34]	[CDH] ENDTURN stuck on turn 67 blocker=NEW_POPULATION: one Autoplay turn 
+[2026-10-06 12:33:55]	[CDH] TURN k=3 turn=68 age=AGE_EXPLORATION 
+[2026-10-06 12:33:55]	[CDH] TRAVEL T3 6815815 at 64,46 -> 67,48 d=4: move-sent 
+[2026-10-06 12:33:55]	[CDH] TRAVEL T3 6881352 at 74,43 -> 75,45 d=2: move-sent 
+[2026-10-06 12:33:55]	[CDH] TRAVEL T3 6946889 at 90,36 -> 76,45 d=18: move-sent 
+[2026-10-06 12:34:01]	[CDH] TALLY T3 mode=flip ready=0 flips=0 pairs=0 orders=0 
+[2026-10-06 12:34:25]	[CDH] TURN k=4 turn=69 age=AGE_EXPLORATION 
+[2026-10-06 12:34:25]	[CDH] TRAVEL T4 6815815 at 65,48 -> 67,48 d=2: move-sent 
+[2026-10-06 12:34:25]	[CDH] TRAVEL T4 6946889 at 86,37 -> 76,45 d=14: move-sent 
+[2026-10-06 12:34:25]	[CDH] FLIP T4 75,45 4->0 via 75,41 dist=DISTRICT_RURAL unitOn=true 
+[2026-10-06 12:34:26]	[CDH] ORDER1 T4 6881352 on=true owner=0: spread-sent move-sent 
+[2026-10-06 12:34:27]	[CDH] ORDER2 T4 6881352 on=true owner=0: spread-no(["Unit has no movement left."]) 
+[2026-10-06 12:34:31]	[CDH] AFTER T4 6881352 tile=75,45 owner=0 dist=DISTRICT_RURAL unit=75,45 city=New Orleans 
+[2026-10-06 12:34:31]	[CDH] TALLY T4 mode=flip ready=1 flips=1 pairs=1 orders=2 
+[2026-10-06 12:35:00]	[CDH] TURN k=5 turn=70 age=AGE_EXPLORATION 
+[2026-10-06 12:35:00]	[CDH] TRAVEL T5 6946889 at 85,40 -> 76,45 d=11: move-sent 
+[2026-10-06 12:35:00]	[CDH] FLIP T5 67,48 2->0 via 64,45 dist=none unitOn=false 
+[2026-10-06 12:35:00]	[CDH] FLIP T5 75,45 0->4 via 75,48 dist=DISTRICT_RURAL unitOn=true 
+[2026-10-06 12:35:01]	[CDH] ORDER1 T5 6815815 on=false owner=0: move-sent 
+[2026-10-06 12:35:01]	[CDH] ORDER1 T5 6881352 on=true owner=4: spread-sent move-sent 
+[2026-10-06 12:35:02]	[CDH] ORDER2 T5 6815815 on=true owner=0: spread-no(["Unit has no movement left."]) 
+[2026-10-06 12:35:02]	[CDH] ORDER2 T5 6881352 on=true owner=4: spread-no(["Unit has no movement left."]) 
+[2026-10-06 12:35:06]	[CDH] AFTER T5 6815815 tile=67,48 owner=0 dist=none unit=67,48 city=Madrid 
+[2026-10-06 12:35:06]	[CDH] AFTER T5 6881352 tile=75,45 owner=4 dist=DISTRICT_RURAL unit=75,45 city=Acmonia 
+[2026-10-06 12:35:06]	[CDH] TALLY T5 mode=flip ready=2 flips=3 pairs=3 orders=6 
+[2026-10-06 12:35:25]	[CDH] TURN k=6 turn=71 age=AGE_EXPLORATION 
+[2026-10-06 12:35:25]	[CDH] TRAVEL T6 6946889 at 84,42 -> 76,45 d=9: move-sent 
+[2026-10-06 12:35:25]	[CDH] FLIP T6 67,48 0->2 via 67,50 dist=none unitOn=true 
+[2026-10-06 12:35:25]	[CDH] FLIP T6 75,45 4->0 via 75,41 dist=DISTRICT_RURAL unitOn=true 
+[2026-10-06 12:35:26]	[CDH] ORDER1 T6 6815815 on=true owner=2: spread-no(["Must be located on a valid District to Spread Religion."]) move-sent 
+[2026-10-06 12:35:26]	[CDH] ORDER1 T6 6881352 on=true owner=0: spread-no(["This location already follows this Missonary's Religion."]) move-sent 
+[2026-10-06 12:35:27]	[CDH] ORDER2 T6 6815815 on=false owner=2: move-sent 
+[2026-10-06 12:35:27]	[CDH] ORDER2 T6 6881352 on=false owner=0: move-sent 
+[2026-10-06 12:35:31]	[CDH] AFTER T6 6815815 tile=67,48 owner=2 dist=none unit=67,48 city=Kazan 
+[2026-10-06 12:35:31]	[CDH] AFTER T6 6881352 tile=75,45 owner=0 dist=DISTRICT_RURAL unit=75,45 city=New Orleans 
+[2026-10-06 12:35:31]	[CDH] TALLY T6 mode=flip ready=2 flips=5 pairs=5 orders=10 
+[2026-10-06 12:35:58]	[CDH] TURN k=7 turn=72 age=AGE_EXPLORATION 
+[2026-10-06 12:35:58]	[CDH] TRAVEL T7 6946889 at 82,46 -> 76,45 d=6: move-sent 
+[2026-10-06 12:35:58]	[CDH] FLIP T7 67,48 2->0 via 64,45 dist=none unitOn=true 
+[2026-10-06 12:35:58]	[CDH] FLIP T7 75,45 0->4 via 75,48 dist=DISTRICT_RURAL unitOn=true 
+[2026-10-06 12:35:59]	[CDH] ORDER1 T7 6815815 on=true owner=0: spread-no(["Must be located on a valid District to Spread Religion."]) move-sent 
+[2026-10-06 12:35:59]	[CDH] ORDER1 T7 6881352 on=true owner=4: spread-sent move-sent 
+[2026-10-06 12:36:01]	[CDH] ORDER2 T7 6815815 on=false owner=0: move-sent 
+[2026-10-06 12:36:04]	[CDH] AFTER T7 6815815 tile=67,48 owner=0 dist=none unit=67,48 city=Madrid 
+[2026-10-06 12:36:04]	[CDH] AFTER T7 6881352 tile=75,45 owner=4 dist=DISTRICT_RURAL unit=gone city=Acmonia 
+[2026-10-06 12:36:04]	[CDH] TALLY T7 mode=flip ready=2 flips=7 pairs=7 orders=13 
+[2026-10-06 12:36:16]	[CDH] TURN k=8 turn=73 age=AGE_EXPLORATION 
+[2026-10-06 12:36:16]	[CDH] TARGETS turn=73 candidates=8 adjacent=0 first=["75,45/p4","76,45/p4","75,46/p4","76,46/p4","77,46/p4"] 
+[2026-10-06 12:36:16]	[CDH] BUY UNIT_MISSIONARY in Madrid at 64,45 
+[2026-10-06 12:36:16]	[CDH] TRAVEL T8 6946889 at 78,47 -> 76,45 d=3: move-sent 
+[2026-10-06 12:36:16]	[CDH] FLIP T8 67,48 0->2 via 67,50 dist=none unitOn=true 
+[2026-10-06 12:36:17]	[CDH] ORDER1 T8 6815815 on=true owner=2: spread-no(["Must be located on a valid District to Spread Religion."]) move-sent 
+[2026-10-06 12:36:18]	[CDH] ORDER2 T8 6815815 on=false owner=2: move-sent 
+[2026-10-06 12:36:22]	[CDH] AFTER T8 6815815 tile=67,48 owner=2 dist=none unit=67,48 city=Kazan 
+[2026-10-06 12:36:22]	[CDH] TALLY T8 mode=flip ready=1 flips=8 pairs=8 orders=15 
+[2026-10-06 12:36:37]	[CDH] TURN k=9 turn=74 age=AGE_EXPLORATION 
+[2026-10-06 12:36:37]	[CDH] TARGETS turn=74 candidates=8 adjacent=0 first=["75,45/p4","76,45/p4","75,46/p4","76,46/p4","77,46/p4"] 
+[2026-10-06 12:36:37]	[CDH] ASSIGN 7077960 at 64,45 -> 61,49 rival=2 d=5 city=Tula 
+[2026-10-06 12:36:37]	[CDH] TRAVEL T9 7077960 at 64,45 -> 61,49 d=5: move-sent 
+[2026-10-06 12:36:37]	[CDH] FLIP T9 67,48 2->0 via 64,45 dist=none unitOn=true 
+[2026-10-06 12:36:37]	[CDH] FLIP T9 76,45 4->0 via 75,41 dist=DISTRICT_RURAL unitOn=true 
+[2026-10-06 12:36:38]	[CDH] ORDER1 T9 6815815 on=true owner=0: spread-no(["Must be located on a valid District to Spread Religion."]) move-sent 
+[2026-10-06 12:36:38]	[CDH] ORDER1 T9 6946889 on=true owner=0: spread-no(["Must be located on a valid District to Spread Religion."]) move-sent 
+[2026-10-06 12:36:40]	[CDH] ORDER2 T9 6815815 on=false owner=0: move-sent 
+[2026-10-06 12:36:40]	[CDH] ORDER2 T9 6946889 on=false owner=0: move-sent 
+[2026-10-06 12:36:43]	[CDH] AFTER T9 6815815 tile=67,48 owner=0 dist=none unit=67,48 city=Madrid 
+[2026-10-06 12:36:43]	[CDH] AFTER T9 6946889 tile=76,45 owner=0 dist=none unit=76,45 city=New Orleans 
+[2026-10-06 12:36:43]	[CDH] TALLY T9 mode=flip ready=2 flips=10 pairs=10 orders=19 
+[2026-10-06 12:36:57]	[CDH] TURN k=10 turn=75 age=AGE_EXPLORATION 
+[2026-10-06 12:36:57]	[CDH] TRAVEL T10 7077960 at 64,46 -> 61,49 d=4: move-sent 
+[2026-10-06 12:36:57]	[CDH] FLIP T10 67,48 0->2 via 67,50 dist=none unitOn=true 
+[2026-10-06 12:36:57]	[CDH] FLIP T10 76,45 0->4 via 75,48 dist=none unitOn=true 
+[2026-10-06 12:36:58]	[CDH] ORDER1 T10 6815815 on=true owner=2: spread-no(["Must be located on a valid District to Spread Religion."]) move-sent 
+[2026-10-06 12:36:58]	[CDH] ORDER1 T10 6946889 on=true owner=4: spread-sent move-sent 
+[2026-10-06 12:37:00]	[CDH] ORDER2 T10 6815815 on=false owner=2: move-sent 
+[2026-10-06 12:37:00]	[CDH] ORDER2 T10 6946889 on=true owner=4: spread-no(["Unit has no movement left."]) 
+[2026-10-06 12:37:03]	[CDH] AFTER T10 6815815 tile=67,48 owner=2 dist=none unit=67,48 city=Kazan 
+[2026-10-06 12:37:03]	[CDH] AFTER T10 6946889 tile=76,45 owner=4 dist=DISTRICT_RURAL unit=76,45 city=Acmonia 
+[2026-10-06 12:37:03]	[CDH] TALLY T10 mode=flip ready=2 flips=12 pairs=12 orders=23 
+[2026-10-06 12:37:22]	[CDH] TURN k=11 turn=76 age=AGE_EXPLORATION 
+[2026-10-06 12:37:22]	[CDH] TRAVEL T11 7077960 at 62,47 -> 61,49 d=2: move-sent 
+[2026-10-06 12:37:22]	[CDH] FLIP T11 67,48 2->0 via 64,45 dist=none unitOn=true 
+[2026-10-06 12:37:22]	[CDH] FLIP T11 76,45 4->0 via 75,41 dist=DISTRICT_RURAL unitOn=true 
+[2026-10-06 12:37:23]	[CDH] ORDER1 T11 6815815 on=true owner=0: spread-no(["Must be located on a valid District to Spread Religion."]) move-sent 
+[2026-10-06 12:37:23]	[CDH] ORDER1 T11 6946889 on=true owner=0: spread-no(["Must be located on a valid District to Spread Religion."]) move-sent 
+[2026-10-06 12:37:24]	[CDH] ORDER2 T11 6815815 on=false owner=0: move-sent 
+[2026-10-06 12:37:24]	[CDH] ORDER2 T11 6946889 on=false owner=0: move-sent 
+[2026-10-06 12:37:28]	[CDH] AFTER T11 6815815 tile=67,48 owner=0 dist=none unit=67,48 city=Madrid 
+[2026-10-06 12:37:28]	[CDH] AFTER T11 6946889 tile=76,45 owner=0 dist=none unit=76,45 city=New Orleans 
+[2026-10-06 12:37:28]	[CDH] TALLY T11 mode=flip ready=2 flips=14 pairs=14 orders=27 
+[2026-10-06 12:37:45]	[CDH] TURN k=12 turn=77 age=AGE_EXPLORATION 
+[2026-10-06 12:37:45]	[CDH] FLIP T12 67,48 0->2 via 67,50 dist=none unitOn=true 
+[2026-10-06 12:37:45]	[CDH] FLIP T12 61,49 2->0 via 64,45 dist=DISTRICT_RURAL unitOn=true 
+[2026-10-06 12:37:45]	[CDH] FLIP T12 76,45 0->4 via 75,48 dist=none unitOn=true 
+[2026-10-06 12:37:46]	[CDH] ORDER1 T12 6815815 on=true owner=2: spread-no(["Must be located on a valid District to Spread Religion."]) move-sent 
+[2026-10-06 12:37:46]	[CDH] ORDER1 T12 7077960 on=true owner=0: spread-no(["Must be located on a valid District to Spread Religion."]) move-sent 
+[2026-10-06 12:37:46]	[CDH] ORDER1 T12 6946889 on=true owner=4: spread-no(["This location already follows this Missonary's Religion."]) move-sent 
+[2026-10-06 12:37:47]	[CDH] ORDER2 T12 6815815 on=false owner=2: move-sent 
+[2026-10-06 12:37:47]	[CDH] ORDER2 T12 7077960 on=false owner=0: move-sent 
+[2026-10-06 12:37:47]	[CDH] ORDER2 T12 6946889 on=false owner=4: move-sent 
+[2026-10-06 12:37:51]	[CDH] AFTER T12 6815815 tile=67,48 owner=2 dist=none unit=67,48 city=Kazan 
+[2026-10-06 12:37:51]	[CDH] AFTER T12 7077960 tile=61,49 owner=0 dist=none unit=62,50 city=Madrid 
+[2026-10-06 12:37:51]	[CDH] AFTER T12 6946889 tile=76,45 owner=4 dist=DISTRICT_RURAL unit=76,45 city=Acmonia 
+[2026-10-06 12:37:51]	[CDH] TALLY T12 mode=flip ready=3 flips=17 pairs=17 orders=33 
+[2026-10-06 12:38:07]	[CDH] TURN k=13 turn=78 age=AGE_EXPLORATION 
+[2026-10-06 12:38:07]	[CDH] FLIP T13 67,48 2->0 via 64,45 dist=none unitOn=true 
+[2026-10-06 12:38:07]	[CDH] FLIP T13 61,49 0->2 via 60,50 dist=none unitOn=false 
+[2026-10-06 12:38:07]	[CDH] FLIP T13 76,45 4->0 via 75,41 dist=DISTRICT_RURAL unitOn=true 
+[2026-10-06 12:38:08]	[CDH] ORDER1 T13 6815815 on=true owner=0: spread-no(["Must be located on a valid District to Spread Religion."]) move-sent 
+[2026-10-06 12:38:08]	[CDH] ORDER1 T13 7077960 on=false owner=2: move-sent 
+[2026-10-06 12:38:08]	[CDH] ORDER1 T13 6946889 on=true owner=0: spread-no(["Must be located on a valid District to Spread Religion."]) move-sent 
+[2026-10-06 12:38:09]	[CDH] ORDER2 T13 6815815 on=false owner=0: move-sent 
+[2026-10-06 12:38:09]	[CDH] ORDER2 T13 7077960 on=true owner=2: spread-no(["Unit has no movement left."]) 
+[2026-10-06 12:38:09]	[CDH] ORDER2 T13 6946889 on=false owner=0: move-sent 
+[2026-10-06 12:38:13]	[CDH] AFTER T13 6815815 tile=67,48 owner=0 dist=none unit=67,48 city=Madrid 
+[2026-10-06 12:38:13]	[CDH] AFTER T13 7077960 tile=61,49 owner=2 dist=DISTRICT_RURAL unit=61,49 city=Tula 
+[2026-10-06 12:38:13]	[CDH] AFTER T13 6946889 tile=76,45 owner=0 dist=none unit=76,45 city=New Orleans 
+[2026-10-06 12:38:13]	[CDH] TALLY T13 mode=flip ready=3 flips=20 pairs=20 orders=39 
+[2026-10-06 12:39:08]	[CDH] ENDTURN stuck on turn 78 blocker=NEW_POPULATION: one Autoplay turn 
+[2026-10-06 12:39:22]	[CDH] TURN k=14 turn=79 age=AGE_EXPLORATION 
+[2026-10-06 12:39:22]	[CDH] TRAVEL T14 6946889 at 75,43 -> 76,45 d=2: move-sent 
+[2026-10-06 12:39:22]	[CDH] FLIP T14 67,48 0->2 via 67,50 dist=none unitOn=true 
+[2026-10-06 12:39:22]	[CDH] FLIP T14 61,49 2->0 via 64,45 dist=DISTRICT_RURAL unitOn=true 
+[2026-10-06 12:39:23]	[CDH] ORDER1 T14 6815815 on=true owner=2: spread-no(["Must be located on a valid District to Spread Religion."]) move-sent 
+[2026-10-06 12:39:23]	[CDH] ORDER1 T14 7077960 on=true owner=0: spread-no(["Must be located on a valid District to Spread Religion."]) move-sent 
+[2026-10-06 12:39:24]	[CDH] ORDER2 T14 6815815 on=false owner=2: move-sent 
+[2026-10-06 12:39:24]	[CDH] ORDER2 T14 7077960 on=false owner=0: move-sent 
+[2026-10-06 12:39:28]	[CDH] AFTER T14 6815815 tile=67,48 owner=2 dist=none unit=67,48 city=Kazan 
+[2026-10-06 12:39:28]	[CDH] AFTER T14 7077960 tile=61,49 owner=0 dist=none unit=62,50 city=Madrid 
+[2026-10-06 12:39:28]	[CDH] TALLY T14 mode=flip ready=2 flips=22 pairs=22 orders=43 
+[2026-10-06 12:39:56]	[CDH] TURN k=15 turn=80 age=AGE_EXPLORATION 
+[2026-10-06 12:39:56]	[CDH] FLIP T15 67,48 2->0 via 64,45 dist=none unitOn=true 
+[2026-10-06 12:39:56]	[CDH] FLIP T15 61,49 0->2 via 60,50 dist=none unitOn=false 
+[2026-10-06 12:39:56]	[CDH] FLIP T15 76,45 0->4 via 75,48 dist=none unitOn=true 
+[2026-10-06 12:39:57]	[CDH] ORDER1 T15 6815815 on=true owner=0: spread-no(["Must be located on a valid District to Spread Religion."]) move-sent 
+[2026-10-06 12:39:57]	[CDH] ORDER1 T15 7077960 on=false owner=2: move-sent 
+[2026-10-06 12:39:57]	[CDH] ORDER1 T15 6946889 on=true owner=4: spread-no(["This location already follows this Missonary's Religion."]) move-sent 
+[2026-10-06 12:39:58]	[CDH] ORDER2 T15 6815815 on=false owner=0: move-sent 
+[2026-10-06 12:39:58]	[CDH] ORDER2 T15 7077960 on=true owner=2: spread-no(["Unit has no movement left."]) 
+[2026-10-06 12:39:58]	[CDH] ORDER2 T15 6946889 on=false owner=4: move-sent 
+[2026-10-06 12:40:02]	[CDH] AFTER T15 6815815 tile=67,48 owner=0 dist=none unit=67,48 city=Madrid 
+[2026-10-06 12:40:02]	[CDH] AFTER T15 7077960 tile=61,49 owner=2 dist=DISTRICT_RURAL unit=61,49 city=Tula 
+[2026-10-06 12:40:02]	[CDH] AFTER T15 6946889 tile=76,45 owner=4 dist=DISTRICT_RURAL unit=76,45 city=Acmonia 
+[2026-10-06 12:40:02]	[CDH] TALLY T15 mode=flip ready=3 flips=25 pairs=25 orders=49 
+[2026-10-06 12:40:29]	[CDH] TURN k=16 turn=81 age=AGE_EXPLORATION 
+[2026-10-06 12:40:29]	[CDH] FLIP T16 67,48 0->2 via 67,50 dist=none unitOn=true 
+[2026-10-06 12:40:29]	[CDH] FLIP T16 61,49 2->0 via 64,45 dist=DISTRICT_RURAL unitOn=true 
+[2026-10-06 12:40:29]	[CDH] FLIP T16 76,45 4->0 via 75,41 dist=DISTRICT_RURAL unitOn=true 
+[2026-10-06 12:40:30]	[CDH] ORDER1 T16 6815815 on=true owner=2: spread-no(["Must be located on a valid District to Spread Religion."]) move-sent 
+[2026-10-06 12:40:30]	[CDH] ORDER1 T16 7077960 on=true owner=0: spread-no(["Must be located on a valid District to Spread Religion."]) move-sent 
+[2026-10-06 12:40:30]	[CDH] ORDER1 T16 6946889 on=true owner=0: spread-no(["Must be located on a valid District to Spread Religion."]) move-sent 
+[2026-10-06 12:40:31]	[CDH] ORDER2 T16 6815815 on=false owner=2: move-sent 
+[2026-10-06 12:40:31]	[CDH] ORDER2 T16 7077960 on=false owner=0: move-sent 
+[2026-10-06 12:40:31]	[CDH] ORDER2 T16 6946889 on=false owner=0: move-sent 
+[2026-10-06 12:40:35]	[CDH] AFTER T16 6815815 tile=67,48 owner=2 dist=none unit=67,48 city=Kazan 
+[2026-10-06 12:40:35]	[CDH] AFTER T16 7077960 tile=61,49 owner=0 dist=none unit=62,50 city=Madrid 
+[2026-10-06 12:40:35]	[CDH] AFTER T16 6946889 tile=76,45 owner=0 dist=none unit=76,45 city=New Orleans 
+[2026-10-06 12:40:35]	[CDH] TALLY T16 mode=flip ready=3 flips=28 pairs=28 orders=55 
+[2026-10-06 12:40:55]	[CDH] TURN k=17 turn=82 age=AGE_EXPLORATION 
+[2026-10-06 12:40:55]	[CDH] DONE harness missionary finished mode=flip, survived 16 turns, flips=28 pairs=28 orders=55 

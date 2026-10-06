@@ -1,0 +1,23 @@
+[2026-10-06 17:31:20]	[CDH] shell attached 
+[2026-10-06 17:31:22]	[CDH] shell query complete 
+[2026-10-06 17:31:22]	[CDH] shell found CDH-AM-Ant155.Civ7Save turn 155 age AGE_ANTIQUITY missingMods=0 unowned=0 
+[2026-10-06 17:31:22]	[CDH] shell handleLoadSave returned true 
+[2026-10-06 17:31:45]	[CDH] attached landclaim 
+[2026-10-06 17:31:59]	[CDH] LANDCLAIM def=0 DIPLOMACY_ACTION_LAND_CLAIM enum=-1232160770 turn=155 age=AGE_ANTIQUITY 
+[2026-10-06 17:31:59]	[CDH] LANDCLAIM player charges: getChargedAbilityCharges=undefined getNumCharges=undefined keys(Players.get(me)) sample=["isDistantLands"] 
+[2026-10-06 17:31:59]	[CDH] CLAIM 83,20 before: owner=3 district=RURAL cons=WOODCUTTER dangling=false canStart={"Success":false} 
+[2026-10-06 17:31:59]	[CDH] CLAIM 83,21 before: owner=3 district=RURAL cons=CLAY_PIT dangling=false canStart={"Success":false} 
+[2026-10-06 17:31:59]	[CDH] CLAIM 79,37 before: owner=5 district=RURAL cons=FARM dangling=false canStart={"Success":false} 
+[2026-10-06 17:31:59]	[CDH] CLAIM 84,17 before: owner=3 district=none cons=- dangling=false canStart={"Success":false} 
+[2026-10-06 17:31:59]	[CDH] CLAIM 85,17 before: owner=3 district=none cons=- dangling=false canStart={"Success":false} 
+[2026-10-06 17:31:59]	[CDH] CLAIM 85,18 before: owner=3 district=none cons=- dangling=true canStart={"Success":false} 
+[2026-10-06 17:31:59]	[CDH] CLAIM 87,21 before: owner=3 district=none cons=- dangling=true canStart={"Success":false} 
+[2026-10-06 17:32:07]	[CDH] CLAIM 83,20 after 8s: owner=3 district=RURAL cons=WOODCUTTER dangling=false 
+[2026-10-06 17:32:07]	[CDH] CLAIM 83,21 after 8s: owner=3 district=RURAL cons=CLAY_PIT dangling=false 
+[2026-10-06 17:32:07]	[CDH] CLAIM 79,37 after 8s: owner=5 district=RURAL cons=FARM dangling=false 
+[2026-10-06 17:32:07]	[CDH] CLAIM 84,17 after 8s: owner=3 district=none cons=- dangling=false 
+[2026-10-06 17:32:07]	[CDH] CLAIM 85,17 after 8s: owner=3 district=none cons=- dangling=false 
+[2026-10-06 17:32:07]	[CDH] CLAIM 85,18 after 8s: owner=3 district=none cons=- dangling=true 
+[2026-10-06 17:32:07]	[CDH] CLAIM 87,21 after 8s: owner=3 district=none cons=- dangling=true 
+[2026-10-06 17:32:07]	[CDH] CLAIM alt-args canStart={"FailureReasons":["This Unit has no valid constructions for this location."],"Success":false} 
+[2026-10-06 17:32:07]	[CDH] DONE harness landclaim finished 

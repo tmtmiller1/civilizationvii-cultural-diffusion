@@ -1,0 +1,31 @@
+[14:25:15] LocalStorage.sqlite backed up
+[14:25:15] autosaves backed up: 10
+[14:25:15] registry before: 2383=0  (restoring Disabled=0 afterward)
+[14:25:15] deployed mod: debug=1 affectsSaves0=1
+[14:25:15] NO_MOD=1: Cultural Diffusion left DISABLED for this run (control)
+[14:25:15] harness installed: cdh-game-dangle-heal.js on CDH-AM-Ant159.Civ7Save
+[14:25:15] previous UI.log kept at /Users/USER/Library/Application Support/Civilization VII/cd-harness-backup/UI-before-dangle-heal-1-20261006-142515.log (1315 lines)
+[14:25:17] game pid 84029
+[14:26:26] result=crashed after 64s
+[14:26:26] collected AI_Behavior_Tree_Events.csv (3 lines)
+[14:26:26] collected AI_Behavior_Trees.csv (1647 lines)
+[14:26:26] collected AI_CityStrategy.csv (2 lines)
+[14:26:26] collected AI_CombatPlanning.csv (406 lines)
+[14:26:26] collected AI_Commander_Promotions.csv (6 lines)
+[14:26:26] collected AI_DiplomaticActions.csv (85 lines)
+[14:26:26] collected AI_Market.csv (21 lines)
+[14:26:26] collected AI_MayhemTracker.csv (36 lines)
+[14:26:26] collected AI_MovementPlanning.csv (1023 lines)
+[14:26:26] collected AI_Operation.csv (650 lines)
+[14:26:26] collected AI_Operation_Eval.csv (71 lines)
+[14:26:26] collected AI_Recruiting.csv (3068 lines)
+[14:26:26] collected AI_Tactical.csv (328 lines)
+[14:26:27] collected AI_Targets.csv (5298 lines)
+[14:26:27] collected AI_UnitEfficiency.csv (256 lines)
+[14:26:27] collected AI_Victories.csv (1 lines)
+[14:26:27] waiting 60s for the crash report to land
+[14:27:27] crash report: CivilizationVII-2026-10-06-142627.ips
+[14:27:35] LocalStorage.sqlite restored (the run had changed it; its copy is in the trash folder)
+[14:27:35] restored: registry 2385=0  harness present: no debugPatched: 0
+[14:27:35] autosaves changed during the run; putting the player's back
+[14:27:35] FINISHED result=crashed  log: /Users/USER/Repos/civilization_mods/civilization_vii_mods/tower_mods/cultural_diffusion/devtools/harness/dangle-heal-1-UI.log

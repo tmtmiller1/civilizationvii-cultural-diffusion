@@ -1,0 +1,20 @@
+[2026-10-06 13:27:42]	JS Error (Line):       throw new Error(`Expected this.unit to be non-null.`);
+[2026-10-06 13:27:42]	JS Error (Stack): Error: Expected this.unit to be non-null.
+[2026-10-06 13:27:42]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags.js:348: Error: Expected this.unit to be non-null.
+[2026-10-06 13:27:42]	JS Error (Line):       throw new Error(`Expected this.unit to be non-null.`);
+[2026-10-06 13:27:42]	JS Error (Stack): Error: Expected this.unit to be non-null.
+[2026-10-06 13:27:42]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags.js:348: Error: Expected this.unit to be non-null.
+[2026-10-06 13:27:42]	JS Error (Line):       throw new Error(`Expected this.unit to be non-null.`);
+[2026-10-06 13:27:42]	JS Error (Stack): Error: Expected this.unit to be non-null.
+[2026-10-06 13:27:54]	JS Error: fs://game/bz-map-trix/ui/lenses/layer/bz-religion-layer.js:50: TypeError: Cannot read properties of null (reading 'cityId')
+[2026-10-06 13:27:54]	JS Error (Line):         if (!district.cityId) return;  // village
+[2026-10-06 13:27:54]	JS Error (Stack): TypeError: Cannot read properties of null (reading 'cityId')
+[2026-10-06 13:27:54]	JS Error: fs://game/bz-map-trix/ui/lenses/layer/bz-religion-layer.js:50: TypeError: Cannot read properties of null (reading 'cityId')
+[2026-10-06 13:27:54]	JS Error (Line):         if (!district.cityId) return;  // village
+[2026-10-06 13:27:54]	JS Error (Stack): TypeError: Cannot read properties of null (reading 'cityId')
+[2026-10-06 13:27:54]	JS Error: fs://game/bz-map-trix/ui/lenses/layer/bz-religion-layer.js:50: TypeError: Cannot read properties of null (reading 'cityId')
+[2026-10-06 13:27:54]	JS Error (Line):         if (!district.cityId) return;  // village
+[2026-10-06 13:27:54]	JS Error (Stack): TypeError: Cannot read properties of null (reading 'cityId')
+[2026-10-06 13:28:01]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags.js:348: Error: Expected this.unit to be non-null.
+[2026-10-06 13:28:01]	JS Error (Line):       throw new Error(`Expected this.unit to be non-null.`);
+[2026-10-06 13:28:01]	JS Error (Stack): Error: Expected this.unit to be non-null.

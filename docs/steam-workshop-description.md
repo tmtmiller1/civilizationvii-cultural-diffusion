@@ -26,7 +26,7 @@ Press Shift+C to see which tiles are about to change hands. The closer a tile is
 [*]The tile has to touch land you already own, so your borders stay connected.
 [*]A rival's city center can never be taken, and you can choose to protect the ring around it too.
 [*]A newly claimed tile is locked for a few turns so it can't flip back and forth.
-[*]Tiles with improvements, districts or wonders hold still during the Age Ending countdown and the first two turns of the next age.
+[*]Improved tiles change hands whole: a farm or mine that flips is rebuilt for its new owner. Urban districts, city centers and wonders never move by culture, and every tile holds still during the Age Ending countdown and the first two turns of the next age.
 [/list]
 [h2]When you'll see it[/h2]
 Not right away. In a 70-turn test game, a capital making 8 Culture didn't claim anything. Once your cities have grown, a strong city takes its first tile past ring 3 about twenty turns after the mod starts having an effect. Going further out takes a civ with wonders and a long history. This mostly matters in the mid and late game. Raise the intensity if you want it sooner.

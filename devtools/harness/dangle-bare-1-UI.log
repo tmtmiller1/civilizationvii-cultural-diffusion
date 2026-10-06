@@ -1,0 +1,15 @@
+[2026-10-06 13:52:29]	[CDH] shell attached 
+[2026-10-06 13:52:31]	[CDH] shell query complete 
+[2026-10-06 13:52:31]	[CDH] shell found CDH-AM-Ant159.Civ7Save turn 159 age AGE_ANTIQUITY missingMods=0 unowned=0 
+[2026-10-06 13:52:31]	[CDH] shell handleLoadSave returned true 
+[2026-10-06 13:52:49]	[CDH] attached dangle-bare 
+[2026-10-06 13:52:54]	[CDH] LOAD GameStarted 
+[2026-10-06 13:53:02]	[CDH] DANGLE start mode=bare turn=159 age=AGE_ANTIQUITY countdown=true cur=159 max=160 
+[2026-10-06 13:53:02]	[CDH] MOVE 92,40 owner=0 dangling=false -> 3 
+[2026-10-06 13:53:02]	[CDH] MOVE 88,24 owner=0 dangling=false -> 3 
+[2026-10-06 13:53:02]	[CDH] MOVE 86,25 owner=0 dangling=false -> 3 
+[2026-10-06 13:53:08]	[CDH] LANDED 92,40 owner=3 dangling=false 
+[2026-10-06 13:53:08]	[CDH] LANDED 88,24 owner=3 dangling=false 
+[2026-10-06 13:53:08]	[CDH] LANDED 86,25 owner=3 dangling=false 
+[2026-10-06 13:53:08]	[CDH] TURN turn=159 age=AGE_ANTIQUITY 
+[2026-10-06 13:53:20]	[CDH] TURN turn=160 age=AGE_ANTIQUITY 

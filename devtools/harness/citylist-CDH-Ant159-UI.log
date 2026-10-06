@@ -1,0 +1,21 @@
+[2026-10-06 14:27:57]	[CDH] shell attached 
+[2026-10-06 14:27:59]	[CDH] shell query complete 
+[2026-10-06 14:27:59]	[CDH] shell found CDH-Ant159.Civ7Save turn 159 age AGE_ANTIQUITY missingMods=0 unowned=0 
+[2026-10-06 14:27:59]	[CDH] shell handleLoadSave returned true 
+[2026-10-06 14:28:17]	[CDH] attached dangle-heal 
+[2026-10-06 14:28:23]	[CDH] LOAD GameStarted 
+[2026-10-06 14:28:31]	[CDH] DANGLE start mode=heal turn=159 age=AGE_ANTIQUITY countdown=true cur=159 max=160 
+[2026-10-06 14:28:31]	[CDH] CITYLIST before: cityDistrictIds=867 unresolvable=0  
+[2026-10-06 14:28:31]	[CDH] HEAL round 1: dangling=0 
+[2026-10-06 14:28:31]	[CDH] CLEARED all=true 
+[2026-10-06 14:28:31]	[CDH] CITYLIST after-heal: cityDistrictIds=867 unresolvable=0  
+[2026-10-06 14:28:31]	[CDH] TURN turn=159 age=AGE_ANTIQUITY 
+[2026-10-06 14:28:43]	[CDH] TURN turn=160 age=AGE_ANTIQUITY 
+[2026-10-06 14:29:09]	[CDH] attached dangle-heal 
+[2026-10-06 14:29:14]	[CDH] LOAD GameStarted 
+[2026-10-06 14:29:22]	[CDH] DANGLE start mode=heal turn=1 age=AGE_EXPLORATION countdown=false cur=1 max=160 
+[2026-10-06 14:29:22]	[CDH] after transition: no moves 
+[2026-10-06 14:29:22]	[CDH] TURN turn=1 age=AGE_EXPLORATION 
+[2026-10-06 14:29:31]	[CDH] TURN turn=2 age=AGE_EXPLORATION 
+[2026-10-06 14:29:39]	[CDH] TURN turn=3 age=AGE_EXPLORATION 
+[2026-10-06 14:29:39]	[CDH] DONE harness dangle finished mode=heal: reached Exploration turn 3 

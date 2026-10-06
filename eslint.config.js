@@ -22,6 +22,7 @@ const ENGINE_GLOBALS = {
   DistrictTypes: "readonly",
   ComponentID: "readonly",
   MapConstructibles: "readonly",
+  MapCities: "readonly",
   Constructibles: "readonly",
   Modding: "readonly",
   UI: "readonly",

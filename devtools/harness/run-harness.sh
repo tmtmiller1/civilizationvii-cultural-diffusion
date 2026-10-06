@@ -52,6 +52,12 @@ if [ "${AI_VERBOSE:-0}" = "1" ] && [ -f "$OPTS" ]; then
   say "AIVerboseLogging -> $(grep -c '^AIVerboseLogging 1' "$OPTS") (AppOptions.txt backed up)"
 fi
 
+# localStorage is shared by every mod, and getItem returns the first-sorting key's value, so one run that writes a key
+# (e.g. a third-party mod's settings) can make other mods overwrite the player's real `modSettings`. Watched
+# 2026-10-06 (amsoak-exp1). Keep the store as it was before the run and put it back afterward.
+LS="$S/LocalStorage.sqlite"; LSBAK="$S/cd-harness-backup/LocalStorage-$LABEL.sqlite"
+if [ -f "$LS" ]; then stash "$LSBAK"; mkdir -p "$(dirname "$LSBAK")"; cp -p "$LS" "$LSBAK"; say "LocalStorage.sqlite backed up"; fi
+
 stash "$BAK"; mkdir -p "$BAK"; cp -p "$AUTO"/*.Civ7Save "$BAK"/ 2>/dev/null
 say "autosaves backed up: $(ls "$BAK" 2>/dev/null | wc -l | tr -d ' ')"
 
@@ -101,6 +107,15 @@ cp "$HERE/cd-harness.modinfo" "$MODS/cd-harness/"
 sed -e "s/AugustusAnt136.Civ7Save/$SAVE/" "$HERE/${SHELL_SRC:-cdh-shell.js}" > "$MODS/cd-harness/ui/cdh-shell.js"
 cp "$HERE/$SCRIPT" "$MODS/cd-harness/ui/cdh-game.js"
 say "harness installed: $SCRIPT on $SAVE"
+# EXTRA_MOD=<folder> installs another mod (e.g. a third-party one a player runs beside ours) for this run only. A new
+# folder registers enabled on the next launch; it is moved to this run's trash folder afterward.
+EM_DEST=""
+if [ -n "${EXTRA_MOD:-}" ]; then
+  [ -d "$EXTRA_MOD" ] || { say "EXTRA_MOD $EXTRA_MOD is not a folder"; exit 1; }
+  EM_DEST="$MODS/$(basename "$EXTRA_MOD")"
+  stash "$EM_DEST"; cp -R "$EXTRA_MOD" "$EM_DEST"
+  say "extra mod installed: $(basename "$EXTRA_MOD") ($(ls "$EM_DEST"/*.modinfo 2>/dev/null | wc -l | tr -d ' ') modinfo)"
+fi
 
 # UI.log is shared with every other session's probe. Keep a copy before truncating: a previous run's log
 # is somebody's only evidence, and this script used to destroy it silently.
@@ -159,13 +174,20 @@ if [ "$result" = crashed ]; then
   # copying the newest file there as the crash report. Only list when a report exists.
   reports=("$HOME/Library/Logs/DiagnosticReports"/CivilizationVII*.ips)
   latest=""; [ ${#reports[@]} -gt 0 ] && latest=$(ls -t "${reports[@]}" 2>/dev/null | head -1)
+  # Only a report written during this run counts: when the game never started, the newest report on disk is the
+  # previous run's, and it was once filed as this run's crash (dscan1-AugustusAnt136, 2026-10-06).
+  [ -n "$latest" ] && [ "$latest" -ot "$LSBAK" ] && { say "newest .ips predates this run: $(basename "$latest") (not this run's)"; latest=""; }
   [ -n "$latest" ] && { cp "$latest" "$HERE/$LABEL-crash.ips"; say "crash report: $(basename $latest)"; } || say "no .ips found"
 fi
 
 pkill -TERM CivilizationVII; sleep 8; pgrep -x CivilizationVII >/dev/null && { sleep 10; pkill -KILL CivilizationVII; }
 sqlite3 "$DB" "update Mods set Disabled=$PRE_DISABLED where ModId='cultural-diffusion'"
 [ -f "$OPTS.cdh-bak" ] && { mv "$OPTS.cdh-bak" "$OPTS"; say "AppOptions.txt restored"; }
+if [ -f "$LSBAK" ] && ! pgrep -x CivilizationVII >/dev/null; then
+  if ! cmp -s "$LS" "$LSBAK"; then stash "$LS"; cp -p "$LSBAK" "$LS"; say "LocalStorage.sqlite restored (the run had changed it; its copy is in the trash folder)"; fi
+fi
 stash "$MODS/cd-harness"
+[ -n "$EM_DEST" ] && { stash "$EM_DEST"; say "extra mod removed: $(basename "$EM_DEST")"; }
 # Redeploy the unpatched repo copy so the next real session runs the shipped config.
 stash "$DEST"; mkdir -p "$DEST"; cp "$REPO/cultural-diffusion.modinfo" "$DEST/"; cp -R "$REPO/ui" "$DEST/"
 [ -d "$REPO/text" ] && cp -R "$REPO/text" "$DEST/"

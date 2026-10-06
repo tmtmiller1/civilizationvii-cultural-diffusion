@@ -1,0 +1,7 @@
+[2026-10-06 13:55:24]	[CDH] shell attached 
+[2026-10-06 13:55:25]	[CDH] shell query complete 
+[2026-10-06 13:55:26]	[CDH] shell found CDH-AM-Ant159.Civ7Save turn 159 age AGE_ANTIQUITY missingMods=0 unowned=0 
+[2026-10-06 13:55:26]	[CDH] shell handleLoadSave returned true 
+[2026-10-06 13:55:44]	[CDH] attached dscan-once 
+[2026-10-06 13:55:58]	[CDH] DSCAN1 turn=159 age=AGE_ANTIQUITY countdown=true cur=159 max=160 dangling=24 85,18/p3 87,18/p3 86,19/p3 85,21/p3 87,21/p3 88,22/p3 84,29/p0 84,30/p0 81,31/p0 82,31/p0 83,31/p0 80,32/p0 82,32/p0 90,36/p0 91,36/p0 92,36/p0 79,37/p0 88,37/p0 89,37/p0 91,37/p0 88,38/p0 92,38/p0 91,39/p0 90,43/p3 
+[2026-10-06 13:55:58]	[CDH] DONE harness dscan-once finished 

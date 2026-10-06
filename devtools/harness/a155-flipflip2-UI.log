@@ -1,0 +1,39 @@
+[2026-10-06 17:08:42]	[CDH] shell attached 
+[2026-10-06 17:08:43]	[CDH] shell query complete 
+[2026-10-06 17:08:44]	[CDH] shell found CDH-AM-Ant155.Civ7Save turn 155 age AGE_ANTIQUITY missingMods=0 unowned=0 
+[2026-10-06 17:08:44]	[CDH] shell handleLoadSave returned true 
+[2026-10-06 17:09:03]	[CDH] attached dangle-flipflip2 
+[2026-10-06 17:09:09]	[CDH] LOAD GameStarted 
+[2026-10-06 17:09:17]	[CDH] DANGLE start mode=flipflip2 turn=155 age=AGE_ANTIQUITY countdown=true cur=155 max=160 
+[2026-10-06 17:09:17]	[CDH] FLIPFLIP start: dangling=21 
+[2026-10-06 17:09:17]	[CDH] FLIPFLIP plan 85,18 owner=3 damagedCity=196610 -> away p0 86,20 -> back via 82,23 d=5 
+[2026-10-06 17:09:17]	[CDH] FLIPFLIP plan 87,18 owner=3 damagedCity=196610 -> away p0 86,20 -> back via 82,23 d=7 
+[2026-10-06 17:09:17]	[CDH] FLIPFLIP plan 86,19 owner=3 damagedCity=131073 -> away p0 86,20 -> back via 81,18 d=6 
+[2026-10-06 17:09:17]	[CDH] FLIPFLIP plan 85,21 owner=3 damagedCity=131073 -> away p0 86,20 -> back via 81,18 d=6 
+[2026-10-06 17:09:17]	[CDH] FLIPFLIP skip 87,21 owner=3 otherHomeCity=false away=true 
+[2026-10-06 17:09:17]	[CDH] FLIPFLIP skip 88,22 owner=3 otherHomeCity=false away=true 
+[2026-10-06 17:09:17]	[CDH] FLIPFLIP plan 84,29 owner=0 damagedCity=196609 -> away p3 80,31 -> back via 84,35 d=6 
+[2026-10-06 17:09:17]	[CDH] FLIPFLIP plan 84,30 owner=0 damagedCity=196609 -> away p3 80,31 -> back via 84,35 d=5 
+[2026-10-06 17:09:17]	[CDH] FLIPFLIP plan 81,31 owner=0 damagedCity=327683 -> away p3 80,31 -> back via 87,32 d=6 
+[2026-10-06 17:09:17]	[CDH] FLIPFLIP plan 82,31 owner=0 damagedCity=327683 -> away p3 80,31 -> back via 87,32 d=5 
+[2026-10-06 17:09:17]	[CDH] FLIPFLIP plan 83,31 owner=0 damagedCity=196609 -> away p3 80,31 -> back via 84,35 d=4 
+[2026-10-06 17:09:17]	[CDH] FLIPFLIP plan 80,32 owner=0 damagedCity=327683 -> away p3 80,31 -> back via 87,32 d=7 
+[2026-10-06 17:09:17]	[CDH] FLIPFLIP plan 82,32 owner=0 damagedCity=327683 -> away p3 80,31 -> back via 87,32 d=5 
+[2026-10-06 17:09:17]	[CDH] FLIPFLIP plan 90,36 owner=0 damagedCity=65536 -> away p3 90,37 -> back via 87,32 d=5 
+[2026-10-06 17:09:17]	[CDH] FLIPFLIP plan 91,36 owner=0 damagedCity=65536 -> away p3 90,37 -> back via 87,32 d=6 
+[2026-10-06 17:09:17]	[CDH] FLIPFLIP plan 92,36 owner=0 damagedCity=65536 -> away p3 90,37 -> back via 87,32 d=7 
+[2026-10-06 17:09:17]	[CDH] FLIPFLIP plan 88,37 owner=0 damagedCity=196609 -> away p3 90,37 -> back via 84,35 d=5 
+[2026-10-06 17:09:17]	[CDH] FLIPFLIP plan 89,37 owner=0 damagedCity=65536 -> away p3 90,37 -> back via 87,32 d=5 
+[2026-10-06 17:09:17]	[CDH] FLIPFLIP plan 91,37 owner=0 damagedCity=65536 -> away p3 90,37 -> back via 87,32 d=7 
+[2026-10-06 17:09:17]	[CDH] FLIPFLIP plan 88,38 owner=0 damagedCity=327683 -> away p3 90,37 -> back via 87,32 d=6 
+[2026-10-06 17:09:17]	[CDH] FLIPFLIP skip 92,38 owner=0 otherHomeCity=false away=true 
+[2026-10-06 17:09:23]	[CDH] FLIPFLIP step1: sent=18 awayLanded=18 cleared=16 84,29(landed) 84,30(landed) 
+[2026-10-06 17:09:31]	[CDH] FLIPFLIP step2: backLanded=18/18 dangling=21 
+[2026-10-06 17:09:35]	[CDH] FLIPFLIP done: rebuilt=0 whole=0 dangling=21 85,18/p3 87,18/p3 86,19/p3 85,21/p3 87,21/p3 88,22/p3 84,29/p0 84,30/p0 81,31/p0 82,31/p0 83,31/p0 80,32/p0 82,32/p0 90,36/p0 91,36/p0 92,36/p0 88,37/p0 89,37/p0 91,37/p0 88,38/p0 92,38/p0 owners=================== 
+[2026-10-06 17:09:35]	[CDH] CLEARED all=false 
+[2026-10-06 17:09:35]	[CDH] TURN turn=155 age=AGE_ANTIQUITY 
+[2026-10-06 17:09:51]	[CDH] TURN turn=156 age=AGE_ANTIQUITY 
+[2026-10-06 17:10:03]	[CDH] TURN turn=157 age=AGE_ANTIQUITY 
+[2026-10-06 17:10:15]	[CDH] TURN turn=158 age=AGE_ANTIQUITY 
+[2026-10-06 17:10:31]	[CDH] TURN turn=159 age=AGE_ANTIQUITY 
+[2026-10-06 17:10:44]	[CDH] TURN turn=160 age=AGE_ANTIQUITY 

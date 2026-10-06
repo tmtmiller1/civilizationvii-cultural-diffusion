@@ -1,0 +1,16 @@
+[12:26:04] autosaves backed up: 10
+[12:26:04] registry before: 2339=0  (restoring Disabled=0 afterward)
+[12:26:04] deployed mod: debug=1 affectsSaves0=1
+[12:26:04] NO_MOD=1: Cultural Diffusion left DISABLED for this run (control)
+[12:26:04] harness installed: cdh-game-missionary.js on AugustusExp66.Civ7Save
+[12:26:04] previous UI.log kept at /Users/USER/Library/Application Support/Civilization VII/cd-harness-backup/UI-before-miss-flip1-20261006-122604.log (3072 lines)
+[12:26:06] game pid 37963
+[12:26:50] result=done after 36s
+[12:26:50] collected AI_Market.csv (1 lines)
+[12:26:51] collected AI_MovementPlanning.csv (85 lines)
+[12:26:51] collected AI_Targets.csv (601 lines)
+[12:26:51] collected AI_UnitEfficiency.csv (141 lines)
+[12:26:59] restored: registry 2341=0  harness present: no debugPatched: 0
+[12:26:59] autosaves changed during the run; putting the player's back
+[12:26:59] FINISHED result=done  log: /Users/USER/Repos/civilization_mods/civilization_vii_mods/tower_mods/cultural_diffusion/devtools/harness/miss-flip1-UI.log
+RUN_EXIT=0

@@ -1,0 +1,5 @@
+[2026-10-06 13:14:03]	HTML Parser Error@:fs://game/root-game.html@1:1146: Premature end of file  Currently open tags: html, div..
+[2026-10-06 13:14:19]	HTML Parser Error@:fs://game/root-game.html@49:43: Tokenizer error with an unimplemented error message.
+[2026-10-06 13:14:50]	JS Error: fs://game/base-standard/ui/unit-flags/unit-flags.js:348: Error: Expected this.unit to be non-null.
+[2026-10-06 13:14:50]	JS Error (Line):       throw new Error(`Expected this.unit to be non-null.`);
+[2026-10-06 13:14:50]	JS Error (Stack): Error: Expected this.unit to be non-null.

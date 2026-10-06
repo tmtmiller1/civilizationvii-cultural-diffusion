@@ -1,0 +1,1136 @@
+[2026-10-06 14:09:03]	[CDH] shell attached 
+[2026-10-06 14:09:04]	[CDH] shell query complete 
+[2026-10-06 14:09:05]	[CDH] shell found AugustusAnt136.Civ7Save turn 136 age AGE_ANTIQUITY missingMods=0 unowned=0 
+[2026-10-06 14:09:05]	[CDH] shell handleLoadSave returned true 
+[2026-10-06 14:09:22]	[CDH] attached am-soak 
+[2026-10-06 14:09:22]	[CulturalDiffusion] boot (turnInterval 1, verb purchasePlot, enabled true) 
+[2026-10-06 14:09:27]	[CDH] LOAD GameStarted 
+[2026-10-06 14:09:37]	[CDH] AMSOAK start turn=136 age=AGE_ANTIQUITY startAge=AGE_ANTIQUITY local=0 amPresent=false amSet=absent religion=null missionaries=0 cdConfig={"claimOnlyUnowned":false,"aiCultureFlips":true,"flipMaxDistance":6,"maxFlipsPerTurn":8} 
+[2026-10-06 14:09:37]	[CDH] INV T0-pre: claims=0 stale=0 localInner=0 district=0 center=0 pending=0 bytes=78 
+[2026-10-06 14:09:37]	[CDH] SEED T0: 400 frontier tiles seeded, state bytes=5552 
+[2026-10-06 14:09:37]	[CulturalDiffusion] inject 92,32 civ=0 culture=38.5 vitality=55.06 strength=82.5 stock=10 cap=164993.15 
+[2026-10-06 14:09:37]	[CulturalDiffusion] inject 87,32 civ=0 culture=13 vitality=32.25 strength=33.78 stock=10 cap=67555.32 
+[2026-10-06 14:09:37]	[CulturalDiffusion] inject 90,37 civ=0 culture=1 vitality=19.9 strength=5.38 stock=10 cap=10769.85 
+[2026-10-06 14:09:37]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=23.4 strength=5.7 stock=10 cap=11398.21 
+[2026-10-06 14:09:37]	[CulturalDiffusion] inject 93,26 civ=0 culture=9 vitality=24.65 strength=24.21 stock=10 cap=48417.74 
+[2026-10-06 14:09:37]	[CulturalDiffusion] inject 86,20 civ=0 culture=1 vitality=10.03 strength=4.24 stock=10 cap=8473.01 
+[2026-10-06 14:09:37]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=21.5 strength=10.31 stock=10 cap=20616.29 
+[2026-10-06 14:09:37]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=33.35 strength=16.32 stock=10 cap=32630.11 
+[2026-10-06 14:09:37]	[CulturalDiffusion] inject 80,31 civ=3 culture=3 vitality=15.85 strength=6.65 stock=10 cap=13294.3 
+[2026-10-06 14:09:37]	[CulturalDiffusion] frontier city=65536 ring=4 best=3799 bar=300 over=3/23 center=10 
+[2026-10-06 14:09:37]	[CulturalDiffusion] frontier city=196609 ring=4 best=3799 bar=300 over=10/24 center=10 
+[2026-10-06 14:09:37]	[CulturalDiffusion] frontier city=262146 ring=4 best=3799 bar=300 over=7/24 center=10 
+[2026-10-06 14:09:37]	[CulturalDiffusion] frontier city=327683 ring=4 best=3799 bar=300 over=7/24 center=10 
+[2026-10-06 14:09:37]	[CulturalDiffusion] frontier city=393220 ring=4 best=3799 bar=300 over=4/19 center=10 
+[2026-10-06 14:09:37]	[CulturalDiffusion] frontier city=458757 ring=4 best=0 bar=300 over=0/24 center=10 
+[2026-10-06 14:09:37]	[CulturalDiffusion] flip 89,29 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:09:37]	[CulturalDiffusion] flip 90,28 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:09:37]	[CulturalDiffusion] flip 89,27 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:09:37]	[CulturalDiffusion] flip 88,28 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:09:37]	[CulturalDiffusion] flip 89,26 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:09:37]	[CulturalDiffusion] flip 87,28 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:09:37]	[CulturalDiffusion] flip 88,40 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:09:37]	[CulturalDiffusion] flip 87,39 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:09:37]	[CulturalDiffusion] flip 83,29 -> player 3 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:09:37]	[CulturalDiffusion] flip 83,27 -> player 3 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:09:37]	[CulturalDiffusion] flip 82,27 -> player 3 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:09:37]	[CulturalDiffusion] flip 82,14 -> player 3 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:09:37]	[CulturalDiffusion] flip 78,20 -> player 3 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:09:37]	[CulturalDiffusion] flip 81,14 -> player 3 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:09:37]	[CulturalDiffusion] flip 79,22 -> player 3 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:09:37]	[CulturalDiffusion] flip 78,21 -> player 3 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:09:37]	[CulturalDiffusion] state bytes=9270 field=369 claims=0 locked=0 passMs=39 
+[2026-10-06 14:09:37]	[CulturalDiffusion] pass: 0 flip(s), 8 pending, 0 ceded (0 pending), 0 AI flip(s) (8 pending), 0 conquest(s) (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 369 active field tile(s) 
+[2026-10-06 14:09:37]	[CulturalDiffusion] pass (manual): flips=0 field tiles=12 
+[2026-10-06 14:09:37]	[CDH] T0 runNow={"flips":0,"pending":8,"tiles":12,"healed":0,"released":0,"ceded":0,"cedePending":0,"aiFlips":0,"aiPending":8,"conquests":0,"conquestPending":0,"occupied":0,"confirmed":0,"confirmedCede":0} 
+[2026-10-06 14:09:45]	[CDH] INV T0-post: claims=0 stale=0 localInner=0 district=0 center=0 pending=16 bytes=9255 
+[2026-10-06 14:09:46]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:09:49]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:09:52]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:09:53]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:09:56]	[CulturalDiffusion] notify: (89,29) unowned -> player 0 
+[2026-10-06 14:09:56]	[CulturalDiffusion] pending 89,29 claim confirmed on the live map 
+[2026-10-06 14:09:56]	[CulturalDiffusion] notify: (90,28) unowned -> player 0 
+[2026-10-06 14:09:56]	[CulturalDiffusion] pending 90,28 claim confirmed on the live map 
+[2026-10-06 14:09:56]	[CulturalDiffusion] notify: (89,27) unowned -> player 0 
+[2026-10-06 14:09:56]	[CulturalDiffusion] pending 89,27 claim confirmed on the live map 
+[2026-10-06 14:09:56]	[CulturalDiffusion] notify: (88,28) unowned -> player 0 
+[2026-10-06 14:09:56]	[CulturalDiffusion] pending 88,28 claim confirmed on the live map 
+[2026-10-06 14:09:56]	[CulturalDiffusion] notify: (89,26) unowned -> player 0 
+[2026-10-06 14:09:56]	[CulturalDiffusion] pending 89,26 claim confirmed on the live map 
+[2026-10-06 14:09:56]	[CulturalDiffusion] notify: (87,28) unowned -> player 0 
+[2026-10-06 14:09:56]	[CulturalDiffusion] pending 87,28 claim confirmed on the live map 
+[2026-10-06 14:09:56]	[CulturalDiffusion] notify: (88,40) unowned -> player 0 
+[2026-10-06 14:09:56]	[CulturalDiffusion] pending 88,40 claim confirmed on the live map 
+[2026-10-06 14:09:56]	[CulturalDiffusion] notify: (87,39) unowned -> player 0 
+[2026-10-06 14:09:56]	[CulturalDiffusion] pending 87,39 claim confirmed on the live map 
+[2026-10-06 14:09:56]	[CulturalDiffusion] notify: (83,29) unowned -> player 3 
+[2026-10-06 14:09:56]	[CulturalDiffusion] pending 83,29 claim confirmed on the live map 
+[2026-10-06 14:09:56]	[CulturalDiffusion] notify: (83,27) unowned -> player 3 
+[2026-10-06 14:09:56]	[CulturalDiffusion] pending 83,27 claim confirmed on the live map 
+[2026-10-06 14:09:56]	[CulturalDiffusion] notify: (82,27) unowned -> player 3 
+[2026-10-06 14:09:56]	[CulturalDiffusion] pending 82,27 claim confirmed on the live map 
+[2026-10-06 14:09:56]	[CulturalDiffusion] notify: (82,14) unowned -> player 3 
+[2026-10-06 14:09:56]	[CulturalDiffusion] pending 82,14 claim confirmed on the live map 
+[2026-10-06 14:09:56]	[CulturalDiffusion] notify: (78,20) unowned -> player 3 
+[2026-10-06 14:09:56]	[CulturalDiffusion] pending 78,20 claim confirmed on the live map 
+[2026-10-06 14:09:56]	[CulturalDiffusion] notify: (81,14) unowned -> player 3 
+[2026-10-06 14:09:56]	[CulturalDiffusion] pending 81,14 claim confirmed on the live map 
+[2026-10-06 14:09:56]	[CulturalDiffusion] notify: (79,22) unowned -> player 3 
+[2026-10-06 14:09:56]	[CulturalDiffusion] pending 79,22 claim confirmed on the live map 
+[2026-10-06 14:09:56]	[CulturalDiffusion] notify: (78,21) unowned -> player 3 
+[2026-10-06 14:09:56]	[CulturalDiffusion] pending 78,21 claim confirmed on the live map 
+[2026-10-06 14:09:56]	[CulturalDiffusion] inject 92,32 civ=0 culture=38.5 vitality=55.06 strength=83 stock=120.15 cap=165990.45 
+[2026-10-06 14:09:56]	[CulturalDiffusion] inject 87,32 civ=0 culture=13 vitality=32.25 strength=33.98 stock=60.12 cap=67963.65 
+[2026-10-06 14:09:56]	[CulturalDiffusion] inject 90,37 civ=0 culture=1 vitality=19.9 strength=5.42 stock=25.14 cap=10834.94 
+[2026-10-06 14:09:56]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=23.4 strength=5.73 stock=25.52 cap=11467.1 
+[2026-10-06 14:09:56]	[CulturalDiffusion] inject 93,26 civ=0 culture=9 vitality=23.75 strength=24.04 stock=47.94 cap=48080.39 
+[2026-10-06 14:09:56]	[CulturalDiffusion] inject 86,20 civ=0 culture=1 vitality=10.03 strength=4.26 stock=23.78 cap=8524.23 
+[2026-10-06 14:09:56]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=16.35 strength=9.36 stock=135.3 cap=18711.88 
+[2026-10-06 14:09:56]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=27.45 strength=15.22 stock=37.15 cap=30447.67 
+[2026-10-06 14:09:56]	[CulturalDiffusion] inject 80,31 civ=3 culture=3 vitality=13.85 strength=6.33 stock=26.49 cap=12667.53 
+[2026-10-06 14:09:56]	[CulturalDiffusion] frontier city=65536 ring=4 best=3608.05 bar=300 over=4/23 center=120.15 
+[2026-10-06 14:09:56]	[CulturalDiffusion] frontier city=196609 ring=4 best=3608.05 bar=300 over=12/24 center=60.12 
+[2026-10-06 14:09:56]	[CulturalDiffusion] frontier city=262146 ring=4 best=3608.05 bar=300 over=9/24 center=25.14 
+[2026-10-06 14:09:56]	[CulturalDiffusion] frontier city=327683 ring=4 best=3608.05 bar=300 over=9/24 center=25.52 
+[2026-10-06 14:09:56]	[CulturalDiffusion] frontier city=393220 ring=4 best=3608.05 bar=300 over=5/19 center=47.94 
+[2026-10-06 14:09:56]	[CulturalDiffusion] frontier city=458757 ring=4 best=10.52 bar=300 over=0/24 center=23.78 
+[2026-10-06 14:09:56]	[CulturalDiffusion] flip 89,28 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:09:56]	[CulturalDiffusion] flip 89,25 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:09:56]	[CulturalDiffusion] flip 87,38 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:09:56]	[CulturalDiffusion] flip 84,30 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner 18) 
+[2026-10-06 14:09:56]	[CulturalDiffusion] flip 84,29 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner 18) 
+[2026-10-06 14:09:56]	[CulturalDiffusion] flip 81,33 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:09:56]	[CulturalDiffusion] flip 92,41 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:09:56]	[CulturalDiffusion] flip 91,41 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:09:56]	[CulturalDiffusion] flip 84,19 -> player 3 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:09:56]	[CulturalDiffusion] flip 83,14 -> player 3 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:09:56]	[CulturalDiffusion] flip 81,13 -> player 3 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:09:56]	[CulturalDiffusion] state bytes=11320 field=383 claims=16 locked=16 passMs=38 
+[2026-10-06 14:09:56]	[CulturalDiffusion] pass: 0 flip(s), 8 pending, 0 ceded (0 pending), 0 AI flip(s) (3 pending), 0 conquest(s) (0 pending), confirmed 16 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 383 active field tile(s) 
+[2026-10-06 14:09:56]	[CulturalDiffusion] pass (turn 137): flips=0 field tiles=35 
+[2026-10-06 14:09:57]	[CDH] TURN k=1 turn=137 age=AGE_ANTIQUITY blocker=NEW_POPULATION 
+[2026-10-06 14:10:06]	[CDH] OBS T1: age=AGE_ANTIQUITY turn=137 ownerChanges=11 missionaries=0 moved=0 idleWithMoves=0 gone=0 flipsNearMissionary=0 (district 0) onFlipped=0 jsErrors=4 amAuto=absent 
+[2026-10-06 14:10:06]	[CDH] INV T1: claims=16 stale=0 localInner=0 district=0 center=0 pending=11 bytes=11305 
+[2026-10-06 14:10:11]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:10:11]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:10:14]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:10:16]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:10:17]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:10:17]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:10:18]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:10:18]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:10:21]	[CulturalDiffusion] notify: (89,28) unowned -> player 0 
+[2026-10-06 14:10:21]	[CulturalDiffusion] pending 89,28 claim confirmed on the live map 
+[2026-10-06 14:10:21]	[CulturalDiffusion] notify: (89,25) unowned -> player 0 
+[2026-10-06 14:10:21]	[CulturalDiffusion] pending 89,25 claim confirmed on the live map 
+[2026-10-06 14:10:21]	[CulturalDiffusion] notify: (87,38) unowned -> player 0 
+[2026-10-06 14:10:21]	[CulturalDiffusion] pending 87,38 claim confirmed on the live map 
+[2026-10-06 14:10:21]	[CulturalDiffusion] notify: (84,30) player 18 -> player 0 
+[2026-10-06 14:10:21]	[CulturalDiffusion] pending 84,30 claim confirmed on the live map 
+[2026-10-06 14:10:21]	[CulturalDiffusion] notify: (84,29) player 18 -> player 0 
+[2026-10-06 14:10:21]	[CulturalDiffusion] pending 84,29 claim confirmed on the live map 
+[2026-10-06 14:10:21]	[CulturalDiffusion] notify: (81,33) unowned -> player 0 
+[2026-10-06 14:10:21]	[CulturalDiffusion] pending 81,33 claim confirmed on the live map 
+[2026-10-06 14:10:21]	[CulturalDiffusion] notify: (92,41) unowned -> player 0 
+[2026-10-06 14:10:21]	[CulturalDiffusion] pending 92,41 claim confirmed on the live map 
+[2026-10-06 14:10:21]	[CulturalDiffusion] notify: (91,41) unowned -> player 0 
+[2026-10-06 14:10:21]	[CulturalDiffusion] pending 91,41 claim confirmed on the live map 
+[2026-10-06 14:10:21]	[CulturalDiffusion] notify: (84,19) unowned -> player 3 
+[2026-10-06 14:10:21]	[CulturalDiffusion] pending 84,19 claim confirmed on the live map 
+[2026-10-06 14:10:21]	[CulturalDiffusion] notify: (83,14) unowned -> player 3 
+[2026-10-06 14:10:21]	[CulturalDiffusion] pending 83,14 claim confirmed on the live map 
+[2026-10-06 14:10:21]	[CulturalDiffusion] notify: (81,13) unowned -> player 3 
+[2026-10-06 14:10:21]	[CulturalDiffusion] pending 81,13 claim confirmed on the live map 
+[2026-10-06 14:10:21]	[CulturalDiffusion] inject 92,32 civ=0 culture=38.5 vitality=55.06 strength=64.49 stock=396.9 cap=128973.58 
+[2026-10-06 14:10:21]	[CulturalDiffusion] inject 87,32 civ=0 culture=13 vitality=32.25 strength=26.4 stock=145.4 cap=52807.35 
+[2026-10-06 14:10:21]	[CulturalDiffusion] inject 90,37 civ=0 culture=1 vitality=19.9 strength=4.21 stock=41.05 cap=8418.69 
+[2026-10-06 14:10:21]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=23.4 strength=4.45 stock=41.96 cap=8909.87 
+[2026-10-06 14:10:21]	[CulturalDiffusion] inject 93,26 civ=0 culture=5 vitality=23.75 strength=12.75 stock=88.73 cap=25495.21 
+[2026-10-06 14:10:21]	[CulturalDiffusion] inject 86,20 civ=0 culture=1.2 vitality=12.19 strength=4 stock=39.56 cap=7996.7 
+[2026-10-06 14:10:21]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=17.85 strength=9.55 stock=398.45 cap=19090.34 
+[2026-10-06 14:10:21]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=28.95 strength=15.34 stock=80.51 cap=30689.89 
+[2026-10-06 14:10:21]	[CulturalDiffusion] inject 80,31 civ=3 culture=3 vitality=13.85 strength=6.27 stock=73.85 cap=12532.74 
+[2026-10-06 14:10:21]	[CulturalDiffusion] frontier city=65536 ring=4 best=3426.65 bar=300 over=4/23 center=396.9 
+[2026-10-06 14:10:21]	[CulturalDiffusion] frontier city=196609 ring=4 best=3426.65 bar=300 over=13/24 center=145.4 
+[2026-10-06 14:10:21]	[CulturalDiffusion] frontier city=262146 ring=4 best=3426.65 bar=300 over=10/24 center=41.05 
+[2026-10-06 14:10:21]	[CulturalDiffusion] frontier city=327683 ring=4 best=3426.65 bar=300 over=9/24 center=41.96 
+[2026-10-06 14:10:21]	[CulturalDiffusion] frontier city=393220 ring=4 best=3426.65 bar=300 over=5/19 center=88.73 
+[2026-10-06 14:10:21]	[CulturalDiffusion] frontier city=458757 ring=4 best=31.6 bar=300 over=0/24 center=39.56 
+[2026-10-06 14:10:21]	[CulturalDiffusion] flip 93,40 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:10:21]	[CulturalDiffusion] flip 90,41 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:10:21]	[CulturalDiffusion] flip 88,27 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:10:21]	[CulturalDiffusion] flip 87,27 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:10:21]	[CulturalDiffusion] flip 88,25 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:10:21]	[CulturalDiffusion] flip 80,33 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:10:21]	[CulturalDiffusion] flip 93,42 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:10:21]	[CulturalDiffusion] flip 92,42 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:10:21]	[CulturalDiffusion] flip 86,43 -> player 4 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:10:21]	[CulturalDiffusion] flip 83,15 -> player 3 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:10:21]	[CulturalDiffusion] flip 82,13 -> player 3 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:10:21]	[CulturalDiffusion] state bytes=13063 field=390 claims=27 locked=27 passMs=39 
+[2026-10-06 14:10:21]	[CulturalDiffusion] pass: 0 flip(s), 8 pending, 0 ceded (0 pending), 0 AI flip(s) (3 pending), 0 conquest(s) (0 pending), confirmed 11 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 390 active field tile(s) 
+[2026-10-06 14:10:21]	[CulturalDiffusion] pass (turn 138): flips=0 field tiles=77 
+[2026-10-06 14:10:22]	[CDH] TURN k=2 turn=138 age=AGE_ANTIQUITY blocker=NEW_POPULATION 
+[2026-10-06 14:10:31]	[CDH] OBS T2: age=AGE_ANTIQUITY turn=138 ownerChanges=11 missionaries=0 moved=0 idleWithMoves=0 gone=0 flipsNearMissionary=0 (district 0) onFlipped=0 jsErrors=12 amAuto=absent 
+[2026-10-06 14:10:31]	[CDH] INV T2: claims=27 stale=0 localInner=1 district=0 center=0 pending=11 bytes=13048 
+[2026-10-06 14:10:39]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:10:39]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:10:40]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:10:40]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:10:40]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:10:40]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:10:45]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:10:46]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:10:46]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:10:46]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:10:49]	[CulturalDiffusion] notify: (93,40) unowned -> player 0 
+[2026-10-06 14:10:49]	[CulturalDiffusion] pending 93,40 claim confirmed on the live map 
+[2026-10-06 14:10:49]	[CulturalDiffusion] notify: (90,41) unowned -> player 0 
+[2026-10-06 14:10:49]	[CulturalDiffusion] pending 90,41 claim confirmed on the live map 
+[2026-10-06 14:10:49]	[CulturalDiffusion] notify: (88,27) unowned -> player 0 
+[2026-10-06 14:10:49]	[CulturalDiffusion] pending 88,27 claim confirmed on the live map 
+[2026-10-06 14:10:49]	[CulturalDiffusion] notify: (87,27) unowned -> player 0 
+[2026-10-06 14:10:49]	[CulturalDiffusion] pending 87,27 claim confirmed on the live map 
+[2026-10-06 14:10:49]	[CulturalDiffusion] notify: (88,25) unowned -> player 0 
+[2026-10-06 14:10:49]	[CulturalDiffusion] pending 88,25 claim confirmed on the live map 
+[2026-10-06 14:10:49]	[CulturalDiffusion] notify: (80,33) unowned -> player 0 
+[2026-10-06 14:10:49]	[CulturalDiffusion] pending 80,33 claim confirmed on the live map 
+[2026-10-06 14:10:49]	[CulturalDiffusion] notify: (93,42) unowned -> player 0 
+[2026-10-06 14:10:49]	[CulturalDiffusion] pending 93,42 claim confirmed on the live map 
+[2026-10-06 14:10:49]	[CulturalDiffusion] notify: (92,42) unowned -> player 0 
+[2026-10-06 14:10:49]	[CulturalDiffusion] pending 92,42 claim confirmed on the live map 
+[2026-10-06 14:10:49]	[CulturalDiffusion] notify: (86,43) unowned -> player 4 
+[2026-10-06 14:10:49]	[CulturalDiffusion] pending 86,43 claim confirmed on the live map 
+[2026-10-06 14:10:49]	[CulturalDiffusion] notify: (83,15) unowned -> player 3 
+[2026-10-06 14:10:49]	[CulturalDiffusion] pending 83,15 claim confirmed on the live map 
+[2026-10-06 14:10:49]	[CulturalDiffusion] notify: (82,13) unowned -> player 3 
+[2026-10-06 14:10:49]	[CulturalDiffusion] pending 82,13 claim confirmed on the live map 
+[2026-10-06 14:10:49]	[CulturalDiffusion] inject 92,32 civ=0 culture=38.5 vitality=55.06 strength=64.18 stock=881.29 cap=128364.88 
+[2026-10-06 14:10:49]	[CulturalDiffusion] inject 87,32 civ=0 culture=13 vitality=32.25 strength=26.28 stock=269.86 cap=52558.12 
+[2026-10-06 14:10:49]	[CulturalDiffusion] inject 90,37 civ=0 culture=1 vitality=19.9 strength=4.19 stock=75.92 cap=8378.95 
+[2026-10-06 14:10:49]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=23.4 strength=4.43 stock=59.99 cap=8867.82 
+[2026-10-06 14:10:49]	[CulturalDiffusion] inject 93,26 civ=0 culture=5 vitality=23.75 strength=12.69 stock=139.58 cap=25374.88 
+[2026-10-06 14:10:49]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=12.1 strength=0 stock=37.29 cap=0 
+[2026-10-06 14:10:49]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=17.85 strength=7.19 stock=727.61 cap=14371.23 
+[2026-10-06 14:10:49]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=28.95 strength=11.55 stock=125.63 cap=23103.38 
+[2026-10-06 14:10:49]	[CulturalDiffusion] inject 80,31 civ=3 culture=3 vitality=13.85 strength=4.72 stock=148.08 cap=9434.66 
+[2026-10-06 14:10:49]	[CulturalDiffusion] frontier city=65536 ring=4 best=3254.32 bar=300 over=4/23 center=881.29 
+[2026-10-06 14:10:49]	[CulturalDiffusion] frontier city=196609 ring=4 best=3254.32 bar=300 over=13/24 center=269.86 
+[2026-10-06 14:10:49]	[CulturalDiffusion] frontier city=262146 ring=4 best=3254.32 bar=300 over=10/24 center=75.92 
+[2026-10-06 14:10:49]	[CulturalDiffusion] frontier city=327683 ring=4 best=3254.32 bar=300 over=9/24 center=59.99 
+[2026-10-06 14:10:49]	[CulturalDiffusion] frontier city=393220 ring=4 best=3254.32 bar=300 over=5/19 center=139.58 
+[2026-10-06 14:10:49]	[CulturalDiffusion] frontier city=458757 ring=4 best=78.1 bar=300 over=0/24 center=37.29 
+[2026-10-06 14:10:49]	[CulturalDiffusion] flip 91,42 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:10:49]	[CulturalDiffusion] flip 93,41 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:10:49]	[CulturalDiffusion] flip 87,41 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:10:49]	[CulturalDiffusion] flip 84,16 -> player 3 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:10:49]	[CulturalDiffusion] state bytes=13355 field=397 claims=38 locked=38 passMs=30 
+[2026-10-06 14:10:49]	[CulturalDiffusion] pass: 0 flip(s), 3 pending, 0 ceded (0 pending), 0 AI flip(s) (1 pending), 0 conquest(s) (0 pending), confirmed 11 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 397 active field tile(s) 
+[2026-10-06 14:10:49]	[CulturalDiffusion] pass (turn 139): flips=0 field tiles=139 
+[2026-10-06 14:10:50]	[CDH] TURN k=3 turn=139 age=AGE_ANTIQUITY blocker=NEW_POPULATION 
+[2026-10-06 14:10:59]	[CDH] OBS T3: age=AGE_ANTIQUITY turn=139 ownerChanges=4 missionaries=0 moved=0 idleWithMoves=0 gone=0 flipsNearMissionary=0 (district 0) onFlipped=0 jsErrors=22 amAuto=absent 
+[2026-10-06 14:10:59]	[CDH] INV T3: claims=38 stale=0 localInner=1 district=0 center=0 pending=4 bytes=13340 
+[2026-10-06 14:11:03]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:11:05]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:11:07]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:11:07]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:11:08]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:11:09]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:11:11]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:11:15]	[CulturalDiffusion] notify: (91,42) unowned -> player 0 
+[2026-10-06 14:11:15]	[CulturalDiffusion] pending 91,42 claim confirmed on the live map 
+[2026-10-06 14:11:15]	[CulturalDiffusion] notify: (93,41) unowned -> player 0 
+[2026-10-06 14:11:15]	[CulturalDiffusion] pending 93,41 claim confirmed on the live map 
+[2026-10-06 14:11:15]	[CulturalDiffusion] notify: (87,41) unowned -> player 0 
+[2026-10-06 14:11:15]	[CulturalDiffusion] pending 87,41 claim confirmed on the live map 
+[2026-10-06 14:11:15]	[CulturalDiffusion] notify: (84,16) unowned -> player 3 
+[2026-10-06 14:11:15]	[CulturalDiffusion] pending 84,16 claim confirmed on the live map 
+[2026-10-06 14:11:15]	[CulturalDiffusion] inject 92,32 civ=0 culture=38.5 vitality=55.06 strength=63.74 stock=1579.09 cap=127482.34 
+[2026-10-06 14:11:15]	[CulturalDiffusion] inject 87,32 civ=0 culture=13 vitality=32.25 strength=26.1 stock=431.41 cap=52196.77 
+[2026-10-06 14:11:15]	[CulturalDiffusion] inject 90,37 civ=0 culture=1 vitality=20.25 strength=4.19 stock=138.61 cap=8372.28 
+[2026-10-06 14:11:15]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=23.4 strength=4.4 stock=79.2 cap=8806.85 
+[2026-10-06 14:11:15]	[CulturalDiffusion] inject 93,26 civ=0 culture=5 vitality=22.35 strength=12.34 stock=198.04 cap=24670.2 
+[2026-10-06 14:11:15]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=9.52 strength=0 stock=35.39 cap=0 
+[2026-10-06 14:11:15]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=20.85 strength=7.64 stock=1123.92 cap=15275.66 
+[2026-10-06 14:11:15]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=28.95 strength=11.63 stock=178.83 cap=23257.75 
+[2026-10-06 14:11:15]	[CulturalDiffusion] inject 80,31 civ=3 culture=4 vitality=14.85 strength=5.87 stock=225.11 cap=11733.44 
+[2026-10-06 14:11:15]	[CulturalDiffusion] frontier city=65536 ring=4 best=3090.6 bar=300 over=5/23 center=1579.09 
+[2026-10-06 14:11:15]	[CulturalDiffusion] frontier city=196609 ring=4 best=3090.6 bar=300 over=14/24 center=431.41 
+[2026-10-06 14:11:15]	[CulturalDiffusion] frontier city=262146 ring=4 best=3090.6 bar=300 over=10/24 center=138.61 
+[2026-10-06 14:11:15]	[CulturalDiffusion] frontier city=327683 ring=4 best=3090.6 bar=300 over=10/24 center=79.2 
+[2026-10-06 14:11:15]	[CulturalDiffusion] frontier city=393220 ring=4 best=3090.6 bar=300 over=5/19 center=198.04 
+[2026-10-06 14:11:15]	[CulturalDiffusion] frontier city=458757 ring=4 best=147.87 bar=300 over=0/24 center=35.39 
+[2026-10-06 14:11:16]	[CulturalDiffusion] state bytes=14431 field=400 claims=42 locked=42 passMs=27 
+[2026-10-06 14:11:16]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), 0 AI flip(s) (0 pending), 0 conquest(s) (0 pending), confirmed 4 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 400 active field tile(s) 
+[2026-10-06 14:11:16]	[CulturalDiffusion] pass (turn 140): flips=0 field tiles=144 
+[2026-10-06 14:11:17]	[CDH] TURN k=4 turn=140 age=AGE_ANTIQUITY blocker=NEW_POPULATION 
+[2026-10-06 14:11:26]	[CDH] OBS T4: age=AGE_ANTIQUITY turn=140 ownerChanges=0 missionaries=0 moved=0 idleWithMoves=0 gone=0 flipsNearMissionary=0 (district 0) onFlipped=0 jsErrors=29 amAuto=absent 
+[2026-10-06 14:11:26]	[CDH] INV T4: claims=42 stale=0 localInner=1 district=0 center=0 pending=0 bytes=14416 
+[2026-10-06 14:11:32]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:11:33]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:11:33]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:11:35]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:11:37]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:11:37]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:11:37]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:11:37]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:11:40]	[CulturalDiffusion] inject 92,32 civ=0 culture=38.5 vitality=55.06 strength=63.38 stock=2484.57 cap=126759.15 
+[2026-10-06 14:11:40]	[CulturalDiffusion] inject 87,32 civ=0 culture=13 vitality=32.25 strength=25.95 stock=627.6 cap=51900.66 
+[2026-10-06 14:11:40]	[CulturalDiffusion] inject 90,37 civ=0 culture=1 vitality=20.25 strength=4.16 stock=221.16 cap=8324.79 
+[2026-10-06 14:11:40]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=23.4 strength=4.38 stock=99.33 cap=8756.89 
+[2026-10-06 14:11:40]	[CulturalDiffusion] inject 93,26 civ=0 culture=5 vitality=22.35 strength=12.27 stock=263.99 cap=24530.25 
+[2026-10-06 14:11:40]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=8 strength=0 stock=33.71 cap=0 
+[2026-10-06 14:11:40]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=20.85 strength=5.65 stock=1500.29 cap=11300.77 
+[2026-10-06 14:11:40]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=28.95 strength=8.6 stock=223.44 cap=17205.83 
+[2026-10-06 14:11:40]	[CulturalDiffusion] inject 80,31 civ=3 culture=4 vitality=16.3 strength=4.48 stock=326.01 cap=8967.99 
+[2026-10-06 14:11:40]	[CulturalDiffusion] frontier city=65536 ring=4 best=2935.07 bar=300 over=5/23 center=2484.57 
+[2026-10-06 14:11:40]	[CulturalDiffusion] frontier city=196609 ring=4 best=2935.07 bar=300 over=15/24 center=627.6 
+[2026-10-06 14:11:40]	[CulturalDiffusion] frontier city=262146 ring=4 best=2935.07 bar=300 over=10/24 center=221.16 
+[2026-10-06 14:11:40]	[CulturalDiffusion] frontier city=327683 ring=4 best=2935.07 bar=300 over=11/24 center=99.33 
+[2026-10-06 14:11:40]	[CulturalDiffusion] frontier city=393220 ring=4 best=2935.07 bar=300 over=7/19 center=263.99 
+[2026-10-06 14:11:40]	[CulturalDiffusion] frontier city=458757 ring=4 best=228.19 bar=300 over=0/24 center=33.71 
+[2026-10-06 14:11:40]	[CulturalDiffusion] flip 90,24 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:11:40]	[CulturalDiffusion] state bytes=14544 field=403 claims=42 locked=42 passMs=25 
+[2026-10-06 14:11:40]	[CulturalDiffusion] pass: 0 flip(s), 1 pending, 0 ceded (0 pending), 0 AI flip(s) (0 pending), 0 conquest(s) (0 pending), confirmed 0 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 403 active field tile(s) 
+[2026-10-06 14:11:40]	[CulturalDiffusion] pass (turn 141): flips=0 field tiles=146 
+[2026-10-06 14:11:42]	[CDH] TURN k=5 turn=141 age=AGE_ANTIQUITY blocker=NEW_POPULATION 
+[2026-10-06 14:11:51]	[CDH] OBS T5: age=AGE_ANTIQUITY turn=141 ownerChanges=1 missionaries=0 moved=0 idleWithMoves=0 gone=0 flipsNearMissionary=0 (district 0) onFlipped=0 jsErrors=37 amAuto=absent 
+[2026-10-06 14:11:51]	[CDH] INV T5: claims=42 stale=0 localInner=1 district=0 center=0 pending=1 bytes=14529 
+[2026-10-06 14:11:51]	[CDH] SEED T5: 400 frontier tiles seeded, state bytes=18097 
+[2026-10-06 14:11:53]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:11:53]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:11:53]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:11:54]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:11:55]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:11:55]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:12:03]	[CulturalDiffusion] notify: (90,24) unowned -> player 0 
+[2026-10-06 14:12:03]	[CulturalDiffusion] pending 90,24 claim confirmed on the live map 
+[2026-10-06 14:12:03]	[CulturalDiffusion] inject 92,32 civ=0 culture=38.5 vitality=55.06 strength=63.6 stock=3597.2 cap=127206.05 
+[2026-10-06 14:12:03]	[CulturalDiffusion] inject 87,32 civ=0 culture=13 vitality=32.25 strength=26.04 stock=857.89 cap=52083.64 
+[2026-10-06 14:12:03]	[CulturalDiffusion] inject 90,37 civ=0 culture=1 vitality=20.25 strength=4.18 stock=325.04 cap=8354.14 
+[2026-10-06 14:12:03]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=23.4 strength=4.39 stock=120.32 cap=8787.76 
+[2026-10-06 14:12:03]	[CulturalDiffusion] inject 93,26 civ=0 culture=5 vitality=22.35 strength=12.31 stock=337.25 cap=24616.73 
+[2026-10-06 14:12:03]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=6.83 strength=0 stock=36.77 cap=0 
+[2026-10-06 14:12:03]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=20.85 strength=5.66 stock=1519.19 cap=11321.7 
+[2026-10-06 14:12:03]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=29.95 strength=8.72 stock=271.76 cap=17443.82 
+[2026-10-06 14:12:03]	[CulturalDiffusion] inject 80,31 civ=3 culture=5 vitality=17.75 strength=5.35 stock=458.48 cap=10701.49 
+[2026-10-06 14:12:03]	[CulturalDiffusion] frontier city=65536 ring=4 best=2787.32 bar=300 over=6/23 center=3597.2 
+[2026-10-06 14:12:03]	[CulturalDiffusion] frontier city=196609 ring=4 best=3799 bar=300 over=16/24 center=857.89 
+[2026-10-06 14:12:03]	[CulturalDiffusion] frontier city=262146 ring=4 best=3799 bar=300 over=11/24 center=325.04 
+[2026-10-06 14:12:03]	[CulturalDiffusion] frontier city=327683 ring=4 best=3799 bar=300 over=14/24 center=120.32 
+[2026-10-06 14:12:03]	[CulturalDiffusion] frontier city=393220 ring=4 best=2787.32 bar=300 over=7/19 center=337.25 
+[2026-10-06 14:12:03]	[CulturalDiffusion] frontier city=458757 ring=4 best=296.7 bar=300 over=0/24 center=36.77 
+[2026-10-06 14:12:03]	[CulturalDiffusion] flip 86,39 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:12:03]	[CulturalDiffusion] flip 88,26 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:12:03]	[CulturalDiffusion] flip 87,25 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:12:03]	[CulturalDiffusion] flip 84,28 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:12:03]	[CulturalDiffusion] flip 87,40 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:12:03]	[CulturalDiffusion] flip 87,26 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:12:03]	[CulturalDiffusion] flip 91,43 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:12:03]	[CulturalDiffusion] flip 90,43 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner 33) 
+[2026-10-06 14:12:03]	[CulturalDiffusion] flip 86,42 -> player 4 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:12:03]	[CulturalDiffusion] state bytes=14520 field=416 claims=43 locked=43 passMs=33 
+[2026-10-06 14:12:03]	[CulturalDiffusion] pass: 0 flip(s), 8 pending, 0 ceded (0 pending), 0 AI flip(s) (1 pending), 0 conquest(s) (0 pending), confirmed 1 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 416 active field tile(s) 
+[2026-10-06 14:12:03]	[CulturalDiffusion] pass (turn 142): flips=0 field tiles=124 
+[2026-10-06 14:12:04]	[CDH] TURN k=6 turn=142 age=AGE_ANTIQUITY blocker=NEW_POPULATION 
+[2026-10-06 14:12:06]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:12:07]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:12:07]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:12:07]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:12:09]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:12:13]	[CDH] OBS T6: age=AGE_ANTIQUITY turn=142 ownerChanges=23 missionaries=0 moved=0 idleWithMoves=0 gone=0 flipsNearMissionary=0 (district 0) onFlipped=0 jsErrors=48 amAuto=absent 
+[2026-10-06 14:12:13]	[CDH] INV T6: claims=43 stale=0 localInner=1 district=0 center=0 pending=9 bytes=14505 
+[2026-10-06 14:12:14]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:12:17]	[CulturalDiffusion] notify: (86,39) unowned -> player 0 
+[2026-10-06 14:12:17]	[CulturalDiffusion] pending 86,39 claim confirmed on the live map 
+[2026-10-06 14:12:17]	[CulturalDiffusion] notify: (88,26) unowned -> player 0 
+[2026-10-06 14:12:17]	[CulturalDiffusion] pending 88,26 claim confirmed on the live map 
+[2026-10-06 14:12:17]	[CulturalDiffusion] notify: (87,25) unowned -> player 0 
+[2026-10-06 14:12:17]	[CulturalDiffusion] pending 87,25 claim confirmed on the live map 
+[2026-10-06 14:12:17]	[CulturalDiffusion] notify: (84,28) unowned -> player 0 
+[2026-10-06 14:12:17]	[CulturalDiffusion] pending 84,28 claim confirmed on the live map 
+[2026-10-06 14:12:17]	[CulturalDiffusion] notify: (87,40) unowned -> player 0 
+[2026-10-06 14:12:17]	[CulturalDiffusion] pending 87,40 claim confirmed on the live map 
+[2026-10-06 14:12:17]	[CulturalDiffusion] notify: (87,26) unowned -> player 0 
+[2026-10-06 14:12:17]	[CulturalDiffusion] pending 87,26 claim confirmed on the live map 
+[2026-10-06 14:12:17]	[CulturalDiffusion] notify: (91,43) unowned -> player 0 
+[2026-10-06 14:12:17]	[CulturalDiffusion] pending 91,43 claim confirmed on the live map 
+[2026-10-06 14:12:17]	[CulturalDiffusion] notify: (90,43) player 33 -> player 0 
+[2026-10-06 14:12:17]	[CulturalDiffusion] pending 90,43 claim confirmed on the live map 
+[2026-10-06 14:12:17]	[CulturalDiffusion] notify: (86,42) unowned -> player 4 
+[2026-10-06 14:12:17]	[CulturalDiffusion] pending 86,42 claim confirmed on the live map 
+[2026-10-06 14:12:17]	[CulturalDiffusion] inject 92,32 civ=0 culture=38.5 vitality=54.45 strength=61.76 stock=4860.92 cap=123517.78 
+[2026-10-06 14:12:17]	[CulturalDiffusion] inject 87,32 civ=0 culture=13 vitality=34.15 strength=25.9 stock=1117.8 cap=51800.11 
+[2026-10-06 14:12:17]	[CulturalDiffusion] inject 90,37 civ=0 culture=1 vitality=20.25 strength=4.07 stock=409.3 cap=8143.85 
+[2026-10-06 14:12:17]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=23.4 strength=4.28 stock=141.5 cap=8566.56 
+[2026-10-06 14:12:17]	[CulturalDiffusion] inject 93,26 civ=0 culture=5 vitality=22.35 strength=12 stock=414.72 cap=23997.08 
+[2026-10-06 14:12:17]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=6.48 strength=0 stock=43.05 cap=0 
+[2026-10-06 14:12:17]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=20.85 strength=5.65 stock=1537.47 cap=11293.41 
+[2026-10-06 14:12:17]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=29.95 strength=8.7 stock=322.72 cap=17400.22 
+[2026-10-06 14:12:17]	[CulturalDiffusion] inject 80,31 civ=3 culture=5 vitality=18.75 strength=5.44 stock=495.47 cap=10881.49 
+[2026-10-06 14:12:17]	[CulturalDiffusion] frontier city=65536 ring=4 best=2646.95 bar=300 over=7/23 center=4860.92 
+[2026-10-06 14:12:17]	[CulturalDiffusion] frontier city=196609 ring=4 best=3608.05 bar=300 over=17/24 center=1117.8 
+[2026-10-06 14:12:17]	[CulturalDiffusion] frontier city=262146 ring=4 best=3608.05 bar=300 over=11/24 center=409.3 
+[2026-10-06 14:12:17]	[CulturalDiffusion] frontier city=327683 ring=4 best=3608.05 bar=300 over=17/24 center=141.5 
+[2026-10-06 14:12:17]	[CulturalDiffusion] frontier city=393220 ring=4 best=2646.95 bar=300 over=7/19 center=414.72 
+[2026-10-06 14:12:17]	[CulturalDiffusion] frontier city=458757 ring=4 best=384 bar=300 over=1/24 center=43.05 
+[2026-10-06 14:12:17]	[CulturalDiffusion] flip 88,24 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:12:17]	[CulturalDiffusion] flip 85,39 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:12:17]	[CulturalDiffusion] flip 81,36 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:12:17]	[CulturalDiffusion] flip 86,25 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:12:17]	[CulturalDiffusion] flip 87,42 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:12:17]	[CulturalDiffusion] flip 86,41 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:12:17]	[CulturalDiffusion] flip 85,41 -> player 4 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:12:17]	[CulturalDiffusion] flip 85,16 -> player 3 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:12:17]	[CulturalDiffusion] state bytes=16299 field=426 claims=52 locked=52 passMs=37 
+[2026-10-06 14:12:17]	[CulturalDiffusion] pass: 0 flip(s), 6 pending, 0 ceded (0 pending), 0 AI flip(s) (2 pending), 0 conquest(s) (0 pending), confirmed 9 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 426 active field tile(s) 
+[2026-10-06 14:12:17]	[CulturalDiffusion] pass (turn 143): flips=0 field tiles=155 
+[2026-10-06 14:12:18]	[CDH] TURN k=7 turn=143 age=AGE_ANTIQUITY blocker=NEW_POPULATION 
+[2026-10-06 14:12:27]	[CDH] OBS T7: age=AGE_ANTIQUITY turn=143 ownerChanges=8 missionaries=0 moved=0 idleWithMoves=0 gone=0 flipsNearMissionary=0 (district 0) onFlipped=0 jsErrors=49 amAuto=absent 
+[2026-10-06 14:12:27]	[CDH] INV T7: claims=52 stale=0 localInner=1 district=0 center=0 pending=8 bytes=16284 
+[2026-10-06 14:12:29]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:12:29]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:12:32]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:12:33]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:12:33]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:12:38]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:12:38]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:12:38]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:12:41]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:12:41]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:12:42]	[CulturalDiffusion] notify: (88,24) unowned -> player 0 
+[2026-10-06 14:12:42]	[CulturalDiffusion] pending 88,24 claim confirmed on the live map 
+[2026-10-06 14:12:42]	[CulturalDiffusion] notify: (85,39) unowned -> player 0 
+[2026-10-06 14:12:42]	[CulturalDiffusion] pending 85,39 claim confirmed on the live map 
+[2026-10-06 14:12:42]	[CulturalDiffusion] notify: (81,36) unowned -> player 0 
+[2026-10-06 14:12:42]	[CulturalDiffusion] pending 81,36 claim confirmed on the live map 
+[2026-10-06 14:12:42]	[CulturalDiffusion] notify: (86,25) unowned -> player 0 
+[2026-10-06 14:12:42]	[CulturalDiffusion] pending 86,25 claim confirmed on the live map 
+[2026-10-06 14:12:42]	[CulturalDiffusion] notify: (87,42) unowned -> player 0 
+[2026-10-06 14:12:42]	[CulturalDiffusion] pending 87,42 claim confirmed on the live map 
+[2026-10-06 14:12:42]	[CulturalDiffusion] notify: (86,41) unowned -> player 0 
+[2026-10-06 14:12:42]	[CulturalDiffusion] pending 86,41 claim confirmed on the live map 
+[2026-10-06 14:12:42]	[CulturalDiffusion] notify: (85,41) unowned -> player 4 
+[2026-10-06 14:12:42]	[CulturalDiffusion] pending 85,41 claim confirmed on the live map 
+[2026-10-06 14:12:42]	[CulturalDiffusion] notify: (85,16) unowned -> player 3 
+[2026-10-06 14:12:42]	[CulturalDiffusion] pending 85,16 claim confirmed on the live map 
+[2026-10-06 14:12:42]	[CulturalDiffusion] inject 92,32 civ=0 culture=38.5 vitality=52.95 strength=60.77 stock=6267.9 cap=121545.38 
+[2026-10-06 14:12:42]	[CulturalDiffusion] inject 87,32 civ=0 culture=13 vitality=34.15 strength=25.74 stock=1404.17 cap=51473.75 
+[2026-10-06 14:12:42]	[CulturalDiffusion] inject 90,37 civ=0 culture=1 vitality=20.25 strength=4.05 stock=521.7 cap=8092.54 
+[2026-10-06 14:12:42]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=23.4 strength=4.26 stock=163.04 cap=8512.58 
+[2026-10-06 14:12:42]	[CulturalDiffusion] inject 93,26 civ=0 culture=5 vitality=22.35 strength=11.92 stock=497.03 cap=23845.89 
+[2026-10-06 14:12:42]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=5.63 strength=0 stock=48.56 cap=0 
+[2026-10-06 14:12:42]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=20.85 strength=5.65 stock=1555.41 cap=11301.07 
+[2026-10-06 14:12:42]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=29.95 strength=8.71 stock=376.16 cap=17412.03 
+[2026-10-06 14:12:42]	[CulturalDiffusion] inject 80,31 civ=3 culture=5 vitality=20.55 strength=5.62 stock=555.51 cap=11243.89 
+[2026-10-06 14:12:42]	[CulturalDiffusion] inject 79,39 civ=5 culture=0 vitality=2.67 strength=0 stock=1 cap=0 
+[2026-10-06 14:12:42]	[CulturalDiffusion] frontier city=65536 ring=4 best=2513.6 bar=300 over=7/23 center=6267.9 
+[2026-10-06 14:12:42]	[CulturalDiffusion] frontier city=196609 ring=4 best=3426.65 bar=300 over=16/24 center=1404.17 
+[2026-10-06 14:12:42]	[CulturalDiffusion] frontier city=262146 ring=4 best=3426.65 bar=300 over=12/24 center=521.7 
+[2026-10-06 14:12:42]	[CulturalDiffusion] frontier city=327683 ring=4 best=3426.65 bar=300 over=16/24 center=163.04 
+[2026-10-06 14:12:42]	[CulturalDiffusion] frontier city=393220 ring=4 best=2513.6 bar=300 over=6/19 center=497.03 
+[2026-10-06 14:12:42]	[CulturalDiffusion] frontier city=458757 ring=4 best=364.7 bar=300 over=1/24 center=48.56 
+[2026-10-06 14:12:42]	[CulturalDiffusion] flip 81,37 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:12:42]	[CulturalDiffusion] flip 85,40 -> player 4 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:12:42]	[CulturalDiffusion] state bytes=17545 field=434 claims=60 locked=60 passMs=34 
+[2026-10-06 14:12:42]	[CulturalDiffusion] pass: 0 flip(s), 1 pending, 0 ceded (0 pending), 0 AI flip(s) (1 pending), 0 conquest(s) (0 pending), confirmed 8 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 434 active field tile(s) 
+[2026-10-06 14:12:42]	[CulturalDiffusion] pass (turn 144): flips=0 field tiles=156 
+[2026-10-06 14:12:43]	[CDH] TURN k=8 turn=144 age=AGE_ANTIQUITY blocker=NEW_POPULATION 
+[2026-10-06 14:12:52]	[CDH] OBS T8: age=AGE_ANTIQUITY turn=144 ownerChanges=2 missionaries=0 moved=0 idleWithMoves=0 gone=0 flipsNearMissionary=0 (district 0) onFlipped=0 jsErrors=59 amAuto=absent 
+[2026-10-06 14:12:52]	[CDH] INV T8: claims=60 stale=0 localInner=1 district=0 center=0 pending=2 bytes=17530 
+[2026-10-06 14:12:57]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:12:58]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:12:58]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:12:58]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:13:00]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:13:02]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:13:03]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:13:03]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:13:05]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:13:05]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:13:05]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:13:08]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:13:08]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:13:08]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:13:08]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:13:08]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:13:08]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:13:08]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:13:11]	[CulturalDiffusion] notify: (81,37) unowned -> player 0 
+[2026-10-06 14:13:11]	[CulturalDiffusion] pending 81,37 claim confirmed on the live map 
+[2026-10-06 14:13:11]	[CulturalDiffusion] notify: (85,40) unowned -> player 4 
+[2026-10-06 14:13:11]	[CulturalDiffusion] pending 85,40 claim confirmed on the live map 
+[2026-10-06 14:13:11]	[CulturalDiffusion] inject 92,32 civ=0 culture=38.5 vitality=51.95 strength=59.56 stock=7789.84 cap=119125.74 
+[2026-10-06 14:13:11]	[CulturalDiffusion] inject 87,32 civ=0 culture=13 vitality=34.15 strength=25.39 stock=1711.5 cap=50786.83 
+[2026-10-06 14:13:11]	[CulturalDiffusion] inject 90,37 civ=0 culture=1 vitality=20.25 strength=3.99 stock=539.94 cap=7984.54 
+[2026-10-06 14:13:11]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=23.4 strength=4.2 stock=184.65 cap=8398.98 
+[2026-10-06 14:13:11]	[CulturalDiffusion] inject 93,26 civ=0 culture=5 vitality=22.35 strength=11.76 stock=582.75 cap=23527.67 
+[2026-10-06 14:13:11]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=4.87 strength=0 stock=53.36 cap=0 
+[2026-10-06 14:13:11]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=20.85 strength=5.63 stock=1572.65 cap=11262.45 
+[2026-10-06 14:13:11]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=29.95 strength=8.68 stock=431.52 cap=17352.52 
+[2026-10-06 14:13:11]	[CulturalDiffusion] inject 80,31 civ=3 culture=5 vitality=22.35 strength=5.77 stock=597.05 cap=11539.66 
+[2026-10-06 14:13:11]	[CulturalDiffusion] inject 79,39 civ=5 culture=1 vitality=4.7 strength=1.75 stock=10.68 cap=3503.93 
+[2026-10-06 14:13:11]	[CulturalDiffusion] frontier city=65536 ring=4 best=2386.92 bar=300 over=7/23 center=7789.84 
+[2026-10-06 14:13:11]	[CulturalDiffusion] frontier city=196609 ring=4 best=3254.32 bar=300 over=17/24 center=1711.5 
+[2026-10-06 14:13:11]	[CulturalDiffusion] frontier city=262146 ring=4 best=3254.32 bar=300 over=13/24 center=539.94 
+[2026-10-06 14:13:11]	[CulturalDiffusion] frontier city=327683 ring=4 best=3254.32 bar=300 over=16/24 center=184.65 
+[2026-10-06 14:13:11]	[CulturalDiffusion] frontier city=393220 ring=4 best=2386.92 bar=300 over=6/19 center=582.75 
+[2026-10-06 14:13:11]	[CulturalDiffusion] frontier city=458757 ring=4 best=346.37 bar=300 over=1/24 center=53.36 
+[2026-10-06 14:13:11]	[CulturalDiffusion] flip 84,40 -> player 4 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:13:11]	[CulturalDiffusion] state bytes=17478 field=435 claims=62 locked=62 passMs=31 
+[2026-10-06 14:13:11]	[CulturalDiffusion] pass: 0 flip(s), 0 pending, 0 ceded (0 pending), 0 AI flip(s) (1 pending), 0 conquest(s) (0 pending), confirmed 2 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 435 active field tile(s) 
+[2026-10-06 14:13:11]	[CulturalDiffusion] pass (turn 145): flips=0 field tiles=158 
+[2026-10-06 14:13:12]	[CDH] TURN k=9 turn=145 age=AGE_ANTIQUITY blocker=NEW_POPULATION 
+[2026-10-06 14:13:21]	[CDH] OBS T9: age=AGE_ANTIQUITY turn=145 ownerChanges=1 missionaries=0 moved=0 idleWithMoves=0 gone=0 flipsNearMissionary=0 (district 0) onFlipped=0 jsErrors=77 amAuto=absent 
+[2026-10-06 14:13:21]	[CDH] INV T9: claims=62 stale=0 localInner=1 district=0 center=0 pending=1 bytes=17463 
+[2026-10-06 14:13:26]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:13:26]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:13:26]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:13:27]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:13:27]	[CulturalDiffusion] capture: city 655369 to player 5 lies outside the simulated field; nothing to transfer 
+[2026-10-06 14:13:28]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:13:29]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:13:29]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:13:29]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:13:30]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:13:32]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:13:33]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:13:34]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:13:34]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:13:36]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:13:36]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:13:36]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:13:39]	[CulturalDiffusion] notify: (84,40) unowned -> player 4 
+[2026-10-06 14:13:39]	[CulturalDiffusion] pending 84,40 claim confirmed on the live map 
+[2026-10-06 14:13:39]	[CulturalDiffusion] inject 92,32 civ=0 culture=38.5 vitality=51.95 strength=59.78 stock=9452.76 cap=119556.74 
+[2026-10-06 14:13:39]	[CulturalDiffusion] inject 87,32 civ=0 culture=13 vitality=34.15 strength=25.49 stock=2043.26 cap=50970.58 
+[2026-10-06 14:13:39]	[CulturalDiffusion] inject 90,37 civ=0 culture=1 vitality=20.25 strength=4.01 stock=558 cap=8013.43 
+[2026-10-06 14:13:39]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=23.4 strength=4.21 stock=206.6 cap=8429.37 
+[2026-10-06 14:13:39]	[CulturalDiffusion] inject 93,26 civ=0 culture=5 vitality=22.35 strength=11.81 stock=672.99 cap=23612.79 
+[2026-10-06 14:13:39]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=9.94 strength=0 stock=57.5 cap=0 
+[2026-10-06 14:13:39]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=20.85 strength=5.63 stock=1589.48 cap=11257.7 
+[2026-10-06 14:13:39]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=29.95 strength=8.67 stock=488.72 cap=17345.21 
+[2026-10-06 14:13:39]	[CulturalDiffusion] inject 80,31 civ=3 culture=5 vitality=22.35 strength=5.77 stock=638.18 cap=11534.79 
+[2026-10-06 14:13:39]	[CulturalDiffusion] inject 79,39 civ=5 culture=1 vitality=4.7 strength=1.69 stock=21.28 cap=3372.57 
+[2026-10-06 14:13:39]	[CulturalDiffusion] frontier city=65536 ring=4 best=2266.58 bar=300 over=7/23 center=9452.76 
+[2026-10-06 14:13:39]	[CulturalDiffusion] frontier city=196609 ring=4 best=4168.63 bar=300 over=17/24 center=2043.26 
+[2026-10-06 14:13:39]	[CulturalDiffusion] frontier city=262146 ring=4 best=3090.6 bar=300 over=12/24 center=558 
+[2026-10-06 14:13:39]	[CulturalDiffusion] frontier city=327683 ring=4 best=3090.6 bar=300 over=16/24 center=206.6 
+[2026-10-06 14:13:39]	[CulturalDiffusion] frontier city=393220 ring=4 best=2266.58 bar=300 over=7/19 center=672.99 
+[2026-10-06 14:13:39]	[CulturalDiffusion] frontier city=458757 ring=4 best=328.96 bar=300 over=1/24 center=57.5 
+[2026-10-06 14:13:39]	[CulturalDiffusion] flip 80,34 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:13:39]	[CulturalDiffusion] flip 83,40 -> player 4 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:13:39]	[CulturalDiffusion] state bytes=18396 field=435 claims=63 locked=63 passMs=30 
+[2026-10-06 14:13:39]	[CulturalDiffusion] pass: 0 flip(s), 1 pending, 0 ceded (0 pending), 0 AI flip(s) (1 pending), 0 conquest(s) (0 pending), confirmed 1 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 435 active field tile(s) 
+[2026-10-06 14:13:39]	[CulturalDiffusion] pass (turn 146): flips=0 field tiles=158 
+[2026-10-06 14:13:40]	[CDH] TURN k=10 turn=146 age=AGE_ANTIQUITY blocker=NEW_POPULATION 
+[2026-10-06 14:13:49]	[CDH] OBS T10: age=AGE_ANTIQUITY turn=146 ownerChanges=2 missionaries=0 moved=0 idleWithMoves=0 gone=0 flipsNearMissionary=0 (district 0) onFlipped=0 jsErrors=93 amAuto=absent 
+[2026-10-06 14:13:49]	[CDH] INV T10: claims=63 stale=0 localInner=1 district=0 center=0 pending=2 bytes=18381 
+[2026-10-06 14:13:49]	[CDH] SEED T10: 400 frontier tiles seeded, state bytes=21930 
+[2026-10-06 14:13:59]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:13:59]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:13:59]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:13:59]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:13:59]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:13:59]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:13:59]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:13:59]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:13:59]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:14:00]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:14:06]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:14:06]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:14:07]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:14:08]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:14:08]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:14:08]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:14:11]	[CulturalDiffusion] notify: (80,34) unowned -> player 0 
+[2026-10-06 14:14:11]	[CulturalDiffusion] pending 80,34 claim confirmed on the live map 
+[2026-10-06 14:14:11]	[CulturalDiffusion] notify: (83,40) unowned -> player 4 
+[2026-10-06 14:14:11]	[CulturalDiffusion] pending 83,40 claim confirmed on the live map 
+[2026-10-06 14:14:11]	[CulturalDiffusion] inject 92,32 civ=0 culture=38.5 vitality=51.95 strength=59.14 stock=11215.99 cap=118277 
+[2026-10-06 14:14:11]	[CulturalDiffusion] inject 87,32 civ=0 culture=13 vitality=34.15 strength=25.21 stock=2391.49 cap=50424.99 
+[2026-10-06 14:14:11]	[CulturalDiffusion] inject 90,37 civ=0 culture=1 vitality=20.25 strength=3.96 stock=575.36 cap=7927.65 
+[2026-10-06 14:14:11]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=23.4 strength=4.17 stock=228.48 cap=8339.14 
+[2026-10-06 14:14:11]	[CulturalDiffusion] inject 93,26 civ=0 culture=5 vitality=22.35 strength=11.68 stock=765.7 cap=23360.04 
+[2026-10-06 14:14:11]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=9.94 strength=0 stock=63.22 cap=0 
+[2026-10-06 14:14:11]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=20.85 strength=5.62 stock=1605.78 cap=11240.69 
+[2026-10-06 14:14:11]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=29.95 strength=8.66 stock=547.43 cap=17319 
+[2026-10-06 14:14:11]	[CulturalDiffusion] inject 80,31 civ=3 culture=5 vitality=22.35 strength=5.76 stock=678.64 cap=11517.36 
+[2026-10-06 14:14:11]	[CulturalDiffusion] inject 79,39 civ=5 culture=1 vitality=9.25 strength=2.28 stock=33.29 cap=4562.57 
+[2026-10-06 14:14:11]	[CulturalDiffusion] frontier city=65536 ring=4 best=2152.25 bar=300 over=8/23 center=11215.99 
+[2026-10-06 14:14:11]	[CulturalDiffusion] frontier city=196609 ring=4 best=5495.91 bar=300 over=18/24 center=2391.49 
+[2026-10-06 14:14:11]	[CulturalDiffusion] frontier city=262146 ring=4 best=3799 bar=300 over=12/24 center=575.36 
+[2026-10-06 14:14:11]	[CulturalDiffusion] frontier city=327683 ring=4 best=3799 bar=300 over=18/24 center=228.48 
+[2026-10-06 14:14:11]	[CulturalDiffusion] frontier city=393220 ring=4 best=2152.25 bar=300 over=8/19 center=765.7 
+[2026-10-06 14:14:11]	[CulturalDiffusion] frontier city=458757 ring=4 best=312.41 bar=300 over=1/24 center=63.22 
+[2026-10-06 14:14:11]	[CulturalDiffusion] flip 84,39 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:14:11]	[CulturalDiffusion] flip 86,40 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:14:11]	[CulturalDiffusion] flip 87,43 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:14:11]	[CulturalDiffusion] flip 82,40 -> player 4 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:14:11]	[CulturalDiffusion] state bytes=17047 field=436 claims=65 locked=65 passMs=35 
+[2026-10-06 14:14:11]	[CulturalDiffusion] pass: 0 flip(s), 3 pending, 0 ceded (0 pending), 0 AI flip(s) (1 pending), 0 conquest(s) (0 pending), confirmed 2 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 436 active field tile(s) 
+[2026-10-06 14:14:11]	[CulturalDiffusion] pass (turn 147): flips=0 field tiles=158 
+[2026-10-06 14:14:13]	[CDH] TURN k=11 turn=147 age=AGE_ANTIQUITY blocker=NEW_POPULATION 
+[2026-10-06 14:14:22]	[CDH] OBS T11: age=AGE_ANTIQUITY turn=147 ownerChanges=4 missionaries=0 moved=0 idleWithMoves=0 gone=0 flipsNearMissionary=0 (district 0) onFlipped=0 jsErrors=109 amAuto=absent 
+[2026-10-06 14:14:22]	[CDH] INV T11: claims=65 stale=0 localInner=1 district=0 center=0 pending=4 bytes=17032 
+[2026-10-06 14:15:45]	[CDH] ENDTURN stuck on turn 147 blocker=NEW_POPULATION: one Autoplay turn 
+[2026-10-06 14:15:46]	[CulturalDiffusion] capture: city 524293 now player 3's (from 0); culture transferred on 42 of 42 tile(s) 
+[2026-10-06 14:15:48]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:15:48]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:15:48]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:15:48]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:15:49]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:15:49]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:15:51]	[CDH] JSREJ Timeout 5000ms exceeded for waitUntilValue on . 
+[2026-10-06 14:15:51]	[CDH] JSREJ Timeout 5000ms exceeded for waitUntilValue on . 
+[2026-10-06 14:15:52]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:15:55]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:15:56]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:15:56]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:15:59]	[CulturalDiffusion] notify: (84,39) unowned -> player 0 
+[2026-10-06 14:15:59]	[CulturalDiffusion] pending 84,39 claim confirmed on the live map 
+[2026-10-06 14:15:59]	[CulturalDiffusion] notify: (86,40) unowned -> player 0 
+[2026-10-06 14:15:59]	[CulturalDiffusion] pending 86,40 claim confirmed on the live map 
+[2026-10-06 14:15:59]	[CulturalDiffusion] pending 87,43 claim NOT APPLIED on the live map - dropped 
+[2026-10-06 14:15:59]	[CulturalDiffusion] notify: (82,40) unowned -> player 4 
+[2026-10-06 14:15:59]	[CulturalDiffusion] pending 82,40 claim confirmed on the live map 
+[2026-10-06 14:15:59]	[CulturalDiffusion] inject 92,32 civ=0 culture=39.6 vitality=58.87 strength=61.27 stock=13177.38 cap=122543.61 
+[2026-10-06 14:15:59]	[CulturalDiffusion] inject 87,32 civ=0 culture=13 vitality=32.92 strength=24.24 stock=2740 cap=48477.81 
+[2026-10-06 14:15:59]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=25.9 strength=4.21 stock=250.69 cap=8413.97 
+[2026-10-06 14:15:59]	[CulturalDiffusion] inject 93,26 civ=0 culture=5 vitality=28.82 strength=12.43 stock=869.64 cap=24863.52 
+[2026-10-06 14:15:59]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=11.31 strength=0 stock=68.18 cap=0 
+[2026-10-06 14:15:59]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=24 strength=5.94 stock=1626.73 cap=11886.41 
+[2026-10-06 14:15:59]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=34.1 strength=9.12 stock=611.72 cap=18243.95 
+[2026-10-06 14:15:59]	[CulturalDiffusion] inject 80,31 civ=3 culture=5 vitality=21.65 strength=5.73 stock=719.57 cap=11465.35 
+[2026-10-06 14:15:59]	[CulturalDiffusion] inject 90,37 civ=3 culture=5 vitality=24.05 strength=5.95 stock=271.54 cap=11895.08 
+[2026-10-06 14:15:59]	[CulturalDiffusion] inject 79,39 civ=5 culture=1 vitality=9.25 strength=2.23 stock=45.61 cap=4461.92 
+[2026-10-06 14:15:59]	[CulturalDiffusion] frontier city=65536 ring=4 best=2043.64 bar=300 over=7/23 center=13177.38 
+[2026-10-06 14:15:59]	[CulturalDiffusion] frontier city=196609 ring=4 best=7043.46 bar=300 over=19/24 center=2740 
+[2026-10-06 14:15:59]	[CulturalDiffusion] frontier city=327683 ring=4 best=3608.05 bar=300 over=17/24 center=250.69 
+[2026-10-06 14:15:59]	[CulturalDiffusion] frontier city=393220 ring=4 best=2043.64 bar=300 over=8/19 center=869.64 
+[2026-10-06 14:15:59]	[CulturalDiffusion] frontier city=458757 ring=4 best=296.7 bar=300 over=0/24 center=68.18 
+[2026-10-06 14:15:59]	[CulturalDiffusion] flip 89,35 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner 3) 
+[2026-10-06 14:15:59]	[CulturalDiffusion] flip 83,31 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner 3) 
+[2026-10-06 14:15:59]	[CulturalDiffusion] flip 82,32 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner 3) 
+[2026-10-06 14:15:59]	[CulturalDiffusion] flip 83,39 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:15:59]	[CulturalDiffusion] flip 83,30 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner 3) 
+[2026-10-06 14:15:59]	[CulturalDiffusion] flip 81,32 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner 3) 
+[2026-10-06 14:15:59]	[CulturalDiffusion] flip 80,32 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner 3) 
+[2026-10-06 14:15:59]	[CulturalDiffusion] flip 85,20 -> player 3 via purchasePlot sent; pending confirmation next pass (was owner 0) 
+[2026-10-06 14:15:59]	[CulturalDiffusion] flip 85,18 -> player 3 via purchasePlot sent; pending confirmation next pass (was owner 0) 
+[2026-10-06 14:15:59]	[CulturalDiffusion] flip 84,17 -> player 3 via purchasePlot sent; pending confirmation next pass (was owner 0) 
+[2026-10-06 14:15:59]	[CulturalDiffusion] flip 81,39 -> player 4 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:15:59]	[CulturalDiffusion] flip 85,19 -> player 3 via purchasePlot sent; pending confirmation next pass (was owner 0) 
+[2026-10-06 14:15:59]	[CulturalDiffusion] flip 85,17 -> player 3 via purchasePlot sent; pending confirmation next pass (was owner 0) 
+[2026-10-06 14:15:59]	[CulturalDiffusion] flip 86,16 -> player 3 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:15:59]	[CulturalDiffusion] state bytes=19789 field=431 claims=68 locked=68 passMs=47 
+[2026-10-06 14:15:59]	[CulturalDiffusion] pass: 0 flip(s), 7 pending, 0 ceded (0 pending), 0 AI flip(s) (7 pending), 0 conquest(s) (0 pending), confirmed 3 claim/0 cede (1 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 431 active field tile(s) 
+[2026-10-06 14:15:59]	[CulturalDiffusion] pass (turn 148): flips=0 field tiles=153 
+[2026-10-06 14:16:00]	[CDH] TURN k=12 turn=148 age=AGE_ANTIQUITY blocker=CULTURE 
+[2026-10-06 14:16:09]	[CDH] OBS T12: age=AGE_ANTIQUITY turn=148 ownerChanges=14 missionaries=0 moved=0 idleWithMoves=0 gone=0 flipsNearMissionary=0 (district 0) onFlipped=0 jsErrors=121 amAuto=absent 
+[2026-10-06 14:16:09]	[CDH] INV T12: claims=68 stale=17 localInner=1 district=0 center=0 pending=14 bytes=19774 
+[2026-10-06 14:16:15]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:16:16]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:16:21]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:16:21]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:16:25]	[CulturalDiffusion] notify: (89,35) player 3 -> player 0 
+[2026-10-06 14:16:25]	[CulturalDiffusion] pending 89,35 claim confirmed on the live map 
+[2026-10-06 14:16:25]	[CulturalDiffusion] notify: (83,31) player 3 -> player 0 
+[2026-10-06 14:16:25]	[CulturalDiffusion] pending 83,31 claim confirmed on the live map 
+[2026-10-06 14:16:25]	[CulturalDiffusion] notify: (82,32) player 3 -> player 0 
+[2026-10-06 14:16:25]	[CulturalDiffusion] pending 82,32 claim confirmed on the live map 
+[2026-10-06 14:16:25]	[CulturalDiffusion] notify: (83,39) unowned -> player 0 
+[2026-10-06 14:16:25]	[CulturalDiffusion] pending 83,39 claim confirmed on the live map 
+[2026-10-06 14:16:25]	[CulturalDiffusion] notify: (83,30) player 3 -> player 0 
+[2026-10-06 14:16:25]	[CulturalDiffusion] pending 83,30 claim confirmed on the live map 
+[2026-10-06 14:16:25]	[CulturalDiffusion] notify: (81,32) player 3 -> player 0 
+[2026-10-06 14:16:25]	[CulturalDiffusion] pending 81,32 claim confirmed on the live map 
+[2026-10-06 14:16:25]	[CulturalDiffusion] notify: (80,32) player 3 -> player 0 
+[2026-10-06 14:16:25]	[CulturalDiffusion] pending 80,32 claim confirmed on the live map 
+[2026-10-06 14:16:25]	[CulturalDiffusion] notify: (85,20) player 0 -> player 3 
+[2026-10-06 14:16:25]	[CulturalDiffusion] pending 85,20 claim confirmed on the live map 
+[2026-10-06 14:16:25]	[CulturalDiffusion] notify: (85,18) player 0 -> player 3 
+[2026-10-06 14:16:25]	[CulturalDiffusion] pending 85,18 claim confirmed on the live map 
+[2026-10-06 14:16:25]	[CulturalDiffusion] notify: (84,17) player 0 -> player 3 
+[2026-10-06 14:16:25]	[CulturalDiffusion] pending 84,17 claim confirmed on the live map 
+[2026-10-06 14:16:25]	[CulturalDiffusion] notify: (81,39) unowned -> player 4 
+[2026-10-06 14:16:25]	[CulturalDiffusion] pending 81,39 claim confirmed on the live map 
+[2026-10-06 14:16:25]	[CulturalDiffusion] notify: (85,19) player 0 -> player 3 
+[2026-10-06 14:16:25]	[CulturalDiffusion] pending 85,19 claim confirmed on the live map 
+[2026-10-06 14:16:25]	[CulturalDiffusion] notify: (85,17) player 0 -> player 3 
+[2026-10-06 14:16:25]	[CulturalDiffusion] pending 85,17 claim confirmed on the live map 
+[2026-10-06 14:16:25]	[CulturalDiffusion] notify: (86,16) unowned -> player 3 
+[2026-10-06 14:16:25]	[CulturalDiffusion] pending 86,16 claim confirmed on the live map 
+[2026-10-06 14:16:25]	[CulturalDiffusion] inject 92,32 civ=0 culture=39.6 vitality=59.52 strength=77.42 stock=15969.46 cap=154837.03 
+[2026-10-06 14:16:25]	[CulturalDiffusion] inject 87,32 civ=0 culture=13 vitality=33.46 strength=30.68 stock=3234.03 cap=61364.82 
+[2026-10-06 14:16:25]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=26.55 strength=5.34 stock=279.91 cap=10682.76 
+[2026-10-06 14:16:25]	[CulturalDiffusion] inject 93,26 civ=0 culture=5 vitality=29.47 strength=15.77 stock=1015.28 cap=31540.45 
+[2026-10-06 14:16:25]	[CulturalDiffusion] inject 86,20 civ=0 culture=0 vitality=11.97 strength=0 stock=72.43 cap=0 
+[2026-10-06 14:16:25]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=24.65 strength=10.89 stock=1724.54 cap=21784.51 
+[2026-10-06 14:16:25]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=34.75 strength=16.67 stock=749.84 cap=33344.49 
+[2026-10-06 14:16:25]	[CulturalDiffusion] inject 80,31 civ=3 culture=5 vitality=21.95 strength=10.46 stock=809.45 cap=20917.7 
+[2026-10-06 14:16:25]	[CulturalDiffusion] inject 90,37 civ=3 culture=5 vitality=25.8 strength=11.07 stock=339.52 cap=22134.96 
+[2026-10-06 14:16:25]	[CulturalDiffusion] inject 79,39 civ=5 culture=1 vitality=9.25 strength=2.18 stock=58.04 cap=4363.31 
+[2026-10-06 14:16:25]	[CulturalDiffusion] frontier city=65536 ring=4 best=1940.45 bar=300 over=8/23 center=15969.46 
+[2026-10-06 14:16:25]	[CulturalDiffusion] frontier city=196609 ring=4 best=8834.65 bar=300 over=18/24 center=3234.03 
+[2026-10-06 14:16:25]	[CulturalDiffusion] frontier city=327683 ring=4 best=3426.65 bar=300 over=16/24 center=279.91 
+[2026-10-06 14:16:25]	[CulturalDiffusion] frontier city=393220 ring=4 best=1940.45 bar=300 over=8/19 center=1015.28 
+[2026-10-06 14:16:25]	[CulturalDiffusion] frontier city=458757 ring=4 best=281.77 bar=300 over=0/24 center=72.43 
+[2026-10-06 14:16:25]	[CulturalDiffusion] flip 91,36 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner 3) 
+[2026-10-06 14:16:25]	[CulturalDiffusion] flip 90,36 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner 3) 
+[2026-10-06 14:16:25]	[CulturalDiffusion] flip 89,36 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner 3) 
+[2026-10-06 14:16:25]	[CulturalDiffusion] flip 82,31 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner 3) 
+[2026-10-06 14:16:25]	[CulturalDiffusion] flip 82,39 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:16:25]	[CulturalDiffusion] flip 81,31 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner 3) 
+[2026-10-06 14:16:25]	[CulturalDiffusion] flip 85,21 -> player 3 via purchasePlot sent; pending confirmation next pass (was owner 0) 
+[2026-10-06 14:16:25]	[CulturalDiffusion] skip flip 86,18: would strand a foreign unit 
+[2026-10-06 14:16:25]	[CulturalDiffusion] flip 86,19 -> player 3 via purchasePlot sent; pending confirmation next pass (was owner 0) 
+[2026-10-06 14:16:25]	[CulturalDiffusion] flip 86,17 -> player 3 via purchasePlot sent; pending confirmation next pass (was owner 0) 
+[2026-10-06 14:16:25]	[CulturalDiffusion] state bytes=21010 field=432 claims=82 locked=82 passMs=49 
+[2026-10-06 14:16:25]	[CulturalDiffusion] pass: 0 flip(s), 6 pending, 0 ceded (0 pending), 0 AI flip(s) (3 pending), 0 conquest(s) (0 pending), confirmed 14 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 432 active field tile(s) 
+[2026-10-06 14:16:25]	[CulturalDiffusion] pass (turn 149): flips=0 field tiles=154 
+[2026-10-06 14:16:26]	[CDH] TURN k=13 turn=149 age=AGE_ANTIQUITY blocker=CULTURE 
+[2026-10-06 14:16:35]	[CDH] OBS T13: age=AGE_ANTIQUITY turn=149 ownerChanges=9 missionaries=0 moved=0 idleWithMoves=0 gone=0 flipsNearMissionary=0 (district 0) onFlipped=0 jsErrors=125 amAuto=absent 
+[2026-10-06 14:16:35]	[CDH] INV T13: claims=82 stale=17 localInner=6 district=0 center=0 pending=9 bytes=20995 
+[2026-10-06 14:16:38]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:16:38]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:16:39]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:16:40]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:16:42]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:16:43]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:16:49]	[CulturalDiffusion] notify: (91,36) player 3 -> player 0 
+[2026-10-06 14:16:49]	[CulturalDiffusion] pending 91,36 claim confirmed on the live map 
+[2026-10-06 14:16:49]	[CulturalDiffusion] notify: (90,36) player 3 -> player 0 
+[2026-10-06 14:16:49]	[CulturalDiffusion] pending 90,36 claim confirmed on the live map 
+[2026-10-06 14:16:49]	[CulturalDiffusion] notify: (89,36) player 3 -> player 0 
+[2026-10-06 14:16:49]	[CulturalDiffusion] pending 89,36 claim confirmed on the live map 
+[2026-10-06 14:16:49]	[CulturalDiffusion] notify: (82,31) player 3 -> player 0 
+[2026-10-06 14:16:49]	[CulturalDiffusion] pending 82,31 claim confirmed on the live map 
+[2026-10-06 14:16:49]	[CulturalDiffusion] notify: (82,39) unowned -> player 0 
+[2026-10-06 14:16:49]	[CulturalDiffusion] pending 82,39 claim confirmed on the live map 
+[2026-10-06 14:16:49]	[CulturalDiffusion] notify: (81,31) player 3 -> player 0 
+[2026-10-06 14:16:49]	[CulturalDiffusion] pending 81,31 claim confirmed on the live map 
+[2026-10-06 14:16:49]	[CulturalDiffusion] notify: (85,21) player 0 -> player 3 
+[2026-10-06 14:16:49]	[CulturalDiffusion] pending 85,21 claim confirmed on the live map 
+[2026-10-06 14:16:49]	[CulturalDiffusion] notify: (86,19) player 0 -> player 3 
+[2026-10-06 14:16:49]	[CulturalDiffusion] pending 86,19 claim confirmed on the live map 
+[2026-10-06 14:16:49]	[CulturalDiffusion] notify: (86,17) player 0 -> player 3 
+[2026-10-06 14:16:49]	[CulturalDiffusion] pending 86,17 claim confirmed on the live map 
+[2026-10-06 14:16:49]	[CulturalDiffusion] inject 92,32 civ=0 culture=39.6 vitality=59.52 strength=78.95 stock=19043.91 cap=157894.65 
+[2026-10-06 14:16:49]	[CulturalDiffusion] inject 87,32 civ=0 culture=13 vitality=33.46 strength=31.29 stock=3770.46 cap=62576.61 
+[2026-10-06 14:16:49]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=26.55 strength=5.45 stock=310.21 cap=10893.71 
+[2026-10-06 14:16:49]	[CulturalDiffusion] inject 93,26 civ=0 culture=5 vitality=29.47 strength=16.08 stock=1171.97 cap=32163.29 
+[2026-10-06 14:16:49]	[CulturalDiffusion] inject 86,20 civ=0 culture=0.9 vitality=10.65 strength=3.7 stock=98.75 cap=7400.32 
+[2026-10-06 14:16:49]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=24.65 strength=11.02 stock=1824.53 cap=22036.3 
+[2026-10-06 14:16:49]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=34.75 strength=16.86 stock=900.2 cap=33729.88 
+[2026-10-06 14:16:49]	[CulturalDiffusion] inject 80,31 civ=3 culture=5 vitality=21.95 strength=10.58 stock=902.35 cap=21159.47 
+[2026-10-06 14:16:49]	[CulturalDiffusion] inject 90,37 civ=3 culture=5 vitality=25.8 strength=11.2 stock=413.67 cap=22390.8 
+[2026-10-06 14:16:49]	[CulturalDiffusion] inject 79,39 civ=5 culture=1 vitality=6.75 strength=1.84 stock=69.57 cap=3685.65 
+[2026-10-06 14:16:49]	[CulturalDiffusion] frontier city=65536 ring=4 best=1842.43 bar=300 over=8/23 center=19043.91 
+[2026-10-06 14:16:49]	[CulturalDiffusion] frontier city=196609 ring=4 best=10991.73 bar=300 over=19/24 center=3770.46 
+[2026-10-06 14:16:49]	[CulturalDiffusion] frontier city=327683 ring=4 best=3770.46 bar=300 over=17/24 center=310.21 
+[2026-10-06 14:16:49]	[CulturalDiffusion] frontier city=393220 ring=4 best=1842.43 bar=300 over=8/19 center=1171.97 
+[2026-10-06 14:16:49]	[CulturalDiffusion] frontier city=458757 ring=4 best=267.58 bar=300 over=0/24 center=98.75 
+[2026-10-06 14:16:49]	[CulturalDiffusion] flip 87,37 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner 3) 
+[2026-10-06 14:16:49]	[CulturalDiffusion] flip 80,36 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:16:49]	[CulturalDiffusion] flip 86,21 -> player 3 via purchasePlot sent; pending confirmation next pass (was owner 0) 
+[2026-10-06 14:16:49]	[CulturalDiffusion] skip flip 86,18: would strand a foreign unit 
+[2026-10-06 14:16:49]	[CulturalDiffusion] state bytes=20779 field=432 claims=91 locked=91 passMs=35 
+[2026-10-06 14:16:49]	[CulturalDiffusion] pass: 0 flip(s), 2 pending, 0 ceded (0 pending), 0 AI flip(s) (1 pending), 0 conquest(s) (0 pending), confirmed 9 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 432 active field tile(s) 
+[2026-10-06 14:16:49]	[CulturalDiffusion] pass (turn 150): flips=0 field tiles=155 
+[2026-10-06 14:16:51]	[CDH] TURN k=14 turn=150 age=AGE_ANTIQUITY blocker=NEW_POPULATION 
+[2026-10-06 14:17:00]	[CDH] OBS T14: age=AGE_ANTIQUITY turn=150 ownerChanges=3 missionaries=0 moved=0 idleWithMoves=0 gone=0 flipsNearMissionary=0 (district 0) onFlipped=0 jsErrors=131 amAuto=absent 
+[2026-10-06 14:17:00]	[CDH] INV T14: claims=91 stale=17 localInner=9 district=0 center=0 pending=3 bytes=20764 
+[2026-10-06 14:17:10]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:17:14]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:17:15]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:17:18]	[CulturalDiffusion] notify: (87,37) player 3 -> player 0 
+[2026-10-06 14:17:18]	[CulturalDiffusion] pending 87,37 claim confirmed on the live map 
+[2026-10-06 14:17:18]	[CulturalDiffusion] notify: (80,36) unowned -> player 0 
+[2026-10-06 14:17:18]	[CulturalDiffusion] pending 80,36 claim confirmed on the live map 
+[2026-10-06 14:17:18]	[CulturalDiffusion] notify: (86,21) player 0 -> player 3 
+[2026-10-06 14:17:18]	[CulturalDiffusion] pending 86,21 claim confirmed on the live map 
+[2026-10-06 14:17:18]	[CulturalDiffusion] inject 92,32 civ=0 culture=39.6 vitality=59.52 strength=79.39 stock=22343.69 cap=158772.97 
+[2026-10-06 14:17:18]	[CulturalDiffusion] inject 87,32 civ=0 culture=13 vitality=33.46 strength=31.46 stock=4339.16 cap=62924.71 
+[2026-10-06 14:17:18]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=26.55 strength=5.48 stock=355.09 cap=10954.31 
+[2026-10-06 14:17:18]	[CulturalDiffusion] inject 93,26 civ=0 culture=5 vitality=29.47 strength=16.17 stock=1336.78 cap=32342.21 
+[2026-10-06 14:17:18]	[CulturalDiffusion] inject 86,20 civ=0 culture=0.9 vitality=10.65 strength=3.72 stock=125.89 cap=7441.49 
+[2026-10-06 14:17:18]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=24.65 strength=10.94 stock=1923.24 cap=21874.41 
+[2026-10-06 14:17:18]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=34.75 strength=16.74 stock=1058.73 cap=33482.09 
+[2026-10-06 14:17:18]	[CulturalDiffusion] inject 80,31 civ=3 culture=5 vitality=21.95 strength=10.5 stock=995.82 cap=21004.02 
+[2026-10-06 14:17:18]	[CulturalDiffusion] inject 90,37 civ=3 culture=5 vitality=25.8 strength=11.11 stock=492.08 cap=22226.31 
+[2026-10-06 14:17:18]	[CulturalDiffusion] inject 79,39 civ=5 culture=1 vitality=6.75 strength=1.84 stock=81.05 cap=3687.5 
+[2026-10-06 14:17:18]	[CulturalDiffusion] frontier city=65536 ring=4 best=1749.31 bar=300 over=9/23 center=22343.69 
+[2026-10-06 14:17:18]	[CulturalDiffusion] frontier city=196609 ring=4 best=13542.73 bar=300 over=19/24 center=4339.16 
+[2026-10-06 14:17:18]	[CulturalDiffusion] frontier city=327683 ring=4 best=4339.16 bar=300 over=17/24 center=355.09 
+[2026-10-06 14:17:18]	[CulturalDiffusion] frontier city=393220 ring=4 best=1956.26 bar=300 over=8/19 center=1336.78 
+[2026-10-06 14:17:18]	[CulturalDiffusion] frontier city=458757 ring=4 best=258.5 bar=300 over=0/24 center=125.89 
+[2026-10-06 14:17:18]	[CulturalDiffusion] flip 85,25 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:17:18]	[CulturalDiffusion] flip 87,22 -> player 3 via purchasePlot sent; pending confirmation next pass (was owner 0) 
+[2026-10-06 14:17:18]	[CulturalDiffusion] skip flip 86,18: would strand a foreign unit 
+[2026-10-06 14:17:18]	[CulturalDiffusion] state bytes=21779 field=435 claims=94 locked=94 passMs=34 
+[2026-10-06 14:17:18]	[CulturalDiffusion] pass: 0 flip(s), 1 pending, 0 ceded (0 pending), 0 AI flip(s) (1 pending), 0 conquest(s) (0 pending), confirmed 3 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 435 active field tile(s) 
+[2026-10-06 14:17:18]	[CulturalDiffusion] pass (turn 151): flips=0 field tiles=157 
+[2026-10-06 14:17:19]	[CDH] TURN k=15 turn=151 age=AGE_ANTIQUITY blocker=NEW_POPULATION 
+[2026-10-06 14:17:28]	[CDH] OBS T15: age=AGE_ANTIQUITY turn=151 ownerChanges=2 missionaries=0 moved=0 idleWithMoves=0 gone=0 flipsNearMissionary=0 (district 0) onFlipped=0 jsErrors=134 amAuto=absent 
+[2026-10-06 14:17:28]	[CDH] INV T15: claims=94 stale=17 localInner=10 district=0 center=0 pending=2 bytes=21764 
+[2026-10-06 14:17:28]	[CDH] SEED T15: 400 frontier tiles seeded, state bytes=25412 
+[2026-10-06 14:17:36]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:17:38]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:17:39]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:17:40]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:17:41]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:17:46]	[CDH] TURN k=16 turn=152 age=AGE_ANTIQUITY blocker=NEW_POPULATION 
+[2026-10-06 14:17:46]	[CulturalDiffusion] notify: (85,25) unowned -> player 0 
+[2026-10-06 14:17:46]	[CulturalDiffusion] pending 85,25 claim confirmed on the live map 
+[2026-10-06 14:17:46]	[CulturalDiffusion] notify: (87,22) player 0 -> player 3 
+[2026-10-06 14:17:46]	[CulturalDiffusion] pending 87,22 claim confirmed on the live map 
+[2026-10-06 14:17:46]	[CulturalDiffusion] inject 92,32 civ=0 culture=39.6 vitality=59.52 strength=80.02 stock=25867.87 cap=160033.06 
+[2026-10-06 14:17:46]	[CulturalDiffusion] inject 87,32 civ=0 culture=13 vitality=33.46 strength=31.71 stock=4940.25 cap=63424.1 
+[2026-10-06 14:17:46]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=26.9 strength=5.55 stock=453.18 cap=11091.98 
+[2026-10-06 14:17:46]	[CulturalDiffusion] inject 93,26 civ=0 culture=5 vitality=29.47 strength=16.3 stock=1509.75 cap=32598.89 
+[2026-10-06 14:17:46]	[CulturalDiffusion] inject 86,20 civ=0 culture=0.9 vitality=10.65 strength=3.75 stock=174.28 cap=7500.55 
+[2026-10-06 14:17:46]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=23.5 strength=11.04 stock=2023.53 cap=22073.41 
+[2026-10-06 14:17:46]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=33.6 strength=16.98 stock=1228.74 cap=33954.11 
+[2026-10-06 14:17:46]	[CulturalDiffusion] inject 80,31 civ=3 culture=5 vitality=20.15 strength=10.46 stock=1089.88 cap=20916.64 
+[2026-10-06 14:17:46]	[CulturalDiffusion] inject 90,37 civ=3 culture=6 vitality=27.45 strength=13.12 stock=609.54 cap=26239.36 
+[2026-10-06 14:17:46]	[CulturalDiffusion] inject 79,39 civ=5 culture=1 vitality=6.75 strength=1.81 stock=92.31 cap=3621.52 
+[2026-10-06 14:17:46]	[CulturalDiffusion] frontier city=65536 ring=4 best=3799 bar=300 over=12/23 center=25867.87 
+[2026-10-06 14:17:46]	[CulturalDiffusion] frontier city=196609 ring=4 best=16505.02 bar=300 over=22/24 center=4940.25 
+[2026-10-06 14:17:46]	[CulturalDiffusion] frontier city=327683 ring=4 best=4940.25 bar=300 over=20/24 center=453.18 
+[2026-10-06 14:17:46]	[CulturalDiffusion] frontier city=393220 ring=4 best=2332.88 bar=300 over=8/19 center=1509.75 
+[2026-10-06 14:17:46]	[CulturalDiffusion] frontier city=458757 ring=4 best=249.93 bar=300 over=0/24 center=174.28 
+[2026-10-06 14:17:46]	[CulturalDiffusion] flip 93,36 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:17:46]	[CulturalDiffusion] flip 88,36 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner 3) 
+[2026-10-06 14:17:46]	[CulturalDiffusion] flip 81,34 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:17:46]	[CulturalDiffusion] flip 80,35 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:17:46]	[CulturalDiffusion] flip 83,29 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner 3) 
+[2026-10-06 14:17:46]	[CulturalDiffusion] flip 82,30 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner 3) 
+[2026-10-06 14:17:46]	[CulturalDiffusion] flip 79,35 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:17:46]	[CulturalDiffusion] flip 82,29 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:17:46]	[CulturalDiffusion] flip 86,23 -> player 3 via purchasePlot sent; pending confirmation next pass (was owner 0) 
+[2026-10-06 14:17:46]	[CulturalDiffusion] flip 86,22 -> player 3 via purchasePlot sent; pending confirmation next pass (was owner 0) 
+[2026-10-06 14:17:46]	[CulturalDiffusion] flip 87,23 -> player 3 via purchasePlot sent; pending confirmation next pass (was owner 0) 
+[2026-10-06 14:17:46]	[CulturalDiffusion] skip flip 86,18: would strand a foreign unit 
+[2026-10-06 14:17:46]	[CulturalDiffusion] state bytes=20917 field=438 claims=96 locked=80 passMs=40 
+[2026-10-06 14:17:46]	[CulturalDiffusion] pass: 0 flip(s), 8 pending, 0 ceded (0 pending), 0 AI flip(s) (3 pending), 0 conquest(s) (0 pending), confirmed 2 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 438 active field tile(s) 
+[2026-10-06 14:17:46]	[CulturalDiffusion] pass (turn 152): flips=0 field tiles=119 
+[2026-10-06 14:17:55]	[CDH] OBS T16: age=AGE_ANTIQUITY turn=152 ownerChanges=11 missionaries=0 moved=0 idleWithMoves=0 gone=0 flipsNearMissionary=0 (district 0) onFlipped=0 jsErrors=139 amAuto=absent 
+[2026-10-06 14:17:55]	[CDH] INV T16: claims=96 stale=18 localInner=11 district=0 center=0 pending=11 bytes=20902 
+[2026-10-06 14:18:00]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:18:00]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:18:04]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:18:06]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:18:08]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:18:11]	[CDH] TURN k=17 turn=153 age=AGE_ANTIQUITY blocker=NEW_POPULATION 
+[2026-10-06 14:18:11]	[CulturalDiffusion] notify: (93,36) unowned -> player 0 
+[2026-10-06 14:18:11]	[CulturalDiffusion] pending 93,36 claim confirmed on the live map 
+[2026-10-06 14:18:11]	[CulturalDiffusion] notify: (88,36) player 3 -> player 0 
+[2026-10-06 14:18:11]	[CulturalDiffusion] pending 88,36 claim confirmed on the live map 
+[2026-10-06 14:18:11]	[CulturalDiffusion] notify: (81,34) unowned -> player 0 
+[2026-10-06 14:18:11]	[CulturalDiffusion] pending 81,34 claim confirmed on the live map 
+[2026-10-06 14:18:11]	[CulturalDiffusion] notify: (80,35) unowned -> player 0 
+[2026-10-06 14:18:11]	[CulturalDiffusion] pending 80,35 claim confirmed on the live map 
+[2026-10-06 14:18:11]	[CulturalDiffusion] notify: (83,29) player 3 -> player 0 
+[2026-10-06 14:18:11]	[CulturalDiffusion] pending 83,29 claim confirmed on the live map 
+[2026-10-06 14:18:11]	[CulturalDiffusion] notify: (82,30) player 3 -> player 0 
+[2026-10-06 14:18:11]	[CulturalDiffusion] pending 82,30 claim confirmed on the live map 
+[2026-10-06 14:18:11]	[CulturalDiffusion] notify: (79,35) unowned -> player 0 
+[2026-10-06 14:18:11]	[CulturalDiffusion] pending 79,35 claim confirmed on the live map 
+[2026-10-06 14:18:11]	[CulturalDiffusion] notify: (82,29) unowned -> player 0 
+[2026-10-06 14:18:11]	[CulturalDiffusion] pending 82,29 claim confirmed on the live map 
+[2026-10-06 14:18:11]	[CulturalDiffusion] notify: (86,23) player 0 -> player 3 
+[2026-10-06 14:18:11]	[CulturalDiffusion] pending 86,23 claim confirmed on the live map 
+[2026-10-06 14:18:11]	[CulturalDiffusion] notify: (86,22) player 0 -> player 3 
+[2026-10-06 14:18:11]	[CulturalDiffusion] pending 86,22 claim confirmed on the live map 
+[2026-10-06 14:18:11]	[CulturalDiffusion] notify: (87,23) player 0 -> player 3 
+[2026-10-06 14:18:11]	[CulturalDiffusion] pending 87,23 claim confirmed on the live map 
+[2026-10-06 14:18:11]	[CulturalDiffusion] inject 92,32 civ=0 culture=39.6 vitality=59.52 strength=80.01 stock=29567.57 cap=160025.95 
+[2026-10-06 14:18:11]	[CulturalDiffusion] inject 87,32 civ=0 culture=13 vitality=33.46 strength=31.71 stock=5565.46 cap=63421.29 
+[2026-10-06 14:18:11]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=26.9 strength=5.55 stock=581.2 cap=11091.49 
+[2026-10-06 14:18:11]	[CulturalDiffusion] inject 93,26 civ=0 culture=5 vitality=29.47 strength=16.3 stock=1688.54 cap=32597.44 
+[2026-10-06 14:18:11]	[CulturalDiffusion] inject 86,20 civ=0 culture=0.9 vitality=10.65 strength=3.75 stock=222.32 cap=7500.21 
+[2026-10-06 14:18:11]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=23.5 strength=11.01 stock=2123.09 cap=22010.41 
+[2026-10-06 14:18:11]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=33.6 strength=16.93 stock=1406.13 cap=33857.21 
+[2026-10-06 14:18:11]	[CulturalDiffusion] inject 80,31 civ=3 culture=5 vitality=18.35 strength=10.09 stock=1180.1 cap=20184.92 
+[2026-10-06 14:18:11]	[CulturalDiffusion] inject 90,37 civ=3 culture=6 vitality=27.45 strength=13.08 stock=733.61 cap=26164.48 
+[2026-10-06 14:18:11]	[CulturalDiffusion] inject 79,39 civ=5 culture=1 vitality=8.25 strength=1.94 stock=103.93 cap=3889.64 
+[2026-10-06 14:18:11]	[CulturalDiffusion] frontier city=65536 ring=4 best=3608.05 bar=300 over=12/23 center=29567.57 
+[2026-10-06 14:18:11]	[CulturalDiffusion] frontier city=196609 ring=4 best=19400.9 bar=300 over=22/24 center=5565.46 
+[2026-10-06 14:18:11]	[CulturalDiffusion] frontier city=327683 ring=4 best=5565.46 bar=300 over=20/24 center=581.2 
+[2026-10-06 14:18:11]	[CulturalDiffusion] frontier city=393220 ring=4 best=2737.1 bar=300 over=8/19 center=1688.54 
+[2026-10-06 14:18:11]	[CulturalDiffusion] frontier city=458757 ring=4 best=307.2 bar=300 over=1/24 center=222.32 
+[2026-10-06 14:18:11]	[CulturalDiffusion] flip 87,38 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner 3) 
+[2026-10-06 14:18:11]	[CulturalDiffusion] flip 92,37 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner 3) 
+[2026-10-06 14:18:11]	[CulturalDiffusion] flip 86,24 -> player 3 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:18:11]	[CulturalDiffusion] flip 87,24 -> player 3 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:18:11]	[CulturalDiffusion] skip flip 86,18: would strand a foreign unit 
+[2026-10-06 14:18:11]	[CulturalDiffusion] flip 88,23 -> player 3 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:18:11]	[CulturalDiffusion] state bytes=21783 field=440 claims=106 locked=80 passMs=35 
+[2026-10-06 14:18:11]	[CulturalDiffusion] pass: 0 flip(s), 2 pending, 0 ceded (0 pending), 0 AI flip(s) (3 pending), 0 conquest(s) (0 pending), confirmed 11 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 440 active field tile(s) 
+[2026-10-06 14:18:11]	[CulturalDiffusion] pass (turn 153): flips=0 field tiles=161 
+[2026-10-06 14:18:20]	[CDH] OBS T17: age=AGE_ANTIQUITY turn=153 ownerChanges=5 missionaries=0 moved=0 idleWithMoves=0 gone=0 flipsNearMissionary=0 (district 0) onFlipped=0 jsErrors=144 amAuto=absent 
+[2026-10-06 14:18:20]	[CDH] INV T17: claims=106 stale=16 localInner=14 district=0 center=0 pending=5 bytes=21768 
+[2026-10-06 14:18:24]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:18:25]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:18:26]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:18:27]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:18:32]	[CDH] TURN k=18 turn=154 age=AGE_ANTIQUITY blocker=NEW_POPULATION 
+[2026-10-06 14:18:33]	[CulturalDiffusion] notify: (87,38) player 3 -> player 0 
+[2026-10-06 14:18:33]	[CulturalDiffusion] pending 87,38 claim confirmed on the live map 
+[2026-10-06 14:18:33]	[CulturalDiffusion] notify: (92,37) player 3 -> player 0 
+[2026-10-06 14:18:33]	[CulturalDiffusion] pending 92,37 claim confirmed on the live map 
+[2026-10-06 14:18:33]	[CulturalDiffusion] notify: (86,24) unowned -> player 3 
+[2026-10-06 14:18:33]	[CulturalDiffusion] pending 86,24 claim confirmed on the live map 
+[2026-10-06 14:18:33]	[CulturalDiffusion] notify: (87,24) unowned -> player 3 
+[2026-10-06 14:18:33]	[CulturalDiffusion] pending 87,24 claim confirmed on the live map 
+[2026-10-06 14:18:33]	[CulturalDiffusion] notify: (88,23) unowned -> player 3 
+[2026-10-06 14:18:33]	[CulturalDiffusion] pending 88,23 claim confirmed on the live map 
+[2026-10-06 14:18:33]	[CulturalDiffusion] inject 92,32 civ=0 culture=39.6 vitality=60.32 strength=80.48 stock=33457.79 cap=160956.71 
+[2026-10-06 14:18:33]	[CulturalDiffusion] inject 87,32 civ=0 culture=13 vitality=33.46 strength=31.75 stock=6213.45 cap=63492.76 
+[2026-10-06 14:18:33]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=26.9 strength=5.55 stock=743.02 cap=11103.99 
+[2026-10-06 14:18:33]	[CulturalDiffusion] inject 93,26 civ=0 culture=5 vitality=29.47 strength=16.32 stock=1872.79 cap=32634.18 
+[2026-10-06 14:18:33]	[CulturalDiffusion] inject 86,20 civ=0 culture=0.9 vitality=10.65 strength=3.75 stock=269.68 cap=7508.67 
+[2026-10-06 14:18:33]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=22.63 strength=10.79 stock=2218.49 cap=21580.09 
+[2026-10-06 14:18:33]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=32.72 strength=16.66 stock=1586.84 cap=33329.84 
+[2026-10-06 14:18:33]	[CulturalDiffusion] inject 80,31 civ=3 culture=4 vitality=17.35 strength=8.51 stock=1249.59 cap=17010.25 
+[2026-10-06 14:18:33]	[CulturalDiffusion] inject 90,37 civ=3 culture=6 vitality=23.8 strength=12.36 stock=856.08 cap=24729.6 
+[2026-10-06 14:18:33]	[CulturalDiffusion] inject 79,39 civ=5 culture=1 vitality=8.25 strength=1.93 stock=115.35 cap=3854.38 
+[2026-10-06 14:18:33]	[CulturalDiffusion] frontier city=65536 ring=4 best=3426.65 bar=300 over=11/23 center=33457.79 
+[2026-10-06 14:18:33]	[CulturalDiffusion] frontier city=196609 ring=4 best=22175.68 bar=300 over=21/24 center=6213.45 
+[2026-10-06 14:18:33]	[CulturalDiffusion] frontier city=327683 ring=4 best=6213.45 bar=300 over=20/24 center=743.02 
+[2026-10-06 14:18:33]	[CulturalDiffusion] frontier city=393220 ring=4 best=3168.81 bar=300 over=8/19 center=1872.79 
+[2026-10-06 14:18:33]	[CulturalDiffusion] frontier city=458757 ring=4 best=291.76 bar=300 over=0/24 center=269.68 
+[2026-10-06 14:18:33]	[CulturalDiffusion] flip 88,38 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner 3) 
+[2026-10-06 14:18:33]	[CulturalDiffusion] skip flip 86,18: would strand a foreign unit 
+[2026-10-06 14:18:33]	[CulturalDiffusion] state bytes=22504 field=440 claims=110 locked=74 passMs=32 
+[2026-10-06 14:18:33]	[CulturalDiffusion] pass: 0 flip(s), 1 pending, 0 ceded (0 pending), 0 AI flip(s) (0 pending), 0 conquest(s) (0 pending), confirmed 5 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 440 active field tile(s) 
+[2026-10-06 14:18:33]	[CulturalDiffusion] pass (turn 154): flips=0 field tiles=161 
+[2026-10-06 14:18:41]	[CDH] OBS T18: age=AGE_ANTIQUITY turn=154 ownerChanges=1 missionaries=0 moved=0 idleWithMoves=0 gone=0 flipsNearMissionary=0 (district 0) onFlipped=0 jsErrors=148 amAuto=absent 
+[2026-10-06 14:18:41]	[CDH] INV T18: claims=110 stale=16 localInner=14 district=0 center=0 pending=1 bytes=22489 
+[2026-10-06 14:18:51]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:18:51]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:18:54]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:18:54]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:18:57]	[CulturalDiffusion] notify: (88,38) player 3 -> player 0 
+[2026-10-06 14:18:57]	[CulturalDiffusion] pending 88,38 claim confirmed on the live map 
+[2026-10-06 14:18:57]	[CulturalDiffusion] inject 92,32 civ=0 culture=39.6 vitality=60.32 strength=63.57 stock=36297.6 cap=127146.6 
+[2026-10-06 14:18:57]	[CulturalDiffusion] inject 87,32 civ=0 culture=13 vitality=33.46 strength=25.08 stock=6677.37 cap=50155.65 
+[2026-10-06 14:18:57]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=26.9 strength=4.39 stock=931.82 cap=8771.51 
+[2026-10-06 14:18:57]	[CulturalDiffusion] inject 93,26 civ=0 culture=5 vitality=29.47 strength=12.89 stock=2004.19 cap=25779.14 
+[2026-10-06 14:18:57]	[CulturalDiffusion] inject 86,20 civ=0 culture=0.9 vitality=10.65 strength=2.97 stock=311.11 cap=5931.42 
+[2026-10-06 14:18:57]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=22.63 strength=10.76 stock=2312.84 cap=21518.65 
+[2026-10-06 14:18:57]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=33.63 strength=16.78 stock=1775.32 cap=33552.04 
+[2026-10-06 14:18:57]	[CulturalDiffusion] inject 80,31 civ=3 culture=3 vitality=15.9 strength=6.82 stock=1295.55 cap=13645.72 
+[2026-10-06 14:18:57]	[CulturalDiffusion] inject 90,37 civ=3 culture=6 vitality=23.8 strength=12.33 stock=982.41 cap=24659.19 
+[2026-10-06 14:18:57]	[CulturalDiffusion] inject 79,39 civ=5 culture=1 vitality=8.25 strength=1.93 stock=126.59 cap=3850.06 
+[2026-10-06 14:18:57]	[CulturalDiffusion] frontier city=65536 ring=4 best=3254.32 bar=300 over=12/23 center=36297.6 
+[2026-10-06 14:18:57]	[CulturalDiffusion] frontier city=196609 ring=4 best=25093.35 bar=300 over=21/24 center=6677.37 
+[2026-10-06 14:18:57]	[CulturalDiffusion] frontier city=327683 ring=4 best=6677.37 bar=300 over=20/24 center=931.82 
+[2026-10-06 14:18:57]	[CulturalDiffusion] frontier city=393220 ring=4 best=3622.03 bar=300 over=8/19 center=2004.19 
+[2026-10-06 14:18:57]	[CulturalDiffusion] frontier city=458757 ring=4 best=277.1 bar=300 over=0/24 center=311.11 
+[2026-10-06 14:18:57]	[CulturalDiffusion] flip 88,39 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner 3) 
+[2026-10-06 14:18:57]	[CulturalDiffusion] skip flip 86,18: would strand a foreign unit 
+[2026-10-06 14:18:57]	[CulturalDiffusion] state bytes=22267 field=440 claims=111 locked=71 passMs=33 
+[2026-10-06 14:18:57]	[CulturalDiffusion] pass: 0 flip(s), 1 pending, 0 ceded (0 pending), 0 AI flip(s) (0 pending), 0 conquest(s) (0 pending), confirmed 1 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 440 active field tile(s) 
+[2026-10-06 14:18:57]	[CulturalDiffusion] pass (turn 155): flips=0 field tiles=167 
+[2026-10-06 14:18:58]	[CDH] TURN k=19 turn=155 age=AGE_ANTIQUITY blocker=NEW_POPULATION 
+[2026-10-06 14:19:07]	[CDH] OBS T19: age=AGE_ANTIQUITY turn=155 ownerChanges=1 missionaries=0 moved=0 idleWithMoves=0 gone=0 flipsNearMissionary=0 (district 0) onFlipped=0 jsErrors=152 amAuto=absent 
+[2026-10-06 14:19:07]	[CDH] INV T19: claims=111 stale=16 localInner=14 district=0 center=0 pending=1 bytes=22252 
+[2026-10-06 14:19:17]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:19:18]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:19:23]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:19:23]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:19:26]	[CulturalDiffusion] notify: (88,39) player 3 -> player 0 
+[2026-10-06 14:19:26]	[CulturalDiffusion] pending 88,39 claim confirmed on the live map 
+[2026-10-06 14:19:26]	[CulturalDiffusion] inject 92,32 civ=0 culture=39.6 vitality=60.32 strength=63.1 stock=39147.52 cap=126194.26 
+[2026-10-06 14:19:26]	[CulturalDiffusion] inject 87,32 civ=0 culture=13 vitality=33.46 strength=24.89 stock=7140.23 cap=49779.98 
+[2026-10-06 14:19:26]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=26.9 strength=4.35 stock=1165.63 cap=8705.81 
+[2026-10-06 14:19:26]	[CulturalDiffusion] inject 93,26 civ=0 culture=5 vitality=29.47 strength=12.79 stock=2134.8 cap=25586.05 
+[2026-10-06 14:19:26]	[CulturalDiffusion] inject 86,20 civ=0 culture=0.9 vitality=10.65 strength=2.94 stock=351.07 cap=5886.99 
+[2026-10-06 14:19:26]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=23.73 strength=10.98 stock=2410.79 cap=21968.69 
+[2026-10-06 14:19:26]	[CulturalDiffusion] inject 81,18 civ=3 culture=8 vitality=34.58 strength=17.01 stock=1973.13 cap=34019.41 
+[2026-10-06 14:19:26]	[CulturalDiffusion] inject 80,31 civ=3 culture=3 vitality=15.9 strength=6.85 stock=1340.99 cap=13701.54 
+[2026-10-06 14:19:26]	[CulturalDiffusion] inject 90,37 civ=3 culture=6 vitality=23.8 strength=12.38 stock=1112.96 cap=24760.07 
+[2026-10-06 14:19:26]	[CulturalDiffusion] inject 79,39 civ=5 culture=1 vitality=8.25 strength=2.16 stock=138.69 cap=4328.64 
+[2026-10-06 14:19:26]	[CulturalDiffusion] frontier city=65536 ring=4 best=3090.6 bar=300 over=12/23 center=39147.52 
+[2026-10-06 14:19:26]	[CulturalDiffusion] frontier city=196609 ring=4 best=27223.2 bar=300 over=21/24 center=7140.23 
+[2026-10-06 14:19:26]	[CulturalDiffusion] frontier city=327683 ring=4 best=7140.23 bar=300 over=20/24 center=1165.63 
+[2026-10-06 14:19:26]	[CulturalDiffusion] frontier city=393220 ring=4 best=4098.58 bar=300 over=9/19 center=2134.8 
+[2026-10-06 14:19:26]	[CulturalDiffusion] frontier city=458757 ring=4 best=263.17 bar=300 over=0/24 center=351.07 
+[2026-10-06 14:19:26]	[CulturalDiffusion] flip 90,23 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:19:26]	[CulturalDiffusion] skip flip 86,18: would strand a foreign unit 
+[2026-10-06 14:19:26]	[CulturalDiffusion] state bytes=23144 field=440 claims=112 locked=72 passMs=29 
+[2026-10-06 14:19:26]	[CulturalDiffusion] pass: 0 flip(s), 1 pending, 0 ceded (0 pending), 0 AI flip(s) (0 pending), 0 conquest(s) (0 pending), confirmed 1 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 440 active field tile(s) 
+[2026-10-06 14:19:26]	[CulturalDiffusion] pass (turn 156): flips=0 field tiles=167 
+[2026-10-06 14:19:27]	[CDH] TURN k=20 turn=156 age=AGE_ANTIQUITY blocker=NEW_POPULATION 
+[2026-10-06 14:19:36]	[CDH] OBS T20: age=AGE_ANTIQUITY turn=156 ownerChanges=1 missionaries=0 moved=0 idleWithMoves=0 gone=0 flipsNearMissionary=0 (district 0) onFlipped=0 jsErrors=156 amAuto=absent 
+[2026-10-06 14:19:36]	[CDH] INV T20: claims=112 stale=16 localInner=14 district=0 center=0 pending=1 bytes=23129 
+[2026-10-06 14:19:36]	[CDH] SEED T20: 400 frontier tiles seeded, state bytes=26728 
+[2026-10-06 14:19:40]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:19:42]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:19:44]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:19:47]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:19:47]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:19:50]	[CDH] JSERR TypeError: Cannot read properties of null (reading 'cityId') @ fs://game/bz-map-trix/ui/lenses/layer/bz-religion-layer.js:50 
+[2026-10-06 14:19:50]	[CDH] JSERR TypeError: Cannot read properties of null (reading 'cityId') @ fs://game/bz-map-trix/ui/lenses/layer/bz-religion-layer.js:50 
+[2026-10-06 14:19:51]	[CulturalDiffusion] capture: city 524290 now player 0's (from 33); culture transferred on 8 of 8 tile(s) 
+[2026-10-06 14:19:51]	[CulturalDiffusion] notify: (90,23) unowned -> player 0 
+[2026-10-06 14:19:51]	[CulturalDiffusion] pending 90,23 claim confirmed on the live map 
+[2026-10-06 14:19:51]	[CulturalDiffusion] inject 92,32 civ=0 culture=39.6 vitality=61.92 strength=64.77 stock=42162.65 cap=129545.05 
+[2026-10-06 14:19:51]	[CulturalDiffusion] inject 87,32 civ=0 culture=13 vitality=33.46 strength=25.32 stock=7620.78 cap=50635.67 
+[2026-10-06 14:19:51]	[CulturalDiffusion] inject 89,42 civ=0 culture=0 vitality=13.95 strength=0 stock=472.19 cap=0 
+[2026-10-06 14:19:51]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=26.9 strength=4.43 stock=1451.16 cap=8855.46 
+[2026-10-06 14:19:51]	[CulturalDiffusion] inject 93,26 civ=0 culture=5 vitality=29.47 strength=13.01 stock=2269.92 cap=26025.86 
+[2026-10-06 14:19:51]	[CulturalDiffusion] inject 86,20 civ=0 culture=0.9 vitality=10.65 strength=2.99 stock=393.6 cap=5988.18 
+[2026-10-06 14:19:51]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=23.53 strength=10.96 stock=2507.72 cap=21925.2 
+[2026-10-06 14:19:51]	[CulturalDiffusion] inject 81,18 civ=3 culture=7 vitality=33.92 strength=15.51 stock=2150.27 cap=31015.11 
+[2026-10-06 14:19:51]	[CulturalDiffusion] inject 80,31 civ=3 culture=3 vitality=15.9 strength=6.86 stock=1385.63 cap=13714.99 
+[2026-10-06 14:19:51]	[CulturalDiffusion] inject 90,37 civ=3 culture=6 vitality=23.8 strength=12.39 stock=1246.5 cap=24784.37 
+[2026-10-06 14:19:51]	[CulturalDiffusion] inject 83,44 civ=4 culture=8 vitality=13.9 strength=12.7 stock=290.45 cap=25407.93 
+[2026-10-06 14:19:51]	[CulturalDiffusion] inject 86,47 civ=4 culture=5 vitality=10.75 strength=8.55 stock=10 cap=17109.18 
+[2026-10-06 14:19:51]	[CulturalDiffusion] inject 79,39 civ=5 culture=1 vitality=8.25 strength=2.22 stock=150.89 cap=4443.13 
+[2026-10-06 14:19:51]	[CulturalDiffusion] frontier city=65536 ring=4 best=3799 bar=300 over=13/23 center=42162.65 
+[2026-10-06 14:19:51]	[CulturalDiffusion] frontier city=196609 ring=4 best=29360.64 bar=300 over=22/24 center=7620.78 
+[2026-10-06 14:19:51]	[CulturalDiffusion] frontier city=524290 ring=4 best=3799 bar=300 over=11/24 center=472.19 
+[2026-10-06 14:19:51]	[CulturalDiffusion] frontier city=327683 ring=4 best=7620.78 bar=300 over=21/24 center=1451.16 
+[2026-10-06 14:19:51]	[CulturalDiffusion] frontier city=393220 ring=4 best=4446.46 bar=300 over=9/19 center=2269.92 
+[2026-10-06 14:19:51]	[CulturalDiffusion] frontier city=458757 ring=4 best=249.93 bar=300 over=0/24 center=393.6 
+[2026-10-06 14:19:51]	[CulturalDiffusion] flip 89,38 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner 3) 
+[2026-10-06 14:19:51]	[CulturalDiffusion] flip 82,38 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:19:51]	[CulturalDiffusion] flip 79,34 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:19:51]	[CulturalDiffusion] flip 89,49 -> player 4 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:19:51]	[CulturalDiffusion] flip 90,50 -> player 4 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:19:51]	[CulturalDiffusion] skip flip 86,18: would strand a foreign unit 
+[2026-10-06 14:19:51]	[CulturalDiffusion] state bytes=22534 field=486 claims=100 locked=72 passMs=38 
+[2026-10-06 14:19:51]	[CulturalDiffusion] pass: 0 flip(s), 3 pending, 0 ceded (0 pending), 0 AI flip(s) (2 pending), 0 conquest(s) (0 pending), confirmed 1 claim/0 cede (0 dropped), 0 orphan(s) healed, 13 inner tile(s) released to base game, 486 active field tile(s) 
+[2026-10-06 14:19:51]	[CulturalDiffusion] pass (turn 157): flips=0 field tiles=203 
+[2026-10-06 14:19:53]	[CDH] TURN k=21 turn=157 age=AGE_ANTIQUITY blocker=NEW_POPULATION 
+[2026-10-06 14:19:53]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:19:58]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:19:58]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:19:59]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:20:01]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:20:02]	[CDH] OBS T21: age=AGE_ANTIQUITY turn=157 ownerChanges=11 missionaries=0 moved=0 idleWithMoves=0 gone=0 flipsNearMissionary=0 (district 0) onFlipped=0 jsErrors=168 amAuto=absent 
+[2026-10-06 14:20:02]	[CDH] INV T21: claims=100 stale=4 localInner=16 district=0 center=0 pending=5 bytes=22519 
+[2026-10-06 14:20:04]	[CulturalDiffusion] notify: (89,38) player 3 -> player 0 
+[2026-10-06 14:20:04]	[CulturalDiffusion] pending 89,38 claim confirmed on the live map 
+[2026-10-06 14:20:04]	[CulturalDiffusion] notify: (82,38) unowned -> player 0 
+[2026-10-06 14:20:04]	[CulturalDiffusion] pending 82,38 claim confirmed on the live map 
+[2026-10-06 14:20:04]	[CulturalDiffusion] notify: (79,34) unowned -> player 0 
+[2026-10-06 14:20:04]	[CulturalDiffusion] pending 79,34 claim confirmed on the live map 
+[2026-10-06 14:20:04]	[CulturalDiffusion] notify: (89,49) unowned -> player 4 
+[2026-10-06 14:20:04]	[CulturalDiffusion] pending 89,49 claim confirmed on the live map 
+[2026-10-06 14:20:04]	[CulturalDiffusion] notify: (90,50) unowned -> player 4 
+[2026-10-06 14:20:04]	[CulturalDiffusion] pending 90,50 claim confirmed on the live map 
+[2026-10-06 14:20:04]	[CulturalDiffusion] inject 92,32 civ=0 culture=39.6 vitality=61.92 strength=64.71 stock=45209.26 cap=129410.24 
+[2026-10-06 14:20:04]	[CulturalDiffusion] inject 87,32 civ=0 culture=13 vitality=33.46 strength=25.29 stock=8103.85 cap=50582.97 
+[2026-10-06 14:20:04]	[CulturalDiffusion] inject 89,42 civ=0 culture=0 vitality=13.95 strength=0 stock=595.7 cap=0 
+[2026-10-06 14:20:04]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=26.9 strength=4.42 stock=1789.53 cap=8846.25 
+[2026-10-06 14:20:04]	[CulturalDiffusion] inject 93,26 civ=0 culture=5 vitality=29.47 strength=13 stock=2405.29 cap=25998.77 
+[2026-10-06 14:20:04]	[CulturalDiffusion] inject 86,20 civ=0 culture=0.9 vitality=10.65 strength=2.99 stock=434.42 cap=5981.95 
+[2026-10-06 14:20:04]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=24.73 strength=8.29 stock=2552.07 cap=16575.7 
+[2026-10-06 14:20:04]	[CulturalDiffusion] inject 81,18 civ=3 culture=7 vitality=36.78 strength=11.85 stock=2264.6 cap=23702.87 
+[2026-10-06 14:20:04]	[CulturalDiffusion] inject 80,31 civ=3 culture=3 vitality=15.9 strength=5.09 stock=1403.95 cap=10189.7 
+[2026-10-06 14:20:04]	[CulturalDiffusion] inject 90,37 civ=3 culture=6 vitality=24.5 strength=9.3 stock=1340.39 cap=18601.59 
+[2026-10-06 14:20:04]	[CulturalDiffusion] inject 83,44 civ=4 culture=8 vitality=13.9 strength=12.68 stock=643.2 cap=25358.17 
+[2026-10-06 14:20:04]	[CulturalDiffusion] inject 86,47 civ=4 culture=5 vitality=10.75 strength=8.54 stock=56.27 cap=17075.66 
+[2026-10-06 14:20:04]	[CulturalDiffusion] inject 79,39 civ=5 culture=1 vitality=8.25 strength=2.19 stock=162.86 cap=4383.43 
+[2026-10-06 14:20:04]	[CulturalDiffusion] frontier city=65536 ring=4 best=3608.05 bar=300 over=13/23 center=45209.26 
+[2026-10-06 14:20:04]	[CulturalDiffusion] frontier city=196609 ring=4 best=31621.99 bar=300 over=23/24 center=8103.85 
+[2026-10-06 14:20:04]	[CulturalDiffusion] frontier city=524290 ring=4 best=3608.05 bar=300 over=11/24 center=595.7 
+[2026-10-06 14:20:04]	[CulturalDiffusion] frontier city=327683 ring=4 best=8103.85 bar=300 over=21/24 center=1789.53 
+[2026-10-06 14:20:04]	[CulturalDiffusion] frontier city=393220 ring=4 best=4795.57 bar=300 over=9/19 center=2405.29 
+[2026-10-06 14:20:04]	[CulturalDiffusion] frontier city=458757 ring=4 best=307.2 bar=300 over=1/24 center=434.42 
+[2026-10-06 14:20:04]	[CulturalDiffusion] flip 90,38 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner 3) 
+[2026-10-06 14:20:04]	[CulturalDiffusion] flip 90,48 -> player 4 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:20:04]	[CulturalDiffusion] flip 84,28 -> player 3 via purchasePlot sent; pending confirmation next pass (was owner 0) 
+[2026-10-06 14:20:04]	[CulturalDiffusion] flip 91,50 -> player 4 via purchasePlot sent; pending confirmation next pass (was owner -1) 
+[2026-10-06 14:20:04]	[CulturalDiffusion] skip flip 86,18: would strand a foreign unit 
+[2026-10-06 14:20:04]	[CulturalDiffusion] flip 87,25 -> player 3 via purchasePlot sent; pending confirmation next pass (was owner 0) 
+[2026-10-06 14:20:04]	[CulturalDiffusion] state bytes=23881 field=488 claims=105 locked=68 passMs=39 
+[2026-10-06 14:20:04]	[CulturalDiffusion] pass: 0 flip(s), 1 pending, 0 ceded (0 pending), 0 AI flip(s) (4 pending), 0 conquest(s) (0 pending), confirmed 5 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 488 active field tile(s) 
+[2026-10-06 14:20:04]	[CulturalDiffusion] pass (turn 158): flips=0 field tiles=209 
+[2026-10-06 14:20:05]	[CDH] TURN k=22 turn=158 age=AGE_ANTIQUITY blocker=NEW_POPULATION 
+[2026-10-06 14:20:14]	[CDH] OBS T22: age=AGE_ANTIQUITY turn=158 ownerChanges=5 missionaries=0 moved=0 idleWithMoves=0 gone=0 flipsNearMissionary=0 (district 0) onFlipped=0 jsErrors=168 amAuto=absent 
+[2026-10-06 14:20:14]	[CDH] INV T22: claims=105 stale=6 localInner=16 district=0 center=0 pending=5 bytes=23866 
+[2026-10-06 14:20:30]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:20:33]	[CulturalDiffusion] notify: (90,38) player 3 -> player 0 
+[2026-10-06 14:20:33]	[CulturalDiffusion] pending 90,38 claim confirmed on the live map 
+[2026-10-06 14:20:33]	[CulturalDiffusion] notify: (90,48) unowned -> player 4 
+[2026-10-06 14:20:33]	[CulturalDiffusion] pending 90,48 claim confirmed on the live map 
+[2026-10-06 14:20:33]	[CulturalDiffusion] notify: (84,28) player 0 -> player 3 
+[2026-10-06 14:20:33]	[CulturalDiffusion] pending 84,28 claim confirmed on the live map 
+[2026-10-06 14:20:33]	[CulturalDiffusion] notify: (91,50) unowned -> player 4 
+[2026-10-06 14:20:33]	[CulturalDiffusion] pending 91,50 claim confirmed on the live map 
+[2026-10-06 14:20:33]	[CulturalDiffusion] notify: (87,25) player 0 -> player 3 
+[2026-10-06 14:20:33]	[CulturalDiffusion] pending 87,25 claim confirmed on the live map 
+[2026-10-06 14:20:33]	[CulturalDiffusion] inject 92,32 civ=0 culture=39.6 vitality=61.92 strength=64.72 stock=48287.68 cap=129445.81 
+[2026-10-06 14:20:33]	[CulturalDiffusion] inject 87,32 civ=0 culture=13 vitality=33.46 strength=25.3 stock=8589.69 cap=50596.88 
+[2026-10-06 14:20:33]	[CulturalDiffusion] inject 89,42 civ=0 culture=0 vitality=13.95 strength=0 stock=565.69 cap=0 
+[2026-10-06 14:20:33]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=26.9 strength=4.42 stock=2128.64 cap=8848.68 
+[2026-10-06 14:20:33]	[CulturalDiffusion] inject 93,26 civ=0 culture=5 vitality=29.47 strength=13 stock=2541.01 cap=26005.92 
+[2026-10-06 14:20:33]	[CulturalDiffusion] inject 86,20 civ=0 culture=0.9 vitality=10.65 strength=2.99 stock=473.56 cap=5983.6 
+[2026-10-06 14:20:33]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=24.73 strength=8.29 stock=2595.65 cap=16578.48 
+[2026-10-06 14:20:33]	[CulturalDiffusion] inject 81,18 civ=3 culture=7 vitality=36.78 strength=11.85 stock=2378.83 cap=23706.84 
+[2026-10-06 14:20:33]	[CulturalDiffusion] inject 80,31 civ=3 culture=3 vitality=15.9 strength=5.1 stock=1421.6 cap=10191.41 
+[2026-10-06 14:20:33]	[CulturalDiffusion] inject 90,37 civ=3 culture=6 vitality=24.5 strength=9.3 stock=1434.26 cap=18604.71 
+[2026-10-06 14:20:33]	[CulturalDiffusion] inject 83,44 civ=4 culture=8 vitality=13.9 strength=12.76 stock=1079.73 cap=25511.02 
+[2026-10-06 14:20:33]	[CulturalDiffusion] inject 86,47 civ=4 culture=5 vitality=10.75 strength=8.59 stock=99.42 cap=17178.6 
+[2026-10-06 14:20:33]	[CulturalDiffusion] inject 79,39 civ=5 culture=1 vitality=8.25 strength=2.2 stock=174.92 cap=4409.13 
+[2026-10-06 14:20:33]	[CulturalDiffusion] frontier city=65536 ring=4 best=3426.65 bar=300 over=13/23 center=48287.68 
+[2026-10-06 14:20:33]	[CulturalDiffusion] frontier city=196609 ring=4 best=33906.95 bar=300 over=23/24 center=8589.69 
+[2026-10-06 14:20:33]	[CulturalDiffusion] frontier city=524290 ring=4 best=3426.65 bar=300 over=11/24 center=565.69 
+[2026-10-06 14:20:33]	[CulturalDiffusion] frontier city=327683 ring=4 best=8589.69 bar=300 over=21/24 center=2128.64 
+[2026-10-06 14:20:33]	[CulturalDiffusion] frontier city=393220 ring=4 best=5164.92 bar=300 over=9/19 center=2541.01 
+[2026-10-06 14:20:33]	[CulturalDiffusion] frontier city=458757 ring=4 best=291.76 bar=300 over=0/24 center=473.56 
+[2026-10-06 14:20:33]	[CulturalDiffusion] flip 91,38 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner 3) 
+[2026-10-06 14:20:33]	[CulturalDiffusion] flip 84,29 -> player 3 via purchasePlot sent; pending confirmation next pass (was owner 0) 
+[2026-10-06 14:20:33]	[CulturalDiffusion] flip 86,25 -> player 3 via purchasePlot sent; pending confirmation next pass (was owner 0) 
+[2026-10-06 14:20:33]	[CulturalDiffusion] skip flip 86,18: would strand a foreign unit 
+[2026-10-06 14:20:33]	[CulturalDiffusion] flip 88,24 -> player 3 via purchasePlot sent; pending confirmation next pass (was owner 0) 
+[2026-10-06 14:20:33]	[CulturalDiffusion] state bytes=24926 field=492 claims=108 locked=65 passMs=39 
+[2026-10-06 14:20:33]	[CulturalDiffusion] pass: 0 flip(s), 1 pending, 0 ceded (0 pending), 0 AI flip(s) (3 pending), 0 conquest(s) (0 pending), confirmed 5 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 492 active field tile(s) 
+[2026-10-06 14:20:33]	[CulturalDiffusion] pass (turn 159): flips=0 field tiles=211 
+[2026-10-06 14:20:34]	[CDH] TURN k=23 turn=159 age=AGE_ANTIQUITY blocker=NEW_POPULATION 
+[2026-10-06 14:20:43]	[CDH] OBS T23: age=AGE_ANTIQUITY turn=159 ownerChanges=4 missionaries=0 moved=0 idleWithMoves=0 gone=0 flipsNearMissionary=0 (district 0) onFlipped=0 jsErrors=169 amAuto=absent 
+[2026-10-06 14:20:43]	[CDH] INV T23: claims=108 stale=7 localInner=16 district=0 center=0 pending=4 bytes=24911 
+[2026-10-06 14:20:48]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:20:48]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:20:51]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:20:51]	[CulturalDiffusion] capture: city 65536 to player 20 lies outside the simulated field; nothing to transfer 
+[2026-10-06 14:20:58]	[CDH] JSERR Error: Expected this.unit to be non-null. @ fs://game/base-standard/ui/unit-flags/unit-flags.js:348 
+[2026-10-06 14:20:58]	[CulturalDiffusion] notify: (91,38) player 3 -> player 0 
+[2026-10-06 14:20:58]	[CulturalDiffusion] pending 91,38 claim confirmed on the live map 
+[2026-10-06 14:20:58]	[CulturalDiffusion] notify: (84,29) player 0 -> player 3 
+[2026-10-06 14:20:58]	[CulturalDiffusion] pending 84,29 claim confirmed on the live map 
+[2026-10-06 14:20:58]	[CulturalDiffusion] notify: (86,25) player 0 -> player 3 
+[2026-10-06 14:20:58]	[CulturalDiffusion] pending 86,25 claim confirmed on the live map 
+[2026-10-06 14:20:58]	[CulturalDiffusion] notify: (88,24) player 0 -> player 3 
+[2026-10-06 14:20:58]	[CulturalDiffusion] pending 88,24 claim confirmed on the live map 
+[2026-10-06 14:20:58]	[CulturalDiffusion] inject 92,32 civ=0 culture=39.6 vitality=61.92 strength=64.37 stock=51360.98 cap=128748.56 
+[2026-10-06 14:20:58]	[CulturalDiffusion] inject 87,32 civ=0 culture=13 vitality=33.46 strength=25.16 stock=9072.4 cap=50324.34 
+[2026-10-06 14:20:58]	[CulturalDiffusion] inject 89,42 civ=0 culture=0 vitality=13.95 strength=0 stock=537.2 cap=0 
+[2026-10-06 14:20:58]	[CulturalDiffusion] inject 84,35 civ=0 culture=1 vitality=26.9 strength=4.4 stock=2347.84 cap=8801.01 
+[2026-10-06 14:20:58]	[CulturalDiffusion] inject 93,26 civ=0 culture=5 vitality=29.47 strength=12.93 stock=2675.45 cap=25865.84 
+[2026-10-06 14:20:58]	[CulturalDiffusion] inject 86,20 civ=0 culture=0.9 vitality=10.65 strength=2.98 stock=510.9 cap=5951.37 
+[2026-10-06 14:20:58]	[CulturalDiffusion] inject 82,23 civ=3 culture=5 vitality=25.03 strength=8.3 stock=2638.69 cap=16604.73 
+[2026-10-06 14:20:58]	[CulturalDiffusion] inject 81,18 civ=3 culture=7 vitality=36.78 strength=11.82 stock=2492.21 cap=23644.37 
+[2026-10-06 14:20:58]	[CulturalDiffusion] inject 80,31 civ=3 culture=3 vitality=15.9 strength=5.08 stock=1438.38 cap=10164.55 
+[2026-10-06 14:20:58]	[CulturalDiffusion] inject 90,37 civ=3 culture=6 vitality=24.5 strength=9.28 stock=1527.58 cap=18555.68 
+[2026-10-06 14:20:58]	[CulturalDiffusion] inject 83,44 civ=4 culture=8 vitality=13.9 strength=12.86 stock=1518.98 cap=25724.54 
+[2026-10-06 14:20:58]	[CulturalDiffusion] inject 86,47 civ=4 culture=5 vitality=10.75 strength=8.66 stock=136.89 cap=17322.38 
+[2026-10-06 14:20:58]	[CulturalDiffusion] inject 91,45 civ=4 culture=3 vitality=5.35 strength=4.87 stock=10.39 cap=9735.02 
+[2026-10-06 14:20:58]	[CulturalDiffusion] inject 79,39 civ=5 culture=1 vitality=9.6 strength=2.36 stock=187.8 cap=4718.39 
+[2026-10-06 14:20:58]	[CulturalDiffusion] frontier city=65536 ring=4 best=3254.32 bar=300 over=13/23 center=51360.98 
+[2026-10-06 14:20:58]	[CulturalDiffusion] frontier city=196609 ring=4 best=36215.76 bar=300 over=23/24 center=9072.4 
+[2026-10-06 14:20:58]	[CulturalDiffusion] frontier city=524290 ring=4 best=3254.32 bar=300 over=11/24 center=537.2 
+[2026-10-06 14:20:58]	[CulturalDiffusion] frontier city=327683 ring=4 best=9072.4 bar=300 over=21/24 center=2347.84 
+[2026-10-06 14:20:58]	[CulturalDiffusion] frontier city=393220 ring=4 best=5538.13 bar=300 over=9/19 center=2675.45 
+[2026-10-06 14:20:58]	[CulturalDiffusion] frontier city=458757 ring=4 best=308.46 bar=300 over=1/24 center=510.9 
+[2026-10-06 14:20:58]	[CulturalDiffusion] flip 85,40 -> player 0 via purchasePlot sent; pending confirmation next pass (was owner 4) 
+[2026-10-06 14:20:58]	[CulturalDiffusion] skip flip 86,18: would strand a foreign unit 
+[2026-10-06 14:20:58]	[CulturalDiffusion] state bytes=24656 field=496 claims=109 locked=67 passMs=35 
+[2026-10-06 14:20:58]	[CulturalDiffusion] pass: 0 flip(s), 1 pending, 0 ceded (0 pending), 0 AI flip(s) (0 pending), 0 conquest(s) (0 pending), confirmed 4 claim/0 cede (0 dropped), 0 orphan(s) healed, 0 inner tile(s) released to base game, 496 active field tile(s) 
+[2026-10-06 14:20:58]	[CulturalDiffusion] pass (turn 160): flips=0 field tiles=213 

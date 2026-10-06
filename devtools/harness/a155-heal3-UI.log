@@ -1,0 +1,9 @@
+[2026-10-06 16:00:26]	[CDH] shell attached 
+[2026-10-06 16:00:27]	[CDH] shell query complete 
+[2026-10-06 16:00:27]	[CDH] shell found CDH-AM-Ant155.Civ7Save turn 155 age AGE_ANTIQUITY missingMods=0 unowned=0 
+[2026-10-06 16:00:27]	[CDH] shell handleLoadSave returned true 
+[2026-10-06 16:00:52]	[CDH] attached dangle-heal3 
+[2026-10-06 16:00:58]	[CDH] LOAD GameStarted 
+[2026-10-06 16:01:06]	[CDH] DANGLE start mode=heal3 turn=155 age=AGE_ANTIQUITY countdown=true cur=155 max=160 
+[2026-10-06 16:01:06]	[CDH] HEAL round 1: dangling=21 
+[2026-10-06 16:01:08]	[CDH] run threw ReferenceError: js is not defined 

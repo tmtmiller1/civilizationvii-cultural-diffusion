@@ -1,0 +1,58 @@
+[2026-10-06 16:37:42]	[CDH] shell attached 
+[2026-10-06 16:37:43]	[CDH] shell query complete 
+[2026-10-06 16:37:43]	[CDH] shell found CDH-AM-Ant155.Civ7Save turn 155 age AGE_ANTIQUITY missingMods=0 unowned=0 
+[2026-10-06 16:37:43]	[CDH] shell handleLoadSave returned true 
+[2026-10-06 16:38:02]	[CDH] attached dangle-heal3 
+[2026-10-06 16:38:08]	[CDH] LOAD GameStarted 
+[2026-10-06 16:38:16]	[CDH] DANGLE start mode=heal3 turn=155 age=AGE_ANTIQUITY countdown=true cur=155 max=160 
+[2026-10-06 16:38:16]	[CDH] HEAL round 1: dangling=21 
+[2026-10-06 16:38:17]	[CDH] DESTROY 85,18 id={"owner":3,"id":6160473,"type":4} r0=true pointer=still-dangling owner=3 
+[2026-10-06 16:38:17]	[CDH] HEAL 85,18 owner=3 city=81,18 d=4 imp=IMPROVEMENT_FARM(TERRAIN_FLAT p4) r=true r2=true 
+[2026-10-06 16:38:19]	[CDH] DESTROY 87,18 id={"owner":3,"id":5636177,"type":4} r0=true pointer=still-dangling owner=3 
+[2026-10-06 16:38:19]	[CDH] HEAL 87,18 owner=3 city=81,18 d=6 imp=IMPROVEMENT_FISHING_BOAT(TERRAIN_COAST p4) r=true r2=true 
+[2026-10-06 16:38:20]	[CDH] DESTROY 86,19 id={"owner":3,"id":4980807,"type":4} r0=true pointer=still-dangling owner=3 
+[2026-10-06 16:38:20]	[CDH] HEAL 86,19 owner=3 city=82,23 d=6 imp=IMPROVEMENT_FARM(TERRAIN_FLAT p4) r=true r2=true 
+[2026-10-06 16:38:22]	[CDH] DESTROY 85,21 id={"owner":3,"id":5111881,"type":4} r0=true pointer=still-dangling owner=3 
+[2026-10-06 16:38:22]	[CDH] HEAL 85,21 owner=3 city=82,23 d=4 imp=IMPROVEMENT_FISHING_BOAT(TERRAIN_COAST p4) r=true r2=true 
+[2026-10-06 16:38:23]	[CDH] DESTROY 87,21 id={"owner":3,"id":5767251,"type":4} r0=true pointer=still-dangling owner=3 
+[2026-10-06 16:38:23]	[CDH] HEAL 87,21 owner=3 city=82,23 d=6 imp=IMPROVEMENT_FARM(TERRAIN_FLAT p4) r=true r2=true 
+[2026-10-06 16:38:25]	[CDH] DESTROY 88,22 id={"owner":3,"id":5898325,"type":4} r0=true pointer=still-dangling owner=3 
+[2026-10-06 16:38:25]	[CDH] HEAL 88,22 owner=3 city=82,23 d=6 imp=IMPROVEMENT_FARM(TERRAIN_FLAT p4) r=true r2=true 
+[2026-10-06 16:38:26]	[CDH] DESTROY 84,29 id={"owner":0,"id":327683,"type":4} r0=true pointer=still-dangling owner=0 
+[2026-10-06 16:38:26]	[CDH] HEAL 84,29 owner=0 city=87,32 d=4 imp=IMPROVEMENT_WOODCUTTER(FEATURE_RAINFOREST p3) r=true r2=true 
+[2026-10-06 16:38:28]	[CDH] DESTROY 84,30 id={"owner":0,"id":393220,"type":4} r0=true pointer=still-dangling owner=0 
+[2026-10-06 16:38:28]	[CDH] HEAL 84,30 owner=0 city=87,32 d=4 imp=IMPROVEMENT_CAMP(RESOURCE_IVORY p1) r=true r2=true 
+[2026-10-06 16:38:29]	[CDH] DESTROY 81,31 id={"owner":0,"id":3932212,"type":4} r0=true pointer=still-dangling owner=0 
+[2026-10-06 16:38:29]	[CDH] HEAL 81,31 owner=0 city=84,35 d=5 imp=IMPROVEMENT_PLANTATION(RESOURCE_SILK p1) r=true r2=true 
+[2026-10-06 16:38:31]	[CDH] DESTROY 82,31 id={"owner":0,"id":4063286,"type":4} r0=true pointer=still-dangling owner=0 
+[2026-10-06 16:38:31]	[CDH] HEAL 82,31 owner=0 city=84,35 d=4 imp=IMPROVEMENT_FARM(FEATURE_TROPICAL_FLOODPLAIN_MINOR p4) r=true r2=true 
+[2026-10-06 16:38:32]	[CDH] DESTROY 83,31 id={"owner":0,"id":4128823,"type":4} r0=true pointer=still-dangling owner=0 
+[2026-10-06 16:38:32]	[CDH] HEAL 83,31 owner=0 city=87,32 d=4 imp=IMPROVEMENT_FARM(FEATURE_TROPICAL_FLOODPLAIN_MINOR p4) r=true r2=true 
+[2026-10-06 16:38:34]	[CDH] DESTROY 80,32 id={"owner":0,"id":4390950,"type":4} r0=true pointer=still-dangling owner=0 
+[2026-10-06 16:38:34]	[CDH] HEAL 80,32 owner=0 city=84,35 d=6 imp=IMPROVEMENT_WOODCUTTER(FEATURE_RAINFOREST p3) r=true r2=true 
+[2026-10-06 16:38:35]	[CDH] DESTROY 82,32 id={"owner":0,"id":4653057,"type":4} r0=true pointer=still-dangling owner=0 
+[2026-10-06 16:38:35]	[CDH] HEAL 82,32 owner=0 city=84,35 d=4 imp=IMPROVEMENT_FARM(TERRAIN_FLAT p4) r=true r2=true 
+[2026-10-06 16:38:37]	[CDH] DESTROY 90,36 id={"owner":0,"id":5439518,"type":4} r0=true pointer=still-dangling owner=0 
+[2026-10-06 16:38:37]	[CDH] HEAL 90,36 owner=0 city=92,32 d=4 imp=IMPROVEMENT_CLAY_PIT(FEATURE_WATERING_HOLE p3) r=true r2=true 
+[2026-10-06 16:38:38]	[CDH] DESTROY 91,36 id={"owner":0,"id":5570586,"type":4} r0=true pointer=still-dangling owner=0 
+[2026-10-06 16:38:38]	[CDH] HEAL 91,36 owner=0 city=92,32 d=4 imp=IMPROVEMENT_FARM(TERRAIN_FLAT p4) r=true r2=true 
+[2026-10-06 16:38:40]	[CDH] DESTROY 92,36 id={"owner":0,"id":5767207,"type":4} r0=true pointer=still-dangling owner=0 
+[2026-10-06 16:38:40]	[CDH] HEAL 92,36 owner=0 city=92,32 d=4 imp=IMPROVEMENT_FARM(TERRAIN_FLAT p4) r=true r2=true 
+[2026-10-06 16:38:41]	[CDH] DESTROY 88,37 id={"owner":0,"id":5177355,"type":4} r0=true pointer=still-dangling owner=0 
+[2026-10-06 16:38:41]	[CDH] HEAL 88,37 owner=0 city=87,32 d=5 imp=IMPROVEMENT_WOODCUTTER(FEATURE_SAVANNA_WOODLAND p3) r=true r2=true 
+[2026-10-06 16:38:43]	[CDH] DESTROY 89,37 id={"owner":0,"id":5111817,"type":4} r0=true pointer=still-dangling owner=0 
+[2026-10-06 16:38:43]	[CDH] HEAL 89,37 owner=0 city=92,32 d=5 imp=IMPROVEMENT_MINE(TERRAIN_HILL p4) r=true r2=true 
+[2026-10-06 16:38:44]	[CDH] DESTROY 91,37 id={"owner":0,"id":5046279,"type":4} r0=true pointer=still-dangling owner=0 
+[2026-10-06 16:38:44]	[CDH] HEAL 91,37 owner=0 city=92,32 d=5 imp=IMPROVEMENT_PLANTATION(RESOURCE_WINE p1) r=true r2=true 
+[2026-10-06 16:38:46]	[CDH] DESTROY 88,38 id={"owner":0,"id":5373980,"type":4} r0=true pointer=still-dangling owner=0 
+[2026-10-06 16:38:46]	[CDH] HEAL 88,38 owner=0 city=84,35 d=5 imp=IMPROVEMENT_FARM(FEATURE_PLAINS_FLOODPLAIN_MINOR p4) r=true r2=true 
+[2026-10-06 16:38:47]	[CDH] DESTROY 92,38 id={"owner":0,"id":5242894,"type":4} r0=true pointer=still-dangling owner=0 
+[2026-10-06 16:38:47]	[CDH] HEAL 92,38 owner=0 city=92,32 d=6 imp=IMPROVEMENT_FISHING_BOAT(FEATURE_REEF p3) r=true r2=true 
+[2026-10-06 16:38:53]	[CDH] HEAL round 2: dangling=0 
+[2026-10-06 16:38:53]	[CDH] CLEARED all=true 
+[2026-10-06 16:38:53]	[CDH] TURN turn=155 age=AGE_ANTIQUITY 
+[2026-10-06 16:39:09]	[CDH] TURN turn=156 age=AGE_ANTIQUITY 
+[2026-10-06 16:39:22]	[CDH] TURN turn=157 age=AGE_ANTIQUITY 
+[2026-10-06 16:39:34]	[CDH] TURN turn=158 age=AGE_ANTIQUITY 
+[2026-10-06 16:39:50]	[CDH] TURN turn=159 age=AGE_ANTIQUITY 
+[2026-10-06 16:40:04]	[CDH] TURN turn=160 age=AGE_ANTIQUITY 

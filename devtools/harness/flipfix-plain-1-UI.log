@@ -1,0 +1,90 @@
+[2026-10-06 15:11:10]	[CDH] shell attached 
+[2026-10-06 15:11:12]	[CDH] shell query complete 
+[2026-10-06 15:11:12]	[CDH] shell found AugustusAnt136.Civ7Save turn 136 age AGE_ANTIQUITY missingMods=0 unowned=0 
+[2026-10-06 15:11:12]	[CDH] shell handleLoadSave returned true 
+[2026-10-06 15:11:33]	[CDH] attached flipfix-plain 
+[2026-10-06 15:11:38]	[CDH] LOAD GameStarted 
+[2026-10-06 15:11:46]	[CDH] FLIPFIX start variant=plain turn=136 age=AGE_ANTIQUITY left=24 
+[2026-10-06 15:11:46]	[CDH] TURN k=1 turn=136 age=AGE_ANTIQUITY left=24 tally={"moves":0,"landed":0,"dangling":0,"withDistrict":0,"withImprovement":0,"unownedAfterDestroy":0} 
+[2026-10-06 15:11:46]	[CDH] MOVE T136 80,53 2->4 via 82,51 landed=true before=FARM after=WONDER_WEIYANG_PALACE district=WONDER dangling=false 
+[2026-10-06 15:11:46]	[CDH] MOVE T136 80,54 2->4 via 82,51 landed=true before=MINE_RESOURCE after=- district=none dangling=true 
+[2026-10-06 15:11:47]	[CDH] MOVE T136 80,15 3->1 via 78,13 landed=true before=MINE_RESOURCE after=- district=none dangling=true 
+[2026-10-06 15:11:47]	[CDH] MOVE T136 83,21 3->0 via 86,20 landed=true before=CLAY_PIT after=- district=none dangling=true 
+[2026-10-06 15:11:59]	[CDH] TURN k=2 turn=137 age=AGE_ANTIQUITY left=23 tally={"moves":4,"landed":4,"dangling":3,"withDistrict":0,"withImprovement":0,"unownedAfterDestroy":0} 
+[2026-10-06 15:11:59]	[CDH] MOVE T137 81,16 3->1 via 78,13 landed=true before=MINE_RESOURCE after=- district=none dangling=true 
+[2026-10-06 15:11:59]	[CDH] MOVE T137 83,20 3->0 via 86,20 landed=true before=WOODCUTTER after=- district=none dangling=true 
+[2026-10-06 15:12:00]	[CDH] MOVE T137 82,21 3->0 via 86,20 landed=true before=MINE_RESOURCE after=- district=none dangling=true 
+[2026-10-06 15:12:00]	[CDH] MOVE T137 83,31 3->0 via 87,32 landed=true before=FARM after=- district=none dangling=true 
+[2026-10-06 15:12:12]	[CDH] TURN k=3 turn=138 age=AGE_ANTIQUITY left=22 tally={"moves":8,"landed":8,"dangling":7,"withDistrict":0,"withImprovement":0,"unownedAfterDestroy":0} 
+[2026-10-06 15:12:13]	[CDH] MOVE T138 82,20 3->0 via 86,20 landed=true before=CLAY_PIT after=- district=none dangling=true 
+[2026-10-06 15:12:13]	[CDH] MOVE T138 81,21 3->0 via 86,20 landed=true before=PASTURE after=- district=none dangling=true 
+[2026-10-06 15:12:13]	[CDH] MOVE T138 82,31 3->0 via 84,35 landed=true before=FARM after=- district=none dangling=true 
+[2026-10-06 15:12:13]	[CDH] MOVE T138 78,49 4->2 via 78,53 landed=true before=MINE after=- district=none dangling=true 
+[2026-10-06 15:12:28]	[CDH] TURN k=4 turn=139 age=AGE_ANTIQUITY left=21 tally={"moves":12,"landed":12,"dangling":11,"withDistrict":0,"withImprovement":0,"unownedAfterDestroy":0} 
+[2026-10-06 15:12:28]	[CDH] MOVE T139 80,21 3->0 via 86,20 landed=true before=POTKOP after=- district=none dangling=true 
+[2026-10-06 15:12:28]	[CDH] MOVE T139 81,22 3->0 via 86,20 landed=true before=FARM after=- district=none dangling=true 
+[2026-10-06 15:12:28]	[CDH] MOVE T139 24,50 9->8 via 21,50 landed=true before=FARM after=MINE_RESOURCE district=RURAL dangling=false 
+[2026-10-06 15:12:29]	[CDH] MOVE T139 80,50 4->2 via 78,53 landed=true before=MINE_RESOURCE after=- district=none dangling=true 
+[2026-10-06 15:12:43]	[CDH] TURN k=5 turn=140 age=AGE_ANTIQUITY left=20 tally={"moves":16,"landed":16,"dangling":14,"withDistrict":1,"withImprovement":1,"unownedAfterDestroy":0} 
+[2026-10-06 15:12:43]	[CDH] MOVE T140 82,32 3->0 via 84,35 landed=true before=FARM after=- district=none dangling=true 
+[2026-10-06 15:12:43]	[CDH] MOVE T140 82,34 0->3 via 80,31 landed=true before=CAMP after=- district=none dangling=true 
+[2026-10-06 15:12:44]	[CDH] MOVE T140 80,49 4->2 via 78,53 landed=true before=WOODCUTTER after=- district=none dangling=true 
+[2026-10-06 15:12:44]	[CDH] MOVE T140 81,50 4->2 via 78,53 landed=true before=WOODCUTTER after=CAMP district=RURAL dangling=false 
+[2026-10-06 15:12:58]	[CDH] TURN k=6 turn=141 age=AGE_ANTIQUITY left=19 tally={"moves":20,"landed":20,"dangling":17,"withDistrict":2,"withImprovement":2,"unownedAfterDestroy":0} 
+[2026-10-06 15:12:58]	[CDH] MOVE T141 83,34 0->3 via 80,31 landed=true before=FARM after=- district=none dangling=true 
+[2026-10-06 15:12:58]	[CDH] MOVE T141 67,46 5->2 via 67,50 landed=true before=MINE after=- district=none dangling=true 
+[2026-10-06 15:12:59]	[CDH] MOVE T141 67,48 2->5 via 64,45 landed=true before=FARM after=- district=none dangling=true 
+[2026-10-06 15:12:59]	[CDH] MOVE T141 81,48 4->2 via 78,53 landed=true before=MINE after=- district=none dangling=true 
+[2026-10-06 15:13:10]	[CDH] TURN k=7 turn=142 age=AGE_ANTIQUITY left=18 tally={"moves":24,"landed":24,"dangling":21,"withDistrict":2,"withImprovement":2,"unownedAfterDestroy":0} 
+[2026-10-06 15:13:12]	[CDH] MOVE T142 66,45 5->2 via 67,50 landed=true before=MINE after=- district=none dangling=true 
+[2026-10-06 15:13:12]	[CDH] MOVE T142 66,46 5->2 via 67,50 landed=true before=MINE_RESOURCE after=FARM district=RURAL dangling=false 
+[2026-10-06 15:13:12]	[CDH] MOVE T142 81,47 4->2 via 78,53 landed=true before=FISHING_BOAT_RESOURCE after=WONDER_DUR_SHARRUKIN district=WONDER dangling=false 
+[2026-10-06 15:13:12]	[CDH] MOVE T142 22,51 8->9 via 25,51 landed=true before=WOODCUTTER after=- district=none dangling=true 
+[2026-10-06 15:13:23]	[CDH] TURN k=8 turn=143 age=AGE_ANTIQUITY left=17 tally={"moves":28,"landed":28,"dangling":23,"withDistrict":3,"withImprovement":3,"unownedAfterDestroy":0} 
+[2026-10-06 15:13:23]	[CDH] MOVE T143 66,44 5->2 via 67,50 landed=true before=MINE after=- district=none dangling=true 
+[2026-10-06 15:13:23]	[CDH] MOVE T143 67,44 5->2 via 67,50 landed=true before=WOODCUTTER after=- district=none dangling=true 
+[2026-10-06 15:13:24]	[CDH] MOVE T143 82,46 4->2 via 78,53 landed=true before=FARM after=- district=none dangling=true 
+[2026-10-06 15:13:24]	[CDH] MOVE T143 77,47 5->4 via 79,47 landed=true before=WOODCUTTER after=- district=none dangling=true 
+[2026-10-06 15:13:35]	[CDH] TURN k=9 turn=144 age=AGE_ANTIQUITY left=16 tally={"moves":32,"landed":32,"dangling":27,"withDistrict":3,"withImprovement":3,"unownedAfterDestroy":0} 
+[2026-10-06 15:13:35]	[CDH] MOVE T144 73,49 2->5 via 75,48 landed=true before=CAMP after=MINE_RESOURCE district=RURAL dangling=false 
+[2026-10-06 15:13:35]	[CDH] MOVE T144 77,49 5->4 via 79,47 landed=true before=MINE_RESOURCE after=- district=none dangling=true 
+[2026-10-06 15:13:36]	[CDH] MOVE T144 74,50 2->5 via 75,48 landed=true before=FARM after=MINE_RESOURCE district=RURAL dangling=false 
+[2026-10-06 15:13:36]	[CDH] MOVE T144 76,50 5->2 via 74,52 landed=true before=MINE after=- district=none dangling=true 
+[2026-10-06 15:13:53]	[CDH] TURN k=10 turn=145 age=AGE_ANTIQUITY left=15 tally={"moves":36,"landed":36,"dangling":29,"withDistrict":5,"withImprovement":5,"unownedAfterDestroy":0} 
+[2026-10-06 15:13:53]	[CDH] MOVE T145 79,21 3->0 via 86,20 landed=true before=FISHING_BOAT after=- district=none dangling=true 
+[2026-10-06 15:13:53]	[CDH] MOVE T145 66,43 5->2 via 67,50 landed=true before=FISHING_BOAT_RESOURCE after=FARM district=RURAL dangling=false 
+[2026-10-06 15:13:54]	[CDH] MOVE T145 82,47 4->2 via 78,53 landed=true before=PASTURE after=- district=none dangling=true 
+[2026-10-06 15:13:54]	[CDH] MOVE T145 72,49 2->5 via 75,48 landed=true before=FARM after=FISHING_BOAT_RESOURCE district=RURAL dangling=false 
+[2026-10-06 15:14:09]	[CDH] TURN k=11 turn=146 age=AGE_ANTIQUITY left=14 tally={"moves":40,"landed":40,"dangling":31,"withDistrict":7,"withImprovement":7,"unownedAfterDestroy":0} 
+[2026-10-06 15:14:09]	[CDH] MOVE T146 79,51 2->4 via 82,51 landed=true before=MINE after=BUILDING_LIBRARY+BUILDING_BARRACKS district=URBAN dangling=false 
+[2026-10-06 15:14:24]	[CDH] TURN k=12 turn=147 age=AGE_ANTIQUITY left=13 tally={"moves":41,"landed":41,"dangling":31,"withDistrict":7,"withImprovement":7,"unownedAfterDestroy":0} 
+[2026-10-06 15:15:15]	[CDH] ENDTURN stuck: one Autoplay turn 
+[2026-10-06 15:15:30]	[CDH] TURN k=13 turn=148 age=AGE_ANTIQUITY left=12 tally={"moves":41,"landed":41,"dangling":31,"withDistrict":7,"withImprovement":7,"unownedAfterDestroy":0} 
+[2026-10-06 15:15:30]	[CDH] MOVE T148 86,34 0->3 via 84,35 landed=true before=FARM after=- district=none dangling=true 
+[2026-10-06 15:15:31]	[CDH] MOVE T148 87,34 0->3 via 84,35 landed=true before=CLAY_PIT after=- district=none dangling=true 
+[2026-10-06 15:15:31]	[CDH] MOVE T148 86,35 0->3 via 84,35 landed=true before=WOODCUTTER after=- district=none dangling=true 
+[2026-10-06 15:15:31]	[CDH] MOVE T148 87,36 3->0 via 87,32 landed=true before=FARM after=- district=none dangling=true 
+[2026-10-06 15:15:51]	[CDH] TURN k=14 turn=149 age=AGE_ANTIQUITY left=11 tally={"moves":45,"landed":45,"dangling":35,"withDistrict":7,"withImprovement":7,"unownedAfterDestroy":0} 
+[2026-10-06 15:15:51]	[CDH] MOVE T149 23,51 9->8 via 21,50 landed=true before=FARM after=- district=none dangling=true 
+[2026-10-06 15:16:04]	[CDH] TURN k=15 turn=150 age=AGE_ANTIQUITY left=10 tally={"moves":46,"landed":46,"dangling":36,"withDistrict":7,"withImprovement":7,"unownedAfterDestroy":0} 
+[2026-10-06 15:16:04]	[CDH] MOVE T150 15,25 7->8 via 17,27 landed=true before=WOODCUTTER after=- district=none dangling=true 
+[2026-10-06 15:16:19]	[CDH] TURN k=16 turn=151 age=AGE_ANTIQUITY left=9 tally={"moves":47,"landed":47,"dangling":37,"withDistrict":7,"withImprovement":7,"unownedAfterDestroy":0} 
+[2026-10-06 15:16:19]	[CDH] MOVE T151 16,24 7->8 via 17,27 landed=true before=PLANTATION after=- district=none dangling=true 
+[2026-10-06 15:16:19]	[CDH] MOVE T151 14,25 7->8 via 17,27 landed=true before=WOODCUTTER after=- district=none dangling=true 
+[2026-10-06 15:16:37]	[CDH] TURN k=17 turn=152 age=AGE_ANTIQUITY left=8 tally={"moves":49,"landed":49,"dangling":39,"withDistrict":7,"withImprovement":7,"unownedAfterDestroy":0} 
+[2026-10-06 15:16:37]	[CDH] MOVE T152 14,26 7->8 via 17,27 landed=true before=MINE_RESOURCE after=- district=none dangling=true 
+[2026-10-06 15:16:49]	[CDH] TURN k=18 turn=153 age=AGE_ANTIQUITY left=7 tally={"moves":50,"landed":50,"dangling":40,"withDistrict":7,"withImprovement":7,"unownedAfterDestroy":0} 
+[2026-10-06 15:17:01]	[CDH] TURN k=19 turn=154 age=AGE_ANTIQUITY left=6 tally={"moves":50,"landed":50,"dangling":40,"withDistrict":7,"withImprovement":7,"unownedAfterDestroy":0} 
+[2026-10-06 15:17:15]	[CDH] TURN k=20 turn=155 age=AGE_ANTIQUITY left=5 tally={"moves":50,"landed":50,"dangling":40,"withDistrict":7,"withImprovement":7,"unownedAfterDestroy":0} 
+[2026-10-06 15:17:15]	[CDH] MOVE T155 78,35 2->3 via 80,31 landed=true before=FISHING_BOAT after=- district=none dangling=true 
+[2026-10-06 15:17:15]	[CDH] MOVE T155 78,37 2->5 via 79,39 landed=true before=FARM after=- district=none dangling=true 
+[2026-10-06 15:17:27]	[CDH] TURN k=21 turn=156 age=AGE_ANTIQUITY left=4 tally={"moves":52,"landed":52,"dangling":42,"withDistrict":7,"withImprovement":7,"unownedAfterDestroy":0} 
+[2026-10-06 15:17:27]	[CDH] MOVE T156 15,27 8->7 via 13,24 landed=true before=WOODCUTTER after=- district=none dangling=true 
+[2026-10-06 15:17:42]	[CDH] TURN k=22 turn=157 age=AGE_ANTIQUITY left=3 tally={"moves":53,"landed":53,"dangling":43,"withDistrict":7,"withImprovement":7,"unownedAfterDestroy":0} 
+[2026-10-06 15:17:42]	[CDH] HOLD turn=157: last 3 turns, no moves 
+[2026-10-06 15:17:55]	[CDH] TURN k=23 turn=158 age=AGE_ANTIQUITY left=2 tally={"moves":53,"landed":53,"dangling":43,"withDistrict":7,"withImprovement":7,"unownedAfterDestroy":0} 
+[2026-10-06 15:17:55]	[CDH] HOLD turn=158: last 3 turns, no moves 
+[2026-10-06 15:18:07]	[CDH] TURN k=24 turn=159 age=AGE_ANTIQUITY left=1 tally={"moves":53,"landed":53,"dangling":43,"withDistrict":7,"withImprovement":7,"unownedAfterDestroy":0} 
+[2026-10-06 15:18:07]	[CDH] HOLD turn=159: last 3 turns, no moves 
+[2026-10-06 15:18:20]	[CDH] TURN k=25 turn=160 age=AGE_ANTIQUITY left=0 tally={"moves":53,"landed":53,"dangling":43,"withDistrict":7,"withImprovement":7,"unownedAfterDestroy":0} 
+[2026-10-06 15:18:20]	[CDH] HOLD turn=160: last 3 turns, no moves 

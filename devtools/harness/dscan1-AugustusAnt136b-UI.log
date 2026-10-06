@@ -1,0 +1,7 @@
+[2026-10-06 14:01:39]	[CDH] shell attached 
+[2026-10-06 14:01:40]	[CDH] shell query complete 
+[2026-10-06 14:01:41]	[CDH] shell found AugustusAnt136.Civ7Save turn 136 age AGE_ANTIQUITY missingMods=0 unowned=0 
+[2026-10-06 14:01:41]	[CDH] shell handleLoadSave returned true 
+[2026-10-06 14:02:05]	[CDH] attached dscan-once 
+[2026-10-06 14:02:18]	[CDH] DSCAN1 turn=136 age=AGE_ANTIQUITY countdown=false cur=136 max=160 dangling=0  
+[2026-10-06 14:02:18]	[CDH] DONE harness dscan-once finished 

@@ -1,0 +1,26 @@
+[2026-10-06 13:46:08]	[CDH] shell attached 
+[2026-10-06 13:46:09]	[CDH] shell query complete 
+[2026-10-06 13:46:10]	[CDH] shell found CDH-AM-Ant160.Civ7Save turn 160 age AGE_ANTIQUITY missingMods=0 unowned=0 
+[2026-10-06 13:46:10]	[CDH] shell handleLoadSave returned true 
+[2026-10-06 13:46:27]	[CDH] attached ant-read 
+[2026-10-06 13:46:33]	[CDH] LOAD GameStarted 
+[2026-10-06 13:46:41]	[CDH] AGE turn=160 age=AGE_ANTIQUITY countdown=true cur=160 max=160 over=false 
+[2026-10-06 13:46:41]	[CDH] TILE 92,40 owner=0 district=none idDangling=false 
+[2026-10-06 13:46:41]	[CDH] TILE 89,49 owner=4 district=none idDangling=false 
+[2026-10-06 13:46:41]	[CDH] TILE 90,50 owner=4 district=none idDangling=false 
+[2026-10-06 13:46:41]	[CDH] TILE 84,28 owner=3 district=none idDangling=false 
+[2026-10-06 13:46:41]	[CDH] TILE 87,25 owner=3 district=none idDangling=false 
+[2026-10-06 13:46:41]	[CDH] TILE 85,41 owner=0 district=none idDangling=false 
+[2026-10-06 13:46:41]	[CDH] TILE 92,41 owner=0 district=none idDangling=false 
+[2026-10-06 13:46:41]	[CDH] TILE 93,40 owner=0 district=none idDangling=false 
+[2026-10-06 13:46:41]	[CDH] TILE 90,48 owner=4 district=none idDangling=false 
+[2026-10-06 13:46:41]	[CDH] TILE 84,29 owner=3 district=none idDangling=true 
+[2026-10-06 13:46:41]	[CDH] TILE 86,25 owner=3 district=none idDangling=false 
+[2026-10-06 13:46:41]	[CDH] TILE 91,50 owner=4 district=none idDangling=false 
+[2026-10-06 13:46:41]	[CDH] TILE 88,24 owner=3 district=none idDangling=false 
+[2026-10-06 13:46:41]	[CDH] TILE 85,40 owner=4 district=none idDangling=false 
+[2026-10-06 13:46:41]	[CDH] TILE 93,41 owner=3 district=none idDangling=false 
+[2026-10-06 13:46:41]	[CDH] TILE 91,39 owner=0 district=none idDangling=true 
+[2026-10-06 13:46:41]	[CDH] TILE 79,34 owner=0 district=none idDangling=false 
+[2026-10-06 13:46:41]	[CDH] TILE 79,37 owner=0 district=none idDangling=true 
+[2026-10-06 13:46:41]	[CDH] DONE harness ant-read finished 

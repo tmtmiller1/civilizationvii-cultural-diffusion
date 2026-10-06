@@ -1,0 +1,31 @@
+[15:44:16] LocalStorage.sqlite backed up
+[15:44:16] autosaves backed up: 10
+[15:44:16] registry before: 2407=0  (restoring Disabled=0 afterward)
+[15:44:17] deployed mod: debug=1 affectsSaves0=1
+[15:44:17] NO_MOD=1: Cultural Diffusion left DISABLED for this run (control)
+[15:44:17] harness installed: cdh-game-flipfix-demolish.js on AugustusAnt136.Civ7Save
+[15:44:17] previous UI.log kept at /Users/USER/Library/Application Support/Civilization VII/cd-harness-backup/UI-before-flipfix-demolish-2-20261006-154417.log (10632 lines)
+[15:44:19] game pid 6001
+[16:00:03] result=done after 884s
+[16:00:03] collected AI_Behavior_Tree_Events.csv (66 lines)
+[16:00:03] collected AI_Behavior_Trees.csv (43798 lines)
+[16:00:03] collected AI_CityStrategy.csv (227 lines)
+[16:00:03] collected AI_CombatPlanning.csv (13713 lines)
+[16:00:03] collected AI_Commander_Promotions.csv (149 lines)
+[16:00:03] collected AI_Dedications.csv (66 lines)
+[16:00:03] collected AI_DiplomaticActions.csv (2255 lines)
+[16:00:03] collected AI_Leader.csv (10 lines)
+[16:00:03] collected AI_Market.csv (782 lines)
+[16:00:03] collected AI_MayhemTracker.csv (1158 lines)
+[16:00:03] collected AI_MovementPlanning.csv (24997 lines)
+[16:00:03] collected AI_Operation.csv (18545 lines)
+[16:00:03] collected AI_Operation_Eval.csv (1713 lines)
+[16:00:03] collected AI_Recruiting.csv (82541 lines)
+[16:00:03] collected AI_Tactical.csv (7069 lines)
+[16:00:03] collected AI_Targets.csv (120145 lines)
+[16:00:03] collected AI_UnitEfficiency.csv (256 lines)
+[16:00:03] collected AI_Victories.csv (55 lines)
+[16:00:11] LocalStorage.sqlite restored (the run had changed it; its copy is in the trash folder)
+[16:00:11] restored: registry 2409=0  harness present: no debugPatched: 0
+[16:00:11] autosaves changed during the run; putting the player's back
+[16:00:11] FINISHED result=done  log: /Users/USER/Repos/civilization_mods/civilization_vii_mods/tower_mods/cultural_diffusion/devtools/harness/flipfix-demolish-2-UI.log

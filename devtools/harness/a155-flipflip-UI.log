@@ -1,0 +1,18 @@
+[2026-10-06 17:04:29]	[CDH] shell attached 
+[2026-10-06 17:04:30]	[CDH] shell query complete 
+[2026-10-06 17:04:31]	[CDH] shell found CDH-AM-Ant155.Civ7Save turn 155 age AGE_ANTIQUITY missingMods=0 unowned=0 
+[2026-10-06 17:04:31]	[CDH] shell handleLoadSave returned true 
+[2026-10-06 17:04:48]	[CDH] attached dangle-flipflip 
+[2026-10-06 17:04:54]	[CDH] LOAD GameStarted 
+[2026-10-06 17:05:02]	[CDH] DANGLE start mode=flipflip turn=155 age=AGE_ANTIQUITY countdown=true cur=155 max=160 
+[2026-10-06 17:05:02]	[CDH] FLIPFLIP start: dangling=21 
+[2026-10-06 17:05:08]	[CDH] FLIPFLIP step1: sent=21 awayLanded=21 cleared=19 84,29(landed) 84,30(landed) 
+[2026-10-06 17:05:16]	[CDH] FLIPFLIP step2: backLanded=21/21 dangling=21 
+[2026-10-06 17:05:20]	[CDH] FLIPFLIP done: rebuilt=0 whole=0 dangling=21 85,18/p3 87,18/p3 86,19/p3 85,21/p3 87,21/p3 88,22/p3 84,29/p0 84,30/p0 81,31/p0 82,31/p0 83,31/p0 80,32/p0 82,32/p0 90,36/p0 91,36/p0 92,36/p0 88,37/p0 89,37/p0 91,37/p0 88,38/p0 92,38/p0 owners====================== 
+[2026-10-06 17:05:20]	[CDH] CLEARED all=false 
+[2026-10-06 17:05:20]	[CDH] TURN turn=155 age=AGE_ANTIQUITY 
+[2026-10-06 17:05:32]	[CDH] TURN turn=156 age=AGE_ANTIQUITY 
+[2026-10-06 17:05:48]	[CDH] TURN turn=157 age=AGE_ANTIQUITY 
+[2026-10-06 17:05:56]	[CDH] TURN turn=158 age=AGE_ANTIQUITY 
+[2026-10-06 17:06:12]	[CDH] TURN turn=159 age=AGE_ANTIQUITY 
+[2026-10-06 17:06:24]	[CDH] TURN turn=160 age=AGE_ANTIQUITY 

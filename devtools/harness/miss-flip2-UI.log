@@ -1,0 +1,73 @@
+[2026-10-06 12:27:20]	[CDH] shell attached 
+[2026-10-06 12:27:21]	[CDH] shell query complete 
+[2026-10-06 12:27:22]	[CDH] shell found AugustusExp66.Civ7Save turn 66 age AGE_EXPLORATION missingMods=0 unowned=0 
+[2026-10-06 12:27:22]	[CDH] shell handleLoadSave returned true 
+[2026-10-06 12:27:40]	[CDH] attached missionary-flip 
+[2026-10-06 12:27:45]	[CDH] LOAD GameStarted 
+[2026-10-06 12:27:55]	[CDH] SETUP mode=flip turn=66 age=AGE_EXPLORATION religion=-1596605022:RELIGION_CUSTOM_12 missionaries=0 cities=29 majors=[0,2,4,6,7,8,9] 
+[2026-10-06 12:27:55]	[CDH] BUY UNIT_MISSIONARY in London at 92,32 
+[2026-10-06 12:27:55]	[CDH] BUY UNIT_MISSIONARY in Lāhainā at 86,20 
+[2026-10-06 12:27:55]	[CDH] BUY UNIT_MISSIONARY in Waikolu at 77,21 
+[2026-10-06 12:27:59]	[CDH] SETUP after buy: missionaries=3 
+[2026-10-06 12:27:59]	[CDH] TURN k=1 turn=66 age=AGE_EXPLORATION 
+[2026-10-06 12:27:59]	[CDH] ASSIGN 6815815 at 92,32: no target within 12 
+[2026-10-06 12:27:59]	[CDH] ASSIGN 6881352 at 86,20: no target within 12 
+[2026-10-06 12:27:59]	[CDH] ASSIGN 6946889 at 77,21: no target within 12 
+[2026-10-06 12:28:05]	[CDH] TALLY T1 mode=flip ready=0 flips=0 pairs=0 orders=0 
+[2026-10-06 12:28:06]	[CDH] TURN k=2 turn=66 age=AGE_EXPLORATION 
+[2026-10-06 12:28:06]	[CDH] ASSIGN 6815815 at 92,32: no target within 12 
+[2026-10-06 12:28:06]	[CDH] ASSIGN 6881352 at 86,20: no target within 12 
+[2026-10-06 12:28:06]	[CDH] ASSIGN 6946889 at 77,21: no target within 12 
+[2026-10-06 12:28:12]	[CDH] TALLY T2 mode=flip ready=0 flips=0 pairs=0 orders=0 
+[2026-10-06 12:28:31]	[CDH] TURN k=3 turn=67 age=AGE_EXPLORATION 
+[2026-10-06 12:28:31]	[CDH] ASSIGN 6815815 at 92,32: no target within 12 
+[2026-10-06 12:28:31]	[CDH] ASSIGN 6881352 at 86,20: no target within 12 
+[2026-10-06 12:28:31]	[CDH] ASSIGN 6946889 at 77,21: no target within 12 
+[2026-10-06 12:28:37]	[CDH] TALLY T3 mode=flip ready=0 flips=0 pairs=0 orders=0 
+[2026-10-06 12:28:41]	[CDH] TURN k=4 turn=67 age=AGE_EXPLORATION 
+[2026-10-06 12:28:41]	[CDH] ASSIGN 6815815 at 92,32: no target within 12 
+[2026-10-06 12:28:41]	[CDH] ASSIGN 6881352 at 86,20: no target within 12 
+[2026-10-06 12:28:41]	[CDH] ASSIGN 6946889 at 77,21: no target within 12 
+[2026-10-06 12:28:47]	[CDH] TALLY T4 mode=flip ready=0 flips=0 pairs=0 orders=0 
+[2026-10-06 12:28:51]	[CDH] TURN k=5 turn=67 age=AGE_EXPLORATION 
+[2026-10-06 12:28:51]	[CDH] ASSIGN 6815815 at 92,32: no target within 12 
+[2026-10-06 12:28:51]	[CDH] ASSIGN 6881352 at 86,20: no target within 12 
+[2026-10-06 12:28:51]	[CDH] ASSIGN 6946889 at 77,21: no target within 12 
+[2026-10-06 12:28:57]	[CDH] TALLY T5 mode=flip ready=0 flips=0 pairs=0 orders=0 
+[2026-10-06 12:29:01]	[CDH] TURN k=6 turn=67 age=AGE_EXPLORATION 
+[2026-10-06 12:29:01]	[CDH] ASSIGN 6815815 at 92,32: no target within 12 
+[2026-10-06 12:29:01]	[CDH] ASSIGN 6881352 at 86,20: no target within 12 
+[2026-10-06 12:29:01]	[CDH] ASSIGN 6946889 at 77,21: no target within 12 
+[2026-10-06 12:29:07]	[CDH] TALLY T6 mode=flip ready=0 flips=0 pairs=0 orders=0 
+[2026-10-06 12:29:11]	[CDH] TURN k=7 turn=67 age=AGE_EXPLORATION 
+[2026-10-06 12:29:11]	[CDH] ASSIGN 6815815 at 92,32: no target within 12 
+[2026-10-06 12:29:11]	[CDH] ASSIGN 6881352 at 86,20: no target within 12 
+[2026-10-06 12:29:11]	[CDH] ASSIGN 6946889 at 77,21: no target within 12 
+[2026-10-06 12:29:17]	[CDH] TALLY T7 mode=flip ready=0 flips=0 pairs=0 orders=0 
+[2026-10-06 12:29:21]	[CDH] TURN k=8 turn=67 age=AGE_EXPLORATION 
+[2026-10-06 12:29:21]	[CDH] ASSIGN 6815815 at 92,32: no target within 12 
+[2026-10-06 12:29:21]	[CDH] ASSIGN 6881352 at 86,20: no target within 12 
+[2026-10-06 12:29:21]	[CDH] ASSIGN 6946889 at 77,21: no target within 12 
+[2026-10-06 12:29:27]	[CDH] TALLY T8 mode=flip ready=0 flips=0 pairs=0 orders=0 
+[2026-10-06 12:29:31]	[CDH] TURN k=9 turn=67 age=AGE_EXPLORATION 
+[2026-10-06 12:29:31]	[CDH] ASSIGN 6815815 at 92,32: no target within 12 
+[2026-10-06 12:29:31]	[CDH] ASSIGN 6881352 at 86,20: no target within 12 
+[2026-10-06 12:29:31]	[CDH] ASSIGN 6946889 at 77,21: no target within 12 
+[2026-10-06 12:29:37]	[CDH] TALLY T9 mode=flip ready=0 flips=0 pairs=0 orders=0 
+[2026-10-06 12:29:41]	[CDH] TURN k=10 turn=67 age=AGE_EXPLORATION 
+[2026-10-06 12:29:41]	[CDH] ASSIGN 6815815 at 92,32: no target within 12 
+[2026-10-06 12:29:41]	[CDH] ASSIGN 6881352 at 86,20: no target within 12 
+[2026-10-06 12:29:41]	[CDH] ASSIGN 6946889 at 77,21: no target within 12 
+[2026-10-06 12:29:47]	[CDH] TALLY T10 mode=flip ready=0 flips=0 pairs=0 orders=0 
+[2026-10-06 12:29:51]	[CDH] TURN k=11 turn=67 age=AGE_EXPLORATION 
+[2026-10-06 12:29:51]	[CDH] ASSIGN 6815815 at 92,32: no target within 12 
+[2026-10-06 12:29:51]	[CDH] ASSIGN 6881352 at 86,20: no target within 12 
+[2026-10-06 12:29:51]	[CDH] ASSIGN 6946889 at 77,21: no target within 12 
+[2026-10-06 12:29:57]	[CDH] TALLY T11 mode=flip ready=0 flips=0 pairs=0 orders=0 
+[2026-10-06 12:30:01]	[CDH] TURN k=12 turn=67 age=AGE_EXPLORATION 
+[2026-10-06 12:30:01]	[CDH] ASSIGN 6815815 at 92,32: no target within 12 
+[2026-10-06 12:30:01]	[CDH] ASSIGN 6881352 at 86,20: no target within 12 
+[2026-10-06 12:30:01]	[CDH] ASSIGN 6946889 at 77,21: no target within 12 
+[2026-10-06 12:30:07]	[CDH] TALLY T12 mode=flip ready=0 flips=0 pairs=0 orders=0 
+[2026-10-06 12:30:11]	[CDH] TURN k=13 turn=67 age=AGE_EXPLORATION 
+[2026-10-06 12:30:11]	[CDH] DONE harness missionary finished mode=flip, survived 12 turns, flips=0 pairs=0 orders=0 

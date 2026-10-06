@@ -93,6 +93,12 @@ The game applies an ownership change a moment after the mod asks for it, so each
 recorded as pending and confirmed from the map at the start of the next pass before it counts
 as a claim.
 
+An improved tile (a farm, mine, pasture or other rural improvement) changes hands whole: the
+mod demolishes it with the engine's own operation, buys the plot, and rebuilds the district and
+the same improvement for the new owner, so the city that won it works it at once. Buying such a
+tile as it stands would destroy the improvement and leave the save damaged (see the 1.5.1
+changelog). Urban districts, city centers and wonders never move by culture.
+
 With the opt-in +1 ring buffer (`growthBuffer`, off by default), finishing a rural
 improvement near your border also claims the unowned tiles right next to it, one ring past
 your city's normal reach.
@@ -423,6 +429,10 @@ This mod reimagines and extends Gedemon's work.
 - Ownership changes land a moment after the mod asks for them, so a claim appears in the
   mod's state one turn after the tile changes color. If a game update breaks the ownership
   calls, debug logging shows `pending ... NOT APPLIED` lines.
+- A game in which version 1.4.1 or 1.5.0 moved improved tiles between civilizations carries
+  damage that 1.5.1 cannot repair: the engine keeps a broken record of each such tile for its
+  owner, and no scripting verb clears it. Such a game can crash while an age ends. Games started
+  on 1.5.1 are not affected.
 - The mod must be enabled when a game starts. A save keeps the mod list it was started with,
   so enabling the mod later has no effect on that save. When developing, redeploy by
   overwriting the folder in place rather than deleting it.

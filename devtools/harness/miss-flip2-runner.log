@@ -1,0 +1,27 @@
+[12:27:17] autosaves backed up: 10
+[12:27:17] registry before: 2341=0  (restoring Disabled=0 afterward)
+[12:27:17] deployed mod: debug=1 affectsSaves0=1
+[12:27:17] NO_MOD=1: Cultural Diffusion left DISABLED for this run (control)
+[12:27:17] harness installed: cdh-game-missionary.js on AugustusExp66.Civ7Save
+[12:27:17] previous UI.log kept at /Users/USER/Library/Application Support/Civilization VII/cd-harness-backup/UI-before-miss-flip2-20261006-122717.log (397 lines)
+[12:27:19] game pid 39434
+[12:30:19] result=done after 164s
+[12:30:19] collected AI_Behavior_Tree_Events.csv (3 lines)
+[12:30:19] collected AI_Behavior_Trees.csv (1288 lines)
+[12:30:19] collected AI_CityStrategy.csv (1 lines)
+[12:30:20] collected AI_CombatPlanning.csv (109 lines)
+[12:30:20] collected AI_DiplomaticActions.csv (81 lines)
+[12:30:20] collected AI_Market.csv (9 lines)
+[12:30:20] collected AI_MayhemTracker.csv (21 lines)
+[12:30:20] collected AI_MovementPlanning.csv (911 lines)
+[12:30:20] collected AI_Operation.csv (562 lines)
+[12:30:20] collected AI_Operation_Eval.csv (17 lines)
+[12:30:21] collected AI_Recruiting.csv (5054 lines)
+[12:30:21] collected AI_Tactical.csv (256 lines)
+[12:30:21] collected AI_Targets.csv (4123 lines)
+[12:30:21] collected AI_UnitEfficiency.csv (141 lines)
+[12:30:21] collected AI_Victories.csv (1 lines)
+[12:30:29] restored: registry 2343=0  harness present: no debugPatched: 0
+[12:30:30] autosaves changed during the run; putting the player's back
+[12:30:30] FINISHED result=done  log: /Users/USER/Repos/civilization_mods/civilization_vii_mods/tower_mods/cultural_diffusion/devtools/harness/miss-flip2-UI.log
+RUN_EXIT=0

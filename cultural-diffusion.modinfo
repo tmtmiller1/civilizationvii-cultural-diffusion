@@ -7,7 +7,7 @@
         <SpecialThanks>Gedemon's "Cultural Diffusion" mod for Civilization V (v18), whose reaction-diffusion culture model is the core layer this mod builds on and extends.</SpecialThanks>
         <Package>CulturalDiffusionMod</Package>
         <PackageSortIndex>1000</PackageSortIndex>
-        <Version>1.5.0</Version>
+        <Version>1.5.1</Version>
     </Properties>
     <Dependencies>
         <Mod id="base-standard" title="LOC_MODULE_BASE_STANDARD_NAME" />
@@ -103,6 +103,7 @@
                     <Item>ui/cd-civ-tuning.js</Item>
                     <Item>ui/cd-calibration.js</Item>
                     <Item>ui/cd-borders.js</Item>
+                    <Item>ui/cd-teardown.js</Item>
                     <Item>ui/cd-ownership.js</Item>
                     <Item>ui/cd-pending.js</Item>
                     <Item>ui/cd-diagnostics.js</Item>

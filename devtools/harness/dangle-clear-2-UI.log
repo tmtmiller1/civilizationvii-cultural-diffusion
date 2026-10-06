@@ -1,0 +1,26 @@
+[2026-10-06 14:05:58]	[CDH] shell attached 
+[2026-10-06 14:06:00]	[CDH] shell query complete 
+[2026-10-06 14:06:00]	[CDH] shell found CDH-AM-Ant159.Civ7Save turn 159 age AGE_ANTIQUITY missingMods=0 unowned=0 
+[2026-10-06 14:06:00]	[CDH] shell handleLoadSave returned true 
+[2026-10-06 14:06:18]	[CDH] attached dangle-clear 
+[2026-10-06 14:06:23]	[CDH] LOAD GameStarted 
+[2026-10-06 14:06:31]	[CDH] DANGLE start mode=clear turn=159 age=AGE_ANTIQUITY countdown=true cur=159 max=160 
+[2026-10-06 14:06:31]	[CDH] CLEAR round 1: dangling=24 
+[2026-10-06 14:06:31]	[CDH] CLEAR no buyer for 84,30 owner=0 
+[2026-10-06 14:06:31]	[CDH] CLEAR no buyer for 92,36 owner=0 
+[2026-10-06 14:06:31]	[CDH] CLEAR no buyer for 88,37 owner=0 
+[2026-10-06 14:06:37]	[CDH] CLEAR round 2: dangling=4 
+[2026-10-06 14:06:43]	[CDH] CLEAR round 3: dangling=2 
+[2026-10-06 14:06:49]	[CDH] CLEAR round 4: dangling=2 
+[2026-10-06 14:06:55]	[CDH] CLEAR done: dangling=2 84,29 84,30 
+[2026-10-06 14:06:55]	[CDH] CLEARED all=false 
+[2026-10-06 14:06:55]	[CDH] TURN turn=159 age=AGE_ANTIQUITY 
+[2026-10-06 14:07:07]	[CDH] TURN turn=160 age=AGE_ANTIQUITY 
+[2026-10-06 14:07:38]	[CDH] attached dangle-clear 
+[2026-10-06 14:07:43]	[CDH] LOAD GameStarted 
+[2026-10-06 14:07:51]	[CDH] DANGLE start mode=clear turn=1 age=AGE_EXPLORATION countdown=false cur=1 max=160 
+[2026-10-06 14:07:51]	[CDH] after transition: no moves 
+[2026-10-06 14:07:51]	[CDH] TURN turn=1 age=AGE_EXPLORATION 
+[2026-10-06 14:08:00]	[CDH] TURN turn=2 age=AGE_EXPLORATION 
+[2026-10-06 14:08:08]	[CDH] TURN turn=3 age=AGE_EXPLORATION 
+[2026-10-06 14:08:08]	[CDH] DONE harness dangle finished mode=clear: reached Exploration turn 3 

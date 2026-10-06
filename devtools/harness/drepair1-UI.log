@@ -1,0 +1,76 @@
+[2026-10-06 14:22:29]	[CDH] shell attached 
+[2026-10-06 14:22:30]	[CDH] shell query complete 
+[2026-10-06 14:22:31]	[CDH] shell found AugustusExp66.Civ7Save turn 66 age AGE_EXPLORATION missingMods=0 unowned=0 
+[2026-10-06 14:22:31]	[CDH] shell handleLoadSave returned true 
+[2026-10-06 14:22:49]	[CDH] attached district-scan 
+[2026-10-06 14:22:54]	[CDH] LOAD GameStarted 
+[2026-10-06 14:23:04]	[CDH] DSCAN start turn=66 age=AGE_EXPLORATION 
+[2026-10-06 14:23:04]	[CDH] SCAN T0: grid=96x60 plotsWithDistrictId=1062 dangling=0 villages(noCity)=58 
+[2026-10-06 14:23:04]	[CDH] FLIPS sent 8 mode=district 
+[2026-10-06 14:23:09]	[CDH] FLIPPED 5s 21,25  7->8 owner=8 consBefore=IMPROVEMENT_MINE_RESOURCE consNow= resolves=false dist=none  
+[2026-10-06 14:23:09]	[CDH] FLIPPED 5s 20,26  8->7 owner=7 consBefore=IMPROVEMENT_WOODCUTTER consNow=BUILDING_CITY_HALL+BUILDING_ANCIENT_WALLS resolves=true dist=CITY_CENTER  
+[2026-10-06 14:23:09]	[CDH] FLIPPED 5s 16,28  7->8 owner=8 consBefore=IMPROVEMENT_MING_GREAT_WALL consNow= resolves=false dist=none  
+[2026-10-06 14:23:09]	[CDH] FLIPPED 5s 15,29  7->8 owner=8 consBefore=IMPROVEMENT_MING_GREAT_WALL consNow= resolves=false dist=none  
+[2026-10-06 14:23:09]	[CDH] FLIPPED 5s 17,29  8->7 owner=7 consBefore=IMPROVEMENT_FARM consNow= resolves=false dist=none  
+[2026-10-06 14:23:09]	[CDH] FLIPPED 5s 18,29  8->7 owner=7 consBefore=IMPROVEMENT_EXPEDITION_BASE consNow=IMPROVEMENT_MINE_RESOURCE resolves=true dist=RURAL  
+[2026-10-06 14:23:09]	[CDH] FLIPPED 5s 73,45  0->4 owner=4 consBefore=IMPROVEMENT_PLANTATION consNow= resolves=false dist=none  
+[2026-10-06 14:23:09]	[CDH] FLIPPED 5s 67,46  0->2 owner=2 consBefore=IMPROVEMENT_MINE consNow= resolves=false dist=none  
+[2026-10-06 14:23:09]	[CDH] CHECK 5s: landed=8/8 danglingOnFlipped=6 
+[2026-10-06 14:23:09]	[CDH] REPAIR 5s 21,25 R1 owner=8 city=21,29 imp=6 r1=true r2=true 
+[2026-10-06 14:23:09]	[CDH] REPAIR 5s 16,28 R2 owner=8 city=18,32 imp=126 r1=- r2=true 
+[2026-10-06 14:23:09]	[CDH] REPAIR 5s 15,29 R1 owner=8 city=18,32 imp=126 r1=true r2=true 
+[2026-10-06 14:23:09]	[CDH] REPAIR 5s 17,29 R2 owner=7 city=17,27 imp=4 r1=- r2=true 
+[2026-10-06 14:23:09]	[CDH] REPAIR 5s 73,45 R1 owner=4 city=75,48 imp=15 r1=true r2=true 
+[2026-10-06 14:23:09]	[CDH] REPAIR 5s 67,46 R2 owner=2 city=67,50 imp=5 r1=- r2=true 
+[2026-10-06 14:23:16]	[CDH] FLIPPED 12s 21,25 R1 7->8 owner=8 consBefore=IMPROVEMENT_MINE_RESOURCE consNow=IMPROVEMENT_MINE_RESOURCE resolves=true dist=RURAL  
+[2026-10-06 14:23:16]	[CDH] FLIPPED 12s 20,26  8->7 owner=7 consBefore=IMPROVEMENT_WOODCUTTER consNow=BUILDING_CITY_HALL+BUILDING_ANCIENT_WALLS resolves=true dist=CITY_CENTER  
+[2026-10-06 14:23:16]	[CDH] FLIPPED 12s 16,28 R2 7->8 owner=8 consBefore=IMPROVEMENT_MING_GREAT_WALL consNow= resolves=false dist=none  
+[2026-10-06 14:23:16]	[CDH] FLIPPED 12s 15,29 R1 7->8 owner=8 consBefore=IMPROVEMENT_MING_GREAT_WALL consNow=IMPROVEMENT_MING_GREAT_WALL resolves=true dist=RURAL  
+[2026-10-06 14:23:16]	[CDH] FLIPPED 12s 17,29 R2 8->7 owner=7 consBefore=IMPROVEMENT_FARM consNow= resolves=false dist=none  
+[2026-10-06 14:23:16]	[CDH] FLIPPED 12s 18,29  8->7 owner=7 consBefore=IMPROVEMENT_EXPEDITION_BASE consNow=IMPROVEMENT_MINE_RESOURCE resolves=true dist=RURAL  
+[2026-10-06 14:23:16]	[CDH] FLIPPED 12s 73,45 R1 0->4 owner=4 consBefore=IMPROVEMENT_PLANTATION consNow=IMPROVEMENT_PLANTATION resolves=true dist=RURAL  
+[2026-10-06 14:23:16]	[CDH] FLIPPED 12s 67,46 R2 0->2 owner=2 consBefore=IMPROVEMENT_MINE consNow= resolves=false dist=none  
+[2026-10-06 14:23:16]	[CDH] CHECK 12s: landed=8/8 danglingOnFlipped=3 
+[2026-10-06 14:23:16]	[CDH] SCAN T0+12s: grid=96x60 plotsWithDistrictId=1061 dangling=3 villages(noCity)=58 
+[2026-10-06 14:23:16]	[CDH] DANGLING T0+12s: 16,28 idx=2704 owner=8 id={"owner":8,"id":7012441,"type":4} atLoc=null city=ERR:ReferenceError: ComponentID is not defined revealed=0 
+[2026-10-06 14:23:16]	[CDH] DANGLING T0+12s: 17,29 idx=2801 owner=7 id={"owner":7,"id":5570576,"type":4} atLoc=null city=ERR:ReferenceError: ComponentID is not defined revealed=0 
+[2026-10-06 14:23:16]	[CDH] DANGLING T0+12s: 67,46 idx=4483 owner=2 id={"owner":2,"id":23003476,"type":4} atLoc=null city=ERR:ReferenceError: ComponentID is not defined revealed=2 
+[2026-10-06 14:23:24]	[CDH] FLIPPED 20s 21,25 R1 7->8 owner=8 consBefore=IMPROVEMENT_MINE_RESOURCE consNow=IMPROVEMENT_MINE_RESOURCE resolves=true dist=RURAL  
+[2026-10-06 14:23:24]	[CDH] FLIPPED 20s 20,26  8->7 owner=7 consBefore=IMPROVEMENT_WOODCUTTER consNow=BUILDING_CITY_HALL+BUILDING_ANCIENT_WALLS resolves=true dist=CITY_CENTER  
+[2026-10-06 14:23:24]	[CDH] FLIPPED 20s 16,28 R2 7->8 owner=8 consBefore=IMPROVEMENT_MING_GREAT_WALL consNow= resolves=false dist=none  
+[2026-10-06 14:23:24]	[CDH] FLIPPED 20s 15,29 R1 7->8 owner=8 consBefore=IMPROVEMENT_MING_GREAT_WALL consNow=IMPROVEMENT_MING_GREAT_WALL resolves=true dist=RURAL  
+[2026-10-06 14:23:24]	[CDH] FLIPPED 20s 17,29 R2 8->7 owner=7 consBefore=IMPROVEMENT_FARM consNow= resolves=false dist=none  
+[2026-10-06 14:23:24]	[CDH] FLIPPED 20s 18,29  8->7 owner=7 consBefore=IMPROVEMENT_EXPEDITION_BASE consNow=IMPROVEMENT_MINE_RESOURCE resolves=true dist=RURAL  
+[2026-10-06 14:23:24]	[CDH] FLIPPED 20s 73,45 R1 0->4 owner=4 consBefore=IMPROVEMENT_PLANTATION consNow=IMPROVEMENT_PLANTATION resolves=true dist=RURAL  
+[2026-10-06 14:23:24]	[CDH] FLIPPED 20s 67,46 R2 0->2 owner=2 consBefore=IMPROVEMENT_MINE consNow= resolves=false dist=none  
+[2026-10-06 14:23:24]	[CDH] CHECK 20s: landed=8/8 danglingOnFlipped=3 
+[2026-10-06 14:23:28]	[CDH] SCAN T1: grid=96x60 plotsWithDistrictId=1061 dangling=3 villages(noCity)=58 
+[2026-10-06 14:23:28]	[CDH] DANGLING T1: 16,28 idx=2704 owner=8 id={"owner":8,"id":7012441,"type":4} atLoc=null city=ERR:ReferenceError: ComponentID is not defined revealed=0 
+[2026-10-06 14:23:28]	[CDH] DANGLING T1: 17,29 idx=2801 owner=7 id={"owner":7,"id":5570576,"type":4} atLoc=null city=ERR:ReferenceError: ComponentID is not defined revealed=0 
+[2026-10-06 14:23:28]	[CDH] DANGLING T1: 67,46 idx=4483 owner=2 id={"owner":2,"id":23003476,"type":4} atLoc=null city=ERR:ReferenceError: ComponentID is not defined revealed=2 
+[2026-10-06 14:23:28]	[CDH] FLIPPED T1 21,25 R1 7->8 owner=8 consBefore=IMPROVEMENT_MINE_RESOURCE consNow=IMPROVEMENT_MINE_RESOURCE resolves=true dist=RURAL  
+[2026-10-06 14:23:28]	[CDH] FLIPPED T1 20,26  8->7 owner=7 consBefore=IMPROVEMENT_WOODCUTTER consNow=BUILDING_CITY_HALL+BUILDING_ANCIENT_WALLS resolves=true dist=CITY_CENTER  
+[2026-10-06 14:23:28]	[CDH] FLIPPED T1 16,28 R2 7->8 owner=8 consBefore=IMPROVEMENT_MING_GREAT_WALL consNow= resolves=false dist=none  
+[2026-10-06 14:23:28]	[CDH] FLIPPED T1 15,29 R1 7->8 owner=8 consBefore=IMPROVEMENT_MING_GREAT_WALL consNow=IMPROVEMENT_MING_GREAT_WALL resolves=true dist=RURAL  
+[2026-10-06 14:23:28]	[CDH] FLIPPED T1 17,29 R2 8->7 owner=7 consBefore=IMPROVEMENT_FARM consNow= resolves=false dist=none  
+[2026-10-06 14:23:28]	[CDH] FLIPPED T1 18,29  8->7 owner=7 consBefore=IMPROVEMENT_EXPEDITION_BASE consNow=IMPROVEMENT_MINE_RESOURCE resolves=true dist=RURAL  
+[2026-10-06 14:23:28]	[CDH] FLIPPED T1 73,45 R1 0->4 owner=4 consBefore=IMPROVEMENT_PLANTATION consNow=IMPROVEMENT_PLANTATION resolves=true dist=RURAL  
+[2026-10-06 14:23:28]	[CDH] FLIPPED T1 67,46 R2 0->2 owner=2 consBefore=IMPROVEMENT_MINE consNow= resolves=false dist=none  
+[2026-10-06 14:23:28]	[CDH] CHECK T1: landed=8/8 danglingOnFlipped=3 
+[2026-10-06 14:23:28]	[CDH] RELIGION events so far 0 
+[2026-10-06 14:24:14]	[CDH] ENDTURN stuck: one Autoplay turn 
+[2026-10-06 14:24:37]	[CDH] SCAN T2: grid=96x60 plotsWithDistrictId=1061 dangling=3 villages(noCity)=58 
+[2026-10-06 14:24:37]	[CDH] DANGLING T2: 16,28 idx=2704 owner=8 id={"owner":8,"id":7012441,"type":4} atLoc=null city=ERR:ReferenceError: ComponentID is not defined revealed=0 
+[2026-10-06 14:24:37]	[CDH] DANGLING T2: 17,29 idx=2801 owner=7 id={"owner":7,"id":5570576,"type":4} atLoc=null city=ERR:ReferenceError: ComponentID is not defined revealed=0 
+[2026-10-06 14:24:37]	[CDH] DANGLING T2: 67,46 idx=4483 owner=2 id={"owner":2,"id":23003476,"type":4} atLoc=null city=ERR:ReferenceError: ComponentID is not defined revealed=2 
+[2026-10-06 14:24:37]	[CDH] FLIPPED T2 21,25 R1 7->8 owner=8 consBefore=IMPROVEMENT_MINE_RESOURCE consNow=IMPROVEMENT_MINE_RESOURCE resolves=true dist=RURAL  
+[2026-10-06 14:24:37]	[CDH] FLIPPED T2 20,26  8->7 owner=7 consBefore=IMPROVEMENT_WOODCUTTER consNow=BUILDING_CITY_HALL+BUILDING_ANCIENT_WALLS resolves=true dist=CITY_CENTER  
+[2026-10-06 14:24:37]	[CDH] FLIPPED T2 16,28 R2 7->8 owner=8 consBefore=IMPROVEMENT_MING_GREAT_WALL consNow= resolves=false dist=none  
+[2026-10-06 14:24:37]	[CDH] FLIPPED T2 15,29 R1 7->8 owner=8 consBefore=IMPROVEMENT_MING_GREAT_WALL consNow=IMPROVEMENT_MING_GREAT_WALL resolves=true dist=RURAL  
+[2026-10-06 14:24:37]	[CDH] FLIPPED T2 17,29 R2 8->7 owner=7 consBefore=IMPROVEMENT_FARM consNow= resolves=false dist=none  
+[2026-10-06 14:24:37]	[CDH] FLIPPED T2 18,29  8->7 owner=7 consBefore=IMPROVEMENT_EXPEDITION_BASE consNow=IMPROVEMENT_MINE_RESOURCE resolves=true dist=RURAL  
+[2026-10-06 14:24:37]	[CDH] FLIPPED T2 73,45 R1 0->4 owner=4 consBefore=IMPROVEMENT_PLANTATION consNow=IMPROVEMENT_PLANTATION resolves=true dist=RURAL  
+[2026-10-06 14:24:37]	[CDH] FLIPPED T2 67,46 R2 0->2 owner=2 consBefore=IMPROVEMENT_MINE consNow= resolves=false dist=none  
+[2026-10-06 14:24:37]	[CDH] CHECK T2: landed=8/8 danglingOnFlipped=3 
+[2026-10-06 14:24:37]	[CDH] RELIGION events so far 3 
+[2026-10-06 14:24:37]	[CDH] DONE harness district-scan finished 

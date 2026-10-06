@@ -1,0 +1,29 @@
+[14:22:26] LocalStorage.sqlite backed up
+[14:22:26] autosaves backed up: 10
+[14:22:26] registry before: 2381=0  (restoring Disabled=0 afterward)
+[14:22:26] deployed mod: debug=1 affectsSaves0=1
+[14:22:26] NO_MOD=1: Cultural Diffusion left DISABLED for this run (control)
+[14:22:26] harness installed: cdh-game-district-repair.js on AugustusExp66.Civ7Save
+[14:22:26] previous UI.log kept at /Users/USER/Library/Application Support/Civilization VII/cd-harness-backup/UI-before-drepair1-20261006-142226.log (12334 lines)
+[14:22:28] game pid 74541
+[14:24:44] result=done after 128s
+[14:24:44] collected AI_Behavior_Tree_Events.csv (8 lines)
+[14:24:44] collected AI_Behavior_Trees.csv (2600 lines)
+[14:24:44] collected AI_CityStrategy.csv (3 lines)
+[14:24:44] collected AI_CombatPlanning.csv (283 lines)
+[14:24:44] collected AI_Commander_Promotions.csv (2 lines)
+[14:24:44] collected AI_DiplomaticActions.csv (166 lines)
+[14:24:44] collected AI_Market.csv (52 lines)
+[14:24:44] collected AI_MayhemTracker.csv (41 lines)
+[14:24:44] collected AI_MovementPlanning.csv (3675 lines)
+[14:24:44] collected AI_Operation.csv (1137 lines)
+[14:24:44] collected AI_Operation_Eval.csv (35 lines)
+[14:24:44] collected AI_Recruiting.csv (10363 lines)
+[14:24:44] collected AI_Tactical.csv (549 lines)
+[14:24:44] collected AI_Targets.csv (19036 lines)
+[14:24:44] collected AI_UnitEfficiency.csv (141 lines)
+[14:24:44] collected AI_Victories.csv (1 lines)
+[14:24:52] LocalStorage.sqlite restored (the run had changed it; its copy is in the trash folder)
+[14:24:53] restored: registry 2383=0  harness present: no debugPatched: 0
+[14:24:53] autosaves changed during the run; putting the player's back
+[14:24:53] FINISHED result=done  log: /Users/USER/Repos/civilization_mods/civilization_vii_mods/tower_mods/cultural_diffusion/devtools/harness/drepair1-UI.log

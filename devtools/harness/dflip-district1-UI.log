@@ -1,0 +1,94 @@
+[2026-10-06 13:26:01]	[CDH] shell attached 
+[2026-10-06 13:26:03]	[CDH] shell query complete 
+[2026-10-06 13:26:03]	[CDH] shell found AugustusExp66.Civ7Save turn 66 age AGE_EXPLORATION missingMods=0 unowned=0 
+[2026-10-06 13:26:03]	[CDH] shell handleLoadSave returned true 
+[2026-10-06 13:26:21]	[CDH] attached district-scan 
+[2026-10-06 13:26:26]	[CDH] LOAD GameStarted 
+[2026-10-06 13:26:36]	[CDH] DSCAN start turn=66 age=AGE_EXPLORATION 
+[2026-10-06 13:26:36]	[CDH] SCAN T0: grid=96x60 plotsWithDistrictId=1062 dangling=0 villages(noCity)=58 
+[2026-10-06 13:26:36]	[CDH] FLIPS sent 8 mode=district 
+[2026-10-06 13:26:40]	[CDH] FLIPPED 4s 21,25 7->8 owner=8 idBefore=none idNow=? resolves=false dist=none city=- 
+[2026-10-06 13:26:40]	[CDH] FLIPPED 4s 20,26 8->7 owner=7 idBefore=none idNow=? resolves=true dist=CITY_CENTER city=? 
+[2026-10-06 13:26:40]	[CDH] FLIPPED 4s 16,28 7->8 owner=8 idBefore=none idNow=? resolves=false dist=none city=- 
+[2026-10-06 13:26:40]	[CDH] FLIPPED 4s 15,29 7->8 owner=8 idBefore=none idNow=? resolves=false dist=none city=- 
+[2026-10-06 13:26:40]	[CDH] FLIPPED 4s 17,29 8->7 owner=7 idBefore=none idNow=? resolves=false dist=none city=- 
+[2026-10-06 13:26:40]	[CDH] FLIPPED 4s 18,29 8->7 owner=7 idBefore=none idNow=? resolves=true dist=RURAL city=? 
+[2026-10-06 13:26:40]	[CDH] FLIPPED 4s 73,45 0->4 owner=4 idBefore=none idNow=? resolves=false dist=none city=- 
+[2026-10-06 13:26:40]	[CDH] FLIPPED 4s 67,46 0->2 owner=2 idBefore=none idNow=? resolves=false dist=none city=- 
+[2026-10-06 13:26:40]	[CDH] CHECK 4s: landed=8/8 danglingOnFlipped=6 
+[2026-10-06 13:26:40]	[CDH] SCAN T0+4s: grid=96x60 plotsWithDistrictId=1059 dangling=6 villages(noCity)=58 
+[2026-10-06 13:26:40]	[CDH] DANGLING T0+4s: 21,25 idx=2421 owner=8 id={"owner":8,"id":6029386,"type":4} atLoc=null city=ERR:ReferenceError: ComponentID is not defined revealed=0 
+[2026-10-06 13:26:40]	[CDH] DANGLING T0+4s: 16,28 idx=2704 owner=8 id={"owner":8,"id":7012441,"type":4} atLoc=null city=ERR:ReferenceError: ComponentID is not defined revealed=0 
+[2026-10-06 13:26:40]	[CDH] DANGLING T0+4s: 15,29 idx=2799 owner=8 id={"owner":8,"id":7798885,"type":4} atLoc=null city=ERR:ReferenceError: ComponentID is not defined revealed=0 
+[2026-10-06 13:26:40]	[CDH] DANGLING T0+4s: 17,29 idx=2801 owner=7 id={"owner":7,"id":5570576,"type":4} atLoc=null city=ERR:ReferenceError: ComponentID is not defined revealed=0 
+[2026-10-06 13:26:40]	[CDH] DANGLING T0+4s: 73,45 idx=4393 owner=4 id={"owner":4,"id":14155981,"type":4} atLoc=null city=ERR:ReferenceError: ComponentID is not defined revealed=2 
+[2026-10-06 13:26:40]	[CDH] DANGLING T0+4s: 67,46 idx=4483 owner=2 id={"owner":2,"id":23003476,"type":4} atLoc=null city=ERR:ReferenceError: ComponentID is not defined revealed=2 
+[2026-10-06 13:26:51]	[CDH] FLIPPED 15s 21,25 7->8 owner=8 idBefore=none idNow=? resolves=false dist=none city=- 
+[2026-10-06 13:26:51]	[CDH] FLIPPED 15s 20,26 8->7 owner=7 idBefore=none idNow=? resolves=true dist=CITY_CENTER city=? 
+[2026-10-06 13:26:51]	[CDH] FLIPPED 15s 16,28 7->8 owner=8 idBefore=none idNow=? resolves=false dist=none city=- 
+[2026-10-06 13:26:51]	[CDH] FLIPPED 15s 15,29 7->8 owner=8 idBefore=none idNow=? resolves=false dist=none city=- 
+[2026-10-06 13:26:51]	[CDH] FLIPPED 15s 17,29 8->7 owner=7 idBefore=none idNow=? resolves=false dist=none city=- 
+[2026-10-06 13:26:51]	[CDH] FLIPPED 15s 18,29 8->7 owner=7 idBefore=none idNow=? resolves=true dist=RURAL city=? 
+[2026-10-06 13:26:51]	[CDH] FLIPPED 15s 73,45 0->4 owner=4 idBefore=none idNow=? resolves=false dist=none city=- 
+[2026-10-06 13:26:51]	[CDH] FLIPPED 15s 67,46 0->2 owner=2 idBefore=none idNow=? resolves=false dist=none city=- 
+[2026-10-06 13:26:51]	[CDH] CHECK 15s: landed=8/8 danglingOnFlipped=6 
+[2026-10-06 13:26:51]	[CDH] SCAN T0+15s: grid=96x60 plotsWithDistrictId=1061 dangling=6 villages(noCity)=58 
+[2026-10-06 13:26:51]	[CDH] DANGLING T0+15s: 21,25 idx=2421 owner=8 id={"owner":8,"id":6029386,"type":4} atLoc=null city=ERR:ReferenceError: ComponentID is not defined revealed=0 
+[2026-10-06 13:26:51]	[CDH] DANGLING T0+15s: 16,28 idx=2704 owner=8 id={"owner":8,"id":7012441,"type":4} atLoc=null city=ERR:ReferenceError: ComponentID is not defined revealed=0 
+[2026-10-06 13:26:51]	[CDH] DANGLING T0+15s: 15,29 idx=2799 owner=8 id={"owner":8,"id":7798885,"type":4} atLoc=null city=ERR:ReferenceError: ComponentID is not defined revealed=0 
+[2026-10-06 13:26:51]	[CDH] DANGLING T0+15s: 17,29 idx=2801 owner=7 id={"owner":7,"id":5570576,"type":4} atLoc=null city=ERR:ReferenceError: ComponentID is not defined revealed=0 
+[2026-10-06 13:26:51]	[CDH] DANGLING T0+15s: 73,45 idx=4393 owner=4 id={"owner":4,"id":14155981,"type":4} atLoc=null city=ERR:ReferenceError: ComponentID is not defined revealed=2 
+[2026-10-06 13:26:51]	[CDH] DANGLING T0+15s: 67,46 idx=4483 owner=2 id={"owner":2,"id":23003476,"type":4} atLoc=null city=ERR:ReferenceError: ComponentID is not defined revealed=2 
+[2026-10-06 13:26:55]	[CDH] SCAN T1: grid=96x60 plotsWithDistrictId=1061 dangling=6 villages(noCity)=58 
+[2026-10-06 13:26:55]	[CDH] DANGLING T1: 21,25 idx=2421 owner=8 id={"owner":8,"id":6029386,"type":4} atLoc=null city=ERR:ReferenceError: ComponentID is not defined revealed=0 
+[2026-10-06 13:26:55]	[CDH] DANGLING T1: 16,28 idx=2704 owner=8 id={"owner":8,"id":7012441,"type":4} atLoc=null city=ERR:ReferenceError: ComponentID is not defined revealed=0 
+[2026-10-06 13:26:55]	[CDH] DANGLING T1: 15,29 idx=2799 owner=8 id={"owner":8,"id":7798885,"type":4} atLoc=null city=ERR:ReferenceError: ComponentID is not defined revealed=0 
+[2026-10-06 13:26:55]	[CDH] DANGLING T1: 17,29 idx=2801 owner=7 id={"owner":7,"id":5570576,"type":4} atLoc=null city=ERR:ReferenceError: ComponentID is not defined revealed=0 
+[2026-10-06 13:26:55]	[CDH] DANGLING T1: 73,45 idx=4393 owner=4 id={"owner":4,"id":14155981,"type":4} atLoc=null city=ERR:ReferenceError: ComponentID is not defined revealed=2 
+[2026-10-06 13:26:55]	[CDH] DANGLING T1: 67,46 idx=4483 owner=2 id={"owner":2,"id":23003476,"type":4} atLoc=null city=ERR:ReferenceError: ComponentID is not defined revealed=2 
+[2026-10-06 13:26:55]	[CDH] FLIPPED T1 21,25 7->8 owner=8 idBefore=none idNow=? resolves=false dist=none city=- 
+[2026-10-06 13:26:55]	[CDH] FLIPPED T1 20,26 8->7 owner=7 idBefore=none idNow=? resolves=true dist=CITY_CENTER city=? 
+[2026-10-06 13:26:55]	[CDH] FLIPPED T1 16,28 7->8 owner=8 idBefore=none idNow=? resolves=false dist=none city=- 
+[2026-10-06 13:26:55]	[CDH] FLIPPED T1 15,29 7->8 owner=8 idBefore=none idNow=? resolves=false dist=none city=- 
+[2026-10-06 13:26:55]	[CDH] FLIPPED T1 17,29 8->7 owner=7 idBefore=none idNow=? resolves=false dist=none city=- 
+[2026-10-06 13:26:55]	[CDH] FLIPPED T1 18,29 8->7 owner=7 idBefore=none idNow=? resolves=true dist=RURAL city=? 
+[2026-10-06 13:26:55]	[CDH] FLIPPED T1 73,45 0->4 owner=4 idBefore=none idNow=? resolves=false dist=none city=- 
+[2026-10-06 13:26:55]	[CDH] FLIPPED T1 67,46 0->2 owner=2 idBefore=none idNow=? resolves=false dist=none city=- 
+[2026-10-06 13:26:55]	[CDH] CHECK T1: landed=8/8 danglingOnFlipped=6 
+[2026-10-06 13:26:55]	[CDH] RELIGION events so far 0 
+[2026-10-06 13:27:42]	[CDH] ENDTURN stuck: one Autoplay turn 
+[2026-10-06 13:27:48]	[CDH] SCAN T2: grid=96x60 plotsWithDistrictId=1065 dangling=6 villages(noCity)=58 
+[2026-10-06 13:27:48]	[CDH] DANGLING T2: 21,25 idx=2421 owner=8 id={"owner":8,"id":6029386,"type":4} atLoc=null city=ERR:ReferenceError: ComponentID is not defined revealed=0 
+[2026-10-06 13:27:48]	[CDH] DANGLING T2: 16,28 idx=2704 owner=8 id={"owner":8,"id":7012441,"type":4} atLoc=null city=ERR:ReferenceError: ComponentID is not defined revealed=0 
+[2026-10-06 13:27:48]	[CDH] DANGLING T2: 15,29 idx=2799 owner=8 id={"owner":8,"id":7798885,"type":4} atLoc=null city=ERR:ReferenceError: ComponentID is not defined revealed=0 
+[2026-10-06 13:27:48]	[CDH] DANGLING T2: 17,29 idx=2801 owner=7 id={"owner":7,"id":5570576,"type":4} atLoc=null city=ERR:ReferenceError: ComponentID is not defined revealed=0 
+[2026-10-06 13:27:48]	[CDH] DANGLING T2: 73,45 idx=4393 owner=4 id={"owner":4,"id":14155981,"type":4} atLoc=null city=ERR:ReferenceError: ComponentID is not defined revealed=2 
+[2026-10-06 13:27:48]	[CDH] DANGLING T2: 67,46 idx=4483 owner=2 id={"owner":2,"id":23003476,"type":4} atLoc=null city=ERR:ReferenceError: ComponentID is not defined revealed=2 
+[2026-10-06 13:27:48]	[CDH] FLIPPED T2 21,25 7->8 owner=8 idBefore=none idNow=? resolves=false dist=none city=- 
+[2026-10-06 13:27:48]	[CDH] FLIPPED T2 20,26 8->7 owner=7 idBefore=none idNow=? resolves=true dist=CITY_CENTER city=? 
+[2026-10-06 13:27:48]	[CDH] FLIPPED T2 16,28 7->8 owner=8 idBefore=none idNow=? resolves=false dist=none city=- 
+[2026-10-06 13:27:48]	[CDH] FLIPPED T2 15,29 7->8 owner=8 idBefore=none idNow=? resolves=false dist=none city=- 
+[2026-10-06 13:27:48]	[CDH] FLIPPED T2 17,29 8->7 owner=7 idBefore=none idNow=? resolves=false dist=none city=- 
+[2026-10-06 13:27:48]	[CDH] FLIPPED T2 18,29 8->7 owner=7 idBefore=none idNow=? resolves=true dist=RURAL city=? 
+[2026-10-06 13:27:48]	[CDH] FLIPPED T2 73,45 0->4 owner=4 idBefore=none idNow=? resolves=false dist=none city=- 
+[2026-10-06 13:27:48]	[CDH] FLIPPED T2 67,46 0->2 owner=2 idBefore=none idNow=? resolves=false dist=none city=- 
+[2026-10-06 13:27:48]	[CDH] CHECK T2: landed=8/8 danglingOnFlipped=6 
+[2026-10-06 13:27:48]	[CDH] RELIGION events so far 3 
+[2026-10-06 13:28:06]	[CDH] SCAN T3: grid=96x60 plotsWithDistrictId=1069 dangling=6 villages(noCity)=58 
+[2026-10-06 13:28:06]	[CDH] DANGLING T3: 21,25 idx=2421 owner=8 id={"owner":8,"id":6029386,"type":4} atLoc=null city=ERR:ReferenceError: ComponentID is not defined revealed=0 
+[2026-10-06 13:28:06]	[CDH] DANGLING T3: 16,28 idx=2704 owner=8 id={"owner":8,"id":7012441,"type":4} atLoc=null city=ERR:ReferenceError: ComponentID is not defined revealed=0 
+[2026-10-06 13:28:06]	[CDH] DANGLING T3: 15,29 idx=2799 owner=8 id={"owner":8,"id":7798885,"type":4} atLoc=null city=ERR:ReferenceError: ComponentID is not defined revealed=0 
+[2026-10-06 13:28:06]	[CDH] DANGLING T3: 17,29 idx=2801 owner=7 id={"owner":7,"id":5570576,"type":4} atLoc=null city=ERR:ReferenceError: ComponentID is not defined revealed=0 
+[2026-10-06 13:28:06]	[CDH] DANGLING T3: 73,45 idx=4393 owner=4 id={"owner":4,"id":14155981,"type":4} atLoc=null city=ERR:ReferenceError: ComponentID is not defined revealed=2 
+[2026-10-06 13:28:06]	[CDH] DANGLING T3: 67,46 idx=4483 owner=2 id={"owner":2,"id":23003476,"type":4} atLoc=null city=ERR:ReferenceError: ComponentID is not defined revealed=2 
+[2026-10-06 13:28:06]	[CDH] FLIPPED T3 21,25 7->8 owner=8 idBefore=none idNow=? resolves=false dist=none city=- 
+[2026-10-06 13:28:06]	[CDH] FLIPPED T3 20,26 8->7 owner=7 idBefore=none idNow=? resolves=true dist=CITY_CENTER city=? 
+[2026-10-06 13:28:06]	[CDH] FLIPPED T3 16,28 7->8 owner=8 idBefore=none idNow=? resolves=false dist=none city=- 
+[2026-10-06 13:28:06]	[CDH] FLIPPED T3 15,29 7->8 owner=8 idBefore=none idNow=? resolves=false dist=none city=- 
+[2026-10-06 13:28:06]	[CDH] FLIPPED T3 17,29 8->7 owner=7 idBefore=none idNow=? resolves=false dist=none city=- 
+[2026-10-06 13:28:06]	[CDH] FLIPPED T3 18,29 8->7 owner=7 idBefore=none idNow=? resolves=true dist=RURAL city=? 
+[2026-10-06 13:28:06]	[CDH] FLIPPED T3 73,45 0->4 owner=4 idBefore=none idNow=? resolves=false dist=none city=- 
+[2026-10-06 13:28:06]	[CDH] FLIPPED T3 67,46 0->2 owner=2 idBefore=none idNow=? resolves=false dist=none city=- 
+[2026-10-06 13:28:06]	[CDH] CHECK T3: landed=8/8 danglingOnFlipped=6 
+[2026-10-06 13:28:06]	[CDH] RELIGION events so far 6 
+[2026-10-06 13:28:06]	[CDH] DONE harness district-scan finished 

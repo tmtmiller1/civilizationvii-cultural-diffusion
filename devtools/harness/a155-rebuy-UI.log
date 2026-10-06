@@ -1,0 +1,42 @@
+[2026-10-06 16:59:19]	[CDH] shell attached 
+[2026-10-06 16:59:20]	[CDH] shell query complete 
+[2026-10-06 16:59:21]	[CDH] shell found CDH-AM-Ant155.Civ7Save turn 155 age AGE_ANTIQUITY missingMods=0 unowned=0 
+[2026-10-06 16:59:21]	[CDH] shell handleLoadSave returned true 
+[2026-10-06 16:59:45]	[CDH] attached dangle-rebuy 
+[2026-10-06 16:59:51]	[CDH] LOAD GameStarted 
+[2026-10-06 16:59:59]	[CDH] DANGLE start mode=rebuy turn=155 age=AGE_ANTIQUITY countdown=true cur=155 max=160 
+[2026-10-06 16:59:59]	[CDH] REBUY round 1: dangling=21 
+[2026-10-06 16:59:59]	[CDH] REBUY 85,18 owner=3 by other city 82,23 d=5 
+[2026-10-06 16:59:59]	[CDH] REBUY 87,18 owner=3 by other city 82,23 d=7 
+[2026-10-06 16:59:59]	[CDH] REBUY 86,19 owner=3 by other city 81,18 d=6 
+[2026-10-06 16:59:59]	[CDH] REBUY 85,21 owner=3 by other city 81,18 d=6 
+[2026-10-06 16:59:59]	[CDH] REBUY 87,21 owner=3 by owning city 82,23 d=6 
+[2026-10-06 16:59:59]	[CDH] REBUY 88,22 owner=3 by owning city 82,23 d=6 
+[2026-10-06 16:59:59]	[CDH] REBUY 84,29 owner=0 by other city 84,35 d=6 
+[2026-10-06 16:59:59]	[CDH] REBUY 84,30 owner=0 by other city 84,35 d=5 
+[2026-10-06 16:59:59]	[CDH] REBUY 81,31 owner=0 by other city 87,32 d=6 
+[2026-10-06 16:59:59]	[CDH] REBUY 82,31 owner=0 by other city 87,32 d=5 
+[2026-10-06 16:59:59]	[CDH] REBUY 83,31 owner=0 by other city 84,35 d=4 
+[2026-10-06 16:59:59]	[CDH] REBUY 80,32 owner=0 by other city 87,32 d=7 
+[2026-10-06 16:59:59]	[CDH] REBUY 82,32 owner=0 by other city 87,32 d=5 
+[2026-10-06 16:59:59]	[CDH] REBUY 90,36 owner=0 by other city 87,32 d=5 
+[2026-10-06 16:59:59]	[CDH] REBUY 91,36 owner=0 by other city 87,32 d=6 
+[2026-10-06 16:59:59]	[CDH] REBUY 92,36 owner=0 by other city 87,32 d=7 
+[2026-10-06 16:59:59]	[CDH] REBUY 88,37 owner=0 by other city 84,35 d=5 
+[2026-10-06 16:59:59]	[CDH] REBUY 89,37 owner=0 by other city 87,32 d=5 
+[2026-10-06 16:59:59]	[CDH] REBUY 91,37 owner=0 by other city 87,32 d=7 
+[2026-10-06 16:59:59]	[CDH] REBUY 88,38 owner=0 by other city 87,32 d=6 
+[2026-10-06 16:59:59]	[CDH] REBUY 92,38 owner=0 by owning city 92,32 d=6 
+[2026-10-06 17:00:05]	[CDH] REBUY after round 1: dangling=21 owners=3,3,3,3,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 
+[2026-10-06 17:00:05]	[CDH] REBUY round 2: dangling=21 
+[2026-10-06 17:00:11]	[CDH] REBUY after round 2: dangling=21 owners=3,3,3,3,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 
+[2026-10-06 17:00:11]	[CDH] REBUY round 3: dangling=21 
+[2026-10-06 17:00:17]	[CDH] REBUY after round 3: dangling=21 owners=3,3,3,3,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 
+[2026-10-06 17:00:17]	[CDH] REBUY done: dangling=21 85,18 87,18 86,19 85,21 87,21 88,22 84,29 84,30 81,31 82,31 83,31 80,32 82,32 90,36 91,36 92,36 88,37 89,37 91,37 88,38 92,38 
+[2026-10-06 17:00:17]	[CDH] CLEARED all=false 
+[2026-10-06 17:00:17]	[CDH] TURN turn=155 age=AGE_ANTIQUITY 
+[2026-10-06 17:00:34]	[CDH] TURN turn=156 age=AGE_ANTIQUITY 
+[2026-10-06 17:00:46]	[CDH] TURN turn=157 age=AGE_ANTIQUITY 
+[2026-10-06 17:00:58]	[CDH] TURN turn=158 age=AGE_ANTIQUITY 
+[2026-10-06 17:01:14]	[CDH] TURN turn=159 age=AGE_ANTIQUITY 
+[2026-10-06 17:01:26]	[CDH] TURN turn=160 age=AGE_ANTIQUITY 
