@@ -7,7 +7,7 @@
         <SpecialThanks>Gedemon's "Cultural Diffusion" mod for Civilization V (v18), whose reaction-diffusion culture model is the core layer this mod builds on and extends.</SpecialThanks>
         <Package>CulturalDiffusionMod</Package>
         <PackageSortIndex>1000</PackageSortIndex>
-        <Version>1.5.1</Version>
+        <Version>1.5.2</Version>
     </Properties>
     <Dependencies>
         <Mod id="base-standard" title="LOC_MODULE_BASE_STANDARD_NAME" />
@@ -38,6 +38,8 @@
                     <Item locale="zh_Hant_HK">text/zh_hk/ModText.xml</Item>
                 </UpdateText>
                 <UIScripts>
+                    <!-- Tower Settings Keeper: listed first, imports nothing, so it runs before anything reads storage. -->
+                    <Item>ui/settings-keeper.js</Item>
                     <Item>ui/cd-config.js</Item>
                     <Item>ui/cd-settings.js</Item>
                     <Item>ui/cd-options.js</Item>
@@ -79,6 +81,8 @@
                     <Item locale="zh_Hant_HK">text/zh_hk/PediaText.xml</Item>
                 </UpdateText>
                 <UIScripts>
+                    <!-- Tower Settings Keeper: listed first, imports nothing, so it runs before anything reads storage. -->
+                    <Item>ui/settings-keeper.js</Item>
                     <Item>ui/cd-bootstrap.js</Item>
                     <Item>ui/cd-settings.js</Item>
                     <Item>ui/cd-options.js</Item>
