@@ -59,7 +59,7 @@ rsync -a \
     --exclude='tsconfig.json' --exclude='jsconfig.json' --exclude='types' --exclude='docs' \
     --exclude='eslint.config.js' --exclude='package.json' --exclude='package-lock.json' \
     --exclude='*.d.ts' --exclude='tests' --exclude='steam_workshop_id.txt' \
-    --exclude='CONTRIBUTING.md' --exclude='scripts' --exclude='probe' --exclude='devtools' \
+    --exclude='CONTRIBUTING.md' --exclude='scripts' --exclude='devtools' \
     --exclude='coverage*' --exclude='reports' --exclude='.stryker-tmp' \
     --exclude='.c8rc.json' --exclude='stryker*.json' \
     --exclude='gallery' --exclude='README.pdf' --exclude='*.log' --exclude='/text/README.md' \

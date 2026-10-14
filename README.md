@@ -437,4 +437,4 @@ This mod reimagines and extends Gedemon's work.
   so enabling the mod later has no effect on that save. When developing, redeploy by
   overwriting the folder in place rather than deleting it.
 - See [`docs/current-model.md`](docs/current-model.md) §2 for the full model write-up
-  and [`docs/probe-history.md`](docs/probe-history.md) / [`probe/`](probe/) for the feasibility probe.
+  and [`docs/probe-history.md`](docs/probe-history.md) / [`devtools/probe/`](devtools/probe/) for the feasibility probe.

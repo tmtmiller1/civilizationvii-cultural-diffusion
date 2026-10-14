@@ -1,7 +1,7 @@
 # Cultural Diffusion Probe
 
-A standalone, single-player feasibility probe for the Cultural Diffusion mod (see `../docs/current-model.md` and
-`../docs/probe-history.md`). It checks in game, against the real map, whether a mod can flip tile ownership, whether a
+A standalone, single-player feasibility probe for the Cultural Diffusion mod (see `../../docs/current-model.md` and
+`../../docs/probe-history.md`). It checks in game, against the real map, whether a mod can flip tile ownership, whether a
 flipped tile is integrated (worked / yields) or cosmetic, whether a flip survives save/reload, and whether we can claim
 plots the city could not claim through normal growth.
 
@@ -14,7 +14,7 @@ plots the city could not claim through normal growth.
 | **Q-INTEGRATE / Q-CODEX** | Is a bare `setOwnership` tile real, buildable city land, or an inert orphan (owner set, no owning city)? That is, can the Han build a science building on diffused land and Shi-Dafu-codex it? | After the flips settle, for each flipped tile it reads `getOwningCityFromXY` (real city vs `-1`), `city.getPurchasedPlots()` membership, and whether `Game.CityOperations.canStart(BUILD, Library/Academy/Monument)` lists the tile as a valid placement plot. Verdict per tile: INTEGRATED (Han-codex path confirmed) vs ORPHAN (empty-tile codex refuted). Runs hands-off (`cd_probe.integrate()` to re-run). |
 | **Q-PERSIST** | Does a flip survive save -> reload? | Records each flip to `localStorage` (never GameConfiguration), then re-reads the plot's current owner on the next `LoadComplete` / `cd_probe.diag()`. |
 | **Q-BEYOND-CAP** | Can we claim a plot the city could not claim via normal growth? | `cd_probe.expandCount()` shows how few plots native `EXPAND` offers; a successful `flipSet()` outside that set shows diffusion escapes the cap. |
-| **Q-WORK** | Can a beyond-ring-3 owned tile be worked or settled (the "usable outer tiles" request, `../docs/potential-future-features.md` §3)? | For each far claimed tile it reads (read-only, no mutation) `Game.PlayerOperations.canStart(ASSIGN_WORKER, {Location, Amount:1})`, the owning city's `canStart(EXPAND).Plots`, `city.Workers.GetTilePlacementInfo(idx).IsBlocked`, and `GameplayMap.getYieldsWithCity(x,y,cityID)`. 3-state verdict with a near (ring 1-2) control and per-verb pairing (see step 4 below): WORKABLE via [verb] / BLOCKED (range) / INCONCLUSIVE (no worker pending). Re-run: `cd_probe.work()`. |
+| **Q-WORK** | Can a beyond-ring-3 owned tile be worked or settled (the "usable outer tiles" request, `../../docs/potential-future-features.md` §3)? | For each far claimed tile it reads (read-only, no mutation) `Game.PlayerOperations.canStart(ASSIGN_WORKER, {Location, Amount:1})`, the owning city's `canStart(EXPAND).Plots`, `city.Workers.GetTilePlacementInfo(idx).IsBlocked`, and `GameplayMap.getYieldsWithCity(x,y,cityID)`. 3-state verdict with a near (ring 1-2) control and per-verb pairing (see step 4 below): WORKABLE via [verb] / BLOCKED (range) / INCONCLUSIVE (no worker pending). Re-run: `cd_probe.work()`. |
 | **Q-WORK-MUTATE / -PERSIST** (E) | Does an actually-placed worker / rural district survive save→reload? | With `AUTO.WORK_MUTATE=true`, it places a worker + `DISTRICT_RURAL` on each far owned tile (recording `NumWorkers`/cap before/after, the (C) worker-cap-consumption read), stores a marker, and on the next session re-reads the tile: `Q-WORK-PERSIST … workedStateSurvived=`. Destructive, so use a throwaway save. Re-run: `cd_probe.workMutate()`. |
 | **Q-CAPTURE** (D) | When you culturally take a developed rival tile, does the improvement transfer (you inherit the yields) or get stripped to bare land? | It prefers a rival tile that already has a district, records its `constructibleCount`/`districtOwner` at flip time, then reads them after: verdict TRANSFERRED / STRIPPED / NOT-CAPTURED / N/A-bare. Re-run: `cd_probe.capture()`. |
 | **Q-FOUND** (1a-found) | Can the owner found a new settlement on an owned outer tile? | Opportunistic: VII has no settler-free settle check, so it needs a settler unit. It reads the settler's legal `UNITOPERATION_FOUND_CITY` plots and reports whether any owned outer tile is FOUNDABLE. Not-foundable near your own cities is expected (base min-city-range). Move a settler beside an isolated claimed tile and run `cd_probe.found()`. |
@@ -162,5 +162,5 @@ grep -E "Q-VERB-ROLLUP" UI.log
 
 ## Decision
 
-Feed the results into the decision record in `../docs/probe-history.md` §4 to choose the flip verb and confirm the mod
+Feed the results into the decision record in `../../docs/probe-history.md` §4 to choose the flip verb and confirm the mod
 is buildable before writing the runtime.
