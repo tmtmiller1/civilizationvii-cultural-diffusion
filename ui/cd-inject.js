@@ -13,7 +13,6 @@ import { injectionAmount, cityCultureCap, convertCityCulture } from "/cultural-d
 import { conversionRate } from "/cultural-diffusion/ui/cd-conversion.js";
 import { shareOfCiv } from "/cultural-diffusion/ui/cd-emigration.js";
 
-/** @param {string} k Plot key. @returns {{x:number,y:number}} Location. */
 function unkey(k) {
   const i = k.indexOf(",");
   return { x: parseInt(k.slice(0, i), 10), y: parseInt(k.slice(i + 1), 10) };
@@ -24,7 +23,7 @@ function num(v, d) {
   return typeof v === "number" && isFinite(v) ? v : d;
 }
 
-/** @param {Record<string, number>|undefined} row A field row. @returns {number} The total culture on the tile. */
+/** @param {Record<string, number>|undefined} row */
 function sumRow(row) {
   let t = 0;
   if (row) for (const c of Object.keys(row)) t += num(row[c], 0);

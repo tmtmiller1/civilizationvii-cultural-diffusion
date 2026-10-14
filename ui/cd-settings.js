@@ -81,11 +81,7 @@ class ModOptionsStore {
     }
   }
 
-  /**
-   * Read one value.
-   * @param {string} modID @param {string} optionID
-   * @returns {*} The value, or null.
-   */
+  /** @param {string} modID @param {string} optionID */
   load(modID, optionID) {
     try {
       const raw = localStorage.getItem("modSettings");

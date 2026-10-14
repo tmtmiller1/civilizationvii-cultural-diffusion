@@ -10,7 +10,6 @@ const THROTTLE_TURNS = 1; // at most one toast per turn (flips are already cappe
 let _lastTurn = -999;
 let _pendingThisTurn = 0;
 
-/** @returns {number} Game.turn or 0. */
 function gameTurn() {
   try {
     return typeof Game !== "undefined" && typeof Game.turn === "number" ? Game.turn : 0;
@@ -59,7 +58,6 @@ function localized(tag, fb) {
   return fb;
 }
 
-/** @returns {number} The local player id, or -1. */
 function localId() {
   try {
     const id = typeof GameContext !== "undefined" ? GameContext.localPlayerID : -1;

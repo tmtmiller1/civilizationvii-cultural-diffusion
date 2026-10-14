@@ -83,7 +83,6 @@ function addCheckbox(id, get, set, loc) {
   });
 }
 
-/** Register the intensity preset dropdown. */
 function registerPreset() {
   Options.addOption({
     category: CategoryType.Mods,
