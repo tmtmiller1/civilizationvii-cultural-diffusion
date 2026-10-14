@@ -249,7 +249,7 @@ function flipTarget(currentOwner, incumbent, minOwner, ratio) {
   return Math.max(minOwner, ratio > 0 ? incumbent / ratio : minOwner);
 }
 
-/** Clamp to [0,1] (non-finite/negative -> 0). @param {number} v @returns {number} */
+/** @param {number} v */
 function clamp01(v) {
   if (!(v > 0)) return 0;
   return v > 1 ? 1 : v;

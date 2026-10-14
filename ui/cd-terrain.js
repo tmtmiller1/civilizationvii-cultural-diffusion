@@ -27,7 +27,6 @@
 
 import { isWater } from "/cultural-diffusion/ui/cd-plots.js";
 
-/** @param {()=>*} fn @param {*} fallback @returns {*} */
 function safe(fn, fallback) {
   try { return fn(); } catch (_) { return fallback; }
 }
@@ -42,7 +41,6 @@ function terrainType(x, y) {
   }, "");
 }
 
-/** UPPERCASE type string for a plot's biome (or ""). */
 function biomeType(x, y) {
   return safe(() => {
     const id = GameplayMap?.getBiomeType?.(x, y);
@@ -52,7 +50,6 @@ function biomeType(x, y) {
   }, "");
 }
 
-/** UPPERCASE type string for a plot's feature (or ""). */
 function featureType(x, y) {
   return safe(() => {
     const id = GameplayMap?.getFeatureType?.(x, y);
@@ -62,7 +59,7 @@ function featureType(x, y) {
   }, "");
 }
 
-/** A finite number, else the fallback. @param {*} v @param {number} d @returns {number} */
+/** @param {*} v @param {number} d */
 function num(v, d) {
   return typeof v === "number" && isFinite(v) ? v : d;
 }
@@ -125,7 +122,6 @@ function sameRiver(a, b) {
   return !na || !nb || na === nb;
 }
 
-/** Whether a plot carries a route (road/rail). */
 function hasRoute(x, y) {
   return safe(() => {
     const r = GameplayMap?.getRouteType?.(x, y);
@@ -222,7 +218,6 @@ function landStep(src, dst, dstRiver, sourceValue, cfg) {
   return { blocked: false, bonus, malus, maxFactor };
 }
 
-/** Road carry bonus: culture travels farther when both tiles carry a route. */
 function roadBonus(src, dst, cfg) {
   if (!(hasRoute(src.x, src.y) && hasRoute(dst.x, dst.y))) return { bonus: 0, maxFactor: 1 };
   return { bonus: Math.max(0, num(cfg.roadBonus, 0)), maxFactor: Math.max(1, num(cfg.roadMax, 1)) };

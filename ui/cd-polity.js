@@ -4,9 +4,7 @@
 // wonder count, and celebration (Golden Age) state. Every read is defensive: an unreadable
 // value degrades to a neutral default and never throws.
 
-/**
- * @param {()=>*} fn Thunk. @param {*} fallback @returns {*} fn() or fallback.
- */
+/** @param {()=>*} fn @param {*} fallback */
 function safe(fn, fallback) {
   try {
     return fn();
@@ -15,11 +13,6 @@ function safe(fn, fallback) {
   }
 }
 
-/**
- * Resolve a YieldTypes enum value by key.
- * @param {string} key e.g. "YIELD_CULTURE".
- * @returns {*} The enum value, or undefined.
- */
 function yEnum(key) {
   return safe(() => (typeof YieldTypes !== "undefined" ? YieldTypes[key] : undefined), undefined);
 }

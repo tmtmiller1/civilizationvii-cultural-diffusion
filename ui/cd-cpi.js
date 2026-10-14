@@ -112,7 +112,6 @@ export function powerMultipliers(rawByOwner, cfg) {
 function num(v, d = 0) {
   return typeof v === "number" && isFinite(v) ? v : d;
 }
-/** @param {number} v @returns {number} v clamped to [0,1]. */
 function clamp01(v) {
   return v < 0 ? 0 : v > 1 ? 1 : v;
 }
