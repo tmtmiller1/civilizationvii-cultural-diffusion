@@ -40,7 +40,6 @@ function safe(fn, fallback) {
   }
 }
 
-/** @param {string} k Plot key. @returns {{x:number,y:number}} Location. */
 function unkey(k) {
   const i = k.indexOf(",");
   return { x: parseInt(k.slice(0, i), 10), y: parseInt(k.slice(i + 1), 10) };
@@ -104,7 +103,6 @@ export function tickOccupation(occupation, k, occupants, buffer) {
   return turns >= Math.max(0, buffer) ? by : -1;
 }
 
-/** @returns {boolean} Whether any neighbor of the plot is owned by `pid`. */
 function touches(loc, pid) {
   for (const n of plotsInRadius(loc, 1)) {
     if (n.x === loc.x && n.y === loc.y) continue;

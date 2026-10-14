@@ -19,7 +19,7 @@ import { cityListOf, nearestCity, withinOwnNaturalRing } from "/cultural-diffusi
 import { isPending, pendingClaimKeys } from "/cultural-diffusion/ui/cd-pending.js";
 import { claimCountsFor, flipEligible, commitFlip } from "/cultural-diffusion/ui/cd-flip.js";
 
-/** @param {string} k Plot key. @returns {{x:number,y:number}} Location. */
+/** @param {string} k */
 function unkey(k) {
   const i = k.indexOf(",");
   return { x: parseInt(k.slice(0, i), 10), y: parseInt(k.slice(i + 1), 10) };

@@ -15,7 +15,7 @@
 // gold handling stays in one place. Everything here is fire-and-forget like every gameplay write; the chain reports
 // what it saw through the returned promise, which only the harness and the tests read.
 
-/** @param {()=>*} fn Thunk. @param {*} fallback @returns {*} fn() or fallback. */
+/** @param {()=>*} fn @param {*} fallback */
 function safe(fn, fallback) {
   try {
     return fn();
