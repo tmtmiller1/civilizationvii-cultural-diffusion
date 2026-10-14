@@ -14,16 +14,11 @@ import { cityCultureCap } from "/cultural-diffusion/ui/cd-field.js";
 /** Always warn once the persisted state blob grows past this many characters. */
 export const STATE_WARN_BYTES = 512 * 1024;
 
-/** @param {*} v @returns {string} A compact number for a log line. */
 function fmt(v) {
   return typeof v === "number" && isFinite(v) ? String(Math.round(v * 100) / 100) : String(v);
 }
 
-/**
- * @param {Record<string, Record<string, number>>} field Culture field.
- * @param {string} k Plot key. @param {number} civ Civ id.
- * @returns {number} That civ's stock on the tile (0 when absent).
- */
+/** @param {Record<string, Record<string, number>>} field @param {string} k @param {number} civ */
 function stockAt(field, k, civ) {
   return (field[k] && field[k][String(civ)]) || 0;
 }

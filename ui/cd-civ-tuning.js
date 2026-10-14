@@ -57,7 +57,6 @@ export const UNTUNED_LEADERS = LEADER_ROSTER.filter((k) => !Object.hasOwn(BY_LEA
 export const UNTUNED_CIVS = CIV_ROSTER.filter((k) => !Object.hasOwn(BY_CIV, k));
 export const UNTUNED_MEMENTOS = MEMENTO_ROSTER.filter((k) => !Object.hasOwn(BY_MEMENTO, k));
 
-/** @param {number} v @param {number} lo @param {number} hi @returns {number} */
 function clamp(v, lo, hi) {
   return v < lo ? lo : v > hi ? hi : v;
 }
@@ -70,7 +69,6 @@ function leaderName(pid) {
   } catch (_) { return null; }
 }
 
-/** Civilization type for a player, or null. */
 function civName(pid) {
   try {
     const n = GameInfo?.Civilizations?.lookup?.(Players?.get?.(pid)?.civilizationType)?.CivilizationType;
