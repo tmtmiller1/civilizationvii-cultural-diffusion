@@ -13,7 +13,7 @@ and the outstanding phases ([`potential-future-features.md`](potential-future-fe
   comes from the verbs' `guardSP()`. A MP pass still simulates the field and writes state each turn, but no ownership
   changes.
 - `GameConfiguration` writes: an unresolved conflict, recorded as it stands. An older note (still carried in
-  `probe/ui/cd-probe-store.js`) says a runtime `Configuration.editGame().setValue` corrupts the persisted config and
+  `devtools/probe/ui/cd-probe-store.js`) says a runtime `Configuration.editGame().setValue` corrupts the persisted config and
   crashes the next launch. The shipped mod does exactly that every pass (`cd-state.js` `saveState`), as do nine
   Emigration modules, and no such crash is recorded against either. No repro of the crash claim exists in this repo,
   so treat it as unverified: the probe stays on `localStorage`, and the pass logs the blob size (`state bytes=`) so

@@ -1,6 +1,6 @@
 # Cultural Diffusion: probe history (feasibility record)
 
-The chronological record of what the in-game probe (`../probe/`) confirmed, corrected, and left open. What counts here
+The chronological record of what the in-game probe (`../devtools/probe/`) confirmed, corrected, and left open. What counts here
 is isolation: which verb, on which tile, reproduces or not. When a design question turns on engine behavior, the answer
 is in this file. Current behavior is in
 [`current-model.md`](current-model.md); the outstanding work these findings gate is in

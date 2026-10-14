@@ -28,7 +28,7 @@ functioning city-state.
 **Why the mod is a candidate.** The shipped pass has no direct city-center guard. Its only protection for a
 settlement core is `isCoreProtected` ([`ui/cd-borders.js`](../ui/cd-borders.js)), which finds centers *indirectly* by
 walking `player.Cities.getCities()`. The probe has a direct plot read, `isCityCenterAt`
-([`probe/ui/cd-probe-api.js`](../probe/ui/cd-probe-api.js)), and refuses center plots with it, but the shipped pass
+([`devtools/probe/ui/cd-probe-api.js`](../devtools/probe/ui/cd-probe-api.js)), and refuses center plots with it, but the shipped pass
 never calls it. Two further facts make an Independent Power's land unusually cheap to take: injectors are built from
 `allSettlements(false)` (majors only), so an IP never accumulates culture stock, and `resolveOwner`'s decisive-margin
 test `value * flipRatio > incumbent` is therefore satisfied against an incumbent stock of 0. The mod's own Phase-5
