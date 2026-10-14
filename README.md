@@ -409,8 +409,8 @@ This mod reimagines and extends Gedemon's work.
 
 - Languages: English, German, Spanish, French, Italian, Japanese, Korean, Polish, Brazilian
   Portuguese, Russian, Simplified Chinese and Traditional Chinese, for the Options, the hover
-  readout, the notifications and the Civilopedia. The translations are machine translations that
-  use the game's own words for its terms; corrections are welcome (see `text/README.md`).
+  readout, the notifications and the Civilopedia. The translations use the game's own words for
+  its terms; corrections are welcome (see `text/README.md`).
 - Terrain (roads, rivers, hills and mountains, tundra and desert biomes, forest,
   rainforest and marsh features) is read with the Civ VII map API
   (`GameplayMap.getTerrainType`/`getBiomeType`/`getFeatureType`/`isMountain`/

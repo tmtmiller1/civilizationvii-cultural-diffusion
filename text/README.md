@@ -11,7 +11,7 @@ add the language's files here and register them in the modinfo.
 | `en_us/ModText.xml` | The mod's name and description, the Options rows and their tooltips, the lens name, the Cultural Pressure hover readout and the notifications. |
 | `en_us/PediaText.xml` | The Civilopedia: the Cultural Diffusion section and the Cultural Borders page under Game Concepts. Pages and chapters follow the key convention described at the top of the file. |
 
-English is the source of truth. All eleven languages below ship as machine translations (2026-10-06) that use the
+English is the source of truth. All eleven languages below ship as translations (2026-10-06) that use the
 game's own words for its terms, taken from the game's l10n files by `devtools/gen-glossary.py` into
 `devtools/glossary/` (generated locally, not committed; run `python3 devtools/gen-glossary.py` to rebuild it). To
 correct one, edit its `<Text>`; to change the English, edit the English and update every language.
