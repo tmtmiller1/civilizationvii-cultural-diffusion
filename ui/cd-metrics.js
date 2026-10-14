@@ -15,7 +15,6 @@
 import { NO_OWNER } from "/cultural-diffusion/ui/cd-plots.js";
 import { currentAgeKey } from "/cultural-diffusion/ui/cd-polity.js";
 
-/** @param {()=>*} fn @param {*} fallback @returns {*} */
 function safe(fn, fallback) {
   try { return fn(); } catch (_) { return fallback; }
 }
@@ -69,7 +68,6 @@ function greatWorks(player) {
   }, 0);
 }
 
-/** Whether a civ is currently in a golden age / celebration. */
 function inGoldenAge(player) {
   return safe(() => {
     const h = player && player.Happiness;

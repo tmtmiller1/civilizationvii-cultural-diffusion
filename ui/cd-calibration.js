@@ -51,13 +51,11 @@ export function agePace() {
   }, 1);
 }
 
-/** The map-size type string read from the live Configuration, or "" when unreadable. */
 function mapSizeTypeFromConfig() {
   const name = Configuration?.getMap?.()?.mapSizeTypeName;
   return typeof name === "string" && name ? name : "";
 }
 
-/** The map-size type string read from the GameInfo.Maps lookup, or "" when unreadable. */
 function mapSizeTypeFromGameInfo() {
   const t = GameInfo?.Maps?.lookup?.(GameplayMap?.getMapSize?.())?.MapSizeType;
   return typeof t === "string" ? t : "";

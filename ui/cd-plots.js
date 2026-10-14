@@ -6,11 +6,7 @@
 
 const NO_OWNER = -1;
 
-/**
- * @param {()=>*} fn Thunk.
- * @param {*} fallback
- * @returns {*} fn() or fallback on throw.
- */
+/** @param {()=>*} fn @param {*} fallback */
 function safe(fn, fallback) {
   try {
     return fn();

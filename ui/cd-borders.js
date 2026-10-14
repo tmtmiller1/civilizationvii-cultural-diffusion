@@ -6,9 +6,7 @@
 
 import { plotsInRadius, cityLoc, cityIdOf, isCityCenterAt, ownerAt } from "/cultural-diffusion/ui/cd-plots.js";
 
-/**
- * @param {()=>*} fn Thunk. @param {*} fallback @returns {*} fn() or fallback.
- */
+/** @param {()=>*} fn @param {*} fallback */
 function safe(fn, fallback) {
   try {
     return fn();

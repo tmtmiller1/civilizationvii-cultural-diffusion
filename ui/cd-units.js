@@ -30,11 +30,6 @@ import { plotsInRadius, ownerAt, isWater, isImpassable } from "/cultural-diffusi
 import { atWar } from "/cultural-diffusion/ui/cd-borders.js";
 import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
 
-/**
- * @param {()=>*} fn Thunk.
- * @param {*} fallback
- * @returns {*} fn() or fallback on throw.
- */
 function safe(fn, fallback) {
   try {
     return fn();
@@ -43,7 +38,6 @@ function safe(fn, fallback) {
   }
 }
 
-/** @param {{x:number,y:number}} loc Plot. @returns {string} "x,y" key. */
 function key(loc) {
   return `${loc.x},${loc.y}`;
 }

@@ -93,7 +93,6 @@ export function grantGold(pid, amount) {
   return safe(() => writeGold(pid, amount), { ok: false, reason: "throw" });
 }
 
-/** @returns {*} The Players global, or null when absent. */
 function playersApi() {
   return typeof Players !== "undefined" ? Players : null;
 }
