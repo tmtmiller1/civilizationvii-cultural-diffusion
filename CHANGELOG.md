@@ -4,6 +4,12 @@ All notable changes to Cultural Diffusion are recorded here. The format follows
 [Keep a Changelog](https://keepachangelog.com/), and the mod uses
 [Semantic Versioning](https://semver.org/).
 
+## [1.5.3] - 2026-10-14
+
+### Changed
+- The license now says that Civilization VII and its art and data belong to Firaxis and 2K. The mod itself plays
+  exactly as in 1.5.2.
+
 ## [1.5.2] - 2026-10-07
 
 Settings that survive a restart: the mod now carries the Tower Settings Keeper.
