@@ -40,7 +40,6 @@ let _curKey = /** @type {string|null} */ (null);
 /** @type {{at:number, field:Record<string, Record<string, number>>, cfg:*, dead:number[]}|null} */
 let _snap = null;
 
-/** Escape a value for safe interpolation into panel HTML. @param {*} s @returns {string} */
 function esc(s) {
   return String(s == null ? "" : s)
     .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -108,7 +107,6 @@ function ageAdjustedCfg() {
   return { ...CONFIG, minimumOwner: CONFIG.minimumOwner * Math.max(0.1, bar) };
 }
 
-/** Currently-alive player ids. @returns {Set<number>} */
 function aliveIds() {
   /** @type {Set<number>} */
   const set = new Set();
@@ -167,7 +165,6 @@ function hoveredPlot() {
   }
 }
 
-/** Whether the pressure lens is the active lens right now. */
 function lensActive() {
   try {
     return typeof LensManager.getActiveLens === "function" && LensManager.getActiveLens() === LENS;
@@ -189,12 +186,10 @@ function strongestNeighborStock(field, plot, leader) {
   return best;
 }
 
-/** A rounded value string. @param {number} v @returns {string} */
 function amt(v) {
   return String(Math.round(v));
 }
 
-/** The turns-to-flip display string, or null when there is no pending flip. */
 function turnsText(verdict, field, plot, cfg) {
   const turns = estimateTurnsToFlip(verdict, strongestNeighborStock(field, plot, verdict.leader), cfg);
   if (turns == null) return null;
@@ -298,7 +293,6 @@ function buildHTML(title, rows) {
   return h;
 }
 
-/** Inject the stylesheet + create the (hidden) panel element once. */
 function ensurePanel() {
   if (_panel) return _panel;
   if (typeof document === "undefined") return null;
@@ -328,7 +322,6 @@ function place(panel) {
   panel.style.top = Math.min(Math.max(0, y), maxY) + "px";
 }
 
-/** Hide the panel. */
 function hide() {
   if (_panel) _panel.style.display = "none";
   _curKey = null;
