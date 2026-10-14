@@ -56,18 +56,15 @@ function blockerName() {
   }, "?");
 }
 
-// Missionary detection and orders, copied from AutoMissionary 1.18 (ui/auto-missionary.js) so the engine sees the
-// same requests.
+// Missionary orders, sent the way the base game's own click-to-move (world-input.js) and unit action buttons send
+// them, so the engine sees ordinary player requests.
 function isMissionary(unit) {
-  const def = safe(() => GameInfo.Units.lookup(unit.type), null);
-  if (!def) return false;
-  if (def.UnitType === "UNIT_MISSIONARY") return true;
-  return safe(() => GameInfo.UnitReplaces.filter((r) => r.CivUniqueUnitType === def.UnitType && r.ReplacesUnitType === "UNIT_MISSIONARY").length > 0, false);
+  return safe(() => (GameInfo.Units.lookup(unit.type)?.SpreadCharges ?? 0) > 0, false);
 }
 function missionaries() {
   return safe(() => (Players.get(local).Units.getUnits() || []).filter(isMissionary), []);
 }
-function plotArgs(l) { return { X: l.x, Y: l.y, UnitAbilityType: -1 }; }
+function plotArgs(l) { return { X: l.x, Y: l.y }; }
 function spread(unitId, l) {
   const r = safe(() => Game.UnitOperations.canStart(unitId, "UNITOPERATION_SPREAD_RELIGION", plotArgs(l), false), null);
   if (!r?.Success) return "spread-no(" + js(r?.FailureReasons ?? r) + ")";
@@ -75,20 +72,10 @@ function spread(unitId, l) {
   return "spread-sent";
 }
 function moveTo(unitId, l) {
-  const M = typeof UnitOperationMoveModifiers !== "undefined" ? UnitOperationMoveModifiers : null;
-  const mods = M ? [(M.ATTACK ?? 0) + (M.MOVE_IGNORE_UNEXPLORED_DESTINATION ?? 0), M.MOVE_IGNORE_UNEXPLORED_DESTINATION ?? 0, M.NONE ?? 0] : [undefined];
-  const op = typeof UnitOperationTypes !== "undefined" && UnitOperationTypes.MOVE_TO != null ? UnitOperationTypes.MOVE_TO : "UNITOPERATION_MOVE_TO";
-  for (const m of mods) {
-    const args = plotArgs(l);
-    if (m !== undefined) args.Modifiers = m;
-    if (safe(() => Game.UnitOperations.canStart(unitId, op, args, false)?.Success, false)) {
-      safe(() => Game.UnitOperations.sendRequest(unitId, op, args));
-      return "move-sent";
-    }
-  }
-  const sw = safe(() => Game.UnitOperations.canStart(unitId, "UNITOPERATION_SWAP_UNITS", plotArgs(l), false)?.Success, false);
-  if (sw) { safe(() => Game.UnitOperations.sendRequest(unitId, "UNITOPERATION_SWAP_UNITS", plotArgs(l))); return "swap-sent"; }
-  return "move-no";
+  const args = { ...plotArgs(l), Modifiers: UnitOperationMoveModifiers.ATTACK + UnitOperationMoveModifiers.MOVE_IGNORE_UNEXPLORED_DESTINATION };
+  if (!safe(() => Game.UnitOperations.canStart(unitId, UnitOperationTypes.MOVE_TO, args, false)?.Success, false)) return "move-no";
+  safe(() => Game.UnitOperations.sendRequest(unitId, UnitOperationTypes.MOVE_TO, args));
+  return "move-sent";
 }
 
 // A target is a rival major's rural district tile, away from its city center, touching land we own, so one of our
