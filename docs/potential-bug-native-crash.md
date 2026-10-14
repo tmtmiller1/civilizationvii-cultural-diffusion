@@ -18,7 +18,7 @@ While testing this session's fixes, the harness produced crashes of its own. Tho
 ## The evidence
 
 All four runs: same save (`AugustusAnt136`, Antiquity turn 136), same machine, same harness, game 1.5.0, within
-one hour. Reports are in `devtools/harness/` as `run30-crash.ips` and `run31-crash.ips`.
+one hour. The reports (`run30-crash.ips`, `run31-crash.ips`) are kept locally, outside the repo.
 
 | Run | Mod | Reached | Claims held | Outcome |
 | --- | --- | --- | --- | --- |

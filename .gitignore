@@ -6,9 +6,12 @@ reports/
 *.bak
 .DS_Store
 # Engine AI scoring dumps collected by the harness (AI_VERBOSE=1): multi-megabyte, regenerated on demand.
-# The crash reports (.ips) and the [CDH] logs ARE kept - they are the evidence a crash investigation rests on.
 devtools/harness/*AI_*.csv
 devtools/harness/*-Combat*.csv
+# Full game logs, macOS crash reports and hang samples: large, kept locally only. The short *-errors.txt excerpts stay.
+devtools/harness/*.log
+devtools/harness/*.ips
+devtools/harness/*hang-sample*
 # Full-resolution window captures (about 12 MB each). The downscaled keepers live in gallery/.
 devtools/harness/shots/
 
