@@ -27,7 +27,7 @@ function parse(input) {
   return m ? { r: parseInt(m[1], 10), g: parseInt(m[2], 10), b: parseInt(m[3], 10) } : null;
 }
 
-/** Format RGB (0-255) as `#RRGGBB`. @param {number} r @param {number} g @param {number} b @returns {string} */
+/** @param {number} r @param {number} g @param {number} b */
 function toHex(r, g, b) {
   const h2 = (/** @type {number} */ n) => Math.max(0, Math.min(255, Math.round(n))).toString(16).padStart(2, "0");
   return "#" + h2(r) + h2(g) + h2(b);
@@ -59,7 +59,6 @@ function hslBase(hp, c, x) {
   return { r: c, g: 0, b: x };
 }
 
-/** HSL -> `#RRGGBB`. @param {number} h @param {number} s @param {number} l @returns {string} */
 function hslToHex(h, s, l) {
   const c = (1 - Math.abs(2 * l - 1)) * s;
   const hp = h / 60;
@@ -70,7 +69,7 @@ function hslToHex(h, s, l) {
   return toHex(ch(base.r), ch(base.g), ch(base.b));
 }
 
-/** Whether a color is a dark, nearly-colorless gray/black. @param {{r:number,g:number,b:number}} c */
+/** @param {{r:number,g:number,b:number}} c */
 function isDarkGray(c) {
   const { s, l } = rgbToHsl(c.r, c.g, c.b);
   return l < DARK_GRAY_MAX_L && s < DARK_GRAY_MAX_S;
@@ -135,7 +134,6 @@ export function civLabel(pid, fallback) {
   return fallback != null ? fallback : "#" + pid;
 }
 
-/** The best available name text-key for a player, or null. @param {number} pid @returns {*} */
 function playerNameTag(pid) {
   try {
     const p = typeof Players !== "undefined" && Players.get ? Players.get(pid) : null;

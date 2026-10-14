@@ -27,7 +27,6 @@ const MAX_ALPHA = 0.78;
 // Skip near-zero-pressure tiles so the overlay marks the genuine contested front, not every field tile.
 const MIN_PROGRESS = 0.08;
 
-/** @param {string} k @returns {{x:number,y:number}} Plot from an "x,y" key. */
 function unkey(k) {
   const i = k.indexOf(",");
   return { x: parseInt(k.slice(0, i), 10), y: parseInt(k.slice(i + 1), 10) };
@@ -55,7 +54,6 @@ function ageAdjustedCfg() {
   return { ...CONFIG, minimumOwner: CONFIG.minimumOwner * Math.max(0.1, bar) };
 }
 
-/** The set of currently-alive player ids (majors + minors), for filtering dead-civ stock. */
 function aliveIds() {
   /** @type {Set<number>} */
   const set = new Set();
@@ -82,7 +80,6 @@ function deadOwnersOf(field, alive) {
   return dead;
 }
 
-/** The persisted field and claims, or null when the state cannot be read. */
 function lensState() {
   try {
     const st = loadState();
@@ -135,7 +132,6 @@ function contestedEntry(k, env) {
   return { x: loc.x, y: loc.y, leader: v.leader, progress: v.progress };
 }
 
-/** Whether a leading culture is another major that the AI-flip path could act for. */
 function aiLeads(leader, me, cfg) {
   return !!cfg.aiCultureFlips && leader >= 0 && leader !== me && isMajorPlayer(leader);
 }
@@ -193,7 +189,6 @@ function batches(tiles) {
 /** @type {{turn:number, batches:*[]}|null} Per-turn cache of the batched paints. */
 let _cache = null;
 
-/** The current game turn for the lens cache key, or -1. */
 function lensTurn() {
   try {
     return typeof Game !== "undefined" && typeof Game.turn === "number" ? Game.turn : -1;
@@ -218,7 +213,6 @@ class PressureLensLayer {
     this.overlay = this.group.addPlotOverlay();
   }
 
-  /** Clear the overlay. */
   clear() {
     this.group.clearAll();
     this.overlay.clear();
@@ -240,7 +234,6 @@ class PressureLensLayer {
     }
   }
 
-  /** Lens-layer lifecycle: clear on deactivate. */
   removeLayer() {
     this.clear();
   }
@@ -261,7 +254,6 @@ class PressureLensPanelDecorator {
     this.component = component;
   }
 
-  /** No-op lifecycle hook. */
   beforeAttach() {}
 
   /** Add the Cultural Pressure lens button once the panel exists (unless disabled in Options). */
@@ -274,10 +266,8 @@ class PressureLensPanelDecorator {
     }
   }
 
-  /** No-op lifecycle hook. */
   beforeDetach() {}
 
-  /** No-op lifecycle hook. */
   afterDetach() {}
 }
 
