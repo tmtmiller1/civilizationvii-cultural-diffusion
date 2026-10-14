@@ -56,12 +56,7 @@ function caption(s) {
   return s.replace(/([[\]*_])/g, "\\$1").replace(/\s+/g, " ").trim();
 }
 
-/**
- * One markdown figure.
- * @param {string} src Path relative to the repository root.
- * @param {string} alt Caption text.
- * @returns {string} Markdown.
- */
+/** @param {string} src @param {string} alt */
 function figure(src, alt) {
   return "![" + caption(alt) + "](" + stage(src) + ")";
 }
