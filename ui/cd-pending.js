@@ -13,7 +13,6 @@ import { dlog } from "/cultural-diffusion/ui/cd-log.js";
 import { ownerAt } from "/cultural-diffusion/ui/cd-plots.js";
 import { notifyFlip } from "/cultural-diffusion/ui/cd-notifications.js";
 
-/** @param {string} k Plot key. @returns {{x:number,y:number}} Location. */
 function unkey(k) {
   const i = k.indexOf(",");
   return { x: parseInt(k.slice(0, i), 10), y: parseInt(k.slice(i + 1), 10) };

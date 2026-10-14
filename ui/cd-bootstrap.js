@@ -58,7 +58,7 @@ function isRuralConstructible(typeId) {
   return t === "DISTRICT_RURAL" || String(row.ConstructibleClass || "") === "IMPROVEMENT" || t.indexOf("IMPROVEMENT") === 0;
 }
 
-/** @param {*} typeId Constructible id. @returns {*} The GameInfo row, or null. */
+/** @param {*} typeId */
 function lookupConstructible(typeId) {
   try {
     if (typeof GameInfo === "undefined") return null;
@@ -99,7 +99,6 @@ function onConstructibleAdded(data) {
   }
 }
 
-/** @returns {number} Game.turn or 0. */
 function gameTurn() {
   try {
     return typeof Game !== "undefined" && typeof Game.turn === "number" ? Game.turn : 0;
@@ -108,7 +107,6 @@ function gameTurn() {
   }
 }
 
-/** @returns {number} The local player id, or -1. */
 function localId() {
   try {
     const id = GameContext?.localPlayerID;
@@ -185,7 +183,6 @@ function installConsole() {
   }
 }
 
-/** Boot. */
 function boot() {
   applyTunableOverrides();
   setLogDebug(!!CONFIG.debug);

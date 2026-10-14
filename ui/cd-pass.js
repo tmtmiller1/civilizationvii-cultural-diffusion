@@ -37,7 +37,7 @@ import { recedeOwnership } from "/cultural-diffusion/ui/cd-recede.js";
 import { logFieldDiagnostics, logStateSize } from "/cultural-diffusion/ui/cd-diagnostics.js";
 import { markPending, isPending, confirmPending, pendingClaimKeys } from "/cultural-diffusion/ui/cd-pending.js";
 
-/** @param {number} x @param {number} y @returns {string} Plot key. */
+/** @param {number} x @param {number} y */
 function key(x, y) {
   return `${x},${y}`;
 }
@@ -106,7 +106,6 @@ function buildRegion(cities, radius, inBounds) {
 
 const AGE_ORDER = ["ANTIQUITY", "EXPLORATION", "MODERN"];
 
-/** The configured waterEase anchor for an age (0 when unset). */
 function ageWaterEase(ageKey) {
   const a = CONFIG.byAge && CONFIG.byAge[ageKey];
   return a && a.waterEase != null ? a.waterEase : 0;
@@ -270,7 +269,6 @@ function updateField(state, region, injectors, ctx) {
   return next;
 }
 
-/** Owner ids referenced in the region field that no longer have living settlements. */
 function findDeadOwners(region, next, alive) {
   const deadOwners = [];
   for (const k of region) {
@@ -515,7 +513,6 @@ function buildInjectors(settlements, region, strengthOf) {
   return injectors;
 }
 
-/** Prune, persist, and report the state size + pass time (the last step of every pass). */
 function finishPass(state, region, cities, radius, t0) {
   pruneFarField(state, region, cities, radius);
   pruneState(state);

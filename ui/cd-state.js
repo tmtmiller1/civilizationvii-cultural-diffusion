@@ -46,11 +46,7 @@ function defaultState() {
   return { field: {}, claims: {}, locked: {}, pending: {}, occupation: {}, monoTurn: 0 };
 }
 
-/**
- * Normalize one occupation row.
- * @param {*} v Candidate.
- * @returns {{by:number, turns:number}|null} Normalized row, or null if unusable.
- */
+/** @param {*} v @returns {{by:number, turns:number}|null} */
 function normalizeOccupation(v) {
   if (!v || typeof v !== "object") return null;
   const by = Math.floor(num(v.by, Number.NaN));
@@ -59,11 +55,7 @@ function normalizeOccupation(v) {
   return { by, turns };
 }
 
-/**
- * Normalize one pending row.
- * @param {*} v Candidate.
- * @returns {PendingEntry|null} Normalized row, or null if unusable.
- */
+/** @param {*} v @returns {PendingEntry|null} */
 function normalizePending(v) {
   if (!v || typeof v !== "object" || PENDING_KINDS.indexOf(v.kind) < 0) return null;
   const by = Math.floor(num(v.by, Number.NaN));
@@ -159,7 +151,6 @@ export function normalizeState(s) {
   return out;
 }
 
-/** @returns {number} Game.turn or 0. */
 function gameTurn() {
   try {
     return typeof Game !== "undefined" && typeof Game.turn === "number" ? Game.turn : 0;

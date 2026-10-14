@@ -17,7 +17,6 @@ import { performFlip } from "/cultural-diffusion/ui/cd-ownership.js";
 import { markPending, isPending } from "/cultural-diffusion/ui/cd-pending.js";
 import { districtTransferPaused } from "/cultural-diffusion/ui/cd-age-guard.js";
 
-/** @param {string} k Plot key. @returns {{x:number,y:number}} Location. */
 function unkey(k) {
   const i = k.indexOf(",");
   return { x: parseInt(k.slice(0, i), 10), y: parseInt(k.slice(i + 1), 10) };
@@ -37,7 +36,6 @@ function nearest(loc, rows) {
   return best ? { ...best, d: bestD } : null;
 }
 
-/** @returns {boolean} True when any neighbor of the plot is owned by `owner`. */
 function touchesOwner(loc, owner) {
   for (const n of plotsInRadius(loc, 1)) {
     if (n.x === loc.x && n.y === loc.y) continue;
