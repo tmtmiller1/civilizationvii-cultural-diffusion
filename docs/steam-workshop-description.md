@@ -42,7 +42,7 @@ Intensity: [b]Low[/b] only claims empty land, [b]Medium[/b] (the default) can al
 [*][b]Mods can't move other civs' units.[/b] So the mod never takes the last tile a unit could escape to. It waits until the unit moves.
 [/list]
 [h2]Languages[/h2]
-English, German, Spanish, French, Italian, Japanese, Korean, Polish, Brazilian Portuguese, Russian, and Simplified and Traditional Chinese. Machine translated, so corrections are welcome.
+English, German, Spanish, French, Italian, Japanese, Korean, Polish, Brazilian Portuguese, Russian, and Simplified and Traditional Chinese. Corrections to the translations are welcome.
 [h2]Caveats and known issues[/h2]
 [list]
 [*][b]Single player only.[/b] No base game files are replaced.
