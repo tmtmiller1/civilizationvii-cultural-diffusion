@@ -67,6 +67,15 @@ function readAge() {
 }
 
 /**
+ * Whether an age-transition window is open right now. A whole settlement carries districts, so a settlement flip
+ * waits out the whole window.
+ * @returns {boolean} True inside the window.
+ */
+export function ageTransitionPaused() {
+  return transitionWindowOpen(readAge());
+}
+
+/**
  * Whether moving this owned tile must wait: an age-transition window is open and the tile carries a district.
  * @param {{x:number,y:number}} loc Plot.
  * @param {number} owner Current owner (-1 = unowned; unowned land never carries a city's district).

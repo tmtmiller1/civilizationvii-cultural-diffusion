@@ -53,7 +53,12 @@
             <Actions>
                 <UpdateDatabase>
                     <Item>data/cd-civilopedia.xml</Item>
+                    <Item>data/cd-city-flip.sql</Item>
+                    <Item>data/cd-city-flip-notifications.xml</Item>
                 </UpdateDatabase>
+                <UpdateIcons>
+                    <Item>data/cd-city-flip-icons.xml</Item>
+                </UpdateIcons>
                 <UpdateText>
                     <Item>text/en_us/ModText.xml</Item>
                     <Item>text/en_us/PediaText.xml</Item>
@@ -121,6 +126,8 @@
                     <Item>ui/cd-units.js</Item>
                     <Item>ui/cd-age-guard.js</Item>
                     <Item>ui/cd-eligibility.js</Item>
+                    <Item>ui/cd-city-flip-rule.js</Item>
+                    <Item>ui/cd-city-flip.js</Item>
                     <Item>ui/cd-pass.js</Item>
                     <Item>ui/cd-notifications.js</Item>
                 </ImportFiles>

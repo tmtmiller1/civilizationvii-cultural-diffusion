@@ -48,7 +48,7 @@
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_RULES_TITLE" Language="ko_KR"><Text>조건</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_RULES_PARA_1" Language="ko_KR"><Text>[BLIST][LI]그 타일에서 우리 문화가 가장 많습니다.[LI]우리 문화가 300 이상입니다(대항해시대 375, 근대 480).[LI]경쟁 문명이 소유한 타일이라면, 그 문명의 문화가 우리 문화의 3분의 2 미만입니다.[LI]타일이 우리 도시에서 6타일 이내이고 3번째 링 바깥에 있습니다.[LI]타일이 우리 영토에 닿아 있습니다('인접 타일만' 옵션).[/LIST]</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_TITLE" Language="ko_KR"><Text>보호되는 타일</Text></Replace>
-        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_1" Language="ko_KR"><Text>'경쟁 문명 도시 보호' 옵션으로 경쟁 문명 도시의 어디까지가 안전한지 정합니다. 도심부와 그 첫 번째 링, 도심부만(기본값), 또는 보호 안 함 중에서 고릅니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_1" Language="ko_KR"><Text>'경쟁 문명 도시 보호' 옵션으로 경쟁 문명 도시의 어디까지가 타일 획득으로부터 안전한지 정합니다. 도심부와 그 첫 번째 링, 도심부만(기본값), 또는 링 없음 중에서 고릅니다. 도심부는 타일로서 주인이 바뀌지 않으며, 정착지 전체와 함께만 넘어갑니다. [B]정착지 귀속 변경[/B] 참조.</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_2" Language="ko_KR"><Text>도시 국가와 독립 세력은 항상 도심부와 첫 번째 링을 지킵니다.</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_3" Language="ko_KR"><Text>'빈 땅만 획득'이 켜져 있으면(낮음에서는 기본적으로 켜짐), 문화는 주인이 있는 타일을 절대 차지하지 않습니다.</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_4" Language="ko_KR"><Text>시대가 바뀌는 전후에는 시설, 시가지 특수지구, 불가사의가 있는 소유 타일이 시대의 끝 카운트다운 동안과 다음 시대의 첫 2턴 동안 주인이 바뀌지 않습니다. 시설이 없는 타일은 영향을 받지 않습니다.</Text></Replace>
@@ -175,5 +175,17 @@
         <Replace Tag="LOC_PEDIA_CD_TERM_NOTIFICATIONS" Language="ko_KR"><Text>알림</Text></Replace>
         <Replace Tag="LOC_PEDIA_CD_TERM_INTENSITY" Language="ko_KR"><Text>강도</Text></Replace>
         <Replace Tag="LOC_PEDIA_CD_TERM_SETTINGS" Language="ko_KR"><Text>설정</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_TITLE" Language="ko_KR"><Text>정착지 귀속 변경</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_CONTENT_PARA_1" Language="ko_KR"><Text>'정착지 전체가 문화로 주인을 바꿈'이 켜져 있으면(기본값), 이웃 문명의 문화가 주민을 확실히 사로잡은 정착지는 통째로 그 문명에 합류합니다. 건물, 특수지구, 불가사의, 타일이 한 번에 넘어갑니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_RULES_TITLE" Language="ko_KR"><Text>발생 조건</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_RULES_PARA_1" Language="ko_KR"><Text>[BLIST][LI]정착지 도심부에서 이웃 문명의 문화가 소유자 문화의 두 배를 넘습니다.[LI]타일 획득에 필요한 양의 두 배도 넘습니다. '보통'에서 600(탐험 시대 750, 근대 960).[LI]정착지 타일의 60% 이상에서 이웃 문명의 문화가 선두입니다.[LI]이 모든 조건이 3턴 연속으로 유지됩니다. 정착지가 내 것이거나 내 것이 될 경우 첫 턴에 경고가 표시됩니다.[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_AFTER_TITLE" Language="ko_KR"><Text>넘어가는 것</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_AFTER_PARA_1" Language="ko_KR"><Text>정착지는 마을로 넘어가며 보통 인구가 1 줄어듭니다. 그 타일은 15턴 동안 고정되고, 정착지를 잃은 문명은 새 주인에게 불만 30을 품습니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_AFTER_PARA_2" Language="ko_KR"><Text>문화 압력 렌즈에서 흔들리는 정착지의 도심부는 이웃 문명의 색으로 표시되며, 커서를 올리면 확실한 문화 우위가 몇 턴째인지, 또는 무엇이 막고 있는지 보여 줍니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_LIMITS_TITLE" Language="ko_KR"><Text>제한</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_LIMITS_PARA_1" Language="ko_KR"><Text>[BLIST][LI]평화 중인 주요 문명 사이에서만 일어납니다. 도시국가와 독립 세력은 이렇게 주인을 바꾸지 않습니다.[LI]수도와 문명의 마지막 정착지는 해당 옵션이 켜져 있지 않으면 그대로 남습니다.[LI]시대 종료 카운트다운 동안과 새 시대의 첫 두 턴에는 아무것도 넘어가지 않습니다.[LI]탐험 시대 전에는 문명이 먼 땅에 있는 정착지를 얻지 않습니다.[LI]한 턴에 최대 한 개의 정착지만 주인이 바뀌며, 당신의 도시 근처에서만 일어납니다.[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_SETTLEMENT_FLIP" Language="ko_KR"><Text>정착지 귀속 변경</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_LOYALTY" Language="ko_KR"><Text>충성</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_TOGGLES_PARA_2" Language="ko_KR"><Text>[BLIST][LI][B]정착지 전체가 문화로 주인을 바꿈[/B]: 켜짐. [B]수도[/B]와 [B]문명의 마지막 정착지[/B]: 꺼짐. [B]불만[/B]: 30. [B]확실한 문화 우위 턴 수[/B]: 3. [B]정착지 귀속 변경[/B] 참조.[/LIST]</Text></Replace>
     </LocalizedText>
 </Database>

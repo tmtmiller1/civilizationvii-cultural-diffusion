@@ -94,9 +94,10 @@ function recedeOne(state, k, row, ctx) {
 }
 
 /** @returns {boolean} Whether a claim is ours, in this pass's region, and free to recede (not locked or landing). */
-function recedeEligible(state, k, me, region) {
+function recedeEligible(state, k, me, region, busy) {
   const c = state.claims[k];
-  if (!c || c.by !== me || !region.has(k)) return false;
+  if (!c || c.by !== me || c.settlement || !region.has(k)) return false; // a joined settlement never recedes
+  if (busy && busy.has(k)) return false;
   return !(state.locked[k] > 0) && !isPending(state, k);
 }
 
@@ -105,14 +106,14 @@ function recedeEligible(state, k, me, region) {
  * @param {{state:*, region:Set<string>, next:*, me:number, ageCfg:*, deadOwners:number[]}} p Pass state.
  * @returns {{ceded:number, pending:number}} Claims ceded this pass, and cessions sent but not yet landed.
  */
-export function recedeOwnership({ state, region, next, me, ageCfg, deadOwners }) {
+export function recedeOwnership({ state, region, next, me, ageCfg, deadOwners, busy }) {
   if (!CONFIG.recedeBorders) return { ceded: 0, pending: 0 };
   const cap = Math.max(0, CONFIG.maxFlipsPerTurn);
   const ctx = { me, ageCfg, deadOwners, rivals: rivalCityRows(me) };
   const out = { ceded: 0, pending: 0 };
   for (const k of Object.keys(state.claims)) {
     if (out.ceded + out.pending >= cap) break;
-    if (!recedeEligible(state, k, me, region)) continue;
+    if (!recedeEligible(state, k, me, region, busy)) continue;
     const result = recedeOne(state, k, next[k] || {}, ctx);
     if (result) out[result]++;
   }

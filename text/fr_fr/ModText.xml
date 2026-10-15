@@ -15,10 +15,10 @@
         <Replace Tag="LOC_OPTIONS_CD_CLAIM_ONLY" Language="fr_FR"><Text>Diffusion culturelle - revendiquer uniquement les terres libres</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CLAIM_ONLY_DESCRIPTION" Language="fr_FR"><Text>Mode sûr. La diffusion ne revendique que les cases frontalières sans propriétaire et ne fait jamais basculer une case d'une autre civilisation. Civilopédia : Diffusion culturelle, Revendiquer des cases.</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CORE" Language="fr_FR"><Text>Diffusion culturelle - protection des villes rivales</Text></Replace>
-        <Replace Tag="LOC_OPTIONS_CD_CORE_DESCRIPTION" Language="fr_FR"><Text>Jusqu'où la culture peut pénétrer dans une ville rivale. Le centre-ville et son premier anneau : le centre et l'anneau qui l'entoure restent protégés. Le centre-ville seulement : seule la case du centre-ville est protégée, et la culture peut prendre les cases autour. Rien : même le centre peut basculer. Civilopédia : Diffusion culturelle, Revendiquer des cases.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_DESCRIPTION" Language="fr_FR"><Text>Jusqu'où la culture peut pénétrer dans une ville rivale. Le centre-ville et son premier anneau : l'anneau autour du centre reste protégé. Le centre-ville seulement (par défaut) : la culture peut prendre les cases autour du centre. Rien : aucun anneau n'est protégé. Le centre lui-même ne change jamais de mains comme une case : il ne part qu'avec la colonie entière, quand elle rejoint une autre civilisation. Civilopédie : Diffusion culturelle, Revendiquer des cases.</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CORE_FULL" Language="fr_FR"><Text>Protéger le centre-ville et son premier anneau</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CORE_CENTER" Language="fr_FR"><Text>Protéger le centre-ville seulement (prendre les cases autour)</Text></Replace>
-        <Replace Tag="LOC_OPTIONS_CD_CORE_NONE" Language="fr_FR"><Text>Ne rien protéger</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_NONE" Language="fr_FR"><Text>Ne protéger aucun anneau</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_ADJACENCY" Language="fr_FR"><Text>Diffusion culturelle - frontière contiguë uniquement</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_ADJACENCY_DESCRIPTION" Language="fr_FR"><Text>Activé (recommandé) : la culture ne revendique que les cases qui touchent votre territoire, si bien que le territoire d'un rival est pris de l'extérieur vers l'intérieur. Désactivé : la culture peut revendiquer toute case qu'elle domine, y compris une poche isolée à l'intérieur d'une autre civilisation. Civilopédia : Diffusion culturelle, Revendiquer des cases.</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_FUSED" Language="fr_FR"><Text>Diffusion culturelle - modèle culturel riche</Text></Replace>
@@ -49,5 +49,41 @@
         <Replace Tag="LOC_CD_PRESSURE_READY" Language="fr_FR"><Text>prête à basculer</Text></Replace>
         <Replace Tag="LOC_CD_PRESSURE_STALLED" Language="fr_FR"><Text>à l'arrêt</Text></Replace>
         <Replace Tag="LOC_CD_PRESSURE_OWNER_SUFFIX" Language="fr_FR"><Text> (propriétaire)</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIPS" Language="fr_FR"><Text>Diffusion culturelle - des colonies entières changent de mains par la culture</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIPS_DESCRIPTION" Language="fr_FR"><Text>Activé par défaut. Quand la culture d'un voisin a clairement gagné une colonie plusieurs tours de suite, la colonie entière rejoint cette civilisation : ses bâtiments, quartiers, merveilles et cases la suivent, et vous êtes prévenu dès le premier tour. Seulement entre civilisations majeures en paix ; les cités-États et les peuples indépendants ne changent jamais de mains ainsi. Civilopédie : Diffusion culturelle, Colonies qui basculent.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_CAPITALS" Language="fr_FR"><Text>Diffusion culturelle - les capitales peuvent changer de mains par la culture</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_CAPITALS_DESCRIPTION" Language="fr_FR"><Text>Désactivé par défaut. S'il est activé, une capitale peut aussi rejoindre un voisin. Elle arrive comme commune, et la civilisation qui l'a perdue reçoit une nouvelle capitale.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_ELIMINATES" Language="fr_FR"><Text>Diffusion culturelle - la culture peut prendre la dernière colonie d'une civilisation</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_ELIMINATES_DESCRIPTION" Language="fr_FR"><Text>Désactivé par défaut. S'il est activé, une civilisation dont la dernière colonie rejoint un voisin est vaincue.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES" Language="fr_FR"><Text>Diffusion culturelle - griefs quand une colonie change de mains</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_DESCRIPTION" Language="fr_FR"><Text>Combien de griefs la civilisation qui a perdu une colonie retient contre celle qui l'a gagnée (30 par défaut). Leur relation baisse d'autant et se rétablit avec le temps ; les griefs restent.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_0" Language="fr_FR"><Text>0</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_15" Language="fr_FR"><Text>15</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_30" Language="fr_FR"><Text>30</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_60" Language="fr_FR"><Text>60</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD" Language="fr_FR"><Text>Diffusion culturelle - tours de culture nette avant qu'une colonie change de mains</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_DESCRIPTION" Language="fr_FR"><Text>Combien de tours de suite la culture d'un voisin doit nettement tenir une colonie avant qu'elle le rejoigne (3 par défaut). Vous êtes prévenu dès le premier.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_2" Language="fr_FR"><Text>2</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_3" Language="fr_FR"><Text>3</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_5" Language="fr_FR"><Text>5</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_8" Language="fr_FR"><Text>8</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_WARNING_TITLE" Language="fr_FR"><Text>Une colonie hésite</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_WARNING" Language="fr_FR"><Text>Les habitants de {1_City} se tournent vers {2_Civ}.</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_JOINED_TITLE" Language="fr_FR"><Text>Une colonie a changé de mains</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_JOINED" Language="fr_FR"><Text>{1_City} a rejoint {2_Civ}.</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_GRIEVANCES" Language="fr_FR"><Text>{1_Loser} retient désormais {3_Amount} griefs contre {2_Receiver}.</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_FALLBACK" Language="fr_FR"><Text>Les habitants d'une colonie ont choisi une autre civilisation.</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_ROW" Language="fr_FR"><Text>Penche vers {1_Civ}</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_PROGRESS" Language="fr_FR"><Text>{1_Count} tours sur {2_Count} de culture nette</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_NOT_YET" Language="fr_FR"><Text>culture pas encore nette</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_WAR" Language="fr_FR"><Text>retenue : en guerre</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_CAPITAL" Language="fr_FR"><Text>retenue : une capitale</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_LAST" Language="fr_FR"><Text>retenue : leur dernière colonie</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_AGE" Language="fr_FR"><Text>retenue : l'ère change</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_DISTANT" Language="fr_FR"><Text>retenue : Terres lointaines avant l'Exploration</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_TEAM" Language="fr_FR"><Text>retenue : même équipe</Text></Replace>
+        <Replace Tag="LOC_BUILDING_CD_FLIP_NAME" Language="fr_FR"><Text>Changement d'allégeance</Text></Replace>
+        <Replace Tag="LOC_BUILDING_CD_FLIP_DESCRIPTION" Language="fr_FR"><Text>Les habitants de cette colonie ont choisi de rejoindre une autre civilisation. Diffusion culturelle le place un instant et le retire dès que la colonie a changé de mains.</Text></Replace>
+        <Replace Tag="LOC_BUILDING_CD_FLIP_TOOLTIP" Language="fr_FR"><Text>Les habitants d'ici ont choisi de rejoindre une autre civilisation.</Text></Replace>
     </LocalizedText>
 </Database>

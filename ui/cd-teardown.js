@@ -56,8 +56,9 @@ export function plotInventory(loc) {
 }
 
 /**
- * Why a tile must not change hands by culture at all: an urban district, a city center, or a wonder. Culture moves
- * rural land; buildings and wonders stay with their city.
+ * Why a tile must not change hands by culture as a tile: an urban district, a city center, or a wonder. Tile flips
+ * move rural land; buildings and wonders stay with their city, and go only when the whole settlement does
+ * (cd-city-flip.js, which never asks this).
  * @param {ReturnType<typeof plotInventory>} inv Plot inventory.
  * @returns {string|null} A short reason, or null when the tile may move.
  */

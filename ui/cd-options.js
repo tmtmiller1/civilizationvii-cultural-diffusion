@@ -37,6 +37,18 @@ import {
   setConquestFlip,
   getForeignCultureInCities,
   setForeignCultureInCities,
+  getCityFlips,
+  setCityFlips,
+  getCityFlipCapitals,
+  setCityFlipCapitals,
+  getCityFlipEliminates,
+  setCityFlipEliminates,
+  getCityFlipGrievancesIndex,
+  setCityFlipGrievancesIndex,
+  getCityFlipHoldIndex,
+  setCityFlipHoldIndex,
+  CITY_GRIEVANCES,
+  CITY_HOLD_TURNS,
   getPressureLensEnabled,
   setPressureLensEnabled,
   getDebug,
@@ -62,8 +74,11 @@ const PRESET_ITEMS = PRESET_NAMES.map((n) => ({ label: "LOC_CD_PRESET_" + n.toUp
 const CORE_ITEMS = [
   { label: "LOC_OPTIONS_CD_CORE_FULL" },   // protect the rival's whole downtown ring
   { label: "LOC_OPTIONS_CD_CORE_CENTER" }, // protect only the city-center plot (bite ring-1 inward)
-  { label: "LOC_OPTIONS_CD_CORE_NONE" }    // protect nothing (even the center can flip)
+  { label: "LOC_OPTIONS_CD_CORE_NONE" }    // protect no ring (the center moves only with its settlement)
 ];
+// One key per value; the text is the number in every language.
+const GRIEVANCE_ITEMS = CITY_GRIEVANCES.map((n) => ({ label: "LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_" + n }));
+const HOLD_ITEMS = CITY_HOLD_TURNS.map((n) => ({ label: "LOC_OPTIONS_CD_CITY_FLIP_HOLD_" + n }));
 
 /**
  * One checkbox row in the shared Mods category.
@@ -112,6 +127,34 @@ function registerCoreProtect() {
   });
 }
 
+/**
+ * One dropdown row in the shared Mods category.
+ * @param {string} id @param {()=>number} get @param {(v:number)=>void} set @param {string} loc @param {*[]} items
+ */
+function addDropdown(id, get, set, loc, items) {
+  Options.addOption({
+    category: CategoryType.Mods,
+    group: GROUP,
+    type: OptionType.Dropdown,
+    id,
+    initListener: (/** @type {*} */ info) => (info.selectedItemIndex = get()),
+    updateListener: (/** @type {*} */ _i, /** @type {number} */ v) => set(v),
+    label: loc,
+    description: loc + "_DESCRIPTION",
+    dropdownItems: items
+  });
+}
+
+/** The whole-settlement flip rows. */
+function registerCityFlips() {
+  addCheckbox("cd-city-flips", getCityFlips, setCityFlips, "LOC_OPTIONS_CD_CITY_FLIPS");
+  addCheckbox("cd-city-flip-capitals", getCityFlipCapitals, setCityFlipCapitals, "LOC_OPTIONS_CD_CITY_FLIP_CAPITALS");
+  addCheckbox("cd-city-flip-eliminates", getCityFlipEliminates, setCityFlipEliminates, "LOC_OPTIONS_CD_CITY_FLIP_ELIMINATES");
+  addDropdown("cd-city-flip-grievances", getCityFlipGrievancesIndex, setCityFlipGrievancesIndex,
+    "LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES", GRIEVANCE_ITEMS);
+  addDropdown("cd-city-flip-hold", getCityFlipHoldIndex, setCityFlipHoldIndex, "LOC_OPTIONS_CD_CITY_FLIP_HOLD", HOLD_ITEMS);
+}
+
 /** Every Cultural Diffusion option, in display order. Runs on every Options rebuild. */
 export function registerAll() {
   registerPreset();
@@ -123,6 +166,7 @@ export function registerAll() {
   addCheckbox("cd-recede", getRecedeBorders, setRecedeBorders, "LOC_OPTIONS_CD_RECEDE");
   addCheckbox("cd-ai-flips", getAiCultureFlips, setAiCultureFlips, "LOC_OPTIONS_CD_AI_FLIPS");
   addCheckbox("cd-conquest", getConquestFlip, setConquestFlip, "LOC_OPTIONS_CD_CONQUEST");
+  registerCityFlips();
   addCheckbox("cd-foreign-culture", getForeignCultureInCities, setForeignCultureInCities, "LOC_OPTIONS_CD_FOREIGN_CULTURE");
   addCheckbox("cd-fused", getFusedModel, setFusedModel, "LOC_OPTIONS_CD_FUSED");
   addCheckbox("cd-emigration", getUseEmigration, setUseEmigration, "LOC_OPTIONS_CD_EMIGRATION");

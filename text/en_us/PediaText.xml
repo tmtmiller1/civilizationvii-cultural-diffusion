@@ -73,7 +73,7 @@
         <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_RULES_TITLE"><Text>Requirements</Text></Row>
         <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_RULES_PARA_1"><Text>[BLIST][LI]Your culture is the highest on the tile.[LI]It is at least 300 (375 in Exploration, 480 in Modern).[LI]If a rival owns the tile, their culture is below two thirds of yours.[LI]The tile is within six tiles of your city and beyond its third ring.[LI]The tile touches your land (Contiguous border only option).[/LIST]</Text></Row>
         <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_TITLE"><Text>Protected Tiles</Text></Row>
-        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_1"><Text>The Rival city protection option sets how much of a rival city is safe: the center and its first ring, the center only (default), or nothing.</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_1"><Text>The Rival city protection option sets how much of a rival city is safe from tile claims: the center and its first ring, the center only (default), or no ring. A center never changes hands as a tile; it goes only with its whole settlement. See [B]Settlement Flips[/B].</Text></Row>
         <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_2"><Text>City-states and independent peoples always keep their center and first ring.</Text></Row>
         <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_3"><Text>With Claim empty land only on (default on Low), culture never takes an owned tile.</Text></Row>
         <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_4"><Text>Around an age change, an owned tile with an improvement, an urban district or a wonder stays put while the Age Ending countdown runs and for the first two turns of the next age. Unimproved tiles are not affected.</Text></Row>
@@ -226,5 +226,17 @@
         <Row Tag="LOC_PEDIA_CD_TERM_NOTIFICATIONS"><Text>Notifications</Text></Row>
         <Row Tag="LOC_PEDIA_CD_TERM_INTENSITY"><Text>Intensity</Text></Row>
         <Row Tag="LOC_PEDIA_CD_TERM_SETTINGS"><Text>Settings</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_TITLE"><Text>Settlement Flips</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_CONTENT_PARA_1"><Text>With Whole settlements change hands by culture on (default), a settlement whose people a neighbor's culture has clearly won joins that civilization whole. Its buildings, districts, wonders and tiles go with it in one step.</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_RULES_TITLE"><Text>When It Happens</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_RULES_PARA_1"><Text>[BLIST][LI]The neighbor's culture on the settlement's center is more than twice the owner's.[LI]It's also more than twice what claiming a tile takes: 600 on Medium (750 in Exploration, 960 in Modern).[LI]The neighbor's culture leads on at least 60% of the settlement's tiles.[LI]All of this holds for 3 turns in a row. You're warned on the first turn when the settlement is yours or would become yours.[/LIST]</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_AFTER_TITLE"><Text>What Changes Hands</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_AFTER_PARA_1"><Text>The settlement arrives as a town, usually one population smaller. Its tiles are locked for 15 turns, and the civilization that lost it holds 30 grievances against the new owner.</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_AFTER_PARA_2"><Text>On the Cultural Pressure lens, a wavering settlement's center takes the neighbor's color, and the hover readout shows how many turns of clear culture it has had, or what holds it.</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_LIMITS_TITLE"><Text>Limits</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_LIMITS_PARA_1"><Text>[BLIST][LI]Only between major civilizations at peace. City-states and independent peoples never change hands this way.[LI]Capitals and a civilization's last settlement stay put unless their options are on.[LI]Nothing changes hands while the Age Ending countdown runs or in the first two turns of a new age.[LI]Before the Exploration age, a civilization doesn't gain a settlement in its Distant Lands.[LI]At most one settlement changes hands per turn, and only near your cities.[/LIST]</Text></Row>
+        <Row Tag="LOC_PEDIA_CD_TERM_SETTLEMENT_FLIP"><Text>Settlement flip</Text></Row>
+        <Row Tag="LOC_PEDIA_CD_TERM_LOYALTY"><Text>Loyalty</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_TOGGLES_PARA_2"><Text>[BLIST][LI][B]Whole settlements change hands by culture[/B]: on. [B]Capitals[/B] and [B]a civilization's last settlement[/B]: off. [B]Grievances[/B]: 30. [B]Turns of clear culture[/B]: 3. See [B]Settlement Flips[/B].[/LIST]</Text></Row>
     </EnglishText>
 </Database>

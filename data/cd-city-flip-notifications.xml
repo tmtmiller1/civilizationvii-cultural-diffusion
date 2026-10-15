@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The notification types ui/cd-notifications.js notifySettlement raises in the game's train for a whole-settlement
+     flip: a settlement leaning toward a neighbor, and one that has joined it. Each ends with the turn and never holds
+     it up. The script composes the text and passes it with the send; the Summary tag here is the fallback. -->
+<Database>
+    <Types>
+        <Row Type="NOTIFICATION_CD_CITY_FLIP_WARN" Kind="KIND_NOTIFICATION"/>
+        <Row Type="NOTIFICATION_CD_CITY_FLIP" Kind="KIND_NOTIFICATION"/>
+    </Types>
+    <Notifications>
+        <Row NotificationType="NOTIFICATION_CD_CITY_FLIP_WARN" SeverityType="MID" ExpiresEndOfTurn="True" AutoNotify="False" Message="LOC_CD_CITY_FLIP_WARNING_TITLE" Summary="LOC_CD_CITY_FLIP_FALLBACK" Priority="2"/>
+        <Row NotificationType="NOTIFICATION_CD_CITY_FLIP" SeverityType="HIGH" ExpiresEndOfTurn="True" AutoNotify="False" Message="LOC_CD_CITY_FLIP_JOINED_TITLE" Summary="LOC_CD_CITY_FLIP_FALLBACK" Priority="2"/>
+    </Notifications>
+    <NotificationSounds>
+        <Row NotificationType="NOTIFICATION_CD_CITY_FLIP_WARN" Context="Add" Audio="notif-City_Near_Unhappiness_Loss"/>
+        <Row NotificationType="NOTIFICATION_CD_CITY_FLIP" Context="Add" Audio="notif-GenericNeutral"/>
+    </NotificationSounds>
+</Database>

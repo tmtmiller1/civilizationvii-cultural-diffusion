@@ -16,6 +16,8 @@ const ENGINE_GLOBALS = {
   Database: "readonly",
   Controls: "readonly",
   Cities: "readonly",
+  UIGameLoadingState: "readonly",
+  CityTransferTypes: "readonly",
   MapUnits: "readonly",
   Units: "readonly",
   Districts: "readonly",

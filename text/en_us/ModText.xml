@@ -40,11 +40,11 @@
             <Text>Cultural Diffusion - rival city protection</Text>
         </Row>
         <Row Tag="LOC_OPTIONS_CD_CORE_DESCRIPTION">
-            <Text>How deep culture may push into a rival's city. Full downtown ring keeps their center and its inner ring safe. Center only protects just the city-center tile, letting culture take the tiles around it. None lets even the center flip. Civilopedia: Cultural Diffusion, Claiming Tiles.</Text>
+            <Text>How deep culture may push into a rival's city. Full downtown ring keeps the ring around their center safe. Center only (default) lets culture take the tiles around the center. None leaves no ring protected. The center itself never changes hands as a tile: it goes only when the whole settlement joins another civilization. Civilopedia: Cultural Diffusion, Claiming Tiles.</Text>
         </Row>
         <Row Tag="LOC_OPTIONS_CD_CORE_FULL"><Text>Protect full downtown ring</Text></Row>
         <Row Tag="LOC_OPTIONS_CD_CORE_CENTER"><Text>Protect city center only (take inner tiles)</Text></Row>
-        <Row Tag="LOC_OPTIONS_CD_CORE_NONE"><Text>Protect nothing</Text></Row>
+        <Row Tag="LOC_OPTIONS_CD_CORE_NONE"><Text>Protect no ring</Text></Row>
 
         <Row Tag="LOC_OPTIONS_CD_ADJACENCY">
             <Text>Cultural Diffusion - contiguous border only</Text>
@@ -147,5 +147,41 @@
         <Row Tag="LOC_CD_PRESSURE_OWNER_SUFFIX">
             <Text> (owner)</Text>
         </Row>
+        <Row Tag="LOC_OPTIONS_CD_CITY_FLIPS"><Text>Cultural Diffusion - whole settlements change hands by culture</Text></Row>
+        <Row Tag="LOC_OPTIONS_CD_CITY_FLIPS_DESCRIPTION"><Text>On by default. When a neighbor's culture has clearly won a settlement for several turns in a row, the whole settlement joins that civilization: its buildings, districts, wonders and tiles go with it, and you're warned on the first turn. Only between major civilizations at peace; city-states and independent peoples never change hands this way. Civilopedia: Cultural Diffusion, Settlement Flips.</Text></Row>
+        <Row Tag="LOC_OPTIONS_CD_CITY_FLIP_CAPITALS"><Text>Cultural Diffusion - capitals can change hands by culture</Text></Row>
+        <Row Tag="LOC_OPTIONS_CD_CITY_FLIP_CAPITALS_DESCRIPTION"><Text>Off by default. When on, a capital can join a neighbor too. It arrives as a town, and the civilization that lost it gets a new capital.</Text></Row>
+        <Row Tag="LOC_OPTIONS_CD_CITY_FLIP_ELIMINATES"><Text>Cultural Diffusion - culture can take a civilization's last settlement</Text></Row>
+        <Row Tag="LOC_OPTIONS_CD_CITY_FLIP_ELIMINATES_DESCRIPTION"><Text>Off by default. When on, a civilization whose last settlement joins a neighbor is defeated.</Text></Row>
+        <Row Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES"><Text>Cultural Diffusion - grievances when a settlement changes hands</Text></Row>
+        <Row Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_DESCRIPTION"><Text>How many grievances the civilization that lost a settlement holds against the one that gained it (30 by default). Their relationship drops by the same amount and recovers over time; the grievances stay.</Text></Row>
+        <Row Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_0"><Text>0</Text></Row>
+        <Row Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_15"><Text>15</Text></Row>
+        <Row Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_30"><Text>30</Text></Row>
+        <Row Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_60"><Text>60</Text></Row>
+        <Row Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD"><Text>Cultural Diffusion - turns of clear culture before a settlement changes hands</Text></Row>
+        <Row Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_DESCRIPTION"><Text>How many turns in a row a neighbor's culture must clearly hold a settlement before it joins (3 by default). You're warned on the first.</Text></Row>
+        <Row Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_2"><Text>2</Text></Row>
+        <Row Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_3"><Text>3</Text></Row>
+        <Row Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_5"><Text>5</Text></Row>
+        <Row Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_8"><Text>8</Text></Row>
+        <Row Tag="LOC_CD_CITY_FLIP_WARNING_TITLE"><Text>A settlement is wavering</Text></Row>
+        <Row Tag="LOC_CD_CITY_FLIP_WARNING"><Text>{1_City}'s people look to {2_Civ}.</Text></Row>
+        <Row Tag="LOC_CD_CITY_FLIP_JOINED_TITLE"><Text>A settlement has changed hands</Text></Row>
+        <Row Tag="LOC_CD_CITY_FLIP_JOINED"><Text>{1_City} has joined {2_Civ}.</Text></Row>
+        <Row Tag="LOC_CD_CITY_FLIP_GRIEVANCES"><Text>{1_Loser} now holds {3_Amount} grievances against {2_Receiver}.</Text></Row>
+        <Row Tag="LOC_CD_CITY_FLIP_FALLBACK"><Text>A settlement's people have chosen another civilization.</Text></Row>
+        <Row Tag="LOC_CD_CITY_FLIP_ROW"><Text>Leans to {1_Civ}</Text></Row>
+        <Row Tag="LOC_CD_CITY_FLIP_PROGRESS"><Text>{1_Count} of {2_Count} turns of clear culture</Text></Row>
+        <Row Tag="LOC_CD_CITY_FLIP_NOT_YET"><Text>culture not yet clear</Text></Row>
+        <Row Tag="LOC_CD_CITY_FLIP_HELD_WAR"><Text>held: at war</Text></Row>
+        <Row Tag="LOC_CD_CITY_FLIP_HELD_CAPITAL"><Text>held: a capital</Text></Row>
+        <Row Tag="LOC_CD_CITY_FLIP_HELD_LAST"><Text>held: their last settlement</Text></Row>
+        <Row Tag="LOC_CD_CITY_FLIP_HELD_AGE"><Text>held: the age is changing</Text></Row>
+        <Row Tag="LOC_CD_CITY_FLIP_HELD_DISTANT"><Text>held: Distant Lands before Exploration</Text></Row>
+        <Row Tag="LOC_CD_CITY_FLIP_HELD_TEAM"><Text>held: same team</Text></Row>
+        <Row Tag="LOC_BUILDING_CD_FLIP_NAME"><Text>Changing Allegiance</Text></Row>
+        <Row Tag="LOC_BUILDING_CD_FLIP_DESCRIPTION"><Text>The people of this settlement have chosen to join another civilization. Cultural Diffusion places it for a moment and removes it once the settlement has changed hands.</Text></Row>
+        <Row Tag="LOC_BUILDING_CD_FLIP_TOOLTIP"><Text>The people here have chosen to join another civilization.</Text></Row>
     </EnglishText>
 </Database>

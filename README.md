@@ -84,10 +84,10 @@ A tile becomes yours once your culture there is the largest, passes an absolute 
 tile by a decisive ratio (`flipRatio`, 0.65). It must also be within `flipMaxDistance` (6) of
 one of your cities and, while `requireAdjacency` is on (the default), adjacent to land you
 already own, so borders grow contiguously. Freshly claimed tiles are locked briefly
-(`flipCooldownTurns`) so they do not flicker between owners. By default a rival's city-center
-plot is never taken, though culture can press inward through the surrounding tiles ring by
-ring. The *rival city protection* option (`coreProtectRadius`) can shield the full downtown
-ring instead.
+(`flipCooldownTurns`) so they do not flicker between owners. A rival's city-center plot never
+changes hands as a tile, though culture can press inward through the surrounding tiles ring by
+ring; the center goes only when the whole settlement does (step 10). The *rival city
+protection* option (`coreProtectRadius`) can shield the full downtown ring from tile claims too.
 
 The game applies an ownership change a moment after the mod asks for it, so each flip is
 recorded as pending and confirmed from the map at the start of the next pass before it counts
@@ -97,7 +97,8 @@ An improved tile (a farm, mine, pasture or other rural improvement) changes hand
 mod demolishes it with the engine's own operation, buys the plot, and rebuilds the district and
 the same improvement for the new owner, so the city that won it works it at once. Buying such a
 tile as it stands would destroy the improvement and leave the save damaged (see the 1.5.1
-changelog). Urban districts, city centers and wonders never move by culture.
+changelog). Urban districts, city centers and wonders never move as tiles; they go only with
+their whole settlement (step 10).
 
 With the opt-in +1 ring buffer (`growthBuffer`, off by default), finishing a rural
 improvement near your border also claims the unowned tiles right next to it, one ring past
@@ -150,9 +151,40 @@ the hold the tile works the normal way. A conquered tile can change hands again 
 an army retakes it, at any time; or, once peace is made and the hold has run out, culture
 retakes it by the standard rule, for any civilization whose culture decisively leads there,
 not only the one it was taken from. While the war lasts, culture never moves it in either
-direction. City centers and urban districts are never taken this way; cities change hands
+direction. City centers and urban districts are never taken this way; armies take cities
 only through the game's own capture. Other civilizations' armies do the same only when
 "every civilization gains land by culture" is also on.
+
+### 10. Whole settlements change hands by culture
+On by default (`cityFlips`). When a neighbor's culture has clearly won a settlement, the whole
+settlement joins that civilization, the way loyalty flips worked in Civ VI. Clearly won means
+three things at once: the neighbor's culture on the center tile is more than twice the owner's
+(`cityFlipRatio`), it's more than twice what claiming a tile takes (`cityFlipBar`, so 600 on
+Medium in Antiquity), and it leads on at least 60% of the settlement's tiles
+(`cityFlipPlotShare`). That has to hold for three passes running (`cityFlipHoldPasses`); the
+count starts over the moment it slips. You're warned on the first pass when the settlement is
+yours or would become yours, and the hover readout on its center shows "2 of 3 turns of clear
+culture", or what's holding it.
+
+On the last pass the mod places a hidden marker building in the center, and the game's own
+transfer hands the settlement over in one step: the center, every tile, the districts, the
+buildings and the wonders together, in about a tenth of a second. The marker comes out at once.
+The settlement arrives as a town, usually one population smaller. Its tiles are locked for
+`flipCooldownTurns` so tile flips don't pull them straight back, the new owner's culture is
+seeded on them the way a capture's is (step 7), and the civilization that lost it holds 30
+grievances against the one that gained it (`cityFlipGrievances`), which costs them the same
+amount of relationship. You get one notice: "Kamakura has joined Greece." When the
+[Partisans](../partisans/) mod is installed and the settlement's people are arming, that notice
+carries its warning too, and Partisans doesn't send a second one.
+
+It only happens between major civilizations at peace, and never to a city-state or an
+independent people. Capitals stay put unless "capitals can change hands" is on
+(`cityFlipCapitals`), and so does a civilization's last settlement unless "culture can take a
+civilization's last settlement" is on (`cityFlipEliminates`). Nothing changes hands during the
+Age Ending countdown or the first two turns of an age, a civilization doesn't gain a settlement
+in its distant lands before the Exploration age, and at most one settlement changes hands per
+pass (`maxCityFlipsPerPass`). Like the rest of the field, it only runs near your cities, and only
+in single-player. The details and the in-game checks are in [docs/DESIGN.md](docs/DESIGN.md).
 
 Two smaller rules carried over from the original complete the model. Culture on a mountain
 needs 7.5 times the usual stock before it spreads off the peak (`sourceThresholdMountain`),
@@ -242,8 +274,9 @@ needs less culture to own a tile, so borders reach farther, sooner.
 ### Options toggles
 - Enabled: master switch (off = vanilla borders).
 - Claim empty land only: never flip a tile owned by another civilization.
-- Rival city protection: how deep culture may push into a rival's city (full downtown
-  ring, center tile only, or nothing).
+- Rival city protection: how deep tile claims may push into a rival's city (full downtown
+  ring, center tile only, or no ring). The center itself only ever moves with its whole
+  settlement.
 - Contiguous border only: only claim tiles touching your land.
 - Claim land beside new improvements (+1 ring): off by default; when on, finishing a rural
   improvement near your border also claims the unowned tiles right next to it.
@@ -254,6 +287,11 @@ needs less culture to own a tile, so borders reach farther, sooner.
   by culture.
 - Armies hold the ground they occupy: off by default; a combat unit holding an enemy
   tile through a war takes it after five turns (step 9 above).
+- Whole settlements change hands by culture: on by default; a settlement whose culture a
+  neighbor has clearly won for three turns joins it (step 10). Capitals can change hands, and
+  culture can take a civilization's last settlement: both off by default. Grievances when a
+  settlement changes hands: 30 (0, 15, 30 or 60). Turns of clear culture before it does: 3
+  (2, 3, 5 or 8).
 - Cities carry every culture living in them: on by default; a city produces culture for
   every people present on its tile and slowly converts foreign culture to its own (step 6).
 - Rich cultural model: fold CPI and prosperity into a city's cultural power. Off = raw
@@ -282,6 +320,9 @@ needs less culture to own a tile, so borders reach farther, sooner.
   tradition or ideology type name), `captureTransfer`, `captureLoss`, `captureGain`.
 - Other civilizations and war: `aiCultureFlips`, `conquestFlip`, `conquestBufferTurns`,
   `conquestHoldTurns`.
+- Whole settlements: `cityFlips`, `cityFlipCapitals`, `cityFlipEliminates`, `cityFlipGrievances`,
+  `cityFlipHoldPasses`, `cityFlipRatio`, `cityFlipBar`, `cityFlipPlotShare`, `maxCityFlipsPerPass`,
+  `cityFlipWaitMs`, `cityFlipNoticeDelayMs`.
 - Terrain and water: `roadBonus`, `riverFollowBonus`/`riverFollowMax` (along a minor
   river), `navigableFollowBonus`/`navigableFollowMax` (along a navigable river), and a
   `{ malus, max, threshold }` entry per terrain (`terrainHills`, `terrainMountain`,
@@ -318,7 +359,9 @@ The runtime is a set of small UI-script modules in `ui/`:
 | Module | Responsibility |
 | --- | --- |
 | `cd-bootstrap.js` | Boots the engine, runs one pass per local-player turn, console surface, the +1 ring buffer trigger. |
-| `cd-pass.js` | The per-turn simulation: confirm pending -> decay -> diffuse -> inject -> convert -> flip -> AI flips -> recede -> conquest. |
+| `cd-pass.js` | The per-turn simulation: confirm pending -> decay -> diffuse -> inject -> convert -> flip -> AI flips -> recede -> conquest -> whole settlements. |
+| `cd-city-flip-rule.js` | Pure rule for whole-settlement flips: who leads a center, when it's clearly won, the gates, the hold count. |
+| `cd-city-flip.js` | Whole-settlement flips: the pass step, the marker and the engine's transfer, booking, grievances, the notice, the stray-marker sweep. |
 | `cd-pending.js` | Records ownership changes that have not landed yet and confirms them from the map next pass. |
 | `cd-recede.js` | Opt-in recede step: cede a claimed tile to a rival whose culture decisively won it. |
 | `cd-inject.js` | Cities pump their own and every present culture group under a total cap; conversion; the owner floor. |
@@ -347,7 +390,7 @@ The runtime is a set of small UI-script modules in `ui/`:
 | `cd-settings.js` / `cd-options.js` | Options-screen bridge and registration, through `Options.addInitCallback` so settings survive the Settings screen's rebuild. |
 | `cd-pressure-lens.js` / `cd-pressure-tooltip.js` | The Cultural Pressure map lens (Shift+C) and its hover readout. |
 | `cd-lens-colors.js` | Readable civilization colors for the lens. |
-| `cd-notifications.js` | Throttled flip notifications. |
+| `cd-notifications.js` | Throttled flip notifications, and the settlement notices in the notification train. |
 | `cd-log.js` | Logging. |
 
 The pure modules (`cd-field`, `cd-pressure`, `cd-cpi`) carry the algorithm and are

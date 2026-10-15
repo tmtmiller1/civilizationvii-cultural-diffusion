@@ -48,7 +48,7 @@
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_RULES_TITLE" Language="ja_JP"><Text>条件</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_RULES_PARA_1" Language="ja_JP"><Text>[BLIST][LI]そのタイルで自文化が最も多い。[LI]自文化が300以上ある（探検の時代は375、近代は480）。[LI]他文明が所有するタイルの場合、その文明の文化が自文化の3分の2未満。[LI]タイルが自分の都市から6タイル以内で、第3リングより外にある。[LI]タイルが自領に接している（オプション「隣接タイルのみ」）。[/LIST]</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_TITLE" Language="ja_JP"><Text>保護されたタイル</Text></Replace>
-        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_1" Language="ja_JP"><Text>オプション「他文明の都市の保護」で、他文明の都市のどこまでを守るかを設定します。都心とその第1リング、都心のみ（デフォルト）、または保護なしです。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_1" Language="ja_JP"><Text>オプション「他文明の都市の保護」で、他文明の都市のどこまでをタイル獲得から守るかを設定します。都心とその第1リング、都心のみ（デフォルト）、またはリングなしです。都心はタイルとして帰属を変えることはなく、居住地が丸ごと移るときだけ一緒に移ります。[B]居住地の帰属変更[/B]を参照。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_2" Language="ja_JP"><Text>都市国家と独立勢力は、常に都心と第1リングを保持します。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_3" Language="ja_JP"><Text>「空き地のみ獲得」がオンのとき（「低」ではデフォルトでオン）、文化が所有済みのタイルを奪うことはありません。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_4" Language="ja_JP"><Text>時代の移行の前後では、施設、市街区域、遺産のある所有済みのタイルは、時代の終了までのカウントダウン中と次の時代の最初の2ターンの間、所有者が変わりません。施設のないタイルは影響を受けません。</Text></Replace>
@@ -175,5 +175,17 @@
         <Replace Tag="LOC_PEDIA_CD_TERM_NOTIFICATIONS" Language="ja_JP"><Text>通知</Text></Replace>
         <Replace Tag="LOC_PEDIA_CD_TERM_INTENSITY" Language="ja_JP"><Text>強度</Text></Replace>
         <Replace Tag="LOC_PEDIA_CD_TERM_SETTINGS" Language="ja_JP"><Text>設定</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_TITLE" Language="ja_JP"><Text>居住地の帰属変更</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>「居住地が丸ごと文化で帰属を変える」がオン（デフォルト）のとき、隣の文明の文化が住民をはっきり制した居住地は、丸ごとその文明に加わります。建造物、地区、遺産、タイルが一度に移ります。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_RULES_TITLE" Language="ja_JP"><Text>発生する条件</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_RULES_PARA_1" Language="ja_JP"><Text>[BLIST][LI]居住地の都心での隣の文明の文化が、所有者の文化の2倍を超えている。[LI]さらにタイル獲得に必要な量の2倍も超えている。「中」で600（大航海時代は750、近代は960）。[LI]居住地のタイルの60%以上で隣の文明の文化が首位にある。[LI]これが3ターン続く。居住地が自分のものか自分のものになる場合、最初のターンに警告が出ます。[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_AFTER_TITLE" Language="ja_JP"><Text>移るもの</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_AFTER_PARA_1" Language="ja_JP"><Text>居住地は町として移り、たいてい人口が1減ります。そのタイルは15ターン固定され、失った文明は新しい所有者に対して30の不満を抱きます。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_AFTER_PARA_2" Language="ja_JP"><Text>文化的圧力レンズでは、揺れている居住地の都心が隣の文明の色になり、カーソルを合わせると明確な文化のターン数、または保留の理由が表示されます。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_LIMITS_TITLE" Language="ja_JP"><Text>制限</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_LIMITS_PARA_1" Language="ja_JP"><Text>[BLIST][LI]和平中の主要文明の間だけ。都市国家と独立勢力はこの方法で帰属を変えません。[LI]首都と文明の最後の居住地は、それぞれのオプションがオンでない限り移りません。[LI]時代終了のカウントダウン中と新しい時代の最初の2ターンは、何も移りません。[LI]大航海時代より前には、文明は遠方の地にある居住地を得ません。[LI]1ターンに移る居住地は最大1つで、あなたの都市の近くだけです。[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_SETTLEMENT_FLIP" Language="ja_JP"><Text>居住地の帰属変更</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_LOYALTY" Language="ja_JP"><Text>忠誠</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_TOGGLES_PARA_2" Language="ja_JP"><Text>[BLIST][LI][B]居住地が丸ごと文化で帰属を変える[/B]: オン。[B]首都[/B]と[B]文明の最後の居住地[/B]: オフ。[B]不満[/B]: 30。[B]明確な文化のターン数[/B]: 3。[B]居住地の帰属変更[/B]を参照。[/LIST]</Text></Replace>
     </LocalizedText>
 </Database>

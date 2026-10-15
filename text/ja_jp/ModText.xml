@@ -15,10 +15,10 @@
         <Replace Tag="LOC_OPTIONS_CD_CLAIM_ONLY" Language="ja_JP"><Text>文化の伝播 - 空き地のみ獲得</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CLAIM_ONLY_DESCRIPTION" Language="ja_JP"><Text>安全モード。伝播は所有者のいない辺境のタイルだけを獲得し、他文明が所有するタイルを奪うことはありません。シヴィロペディア: 文化の伝播、タイルの獲得。</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CORE" Language="ja_JP"><Text>文化の伝播 - 他文明の都市の保護</Text></Replace>
-        <Replace Tag="LOC_OPTIONS_CD_CORE_DESCRIPTION" Language="ja_JP"><Text>文化が他文明の都市にどこまで入り込めるか。「都心と内周を保護」では都心とそのすぐ内側のリングが守られます。「都心のみ保護」では都心のタイルだけが守られ、周囲のタイルは文化で獲得できます。「保護なし」では都心さえも奪われます。シヴィロペディア: 文化の伝播、タイルの獲得。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_DESCRIPTION" Language="ja_JP"><Text>文化が他文明の都市にどこまで入り込めるか。「都心と内周を保護」では都心の周りのリングが守られます。「都心のみ保護」（デフォルト）では都心の周りのタイルを文化で獲得できます。「保護なし」ではどのリングも守られません。都心そのものはタイルとして帰属を変えることはなく、居住地が丸ごと別の文明に加わるときだけ移ります。シヴィロペディア: 文化の伝播、タイルの獲得。</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CORE_FULL" Language="ja_JP"><Text>都心と内周を保護</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CORE_CENTER" Language="ja_JP"><Text>都心のみ保護（内側のタイルは獲得可）</Text></Replace>
-        <Replace Tag="LOC_OPTIONS_CD_CORE_NONE" Language="ja_JP"><Text>保護なし</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_NONE" Language="ja_JP"><Text>リングを保護しない</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_ADJACENCY" Language="ja_JP"><Text>文化の伝播 - 隣接タイルのみ</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_ADJACENCY_DESCRIPTION" Language="ja_JP"><Text>オン（推奨）: 文化は自領に接するタイルだけを獲得するため、他文明の領土は外側から順に奪われます。オフ: 文化は優勢なタイルならどこでも獲得でき、他文明の中にある飛び地も含まれます。シヴィロペディア: 文化の伝播、タイルの獲得。</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_FUSED" Language="ja_JP"><Text>文化の伝播 - 総合文化モデル</Text></Replace>
@@ -49,5 +49,41 @@
         <Replace Tag="LOC_CD_PRESSURE_READY" Language="ja_JP"><Text>獲得可能</Text></Replace>
         <Replace Tag="LOC_CD_PRESSURE_STALLED" Language="ja_JP"><Text>停滞</Text></Replace>
         <Replace Tag="LOC_CD_PRESSURE_OWNER_SUFFIX" Language="ja_JP"><Text>（所有者）</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIPS" Language="ja_JP"><Text>文化の伝播 - 居住地が丸ごと文化で帰属を変える</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIPS_DESCRIPTION" Language="ja_JP"><Text>デフォルトでオン。隣の文明の文化が数ターン続けてある居住地をはっきり制すると、その居住地は丸ごとその文明に加わります。建造物、地区、遺産、タイルもすべて一緒に移り、最初のターンに警告が出ます。和平中の主要文明の間だけで起こり、都市国家と独立勢力はこの方法で帰属を変えません。シヴィロペディア: 文化の伝播、居住地の帰属変更。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_CAPITALS" Language="ja_JP"><Text>文化の伝播 - 首都も文化で帰属を変えうる</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_CAPITALS_DESCRIPTION" Language="ja_JP"><Text>デフォルトでオフ。オンにすると首都も隣の文明に加わることがあります。首都は町として移り、失った文明には新しい首都ができます。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_ELIMINATES" Language="ja_JP"><Text>文化の伝播 - 文化で文明の最後の居住地も奪える</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_ELIMINATES_DESCRIPTION" Language="ja_JP"><Text>デフォルトでオフ。オンにすると、最後の居住地が隣の文明に加わった文明は敗北します。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES" Language="ja_JP"><Text>文化の伝播 - 居住地が帰属を変えたときの不満</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_DESCRIPTION" Language="ja_JP"><Text>居住地を失った文明が、得た文明に対して抱く不満の量です（デフォルト30）。両者の関係も同じだけ下がり、時間とともに回復しますが、不満は残ります。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_0" Language="ja_JP"><Text>0</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_15" Language="ja_JP"><Text>15</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_30" Language="ja_JP"><Text>30</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_60" Language="ja_JP"><Text>60</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD" Language="ja_JP"><Text>文化の伝播 - 居住地が帰属を変えるまでの明確な文化のターン数</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_DESCRIPTION" Language="ja_JP"><Text>隣の文明の文化が何ターン続けて居住地をはっきり制すれば加わるかを決めます（デフォルト3）。最初のターンに警告が出ます。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_2" Language="ja_JP"><Text>2</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_3" Language="ja_JP"><Text>3</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_5" Language="ja_JP"><Text>5</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_8" Language="ja_JP"><Text>8</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_WARNING_TITLE" Language="ja_JP"><Text>居住地が揺れている</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_WARNING" Language="ja_JP"><Text>{1_City}の人々は{2_Civ}に心を寄せている。</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_JOINED_TITLE" Language="ja_JP"><Text>居住地の帰属が変わった</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_JOINED" Language="ja_JP"><Text>{1_City}は{2_Civ}に加わった。</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_GRIEVANCES" Language="ja_JP"><Text>{1_Loser}は{2_Receiver}に対して{3_Amount}の不満を抱いた。</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_FALLBACK" Language="ja_JP"><Text>ある居住地の人々が別の文明を選んだ。</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_ROW" Language="ja_JP"><Text>{1_Civ}に傾いている</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_PROGRESS" Language="ja_JP"><Text>明確な文化 {1_Count}/{2_Count}ターン</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_NOT_YET" Language="ja_JP"><Text>文化はまだ明確でない</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_WAR" Language="ja_JP"><Text>保留: 戦争中</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_CAPITAL" Language="ja_JP"><Text>保留: 首都</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_LAST" Language="ja_JP"><Text>保留: 最後の居住地</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_AGE" Language="ja_JP"><Text>保留: 時代の移行中</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_DISTANT" Language="ja_JP"><Text>保留: 大航海時代前の遠方の地</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_TEAM" Language="ja_JP"><Text>保留: 同じチーム</Text></Replace>
+        <Replace Tag="LOC_BUILDING_CD_FLIP_NAME" Language="ja_JP"><Text>帰属の変更</Text></Replace>
+        <Replace Tag="LOC_BUILDING_CD_FLIP_DESCRIPTION" Language="ja_JP"><Text>この居住地の人々は別の文明に加わることを選んだ。文化の伝播が一瞬だけ置き、居住地の帰属が変わると取り除く。</Text></Replace>
+        <Replace Tag="LOC_BUILDING_CD_FLIP_TOOLTIP" Language="ja_JP"><Text>ここの人々は別の文明に加わることを選んだ。</Text></Replace>
     </LocalizedText>
 </Database>

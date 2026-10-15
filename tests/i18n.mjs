@@ -45,7 +45,7 @@ test("i18n: no English tag is defined twice", () => {
 });
 
 test("i18n: every key the code, data and modinfo use has English text", () => {
-  const sources = [...files("ui", ".js"), ...files("data", ".xml"), "cultural-diffusion.modinfo"];
+  const sources = [...files("ui", ".js"), ...files("data", ".xml"), ...files("data", ".sql"), "cultural-diffusion.modinfo"];
   const missing = new Set();
   for (const p of sources) {
     // Comments name keys by pattern; only code and data count.
@@ -66,6 +66,16 @@ test("i18n: every key the code, data and modinfo use has English text", () => {
     if (!english.texts.has(m[1] + "_DESCRIPTION")) missing.add(m[1] + "_DESCRIPTION (ui/cd-options.js)");
   }
   if (!english.texts.has("LOC_OPTIONS_GROUP_CULTURAL_DIFFUSION")) missing.add("LOC_OPTIONS_GROUP_CULTURAL_DIFFUSION");
+  // The settlement-flip dropdowns label each value with its own key (ui/cd-options.js), and their tooltips.
+  const settings = read("ui/cd-settings.js");
+  for (const [name, stem] of [["CITY_GRIEVANCES", "LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES"], ["CITY_HOLD_TURNS", "LOC_OPTIONS_CD_CITY_FLIP_HOLD"]]) {
+    const m = settings.match(new RegExp(`export const ${name} = Object\\.freeze\\(\\[([^\\]]*)\\]\\)`));
+    assert.ok(m, `ui/cd-settings.js: ${name} not found`);
+    for (const n of m[1].split(",").map((v) => v.trim())) {
+      if (!english.texts.has(`${stem}_${n}`)) missing.add(`${stem}_${n}`);
+    }
+    if (!english.texts.has(stem + "_DESCRIPTION")) missing.add(stem + "_DESCRIPTION");
+  }
   assert.deepEqual([...missing], []);
 });
 

@@ -11,6 +11,7 @@ import { runPass, claimBufferAt } from "/cultural-diffusion/ui/cd-pass.js";
 import { loadState, saveState } from "/cultural-diffusion/ui/cd-state.js";
 import { onCityTransfered } from "/cultural-diffusion/ui/cd-capture.js";
 import { ownerAt } from "/cultural-diffusion/ui/cd-plots.js";
+import { onSettlementTransfer, sweepFlipMarkers, sweepWhenStarted } from "/cultural-diffusion/ui/cd-city-flip.js";
 
 let _lastLocalTurnRun = -999;
 
@@ -164,9 +165,15 @@ function installConsole() {
     g.culturalDiffusion = {
       runNow: () => doPass("manual"),
       config: () => ({ ...CONFIG }),
+      // Partisans reads this: when true, Cultural Diffusion's "has joined" notice carries Partisans' unrest line for
+      // a flip it made, and Partisans sends no unrest notice of its own for that flip.
+      get tellsPartisanUnrest() {
+        return !!CONFIG.cityFlips;
+      },
+      sweepFlipMarkers: () => sweepFlipMarkers(),
       state: () => loadState(),
       clear: () => {
-        saveState({ field: {}, claims: {}, locked: {}, monoTurn: 0 });
+        saveState({ field: {}, claims: {}, locked: {}, cityHold: {}, monoTurn: 0 });
         return "cleared";
       },
       enable: (/** @type {boolean} */ on) => {
@@ -196,8 +203,9 @@ function boot() {
       eng.on("PlayerTurnActivated", _turnHandlerRef);
       _constructibleHandlerRef = onConstructibleAdded;
       eng.on("ConstructibleAddedToMap", _constructibleHandlerRef);
-      // A city changing hands rewrites the culture on its tiles at once (cd-capture.js), for any two players.
-      _transferHandlerRef = (d) => { applyTunableOverrides(); onCityTransfered(d); };
+      // A city changing hands rewrites the culture on its tiles at once (cd-capture.js), for any two players, and
+      // a settlement flip waiting on its transfer hears about it (cd-city-flip.js).
+      _transferHandlerRef = (d) => { applyTunableOverrides(); onCityTransfered(d); onSettlementTransfer(d); };
       eng.on("CityTransfered", _transferHandlerRef);
     } catch (e) {
       log(`turn hook failed ${String(e)}`);
@@ -205,6 +213,9 @@ function boot() {
   } else {
     log("engine.on unavailable - pass will only run via console runNow()");
   }
+  // A flip marker left in a city carries over a save and an age change (each loads the game's scripts again), and
+  // would hand the city back to that leader if it ever changed hands again; clear any stray once the game has started.
+  sweepWhenStarted().catch(() => 0);
 }
 
 boot();

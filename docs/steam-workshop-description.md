@@ -19,19 +19,21 @@ Based on Gedemon's [b]Cultural Diffusion[/b] mod for Civ V, rebuilt for Civ VII.
 [/list]
 [h2]The Cultural Pressure lens[/h2]
 Press Shift+C to see which tiles are about to change hands. The closer a tile is to flipping, the stronger its color. Hover over a tile to see each civ's culture there and roughly how many turns until it flips. Tiles that won't change aren't colored. You can turn the lens off in Options.
+[h2]When a whole settlement changes hands[/h2]
+When a neighbor's culture has clearly won one of your settlements, or you've clearly won one of theirs, the whole settlement joins the winner: buildings, districts, wonders and tiles all go together, the way loyalty worked in Civ VI. Clearly won means more than twice the owner's culture on the center tile and the lead on most of its tiles, three turns running. You're warned on the first turn, and the lens shows how close it is. The civ that lost it holds grievances against the one that gained it. It only happens between major civs at peace, never to city-states or independents, and capitals and a civ's last settlement stay put unless you switch that on in Options. With the Partisans mod installed, the "has joined" notice also tells you when the settlement's people are arming.
 [h2]How a tile changes hands[/h2]
 [list]
 [*]Your culture is the highest on the tile and above a minimum amount.
 [*]To take a tile from another civ, you need clearly more culture than they have. A tie isn't enough.
 [*]The tile has to touch land you already own, so your borders stay connected.
-[*]A rival's city center can never be taken, and you can choose to protect the ring around it too.
+[*]A rival's city center never changes hands as a tile, and you can choose to protect the ring around it too. The center only goes when the whole settlement does (below).
 [*]A newly claimed tile is locked for a few turns so it can't flip back and forth.
-[*]Improved tiles change hands whole: a farm or mine that flips is rebuilt for its new owner. Urban districts, city centers and wonders never move by culture, and every tile holds still during the Age Ending countdown and the first two turns of the next age.
+[*]Improved tiles change hands whole: a farm or mine that flips is rebuilt for its new owner. Urban districts, city centers and wonders never move as single tiles, and every tile holds still during the Age Ending countdown and the first two turns of the next age.
 [/list]
 [h2]When you'll see it[/h2]
 Not right away. In a 70-turn test game, a capital making 8 Culture didn't claim anything. Once your cities have grown, a strong city takes its first tile past ring 3 about twenty turns after the mod starts having an effect. Going further out takes a civ with wonders and a long history. This mostly matters in the mid and late game. Raise the intensity if you want it sooner.
 [h2]Settings[/h2]
-Intensity: [b]Low[/b] only claims empty land, [b]Medium[/b] (the default) can also take rival border tiles, and [b]High[/b] spreads farther and flips faster. There are also switches for turning the mod on or off, claiming empty land only, how much of a rival's city ring is protected, keeping borders connected, claiming land next to new improvements, letting your borders shrink when a rival out-cultures you (experimental), letting other civs gain land by culture (on by default), letting armies take tiles they hold during a war (never city centers or urban districts), cities holding the culture of everyone living in them, the lens, and debug logging. Every number behind these can be changed in the mod's config.
+Intensity: [b]Low[/b] only claims empty land, [b]Medium[/b] (the default) can also take rival border tiles, and [b]High[/b] spreads farther and flips faster. There are also switches for turning the mod on or off, claiming empty land only, how much of a rival's city ring is protected, keeping borders connected, claiming land next to new improvements, letting your borders shrink when a rival out-cultures you (experimental), letting other civs gain land by culture (on by default), letting armies take tiles they hold during a war (never city centers or urban districts), whole settlements changing hands by culture (with separate switches for capitals and a civ's last settlement, plus the grievances and the number of turns it takes), cities holding the culture of everyone living in them, the lens, and debug logging. Every number behind these can be changed in the mod's config.
 [h2]Works with Emigration[/h2]
 [list]
 [*]If you also use the [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3750554030]Emigration[/url] mod, culture spreads faster toward tiles where your people have moved, so your borders grow toward them. Without Emigration installed, this part does nothing.

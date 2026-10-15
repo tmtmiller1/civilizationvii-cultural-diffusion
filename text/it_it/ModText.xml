@@ -15,10 +15,10 @@
         <Replace Tag="LOC_OPTIONS_CD_CLAIM_ONLY" Language="it_IT"><Text>Diffusione culturale - rivendica solo terre libere</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CLAIM_ONLY_DESCRIPTION" Language="it_IT"><Text>Modalità sicura. La diffusione rivendica solo caselle di confine senza proprietario e non strappa mai una casella a un'altra civiltà. Civilopedia: Diffusione culturale, Rivendicare caselle.</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CORE" Language="it_IT"><Text>Diffusione culturale - protezione città rivali</Text></Replace>
-        <Replace Tag="LOC_OPTIONS_CD_CORE_DESCRIPTION" Language="it_IT"><Text>Fin dove la cultura può spingersi in una città rivale. Centro e primo anello: il centro cittadino e l'anello che lo circonda restano protetti. Solo centro cittadino: è protetta solo la casella del centro cittadino e la cultura può prendere le caselle intorno. Nessuna: anche il centro può passare di mano. Civilopedia: Diffusione culturale, Rivendicare caselle.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_DESCRIPTION" Language="it_IT"><Text>Fin dove la cultura può spingersi in una città rivale. Centro e primo anello: l'anello intorno al centro resta protetto. Solo centro cittadino (predefinito): la cultura può prendere le caselle intorno al centro. Nessuna: nessun anello è protetto. Il centro stesso non passa mai di mano come casella: se ne va solo quando l'intero insediamento si unisce a un'altra civiltà. Civilopedia: Diffusione culturale, Rivendicare caselle.</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CORE_FULL" Language="it_IT"><Text>Proteggi il centro cittadino e il primo anello</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CORE_CENTER" Language="it_IT"><Text>Proteggi solo il centro cittadino (prendi le caselle intorno)</Text></Replace>
-        <Replace Tag="LOC_OPTIONS_CD_CORE_NONE" Language="it_IT"><Text>Non proteggere nulla</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_NONE" Language="it_IT"><Text>Non proteggere alcun anello</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_ADJACENCY" Language="it_IT"><Text>Diffusione culturale - solo confine contiguo</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_ADJACENCY_DESCRIPTION" Language="it_IT"><Text>Attivata (consigliato): la cultura rivendica solo caselle che toccano il tuo territorio, quindi il territorio di un rivale viene preso dall'esterno verso l'interno. Disattivata: la cultura può rivendicare qualsiasi casella che domina, anche una sacca isolata dentro un'altra civiltà. Civilopedia: Diffusione culturale, Rivendicare caselle.</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_FUSED" Language="it_IT"><Text>Diffusione culturale - modello culturale ricco</Text></Replace>
@@ -49,5 +49,41 @@
         <Replace Tag="LOC_CD_PRESSURE_READY" Language="it_IT"><Text>pronta a passare di mano</Text></Replace>
         <Replace Tag="LOC_CD_PRESSURE_STALLED" Language="it_IT"><Text>in stallo</Text></Replace>
         <Replace Tag="LOC_CD_PRESSURE_OWNER_SUFFIX" Language="it_IT"><Text> (proprietario)</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIPS" Language="it_IT"><Text>Diffusione culturale - interi insediamenti passano di mano con la cultura</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIPS_DESCRIPTION" Language="it_IT"><Text>Attivo per impostazione predefinita. Quando la cultura di un vicino ha chiaramente conquistato un insediamento per diversi turni di fila, l'intero insediamento si unisce a quella civiltà: edifici, distretti, meraviglie e caselle lo seguono, e vieni avvisato al primo turno. Solo tra civiltà principali in pace; città-stato e popoli indipendenti non passano mai di mano così. Civilopedia: Diffusione culturale, Cambio di insediamenti.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_CAPITALS" Language="it_IT"><Text>Diffusione culturale - le capitali possono passare di mano con la cultura</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_CAPITALS_DESCRIPTION" Language="it_IT"><Text>Disattivo per impostazione predefinita. Se attivo, anche una capitale può unirsi a un vicino. Arriva come paese, e la civiltà che l'ha persa ottiene una nuova capitale.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_ELIMINATES" Language="it_IT"><Text>Diffusione culturale - la cultura può prendere l'ultimo insediamento di una civiltà</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_ELIMINATES_DESCRIPTION" Language="it_IT"><Text>Disattivo per impostazione predefinita. Se attivo, una civiltà il cui ultimo insediamento si unisce a un vicino viene sconfitta.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES" Language="it_IT"><Text>Diffusione culturale - lamentele quando un insediamento passa di mano</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_DESCRIPTION" Language="it_IT"><Text>Quante lamentele la civiltà che ha perso un insediamento ha contro quella che l'ha ottenuto (30 per impostazione predefinita). Il loro rapporto cala della stessa misura e si riprende col tempo; le lamentele restano.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_0" Language="it_IT"><Text>0</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_15" Language="it_IT"><Text>15</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_30" Language="it_IT"><Text>30</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_60" Language="it_IT"><Text>60</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD" Language="it_IT"><Text>Diffusione culturale - turni di cultura netta prima che un insediamento passi di mano</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_DESCRIPTION" Language="it_IT"><Text>Quanti turni di fila la cultura di un vicino deve dominare chiaramente un insediamento prima che si unisca (3 per impostazione predefinita). Vieni avvisato al primo.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_2" Language="it_IT"><Text>2</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_3" Language="it_IT"><Text>3</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_5" Language="it_IT"><Text>5</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_8" Language="it_IT"><Text>8</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_WARNING_TITLE" Language="it_IT"><Text>Un insediamento vacilla</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_WARNING" Language="it_IT"><Text>La gente di {1_City} guarda a {2_Civ}.</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_JOINED_TITLE" Language="it_IT"><Text>Un insediamento è passato di mano</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_JOINED" Language="it_IT"><Text>{1_City} si è unito a {2_Civ}.</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_GRIEVANCES" Language="it_IT"><Text>{1_Loser} ha ora {3_Amount} lamentele contro {2_Receiver}.</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_FALLBACK" Language="it_IT"><Text>La gente di un insediamento ha scelto un'altra civiltà.</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_ROW" Language="it_IT"><Text>Propende per {1_Civ}</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_PROGRESS" Language="it_IT"><Text>{1_Count} di {2_Count} turni di cultura netta</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_NOT_YET" Language="it_IT"><Text>cultura non ancora netta</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_WAR" Language="it_IT"><Text>trattenuto: in guerra</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_CAPITAL" Language="it_IT"><Text>trattenuto: è una capitale</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_LAST" Language="it_IT"><Text>trattenuto: il loro ultimo insediamento</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_AGE" Language="it_IT"><Text>trattenuto: l'era sta cambiando</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_DISTANT" Language="it_IT"><Text>trattenuto: Terre Lontane prima dell'Esplorazione</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_TEAM" Language="it_IT"><Text>trattenuto: stessa squadra</Text></Replace>
+        <Replace Tag="LOC_BUILDING_CD_FLIP_NAME" Language="it_IT"><Text>Cambio di fedeltà</Text></Replace>
+        <Replace Tag="LOC_BUILDING_CD_FLIP_DESCRIPTION" Language="it_IT"><Text>La gente di questo insediamento ha scelto di unirsi a un'altra civiltà. Diffusione culturale lo colloca per un attimo e lo rimuove appena l'insediamento è passato di mano.</Text></Replace>
+        <Replace Tag="LOC_BUILDING_CD_FLIP_TOOLTIP" Language="it_IT"><Text>La gente di qui ha scelto di unirsi a un'altra civiltà.</Text></Replace>
     </LocalizedText>
 </Database>

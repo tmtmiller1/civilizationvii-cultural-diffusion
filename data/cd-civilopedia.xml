@@ -42,6 +42,7 @@
         <Row PageLayoutID="CD_CITIES" UseSidebar="false"/>
         <Row PageLayoutID="CD_RECEDE" UseSidebar="false"/>
         <Row PageLayoutID="CD_RIVALFLIPS" UseSidebar="false"/>
+        <Row PageLayoutID="CD_CITYFLIP" UseSidebar="false"/>
         <Row PageLayoutID="CD_CONQUEST" UseSidebar="false"/>
         <Row PageLayoutID="CD_LENS" UseSidebar="false"/>
         <Row PageLayoutID="CD_OPTIONS" UseSidebar="false"/>
@@ -105,6 +106,11 @@
         <Row PageLayoutID="CD_RIVALFLIPS" ChapterID="RULES" SortIndex="20"/>
         <Row PageLayoutID="CD_RIVALFLIPS" ChapterID="LIMITS" SortIndex="30"/>
 
+        <Row PageLayoutID="CD_CITYFLIP" ChapterID="CONTENT" SortIndex="10"/>
+        <Row PageLayoutID="CD_CITYFLIP" ChapterID="RULES" SortIndex="20"/>
+        <Row PageLayoutID="CD_CITYFLIP" ChapterID="AFTER" SortIndex="30"/>
+        <Row PageLayoutID="CD_CITYFLIP" ChapterID="LIMITS" SortIndex="40"/>
+
         <Row PageLayoutID="CD_CONQUEST" ChapterID="CONTENT" SortIndex="10"/>
         <Row PageLayoutID="CD_CONQUEST" ChapterID="TAKING" SortIndex="20"/>
         <Row PageLayoutID="CD_CONQUEST" ChapterID="HOLD" SortIndex="30"/>
@@ -151,6 +157,7 @@
         <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_CITIES" PageGroupID="CD_RIVALS" PageLayoutID="CD_CITIES" Name="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITIES_TITLE" SortIndex="10"/>
         <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_RECEDE" PageGroupID="CD_RIVALS" PageLayoutID="CD_RECEDE" Name="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RECEDE_TITLE" SortIndex="20"/>
         <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_RIVALFLIPS" PageGroupID="CD_RIVALS" PageLayoutID="CD_RIVALFLIPS" Name="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_RIVALFLIPS_TITLE" SortIndex="30"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_CITYFLIP" PageGroupID="CD_RIVALS" PageLayoutID="CD_CITYFLIP" Name="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_TITLE" SortIndex="35"/>
         <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_CONQUEST" PageGroupID="CD_RIVALS" PageLayoutID="CD_CONQUEST" Name="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CONQUEST_TITLE" SortIndex="40"/>
 
         <!-- Interface & Options -->
@@ -194,6 +201,8 @@
         <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_CITIES" Term="LOC_PEDIA_CD_TERM_FOREIGN_CULTURE"/>
         <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_RECEDE" Term="LOC_PEDIA_CD_TERM_RECEDE"/>
         <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_RIVALFLIPS" Term="LOC_PEDIA_CD_TERM_AI"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_CITYFLIP" Term="LOC_PEDIA_CD_TERM_SETTLEMENT_FLIP"/>
+        <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_CITYFLIP" Term="LOC_PEDIA_CD_TERM_LOYALTY"/>
         <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_CONQUEST" Term="LOC_PEDIA_CD_TERM_CONQUEST"/>
         <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_CONQUEST" Term="LOC_PEDIA_CD_TERM_OCCUPATION"/>
         <Row SectionID="CULTURAL_DIFFUSION" PageID="CD_LENS" Term="LOC_PEDIA_CD_TERM_LENS"/>
