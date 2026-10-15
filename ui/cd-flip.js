@@ -20,7 +20,7 @@ export function claimCountsFor(state, me) {
   const claimCount = new Map();
   const bump = (city) => claimCount.set(city, (claimCount.get(city) || 0) + 1);
   for (const c of Object.values(state.claims)) {
-    if (c && c.by === me) bump(c.city);
+    if (c && c.by === me && !c.settlement) bump(c.city); // a joined settlement's plots are its own, not claims
   }
   // A claim still landing (cd-pending.js) spends the budget too, so a city can't over-claim mid-write.
   for (const p of Object.values(state.pending || {})) {

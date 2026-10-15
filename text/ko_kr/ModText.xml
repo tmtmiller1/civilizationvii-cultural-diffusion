@@ -15,10 +15,10 @@
         <Replace Tag="LOC_OPTIONS_CD_CLAIM_ONLY" Language="ko_KR"><Text>문화 확산 - 빈 땅만 획득</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CLAIM_ONLY_DESCRIPTION" Language="ko_KR"><Text>안전 모드입니다. 확산은 주인 없는 변경 타일만 획득하며, 다른 문명이 소유한 타일은 절대 빼앗지 않습니다. 문명 백과사전: 문화 확산, 타일 획득.</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CORE" Language="ko_KR"><Text>문화 확산 - 경쟁 문명 도시 보호</Text></Replace>
-        <Replace Tag="LOC_OPTIONS_CD_CORE_DESCRIPTION" Language="ko_KR"><Text>문화가 경쟁 문명의 도시 안으로 얼마나 깊이 밀고 들어갈 수 있는지 정합니다. '도심부와 안쪽 링 보호'는 도심부와 그 안쪽 링을 지킵니다. '도심부만 보호'는 도심부 타일만 지키며, 그 주변 타일은 문화로 획득할 수 있습니다. '보호 안 함'은 도심부까지도 빼앗길 수 있습니다. 문명 백과사전: 문화 확산, 타일 획득.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_DESCRIPTION" Language="ko_KR"><Text>문화가 경쟁 문명의 도시 안으로 얼마나 깊이 밀고 들어갈 수 있는지 정합니다. '도심부와 안쪽 링 보호'는 도심부 주변 링을 지킵니다. '도심부만 보호'(기본값)는 도심부 주변 타일을 문화로 획득할 수 있게 합니다. '보호 안 함'은 어떤 링도 지키지 않습니다. 도심부 자체는 타일로서 주인이 바뀌지 않으며, 정착지 전체가 다른 문명에 합류할 때만 함께 넘어갑니다. 시빌로페디아: 문화 확산, 타일 획득.</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CORE_FULL" Language="ko_KR"><Text>도심부와 안쪽 링 보호</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CORE_CENTER" Language="ko_KR"><Text>도심부만 보호 (안쪽 타일은 획득 가능)</Text></Replace>
-        <Replace Tag="LOC_OPTIONS_CD_CORE_NONE" Language="ko_KR"><Text>보호 안 함</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_NONE" Language="ko_KR"><Text>링 보호 안 함</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_ADJACENCY" Language="ko_KR"><Text>문화 확산 - 인접 타일만</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_ADJACENCY_DESCRIPTION" Language="ko_KR"><Text>켜짐(권장): 문화는 우리 영토에 닿은 타일만 획득하므로, 경쟁 문명의 영토는 바깥쪽부터 차례로 빼앗깁니다. 꺼짐: 문화가 우세한 타일이라면 어디든 획득할 수 있으며, 다른 문명 안에 떨어져 있는 고립 지역도 포함됩니다. 문명 백과사전: 문화 확산, 타일 획득.</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_FUSED" Language="ko_KR"><Text>문화 확산 - 종합 문화 모델</Text></Replace>
@@ -49,5 +49,41 @@
         <Replace Tag="LOC_CD_PRESSURE_READY" Language="ko_KR"><Text>획득 가능</Text></Replace>
         <Replace Tag="LOC_CD_PRESSURE_STALLED" Language="ko_KR"><Text>정체됨</Text></Replace>
         <Replace Tag="LOC_CD_PRESSURE_OWNER_SUFFIX" Language="ko_KR"><Text> (소유자)</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIPS" Language="ko_KR"><Text>문화 확산 - 정착지 전체가 문화로 주인을 바꿈</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIPS_DESCRIPTION" Language="ko_KR"><Text>기본값은 켜짐입니다. 이웃 문명의 문화가 여러 턴 연속으로 정착지를 확실히 차지하면, 정착지 전체가 그 문명에 합류합니다. 건물, 특수지구, 불가사의, 타일이 모두 함께 넘어가며, 첫 턴에 경고가 표시됩니다. 평화 중인 주요 문명 사이에서만 일어나며, 도시국가와 독립 세력은 이렇게 주인을 바꾸지 않습니다. 시빌로페디아: 문화 확산, 정착지 귀속 변경.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_CAPITALS" Language="ko_KR"><Text>문화 확산 - 수도도 문화로 주인을 바꿀 수 있음</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_CAPITALS_DESCRIPTION" Language="ko_KR"><Text>기본값은 꺼짐입니다. 켜면 수도도 이웃 문명에 합류할 수 있습니다. 수도는 마을로 넘어가며, 수도를 잃은 문명은 새 수도를 얻습니다.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_ELIMINATES" Language="ko_KR"><Text>문화 확산 - 문화로 문명의 마지막 정착지도 가져올 수 있음</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_ELIMINATES_DESCRIPTION" Language="ko_KR"><Text>기본값은 꺼짐입니다. 켜면 마지막 정착지가 이웃 문명에 합류한 문명은 패배합니다.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES" Language="ko_KR"><Text>문화 확산 - 정착지가 주인을 바꿀 때의 불만</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_DESCRIPTION" Language="ko_KR"><Text>정착지를 잃은 문명이 얻은 문명에게 품는 불만의 양입니다(기본값 30). 두 문명의 관계도 같은 만큼 떨어졌다가 시간이 지나며 회복되지만, 불만은 남습니다.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_0" Language="ko_KR"><Text>0</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_15" Language="ko_KR"><Text>15</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_30" Language="ko_KR"><Text>30</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_60" Language="ko_KR"><Text>60</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD" Language="ko_KR"><Text>문화 확산 - 정착지가 주인을 바꾸기까지 확실한 문화 우위 턴 수</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_DESCRIPTION" Language="ko_KR"><Text>이웃 문명의 문화가 몇 턴 연속으로 정착지를 확실히 차지해야 합류하는지 정합니다(기본값 3). 첫 턴에 경고가 표시됩니다.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_2" Language="ko_KR"><Text>2</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_3" Language="ko_KR"><Text>3</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_5" Language="ko_KR"><Text>5</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_8" Language="ko_KR"><Text>8</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_WARNING_TITLE" Language="ko_KR"><Text>정착지가 흔들리고 있습니다</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_WARNING" Language="ko_KR"><Text>{1_City}의 사람들이 {2_Civ}을(를) 바라보고 있습니다.</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_JOINED_TITLE" Language="ko_KR"><Text>정착지의 주인이 바뀌었습니다</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_JOINED" Language="ko_KR"><Text>{1_City}이(가) {2_Civ}에 합류했습니다.</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_GRIEVANCES" Language="ko_KR"><Text>{1_Loser}은(는) 이제 {2_Receiver}에게 불만 {3_Amount}을(를) 품고 있습니다.</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_FALLBACK" Language="ko_KR"><Text>한 정착지의 사람들이 다른 문명을 선택했습니다.</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_ROW" Language="ko_KR"><Text>{1_Civ} 쪽으로 기울어짐</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_PROGRESS" Language="ko_KR"><Text>확실한 문화 우위 {1_Count}/{2_Count}턴</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_NOT_YET" Language="ko_KR"><Text>문화 우위가 아직 확실하지 않음</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_WAR" Language="ko_KR"><Text>보류: 전쟁 중</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_CAPITAL" Language="ko_KR"><Text>보류: 수도</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_LAST" Language="ko_KR"><Text>보류: 마지막 정착지</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_AGE" Language="ko_KR"><Text>보류: 시대 전환 중</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_DISTANT" Language="ko_KR"><Text>보류: 탐험 시대 전의 먼 땅</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_TEAM" Language="ko_KR"><Text>보류: 같은 팀</Text></Replace>
+        <Replace Tag="LOC_BUILDING_CD_FLIP_NAME" Language="ko_KR"><Text>충성의 전환</Text></Replace>
+        <Replace Tag="LOC_BUILDING_CD_FLIP_DESCRIPTION" Language="ko_KR"><Text>이 정착지의 사람들이 다른 문명에 합류하기로 했습니다. 문화 확산이 잠시 배치했다가 정착지의 주인이 바뀌면 제거합니다.</Text></Replace>
+        <Replace Tag="LOC_BUILDING_CD_FLIP_TOOLTIP" Language="ko_KR"><Text>이곳 사람들이 다른 문명에 합류하기로 했습니다.</Text></Replace>
     </LocalizedText>
 </Database>

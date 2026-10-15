@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Train icons for the settlement-flip notifications, each the game's own: a city losing happiness for a settlement
+     leaning toward a neighbor, the tile-acquired icon for one that has joined. -->
+<Database>
+    <IconDefinitions>
+        <Row>
+            <ID>NOTIFICATION_CD_CITY_FLIP_WARN</ID>
+            <Path>blp:ntf_city_unhappy_loss</Path>
+        </Row>
+        <Row>
+            <ID>NOTIFICATION_CD_CITY_FLIP</ID>
+            <Path>blp:ntf_acquire_tile</Path>
+        </Row>
+    </IconDefinitions>
+</Database>

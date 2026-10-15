@@ -15,10 +15,10 @@
         <Replace Tag="LOC_OPTIONS_CD_CLAIM_ONLY" Language="zh_Hans_CN"><Text>文化扩散 - 仅获取无主土地</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CLAIM_ONLY_DESCRIPTION" Language="zh_Hans_CN"><Text>安全模式。扩散只获取无主的边境地块，绝不夺取其他文明拥有的地块。文明百科：文化扩散，获取地块。</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CORE" Language="zh_Hans_CN"><Text>文化扩散 - 对手城市保护</Text></Replace>
-        <Replace Tag="LOC_OPTIONS_CD_CORE_DESCRIPTION" Language="zh_Hans_CN"><Text>文化可以深入对手城市多远。保护完整市区环：其市中心及内环都安全。仅保护市中心：只保护市中心地块，文化可夺取其周围的地块。不保护：连市中心也可能易手。文明百科：文化扩散，获取地块。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_DESCRIPTION" Language="zh_Hans_CN"><Text>文化可以深入对手城市多远。保护完整市区环：市中心周围的环是安全的。仅保护市中心（默认）：文化可夺取市中心周围的地块。不保护：任何环都不受保护。市中心本身从不作为地块易手：只有整个定居点加入另一个文明时它才随之转移。文明百科：文化扩散，获取地块。</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CORE_FULL" Language="zh_Hans_CN"><Text>保护完整市区环</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CORE_CENTER" Language="zh_Hans_CN"><Text>仅保护市中心（可夺取内环地块）</Text></Replace>
-        <Replace Tag="LOC_OPTIONS_CD_CORE_NONE" Language="zh_Hans_CN"><Text>不保护</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_NONE" Language="zh_Hans_CN"><Text>不保护任何环</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_ADJACENCY" Language="zh_Hans_CN"><Text>文化扩散 - 仅限相连边界</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_ADJACENCY_DESCRIPTION" Language="zh_Hans_CN"><Text>开启（推荐）：文化只获取与你的土地相邻的地块，因此对手的领土会由外向内被夺取。关闭：文化可获取任何由其占优的地块，包括其他文明内部不相连的飞地。文明百科：文化扩散，获取地块。</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_FUSED" Language="zh_Hans_CN"><Text>文化扩散 - 丰富文化模型</Text></Replace>
@@ -49,5 +49,41 @@
         <Replace Tag="LOC_CD_PRESSURE_READY" Language="zh_Hans_CN"><Text>即将易手</Text></Replace>
         <Replace Tag="LOC_CD_PRESSURE_STALLED" Language="zh_Hans_CN"><Text>停滞</Text></Replace>
         <Replace Tag="LOC_CD_PRESSURE_OWNER_SUFFIX" Language="zh_Hans_CN"><Text>（拥有者）</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIPS" Language="zh_Hans_CN"><Text>文化扩散 - 整个定居点因文化易手</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIPS_DESCRIPTION" Language="zh_Hans_CN"><Text>默认开启。当邻国的文化连续数回合明显赢得某个定居点时，整个定居点会加入该文明：其建筑、区域、奇观和地块随之转移，第一回合会向你发出警告。仅在和平相处的主要文明之间发生；城邦和独立民族不会以此方式易手。文明百科：文化扩散，定居点易手。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_CAPITALS" Language="zh_Hans_CN"><Text>文化扩散 - 首都也可因文化易手</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_CAPITALS_DESCRIPTION" Language="zh_Hans_CN"><Text>默认关闭。开启后，首都也可能加入邻国。它会以城镇身份转移，失去它的文明会获得新的首都。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_ELIMINATES" Language="zh_Hans_CN"><Text>文化扩散 - 文化可夺取文明的最后一个定居点</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_ELIMINATES_DESCRIPTION" Language="zh_Hans_CN"><Text>默认关闭。开启后，最后一个定居点加入邻国的文明会被击败。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES" Language="zh_Hans_CN"><Text>文化扩散 - 定居点易手时的不满</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_DESCRIPTION" Language="zh_Hans_CN"><Text>失去定居点的文明对获得它的文明产生多少不满（默认30）。双方关系下降同样的幅度并会随时间恢复；不满则会保留。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_0" Language="zh_Hans_CN"><Text>0</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_15" Language="zh_Hans_CN"><Text>15</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_30" Language="zh_Hans_CN"><Text>30</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_60" Language="zh_Hans_CN"><Text>60</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD" Language="zh_Hans_CN"><Text>文化扩散 - 定居点易手前所需的明显文化优势回合数</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_DESCRIPTION" Language="zh_Hans_CN"><Text>邻国文化需要连续多少回合明显占优，定居点才会加入（默认3）。第一回合会发出警告。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_2" Language="zh_Hans_CN"><Text>2</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_3" Language="zh_Hans_CN"><Text>3</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_5" Language="zh_Hans_CN"><Text>5</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_8" Language="zh_Hans_CN"><Text>8</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_WARNING_TITLE" Language="zh_Hans_CN"><Text>定居点人心浮动</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_WARNING" Language="zh_Hans_CN"><Text>{1_City}的人民心向{2_Civ}。</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_JOINED_TITLE" Language="zh_Hans_CN"><Text>定居点已易手</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_JOINED" Language="zh_Hans_CN"><Text>{1_City}已加入{2_Civ}。</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_GRIEVANCES" Language="zh_Hans_CN"><Text>{1_Loser}现在对{2_Receiver}怀有{3_Amount}点不满。</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_FALLBACK" Language="zh_Hans_CN"><Text>某个定居点的人民选择了另一个文明。</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_ROW" Language="zh_Hans_CN"><Text>倾向{1_Civ}</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_PROGRESS" Language="zh_Hans_CN"><Text>明显文化优势 {1_Count}/{2_Count} 回合</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_NOT_YET" Language="zh_Hans_CN"><Text>文化优势尚不明显</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_WAR" Language="zh_Hans_CN"><Text>暂缓：交战中</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_CAPITAL" Language="zh_Hans_CN"><Text>暂缓：首都</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_LAST" Language="zh_Hans_CN"><Text>暂缓：其最后一个定居点</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_AGE" Language="zh_Hans_CN"><Text>暂缓：时代更替中</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_DISTANT" Language="zh_Hans_CN"><Text>暂缓：探索时代前的远方土地</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_TEAM" Language="zh_Hans_CN"><Text>暂缓：同一队伍</Text></Replace>
+        <Replace Tag="LOC_BUILDING_CD_FLIP_NAME" Language="zh_Hans_CN"><Text>归属转变</Text></Replace>
+        <Replace Tag="LOC_BUILDING_CD_FLIP_DESCRIPTION" Language="zh_Hans_CN"><Text>这个定居点的人民选择加入另一个文明。文化扩散会短暂放置它，并在定居点易手后将其移除。</Text></Replace>
+        <Replace Tag="LOC_BUILDING_CD_FLIP_TOOLTIP" Language="zh_Hans_CN"><Text>这里的人民选择加入另一个文明。</Text></Replace>
     </LocalizedText>
 </Database>

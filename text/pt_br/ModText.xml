@@ -19,10 +19,10 @@
         <Replace Tag="LOC_OPTIONS_CD_CLAIM_ONLY_DESCRIPTION" Language="pt_BR"><Text>Modo seguro. A difusão só reivindica painéis de fronteira sem dono e nunca toma um painel de outra civilização. Civilopédia: Difusão Cultural, Reivindicar Painéis.</Text></Replace>
 
         <Replace Tag="LOC_OPTIONS_CD_CORE" Language="pt_BR"><Text>Difusão Cultural - proteção de cidades rivais</Text></Replace>
-        <Replace Tag="LOC_OPTIONS_CD_CORE_DESCRIPTION" Language="pt_BR"><Text>Até onde a cultura pode avançar em uma cidade rival. Todo o anel central mantém o centro e o anel interno a salvo. Só o Centro da Cidade protege apenas o painel do Centro da Cidade e deixa a cultura tomar os painéis ao redor. Nada deixa até o centro mudar de dono. Civilopédia: Difusão Cultural, Reivindicar Painéis.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_DESCRIPTION" Language="pt_BR"><Text>Até onde a cultura pode avançar em uma cidade rival. Todo o anel central mantém a salvo o anel ao redor do centro. Só o Centro da Cidade (padrão) deixa a cultura tomar os painéis ao redor do centro. Nada não protege nenhum anel. O centro em si nunca muda de dono como painel: só vai junto quando o assentamento inteiro se junta a outra civilização. Civilopédia: Difusão Cultural, Reivindicar Painéis.</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CORE_FULL" Language="pt_BR"><Text>Proteger todo o anel central</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CORE_CENTER" Language="pt_BR"><Text>Proteger só o Centro da Cidade (tomar painéis internos)</Text></Replace>
-        <Replace Tag="LOC_OPTIONS_CD_CORE_NONE" Language="pt_BR"><Text>Não proteger nada</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_NONE" Language="pt_BR"><Text>Não proteger nenhum anel</Text></Replace>
 
         <Replace Tag="LOC_OPTIONS_CD_ADJACENCY" Language="pt_BR"><Text>Difusão Cultural - apenas fronteira contígua</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_ADJACENCY_DESCRIPTION" Language="pt_BR"><Text>Ligado (recomendado): a cultura só reivindica painéis que tocam suas terras, então o território rival é tomado de fora para dentro. Desligado: a cultura pode reivindicar qualquer painel que domine, inclusive um bolsão isolado dentro de outra civilização. Civilopédia: Difusão Cultural, Reivindicar Painéis.</Text></Replace>
@@ -64,5 +64,41 @@
         <Replace Tag="LOC_CD_PRESSURE_OWNER_SUFFIX" Language="pt_BR"><Text> (dono)</Text></Replace>
         <Replace Tag="LOC_CD_TOAST_GAINED" Language="pt_BR"><Text>Difusão Cultural: sua cultura reivindicou novo território.</Text></Replace>
         <Replace Tag="LOC_CD_TOAST_LOST" Language="pt_BR"><Text>Difusão Cultural: outra civilização tomou um dos seus painéis.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIPS" Language="pt_BR"><Text>Difusão Cultural - assentamentos inteiros mudam de dono pela cultura</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIPS_DESCRIPTION" Language="pt_BR"><Text>Ativado por padrão. Quando a cultura de um vizinho vence claramente um assentamento por vários turnos seguidos, o assentamento inteiro se junta a essa civilização: edifícios, distritos, maravilhas e painéis vão junto, e você é avisado no primeiro turno. Só entre civilizações principais em paz; cidades-estado e povos independentes nunca mudam de dono assim. Civilopédia: Difusão Cultural, Troca de Assentamentos.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_CAPITALS" Language="pt_BR"><Text>Difusão Cultural - capitais podem mudar de dono pela cultura</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_CAPITALS_DESCRIPTION" Language="pt_BR"><Text>Desativado por padrão. Quando ativado, uma capital também pode se juntar a um vizinho. Ela chega como Cidade Pequena, e a civilização que a perdeu ganha uma nova capital.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_ELIMINATES" Language="pt_BR"><Text>Difusão Cultural - a cultura pode tomar o último assentamento de uma civilização</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_ELIMINATES_DESCRIPTION" Language="pt_BR"><Text>Desativado por padrão. Quando ativado, uma civilização cujo último assentamento se junta a um vizinho é derrotada.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES" Language="pt_BR"><Text>Difusão Cultural - queixas quando um assentamento muda de dono</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_DESCRIPTION" Language="pt_BR"><Text>Quantas queixas a civilização que perdeu um assentamento tem contra a que o ganhou (30 por padrão). A relação entre elas cai na mesma medida e se recupera com o tempo; as queixas ficam.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_0" Language="pt_BR"><Text>0</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_15" Language="pt_BR"><Text>15</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_30" Language="pt_BR"><Text>30</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_60" Language="pt_BR"><Text>60</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD" Language="pt_BR"><Text>Difusão Cultural - turnos de cultura clara antes de um assentamento mudar de dono</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_DESCRIPTION" Language="pt_BR"><Text>Quantos turnos seguidos a cultura de um vizinho precisa dominar claramente um assentamento antes que ele se junte (3 por padrão). Você é avisado no primeiro.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_2" Language="pt_BR"><Text>2</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_3" Language="pt_BR"><Text>3</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_5" Language="pt_BR"><Text>5</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_8" Language="pt_BR"><Text>8</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_WARNING_TITLE" Language="pt_BR"><Text>Um assentamento hesita</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_WARNING" Language="pt_BR"><Text>O povo de {1_City} olha para {2_Civ}.</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_JOINED_TITLE" Language="pt_BR"><Text>Um assentamento mudou de dono</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_JOINED" Language="pt_BR"><Text>{1_City} se juntou a {2_Civ}.</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_GRIEVANCES" Language="pt_BR"><Text>{1_Loser} agora tem {3_Amount} queixas contra {2_Receiver}.</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_FALLBACK" Language="pt_BR"><Text>O povo de um assentamento escolheu outra civilização.</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_ROW" Language="pt_BR"><Text>Inclina-se para {1_Civ}</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_PROGRESS" Language="pt_BR"><Text>{1_Count} de {2_Count} turnos de cultura clara</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_NOT_YET" Language="pt_BR"><Text>cultura ainda não clara</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_WAR" Language="pt_BR"><Text>retido: em guerra</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_CAPITAL" Language="pt_BR"><Text>retido: é uma capital</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_LAST" Language="pt_BR"><Text>retido: o último assentamento deles</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_AGE" Language="pt_BR"><Text>retido: a era está mudando</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_DISTANT" Language="pt_BR"><Text>retido: Terras Distantes antes da Exploração</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_TEAM" Language="pt_BR"><Text>retido: mesma equipe</Text></Replace>
+        <Replace Tag="LOC_BUILDING_CD_FLIP_NAME" Language="pt_BR"><Text>Mudança de Lealdade</Text></Replace>
+        <Replace Tag="LOC_BUILDING_CD_FLIP_DESCRIPTION" Language="pt_BR"><Text>O povo deste assentamento escolheu se juntar a outra civilização. A Difusão Cultural o coloca por um momento e o remove assim que o assentamento muda de dono.</Text></Replace>
+        <Replace Tag="LOC_BUILDING_CD_FLIP_TOOLTIP" Language="pt_BR"><Text>O povo daqui escolheu se juntar a outra civilização.</Text></Replace>
     </LocalizedText>
 </Database>

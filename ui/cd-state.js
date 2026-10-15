@@ -11,6 +11,7 @@ const MAX_CLAIM_ENTRIES = 8192;
 const MAX_LOCK_ENTRIES = 8192;
 const MAX_PENDING_ENTRIES = 1024;
 const MAX_OCCUPATION_ENTRIES = 2048;
+const MAX_CITY_HOLD_ENTRIES = 512;
 const PENDING_KINDS = ["claim", "cede"];
 
 /**
@@ -18,6 +19,15 @@ const PENDING_KINDS = ["claim", "cede"];
  * @property {number} by Player id that owns the plot by culture (the "soft halo").
  * @property {number} city City id (numeric) the plot is attached to, or -1.
  * @property {number} turn Monotonic turn the claim was made.
+ * @property {boolean} [settlement] The plot arrived with its whole settlement (cd-city-flip.js). It belongs to that
+ *   city, so it never counts toward a city's claim cap, is never released to the base game and never recedes.
+ */
+
+/**
+ * @typedef {Object} CityHoldEntry A settlement whose center a neighbor's culture has clearly won (cd-city-flip.js).
+ * @property {number} by The leading civ.
+ * @property {number} owner The settlement's owner when the count started.
+ * @property {number} n Consecutive passes the leader has held it.
  */
 
 /**
@@ -38,12 +48,22 @@ const PENDING_KINDS = ["claim", "cede"];
  * @property {Record<string, PendingEntry>} pending Verbs awaiting confirmation on the next pass, keyed "x,y".
  * @property {Record<string, {by:number, turns:number}>} occupation Conquest counters (cd-conquest.js): "x,y" ->
  *   which player's combat unit has held the tile, and for how many consecutive passes.
+ * @property {Record<string, CityHoldEntry>} cityHold Whole-settlement flip counters, keyed by the center "x,y".
  * @property {number} monoTurn Monotonic turn (never resets at age boundaries).
  */
 
+/**
+ * Whether a claim is a tile the mod claimed for `me` (and so may recede): a plot that arrived with its whole
+ * settlement belongs to that city and isn't one.
+ * @param {ClaimEntry|undefined} claim @param {number} me @returns {boolean}
+ */
+export function tileClaimBy(claim, me) {
+  return !!claim && claim.by === me && !claim.settlement;
+}
+
 /** @returns {CdState} A fresh empty state. */
 function defaultState() {
-  return { field: {}, claims: {}, locked: {}, pending: {}, occupation: {}, monoTurn: 0 };
+  return { field: {}, claims: {}, locked: {}, pending: {}, occupation: {}, cityHold: {}, monoTurn: 0 };
 }
 
 /** @param {*} v @returns {{by:number, turns:number}|null} */
@@ -53,6 +73,15 @@ function normalizeOccupation(v) {
   const turns = Math.floor(num(v.turns, 0));
   if (!isFinite(by) || by < 0 || turns <= 0) return null;
   return { by, turns };
+}
+
+/** @param {*} v @returns {CityHoldEntry|null} */
+function normalizeCityHold(v) {
+  if (!v || typeof v !== "object") return null;
+  const by = Math.floor(num(v.by, Number.NaN));
+  const n = Math.floor(num(v.n, 0));
+  if (!isFinite(by) || by < 0 || n <= 0) return null;
+  return { by, owner: Math.floor(num(v.owner, -1)), n };
 }
 
 /** @param {*} v @returns {PendingEntry|null} */
@@ -101,7 +130,9 @@ function normalizeClaim(v) {
   if (!v || typeof v !== "object") return null;
   const by = Math.floor(num(v.by, Number.NaN));
   if (!isFinite(by)) return null;
-  return { by, city: Math.floor(num(v.city, -1)), turn: Math.max(0, Math.floor(num(v.turn, 0))) };
+  const row = { by, city: Math.floor(num(v.city, -1)), turn: Math.max(0, Math.floor(num(v.turn, 0))) };
+  if (v.settlement === true) row.settlement = true;
+  return row;
 }
 
 /**
@@ -148,6 +179,7 @@ export function normalizeState(s) {
   );
   out.pending = normalizeMap(payload.pending, normalizePending, MAX_PENDING_ENTRIES);
   out.occupation = normalizeMap(payload.occupation, normalizeOccupation, MAX_OCCUPATION_ENTRIES);
+  out.cityHold = normalizeMap(payload.cityHold, normalizeCityHold, MAX_CITY_HOLD_ENTRIES);
   return out;
 }
 
@@ -234,4 +266,4 @@ export function pruneState(state) {
 }
 
 // for tests
-export const __test = { defaultState, normalizeFieldRow, normalizeClaim, STATE_KEY };
+export const __test = { defaultState, normalizeFieldRow, normalizeClaim, normalizeCityHold, STATE_KEY };

@@ -19,10 +19,10 @@
         <Replace Tag="LOC_OPTIONS_CD_CLAIM_ONLY_DESCRIPTION" Language="pl_PL"><Text>Tryb bezpieczny. Dyfuzja zajmuje tylko niczyje pola przygraniczne i nigdy nie przejmuje pola należącego do innej cywilizacji. Civilopedia: Dyfuzja kulturowa, Zajmowanie pól.</Text></Replace>
 
         <Replace Tag="LOC_OPTIONS_CD_CORE" Language="pl_PL"><Text>Dyfuzja kulturowa - Ochrona miast rywali</Text></Replace>
-        <Replace Tag="LOC_OPTIONS_CD_CORE_DESCRIPTION" Language="pl_PL"><Text>Jak głęboko kultura może wejść w miasto rywala. Cały pierścień śródmieścia chroni centrum i jego wewnętrzny pierścień. Tylko centrum miasta chroni wyłącznie pole centrum miasta, a kultura może zająć pola wokół niego. Nic nie chroni nawet centrum. Civilopedia: Dyfuzja kulturowa, Zajmowanie pól.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_DESCRIPTION" Language="pl_PL"><Text>Jak głęboko kultura może wejść w miasto rywala. Cały pierścień śródmieścia chroni pierścień wokół centrum. Tylko centrum miasta (domyślnie) pozwala kulturze zająć pola wokół centrum. Nic nie chroni żadnego pierścienia. Samo centrum nigdy nie zmienia właściciela jako pole: przechodzi tylko wtedy, gdy całe osiedle przyłącza się do innej cywilizacji. Civilopedia: Dyfuzja kulturowa, Zajmowanie pól.</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CORE_FULL" Language="pl_PL"><Text>Chroń cały pierścień śródmieścia</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CORE_CENTER" Language="pl_PL"><Text>Chroń tylko centrum miasta (zajmuj pola wewnętrzne)</Text></Replace>
-        <Replace Tag="LOC_OPTIONS_CD_CORE_NONE" Language="pl_PL"><Text>Nie chroń niczego</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_NONE" Language="pl_PL"><Text>Nie chroń żadnego pierścienia</Text></Replace>
 
         <Replace Tag="LOC_OPTIONS_CD_ADJACENCY" Language="pl_PL"><Text>Dyfuzja kulturowa - Tylko ciągła granica</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_ADJACENCY_DESCRIPTION" Language="pl_PL"><Text>Wł. (zalecane): kultura zajmuje tylko pola stykające się z twoją ziemią, więc terytorium rywala jest zajmowane od zewnątrz do środka. Wył.: kultura może zająć każde pole, na którym dominuje, także oderwaną enklawę wewnątrz innej cywilizacji. Civilopedia: Dyfuzja kulturowa, Zajmowanie pól.</Text></Replace>
@@ -64,5 +64,41 @@
         <Replace Tag="LOC_CD_PRESSURE_READY" Language="pl_PL"><Text>gotowe do przejęcia</Text></Replace>
         <Replace Tag="LOC_CD_PRESSURE_STALLED" Language="pl_PL"><Text>wstrzymane</Text></Replace>
         <Replace Tag="LOC_CD_PRESSURE_OWNER_SUFFIX" Language="pl_PL"><Text> (właściciel)</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIPS" Language="pl_PL"><Text>Dyfuzja kulturowa - całe osiedla zmieniają właściciela dzięki kulturze</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIPS_DESCRIPTION" Language="pl_PL"><Text>Domyślnie włączone. Gdy kultura sąsiada wyraźnie wygrywa osiedle przez kilka tur z rzędu, całe osiedle przyłącza się do tej cywilizacji: jego budynki, dzielnice, cuda i pola przechodzą razem z nim, a ostrzeżenie pojawia się w pierwszej turze. Tylko między głównymi cywilizacjami w pokoju; miasta-państwa i niezależne ludy nigdy nie zmieniają tak właściciela. Civilopedia: Dyfuzja kulturowa, Zmiana osiedli.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_CAPITALS" Language="pl_PL"><Text>Dyfuzja kulturowa - stolice mogą zmienić właściciela dzięki kulturze</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_CAPITALS_DESCRIPTION" Language="pl_PL"><Text>Domyślnie wyłączone. Po włączeniu także stolica może przyłączyć się do sąsiada. Przechodzi jako miasteczko, a cywilizacja, która ją straciła, dostaje nową stolicę.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_ELIMINATES" Language="pl_PL"><Text>Dyfuzja kulturowa - kultura może przejąć ostatnie osiedle cywilizacji</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_ELIMINATES_DESCRIPTION" Language="pl_PL"><Text>Domyślnie wyłączone. Po włączeniu cywilizacja, której ostatnie osiedle przyłączy się do sąsiada, zostaje pokonana.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES" Language="pl_PL"><Text>Dyfuzja kulturowa - pretensje, gdy osiedle zmienia właściciela</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_DESCRIPTION" Language="pl_PL"><Text>Ile pretensji cywilizacja, która straciła osiedle, ma wobec tej, która je zyskała (domyślnie 30). Ich stosunki spadają o tyle samo i z czasem wracają; pretensje zostają.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_0" Language="pl_PL"><Text>0</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_15" Language="pl_PL"><Text>15</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_30" Language="pl_PL"><Text>30</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_60" Language="pl_PL"><Text>60</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD" Language="pl_PL"><Text>Dyfuzja kulturowa - tury wyraźnej przewagi kultury, zanim osiedle zmieni właściciela</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_DESCRIPTION" Language="pl_PL"><Text>Przez ile tur z rzędu kultura sąsiada musi wyraźnie przeważać w osiedlu, zanim się ono przyłączy (domyślnie 3). Ostrzeżenie pojawia się w pierwszej.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_2" Language="pl_PL"><Text>2</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_3" Language="pl_PL"><Text>3</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_5" Language="pl_PL"><Text>5</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_8" Language="pl_PL"><Text>8</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_WARNING_TITLE" Language="pl_PL"><Text>Osiedle się waha</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_WARNING" Language="pl_PL"><Text>Mieszkańcy {1_City} spoglądają w stronę {2_Civ}.</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_JOINED_TITLE" Language="pl_PL"><Text>Osiedle zmieniło właściciela</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_JOINED" Language="pl_PL"><Text>{1_City} przyłączyło się do {2_Civ}.</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_GRIEVANCES" Language="pl_PL"><Text>{1_Loser} ma teraz {3_Amount} pretensji wobec {2_Receiver}.</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_FALLBACK" Language="pl_PL"><Text>Mieszkańcy osiedla wybrali inną cywilizację.</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_ROW" Language="pl_PL"><Text>Skłania się ku {1_Civ}</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_PROGRESS" Language="pl_PL"><Text>{1_Count} z {2_Count} tur wyraźnej przewagi kultury</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_NOT_YET" Language="pl_PL"><Text>przewaga kultury jeszcze niewyraźna</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_WAR" Language="pl_PL"><Text>wstrzymane: wojna</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_CAPITAL" Language="pl_PL"><Text>wstrzymane: stolica</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_LAST" Language="pl_PL"><Text>wstrzymane: ich ostatnie osiedle</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_AGE" Language="pl_PL"><Text>wstrzymane: zmienia się era</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_DISTANT" Language="pl_PL"><Text>wstrzymane: Dalekie Ziemie przed Erą Odkryć</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_TEAM" Language="pl_PL"><Text>wstrzymane: ta sama drużyna</Text></Replace>
+        <Replace Tag="LOC_BUILDING_CD_FLIP_NAME" Language="pl_PL"><Text>Zmiana przynależności</Text></Replace>
+        <Replace Tag="LOC_BUILDING_CD_FLIP_DESCRIPTION" Language="pl_PL"><Text>Mieszkańcy tego osiedla postanowili przyłączyć się do innej cywilizacji. Dyfuzja kulturowa umieszcza to na chwilę i usuwa, gdy osiedle zmieni właściciela.</Text></Replace>
+        <Replace Tag="LOC_BUILDING_CD_FLIP_TOOLTIP" Language="pl_PL"><Text>Tutejsi mieszkańcy postanowili przyłączyć się do innej cywilizacji.</Text></Replace>
     </LocalizedText>
 </Database>

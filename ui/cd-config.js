@@ -29,10 +29,11 @@
  * @property {number}  maxDiffusionPlots Per-city cap on diffusion-claimed plots (safety).
  * @property {number}  maxFlipsPerTurn Global per-pass ceiling on ownership flips (pacing/safety).
  * @property {number}  flipCooldownTurns Turns a freshly flipped tile is locked from re-flipping.
- * @property {number}  coreProtectRadius Rings around a rival city center that never flip:
+ * @property {number}  coreProtectRadius Rings around a rival city center that never flip as tiles:
  *   1 = protect the center + its ring-1 (full "downtown" shield); 0 = protect only the
- *   city-center plot itself (culture can bite ring-1 inward); -1 = protect nothing (even the
- *   center is flippable). Lower = diffusion pushes deeper into a rival's worked footprint.
+ *   city-center plot itself (culture can bite ring-1 inward); -1 = protect no ring. The center itself never
+ *   moves as a tile whatever this says: it moves only with its whole settlement (cityFlips, cd-city-flip.js).
+ *   Lower = diffusion pushes deeper into a rival's worked footprint.
  * @property {boolean} protectTrappedUnits Never close the last way out on a foreign unit belonging to a
  *   civ we are at peace with: trespass then leaves it with no legal move until a war ejects it.
  *   Refused only when this claim takes its last legal destination; a unit
@@ -40,7 +41,21 @@
  * @property {number}  minorProtectRadius Minimum rings of core protection around a minor settlement
  *   (city-state or Independent Power) regardless of coreProtectRadius. A minor's whole territory is a
  *   ring or two, so the major-civ default of 0 stripped it to its center plot, which reads to the
- *   player as the settlement being absorbed. -1 disables the floor.
+ *   player as the settlement being absorbed. -1 disables the floor. Minor settlements never flip whole.
+ * @property {boolean} cityFlips Whole-settlement flips: a settlement whose center and most of whose tiles a
+ *   neighbor's culture has clearly won for `cityFlipHoldPasses` passes joins that civilization, buildings,
+ *   districts and tiles included (cd-city-flip.js). Majors only, never at war.
+ * @property {boolean} cityFlipCapitals A capital can flip (it arrives as a town and the old owner's capital moves).
+ * @property {boolean} cityFlipEliminates A flip may take a civilization's last settlement, which defeats it.
+ * @property {number}  cityFlipGrievances Grievances the civ that lost the settlement holds against the receiver
+ *   (0 = none).
+ * @property {number}  cityFlipHoldPasses Consecutive passes of clear culture before the settlement flips.
+ * @property {number}  cityFlipRatio The center is won when leader x this > owner (0.5 = twice the owner's stock).
+ * @property {number}  cityFlipBar The leader's center stock must also pass minimumOwner (age-adjusted) x this.
+ * @property {number}  cityFlipPlotShare Share of the settlement's plots the leader must lead.
+ * @property {number}  maxCityFlipsPerPass Settlements flipped per pass at most.
+ * @property {number}  cityFlipWaitMs How long to wait for the engine's transfer before giving up.
+ * @property {number}  cityFlipNoticeDelayMs Delay between the transfer and the notice, so Partisans has rolled.
  * @property {boolean} requireAdjacency Only flip a tile that touches your existing land
  *   (the organic contiguous front, taking a rival's rings from the outside in). Off = flip
  *   any tile your culture field dominates, even a disconnected pocket inside their territory.
@@ -164,10 +179,29 @@ export const CONFIG = {
   flipCooldownTurns: 15, // a freshly claimed/conquered tile is locked this long
 
   // Take tiles inside a rival's ring by default: protect only the enemy city-center plot
-  // itself (0), not its whole ring-1. Set 1 for the full downtown shield, -1 to allow even
-  // the center to flip. Diffusion still reaches inner tiles organically via requireAdjacency.
+  // itself (0), not its whole ring-1. Set 1 for the full downtown shield, -1 for no ring at all.
+  // The center never flips as a tile: it moves only with its whole settlement (cityFlips below).
+  // Diffusion still reaches inner tiles organically via requireAdjacency.
   coreProtectRadius: 0,
   requireAdjacency: true,
+
+  // Whole-settlement flips (cd-city-flip.js, mod_ideas_tested/liberation/cd-city-flip/SPEC.md). When a neighbor's
+  // culture has clearly won a settlement's center (twice the owner's stock, and past twice the age's ownership bar)
+  // and leads on 60% of its plots for three passes running, the settlement joins that civilization: a marker
+  // building fires the engine's own transfer, which moves the center, every plot, the districts and the buildings in
+  // one step. Majors only, never at war, never a city-state or independent. The settlement path doesn't go through
+  // the tile gates above; those keep protecting the center and urban tiles from tile flips.
+  cityFlips: true,
+  cityFlipCapitals: false,
+  cityFlipEliminates: false,
+  cityFlipGrievances: 30,
+  cityFlipHoldPasses: 3,
+  cityFlipRatio: 0.5,
+  cityFlipBar: 2,
+  cityFlipPlotShare: 0.6,
+  maxCityFlipsPerPass: 1,
+  cityFlipWaitMs: 4000,
+  cityFlipNoticeDelayMs: 500,
 
   // Borders recede (opt-in). A tile this mod claimed can be lost again: if a rival's culture decisively
   // wins it (the same resolveOwner gates a claim uses), it is ceded to that rival's nearest city via

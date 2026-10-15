@@ -9,7 +9,7 @@
 import LensManager from "/core/ui/lenses/lens-manager.js";
 import PlotCursor from "/core/ui/input/plot-cursor.js";
 import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
-import { loadState } from "/cultural-diffusion/ui/cd-state.js";
+import { loadState, tileClaimBy } from "/cultural-diffusion/ui/cd-state.js";
 import { pressureVerdict, estimateTurnsToFlip, passCanAct } from "/cultural-diffusion/ui/cd-field.js";
 import { localCityList, cityListOf, claimInScope, claimGateBlocked } from "/cultural-diffusion/ui/cd-eligibility.js";
 import { isMajorPlayer } from "/cultural-diffusion/ui/cd-borders.js";
@@ -18,6 +18,7 @@ import { currentAgeKey } from "/cultural-diffusion/ui/cd-polity.js";
 import { applyTunableOverrides } from "/cultural-diffusion/ui/cd-settings.js";
 import { civDisplayColor, civLabel } from "/cultural-diffusion/ui/cd-lens-colors.js";
 import { LENS } from "/cultural-diffusion/ui/cd-pressure-lens.js";
+import { settlementOutlookAt } from "/cultural-diffusion/ui/cd-city-flip.js";
 
 const PANEL_ID = "cd-pressure-panel";
 const STYLE_ID = "cd-pressure-panel-style";
@@ -72,6 +73,60 @@ function tCount(tag, n, fb) {
     /* ignore */
   }
   return fb;
+}
+
+/**
+ * Localize a tag that takes several values, degrading to a plain-English fallback.
+ * @param {string} tag @param {string} fb @param {...*} args @returns {string}
+ */
+function tArgs(tag, fb, ...args) {
+  try {
+    if (typeof Locale !== "undefined" && typeof Locale.compose === "function") {
+      const s = Locale.compose(tag, ...args);
+      if (typeof s === "string" && s && s !== tag && !s.startsWith("LOC_")) return s;
+    }
+  } catch (_) {
+    /* ignore */
+  }
+  return fb;
+}
+
+/** The gate holding a settlement, as the readout words it. Codes come from cd-city-flip-rule.js cityFlipRefusal. */
+const HELD_BY = Object.freeze({
+  "at-war": "LOC_CD_CITY_FLIP_HELD_WAR",
+  capital: "LOC_CD_CITY_FLIP_HELD_CAPITAL",
+  "last-settlement": "LOC_CD_CITY_FLIP_HELD_LAST",
+  "age-transition": "LOC_CD_CITY_FLIP_HELD_AGE",
+  "distant-lands": "LOC_CD_CITY_FLIP_HELD_DISTANT",
+  "same-team": "LOC_CD_CITY_FLIP_HELD_TEAM"
+});
+
+/**
+ * The settlement row on a center plot: whose culture it leans to and how many passes of clear culture it has had, or
+ * the gate that holds it. Nothing when the owner's own culture leads or no major's does.
+ * @param {{leader:number, owner:number, n:number, need:number, won:boolean, refusal:string|null}} o
+ *   settlementOutlookAt's answer.
+ * @returns {{color:string, name:string, value:string}|null} The row.
+ */
+function settlementRow(o) {
+  if (!o || o.leader < 0 || o.leader === o.owner) return null;
+  const held = o.refusal ? HELD_BY[o.refusal] : null;
+  if (o.refusal && !held) return null; // a city-state's or independent's culture, multiplayer, or the feature off
+  const civ = civLabel(o.leader, "#" + o.leader);
+  const name = tArgs("LOC_CD_CITY_FLIP_ROW", civ, civ);
+  let value;
+  if (held) value = t(held, o.refusal);
+  else if (o.n > 0) value = tArgs("LOC_CD_CITY_FLIP_PROGRESS", `${o.n} / ${o.need}`, o.n, o.need);
+  else value = t("LOC_CD_CITY_FLIP_NOT_YET", "culture not yet clear");
+  return { color: civDisplayColor(o.leader, FALLBACK_HEX), name, value };
+}
+
+/** On a settlement's center, add the settlement row under the stocks. */
+function appendSettlement(rows, plot, snap) {
+  const row = settlementRow(settlementOutlookAt(plot, snap));
+  if (!row) return;
+  rows.push({ __sep: true });
+  rows.push(row);
 }
 
 /** The panel stylesheet (matches the Emigration lens panels' look). @returns {string} CSS. */
@@ -235,7 +290,7 @@ function contenderRows(row, owner, dead) {
 function actionableHere(plot, owner, v, snap, k) {
   const aiLead = !!snap.cfg.aiCultureFlips && v.leader >= 0 && v.leader !== snap.me && isMajorPlayer(v.leader);
   const flags = { recede: snap.cfg.recedeBorders, aiFlips: aiLead };
-  if (!passCanAct(v.leader, owner, snap.me, snap.claims[k]?.by === snap.me, flags)) return false;
+  if (!passCanAct(v.leader, owner, snap.me, tileClaimBy(snap.claims[k], snap.me), flags)) return false;
   if (v.leader !== snap.me && !aiLead) return true; // a recede cession: the recede step's business, not this gate's
   // Our own claim, or, with AI flips on, the leader's: the same gates, asked for whoever would claim.
   const ctx = v.leader === snap.me
@@ -263,6 +318,7 @@ function resolve(plot) {
   // A shift the pass will make: add the capture progress and turns rows. A leader the pass never acts for (an AI on
   // unowned land, or on our land the mod did not claim or with recede off) shows its stocks only.
   const actionable = actionableHere(plot, owner, v, snap, k);
+  appendSettlement(rows, plot, snap);
   if (actionable && v.progress > 0) {
     rows.push({ __sep: true });
     rows.push({

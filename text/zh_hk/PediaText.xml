@@ -48,7 +48,7 @@
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_RULES_TITLE" Language="zh_Hant_HK"><Text>條件</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_RULES_PARA_1" Language="zh_Hant_HK"><Text>[BLIST][LI]你的文化在該格位上最高。[LI]至少為300（探索時代375，近代480）。[LI]如果該格位屬於對手，其文化低於你的三分之二。[LI]該格位距你的城市不超過六格，且在其第三環以外。[LI]該格位與你的土地相鄰（「僅限相連邊境」選項）。[/LIST]</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_TITLE" Language="zh_Hant_HK"><Text>受保護的格位</Text></Replace>
-        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_1" Language="zh_Hant_HK"><Text>「對手城市保護」選項決定對手城市有多少部分是安全的：市中心與其第一環、僅市中心（預設），或不保護。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_1" Language="zh_Hant_HK"><Text>「對手城市保護」選項決定對手城市有多少部分不會被取得格位：市中心與其第一環、僅市中心（預設），或不保護任何環。市中心從不作為格位易手，只會隨整個聚落一起轉移。參見[B]聚落易手[/B]。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_2" Language="zh_Hant_HK"><Text>城邦與獨立軍勢力一律保有其市中心與第一環。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_3" Language="zh_Hant_HK"><Text>開啟「僅取得無主土地」時（低強度時預設為開啟），文化絕不會奪取有主的格位。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_4" Language="zh_Hant_HK"><Text>在時代交替前後，有改良設施、都會區域或奇觀的有主格位，會在時代即將結束的倒數期間與下一個時代的前兩回合保持不變。未改良的格位不受影響。</Text></Replace>
@@ -175,5 +175,17 @@
         <Replace Tag="LOC_PEDIA_CD_TERM_NOTIFICATIONS" Language="zh_Hant_HK"><Text>通知</Text></Replace>
         <Replace Tag="LOC_PEDIA_CD_TERM_INTENSITY" Language="zh_Hant_HK"><Text>強度</Text></Replace>
         <Replace Tag="LOC_PEDIA_CD_TERM_SETTINGS" Language="zh_Hant_HK"><Text>設定</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_TITLE" Language="zh_Hant_HK"><Text>聚落易手</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_CONTENT_PARA_1" Language="zh_Hant_HK"><Text>開啟「整個聚落因文化易手」（預設）時，人民已被鄰國文化明顯贏得的聚落會整體加入該文明。其建築、區域、奇觀與格位一次隨之轉移。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_RULES_TITLE" Language="zh_Hant_HK"><Text>何時發生</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_RULES_PARA_1" Language="zh_Hant_HK"><Text>[BLIST][LI]鄰國在聚落市中心的文化超過所有者文化的兩倍。[LI]它也超過取得格位所需數值的兩倍：中等強度下為600（探索時代750，現代960）。[LI]鄰國文化在聚落至少60%的格位上領先。[LI]以上條件連續保持3回合。當聚落屬於你或將歸你所有時，第一回合會向你發出警告。[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_AFTER_TITLE" Language="zh_Hant_HK"><Text>易手的內容</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_AFTER_PARA_1" Language="zh_Hant_HK"><Text>聚落以城鎮身分轉移，人口通常減少1。其格位鎖定15回合，失去它的文明對新所有者懷有30點不滿。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_AFTER_PARA_2" Language="zh_Hant_HK"><Text>在文化壓力透鏡中，人心浮動的聚落的市中心會顯示鄰國的顏色，懸停讀數會顯示已有多少回合明顯文化優勢，或是什麼讓它暫緩。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_LIMITS_TITLE" Language="zh_Hant_HK"><Text>限制</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_LIMITS_PARA_1" Language="zh_Hant_HK"><Text>[BLIST][LI]僅在和平相處的主要文明之間發生。城邦與獨立民族不會以此方式易手。[LI]除非開啟相應選項，首都與文明的最後一個聚落不會易手。[LI]時代結束倒數期間以及新時代的前兩回合內，不會有任何易手。[LI]探索時代之前，文明不會獲得位於其遠方土地的聚落。[LI]每回合最多一個聚落易手，且僅限你的城市附近。[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_SETTLEMENT_FLIP" Language="zh_Hant_HK"><Text>聚落易手</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CD_TERM_LOYALTY" Language="zh_Hant_HK"><Text>忠誠</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OPTIONS_CHAPTER_TOGGLES_PARA_2" Language="zh_Hant_HK"><Text>[BLIST][LI][B]整個聚落因文化易手[/B]：開啟。[B]首都[/B]與[B]文明的最後一個聚落[/B]：關閉。[B]不滿[/B]：30。[B]明顯文化優勢回合數[/B]：3。參見[B]聚落易手[/B]。[/LIST]</Text></Replace>
     </LocalizedText>
 </Database>

@@ -4,6 +4,34 @@ All notable changes to Cultural Diffusion are recorded here. The format follows
 [Keep a Changelog](https://keepachangelog.com/), and the mod uses
 [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+Whole settlements can now change hands by culture.
+
+### Added
+- A settlement whose people a neighbor's culture has clearly won joins that civilization, the way loyalty worked in
+  Civ VI. Clearly won means more than twice the owner's culture on the center tile, more than twice what claiming a
+  tile takes, and the lead on at least 60% of its tiles, three turns running. You're warned on the first turn when the
+  settlement is yours or would become yours, and the Cultural Pressure lens colors its center and shows "2 of 3 turns
+  of clear culture" on hover, or what's holding it.
+- The game's own transfer moves the settlement in one step: the center, every tile, the districts, the buildings and
+  the wonders together. It arrives as a town, its tiles are locked for 15 turns, and the civilization that lost it
+  holds 30 grievances against the one that gained it. The game records the civilization that gained the settlement
+  as the one who did the wrong. You get one notice, "Kamakura has joined Greece."
+- It only happens between major civilizations at peace, never to a city-state or an independent people, never during
+  the Age Ending countdown or the first two turns of an age, and at most once a turn. Capitals and a civilization's
+  last settlement stay put unless you switch that on.
+- New options: whole settlements change hands by culture (on), capitals can change hands (off), culture can take a
+  civilization's last settlement (off), grievances when a settlement changes hands (30), and turns of clear culture
+  before it does (3). A new Civilopedia page, Settlement Flips, explains the rules.
+- With the Partisans mod installed, the "has joined" notice also says when the settlement's people are arming, and
+  Partisans doesn't send a second notice for that flip.
+
+### Changed
+- A rival's city center no longer stays out of reach for good. It still never changes hands as a single tile, and
+  the Rival city protection option still protects the ring around it from tile claims; the center now goes only with
+  its whole settlement.
+
 ## [1.5.3] - 2026-10-14
 
 ### Changed

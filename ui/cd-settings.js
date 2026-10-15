@@ -25,9 +25,17 @@ const OPT_BUFFER = "growthBuffer";         // +1 ring: claim unowned tiles besid
 const OPT_AI_FLIPS = "aiCultureFlips";     // opt-in: every major civ gains land by culture inside the region
 const OPT_CONQUEST = "conquestFlip";       // opt-in: a combat unit holding an enemy tile through a war takes it
 const OPT_FOREIGN = "foreignCultureInCities"; // cities pump every culture group present and convert foreign stock
+const OPT_CITY_FLIPS = "cityFlips";               // whole settlements join the civ whose culture has won them
+const OPT_CITY_CAPITALS = "cityFlipCapitals";     // a capital can flip
+const OPT_CITY_ELIMINATES = "cityFlipEliminates"; // a flip can take a civ's last settlement
+const OPT_CITY_GRIEVANCES = "cityFlipGrievances"; // dropdown index into CITY_GRIEVANCES
+const OPT_CITY_HOLD = "cityFlipHoldPasses";       // dropdown index into CITY_HOLD_TURNS
 
 // Core-protection dropdown index -> ring radius that never flips (see cd-config coreProtectRadius).
 const CORE_RADIUS_BY_INDEX = [1, 0, -1];
+// Settlement-flip dropdowns: index -> grievances per flip, and index -> turns of clear culture before a flip.
+export const CITY_GRIEVANCES = Object.freeze([0, 15, 30, 60]);
+export const CITY_HOLD_TURNS = Object.freeze([2, 3, 5, 8]);
 
 /**
  * Cascade-safe per-mod settings store over a single shared "modSettings" localStorage
@@ -283,6 +291,64 @@ export function setForeignCultureInCities(on) {
   ModOptions.save(MOD_ID, OPT_FOREIGN, on ? 1 : 0);
 }
 
+/** @returns {boolean} Whether whole settlements can join the civilization whose culture has won them. */
+export function getCityFlips() {
+  return loadBool(OPT_CITY_FLIPS, CONFIG_DEFAULTS.cityFlips);
+}
+/** @param {boolean} on */
+export function setCityFlips(on) {
+  ModOptions.save(MOD_ID, OPT_CITY_FLIPS, on ? 1 : 0);
+}
+
+/** @returns {boolean} Whether a capital can flip. */
+export function getCityFlipCapitals() {
+  return loadBool(OPT_CITY_CAPITALS, CONFIG_DEFAULTS.cityFlipCapitals);
+}
+/** @param {boolean} on */
+export function setCityFlipCapitals(on) {
+  ModOptions.save(MOD_ID, OPT_CITY_CAPITALS, on ? 1 : 0);
+}
+
+/** @returns {boolean} Whether a flip can take a civilization's last settlement. */
+export function getCityFlipEliminates() {
+  return loadBool(OPT_CITY_ELIMINATES, CONFIG_DEFAULTS.cityFlipEliminates);
+}
+/** @param {boolean} on */
+export function setCityFlipEliminates(on) {
+  ModOptions.save(MOD_ID, OPT_CITY_ELIMINATES, on ? 1 : 0);
+}
+
+/**
+ * A saved dropdown index into `values`, or the index of `dflt` when none is saved.
+ * @param {string} opt @param {readonly number[]} values @param {number} dflt @returns {number}
+ */
+function loadIndex(opt, values, dflt) {
+  const v = ModOptions.load(MOD_ID, opt);
+  if (typeof v === "number" && v >= 0 && v < values.length) return v;
+  const i = values.indexOf(dflt);
+  return i >= 0 ? i : 0;
+}
+
+/** @returns {number} Grievances dropdown index (CITY_GRIEVANCES). */
+export function getCityFlipGrievancesIndex() {
+  return loadIndex(OPT_CITY_GRIEVANCES, CITY_GRIEVANCES, CONFIG_DEFAULTS.cityFlipGrievances);
+}
+/** @param {number} index */
+export function setCityFlipGrievancesIndex(index) {
+  const i = typeof index === "number" && index >= 0 && index < CITY_GRIEVANCES.length ? index : getCityFlipGrievancesIndex();
+  ModOptions.save(MOD_ID, OPT_CITY_GRIEVANCES, i);
+}
+
+/** @returns {number} Turns-of-clear-culture dropdown index (CITY_HOLD_TURNS). */
+export function getCityFlipHoldIndex() {
+  return loadIndex(OPT_CITY_HOLD, CITY_HOLD_TURNS, CONFIG_DEFAULTS.cityFlipHoldPasses);
+}
+/** @param {number} index */
+export function setCityFlipHoldIndex(index) {
+  const i = typeof index === "number" && index >= 0 && index < CITY_HOLD_TURNS.length ? index : getCityFlipHoldIndex();
+  ModOptions.save(MOD_ID, OPT_CITY_HOLD, i);
+}
+
 // apply to live CONFIG
 
 /**
@@ -296,6 +362,15 @@ function resetPresetKeys() {
       /** @type {Record<string, *>} */ (CONFIG)[k] = /** @type {Record<string, *>} */ (CONFIG_DEFAULTS)[k];
     }
   }
+}
+
+/** The whole-settlement flip settings, into the live CONFIG. */
+function applyCityFlipOverrides() {
+  CONFIG.cityFlips = getCityFlips();
+  CONFIG.cityFlipCapitals = getCityFlipCapitals();
+  CONFIG.cityFlipEliminates = getCityFlipEliminates();
+  CONFIG.cityFlipGrievances = CITY_GRIEVANCES[getCityFlipGrievancesIndex()];
+  CONFIG.cityFlipHoldPasses = CITY_HOLD_TURNS[getCityFlipHoldIndex()];
 }
 
 /**
@@ -323,6 +398,7 @@ export function applyTunableOverrides() {
   CONFIG.aiCultureFlips = getAiCultureFlips();
   CONFIG.conquestFlip = getConquestFlip();
   CONFIG.foreignCultureInCities = getForeignCultureInCities();
+  applyCityFlipOverrides();
   CONFIG.debug = getDebug();
 }
 

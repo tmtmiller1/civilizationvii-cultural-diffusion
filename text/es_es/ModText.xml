@@ -19,10 +19,10 @@
         <Replace Tag="LOC_OPTIONS_CD_CLAIM_ONLY_DESCRIPTION" Language="es_ES"><Text>Modo seguro. La difusión solo reclama casillas fronterizas sin dueño y nunca quita una casilla a otra civilización. Civilopedia: Difusión cultural, Reclamar casillas.</Text></Replace>
 
         <Replace Tag="LOC_OPTIONS_CD_CORE" Language="es_ES"><Text>Difusión cultural - protección de ciudades rivales</Text></Replace>
-        <Replace Tag="LOC_OPTIONS_CD_CORE_DESCRIPTION" Language="es_ES"><Text>Hasta dónde puede entrar la cultura en una ciudad rival. Todo el anillo central mantiene a salvo su centro y su anillo interior. Solo el centro urbano protege únicamente la casilla del centro urbano y deja que la cultura tome las casillas de alrededor. Nada permite que incluso el centro cambie de manos. Civilopedia: Difusión cultural, Reclamar casillas.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_DESCRIPTION" Language="es_ES"><Text>Hasta dónde puede entrar la cultura en una ciudad rival. Todo el anillo central mantiene a salvo el anillo alrededor de su centro. Solo el centro urbano (por defecto) deja que la cultura tome las casillas alrededor del centro. Nada no protege ningún anillo. El centro nunca cambia de manos como casilla: solo se va cuando el asentamiento entero se une a otra civilización. Civilopedia: Difusión cultural, Reclamar casillas.</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CORE_FULL" Language="es_ES"><Text>Proteger todo el anillo central</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CORE_CENTER" Language="es_ES"><Text>Proteger solo el centro urbano (tomar casillas interiores)</Text></Replace>
-        <Replace Tag="LOC_OPTIONS_CD_CORE_NONE" Language="es_ES"><Text>No proteger nada</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_NONE" Language="es_ES"><Text>No proteger ningún anillo</Text></Replace>
 
         <Replace Tag="LOC_OPTIONS_CD_ADJACENCY" Language="es_ES"><Text>Difusión cultural - solo frontera contigua</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_ADJACENCY_DESCRIPTION" Language="es_ES"><Text>Activado (recomendado): la cultura solo reclama casillas que tocan tus tierras, así que el territorio rival se toma de fuera hacia dentro. Desactivado: la cultura puede reclamar cualquier casilla que domine, incluida una bolsa aislada dentro de otra civilización. Civilopedia: Difusión cultural, Reclamar casillas.</Text></Replace>
@@ -64,5 +64,41 @@
         <Replace Tag="LOC_CD_PRESSURE_OWNER_SUFFIX" Language="es_ES"><Text> (dueño)</Text></Replace>
         <Replace Tag="LOC_CD_TOAST_GAINED" Language="es_ES"><Text>Difusión cultural: tu cultura ha reclamado nuevo territorio.</Text></Replace>
         <Replace Tag="LOC_CD_TOAST_LOST" Language="es_ES"><Text>Difusión cultural: otra civilización ha tomado una de tus casillas.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIPS" Language="es_ES"><Text>Difusión cultural - asentamientos enteros cambian de manos por cultura</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIPS_DESCRIPTION" Language="es_ES"><Text>Activado por defecto. Cuando la cultura de un vecino ha ganado con claridad un asentamiento durante varios turnos seguidos, el asentamiento entero se une a esa civilización: sus edificios, distritos, maravillas y casillas van con él, y se te avisa en el primer turno. Solo entre civilizaciones principales en paz; las ciudades-estado y los pueblos independientes nunca cambian de manos así. Civilopedia: Difusión cultural, Cambio de asentamientos.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_CAPITALS" Language="es_ES"><Text>Difusión cultural - las capitales pueden cambiar de manos por cultura</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_CAPITALS_DESCRIPTION" Language="es_ES"><Text>Desactivado por defecto. Si está activado, una capital también puede unirse a un vecino. Llega como pueblo, y la civilización que la perdió recibe una nueva capital.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_ELIMINATES" Language="es_ES"><Text>Difusión cultural - la cultura puede quitarle a una civilización su último asentamiento</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_ELIMINATES_DESCRIPTION" Language="es_ES"><Text>Desactivado por defecto. Si está activado, una civilización cuyo último asentamiento se une a un vecino queda derrotada.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES" Language="es_ES"><Text>Difusión cultural - agravios cuando un asentamiento cambia de manos</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_DESCRIPTION" Language="es_ES"><Text>Cuántos agravios tiene la civilización que perdió un asentamiento contra la que lo ganó (30 por defecto). Su relación baja en la misma cantidad y se recupera con el tiempo; los agravios se quedan.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_0" Language="es_ES"><Text>0</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_15" Language="es_ES"><Text>15</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_30" Language="es_ES"><Text>30</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_60" Language="es_ES"><Text>60</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD" Language="es_ES"><Text>Difusión cultural - turnos de cultura clara antes de que un asentamiento cambie de manos</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_DESCRIPTION" Language="es_ES"><Text>Cuántos turnos seguidos debe dominar con claridad la cultura de un vecino un asentamiento antes de que se una (3 por defecto). Se te avisa en el primero.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_2" Language="es_ES"><Text>2</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_3" Language="es_ES"><Text>3</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_5" Language="es_ES"><Text>5</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_8" Language="es_ES"><Text>8</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_WARNING_TITLE" Language="es_ES"><Text>Un asentamiento duda</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_WARNING" Language="es_ES"><Text>La gente de {1_City} mira hacia {2_Civ}.</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_JOINED_TITLE" Language="es_ES"><Text>Un asentamiento ha cambiado de manos</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_JOINED" Language="es_ES"><Text>{1_City} se ha unido a {2_Civ}.</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_GRIEVANCES" Language="es_ES"><Text>{1_Loser} tiene ahora {3_Amount} agravios contra {2_Receiver}.</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_FALLBACK" Language="es_ES"><Text>La gente de un asentamiento ha elegido otra civilización.</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_ROW" Language="es_ES"><Text>Se inclina hacia {1_Civ}</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_PROGRESS" Language="es_ES"><Text>{1_Count} de {2_Count} turnos de cultura clara</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_NOT_YET" Language="es_ES"><Text>cultura aún no clara</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_WAR" Language="es_ES"><Text>retenido: en guerra</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_CAPITAL" Language="es_ES"><Text>retenido: es una capital</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_LAST" Language="es_ES"><Text>retenido: su último asentamiento</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_AGE" Language="es_ES"><Text>retenido: la era está cambiando</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_DISTANT" Language="es_ES"><Text>retenido: Tierras Lejanas antes de la Exploración</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_TEAM" Language="es_ES"><Text>retenido: mismo equipo</Text></Replace>
+        <Replace Tag="LOC_BUILDING_CD_FLIP_NAME" Language="es_ES"><Text>Cambio de lealtad</Text></Replace>
+        <Replace Tag="LOC_BUILDING_CD_FLIP_DESCRIPTION" Language="es_ES"><Text>La gente de este asentamiento ha decidido unirse a otra civilización. Difusión cultural lo coloca un momento y lo retira en cuanto el asentamiento cambia de manos.</Text></Replace>
+        <Replace Tag="LOC_BUILDING_CD_FLIP_TOOLTIP" Language="es_ES"><Text>La gente de aquí ha decidido unirse a otra civilización.</Text></Replace>
     </LocalizedText>
 </Database>

@@ -19,10 +19,10 @@
         <Replace Tag="LOC_OPTIONS_CD_CLAIM_ONLY_DESCRIPTION" Language="de_DE"><Text>Sicherer Modus. Die Diffusion beansprucht nur herrenlose Grenzfelder und übernimmt nie ein Feld einer anderen Zivilisation. Zivilopädie: Kulturelle Diffusion, Felder beanspruchen.</Text></Replace>
 
         <Replace Tag="LOC_OPTIONS_CD_CORE" Language="de_DE"><Text>Kulturelle Diffusion - Schutz rivalisierender Städte</Text></Replace>
-        <Replace Tag="LOC_OPTIONS_CD_CORE_DESCRIPTION" Language="de_DE"><Text>Wie tief Kultur in eine rivalisierende Stadt vordringen darf. Ganzer Innenring schützt ihr Zentrum und den inneren Ring. Nur Stadtzentrum schützt nur das Stadtzentrum selbst, Kultur kann die Felder darum übernehmen. Nichts lässt sogar das Zentrum wechseln. Zivilopädie: Kulturelle Diffusion, Felder beanspruchen.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_DESCRIPTION" Language="de_DE"><Text>Wie tief Kultur in eine rivalisierende Stadt vordringen darf. Ganzer Innenring schützt den Ring um ihr Zentrum. Nur Stadtzentrum (Standard) lässt Kultur die Felder um das Zentrum übernehmen. Nichts schützt keinen Ring. Das Zentrum selbst wechselt nie als Feld: Es geht nur mit, wenn sich die ganze Siedlung einer anderen Zivilisation anschließt. Zivilopädie: Kulturelle Diffusion, Felder beanspruchen.</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CORE_FULL" Language="de_DE"><Text>Ganzen Innenring schützen</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CORE_CENTER" Language="de_DE"><Text>Nur Stadtzentrum schützen (innere Felder übernehmen)</Text></Replace>
-        <Replace Tag="LOC_OPTIONS_CD_CORE_NONE" Language="de_DE"><Text>Nichts schützen</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_NONE" Language="de_DE"><Text>Keinen Ring schützen</Text></Replace>
 
         <Replace Tag="LOC_OPTIONS_CD_ADJACENCY" Language="de_DE"><Text>Kulturelle Diffusion - Nur zusammenhängende Grenze</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_ADJACENCY_DESCRIPTION" Language="de_DE"><Text>An (empfohlen): Kultur beansprucht nur Felder, die an Euer Land grenzen, sodass rivalisierendes Gebiet von außen nach innen übernommen wird. Aus: Kultur kann jedes Feld beanspruchen, das sie beherrscht, auch eine abgetrennte Enklave innerhalb einer anderen Zivilisation. Zivilopädie: Kulturelle Diffusion, Felder beanspruchen.</Text></Replace>
@@ -64,5 +64,41 @@
         <Replace Tag="LOC_CD_PRESSURE_READY" Language="de_DE"><Text>bereit zur Übernahme</Text></Replace>
         <Replace Tag="LOC_CD_PRESSURE_STALLED" Language="de_DE"><Text>stockt</Text></Replace>
         <Replace Tag="LOC_CD_PRESSURE_OWNER_SUFFIX" Language="de_DE"><Text> (Besitzer)</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIPS" Language="de_DE"><Text>Kulturelle Diffusion - ganze Siedlungen wechseln durch Kultur den Besitzer</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIPS_DESCRIPTION" Language="de_DE"><Text>Standardmäßig an. Hat die Kultur eines Nachbarn eine Siedlung mehrere Runden in Folge klar gewonnen, schließt sich die ganze Siedlung dieser Zivilisation an: Gebäude, Bezirke, Wunder und Felder gehen mit, und du wirst in der ersten Runde gewarnt. Nur zwischen großen Zivilisationen, die Frieden haben; Stadtstaaten und unabhängige Völker wechseln nie auf diese Weise. Zivilopädie: Kulturelle Diffusion, Siedlungswechsel.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_CAPITALS" Language="de_DE"><Text>Kulturelle Diffusion - Hauptstädte können durch Kultur den Besitzer wechseln</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_CAPITALS_DESCRIPTION" Language="de_DE"><Text>Standardmäßig aus. Wenn an, kann sich auch eine Hauptstadt einem Nachbarn anschließen. Sie kommt als Gemeinde an, und die Zivilisation, die sie verloren hat, erhält eine neue Hauptstadt.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_ELIMINATES" Language="de_DE"><Text>Kulturelle Diffusion - Kultur kann die letzte Siedlung einer Zivilisation übernehmen</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_ELIMINATES_DESCRIPTION" Language="de_DE"><Text>Standardmäßig aus. Wenn an, wird eine Zivilisation besiegt, deren letzte Siedlung sich einem Nachbarn anschließt.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES" Language="de_DE"><Text>Kulturelle Diffusion - Beschwerden, wenn eine Siedlung den Besitzer wechselt</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_DESCRIPTION" Language="de_DE"><Text>Wie viele Beschwerden die Zivilisation, die eine Siedlung verloren hat, gegen die gewinnende hegt (Standard 30). Ihre Beziehung sinkt um denselben Betrag und erholt sich mit der Zeit; die Beschwerden bleiben.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_0" Language="de_DE"><Text>0</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_15" Language="de_DE"><Text>15</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_30" Language="de_DE"><Text>30</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_60" Language="de_DE"><Text>60</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD" Language="de_DE"><Text>Kulturelle Diffusion - Runden klarer Kultur, bevor eine Siedlung wechselt</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_DESCRIPTION" Language="de_DE"><Text>Wie viele Runden in Folge die Kultur eines Nachbarn eine Siedlung klar halten muss, bevor sie sich anschließt (Standard 3). In der ersten wirst du gewarnt.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_2" Language="de_DE"><Text>2</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_3" Language="de_DE"><Text>3</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_5" Language="de_DE"><Text>5</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_8" Language="de_DE"><Text>8</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_WARNING_TITLE" Language="de_DE"><Text>Eine Siedlung schwankt</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_WARNING" Language="de_DE"><Text>Die Bevölkerung von {1_City} blickt nach {2_Civ}.</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_JOINED_TITLE" Language="de_DE"><Text>Eine Siedlung hat den Besitzer gewechselt</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_JOINED" Language="de_DE"><Text>{1_City} hat sich {2_Civ} angeschlossen.</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_GRIEVANCES" Language="de_DE"><Text>{1_Loser} hegt jetzt {3_Amount} Beschwerden gegen {2_Receiver}.</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_FALLBACK" Language="de_DE"><Text>Die Bevölkerung einer Siedlung hat eine andere Zivilisation gewählt.</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_ROW" Language="de_DE"><Text>Neigt zu {1_Civ}</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_PROGRESS" Language="de_DE"><Text>{1_Count} von {2_Count} Runden klarer Kultur</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_NOT_YET" Language="de_DE"><Text>Kultur noch nicht klar</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_WAR" Language="de_DE"><Text>gehalten: Krieg</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_CAPITAL" Language="de_DE"><Text>gehalten: Hauptstadt</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_LAST" Language="de_DE"><Text>gehalten: ihre letzte Siedlung</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_AGE" Language="de_DE"><Text>gehalten: das Zeitalter wechselt</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_DISTANT" Language="de_DE"><Text>gehalten: Ferne Länder vor der Erkundung</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_TEAM" Language="de_DE"><Text>gehalten: gleiches Team</Text></Replace>
+        <Replace Tag="LOC_BUILDING_CD_FLIP_NAME" Language="de_DE"><Text>Wechselnde Treue</Text></Replace>
+        <Replace Tag="LOC_BUILDING_CD_FLIP_DESCRIPTION" Language="de_DE"><Text>Die Bevölkerung dieser Siedlung hat sich entschieden, sich einer anderen Zivilisation anzuschließen. Kulturelle Diffusion setzt es für einen Moment und entfernt es, sobald die Siedlung den Besitzer gewechselt hat.</Text></Replace>
+        <Replace Tag="LOC_BUILDING_CD_FLIP_TOOLTIP" Language="de_DE"><Text>Die Bevölkerung hier hat sich für eine andere Zivilisation entschieden.</Text></Replace>
     </LocalizedText>
 </Database>

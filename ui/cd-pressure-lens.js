@@ -8,7 +8,7 @@
 
 import LensManager from "/core/ui/lenses/lens-manager.js";
 import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
-import { loadState } from "/cultural-diffusion/ui/cd-state.js";
+import { loadState, tileClaimBy } from "/cultural-diffusion/ui/cd-state.js";
 import { pressureVerdict, passCanAct } from "/cultural-diffusion/ui/cd-field.js";
 import { ownerAt, localPlayerId } from "/cultural-diffusion/ui/cd-plots.js";
 import { currentAgeKey } from "/cultural-diffusion/ui/cd-polity.js";
@@ -110,7 +110,23 @@ function pressureTiles() {
     const entry = contestedEntry(k, env);
     if (entry) out.push(entry);
   }
-  return out;
+  return out.concat(leaningCentres(st.state, cfg));
+}
+
+/**
+ * A settlement's center never flips as a tile; it shows the settlement's own progress instead: the leader's color,
+ * deepening with each pass of clear culture toward cityFlipHoldPasses (cd-city-flip.js).
+ * @param {*} state Saved state. @param {*} cfg Live config.
+ * @returns {{x:number, y:number, leader:number, progress:number}[]} One entry per leaning settlement.
+ */
+function leaningCentres(state, cfg) {
+  if (!cfg.cityFlips || !state || !state.cityHold) return [];
+  const need = Math.max(1, Math.floor(cfg.cityFlipHoldPasses));
+  return Object.keys(state.cityHold).map((k) => {
+    const loc = unkey(k);
+    const h = state.cityHold[k];
+    return { x: loc.x, y: loc.y, leader: h.by, progress: Math.min(1, h.n / need) };
+  }).filter((e) => isFinite(e.x) && isFinite(e.y));
 }
 
 /**
@@ -125,7 +141,7 @@ function contestedEntry(k, env) {
   const v = pressureVerdict(field[k], owner, dead, cfg);
   const aiLead = aiLeads(v.leader, me, cfg);
   const flags = { recede: cfg.recedeBorders, aiFlips: aiLead };
-  if (!passCanAct(v.leader, owner, me, claims[k]?.by === me, flags)) return null;
+  if (!passCanAct(v.leader, owner, me, tileClaimBy(claims[k], me), flags)) return null;
   if (v.progress < MIN_PROGRESS) return null;
   if (v.leader === me && !claimable(loc, owner, env.ctx)) return null; // ...nor on a tile every other gate refuses
   if (aiLead && !claimable(loc, owner, env.ctxFor(v.leader))) return null;

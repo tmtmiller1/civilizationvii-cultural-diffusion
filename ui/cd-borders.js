@@ -1,8 +1,9 @@
 // cd-borders.js
 //
-// Border resistance reads (docs/current-model.md §5): a rival's city-core ring never flips, and an
-// active war pauses peaceful diffusion across the front. Pure helpers (isCoreProtected) are
-// unit-testable; the war read is engine-guarded.
+// Border resistance reads (docs/current-model.md §5): a rival's city-core ring never flips as a tile, and
+// an active war pauses peaceful diffusion across the front. Pure helpers (isCoreProtected) are
+// unit-testable; the war read is engine-guarded. A center changes hands only with its whole settlement
+// (cd-city-flip.js), which never asks these tile gates.
 
 import { plotsInRadius, cityLoc, cityIdOf, isCityCenterAt, ownerAt } from "/cultural-diffusion/ui/cd-plots.js";
 

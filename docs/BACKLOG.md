@@ -14,6 +14,31 @@ noted. Each carries [severity · confidence] and enough context to pick up cold.
 >
 > The detailed findings remain below for reference. The verdicts in those files are the ones that count.
 
+## 2026-10-15 whole-settlement flips
+
+## [Medium · Open, untested] Is the settlement-flip grievance penalty overwhelming?
+
+**What it does now:** when a settlement changes hands by culture, the civ that lost it gains `cityFlipGrievances`
+(default 30) grievances against the one that gained it, and the relationship between them drops by the same amount
+(`ui/cd-city-flip.js` `penalise`). The write is `Players.get(gainer).Diplomacy.changeNumGrievances(loser, n)`, because
+the engine books a grievance on the civ that did the wrong. Watched 2026-10-15: each flip added exactly 30, and two
+flips between Greece and us took the relationship to -60.
+
+**Why it may be too much:** 30 ties the largest single hits in the base game's
+`DiplomacyFavorsGrievancesEventsData`: declaring war, breaking or ending an alliance, attacking a city-state, taking a
+suzerainty, each -30. Settling too close is -20, opposing a war -15, borders touching -10. So a peaceful culture flip
+costs what a war declaration does, and flips cluster on one contested border, so the same pair can take several in a
+row. The precedent for 30 is the engine's own `BY_REVOLT` transfer, which added 30 per flip in the liberation probes.
+The relationship part fades about 3 a turn at Hostile (`DIPLOMACY_RELATIONSHIP_FADE_AMOUNT_HOSTILE`); the probes saw
+the grievance count hold through a few turn rolls but never watched it long enough to say whether it fades.
+
+**What to test:** a long seeded game (Antiquity into Exploration) with the usual set, flips happening naturally, once
+at 30 and once at 15. For each pair that traded settlements, track turn by turn: grievances, relationship level, and
+whether the AI denounced, declared war or refused deals afterwards; and how many flips each pair took. Also check how
+long the grievances last. Decide the default from that: 30 if it reads as a fair sting, 15 if one contested border
+leaves neighbours permanently hostile. The option already offers 0, 15, 30 and 60, so only the default and its text
+(option tooltip, Civilopedia, README, CHANGELOG, every language) would change.
+
 ## 2026-09-24 player field report (v1.1.0)
 
 Three observations from one campaign, reported as observations rather than confirmed bugs. The trapped-unit half is

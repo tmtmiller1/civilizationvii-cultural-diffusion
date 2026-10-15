@@ -33,6 +33,7 @@ function unkey(k) {
 function aiCandidateAt(k, p, cityList) {
   const { state, next, me, ageCfg, deadOwners } = p;
   if (!next[k] || state.locked[k] > 0 || isPending(state, k)) return null;
+  if (p.busy && p.busy.has(k)) return null; // its settlement may change hands whole this pass
   const loc = unkey(k);
   const owner = ownerAt(loc);
   const verdict = resolveOwner(next[k], owner, deadOwners, ageCfg);

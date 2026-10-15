@@ -36,6 +36,7 @@ import { notifyFlip } from "/cultural-diffusion/ui/cd-notifications.js";
 import { recedeOwnership } from "/cultural-diffusion/ui/cd-recede.js";
 import { logFieldDiagnostics, logStateSize } from "/cultural-diffusion/ui/cd-diagnostics.js";
 import { markPending, isPending, confirmPending, pendingClaimKeys } from "/cultural-diffusion/ui/cd-pending.js";
+import { cityFlipStep, launchCityFlips, settlementBusyKeys } from "/cultural-diffusion/ui/cd-city-flip.js";
 
 /** @param {number} x @param {number} y */
 function key(x, y) {
@@ -304,6 +305,7 @@ function tryFlipCandidate(cand, fx) {
   if (owner === me) return false;                       // already ours
   if (state.locked[cand.k] > 0) return false;           // anti-flicker cooldown
   if (isPending(state, cand.k)) return false;           // a verb on this tile is still landing
+  if (fx.busy && fx.busy.has(cand.k)) return false;     // its settlement may change hands whole this pass
   const verdict = resolveOwner(next[cand.k], owner, deadOwners, ageCfg);
   if (!verdict.flip || !passCanAct(verdict.owner, owner, me, false, false)) return false; // only tiles our culture won
   if (!flipEligible(cand, owner, me, claimCount, fx.inFlight)) return false;
@@ -317,13 +319,13 @@ function tryFlipCandidate(cand, fx) {
  * @returns {{flips:number, pending:number, tiles:number, deadOwners:number[], aiFlips:number, aiPending:number}}
  *   Summary.
  */
-function resolveOwnership({ state, region, next, cities, me, ageCfg, alive }) {
+function resolveOwnership({ state, region, next, cities, me, ageCfg, alive, busy }) {
   const deadOwners = findDeadOwners(region, next, alive);
   const claimCount = claimCountsFor(state, me);
   const maxFlips = Math.max(0, CONFIG.maxFlipsPerTurn);
   const maxDist = Math.max(1, CONFIG.flipMaxDistance);
   const candidates = flipCandidates(region, next, cities, maxDist);
-  const fx = { state, next, me, ageCfg, claimCount, deadOwners, inFlight: pendingClaimKeys(state, me) };
+  const fx = { state, next, me, ageCfg, claimCount, deadOwners, busy, inFlight: pendingClaimKeys(state, me) };
 
   let flips = 0;
   let pending = 0;
@@ -337,7 +339,7 @@ function resolveOwnership({ state, region, next, cities, me, ageCfg, alive }) {
     else if (result === "pending") pending++;
   }
   const ai = CONFIG.aiCultureFlips
-    ? resolveAiOwnership({ state, region, next, me, ageCfg, deadOwners })
+    ? resolveAiOwnership({ state, region, next, me, ageCfg, deadOwners, busy })
     : { flips: 0, pending: 0 };
   return { flips, pending, tiles, deadOwners, aiFlips: ai.flips, aiPending: ai.pending };
 }
@@ -470,7 +472,7 @@ function releaseInnerClaims(state, cities, me) {
   let released = 0;
   for (const k of Object.keys(state.claims)) {
     const c = state.claims[k];
-    if (!c || c.by !== me) continue;
+    if (!c || c.by !== me || c.settlement) continue; // a settlement that joined us keeps its own plots
     const loc = unkey(k);
     if (!withinOwnNaturalRing(loc, cities)) continue;
     if (ownerAt(loc) === me) unclaim(loc); // hand it back; the base game re-grows + re-assigns it to the right city
@@ -513,23 +515,42 @@ function buildInjectors(settlements, region, strengthOf) {
   return injectors;
 }
 
-function finishPass(state, region, cities, radius, t0) {
+/** Prune, save, then start the settlement flips the pass picked (they land after the request; cd-city-flip.js). */
+function finishPass(state, region, cities, radius, { t0, cityLaunch }) {
   pruneFarField(state, region, cities, radius);
   pruneState(state);
   const bytes = saveState(state);
   logStateSize(state, bytes, Date.now() - t0);
+  launchCityFlips(cityLaunch);
+}
+
+/** @param {Set<string>} region @param {Set<string>} drop @returns {Set<string>} region minus drop. */
+function withoutKeys(region, drop) {
+  const out = new Set();
+  for (const k of region) if (!drop.has(k)) out.add(k);
+  return out;
+}
+
+/** The tile changes after the culture flips: recede, then conquest (occupation is the final word on tiles). */
+function tileTail({ state, region, next, me, ageCfg, deadOwners, busy }) {
+  const recede = recedeOwnership({ state, region, next, me, ageCfg, deadOwners, busy });
+  // The plots of a settlement that may change hands whole this pass sit the sweep out (their counters restart).
+  const conquest = conquestSweep({ state, region: busy.size ? withoutKeys(region, busy) : region, me });
+  return { ceded: recede.ceded, cedePending: recede.pending, conquest };
 }
 
 /** The per-pass summary line: logged whenever anything changed or is in flight, and every pass in debug. */
 function logPassSummary(state, c) {
   const done = c.confirmed;
   const busy = c.flips + c.pending + c.ceded + c.cedePending + c.healed + c.released
-    + done.claim + done.cede + done.dropped + c.aiFlips + c.aiPending + c.conquests + c.conquestPending;
+    + done.claim + done.cede + done.dropped + c.aiFlips + c.aiPending + c.conquests + c.conquestPending
+    + c.cityHolds + c.cityFlips;
   if (busy === 0 && !CONFIG.debug) return;
   log(`pass: ${c.flips} flip(s), ${c.pending} pending, ${c.ceded} ceded (${c.cedePending} pending), `
     + `${c.aiFlips} AI flip(s) (${c.aiPending} pending), ${c.conquests} conquest(s) (${c.conquestPending} pending), `
     + `confirmed ${done.claim} claim/${done.cede} cede (${done.dropped} dropped), `
     + `${c.healed} orphan(s) healed, ${c.released} inner tile(s) released to base game, `
+    + `${c.cityHolds} settlement(s) leaning (${c.cityFlips} flipping), `
     + `${Object.keys(state.field).length} active field tile(s)`);
 }
 
@@ -543,6 +564,7 @@ function preparePass(cities) {
   const state = loadState();
   prepareState(state);
   const confirmed = confirmPending(state); // book last pass's in-flight verbs from the live map before anything else
+  const busy = settlementBusyKeys(state);  // plots of settlements that may change hands whole this pass
 
   const { w, h } = mapDims();
   const inBounds = (p) => (!w || (p.x >= 0 && p.x < w)) && (!h || (p.y >= 0 && p.y < h));
@@ -555,7 +577,7 @@ function preparePass(cities) {
   const injectors = buildInjectors(settlements, region, strengthOf);
   // The Emigration composition (who lives in each city) weights foreign groups' injection; null without the mod.
   const comp = CONFIG.foreignCultureInCities && CONFIG.useEmigration ? loadComposition() : null;
-  return { state, region, radius, injectors, ethCtx, ageCfg, pace, confirmed, comp };
+  return { state, region, radius, injectors, ethCtx, ageCfg, pace, confirmed, comp, busy };
 }
 
 /**
@@ -571,26 +593,28 @@ export function runPass() {
   if (!cities.length) return { flips: 0, tiles: 0 };
 
   const t0 = Date.now();
-  const { state, region, radius, injectors, ethCtx, ageCfg, pace, confirmed, comp } = preparePass(cities);
+  const { state, region, radius, injectors, ethCtx, ageCfg, pace, confirmed, comp, busy } = preparePass(cities);
   const alive = aliveOwners(me);
   const healed = repairOrphans(state, region, cities, me);
   const released = releaseInnerClaims(state, cities, me);
   const next = updateField(state, region, injectors, { ethCtx, ageCfg, pace, alive, comp });
   logFieldDiagnostics(injectors, cities, next, me, ageCfg);
   const { flips, pending, tiles, deadOwners, aiFlips, aiPending } =
-    resolveOwnership({ state, region, next, cities, me, ageCfg, alive });
-  const { ceded, pending: cedePending } = recedeOwnership({ state, region, next, me, ageCfg, deadOwners });
-  const conquest = conquestSweep({ state, region, me }); // last: occupation is the final territorial word
+    resolveOwnership({ state, region, next, cities, me, ageCfg, alive, busy });
+  const { ceded, cedePending, conquest } = tileTail({ state, region, next, me, ageCfg, deadOwners, busy });
+  // Whole settlements after every tile change: score them on this pass's field and pick the ones to flip. The flips
+  // themselves start once the state is saved, since the transfer lands after the request (cd-city-flip.js).
+  const city = cityFlipStep({ state, next, region, ageCfg, deadOwners });
 
-  finishPass(state, region, cities, radius, t0);
+  finishPass(state, region, cities, radius, { t0, cityLaunch: city.launch });
   logPassSummary(state, {
     flips, pending, ceded, cedePending, healed, released, confirmed, aiFlips, aiPending,
-    conquests: conquest.flips, conquestPending: conquest.pending
+    conquests: conquest.flips, conquestPending: conquest.pending, cityHolds: city.tracked, cityFlips: city.launch.length
   });
   return {
     flips, pending, tiles, healed, released, ceded, cedePending, aiFlips, aiPending,
     conquests: conquest.flips, conquestPending: conquest.pending, occupied: conquest.held,
-    confirmed: confirmed.claim, confirmedCede: confirmed.cede
+    confirmed: confirmed.claim, confirmedCede: confirmed.cede, cityHolds: city.tracked, cityFlips: city.launch.length
   };
 }
 

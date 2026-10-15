@@ -19,10 +19,10 @@
         <Replace Tag="LOC_OPTIONS_CD_CLAIM_ONLY_DESCRIPTION" Language="ru_RU"><Text>Безопасный режим. Диффузия занимает только ничейные пограничные клетки и никогда не забирает клетку у другой цивилизации. Цивилопедия: Культурная диффузия, Захват клеток.</Text></Replace>
 
         <Replace Tag="LOC_OPTIONS_CD_CORE" Language="ru_RU"><Text>Культурная диффузия - защита городов соперников</Text></Replace>
-        <Replace Tag="LOC_OPTIONS_CD_CORE_DESCRIPTION" Language="ru_RU"><Text>Насколько глубоко культура может проникать в город соперника. «Весь центр» защищает центр города и первое кольцо вокруг него. «Только центр города» защищает лишь клетку центра города, а клетки вокруг нее культура может забрать. «Ничего» позволяет забрать даже центр. Цивилопедия: Культурная диффузия, Захват клеток.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_DESCRIPTION" Language="ru_RU"><Text>Насколько глубоко культура может проникать в город соперника. «Весь центр» защищает кольцо вокруг центра города. «Только центр города» (по умолчанию) позволяет культуре забирать клетки вокруг центра. «Ничего не защищать» не защищает ни одного кольца. Сам центр никогда не переходит как отдельная клетка: он уходит только вместе со всем поселением, когда оно присоединяется к другой цивилизации. Цивилопедия: Культурная диффузия, Захват клеток.</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CORE_FULL" Language="ru_RU"><Text>Защищать весь центр (первое кольцо)</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CORE_CENTER" Language="ru_RU"><Text>Защищать только центр города (забирать клетки вокруг)</Text></Replace>
-        <Replace Tag="LOC_OPTIONS_CD_CORE_NONE" Language="ru_RU"><Text>Ничего не защищать</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CORE_NONE" Language="ru_RU"><Text>Не защищать кольцо</Text></Replace>
 
         <Replace Tag="LOC_OPTIONS_CD_ADJACENCY" Language="ru_RU"><Text>Культурная диффузия - только сплошная граница</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_ADJACENCY_DESCRIPTION" Language="ru_RU"><Text>Вкл. (рекомендуется): культура занимает только клетки, граничащие с вашими землями, поэтому территория соперника забирается снаружи внутрь. Выкл.: культура может занять любую клетку, где она преобладает, включая отрезанный участок внутри другой цивилизации. Цивилопедия: Культурная диффузия, Захват клеток.</Text></Replace>
@@ -64,5 +64,41 @@
         <Replace Tag="LOC_CD_PRESSURE_OWNER_SUFFIX" Language="ru_RU"><Text> (владелец)</Text></Replace>
         <Replace Tag="LOC_CD_TOAST_GAINED" Language="ru_RU"><Text>Культурная диффузия: ваша культура заняла новую территорию.</Text></Replace>
         <Replace Tag="LOC_CD_TOAST_LOST" Language="ru_RU"><Text>Культурная диффузия: другая цивилизация забрала одну из ваших клеток.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIPS" Language="ru_RU"><Text>Культурная диффузия - поселения целиком переходят к соседям по культуре</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIPS_DESCRIPTION" Language="ru_RU"><Text>Включено по умолчанию. Когда культура соседа несколько ходов подряд явно побеждает в поселении, поселение целиком присоединяется к этой цивилизации: здания, районы, чудеса света и клетки переходят вместе с ним, а на первом ходу вы получаете предупреждение. Только между крупными цивилизациями в мире; города-государства и независимые народы так не переходят. Цивилопедия: Культурная диффузия, Переход поселений.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_CAPITALS" Language="ru_RU"><Text>Культурная диффузия - столицы тоже могут перейти по культуре</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_CAPITALS_DESCRIPTION" Language="ru_RU"><Text>По умолчанию выключено. Если включено, к соседу может присоединиться и столица. Она переходит как городок, а цивилизация, потерявшая ее, получает новую столицу.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_ELIMINATES" Language="ru_RU"><Text>Культурная диффузия - культура может забрать последнее поселение цивилизации</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_ELIMINATES_DESCRIPTION" Language="ru_RU"><Text>По умолчанию выключено. Если включено, цивилизация, чье последнее поселение присоединилось к соседу, терпит поражение.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES" Language="ru_RU"><Text>Культурная диффузия - претензии, когда поселение переходит к другому</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_DESCRIPTION" Language="ru_RU"><Text>Сколько претензий цивилизация, потерявшая поселение, имеет к той, что его получила (по умолчанию 30). Их отношения ухудшаются на столько же и со временем восстанавливаются; претензии остаются.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_0" Language="ru_RU"><Text>0</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_15" Language="ru_RU"><Text>15</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_30" Language="ru_RU"><Text>30</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_60" Language="ru_RU"><Text>60</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD" Language="ru_RU"><Text>Культурная диффузия - ходов явного перевеса культуры до перехода поселения</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_DESCRIPTION" Language="ru_RU"><Text>Сколько ходов подряд культура соседа должна явно преобладать в поселении, прежде чем оно присоединится (по умолчанию 3). На первом ходу вы получаете предупреждение.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_2" Language="ru_RU"><Text>2</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_3" Language="ru_RU"><Text>3</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_5" Language="ru_RU"><Text>5</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_8" Language="ru_RU"><Text>8</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_WARNING_TITLE" Language="ru_RU"><Text>Поселение колеблется</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_WARNING" Language="ru_RU"><Text>Жители {1_City} смотрят в сторону {2_Civ}.</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_JOINED_TITLE" Language="ru_RU"><Text>Поселение сменило владельца</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_JOINED" Language="ru_RU"><Text>{1_City} присоединилось к {2_Civ}.</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_GRIEVANCES" Language="ru_RU"><Text>{1_Loser} теперь имеет {3_Amount} претензий к {2_Receiver}.</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_FALLBACK" Language="ru_RU"><Text>Жители поселения выбрали другую цивилизацию.</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_ROW" Language="ru_RU"><Text>Склоняется к {1_Civ}</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_PROGRESS" Language="ru_RU"><Text>{1_Count} из {2_Count} ходов явного перевеса культуры</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_NOT_YET" Language="ru_RU"><Text>перевес культуры пока неявный</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_WAR" Language="ru_RU"><Text>удерживается: война</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_CAPITAL" Language="ru_RU"><Text>удерживается: столица</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_LAST" Language="ru_RU"><Text>удерживается: их последнее поселение</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_AGE" Language="ru_RU"><Text>удерживается: смена эпохи</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_DISTANT" Language="ru_RU"><Text>удерживается: Далекие земли до Эпохи исследований</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_TEAM" Language="ru_RU"><Text>удерживается: одна команда</Text></Replace>
+        <Replace Tag="LOC_BUILDING_CD_FLIP_NAME" Language="ru_RU"><Text>Смена подданства</Text></Replace>
+        <Replace Tag="LOC_BUILDING_CD_FLIP_DESCRIPTION" Language="ru_RU"><Text>Жители этого поселения решили присоединиться к другой цивилизации. Культурная диффузия ставит это на миг и убирает, как только поселение сменит владельца.</Text></Replace>
+        <Replace Tag="LOC_BUILDING_CD_FLIP_TOOLTIP" Language="ru_RU"><Text>Здешние жители решили присоединиться к другой цивилизации.</Text></Replace>
     </LocalizedText>
 </Database>
