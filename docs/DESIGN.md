@@ -113,7 +113,7 @@ the liberation probes' `lib.js` and a small CDF helper beside it; neither ships.
 | F13 | Town with urban districts and a wonder | Pass. Kórinthos (Library and Granary urban districts, Angkor Wat) to us in 286 ms: the center, every plot, both districts and the wonder showed the new owner in the same pass; 0 tile flips that pass | Pass. Chalkís, same build, 274 ms |
 | F14 | The pass after a flip | Pass. Two more passes: no tile flip, recede or pending entry moved any of Kórinthos' plots; Argos kept all 7 plots although they lie inside our capital's three rings (the release the `settlement` mark guards) | Covered by the long run: both towns kept every plot for 40 turns |
 | F15 | The old owner's units at the transfer | Pass. Alexander's Warrior on the center went to (64,5) and his Spearman on a ring-1 plot to (65,5), into his own land 3-4 tiles out; his units outside the town didn't move; no crash | Pass. Center and ring-1 units went two tiles out; no crash |
-| F16 | Core protection 0 and raised | Pass. Radius 0: flips above. Radius 1: Hanyang still flipped (281 ms). The live tile gate, asked for Goryeo and Dai Viet against Argos: at 0 only the center is refused, at 1 the center and all six ring-1 plots | Not run separately |
+| F16 | Core protection 0 and raised | Pass. Radius 0: flips above. Radius 1: Hanyang still flipped (281 ms). The live tile gate, asked for Goryeo and Dai Viet against Argos: at 0 only the center is refused, at 1 the center and all six ring-1 plots | Not run separately. 2026-10-16 (1.6.0 release watch, W1): FAIL, at radius 0 all six ring-1 tiles of Thêbai refused as well as the centre; `Cities.getAtLocation({x,y})` returns the owning city for every owned tile. 2026-10-16 (1.6.1, Exploration 4242, usual set, turn 1, deployed into the running game and the UI reloaded): on Persia's capital 19,34 and its ring, the 1.6.0 module read `isCityCenterAt` true, `conquerable` false and `isCoreProtected(…, 1, 0)` true on every ring tile; the 1.6.1 module reads the centre true/false/true and each ring tile false, `isCoreProtected` at 0 false and at 1 true, `conquerable` true on the rural tile 18,34 and false on the two urban ones (19,35, 20,34), which conquest refuses by design. Across four cities, 24 of 24 ring-1 tiles returned the owning city with its location at the centre, 0 at the tile |
 | Readout | Hover readout on a center | Pass: "Leans to Heian Empire · held: at war" on Heian-Kyo, "Leans to Goryeo Empire · 1 of 3 turns of clear culture" on Hanyang | Not run separately. 2026-10-16: the held wording read through the tooltip's `resolve()` (see F5, F6); the "N of 3 turns" wording wasn't read |
 | Partisans | The hand-off (spec step 6) | Not applicable | Pass. With Partisans' roll forced to hit, Partisans logged "brewing at 61,15: Cultural Diffusion's flip notice carries the unrest" and sent nothing; this mod's notice read "Argos has joined Heian Japan. / Greece now holds 30 grievances against Heian Japan. / Not everyone wanted this. Partisans are gathering near Argos." |
 
@@ -131,6 +131,31 @@ Still open:
   (BY_CULTURAL_IDENTITY); 7 of 7 plot(s) show the new owner".
 - The Civilopedia page and the marker building's Civilopedia entry weren't opened in game; `tests/pedia-pages.mjs`
   checks the page resolves.
+
+### 1.7.0: the land gate, the countdown and the City Details section (2026-10-16)
+
+Lab game, Antiquity 4242, usual set, 1.7.0 deployed into the running game with the UI reloaded (so the mechanics are
+the new code and the text keys are 1.6.0's: a new key reads as its tag until a new game compiles the text). Our
+capital Kamakura founded at 65,13 by `CREATE_ELEMENT`, Persian towns the same way, the field seeded as in the 1.6.0
+runs (6000 against 500 on the center, 250 against 100 on the plots), passes by `culturalDiffusion.runNow()`.
+
+| Check | What was watched |
+| --- | --- |
+| Land gate, held by a gate | Tushpa (67,17), Persia's only settlement: outlook `won false, refusal last-settlement, landShort true, land 1:6 (14%)`, readout "held: their last settlement", no hold |
+| Land gate alone (Low) | A second Persian city far off, then a new town at 61,13 under *claim empty land only*: three passes, each `refusal null, landShort true, land 1:6`, readout "held: the countryside is still theirs", no hold, every ring tile still Persia's |
+| Land gone, hold starts | Back on Medium with ten of the town's countryside tiles bought by Kamakura: the next pass read `land 15:2 (88%)` (the pass's own tile flips took four ring tiles too), hold `n 1`, readout "1 of 5 turns of clear culture" |
+| Countdown and flip | Tushpa, once its ring had gone to tile flips (6:1): pass 1 "Tushpa's people look to Heian Japan", passes 2-4 the countdown notice (the COUNTDOWN, COUNTDOWN and COUNTDOWN_LAST keys, unresolved in this game), pass 5 "Tushpa has joined Heian Japan. Achaemenid Persia now holds 30 grievances against Heian Japan" in 182 ms, Partisans rolled ("level -10, chance 0.03, stays quiet") |
+| City Details section | Persia's culture seeded over Kamakura, `INTERFACEMODE_CITY_PRODUCTION` on it and a `panel-city-details` created the way the production chooser does: the Citizen Growth tab reads "Cultural Diffusion / Leans to Achaemenid Persian Empire / held: Distant Lands before Exploration / (the center and countryside keys)", under Partisans' and Emigration's sections (`working_screenshots/cd-1.7.0-2026-10-16/01-city-details.png`) |
+
+A second lab game (same setup, started with the 1.7.0 files in place, so the text compiled and the section's script
+loaded from the modinfo rather than an import):
+
+| Check | What was watched |
+| --- | --- |
+| Countdown wording | Tushpa, its countryside bought (land 16:3) and Persia given a second city: pass 1 "Tushpa's people look to Heian Japan", pass 2 "Tushpa joins Heian Japan in 3 turns unless its people are won back", pass 3 "... in 2 turns ...", pass 4 "... next turn ...", readout "1 of 5" through "4 of 5 turns of clear culture"; pass 5 "Tushpa has joined Heian Japan. Achaemenid Persia now holds 30 grievances against Heian Japan. Not everyone wanted this. Partisans are gathering near Tushpa." |
+| Section, calm | Kamakura selected: "Cultural Diffusion / Heian Empire's own culture leads here." (`02-city-details-calm.png`) |
+| Section, leaning | Persia's culture seeded over Kamakura, the panel's own `update-city-details` event: "Leans to Achaemenid Persian Empire / held: their last settlement / Culture on the center: Achaemenid Persian Empire 6,000, Heian Empire 500 / Countryside: Achaemenid Persian Empire holds 1 tiles, Heian Empire 6" (`03-city-details-leaning.png`). The "1 tiles" line was reworded to "Countryside tiles: ... 1, ... 6" after the run; the new wording isn't watched |
+| Section with nothing selected | The section's first build logged "Script Error: Expected object" from `Cities.get(null)` on every refresh with no city selected (Partisans' `pt-panel.js:45` logs the same). The id is checked first now. Not watched: after the deploy's reload no City Details panel existed (the game builds it on the first open), so no refresh ran; the errors before the reload were the only ones logged. It's a null check on the id before `Cities.get`, covered by nothing in `tests/` either |
 
 ### Observation: population after a flip
 

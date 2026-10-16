@@ -77,7 +77,14 @@
         <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_30" Language="es_ES"><Text>30</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_60" Language="es_ES"><Text>60</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD" Language="es_ES"><Text>Difusión cultural - turnos de cultura clara antes de que un asentamiento cambie de manos</Text></Replace>
-        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_DESCRIPTION" Language="es_ES"><Text>Cuántos turnos seguidos debe dominar con claridad la cultura de un vecino un asentamiento antes de que se una (3 por defecto). Se te avisa en el primero.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_DESCRIPTION" Language="es_ES"><Text>Cuántos turnos seguidos debe dominar con claridad la cultura de un vecino un asentamiento antes de que se una (5 por defecto). Se te avisa en cada uno.</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_LAND" Language="es_ES"><Text>retenido: el campo sigue siendo del dueño</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_COUNTDOWN" Language="es_ES"><Text>{1_City} se unirá a {2_Civ} en {3_Count} turnos si nadie recupera a su gente.</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_COUNTDOWN_LAST" Language="es_ES"><Text>{1_City} se unirá a {2_Civ} el próximo turno si nadie recupera a su gente.</Text></Replace>
+        <Replace Tag="LOC_CD_PANEL_OFF" Language="es_ES"><Text>Los asentamientos no cambian de manos por cultura (desactivado en Opciones).</Text></Replace>
+        <Replace Tag="LOC_CD_PANEL_CALM" Language="es_ES"><Text>Aquí lidera la propia cultura de {1_Civ}.</Text></Replace>
+        <Replace Tag="LOC_CD_PANEL_CENTRE" Language="es_ES"><Text>Cultura en el centro: {1_Civ} {2_Amount}, {3_Civ} {4_Amount}</Text></Replace>
+        <Replace Tag="LOC_CD_PANEL_LAND" Language="es_ES"><Text>Casillas del campo: {1_Civ} {2_Count}, {3_Civ} {4_Count}</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_2" Language="es_ES"><Text>2</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_3" Language="es_ES"><Text>3</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_5" Language="es_ES"><Text>5</Text></Replace>

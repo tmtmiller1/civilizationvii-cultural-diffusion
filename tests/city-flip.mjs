@@ -126,6 +126,11 @@ const { normalizeState } = await import("/cultural-diffusion/ui/cd-state.js");
 const A = { x: 10, y: 10 };
 const B = { x: 14, y: 10 };
 const B_PLOTS = [B, { x: 15, y: 10 }, { x: 13, y: 10 }, { x: 14, y: 11 }, { x: 14, y: 9 }];
+// Our land around B: six countryside tiles within three of its center that aren't B's, so we already hold 6 of
+// (6 + B's 4 rural) = 60% of its countryside, the land gate's bar. The field has eaten the land first; the center
+// comes last.
+const A_LAND = GameplayMap.getPlotIndicesInRadius(B.x, B.y, 3).map(dec)
+  .filter((p) => !B_PLOTS.some((q) => q.x === p.x && q.y === p.y) && !(p.x === A.x && p.y === A.y)).slice(0, 6);
 const ageCfg = () => ({ ...CONFIG, minimumOwner: 300 });
 
 function world() {
@@ -135,7 +140,7 @@ function world() {
   delete globalThis.__towerPartisans;
   Game.turn++; // each test is its own turn, as far as the notices go
   makePlayer(ME); makePlayer(RIVAL); makePlayer(MINOR, { major: false });
-  makeCity(1, ME, A, [A]);
+  makeCity(1, ME, A, [A, ...A_LAND]);
   makeCity(2, RIVAL, B, B_PLOTS);
   makeCity(3, RIVAL, { x: 60, y: 60 }, [{ x: 60, y: 60 }], { isCapital: true });
   makeCity(4, MINOR, { x: 10, y: 14 }, [{ x: 10, y: 14 }]);
@@ -157,7 +162,7 @@ const region = () => new Set(GameplayMap.getPlotIndicesInRadius(A.x, A.y, 8).map
 const freshState = () => normalizeState({});
 const step = (state, field = wonField()) => flip.cityFlipStep({ state, next: field, region: region(), ageCfg: ageCfg(), deadOwners: [] });
 
-test("pass step: warns on the first pass and picks the settlement on the third", () => {
+test("pass step: warns on the first pass, counts down on the next, picks the settlement on the third", () => {
   world();
   const state = freshState();
   let out = step(state);
@@ -168,8 +173,10 @@ test("pass step: warns on the first pass and picks the settlement on the third",
   assert.match(notifications[0].Summary, /LOC_CD_CITY_FLIP_WARNING\|CITY_2\|CIV_0/);
   out = step(state);
   assert.equal(state.cityHold[tk(B.x, B.y)].n, 2);
-  assert.equal(notifications.length, 1, "no second warning");
+  assert.equal(notifications.length, 2, "the second pass counts down");
+  assert.match(notifications[1].Summary, /LOC_CD_CITY_FLIP_COUNTDOWN_LAST\|CITY_2\|CIV_0/, "one pass left: next turn");
   out = step(state);
+  assert.equal(notifications.length, 2, "the pass that flips sends no countdown; the joined notice follows it");
   assert.equal(out.launch.length, 1);
   assert.equal(out.launch[0].key, tk(B.x, B.y));
   assert.equal(out.launch[0].leader, ME);
@@ -196,6 +203,42 @@ test("pass step: the plot share must reach 60%", () => {
   f[tk(13, 10)] = { [RIVAL]: 900 }; // 2/5
   step(state, f);
   assert.equal(state.cityHold[tk(B.x, B.y)], undefined);
+});
+
+test("pass step: the countryside must already be 60% the leader's; the land goes first, the center last", () => {
+  world();
+  // Three of our six tiles around B back to unowned: 3 of (3 + 4) = 43%, under the bar.
+  for (const p of A_LAND.slice(0, 3)) owners.delete(tk(p.x, p.y));
+  const state = freshState();
+  step(state);
+  assert.equal(state.cityHold[tk(B.x, B.y)], undefined, "the culture has won the center and the plots, but not the land");
+  assert.equal(notifications.length, 0, "and nobody is warned");
+  // B's own rural tiles going to us is what moves the share: two of them ours makes 5 of (5 + 2) = 71%.
+  for (const p of B_PLOTS.slice(1, 3)) owners.set(tk(p.x, p.y), ME);
+  step(state);
+  assert.equal(state.cityHold[tk(B.x, B.y)].n, 1, "the countryside has gone, the hold starts");
+  // The bar is a knob: at 0 the field alone decides, as in 1.6.
+  world();
+  for (const p of A_LAND) owners.delete(tk(p.x, p.y));
+  CONFIG.cityFlipLandShare = 0;
+  const s2 = freshState();
+  step(s2);
+  assert.equal(s2.cityHold[tk(B.x, B.y)].n, 1);
+  CONFIG.cityFlipLandShare = 0.6;
+});
+
+test("pass step: a longer hold counts down turn by turn", () => {
+  world();
+  CONFIG.cityFlipHoldPasses = 5;
+  const state = freshState();
+  for (let i = 0; i < 4; i++) step(state);
+  assert.equal(notifications.length, 4);
+  assert.match(notifications[1].Summary, /LOC_CD_CITY_FLIP_COUNTDOWN\|CITY_2\|CIV_0\|3$/, "3 turns left after pass 2");
+  assert.match(notifications[2].Summary, /LOC_CD_CITY_FLIP_COUNTDOWN\|CITY_2\|CIV_0\|2$/);
+  assert.match(notifications[3].Summary, /LOC_CD_CITY_FLIP_COUNTDOWN_LAST\|CITY_2\|CIV_0$/);
+  const out = step(state);
+  assert.equal(out.launch.length, 1, "the fifth pass flips");
+  CONFIG.cityFlipHoldPasses = 3;
 });
 
 test("pass step: war, a capital, a last settlement, an age change and multiplayer hold it", () => {

@@ -62,7 +62,14 @@
         <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_30" Language="ja_JP"><Text>30</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_60" Language="ja_JP"><Text>60</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD" Language="ja_JP"><Text>文化の伝播 - 居住地が帰属を変えるまでの明確な文化のターン数</Text></Replace>
-        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_DESCRIPTION" Language="ja_JP"><Text>隣の文明の文化が何ターン続けて居住地をはっきり制すれば加わるかを決めます（デフォルト3）。最初のターンに警告が出ます。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_DESCRIPTION" Language="ja_JP"><Text>隣の文明の文化が何ターン続けて居住地をはっきり制すれば加わるかを決めます（デフォルト5）。そのたびに警告が出ます。</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_LAND" Language="ja_JP"><Text>保留: 周辺の土地はまだ所有者のもの</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_COUNTDOWN" Language="ja_JP"><Text>{1_City}の人々を取り戻せなければ、{3_Count}ターン後に{2_Civ}に加わる。</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_COUNTDOWN_LAST" Language="ja_JP"><Text>{1_City}の人々を取り戻せなければ、次のターンに{2_Civ}に加わる。</Text></Replace>
+        <Replace Tag="LOC_CD_PANEL_OFF" Language="ja_JP"><Text>居住地は文化で持ち主を変えない（オプションでオフ）。</Text></Replace>
+        <Replace Tag="LOC_CD_PANEL_CALM" Language="ja_JP"><Text>ここでは{1_Civ}自身の文化が首位。</Text></Replace>
+        <Replace Tag="LOC_CD_PANEL_CENTRE" Language="ja_JP"><Text>都心の文化: {1_Civ} {2_Amount}、{3_Civ} {4_Amount}</Text></Replace>
+        <Replace Tag="LOC_CD_PANEL_LAND" Language="ja_JP"><Text>周辺のタイル: {1_Civ} {2_Count}、{3_Civ} {4_Count}</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_2" Language="ja_JP"><Text>2</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_3" Language="ja_JP"><Text>3</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_5" Language="ja_JP"><Text>5</Text></Replace>

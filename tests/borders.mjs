@@ -15,6 +15,13 @@ const MAJOR = 3, VILLAGE_OWNER = 20;
 const MAJOR_CENTRE = { x: 10, y: 10 };
 const VILLAGE = { x: 20, y: 10 };          // a center only the map reports (an Independent Power lists no cities)
 const owners = new Map([[tk(MAJOR_CENTRE.x, MAJOR_CENTRE.y), MAJOR], [tk(VILLAGE.x, VILLAGE.y), VILLAGE_OWNER]]);
+// The major's ring-1 and ring-2 tiles are its territory: Cities.getAtLocation answers with the major's city for all
+// of them (the engine returns the OWNING city for any plot it owns, watched 2026-10-16), and only its location says
+// which plot is the centre.
+for (let y = MAJOR_CENTRE.y - 2; y <= MAJOR_CENTRE.y + 2; y++) for (let x = MAJOR_CENTRE.x - 2; x <= MAJOR_CENTRE.x + 2; x++) {
+  if (hexDistance(MAJOR_CENTRE, { x, y }) <= 2) owners.set(tk(x, y), MAJOR);
+}
+const MAJOR_CITY = { id: 1, location: MAJOR_CENTRE };
 const reads = { getAlive: 0, getAtLocation: 0 };
 
 globalThis.GameplayMap = {
@@ -40,7 +47,8 @@ globalThis.Cities = {
   getAtLocation: (loc) => {
     reads.getAtLocation++;
     const k = tk(loc.x, loc.y);
-    return k === tk(VILLAGE.x, VILLAGE.y) || k === tk(MAJOR_CENTRE.x, MAJOR_CENTRE.y) ? { id: 9 } : null;
+    if (k === tk(VILLAGE.x, VILLAGE.y)) return { id: 9, location: VILLAGE };
+    return owners.get(k) === MAJOR ? MAJOR_CITY : null;
   },
   get: () => null
 };
@@ -68,6 +76,8 @@ assert.equal(ask(MAJOR_CENTRE, MAJOR, 0), true, "a major's center is protected a
 assert.equal(ask({ x: 11, y: 10 }, MAJOR, 0), false, "its ring-1 isn't at radius 0");
 assert.equal(ask({ x: 11, y: 10 }, MAJOR, 1), true, "its ring-1 is at radius 1");
 assert.equal(ask({ x: 11, y: 10 }, 7, 1), false, "another owner's filter doesn't see it");
+assert.equal(ask({ x: 12, y: 10 }, MAJOR, 1), false, "an owned ring-2 tile isn't a centre: the map returns the owning city for it, but the city stands elsewhere (1.6.0 refused every owned tile here)");
+assert.equal(ask({ x: 13, y: 10 }, MAJOR, 0), false, "radius 0 and an owned ring-3 tile: not protected");
 assert.equal(ask({ x: 21, y: 10 }, VILLAGE_OWNER, 1), true, "the village, which no city list reports, is protected");
 assert.equal(ask(MAJOR_CENTRE, -1, -1), false, "radius -1 protects nothing");
 

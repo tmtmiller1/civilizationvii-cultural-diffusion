@@ -160,7 +160,7 @@
         <Row Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_30"><Text>30</Text></Row>
         <Row Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_60"><Text>60</Text></Row>
         <Row Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD"><Text>Cultural Diffusion - turns of clear culture before a settlement changes hands</Text></Row>
-        <Row Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_DESCRIPTION"><Text>How many turns in a row a neighbor's culture must clearly hold a settlement before it joins (3 by default). You're warned on the first.</Text></Row>
+        <Row Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_DESCRIPTION"><Text>How many turns in a row a neighbor's culture must clearly hold a settlement before it joins (5 by default). You're warned on each of them.</Text></Row>
         <Row Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_2"><Text>2</Text></Row>
         <Row Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_3"><Text>3</Text></Row>
         <Row Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_5"><Text>5</Text></Row>
@@ -180,6 +180,13 @@
         <Row Tag="LOC_CD_CITY_FLIP_HELD_AGE"><Text>held: the age is changing</Text></Row>
         <Row Tag="LOC_CD_CITY_FLIP_HELD_DISTANT"><Text>held: Distant Lands before Exploration</Text></Row>
         <Row Tag="LOC_CD_CITY_FLIP_HELD_TEAM"><Text>held: same team</Text></Row>
+        <Row Tag="LOC_CD_CITY_FLIP_HELD_LAND"><Text>held: the countryside is still theirs</Text></Row>
+        <Row Tag="LOC_CD_CITY_FLIP_COUNTDOWN"><Text>{1_City} joins {2_Civ} in {3_Count} turns unless its people are won back.</Text></Row>
+        <Row Tag="LOC_CD_CITY_FLIP_COUNTDOWN_LAST"><Text>{1_City} joins {2_Civ} next turn unless its people are won back.</Text></Row>
+        <Row Tag="LOC_CD_PANEL_OFF"><Text>Settlements don't change hands by culture (switched off in Options).</Text></Row>
+        <Row Tag="LOC_CD_PANEL_CALM"><Text>{1_Civ}'s own culture leads here.</Text></Row>
+        <Row Tag="LOC_CD_PANEL_CENTRE"><Text>Culture on the center: {1_Civ} {2_Amount}, {3_Civ} {4_Amount}</Text></Row>
+        <Row Tag="LOC_CD_PANEL_LAND"><Text>Countryside tiles: {1_Civ} {2_Count}, {3_Civ} {4_Count}</Text></Row>
         <Row Tag="LOC_BUILDING_CD_FLIP_NAME"><Text>Changing Allegiance</Text></Row>
         <Row Tag="LOC_BUILDING_CD_FLIP_DESCRIPTION"><Text>The people of this settlement have chosen to join another civilization. Cultural Diffusion places it for a moment and removes it once the settlement has changed hands.</Text></Row>
         <Row Tag="LOC_BUILDING_CD_FLIP_TOOLTIP"><Text>The people here have chosen to join another civilization.</Text></Row>

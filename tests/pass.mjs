@@ -116,8 +116,20 @@ globalThis.Game = { age: "AGE_ANTIQUITY", turn: 10, maxTurns: 90 };
 // section before 19 runs with no units on the map.
 const minorPlayers = new Set();   // player ids the stub reports as isMajor === false
 const centresOnMap = new Set(); // "x,y" of settlement centers the MAP reports (villages included)
-// The engine's form: one location (base-game calls pass a location or a plot index, never x and y).
-globalThis.Cities = { getAtLocation: (l) => (l && centresOnMap.has(tk(l.x, l.y)) ? { id: 55 } : null), get: () => null };
+// The engine's form: one location (base-game calls pass a location or a plot index, never x and y). It answers with
+// the city that OWNS the plot, centre or not (watched 2026-10-16), so an owned ring tile returns its city, whose
+// location is the centre; a map-only centre (a village) returns a city standing on the plot itself.
+globalThis.Cities = {
+  getAtLocation: (l) => {
+    if (!l) return null;
+    if (centresOnMap.has(tk(l.x, l.y))) return { id: 55, location: { x: l.x, y: l.y } };
+    const t = getTile(l.x, l.y);
+    if (t.city === CITY_ID) return myCity;
+    if (t.city === RIVAL_CITY_ID) return rivalCity;
+    return null;
+  },
+  get: () => null
+};
 const mapUnits = new Map(); // "x,y" -> [{owner}]
 globalThis.MapUnits = { getUnits: (x, y) => (mapUnits.get(tk(x, y)) || []).map((_u, i) => ({ x, y, i })) };
 globalThis.Units = { get: (cid) => (mapUnits.get(tk(cid.x, cid.y)) || [])[cid.i] };

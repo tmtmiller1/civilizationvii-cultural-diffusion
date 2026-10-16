@@ -3,7 +3,8 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
-  markerFor, isFlipMarker, strongestOn, centreWon, plotShareLed, cityFlipRefusal, nextHold, flipDue, pickFlips
+  markerFor, isFlipMarker, strongestOn, centreWon, plotShareLed, landShareOf, cityFlipRefusal, nextHold, flipDue,
+  pickFlips
 } from "/cultural-diffusion/ui/cd-city-flip-rule.js";
 
 const CFG = {
@@ -43,6 +44,14 @@ test("rule: the plot share counts plots the leader leads, unreached plots as not
   assert.equal(plotShareLed(rows, 0, []), 1 / 5);
   assert.equal(plotShareLed([], 3, []), 0);
   assert.equal(plotShareLed([{ 3: 500, 5: 900 }], 3, [5]), 1, "a dead civ's stock never leads");
+});
+
+test("rule: the land share is the leader's plots against the owner's rural ones, 0 when there are none", () => {
+  assert.equal(landShareOf(6, 4), 0.6);
+  assert.equal(landShareOf(0, 10), 0);
+  assert.equal(landShareOf(3, 0), 1, "the owner has no countryside left to lose");
+  assert.equal(landShareOf(0, 0), 0, "nothing either way: the land hasn't gone");
+  assert.equal(landShareOf(-2, undefined), 0);
 });
 
 /** Facts for a settlement that may flip, overridden per test. */

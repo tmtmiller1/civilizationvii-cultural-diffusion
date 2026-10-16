@@ -155,12 +155,16 @@ function districtNameFromDistricts(loc) {
  * `Players.get(pid).Cities.getCities()`, so anything that finds centers by
  * walking a city list is blind to a village. Three routes, because none is available everywhere:
  * `Cities.getAtLocation`, the owning city's own location, then the district type. `Cities.getAtLocation` takes one
- * location (or a plot index), as every base-game call passes it.
+ * location (or a plot index), as every base-game call passes it, and answers with the city that OWNS the plot, for
+ * any plot in its territory (watched 2026-10-16: 62,15 returned Thêbai at 61,15). So a city coming back says nothing
+ * by itself; its location has to match the plot.
  * @param {{x:number,y:number}} loc Plot.
  * @returns {boolean} True when a settlement center occupies the plot.
  */
 export function isCityCenterAt(loc) {
-  if (safe(() => !!Cities?.getAtLocation?.({ x: loc.x, y: loc.y }), false)) return true;
+  const cityAt = safe(() => Cities?.getAtLocation?.({ x: loc.x, y: loc.y }), null);
+  const cityLoc = cityAt && safe(() => cityAt.location, null);
+  if (cityLoc && typeof cityLoc.x === "number") return cityLoc.x === loc.x && cityLoc.y === loc.y;
   const at = owningCityLocAt(loc);
   if (at && at.x === loc.x && at.y === loc.y) return true;
   return /CITY_CENTER/.test(districtTypeNameAt(loc) || "");

@@ -61,7 +61,7 @@ globalThis.GameplayMap = {
   getLocationFromIndex: (i) => dec(i)
 };
 // The engine's form: one location (base-game calls pass a location or a plot index, never x and y).
-globalThis.Cities = { getAtLocation: (l) => (l && centresOnMap.has(tk(l.x, l.y)) ? { id: 55 } : null), get: () => null };
+globalThis.Cities = { getAtLocation: (l) => (l && centresOnMap.has(tk(l.x, l.y)) ? { id: 55, location: { x: l.x, y: l.y } } : null), get: () => null };
 globalThis.MapUnits = { getUnits: (x, y) => (units.get(tk(x, y)) || []).map((_u, i) => ({ x, y, i })) };
 globalThis.Units = { get: (cid) => (units.get(tk(cid.x, cid.y)) || [])[cid.i] };
 globalThis.GameInfo = { Units: { lookup: (t) => ({ Domain: t === "SEA" ? "DOMAIN_SEA" : "DOMAIN_LAND" }) } };
