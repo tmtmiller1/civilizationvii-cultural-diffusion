@@ -1,0 +1,528 @@
+{
+ "seed": 4242,
+ "version": "1.5.0",
+ "side": "usual set",
+ "log": [
+  {
+   "step": "found",
+   "ok": true,
+   "city": "Heian-Kyo",
+   "id": 65536,
+   "at": {
+    "x": 65,
+    "y": 13
+   },
+   "isTown": false,
+   "can": {
+    "Success": true
+   }
+  },
+  {
+   "step": "site",
+   "capital": {
+    "x": 65,
+    "y": 13
+   },
+   "candidates": [
+    {
+     "x": 67,
+     "y": 17
+    },
+    {
+     "x": 66,
+     "y": 17
+    },
+    {
+     "x": 65,
+     "y": 17
+    },
+    {
+     "x": 64,
+     "y": 17
+    },
+    {
+     "x": 61,
+     "y": 13
+    },
+    {
+     "x": 62,
+     "y": 12
+    }
+   ]
+  },
+  {
+   "step": "found",
+   "ok": true,
+   "city": "Ise",
+   "id": 131073,
+   "at": {
+    "x": 65,
+    "y": 17
+   },
+   "isTown": true,
+   "can": {
+    "Success": true
+   }
+  },
+  {
+   "step": "pick",
+   "A": {
+    "id": 65536,
+    "at": {
+     "x": 65,
+     "y": 13
+    },
+    "name": "Heian-Kyo"
+   },
+   "B": {
+    "id": 131073,
+    "at": {
+     "x": 65,
+     "y": 17
+    },
+    "name": "Ise",
+    "isTown": true
+   },
+   "candidates": [
+    {
+     "x": 65,
+     "y": 14,
+     "dA": 1,
+     "dB": 3,
+     "district": null
+    }
+   ],
+   "T": {
+    "x": 65,
+    "y": 14
+   }
+  },
+  {
+   "step": "read",
+   "label": "before",
+   "turn": 1,
+   "T": {
+    "x": 65,
+    "y": 14
+   },
+   "owner": 0,
+   "owningCity": 65536,
+   "mapCity": 65536,
+   "inA": true,
+   "inB": false,
+   "district": null,
+   "workedA": "ERR",
+   "workedB": "ERR",
+   "yieldsA": {
+    "food": 5,
+    "prod": 5,
+    "gold": 0
+   },
+   "yieldsB": {
+    "food": 3,
+    "prod": 0,
+    "gold": 0
+   },
+   "A": 65536,
+   "B": 131073
+  },
+  {
+   "step": "read",
+   "label": "inline",
+   "turn": 1,
+   "T": {
+    "x": 65,
+    "y": 14
+   },
+   "owner": 0,
+   "owningCity": 65536,
+   "mapCity": 65536,
+   "inA": true,
+   "inB": false,
+   "district": null,
+   "workedA": "ERR",
+   "workedB": "ERR",
+   "yieldsA": {
+    "food": 5,
+    "prod": 5,
+    "gold": 0
+   },
+   "yieldsB": {
+    "food": 3,
+    "prod": 0,
+    "gold": 0
+   },
+   "A": 65536,
+   "B": 131073
+  },
+  {
+   "step": "read",
+   "label": "after-4s",
+   "turn": 1,
+   "T": {
+    "x": 65,
+    "y": 14
+   },
+   "owner": 0,
+   "owningCity": 131073,
+   "mapCity": 131073,
+   "inA": false,
+   "inB": true,
+   "district": null,
+   "workedA": "ERR",
+   "workedB": "ERR",
+   "yieldsA": {
+    "food": 5,
+    "prod": 5,
+    "gold": 0
+   },
+   "yieldsB": {
+    "food": 3,
+    "prod": 0,
+    "gold": 0
+   },
+   "A": 65536,
+   "B": 131073
+  },
+  {
+   "step": "rebuy",
+   "call": "called",
+   "verdict": "REPARENT-WORKS-DEFERRED",
+   "before": {
+    "step": "read",
+    "label": "before",
+    "turn": 1,
+    "T": {
+     "x": 65,
+     "y": 14
+    },
+    "owner": 0,
+    "owningCity": 65536,
+    "mapCity": 65536,
+    "inA": true,
+    "inB": false,
+    "district": null,
+    "workedA": "ERR",
+    "workedB": "ERR",
+    "yieldsA": {
+     "food": 5,
+     "prod": 5,
+     "gold": 0
+    },
+    "yieldsB": {
+     "food": 3,
+     "prod": 0,
+     "gold": 0
+    },
+    "A": 65536,
+    "B": 131073
+   },
+   "inline": {
+    "step": "read",
+    "label": "inline",
+    "turn": 1,
+    "T": {
+     "x": 65,
+     "y": 14
+    },
+    "owner": 0,
+    "owningCity": 65536,
+    "mapCity": 65536,
+    "inA": true,
+    "inB": false,
+    "district": null,
+    "workedA": "ERR",
+    "workedB": "ERR",
+    "yieldsA": {
+     "food": 5,
+     "prod": 5,
+     "gold": 0
+    },
+    "yieldsB": {
+     "food": 3,
+     "prod": 0,
+     "gold": 0
+    },
+    "A": 65536,
+    "B": 131073
+   },
+   "after": {
+    "step": "read",
+    "label": "after-4s",
+    "turn": 1,
+    "T": {
+     "x": 65,
+     "y": 14
+    },
+    "owner": 0,
+    "owningCity": 131073,
+    "mapCity": 131073,
+    "inA": false,
+    "inB": true,
+    "district": null,
+    "workedA": "ERR",
+    "workedB": "ERR",
+    "yieldsA": {
+     "food": 5,
+     "prod": 5,
+     "gold": 0
+    },
+    "yieldsB": {
+     "food": 3,
+     "prod": 0,
+     "gold": 0
+    },
+    "A": 65536,
+    "B": 131073
+   }
+  },
+  {
+   "step": "read",
+   "label": "turn+1",
+   "turn": 2,
+   "T": {
+    "x": 65,
+    "y": 14
+   },
+   "owner": 0,
+   "owningCity": 131073,
+   "mapCity": 131073,
+   "inA": false,
+   "inB": true,
+   "district": null,
+   "workedA": "ERR",
+   "workedB": "ERR",
+   "yieldsA": {
+    "food": 5,
+    "prod": 5,
+    "gold": 0
+   },
+   "yieldsB": {
+    "food": 3,
+    "prod": 0,
+    "gold": 0
+   },
+   "A": 65536,
+   "B": 131073
+  },
+  {
+   "step": "read",
+   "label": "turn+5",
+   "turn": 6,
+   "T": {
+    "x": 65,
+    "y": 14
+   },
+   "owner": 0,
+   "owningCity": 131073,
+   "mapCity": 131073,
+   "inA": false,
+   "inB": true,
+   "district": null,
+   "workedA": "ERR",
+   "workedB": "ERR",
+   "yieldsA": {
+    "food": 5,
+    "prod": 5,
+    "gold": 0
+   },
+   "yieldsB": {
+    "food": 3,
+    "prod": 0,
+    "gold": 0
+   },
+   "A": 65536,
+   "B": 131073
+  },
+  {
+   "step": "read",
+   "label": "improved-for-Ise",
+   "turn": 6,
+   "T": {
+    "x": 65,
+    "y": 14
+   },
+   "owner": 0,
+   "owningCity": 131073,
+   "mapCity": 131073,
+   "inA": false,
+   "inB": true,
+   "district": {
+    "owner": 0,
+    "id": 196610,
+    "type": 4
+   },
+   "workedA": "ERR",
+   "workedB": "ERR",
+   "yieldsA": {
+    "food": 5,
+    "prod": 5,
+    "gold": 0
+   },
+   "yieldsB": {
+    "food": 3,
+    "prod": 1,
+    "gold": 2
+   },
+   "A": 65536,
+   "B": 131073
+  },
+  {
+   "step": "read",
+   "label": "case2-inline",
+   "turn": 6,
+   "T": {
+    "x": 65,
+    "y": 14
+   },
+   "owner": 0,
+   "owningCity": 131073,
+   "mapCity": 131073,
+   "inA": false,
+   "inB": true,
+   "district": null,
+   "workedA": "ERR",
+   "workedB": "ERR",
+   "yieldsA": {
+    "food": 5,
+    "prod": 5,
+    "gold": 0
+   },
+   "yieldsB": {
+    "food": 3,
+    "prod": 0,
+    "gold": 0
+   },
+   "A": 65536,
+   "B": 131073
+  },
+  {
+   "step": "read",
+   "label": "case2-after-buy-4s",
+   "turn": 6,
+   "T": {
+    "x": 65,
+    "y": 14
+   },
+   "owner": 0,
+   "owningCity": 65536,
+   "mapCity": 65536,
+   "inA": true,
+   "inB": false,
+   "district": null,
+   "workedA": "ERR",
+   "workedB": "ERR",
+   "yieldsA": {
+    "food": 5,
+    "prod": 5,
+    "gold": 0
+   },
+   "yieldsB": {
+    "food": 3,
+    "prod": 0,
+    "gold": 0
+   },
+   "A": 65536,
+   "B": 131073
+  },
+  {
+   "step": "read",
+   "label": "case2-rebuilt",
+   "turn": 6,
+   "T": {
+    "x": 65,
+    "y": 14
+   },
+   "owner": 0,
+   "owningCity": 65536,
+   "mapCity": 65536,
+   "inA": true,
+   "inB": false,
+   "district": {
+    "owner": 0,
+    "id": 262146,
+    "type": 4
+   },
+   "workedA": "ERR",
+   "workedB": "ERR",
+   "yieldsA": {
+    "food": 5,
+    "prod": 6,
+    "gold": 1
+   },
+   "yieldsB": {
+    "food": 3,
+    "prod": 0,
+    "gold": 0
+   },
+   "A": 65536,
+   "B": 131073
+  },
+  {
+   "step": "read",
+   "label": "case2-turn+1",
+   "turn": 7,
+   "T": {
+    "x": 65,
+    "y": 14
+   },
+   "owner": 0,
+   "owningCity": 65536,
+   "mapCity": 65536,
+   "inA": true,
+   "inB": false,
+   "district": {
+    "owner": 0,
+    "id": 262146,
+    "type": 4
+   },
+   "workedA": "ERR",
+   "workedB": "ERR",
+   "yieldsA": {
+    "food": 5,
+    "prod": 6,
+    "gold": 1
+   },
+   "yieldsB": {
+    "food": 3,
+    "prod": 0,
+    "gold": 0
+   },
+   "A": 65536,
+   "B": 131073
+  },
+  {
+   "step": "read",
+   "label": "case2-turn+5",
+   "turn": 11,
+   "T": {
+    "x": 65,
+    "y": 14
+   },
+   "owner": 0,
+   "owningCity": 65536,
+   "mapCity": 65536,
+   "inA": true,
+   "inB": false,
+   "district": {
+    "owner": 0,
+    "id": 262146,
+    "type": 4
+   },
+   "workedA": "ERR",
+   "workedB": "ERR",
+   "yieldsA": {
+    "food": 5,
+    "prod": 6,
+    "gold": 1
+   },
+   "yieldsB": {
+    "food": 3,
+    "prod": 0,
+    "gold": 0
+   },
+   "A": 65536,
+   "B": 131073
+  }
+ ]
+}

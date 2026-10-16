@@ -10,7 +10,7 @@ import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
 import { dlog, log } from "/cultural-diffusion/ui/cd-log.js";
 import {
   localPlayerId, mapDims, allSettlements, plotsInRadius, cityLoc,
-  ownerAt, owningCityIdAt, isWater
+  ownerAt, owningCityIdAt, isWater, isMultiplayer
 } from "/cultural-diffusion/ui/cd-plots.js";
 import { cultureOf, happinessOf, wonderCountOf, isCelebrating, currentAgeKey, prosperityOf, vitalityOf, populationOf } from "/cultural-diffusion/ui/cd-polity.js";
 import { projectionOf, ethnicFactor } from "/cultural-diffusion/ui/cd-pressure.js";
@@ -37,6 +37,8 @@ import { recedeOwnership } from "/cultural-diffusion/ui/cd-recede.js";
 import { logFieldDiagnostics, logStateSize } from "/cultural-diffusion/ui/cd-diagnostics.js";
 import { markPending, isPending, confirmPending, pendingClaimKeys } from "/cultural-diffusion/ui/cd-pending.js";
 import { cityFlipStep, launchCityFlips, settlementBusyKeys } from "/cultural-diffusion/ui/cd-city-flip.js";
+import { withCentreCache } from "/cultural-diffusion/ui/cd-borders.js";
+import { reparentAll } from "/cultural-diffusion/ui/cd-reparent.js";
 
 /** @param {number} x @param {number} y */
 function key(x, y) {
@@ -373,7 +375,7 @@ function commitBuffer(state, c, T, me) {
  * @returns {number} Buffer tiles claimed.
  */
 export function claimBufferAt(devLoc) {
-  if (!CONFIG.growthBuffer) return 0;
+  if (!CONFIG.diffusionEnabled || !CONFIG.growthBuffer) return 0; // the master switch stops the buffer too
   const me = localPlayerId();
   if (me < 0 || ownerAt(devLoc) !== me) return 0;   // only our own development
   const cities = localCityList(me);
@@ -462,11 +464,12 @@ function reintegrateOrphan(state, k, loc, cities, me) {
 }
 
 /**
- * Release any mod-claimed tile within a local city's base-game natural ring back to the base game, so
- * it is re-assigned to the city that can actually work it (unlike repairOrphans, this covers tiles that
- * did attach to a city, just the wrong one). One-shot: the claim record is dropped, so it is never released again.
+ * Drop the mod's claim record for any tile within a local city's base-game natural ring: the base game owns the
+ * inner rings, so the mod doesn't keep claims there. The tile itself stays where it is (a city-attached tile can't
+ * be released); one attached to a settlement too far away to work it is moved by the re-parent heal
+ * (cd-reparent.js), which reads the map rather than these records. One-shot per record.
  * @param {*} state Persisted state (mutated). @param {*} cities Local cities. @param {number} me Local player id.
- * @returns {number} Inner claims released this pass.
+ * @returns {number} Inner claim records dropped this pass.
  */
 function releaseInnerClaims(state, cities, me) {
   let released = 0;
@@ -475,11 +478,23 @@ function releaseInnerClaims(state, cities, me) {
     if (!c || c.by !== me || c.settlement) continue; // a settlement that joined us keeps its own plots
     const loc = unkey(k);
     if (!withinOwnNaturalRing(loc, cities)) continue;
-    if (ownerAt(loc) === me) unclaim(loc); // hand it back; the base game re-grows + re-assigns it to the right city
     forgetClaim(state, k);
     released++;
   }
   return released;
+}
+
+/**
+ * The repairs that run before the field update: orphans re-integrated or released, inner claim records dropped, and
+ * every major civilization's tiles stuck on a settlement that can't work them moved to one that can (cd-reparent.js).
+ * @returns {{healed:number, released:number, reparented:number}} Counts for the pass summary.
+ */
+function repairStep(state, region, cities, me, busy) {
+  return {
+    healed: repairOrphans(state, region, cities, me),
+    released: releaseInnerClaims(state, cities, me),
+    reparented: reparentAll(state, busy)
+  };
 }
 
 /** Prune far/empty field tiles to bound persisted size (keeps a 2-tile skirt past the region). */
@@ -542,14 +557,15 @@ function tileTail({ state, region, next, me, ageCfg, deadOwners, busy }) {
 /** The per-pass summary line: logged whenever anything changed or is in flight, and every pass in debug. */
 function logPassSummary(state, c) {
   const done = c.confirmed;
-  const busy = c.flips + c.pending + c.ceded + c.cedePending + c.healed + c.released
+  const busy = c.flips + c.pending + c.ceded + c.cedePending + c.healed + c.released + c.reparented
     + done.claim + done.cede + done.dropped + c.aiFlips + c.aiPending + c.conquests + c.conquestPending
     + c.cityHolds + c.cityFlips;
   if (busy === 0 && !CONFIG.debug) return;
   log(`pass: ${c.flips} flip(s), ${c.pending} pending, ${c.ceded} ceded (${c.cedePending} pending), `
     + `${c.aiFlips} AI flip(s) (${c.aiPending} pending), ${c.conquests} conquest(s) (${c.conquestPending} pending), `
     + `confirmed ${done.claim} claim/${done.cede} cede (${done.dropped} dropped), `
-    + `${c.healed} orphan(s) healed, ${c.released} inner tile(s) released to base game, `
+    + `${c.healed} orphan(s) healed, ${c.released} inner claim record(s) dropped, `
+    + `${c.reparented} tile(s) moved to a settlement that can work them, `
     + `${c.cityHolds} settlement(s) leaning (${c.cityFlips} flipping), `
     + `${Object.keys(state.field).length} active field tile(s)`);
 }
@@ -582,11 +598,17 @@ function preparePass(cities) {
 
 /**
  * Run one reaction-diffusion pass. Idempotent-safe: bails cleanly when disabled, in
- * multiplayer, or with no local cities.
+ * multiplayer, or with no local cities. Settlement centers are read once for the whole pass (cd-borders.js), since
+ * every rival tile the pass and the AI flips consider asks whether it sits in a protected core.
  * @returns {{flips:number, tiles:number}} Pass summary.
  */
 export function runPass() {
-  if (!CONFIG.diffusionEnabled) return { flips: 0, tiles: 0 };
+  return withCentreCache(passBody);
+}
+
+/** The pass itself (runPass). @returns {*} Pass summary. */
+function passBody() {
+  if (!CONFIG.diffusionEnabled || isMultiplayer()) return { flips: 0, tiles: 0 };
   const me = localPlayerId();
   if (me < 0) return { flips: 0, tiles: 0 };
   const cities = localCityList(me);
@@ -595,8 +617,7 @@ export function runPass() {
   const t0 = Date.now();
   const { state, region, radius, injectors, ethCtx, ageCfg, pace, confirmed, comp, busy } = preparePass(cities);
   const alive = aliveOwners(me);
-  const healed = repairOrphans(state, region, cities, me);
-  const released = releaseInnerClaims(state, cities, me);
+  const { healed, released, reparented } = repairStep(state, region, cities, me, busy);
   const next = updateField(state, region, injectors, { ethCtx, ageCfg, pace, alive, comp });
   logFieldDiagnostics(injectors, cities, next, me, ageCfg);
   const { flips, pending, tiles, deadOwners, aiFlips, aiPending } =
@@ -608,11 +629,11 @@ export function runPass() {
 
   finishPass(state, region, cities, radius, { t0, cityLaunch: city.launch });
   logPassSummary(state, {
-    flips, pending, ceded, cedePending, healed, released, confirmed, aiFlips, aiPending,
+    flips, pending, ceded, cedePending, healed, released, reparented, confirmed, aiFlips, aiPending,
     conquests: conquest.flips, conquestPending: conquest.pending, cityHolds: city.tracked, cityFlips: city.launch.length
   });
   return {
-    flips, pending, tiles, healed, released, ceded, cedePending, aiFlips, aiPending,
+    flips, pending, tiles, healed, released, reparented, ceded, cedePending, aiFlips, aiPending,
     conquests: conquest.flips, conquestPending: conquest.pending, occupied: conquest.held,
     confirmed: confirmed.claim, confirmedCede: confirmed.cede, cityHolds: city.tracked, cityFlips: city.launch.length
   };

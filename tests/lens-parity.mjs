@@ -60,7 +60,8 @@ globalThis.GameplayMap = {
   },
   getLocationFromIndex: (i) => dec(i)
 };
-globalThis.Cities = { getAtLocation: (x, y) => (centresOnMap.has(tk(x, y)) ? { id: 55 } : null), get: () => null };
+// The engine's form: one location (base-game calls pass a location or a plot index, never x and y).
+globalThis.Cities = { getAtLocation: (l) => (l && centresOnMap.has(tk(l.x, l.y)) ? { id: 55 } : null), get: () => null };
 globalThis.MapUnits = { getUnits: (x, y) => (units.get(tk(x, y)) || []).map((_u, i) => ({ x, y, i })) };
 globalThis.Units = { get: (cid) => (units.get(tk(cid.x, cid.y)) || [])[cid.i] };
 globalThis.GameInfo = { Units: { lookup: (t) => ({ Domain: t === "SEA" ? "DOMAIN_SEA" : "DOMAIN_LAND" }) } };
@@ -93,7 +94,18 @@ globalThis.Players = {
   })
 };
 globalThis.Game = { age: "AGE_ANTIQUITY", turn: 10, maxTurns: 90 };
-globalThis.WorldUI = { addPlots: () => {}, clearPlots: () => {} };
+// The overlay the lens layer paints into (WorldUI.createOverlayGroup -> addPlotOverlay), recording each paint.
+const painted_ = [];
+globalThis.WorldUI = {
+  createOverlayGroup: () => ({
+    clearAll: () => {},
+    addPlotOverlay: () => ({ addPlots: (plots) => painted_.push(...plots), clear: () => { painted_.length = 0; } })
+  })
+};
+// The keydown listener the lens installs for Shift+C, and the focused element it checks.
+const listeners = {};
+globalThis.window = { addEventListener: (type, fn) => { (listeners[type] ||= []).push(fn); } };
+globalThis.document = { activeElement: null };
 // The settings store both sides read. applyTunableOverrides() pulls these into CONFIG, so a fixture that
 // wants a SETTINGS-driven knob (diffusionEnabled, claimOnlyUnowned, fusedModel, preset keys) must set it
 // here, writing CONFIG directly is clobbered the moment the lens reads, which is exactly how the first
@@ -107,9 +119,15 @@ function setSetting(key, value) { modSettings["cultural-diffusion"][key] = value
 function clearSettings() { modSettings["cultural-diffusion"] = {}; }
 
 const { runPass } = await import("/cultural-diffusion/ui/cd-pass.js");
-const { __test: LensT } = await import("/cultural-diffusion/ui/cd-pressure-lens.js");
+const { __test: LensT, LENS } = await import("/cultural-diffusion/ui/cd-pressure-lens.js");
 const { __test: TipT } = await import("/cultural-diffusion/ui/cd-pressure-tooltip.js");
 const { CONFIG } = await import("/cultural-diffusion/ui/cd-config.js");
+const { default: LensManager } = await import("/core/ui/lenses/lens-manager.js");
+
+// The lens registered its layer and itself with the lens manager, and its layer built its overlay.
+assert.ok(LensManager.layers.get("cd-pressure-layer"), "the pressure layer registered");
+assert.ok(LensManager.lenses.get(LENS), "the pressure lens registered");
+assert.ok(LensManager.lenses.get(LENS).activeLayers.has("cd-pressure-layer"), "the lens shows its own layer");
 
 CONFIG.diffusionEnabled = true;
 CONFIG.fusedModel = false;
@@ -266,5 +284,42 @@ assertParity("a claim that would strand a unit", TARGET, false);
 // 10. ...and once the unit has gone, the same tile is taken and painted again.
 reset(); seed({ field: { [TK]: mature() } });
 assertParity("the same tile after the unit moves on", TARGET, true);
+
+// 11. The layer paints what the lens reports: the eligible tile, in one batch.
+reset(); seed({ field: { [TK]: mature() } });
+LensManager.layers.get("cd-pressure-layer").applyLayer();
+assert.ok(painted_.some((p) => p.x === TARGET.x && p.y === TARGET.y), "applyLayer paints the eligible tile");
+
+// 12. Shift+C switches the lens, but not while typing, not on a held key, and not with another modifier.
+const keydown = (ev) => { for (const fn of listeners.keydown || []) fn(ev); };
+const DIV = { tagName: "DIV" };
+LensManager.active = "fxs-default-lens";
+keydown({ shiftKey: true, key: "C", target: DIV });
+assert.equal(LensManager.active, LENS, "Shift+C on the map opens the lens");
+keydown({ shiftKey: true, key: "c", target: DIV });
+assert.equal(LensManager.active, "fxs-default-lens", "and again closes it");
+keydown({ shiftKey: true, key: "C", target: { tagName: "INPUT" } });
+assert.equal(LensManager.active, "fxs-default-lens", "typing a capital C in a text box leaves the lens alone");
+keydown({ shiftKey: true, key: "C", target: { tagName: "fxs-textbox" } });
+assert.equal(LensManager.active, "fxs-default-lens", "the game's own text box too");
+document.activeElement = { tagName: "TEXTAREA" };
+keydown({ shiftKey: true, key: "C", target: DIV });
+assert.equal(LensManager.active, "fxs-default-lens", "a focused text area keeps the key");
+document.activeElement = { tagName: "DIV", isContentEditable: true };
+keydown({ shiftKey: true, key: "C", target: DIV });
+assert.equal(LensManager.active, "fxs-default-lens", "an editable element keeps the key");
+document.activeElement = null;
+keydown({ shiftKey: true, key: "C", target: DIV, repeat: true });
+assert.equal(LensManager.active, "fxs-default-lens", "a held key doesn't flicker the lens");
+keydown({ shiftKey: true, ctrlKey: true, key: "C", target: DIV });
+assert.equal(LensManager.active, "fxs-default-lens", "Ctrl+Shift+C belongs to something else");
+keydown({ shiftKey: false, key: "c", target: DIV });
+assert.equal(LensManager.active, "fxs-default-lens", "a plain C does nothing");
+
+// 13. The hover readout styles itself: no CSS variable another mod defines (Demographics' --dg-fs-85 isn't there
+// when Demographics is off, and the panel's text lost its size).
+const css = TipT.css();
+assert.ok(/font-size:[0-9.]+rem/.test(css), "the readout sets its own font size");
+assert.ok(!/var\(--(?!cd-)/.test(css), "and reads no other mod's CSS variable");
 
 console.log("lens-parity.mjs OK");

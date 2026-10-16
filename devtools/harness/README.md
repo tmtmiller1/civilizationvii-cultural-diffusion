@@ -442,8 +442,9 @@ seconds and 21 Exploration turns with no new crash report. The mod sent and conf
 in-game Options check passed: the options vanished on `reInitOptions()` and came back on the next init. The main-menu
 check never ran, because the save began loading before its eight-second timer fired.
 
-`cdh-game-run4.js` is written but has not run. It tests a tile re-parent between two of our cities, and the mod's own
-cession against a rival at peace. Two cautions for any rerun on AugustusAnt136:
+`cdh-game-run4.js` is written but has not run (its R8 re-parent was answered by the lab re-parent probe below). It tests
+a tile re-parent between two of our cities, and the mod's own cession against a rival at peace. Two cautions for any
+rerun on AugustusAnt136:
 - Keep `TURNS` short. Its Antiquity age ends around turn 160, and run 3 crashed right after that transition.
 - Drive turns one at a time: `Autoplay.setTurns(1)` per turn, or `GameContext.sendTurnComplete()`. A single multi-turn
   `Autoplay.setTurns(N)` never hands control back between turns, so the local player's `PlayerTurnActivated` does not
@@ -525,3 +526,34 @@ than a rebuilt copy. Log `run12-cede-and-lens-UI.log`.
 
 No mod errors in `UI.log` and no crash report. The game never approached the turn-160 age change.
 
+
+## Lab re-parent probe, 2026-10-16
+
+Script `cdh-lab-reparent.js`, run 4's R8 SWAP rewritten for a turn-1 lab game (`tower-bench lab start --seed 4242
+--age AGE_ANTIQUITY`) and driven one step at a time through `tower-bench eval`. It founds the capital, founds a town
+from a placed Settler four tiles away, picks a bare tile of the capital within 3 of the town, and has the town buy it.
+Then it gives the tile a Farm for its new settlement and moves it back by teardown, buy and rebuild. Each move is read
+on the same tick, 4 s later, one turn later and five turns later. Logs `lab-reparent-vanilla.json` (Cultural
+Diffusion the only user mod) and `lab-reparent-usual-set.json` (the registry's usual set, local copy live).
+
+| Test | Vanilla | Usual set |
+| --- | --- | --- |
+| Bare tile (65,14), Heian-Kyo to the town Ise | Moved: owning city Heian-Kyo on the same tick, Ise at 4 s, one turn and five turns; out of Heian-Kyo's `getPurchasedPlots`, into Ise's | Same |
+| The same tile with a Farm, Ise to Heian-Kyo by teardown, buy, rebuild | Moved within 4 s; the Farm's +1 Production and +1 Gold went from Ise's yields to Heian-Kyo's; district resolved, nothing dangling, for five turns | Same |
+
+The settings refresh before each pass resets `debug` to its saved value, so a `setDebug(true)` from the console
+doesn't last past the next pass, and the pass count per turn couldn't be read from `UI.log`. `cdh-game-run4.js`'s R8
+is answered by this run; its R9 (cession to a rival at peace) was covered by run 12.
+
+## Was there anything to heal, and the heal itself, 2026-10-16
+
+Scripts `cdh-lab-reparent-need.js` and `cdh-lab-reparent-heal.js`, seed 4242 lab games, 1.5.0.
+
+| Test | Result |
+| --- | --- |
+| Can a town use a tile attached to a settlement 4 away? (usual set) | No. The capital bought (67,17) at distance 4; the town Heijo, founded at (68,19), 2 from it, with a citizen waiting, had it missing from its six-tile `EXPAND` list, `canStart` on it said no, and a direct `EXPAND` placed nothing. A listed tile expanded at once. A turn later the tile was still the capital's |
+| How many such tiles does a real save hold? | Not answered. `embark-check-t75` (the only loadable long save with the mod) had no claims yet at turn 75: 32 settlements, 695 tiles, none attached more than 3 away. The `CDH-*` soak saves need Aging Warehouses and Settlement Limit Settings, whose Workshop folders are switched off |
+| The heal, Cultural Diffusion alone | Heian-Kyo (65,13) and the town Heijo (68,18). Heijo bought (64,13) and (66,12), 6 from it, and (66,12) got a rural district and a Farm for Heijo. One `runNow()`: `reparented: 2`, both tiles Heian-Kyo's within a second, (66,12) rebuilt with a resolving district and its Farm. Both held through turn 6. Log `lab-reparent-heal-vanilla.json` |
+| The heal, usual set | Same readings. Log `lab-reparent-heal-usual-set.json` |
+| The heal on an AI's tiles, both sides | AI player 5: capital (49,24), a town placed for it at (44,24), two capital ring-1 tiles bought by the town, (48,24) with a Farm. With ours set up the same way, one `runNow()` moved all four (`reparented: 4`); the AI's stayed player 5's, the Farm tile was rebuilt with a resolving district, and all four held through turn 7 after the AI's own turns. Logs `lab-reparent-heal-ai-vanilla.json`, `lab-reparent-heal-ai-usual-set.json` |
+| One pass per local turn, both sides | Yes. With `debug` saved through `cd-settings.js` `setDebug(true)`, UI.log had exactly one `pass (turn N)` line for each of turns 2 to 6 |

@@ -17,6 +17,30 @@ function safe(fn, fallback) {
 }
 
 /**
+ * Settlement centers read once and reused for one sweep over many plots (a pass, a lens paint), set by
+ * withCentreCache. Centers don't move inside a sweep: tile flips never take a center, and a settlement flip starts
+ * only after the pass has saved. Outside a sweep every read goes to the engine.
+ * @type {{listed: Map<string, number>|null, onMap: Map<string, number|null>}|null}
+ */
+let _centres = null;
+
+/**
+ * Run `fn` with settlement-center reads cached for its length. A nested call shares the outer cache.
+ * @template T
+ * @param {() => T} fn The sweep.
+ * @returns {T} What `fn` returns.
+ */
+export function withCentreCache(fn) {
+  const outer = _centres;
+  if (!outer) _centres = { listed: null, onMap: new Map() };
+  try {
+    return fn();
+  } finally {
+    _centres = outer;
+  }
+}
+
+/**
  * Whether a plot sits within `radius` rings of a protected city center (the "downtown" shield that
  * never flips): radius 1 = center + ring-1; 0 = only the city-center plot; < 0 = nothing protected.
  * @param {{x:number,y:number}} plot Target plot.
@@ -34,6 +58,21 @@ export function isCoreProtected(plot, protectOwner, radius = 1) {
 }
 
 /**
+ * The owner of the settlement center the map shows on this plot, or null when none stands there. Cached inside a
+ * sweep (withCentreCache).
+ * @param {{x:number,y:number}} p Plot.
+ * @returns {number|null} Owner id, or null.
+ * @private
+ */
+function _mapCentreOwner(p) {
+  const k = `${p.x},${p.y}`;
+  if (_centres && _centres.onMap.has(k)) return /** @type {number|null} */ (_centres.onMap.get(k));
+  const owner = isCityCenterAt(p) ? ownerAt(p) : null;
+  if (_centres) _centres.onMap.set(k, owner);
+  return owner;
+}
+
+/**
  * Whether a settlement center read off the map sits within `radius` rings of the plot, optionally
  * filtered to one owner. Catches villages that no player's city list enumerates.
  * @param {{x:number,y:number}} plot Target plot.
@@ -47,8 +86,9 @@ function _centerOnMapWithin(plot, protectOwner, radius) {
     const ring = plotsInRadius(plot, radius);
     const seen = ring.some((p) => p.x === plot.x && p.y === plot.y) ? ring : [plot, ...ring];
     for (const p of seen) {
-      if (!isCityCenterAt(p)) continue;
-      if (protectOwner >= 0 && ownerAt(p) !== protectOwner) continue;
+      const owner = _mapCentreOwner(p);
+      if (owner === null) continue;
+      if (protectOwner >= 0 && owner !== protectOwner) continue;
       return true;
     }
     return false;
@@ -56,28 +96,28 @@ function _centerOnMapWithin(plot, protectOwner, radius) {
 }
 
 /**
- * Whether any of `player`'s city centers sits on one of the pre-computed ring keys.
- * @param {*} player Engine player.
- * @param {number} protectOwner Owner filter (-1 = any).
- * @param {Set<string>} ringKeys Plot keys of the ring (plus the plot itself).
- * @returns {boolean} True when a matching city center is on the ring.
+ * Every living player's listed city centers, as plot key -> owner id (-1 when the player's id is unreadable).
+ * @returns {Map<string, number>} Centers.
  * @private
  */
-function _playerCenterOnRing(player, protectOwner, ringKeys) {
-  if (!player || !player.isAlive) return false;
-  const owner = typeof player.id === "number" ? player.id : -1;
-  if (protectOwner >= 0 && owner !== protectOwner) return false;
-  const cities = safe(() => player.Cities?.getCities?.(), null);
-  if (!cities) return false;
-  for (const city of cities) {
-    const loc = cityLoc(city);
-    if (loc && ringKeys.has(`${loc.x},${loc.y}`)) return true;
+function _listedCentres() {
+  /** @type {Map<string, number>} */
+  const out = new Map();
+  const alive = safe(() => Players?.getAlive?.(), null);
+  if (!Array.isArray(alive)) return out;
+  for (const player of alive) {
+    if (!player || !player.isAlive) continue;
+    const owner = typeof player.id === "number" ? player.id : -1;
+    for (const city of safe(() => player.Cities?.getCities?.(), null) || []) {
+      const loc = cityLoc(city);
+      if (loc) out.set(`${loc.x},${loc.y}`, owner);
+    }
   }
-  return false;
+  return out;
 }
 
 /**
- * Whether any (optionally owner-filtered) city center sits within `radius` rings of the
+ * Whether any (optionally owner-filtered) listed city center sits within `radius` rings of the
  * plot. radius 0 = only the plot itself must be a center.
  * @param {{x:number,y:number}} plot Target plot.
  * @param {number} protectOwner Owner filter (-1 = any).
@@ -87,13 +127,10 @@ function _playerCenterOnRing(player, protectOwner, ringKeys) {
  */
 function _cityCenterWithin(plot, protectOwner, radius) {
   return safe(() => {
-    const alive = Players?.getAlive?.();
-    if (!Array.isArray(alive)) return false;
-    const ring = plotsInRadius(plot, radius);
-    const ringKeys = new Set(ring.map((p) => `${p.x},${p.y}`));
-    ringKeys.add(`${plot.x},${plot.y}`);
-    for (const player of alive) {
-      if (_playerCenterOnRing(player, protectOwner, ringKeys)) return true;
+    const listed = _centres ? (_centres.listed ??= _listedCentres()) : _listedCentres();
+    for (const p of [plot, ...plotsInRadius(plot, radius)]) {
+      const owner = listed.get(`${p.x},${p.y}`);
+      if (owner !== undefined && (protectOwner < 0 || owner === protectOwner)) return true;
     }
     return false;
   }, false);

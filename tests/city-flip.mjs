@@ -457,7 +457,7 @@ test("sweep: waits for the game to start, then retries until the markers are gon
   delete globalThis.UIGameLoadingState;
 });
 
-test("claims: a joined settlement's plots never count toward a cap and are never released to the base game", () => {
+test("claims: a joined settlement's plots never count toward a cap and keep their claim records", () => {
   world();
   const state = freshState();
   state.claims[tk(11, 10)] = { by: ME, city: 1, turn: 1, settlement: true };
@@ -467,8 +467,8 @@ test("claims: a joined settlement's plots never count toward a cap and are never
   let unclaimed = 0;
   globalThis.WorldBuilder = { MapPlots: { setOwnership: () => { unclaimed++; } } };
   const released = passTest.releaseInnerClaims(state, [{ loc: A }], ME);
-  assert.equal(released, 1, "the tile claim inside our ring goes back to the base game");
-  assert.equal(unclaimed, 1);
+  assert.equal(released, 1, "the tile claim inside our ring loses its record");
+  assert.equal(unclaimed, 0, "...without a release call, which the engine ignores on a city-attached tile");
   assert.ok(state.claims[tk(11, 10)], "the settlement's plot stays");
   assert.equal(normalizeState({ claims: state.claims }).claims[tk(11, 10)].settlement, true, "the mark survives a save");
 });

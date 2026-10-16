@@ -118,7 +118,8 @@ route.
 **Concrete reason it won't ship:** the mod is reaction-diffusion pacing (its Civ V CultureDiffusion lineage). Denying
 rival forward-settlement is meant to emerge from cultural pressure owning the buffer; a special-cased targeting flag
 would contradict that model, and the emergent behavior already covers the intent. Both flags were also referenced
-nowhere in `ui/` (dead config). Source: [`BACKLOG.md`](BACKLOG.md) "Documented features … never consumed."
+nowhere in `ui/` (dead config). Source: the [`BACKLOG.md`](BACKLOG.md) entry "Documented features … never
+consumed", which moved here on 2026-10-15.
 
 **What we did instead:** removed both flags and their JSDoc; anti-forward-settling is now documented as an emergent
 property of the diffusion pass, not a discrete mechanic.

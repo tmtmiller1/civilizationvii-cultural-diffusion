@@ -234,19 +234,24 @@ was wrong. Civ VII's work radius is native and capped at ring 3, and since 1.0.7
 every claimed tile is territory without yield. Evidence: [`civ7-tile-range-investigation.md`](civ7-tile-range-investigation.md).
 
 > Related, still open: organic rival-tile capture polish. `flipEligible` ([`ui/cd-pass.js`](../ui/cd-pass.js))
-> flips rival-owned tiles; see [`current-model.md`](current-model.md) §5. Remaining: a clearer capture notification, and
-> confirming whether a captured *developed* tile keeps its improvement (Q-CAPTURE, [`probe-history.md`](probe-history.md)).
+> flips rival-owned tiles; see [`current-model.md`](current-model.md) §5. Remaining: a clearer capture notification.
+> Answered: whether a captured *developed* tile keeps its improvement (Q-CAPTURE,
+> [`probe-history.md`](probe-history.md)). A plain `purchasePlot` destroyed it; since 1.5.1 the flip tears the tile
+> down and rebuilds the district and the same improvement for the new owner (`ui/cd-teardown.js`, CHANGELOG 1.5.1).
 
 ---
 
 ## 4. Cultural city capture
 
-*Status: research-gated.*
+*Status: built 2026-10-15, unreleased.* Whole settlements now change hands by culture: a hidden marker building fires
+the engine's own `EFFECT_CITY_TRANSFER_OWNER` with `BY_CULTURAL_IDENTITY`, which moves the center, the tiles, the
+districts and the buildings in one step. Design and in-game checks: [`DESIGN.md`](DESIGN.md) "Whole-settlement flips";
+README step 10.
 
-Flipping the plot a city-center sits on cedes the whole settlement, like a peace-deal cession. The most ambitious
-item: a separate engine subsystem (`CITY_TRANSFER` / capture / cession), not a tile flip. Research first: is
-there a `WorldBuilder` / player-operation to transfer a city to another player peacefully? Then a dedicated probe.
-Highest risk; scope last.
+The original note: flipping the plot a city-center sits on cedes the whole settlement, like a peace-deal cession. The
+most ambitious item: a separate engine subsystem (`CITY_TRANSFER` / capture / cession), not a tile flip. Research
+first: is there a `WorldBuilder` / player-operation to transfer a city to another player peacefully? Then a dedicated
+probe. Highest risk; scope last.
 
 ---
 

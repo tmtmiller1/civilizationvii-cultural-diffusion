@@ -53,7 +53,7 @@
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_3" Language="zh_Hant_HK"><Text>開啟「僅取得無主土地」時（低強度時預設為開啟），文化絕不會奪取有主的格位。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_4" Language="zh_Hant_HK"><Text>在時代交替前後，有改良設施、都會區域或奇觀的有主格位，會在時代即將結束的倒數期間與下一個時代的前兩回合保持不變。未改良的格位不受影響。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_SAFE_TITLE" Language="zh_Hant_HK"><Text>限制</Text></Replace>
-        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_SAFE_PARA_1" Language="zh_Hant_HK"><Text>[BLIST][LI]文化絕不會從與你交戰的文明手中奪取格位。[LI]易手的格位會鎖定15回合。[LI]如果取得某個格位會讓與你處於和平狀態的文明的外國單位無路可走，則不會取得。[LI]每回合最多8個格位易手，每座城市最多擁有80個取得的格位（低強度時為40個）。[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_SAFE_PARA_1" Language="zh_Hant_HK"><Text>[BLIST][LI]文化絕不會從與你交戰的文明手中奪取格位。[LI]易手的格位會鎖定15回合。[LI]如果取得某個格位會讓與你處於和平狀態的文明的外國單位無路可走，則不會取得。[LI]你的取得、對手的取得、邊境退縮和軍隊控制土地各有每回合8個格位的獨立上限，任何一項都不會佔用另一項的份額。每座城市最多擁有80個取得的格位（低強度時為40個，高強度時為140個）。[/LIST]</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_BUFFER_TITLE" Language="zh_Hant_HK"><Text>新改良設施旁的土地</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_BUFFER_PARA_1" Language="zh_Hant_HK"><Text>開啟此選項時（預設為關閉），在你的邊境附近完成鄉村改良設施後，也會取得緊鄰它的無主格位，最多比城市一般的範圍多一環。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_TITLE" Language="zh_Hant_HK"><Text>節奏與取得的土地</Text></Replace>

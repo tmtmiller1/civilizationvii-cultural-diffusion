@@ -154,12 +154,13 @@ function districtNameFromDistricts(loc) {
  * city list. That distinction matters: an Independent Power reports no cities through
  * `Players.get(pid).Cities.getCities()`, so anything that finds centers by
  * walking a city list is blind to a village. Three routes, because none is available everywhere:
- * `Cities.getAtLocation`, the owning city's own location, then the district type.
+ * `Cities.getAtLocation`, the owning city's own location, then the district type. `Cities.getAtLocation` takes one
+ * location (or a plot index), as every base-game call passes it.
  * @param {{x:number,y:number}} loc Plot.
  * @returns {boolean} True when a settlement center occupies the plot.
  */
 export function isCityCenterAt(loc) {
-  if (safe(() => !!Cities?.getAtLocation?.(loc.x, loc.y), false)) return true;
+  if (safe(() => !!Cities?.getAtLocation?.({ x: loc.x, y: loc.y }), false)) return true;
   const at = owningCityLocAt(loc);
   if (at && at.x === loc.x && at.y === loc.y) return true;
   return /CITY_CENTER/.test(districtTypeNameAt(loc) || "");

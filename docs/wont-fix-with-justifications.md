@@ -28,7 +28,8 @@ ownership test."
 **Finding:** it is a provable no-op. `commitFlip` is only reached when `resolveOwner` returned `flip:true`, which
 requires `value > minimumOwner`, and when `verdict.owner === me` that `value` is `next[k][String(me)]`, so the operand
 is already strictly greater than the floor being applied. Instrumented across `tests/pass.mjs`: 14 flips, 14 no-ops,
-0 raises (stocks 379-5000 against a 300 bar). Source: [`BACKLOG.md`](BACKLOG.md) 2026-07-16 addendum.
+0 raises (stocks 379-5000 against a 300 bar). Source: the 2026-07-16 addendum to [`BACKLOG.md`](BACKLOG.md),
+whose entry moved here on 2026-10-15.
 
 **Why we are not "fixing" (deleting) it:** it sits in the hot flip path and turns on design intent. It is a floor for
 a possible future direct-claim route that does not come through `resolveOwner`, and protection if `resolveOwner`'s

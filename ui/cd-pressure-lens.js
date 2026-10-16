@@ -14,7 +14,7 @@ import { ownerAt, localPlayerId } from "/cultural-diffusion/ui/cd-plots.js";
 import { currentAgeKey } from "/cultural-diffusion/ui/cd-polity.js";
 import { applyTunableOverrides, getPressureLensEnabled } from "/cultural-diffusion/ui/cd-settings.js";
 import { localCityList, cityListOf, claimInScope, claimGateBlocked } from "/cultural-diffusion/ui/cd-eligibility.js";
-import { isMajorPlayer } from "/cultural-diffusion/ui/cd-borders.js";
+import { isMajorPlayer, withCentreCache } from "/cultural-diffusion/ui/cd-borders.js";
 import { civDisplayColor, hexToFloat4 } from "/cultural-diffusion/ui/cd-lens-colors.js";
 
 export const LENS = "cd-pressure-lens";
@@ -106,10 +106,13 @@ function pressureTiles() {
     ctxFor: leaderContexts(st.state, cfg) };
   /** @type {{x:number, y:number, leader:number, progress:number}[]} */
   const out = [];
-  for (const k of Object.keys(field)) {
-    const entry = contestedEntry(k, env);
-    if (entry) out.push(entry);
-  }
+  // Every contested rival tile asks whether it sits in a protected core; read the settlement centers once.
+  withCentreCache(() => {
+    for (const k of Object.keys(field)) {
+      const entry = contestedEntry(k, env);
+      if (entry) out.push(entry);
+    }
+  });
   return out.concat(leaningCentres(st.state, cfg));
 }
 
@@ -298,6 +301,29 @@ function toggleLens() {
   }
 }
 
+/** @param {*} el An element. @returns {boolean} Whether it takes typed text (the chat, a save or city name box). */
+function isTextEntry(el) {
+  const tag = String(el?.tagName ?? "").toLowerCase();
+  return tag === "input" || tag === "textarea" || tag === "fxs-textbox" || el?.isContentEditable === true;
+}
+
+/** @param {*} ev Keyboard event. @returns {boolean} Shift+C with no other modifier, and not a held key's repeat. */
+function isShiftC(ev) {
+  if (!ev || !ev.shiftKey || ev.ctrlKey || ev.altKey || ev.metaKey || ev.repeat) return false;
+  return ev.key === "C" || ev.key === "c";
+}
+
+/**
+ * Whether a keydown is the lens key: Shift+C with no other modifier, once per press, and not while typing.
+ * @param {*} ev Keyboard event.
+ * @returns {boolean} True when it should toggle the lens.
+ */
+function isLensKey(ev) {
+  if (!isShiftC(ev)) return false;
+  const focused = typeof document !== "undefined" ? document.activeElement : null;
+  return !isTextEntry(ev.target) && !isTextEntry(focused);
+}
+
 /** Introspection for the in-game harness (devtools/harness), which checks the shipped logic directly. */
 export const __test = { pressureTiles };
 
@@ -317,7 +343,7 @@ try {
 }
 try {
   window.addEventListener("keydown", (/** @type {*} */ ev) => {
-    if (ev && ev.shiftKey && (ev.key === "C" || ev.key === "c")) toggleLens();
+    if (isLensKey(ev)) toggleLens();
   });
 } catch (_) {
   /* ignore */

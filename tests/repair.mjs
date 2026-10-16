@@ -8,9 +8,9 @@
 //     one, the "can't work some inner tiles" regression.)
 //   - Beyond the natural ring (the frontier buffer): re-integrate into its nearest city via the
 //     integrated verb; if the re-buy can't take, release it. Integrated tiles are left untouched.
-// releaseInnerClaims separately reconciles tiles the mod already force-bought inside the natural
-// ring (owner=me, real owning city, but the wrong one): it releases them so the base game re-owns
-// and re-assigns them correctly.
+// releaseInnerClaims drops the mod's claim records inside the natural ring and leaves the tile where it is: the
+// engine can't release a city-attached tile (setOwnership(NO_PLAYER) leaves it owned, harness runs 1-3). A tile
+// left on a settlement too far away to work it is moved by the re-parent heal instead (tests/reparent.mjs).
 import assert from "node:assert/strict";
 
 // controllable engine stub over an (x,y) -> {owner, city} tile map
@@ -91,17 +91,16 @@ assert.equal(getTile(5, 11).owner, -1, "frontier orphan released back to the map
 assert.equal(state2.claims["5,11"], undefined, "dropped claim on release");
 assert.equal(state2.locked["5,11"], 5, "the lock is kept on release (it is not part of the claim record)");
 
-// scenario 3: releaseInnerClaims heals a mis-deeded inner tile
-// The 1.0.6 regression: an inner tile the mod force-bought to the wrong city (real owning city,
-// but not the one whose ring it sits in). It is not an orphan (owningCity >= 0), so repairOrphans
-// skips it; releaseInnerClaims must hand it back so the base game re-assigns it correctly.
+// scenario 3: releaseInnerClaims drops an inner claim record and leaves the tile alone
+// The 1.0.6 regression left inner tiles the mod force-bought to the wrong city. Releasing them was a call the engine
+// ignores, so it's gone: the record is dropped and the tile stays put (the re-parent heal moves it).
 tiles.clear();
 setTile(5, 6, ME, 77);        // inner tile (d=1) attached to some city 77 (the "wrong" city)
 setTile(5, 11, ME, CITY_ID);  // a frontier tile the mod legitimately owns - must be left alone
 const state3 = { claims: { "5,6": { by: ME, city: 77, turn: 1 }, "5,11": { by: ME, city: CITY_ID, turn: 1 } }, locked: { "5,6": 9, "5,11": 4 }, monoTurn: 20 };
 const released = releaseInnerClaims(state3, cities, ME);
-assert.equal(released, 1, "one inner claim released");
-assert.equal(getTile(5, 6).owner, -1, "mis-deeded inner tile handed back to the base game");
+assert.equal(released, 1, "one inner claim record dropped");
+assert.deepEqual(getTile(5, 6), { owner: ME, city: 77 }, "the tile itself isn't released (no setOwnership call)");
 assert.equal(state3.claims["5,6"], undefined, "inner claim record dropped");
 assert.equal(state3.locked["5,6"], 9, "inner lock kept (not part of the claim record)");
 // The frontier claim is untouched.
