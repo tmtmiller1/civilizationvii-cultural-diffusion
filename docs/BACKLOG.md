@@ -652,6 +652,10 @@ already-finalized), then add test coverage for event payload variants.
 in `tutorial-items-antiquity.js`, the one base-game read of it): a missing field, 100, 100.0 and "100" all count.
 1 doesn't: the field is a 0-100 percentage, so 1 is a build at 1%. `tests/bootstrap.mjs` drives the real handler with
 each form. Not watched in game; what the engine sends wasn't logged.
+2026-10-16 (block 1 L2): a real farm placed by population growth at 61,13 arrived as `ConstructibleAddedToMap` with
+`percentComplete` 100 (a number), `constructibleType` for `IMPROVEMENT_FARM`, plus `constructibleClass`, `district`,
+`constructible`, `location` and `whatChanged`. Its neighbours were already ours when it landed, so the buffer had
+nothing to claim and didn't log a line; a firing on an edge tile is still owed.
 
 ## [Fixed 2026-10-15] Per-turn pass depends on narrow `PlayerTurnActivated` payload shape
 
