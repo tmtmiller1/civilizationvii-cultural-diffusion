@@ -115,6 +115,37 @@ seedFootprint();
 assert.equal(claimBufferAt({ x: 10, y: 10 }), 0, "developing the city center claims nothing");
 assert.equal(claimBufferAt({ x: 11, y: 10 }), 0, "developing a ring-1 tile claims nothing");
 
+// 3b. Where the game's own border growth and the buffer split. Placing a population takes every unowned tile next
+// to it out to three tiles from the center (the Civilopedia's Growth page; watch run 2 block 1, V7/V8 with no mods).
+// The buffer leaves those to the game, even while they're still unowned, and only takes what lies past them.
+function seedRings(maxRing) {
+  seedFootprint();
+  for (const [k, t] of tiles) {
+    const [x, y] = k.split(",").map(Number);
+    if (hexDistance(CENTER, { x, y }) > maxRing) { t.owner = -1; t.city = -1; }
+  }
+}
+seedRings(1);
+const RING2 = { x: 12, y: 10 };
+assert.equal(hexDistance(CENTER, RING2), 2);
+const ring2Open = [];
+for (let y = RING2.y - 1; y <= RING2.y + 1; y++) for (let x = RING2.x - 1; x <= RING2.x + 1; x++) {
+  if (hexDistance(RING2, { x, y }) === 1 && getTile(x, y).owner < 0) ring2Open.push({ x, y });
+}
+assert.ok(ring2Open.length > 0, "the ring-2 tile has unowned neighbors");
+getTileMut(RING2.x, RING2.y).owner = ME; getTileMut(RING2.x, RING2.y).city = CITY_ID;
+assert.equal(claimBufferAt(RING2), 0, "a ring-2 improvement leaves its unowned neighbors to the game");
+for (const n of ring2Open) assert.equal(getTile(n.x, n.y).owner, -1, `${n.x},${n.y} left for the game`);
+
+seedRings(2);
+getTileMut(DEV.x, DEV.y).owner = ME; getTileMut(DEV.x, DEV.y).city = CITY_ID;
+const pastReach = neighbours.filter((n) => hexDistance(CENTER, n) === 4);
+const insideReach = neighbours.filter((n) => hexDistance(CENTER, n) === 3 && getTile(n.x, n.y).owner < 0);
+assert.ok(pastReach.length > 0 && insideReach.length > 0, "the ring-3 tile has open neighbors on both sides of 3");
+assert.equal(claimBufferAt(DEV), pastReach.length, "a ring-3 improvement takes only the neighbors past three tiles");
+for (const n of pastReach) assert.equal(getTile(n.x, n.y).owner, ME, `${n.x},${n.y} (ring 4) claimed`);
+for (const n of insideReach) assert.equal(getTile(n.x, n.y).owner, -1, `${n.x},${n.y} (ring 3) left for the game`);
+
 // 4. only our development triggers it
 seedFootprint();
 getTileMut(DEV.x, DEV.y).owner = 3;           // pretend the dev tile is a rival's

@@ -101,8 +101,8 @@ changelog). Urban districts, city centers and wonders never move as tiles; they 
 their whole settlement (step 10).
 
 With the opt-in +1 ring buffer (`growthBuffer`, off by default), finishing a rural
-improvement near your border also claims the unowned tiles right next to it, one ring past
-your city's normal reach.
+improvement on the edge of your city's three-tile reach also claims the unowned tiles just
+past it. Closer in, the game already takes the tiles beside a new improvement itself.
 
 ### 5. Recede (opt-in): claimed tiles can be lost again
 Off by default (`recedeBorders`). When on, each pass re-checks only the tiles this mod
