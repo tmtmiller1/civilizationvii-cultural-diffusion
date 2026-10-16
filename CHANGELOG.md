@@ -38,8 +38,9 @@ Whole settlements can now change hands by culture.
   worked through the whole culture field every turn.
 
 ### Fixed
-- Switching Cultural Diffusion off now stops the +1 ring buffer too. Before, finishing an improvement beside your
-  border still claimed the tiles next to it with the mod switched off.
+- Switching Cultural Diffusion off now stops the +1 ring too. Before, with *Claim land beside new improvements* on,
+  an improvement on the edge of a city's three-tile reach still took the unowned tiles just past it while the mod was
+  switched off. Tiles inside the reach were never the mod's: the game takes the ones beside a new improvement itself.
 - Typing a capital C in a text box, such as the chat or a city's name, leaves the Cultural Pressure lens alone now.
   Holding Shift+C down doesn't flicker the lens, and Ctrl+Shift+C and the like are left for other uses.
 - The hover readout sets its own text size. It used one from the Demographics mod, which only exists inside

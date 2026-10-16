@@ -127,3 +127,19 @@ Still open:
   runs and hasn't been seen in `UI.log`.
 - The Civilopedia page and the marker building's Civilopedia entry weren't opened in game; `tests/pedia-pages.mjs`
   checks the page resolves.
+
+### Observation: population after a flip
+
+Watch run 2, block 1, run L2 (2026-10-16, usual set, Antiquity seed 4242, fast setup): every settlement flipped
+arrived at population 1. Asuka (62,16), our capital with the capital setting on, went from 7 to 1 in a single flip to
+Alexander. Mutsu (68,17) went from 3 to 1 over four flips in 81 seconds (us, Alexander, Machiavelli, us, Machiavelli),
+so a point a flip would also end at 1 there. Both kept 7 of 7 plots.
+
+The mod doesn't set or spend population anywhere on this path. It places the flip marker (`Population 0`), the
+engine's `EFFECT_CITY_TRANSFER_OWNER` with `BY_CULTURAL_IDENTITY` moves the settlement, and after `CityTransfered`
+the mod removes the marker and moves the saved culture (`cd-capture.js`, state only). The passes after it leave a
+joined settlement's plots alone (see the audit above), and Partisans only rolls at the transfer and schedules any
+rising turns later. So the drop is the engine's transfer. The liberation probes
+(`mod_ideas_tested/liberation/FINDINGS.md`, flips 13-17) only moved settlements of population 2 and 3 and saw one point
+lost in 5 of 6. Asuka shows a larger settlement can lose far more than one point. Not yet seen: a flip of a large
+settlement with every other mod off, and whether a capital loses more than a town.
