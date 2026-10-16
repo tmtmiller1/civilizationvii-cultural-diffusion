@@ -53,7 +53,7 @@
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_3" Language="zh_Hans_CN"><Text>开启“仅获取无主土地”时（低强度时默认开启），文化绝不会夺取有主的地块。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_4" Language="zh_Hans_CN"><Text>在时代更替前后，有改良设施、市区区块或奇观的有主地块会在时代结束倒计时期间和下一个时代的前两回合保持不变。未改良的地块不受影响。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_SAFE_TITLE" Language="zh_Hans_CN"><Text>限制</Text></Replace>
-        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_SAFE_PARA_1" Language="zh_Hans_CN"><Text>[BLIST][LI]文化绝不会从与你交战的文明手中夺取地块。[LI]易手的地块会锁定15回合。[LI]如果获取某个地块会让与你和平相处的文明的外国单位无路可走，则不会获取。[LI]每回合最多8个地块易手，每座城市最多拥有80个获取的地块（低强度时40个）。[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_SAFE_PARA_1" Language="zh_Hans_CN"><Text>[BLIST][LI]文化绝不会从与你交战的文明手中夺取地块。[LI]易手的地块会锁定15回合。[LI]如果获取某个地块会让与你和平相处的文明的外国单位无路可走，则不会获取。[LI]你的获取、对手的获取、边界退缩和军队控制土地各有每回合8个地块的独立上限，任何一项都不会占用另一项的份额。每座城市最多拥有80个获取的地块（低强度时40个，高强度时140个）。[/LIST]</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_BUFFER_TITLE" Language="zh_Hans_CN"><Text>新改良设施旁的土地</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_BUFFER_PARA_1" Language="zh_Hans_CN"><Text>开启此选项时（默认关闭），在你的边界附近完成乡村改良设施后，还会获取紧邻它的无主地块，最多比城市通常的范围多一环。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_TITLE" Language="zh_Hans_CN"><Text>节奏与所获土地</Text></Replace>

@@ -1,0 +1,293 @@
+{
+ "seed": 4242,
+ "version": "1.5.0",
+ "side": "vanilla",
+ "log": [
+  {
+   "label": "damaged",
+   "turn": 1,
+   "bare": {
+    "x": 64,
+    "y": 13,
+    "owner": 0,
+    "city": 131073,
+    "district": null,
+    "resolves": null,
+    "cons": 0,
+    "inCap": false,
+    "inTown": true
+   },
+   "farm": {
+    "x": 66,
+    "y": 12,
+    "owner": 0,
+    "city": 131073,
+    "district": 262147,
+    "resolves": true,
+    "cons": 1,
+    "inCap": false,
+    "inTown": true
+   }
+  },
+  {
+   "label": "pass+1s",
+   "turn": 1,
+   "bare": {
+    "x": 64,
+    "y": 13,
+    "owner": 0,
+    "city": 65536,
+    "district": null,
+    "resolves": null,
+    "cons": 0,
+    "inCap": true,
+    "inTown": false
+   },
+   "farm": {
+    "x": 66,
+    "y": 12,
+    "owner": 0,
+    "city": 65536,
+    "district": 327683,
+    "resolves": true,
+    "cons": 1,
+    "inCap": true,
+    "inTown": false
+   }
+  },
+  {
+   "label": "pass+2s",
+   "turn": 1,
+   "bare": {
+    "x": 64,
+    "y": 13,
+    "owner": 0,
+    "city": 65536,
+    "district": null,
+    "resolves": null,
+    "cons": 0,
+    "inCap": true,
+    "inTown": false
+   },
+   "farm": {
+    "x": 66,
+    "y": 12,
+    "owner": 0,
+    "city": 65536,
+    "district": 327683,
+    "resolves": true,
+    "cons": 1,
+    "inCap": true,
+    "inTown": false
+   }
+  },
+  {
+   "label": "pass+3s",
+   "turn": 1,
+   "bare": {
+    "x": 64,
+    "y": 13,
+    "owner": 0,
+    "city": 65536,
+    "district": null,
+    "resolves": null,
+    "cons": 0,
+    "inCap": true,
+    "inTown": false
+   },
+   "farm": {
+    "x": 66,
+    "y": 12,
+    "owner": 0,
+    "city": 65536,
+    "district": 327683,
+    "resolves": true,
+    "cons": 1,
+    "inCap": true,
+    "inTown": false
+   }
+  },
+  {
+   "label": "pass+4s",
+   "turn": 1,
+   "bare": {
+    "x": 64,
+    "y": 13,
+    "owner": 0,
+    "city": 65536,
+    "district": null,
+    "resolves": null,
+    "cons": 0,
+    "inCap": true,
+    "inTown": false
+   },
+   "farm": {
+    "x": 66,
+    "y": 12,
+    "owner": 0,
+    "city": 65536,
+    "district": 327683,
+    "resolves": true,
+    "cons": 1,
+    "inCap": true,
+    "inTown": false
+   }
+  },
+  {
+   "label": "pass+5s",
+   "turn": 1,
+   "bare": {
+    "x": 64,
+    "y": 13,
+    "owner": 0,
+    "city": 65536,
+    "district": null,
+    "resolves": null,
+    "cons": 0,
+    "inCap": true,
+    "inTown": false
+   },
+   "farm": {
+    "x": 66,
+    "y": 12,
+    "owner": 0,
+    "city": 65536,
+    "district": 327683,
+    "resolves": true,
+    "cons": 1,
+    "inCap": true,
+    "inTown": false
+   }
+  },
+  {
+   "label": "pass+6s",
+   "turn": 1,
+   "bare": {
+    "x": 64,
+    "y": 13,
+    "owner": 0,
+    "city": 65536,
+    "district": null,
+    "resolves": null,
+    "cons": 0,
+    "inCap": true,
+    "inTown": false
+   },
+   "farm": {
+    "x": 66,
+    "y": 12,
+    "owner": 0,
+    "city": 65536,
+    "district": 327683,
+    "resolves": true,
+    "cons": 1,
+    "inCap": true,
+    "inTown": false
+   }
+  },
+  {
+   "label": "pass+7s",
+   "turn": 1,
+   "bare": {
+    "x": 64,
+    "y": 13,
+    "owner": 0,
+    "city": 65536,
+    "district": null,
+    "resolves": null,
+    "cons": 0,
+    "inCap": true,
+    "inTown": false
+   },
+   "farm": {
+    "x": 66,
+    "y": 12,
+    "owner": 0,
+    "city": 65536,
+    "district": 327683,
+    "resolves": true,
+    "cons": 1,
+    "inCap": true,
+    "inTown": false
+   }
+  },
+  {
+   "label": "pass+8s",
+   "turn": 1,
+   "bare": {
+    "x": 64,
+    "y": 13,
+    "owner": 0,
+    "city": 65536,
+    "district": null,
+    "resolves": null,
+    "cons": 0,
+    "inCap": true,
+    "inTown": false
+   },
+   "farm": {
+    "x": 66,
+    "y": 12,
+    "owner": 0,
+    "city": 65536,
+    "district": 327683,
+    "resolves": true,
+    "cons": 1,
+    "inCap": true,
+    "inTown": false
+   }
+  },
+  {
+   "label": "turn+1",
+   "turn": 2,
+   "bare": {
+    "x": 64,
+    "y": 13,
+    "owner": 0,
+    "city": 65536,
+    "district": null,
+    "resolves": null,
+    "cons": 0,
+    "inCap": true,
+    "inTown": false
+   },
+   "farm": {
+    "x": 66,
+    "y": 12,
+    "owner": 0,
+    "city": 65536,
+    "district": 327683,
+    "resolves": true,
+    "cons": 1,
+    "inCap": true,
+    "inTown": false
+   }
+  },
+  {
+   "label": "turn+5",
+   "turn": 6,
+   "bare": {
+    "x": 64,
+    "y": 13,
+    "owner": 0,
+    "city": 65536,
+    "district": null,
+    "resolves": null,
+    "cons": 0,
+    "inCap": true,
+    "inTown": false
+   },
+   "farm": {
+    "x": 66,
+    "y": 12,
+    "owner": 0,
+    "city": 65536,
+    "district": 327683,
+    "resolves": true,
+    "cons": 1,
+    "inCap": true,
+    "inTown": false
+   }
+  }
+ ]
+}

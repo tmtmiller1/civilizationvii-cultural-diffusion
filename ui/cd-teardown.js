@@ -152,6 +152,8 @@ function until(test, maxMs, pollMs) {
  * @param {number} [a.pollMs] Poll interval (tests shorten it).
  * @param {number} [a.teardownWaitMs] How long to wait for the teardown to show before buying anyway.
  * @param {number} [a.landWaitMs] How long to wait for the owner change before giving up on the rebuild.
+ * @param {()=>boolean} [a.landed] When the buy counts as landed. Defaults to the owner reading `playerId`; a move
+ *   between two of one player's settlements never changes the owner, so it passes a test on the owning city.
  * @returns {Promise<TeardownOutcome>} What happened, once the chain has run.
  */
 /**
@@ -165,7 +167,7 @@ function until(test, maxMs, pollMs) {
  * @property {string|null} improvement The improvement put back, or null.
  */
 export function flipWithTeardown({ loc, playerId, city, buy, inv, pollMs = 250, teardownWaitMs = 6000,
-  landWaitMs = 8000 }) {
+  landWaitMs = 8000, landed: landedTest = () => ownerOf(loc) === playerId }) {
   const improvement = inv.constructibles.find((c) => c.cls === "IMPROVEMENT") || null;
   const improvementType = improvement ? improvement.type : null;
   const index = improvement ? improvement.index : -1;
@@ -187,7 +189,7 @@ export function flipWithTeardown({ loc, playerId, city, buy, inv, pollMs = 250, 
         torn, cleared: wasCleared, buy: res, landed: false, rebuilt: false, restored, improvement: improvementType
       };
     }
-    return until(() => ownerOf(loc) === playerId, landWaitMs, pollMs).then((landed) => {
+    return until(landedTest, landWaitMs, pollMs).then((landed) => {
       const rebuilt = landed ? rebuild(loc, safe(() => city.id, null), playerId, index) : false;
       const restored = landed ? false : restore();
       return { torn, cleared: wasCleared, buy: res, landed, rebuilt, restored, improvement: improvementType };

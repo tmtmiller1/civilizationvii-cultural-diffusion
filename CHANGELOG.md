@@ -31,6 +31,29 @@ Whole settlements can now change hands by culture.
 - A rival's city center no longer stays out of reach for good. It still never changes hands as a single tile, and
   the Rival city protection option still protects the ring around it from tile claims; the center now goes only with
   its whole settlement.
+- The turn hook and the +1 buffer read the game's events the way the base game reads them, so a small change in what
+  a game update sends can't leave the mod loaded but idle.
+- Each turn's pass reads where the settlement centers are once, instead of once for every contested tile it checks.
+- In a multiplayer game the turn's pass now stops before it starts. It couldn't move a tile there anyway, but it still
+  worked through the whole culture field every turn.
+
+### Fixed
+- Switching Cultural Diffusion off now stops the +1 ring buffer too. Before, finishing an improvement beside your
+  border still claimed the tiles next to it with the mod switched off.
+- Typing a capital C in a text box, such as the chat or a city's name, leaves the Cultural Pressure lens alone now.
+  Holding Shift+C down doesn't flicker the lens, and Ctrl+Shift+C and the like are left for other uses.
+- The hover readout sets its own text size. It used one from the Demographics mod, which only exists inside
+  Demographics' own screen.
+- The Civilopedia's Limits say how the caps really work, in every language: your claims, other civilizations'
+  claims, receding borders and armies holding ground each move up to 8 tiles a turn, and a city holds up to 140
+  claimed tiles on High.
+- The mod asks the game for the settlement on a tile the way the game itself does. It used to miss and fall back on
+  its two other reads.
+- A tile stuck on a settlement too far away to work it now moves to the same civilization's settlement beside it,
+  with its improvement. That happened when a settlement was founded next to a tile culture had claimed for another
+  one, and in saves from 1.0.6. Neither settlement could work the tile before. It works the same for the AI's
+  civilizations as for yours; city-states and independents are left alone. The 1.0.7 fix for those saves never
+  moved a tile.
 
 ## [1.5.3] - 2026-10-14
 

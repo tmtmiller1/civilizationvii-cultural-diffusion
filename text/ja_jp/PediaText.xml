@@ -53,7 +53,7 @@
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_3" Language="ja_JP"><Text>「空き地のみ獲得」がオンのとき（「低」ではデフォルトでオン）、文化が所有済みのタイルを奪うことはありません。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_4" Language="ja_JP"><Text>時代の移行の前後では、施設、市街区域、遺産のある所有済みのタイルは、時代の終了までのカウントダウン中と次の時代の最初の2ターンの間、所有者が変わりません。施設のないタイルは影響を受けません。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_SAFE_TITLE" Language="ja_JP"><Text>制限</Text></Replace>
-        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_SAFE_PARA_1" Language="ja_JP"><Text>[BLIST][LI]文化が戦争中の文明からタイルを奪うことはありません。[LI]所有者が変わったタイルは15ターンの間固定されます。[LI]和平中の文明のユニットが逃げ場を失うことになる獲得は行われません。[LI]1ターンに所有者が変わるタイルは最大8つで、各都市が持てる獲得タイルは最大80（「低」では40）です。[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_SAFE_PARA_1" Language="ja_JP"><Text>[BLIST][LI]文化が戦争中の文明からタイルを奪うことはありません。[LI]所有者が変わったタイルは15ターンの間固定されます。[LI]和平中の文明のユニットが逃げ場を失うことになる獲得は行われません。[LI]あなたの獲得、他文明の獲得、境界の後退、軍の占領地保持には、それぞれ1ターンに8タイルまでの上限が別々にあり、どれかが他の分を使い切ることはありません。各都市が持てる獲得タイルは最大80（「低」では40、「高」では140）です。[/LIST]</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_BUFFER_TITLE" Language="ja_JP"><Text>新しい施設の隣の土地</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_BUFFER_PARA_1" Language="ja_JP"><Text>このオプションがオンのとき（デフォルトはオフ）、境界の近くで郊外の施設が完成すると、その隣にある所有者のいないタイルも獲得します。範囲は都市の通常の範囲より1リング先までです。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_TITLE" Language="ja_JP"><Text>拡大の速さと獲得地</Text></Replace>

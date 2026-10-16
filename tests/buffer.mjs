@@ -1,8 +1,8 @@
 // tests/buffer.mjs: the event-driven "+1 ring" cultural buffer (claimBufferAt).
 //
 // When the local player completes a rural improvement on a tile, the mod must claim only the
-// unowned land tiles adjacent to that tile (not the whole ring), attach them to the nearest city,
-// and never take a tile owned by another player, water, or a tile past the +1 ring cap.
+// unowned tiles adjacent to that tile (not the whole ring), water included, attach them to the nearest
+// city, and never take a tile owned by another player or a tile past the +1 ring cap.
 import assert from "node:assert/strict";
 import { hexDistance } from "/cultural-diffusion/ui/cd-pressure.js";
 
@@ -17,6 +17,9 @@ const getTile = (x, y) => tiles.get(tk(x, y)) || { owner: -1, city: -1 };
 function getTileMut(x, y) { if (!tiles.has(tk(x, y))) tiles.set(tk(x, y), { owner: -1, city: -1 }); return tiles.get(tk(x, y)); }
 
 const ME = 0, CITY_ID = 42, CENTER = { x: 10, y: 10 };
+let purchaseThrows = false; // purchasePlot fails outright, so the verb reports it wasn't applied
+let deferWrites = false;   // purchasePlot lands after the call, as in the real engine
+const writeQueue = [];
 
 globalThis.PlayerIds = { NO_PLAYER: -1 };
 globalThis.GameContext = { localPlayerID: ME };
@@ -47,7 +50,14 @@ globalThis.Players = {
   })
 };
 globalThis.Game = { age: "AGE_ANTIQUITY" };
-const cityObj = { id: CITY_ID, location: CENTER, purchasePlot: (loc) => { const t = getTileMut(loc.x, loc.y); t.owner = ME; t.city = CITY_ID; } };
+const cityObj = {
+  id: CITY_ID, location: CENTER,
+  purchasePlot: (loc) => {
+    if (purchaseThrows) throw new Error("purchasePlot refused");
+    const apply = () => { const t = getTileMut(loc.x, loc.y); t.owner = ME; t.city = CITY_ID; };
+    if (deferWrites) writeQueue.push(apply); else apply();
+  }
+};
 
 const { __test } = await import("/cultural-diffusion/ui/cd-pass.js");
 const { claimBufferAt } = __test;
@@ -61,6 +71,7 @@ CONFIG.minimumOwner = 300;
 /** Own the base-game footprint (rings 0..3) for the city. */
 function seedFootprint() {
   tiles.clear(); water.clear(); savedState = null;
+  purchaseThrows = false; deferWrites = false; writeQueue.length = 0;
   for (let y = 4; y <= 16; y++) for (let x = 4; x <= 16; x++) {
     if (hexDistance(CENTER, { x, y }) <= 3) { const t = getTileMut(x, y); t.owner = ME; t.city = CITY_ID; }
   }
@@ -128,5 +139,48 @@ globalThis.Game = { age: "AGE_EXPLORATION" };
 assert.ok(claimBufferAt(DEV) > 0, "distant-lands claims allowed from Exploration");
 globalThis.Game = { age: "AGE_ANTIQUITY" };
 distant.clear();
+
+// 7. A claim that landed is saved: the claim record, the cooldown lock and the owner's seed stock.
+seedFootprint();
+const n7 = claimBufferAt(DEV);
+assert.ok(n7 > 0 && savedState, "claimed, and the state was saved");
+for (const n of unownedNbrs) {
+  const k = tk(n.x, n.y);
+  assert.deepEqual(savedState.claims[k], { by: ME, city: CITY_ID, turn: savedState.monoTurn }, `claim ${k} recorded`);
+  assert.equal(savedState.locked[k], CONFIG.flipCooldownTurns, `claim ${k} locked for the cooldown`);
+  assert.equal(savedState.field[k][String(ME)], CONFIG.minimumOwner, `claim ${k} seeded at the ownership bar`);
+}
+assert.equal(Object.keys(savedState.pending || {}).length, 0, "nothing left pending when the buys landed at once");
+
+// 8. A buy the engine refuses records nothing: no claim, no lock, no seed, no pending entry, no save.
+seedFootprint();
+purchaseThrows = true;
+assert.equal(claimBufferAt(DEV), 0, "a refused buy is not a claim");
+assert.equal(savedState, null, "and nothing is saved");
+for (const n of unownedNbrs) assert.equal(getTile(n.x, n.y).owner, -1, `neighbor ${n.x},${n.y} still unowned`);
+
+// 9. A buy that lands after the call is held as pending, not booked, until the next pass reads the map. (A buy that
+// never lands looks the same in this tick; the next pass drops it, cd-pending.js.)
+seedFootprint();
+deferWrites = true;
+const n9 = claimBufferAt(DEV);
+assert.equal(n9, unownedNbrs.length, "every buy was sent");
+for (const n of unownedNbrs) {
+  const k = tk(n.x, n.y);
+  assert.equal(savedState.claims[k], undefined, `claim ${k} not booked before it lands`);
+  assert.equal(savedState.locked[k], undefined, `claim ${k} not locked before it lands`);
+  assert.deepEqual(savedState.pending[k] && { kind: savedState.pending[k].kind, by: savedState.pending[k].by },
+    { kind: "claim", by: ME }, `claim ${k} pending`);
+}
+// The same development again, before the next pass: the pending tiles are not bought twice.
+assert.equal(claimBufferAt(DEV), 0, "a tile still landing is not sent again");
+deferWrites = false; writeQueue.length = 0;
+
+// 10. The master switch stops the buffer as well as the pass.
+seedFootprint();
+CONFIG.diffusionEnabled = false;
+assert.equal(claimBufferAt(DEV), 0, "no buffer claim while the mod is switched off");
+for (const n of unownedNbrs) assert.equal(getTile(n.x, n.y).owner, -1, `neighbor ${n.x},${n.y} untouched`);
+CONFIG.diffusionEnabled = true;
 
 console.log("buffer.mjs OK");

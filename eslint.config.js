@@ -52,6 +52,11 @@ const BROWSER_GLOBALS = {
   CustomEvent: "readonly"
 };
 
+const NODE_GLOBALS = {
+  process: "readonly",
+  URL: "readonly"
+};
+
 export default [
   // Tower Settings Keeper, copied unchanged from its own repo; it is linted and tested there.
   { ignores: ["ui/settings-keeper.js"] },
@@ -93,6 +98,20 @@ export default [
       ],
       // Match the engine's own `== null` undefined-check idiom.
       eqeqeq: ["error", "always", { null: "ignore" }]
+    }
+  },
+  // Tests and dev scripts: the correctness rules only, as in the Partisans mod. They stub the engine's globals and
+  // run under Node.
+  {
+    files: ["tests/**/*.mjs", "scripts/**/*.mjs"],
+    languageOptions: {
+      ecmaVersion: "latest",
+      sourceType: "module",
+      globals: { ...ENGINE_GLOBALS, ...BROWSER_GLOBALS, ...NODE_GLOBALS }
+    },
+    rules: {
+      "no-undef": "error",
+      "no-unused-vars": ["error", { argsIgnorePattern: "^_", caughtErrorsIgnorePattern: "^_" }]
     }
   }
 ];

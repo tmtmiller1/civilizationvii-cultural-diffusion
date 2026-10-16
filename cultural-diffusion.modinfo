@@ -114,6 +114,7 @@
                     <Item>ui/cd-borders.js</Item>
                     <Item>ui/cd-teardown.js</Item>
                     <Item>ui/cd-ownership.js</Item>
+                    <Item>ui/cd-reparent.js</Item>
                     <Item>ui/cd-pending.js</Item>
                     <Item>ui/cd-diagnostics.js</Item>
                     <Item>ui/cd-recede.js</Item>

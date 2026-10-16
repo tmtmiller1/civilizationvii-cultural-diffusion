@@ -5,7 +5,7 @@
 // nearest city (a real, workable plot; refundGold nets the cost to zero), while setOwnership
 // leaves an orphan (owned but city-less, unworkable, blocks base-game growth) and serves `unclaim`.
 
-import { isMultiplayer } from "/cultural-diffusion/ui/cd-plots.js";
+import { isMultiplayer, cityIdOf } from "/cultural-diffusion/ui/cd-plots.js";
 import { log, dlog } from "/cultural-diffusion/ui/cd-log.js";
 import { plotInventory, flipRefusedFor, needsTeardown, flipWithTeardown } from "/cultural-diffusion/ui/cd-teardown.js";
 
@@ -203,6 +203,39 @@ function flipImprovedTile(playerId, city, loc, refund, inv) {
   settled.then((r) => dlog(`flip ${loc.x},${loc.y} with teardown: torn=${r.torn} cleared=${r.cleared} ` +
     `buy=${r.buy.reason} landed=${r.landed} rebuilt=${r.rebuilt} restored=${r.restored} ` +
     `improvement=${r.improvement || "none"}`));
+  return { ok: true, reason: "teardown-purchase", verb: "purchasePlot", cost: 0, settled };
+}
+
+/**
+ * Move one of a player's tiles to another of their settlements: the buyer re-buys it, which keeps the owner and
+ * re-parents the tile (watched 2026-10-16, engine-closed.md). A bare tile is bought as it stands; a tile with a
+ * district or an improvement goes by teardown, buy, rebuild, like any improved flip, but counts as landed when the
+ * owning city reads the buyer, since the owner never changes. Urban districts, centers and wonders are refused.
+ * @param {Object} a Arguments.
+ * @param {number} a.playerId The tile's owner, who stays its owner.
+ * @param {*} a.city The settlement taking the tile (city object or id).
+ * @param {{x:number,y:number}} a.loc Plot.
+ * @param {boolean} [a.refund] Refund the buy's gold the same tick (default true).
+ * @returns {{ok:boolean, reason:string, verb:string, cost?:number, settled?:Promise<*>}} Result.
+ */
+export function moveBetweenOwnSettlements({ playerId, city, loc, refund = true }) {
+  if (!guardSP()) return { ok: false, reason: "guard", verb: "purchasePlot" };
+  const cityObj = typeof city?.purchasePlot === "function" ? city : safe(() => Cities?.get?.(city), null);
+  if (typeof cityObj?.purchasePlot !== "function") return { ok: false, reason: "no-api", verb: "purchasePlot" };
+  const inv = plotInventory(loc);
+  const refused = flipRefusedFor(inv);
+  if (refused) return { ok: false, reason: refused, verb: "purchasePlot" };
+  if (!needsTeardown(inv)) {
+    return { ...flipViaPurchasePlotRefunded(playerId, cityObj, loc, refund !== false), verb: "purchasePlot" };
+  }
+  const target = cityIdOf(cityObj);
+  const settled = flipWithTeardown({
+    loc, playerId, city: cityObj, inv,
+    buy: () => flipViaPurchasePlotRefunded(playerId, cityObj, loc, refund !== false),
+    landed: () => safe(() => cityIdOf({ id: MapCities.getCity(loc.x, loc.y) }), -1) === target
+  });
+  settled.then((r) => dlog(`move ${loc.x},${loc.y} with teardown: torn=${r.torn} cleared=${r.cleared} ` +
+    `buy=${r.buy.reason} landed=${r.landed} rebuilt=${r.rebuilt} restored=${r.restored}`));
   return { ok: true, reason: "teardown-purchase", verb: "purchasePlot", cost: 0, settled };
 }
 

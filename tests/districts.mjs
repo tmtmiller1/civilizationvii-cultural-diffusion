@@ -40,7 +40,22 @@ globalThis.GameInfo = { Districts: { lookup: (t) => (t === 99 ? { DistrictType: 
 assert.equal(districtTypeNameAt({ x: 6, y: 5 }), "DISTRICT_URBAN", "getDistrictType wins when present");
 assert.equal(districtTypeNameAt({ x: 5, y: 5 }), "DISTRICT_URBAN", "falls through to Districts when it returns null");
 
-// 4. Neither API: null, never a throw.
+// 4. Cities.getAtLocation, the first city-center route, gets one location, the way every base-game call passes it.
+// Called as (x, y) it got a bare number and missed every center (automissionary audit m7).
+const seen = [];
+globalThis.Cities = {
+  getAtLocation: (loc, extra) => {
+    seen.push({ loc, extra });
+    return loc && typeof loc === "object" && loc.x === 30 && loc.y === 4 ? { id: 7 } : null;
+  },
+  get: () => null
+};
+assert.equal(isCityCenterAt({ x: 30, y: 4 }), true, "a center Cities.getAtLocation reports is found");
+assert.deepEqual(seen[0], { loc: { x: 30, y: 4 }, extra: undefined }, "called with one location");
+assert.equal(isCityCenterAt({ x: 31, y: 4 }), false, "an empty plot is not a center");
+globalThis.Cities = { getAtLocation: () => null, get: () => null };
+
+// 5. Neither API: null, never a throw.
 delete GameplayMap.getDistrictType;
 const saved = globalThis.Districts;
 delete globalThis.Districts;

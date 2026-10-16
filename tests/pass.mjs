@@ -116,7 +116,8 @@ globalThis.Game = { age: "AGE_ANTIQUITY", turn: 10, maxTurns: 90 };
 // section before 19 runs with no units on the map.
 const minorPlayers = new Set();   // player ids the stub reports as isMajor === false
 const centresOnMap = new Set(); // "x,y" of settlement centers the MAP reports (villages included)
-globalThis.Cities = { getAtLocation: (x, y) => (centresOnMap.has(tk(x, y)) ? { id: 55 } : null), get: () => null };
+// The engine's form: one location (base-game calls pass a location or a plot index, never x and y).
+globalThis.Cities = { getAtLocation: (l) => (l && centresOnMap.has(tk(l.x, l.y)) ? { id: 55 } : null), get: () => null };
 const mapUnits = new Map(); // "x,y" -> [{owner}]
 globalThis.MapUnits = { getUnits: (x, y) => (mapUnits.get(tk(x, y)) || []).map((_u, i) => ({ x, y, i })) };
 globalThis.Units = { get: (cid) => (mapUnits.get(tk(cid.x, cid.y)) || [])[cid.i] };
@@ -198,14 +199,14 @@ r = runPass();
 assert.deepEqual({ flips: r.flips, tiles: r.tiles }, { flips: 0, tiles: 0 }, "no local cities -> zero summary");
 assert.equal(savedState.monoTurn, 5, "no local cities -> state untouched");
 
-// Multiplayer: cd-ownership's guardSP blocks every mutating verb. runPass has no MP check of its
-// own (its JSDoc says it "bails in multiplayer", it does not; it runs and simply cannot mutate).
-// What matters is the safety property, so that is what is asserted here.
+// Multiplayer: runPass bails before the field is simulated, as its JSDoc says, and cd-ownership's guardSP still
+// blocks every mutating verb behind it.
 reset(); seedState({ field: { [tk(TARGET.x, TARGET.y)]: mature() } });
 multiplayer = true;
 r = runPass();
-assert.equal(r.flips, 0, "multiplayer -> no flips (guardSP blocks the verbs)");
+assert.deepEqual({ flips: r.flips, tiles: r.tiles }, { flips: 0, tiles: 0 }, "multiplayer -> zero summary");
 assert.equal(getTile(TARGET.x, TARGET.y).owner, -1, "multiplayer -> no ownership change");
+assert.equal(savedState.monoTurn, 5, "multiplayer -> state untouched (the pass doesn't run)");
 multiplayer = false;
 
 // 2. A flip happens, and for the right reason.
@@ -438,13 +439,13 @@ assert.equal(Object.keys(savedState.claims).length, before, "an exhausted per-ci
 CONFIG.maxDiffusionPlots = 80;
 
 // 8. Sequencing + state hygiene inside runPass.
-// releaseInnerClaims: a stale claim inside our natural ring is handed back to the base game.
+// releaseInnerClaims: a stale claim inside our natural ring loses its record; the tile isn't released.
 reset();
 seedState({ claims: { [tk(INNER.x, INNER.y)]: { by: ME, city: CITY_ID, turn: 1 } } });
 r = runPass();
-assert.equal(r.released, 1, "a mod claim inside the natural ring is released back to the base game");
-assert.equal(savedState.claims[tk(INNER.x, INNER.y)], undefined, "...and its claim record is dropped");
-assert.ok(unclaimed.includes(tk(INNER.x, INNER.y)), "...via a real unclaim on the tile");
+assert.equal(r.released, 1, "a mod claim record inside the natural ring is dropped");
+assert.equal(savedState.claims[tk(INNER.x, INNER.y)], undefined, "...and its claim record is gone");
+assert.ok(!unclaimed.includes(tk(INNER.x, INNER.y)), "...without a release call, which the engine ignores");
 // ...but a cooldown on that tile survives the release: it is the anti-flicker guard (and a conquest's hold), not part
 // of the claim record. Watched 2026-09-26: a conquered ring-3 tile lost its hold here the pass after it was taken.
 reset();

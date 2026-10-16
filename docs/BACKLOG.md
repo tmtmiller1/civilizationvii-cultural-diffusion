@@ -7,10 +7,10 @@ noted. Each carries [severity · confidence] and enough context to pick up cold.
 > files, cross-referenced from the entries below:
 > - The `commitFlip` / `commitBuffer` seed-stock no-op lines and the kept tested-but-unwired
 >   `*Factor` helpers → [`wont-fix-with-justifications.md`](wont-fix-with-justifications.md)
->   (left as they are).
+>   (left as they are). Their backlog entries moved there on 2026-10-15.
 > - The removed `preventForwardSettle` / `minimalOwnedCulture` targeting flags →
 >   [`wont-build-with-justifications.md`](wont-build-with-justifications.md) (won't build as a
->   discrete mechanic).
+>   discrete mechanic). Its backlog entry moved there on 2026-10-15.
 >
 > The detailed findings remain below for reference. The verdicts in those files are the ones that count.
 
@@ -39,12 +39,109 @@ long the grievances last. Decide the default from that: 30 if it reads as a fair
 leaves neighbours permanently hostile. The option already offers 0, 15, 30 and 60, so only the default and its text
 (option tooltip, Civilopedia, README, CHANGELOG, every language) would change.
 
+## 2026-10-06 automissionary audit
+
+Findings about this mod from
+[`cultural-diffusion-automissionary-audit-2026-10-06.md`](../../../mods_quality_analyses/cultural-diffusion-automissionary-audit-2026-10-06.md)
+(sections 3 and 4; its section 5 is AutoMissionary's own code and section 6 the base game's errors). Each was checked
+against the code on 2026-10-15. The audit's ids (C0, M1, m3 and so on) are kept so the two can be read side by side.
+
+### Fixed before 2026-10-15
+
+- **C0, M5, m10.** Every flip of an improved tile damaged the save, and enough of them crashed the next age change; a
+  flipped tile also lost its improvement, and culture could move urban districts and wonders. Fixed in 1.5.1 by
+  `ui/cd-teardown.js` (entry "Every flip of an improved tile damaged the save" below).
+- **C1.** The age guard missed progression jumps. Since 1.5.0 it holds for the whole Age Ending countdown
+  (`ui/cd-age-guard.js`, `tests/age-guard.mjs`).
+- **M1.** The Low preset didn't keep culture to empty land. Fixed in 1.5.0 (`getClaimOnlyUnowned`,
+  `tests/settings.mjs`).
+- **3.1.** AutoMissionary's storage key made every mod read its settings blob. The Tower Settings Keeper, carried since
+  1.5.2, keeps every mod's settings in the one entry the game reads back correctly and repairs a store already put
+  out of order.
+
+### Fixed 2026-10-15, each with a test that fails on the old code
+
+- **m2.** The Civilopedia said "At most 8 tiles change hands per turn". Each path has its own cap of 8: your claims
+  (`cd-pass.js`), other civilizations' claims (`cd-ai-flips.js`), recede (`cd-recede.js`) and conquest
+  (`cd-conquest.js`). The text now says that in every language, and gives High's per-city cap of 140, which it left
+  out. The text changed rather than the code: separate caps are on purpose, so one path can't use up another's turn
+  (the pass runs your claims first, so one shared cap would let them crowd out the AI's), and one cap would change
+  the pace of every game for no reported problem. `tests/config.mjs`.
+- **m3, first half.** The +1 buffer ignored the master switch: `claimBufferAt` and the bootstrap checked only
+  `growthBuffer`. Both check `diffusionEnabled` now. `tests/buffer.mjs`, `tests/bootstrap.mjs`.
+- **m6.** Shift+C toggled the lens while typing in a text box. The key now leaves input, text area, `fxs-textbox` and
+  editable elements alone, ignores a held key's repeats and leaves Ctrl, Alt and Meta combinations to other uses.
+  `tests/lens-parity.mjs`.
+- **m7.** `Cities.getAtLocation(loc.x, loc.y)` got two numbers; every base-game call passes one location or a plot
+  index. It gets `{x, y}` now, and the test stubs take the engine's form, so the village case in `tests/pass.mjs`
+  fails on the old call. `tests/districts.mjs`.
+- **Cosmetic: `--dg-fs-85`.** The hover readout's font size came from Demographics' CSS variable, which only exists
+  inside Demographics' own screen. It's `0.85rem` now, the value Demographics gives that variable, written out because
+  how GameFace treats a `var()` fallback hasn't been watched. `tests/lens-parity.mjs`.
+
+### Open, fix only after a probe
+
+- **M2. Tile-flip notices may never reach the player** (`ui/cd-notifications.js`, `raiseToast`). `UI.sendNotification`
+  has no definition in the 1.5.0 game files and nothing listens to `CulturalDiffusionToast`. The settlement notices go
+  through `Game.Notifications.send` and were watched. Disproof first: in a lab game, let an AI flip one of your tiles
+  and watch for a notice (`tools/plans/next-2026-10-15/cultural-diffusion-next-prompt.md` step 2).
+- **M3. Rival cities whose center lies outside the region add no pressure** (`cd-pass.js` `buildInjectors`): a rival
+  city 9-11 tiles from yours injects nothing, so its ring-2 and ring-3 tiles defend with the owner floor only. Probe:
+  log, on a save with a rival city just outside `fieldRadius`, the stock on its inner tiles against what its own
+  injection would give, and whether the pass takes them.
+- **m9. The gold refund reads the balance in the same tick as the purchase** (`cd-ownership.js`
+  `flipViaPurchasePlotRefunded`), so the refund `README.md` promises ("If a future game update charges for them, the
+  mod refunds the cost") may never fire. Harmless while script purchases are free. Probe: read the balance before, in
+  the same tick and a frame after a `purchasePlot` that costs gold, if any update makes one cost gold.
+- **m12, and the conquest half of 3.2. Recede and conquest never ask the strand guard** (`cd-recede.js`,
+  `cd-conquest.js` don't import `wouldStrandForeignUnit`), and recede skips the receiving rival's per-city cap. Both
+  are opt-in. Probe: with recede on, a claimed tile that a rival out-cultures and that is the last way out for one of
+  your own units (a missionary inside a rival's closed borders), and the same with an army holding the tile.
+
+### Open, not yet worked
+
+- **m3, second half.** The buffer ignores the per-city cap (`maxDiffusionPlots`): `bufferTarget` never reads the
+  city's claim count. Cheap to add with `claimCountsFor`.
+- **M4.** Settings are read from storage on every pass with no copy kept for the session. With the Settings Keeper the
+  foreign-blob hazard is handled; what's left is cost: `applyTunableOverrides` reads and parses the shared store about
+  nineteen times a call (each getter loads it), and the hover readout calls it too. If the ~6.5 ms a read measured
+  for the Settings Keeper holds here, that's over 100 ms a pass. Not measured in this mod.
+- **m1.** On High (range 8) the pass claims tiles beyond the ~7 rings the engine keeps attached; the turn roll releases
+  them and the pass sends them again every turn, with no backoff. (The audit's reading; not watched.)
+- **m4.** Claim records are never reconciled with who owns the tile now, and past 8192 entries new claims are dropped
+  without a log line (`cd-state.js` `MAX_CLAIM_ENTRIES`).
+- **m5.** In "one more turn" play `isAgeOver` stays true, so the age guard holds district tiles for the rest of the
+  game. (The audit's reading; not watched.)
+- **m8.** The hover readout's "~N turns" ignores game speed: `estimateTurnsToFlip` uses the age-adjusted config
+  without the pace the pass applies, so it can be off by up to 4x.
+- **m11.** Conquest attaches a tile to the conqueror's nearest city at any distance (`cd-conquest.js`
+  `nearestCityOf`); past ~7 rings the engine releases it at the turn roll.
+- **m13.** The capture culture transfer runs for every `CityTransfered`, peace-deal cessions included
+  (`cd-capture.js` ignores `transferType`). Any change must keep the settlement flip (`BY_CULTURAL_IDENTITY`), which
+  relies on this handler for its seeding (DESIGN.md).
+- **m14.** Per-frame work in the hover readout and uncached per-step engine reads. Size unknown.
+- **Cosmetic.** The readout can stay up after the lens closes; the lens's paint cache is keyed on `Game.turn`, so a
+  change within a turn shows next turn; the console's `enable()` is overwritten by the next pass's settings read;
+  the Options path is worded differently in the Civilopedia and the README.
+- **3.2, the rest.** AutoMissionary drops its claim on a settlement when this mod moves the tile under its missionary
+  (AutoMissionary's side); AutoMissionary may plan a spread against a tile whose purchase is still landing (the crash
+  form tested negative in `miss-flip3`, wasted charges untested); a selection change resets the lens (the base game
+  does that); the readout (z-index 9999) can draw over AutoMissionary's panel.
+- **Test gaps still open.** `cd-notifications.js` has no tests of its own (`tests/city-flip.mjs` covers the
+  settlement notices only).
+
 ## 2026-09-24 player field report (v1.1.0)
 
-Three observations from one campaign, reported as observations rather than confirmed bugs. The trapped-unit half is
-fixed (changelog, `Unreleased`); these two stay open.
+Three observations from one campaign, reported as observations rather than confirmed bugs. The trapped-unit half was
+fixed in 1.2.0 (CHANGELOG); these two stay open.
 
-## [High · Cause plausible, unconfirmed] An Independent Power was absorbed into the player's territory
+## [Medium · Fixed in 1.2.0; two reads open] An Independent Power was absorbed into the player's territory
+
+**Status (2026-10-15):** diagnosed and fixed in 1.2.0 as the stripped minor (entry "The trapped unit, and the
+stripped minor settlement" below: `minorProtectRadius` and the `isCityCenterAt` map read). Still open: read (4) below,
+whether a befriended Independent Power still reads as at war, and whether ring 2 of a minor is safe. Both need a probe
+(`tools/plans/next-2026-10-15/cultural-diffusion-next-prompt.md` step 6). The rest of this entry is the original
+analysis.
 
 **Report:** an independent the player was befriending was absorbed into their territory. On a reload with the mod
 disabled the absorption did not happen, but the independent still ended up with no settlement instead of becoming a
@@ -199,6 +296,10 @@ the age ends and win them back after it. `PlayerOperationTypes.LAND_CLAIM`, the 
 a Legatus charge and refuses a script (`landclaim-155`). Decision 2026-10-06: 1.5.1 ships the fix without a heal, and
 the changelog says that such saves cannot be repaired.
 
+**Still wanted? (2026-10-15, for the owner):** not decided. The only watched repair cedes the damaged tiles to a
+neighbouring civilization before the age ends and wins them back after it, which a player would see on the map, and
+it only matters for saves that 1.4.1 or 1.5.0 played. Not built; it waits on the owner's answer.
+
 ## [Fixed, watched once · 2026-10-06] Age-transition crash from district tiles changing hands
 
 **Watched 2026-10-06** (runs from `CDH-Ant159.Civ7Save`, one turn before Antiquity ends):
@@ -268,7 +369,16 @@ reply asking for the `.ips` and log tails is drafted in `civilization_vii_mods/s
 Found on game 1.4.2 with `devtools/harness/` ([`probe-history.md`](probe-history.md) §5). The unrecorded-flip and
 age-hash bugs it found are already fixed (changelog); these two stay open.
 
-## [High · Cause unconfirmed] Native crash after an age transition in harness run 3
+## [Low · Likely the district-purchase crash] Native crash after an age transition in harness run 3
+
+**Cross-reference (2026-10-15):** the 2026-10-06 entry "Every flip of an improved tile damaged the save" found the
+mechanism this entry was missing. A `purchasePlot` of a tile that holds a district leaves a half-made district record
+for the buyer, and a game that holds enough of them crashes while the next age sets up, on AsyncWorker1 at 0x308 or
+0x2a8: the same thread, faults and moment as runs 3 and 7. Both runs bought rival tiles by script before the
+transition, and run 3's tests also destroyed and recreated improvements by script; run 5, without those tests, didn't
+crash. Whether the tiles runs 3 and 7 bought held a district wasn't logged, so this is a match, not a proof. Since
+1.5.1 every flip tears a district tile down before buying it (`ui/cd-teardown.js`). Kept for the record; reopen only
+if a crash with this signature comes back on 1.5.1 or later.
 
 **Evidence:** `devtools/harness/run3-crash-evidence.txt` and the macOS report
 `CivilizationVII-2026-09-12-220239.ips`. The game hit `EXC_BAD_ACCESS` at `0x2a8` on `AsyncWorker1`, about thirty
@@ -337,7 +447,7 @@ also calls `purchasePlot`.
 copy and a harness that only presses Begin and does nothing else. A crash implicates the mod's first pass. No crash
 points at the harness re-running its destructive actions.
 
-## [Low · Confirmed] The debug `frontier` line over-reports claimable tiles
+## [Low · Open, debug only] The debug `frontier` line over-reports claimable tiles
 
 **Symptom:** `logFrontier` (`ui/cd-diagnostics.js`) scans every ring-4 tile of a city. That includes tiles inside
 another of our cities' first three rings, and neighboring city centers, which the pass can never claim, so `best` and
@@ -353,7 +463,7 @@ the mod took two of player 3's tiles, which `flipEligible` blocks at war.
 turn 136 and at peace from turn 137 on, and every capture of player 3's tiles came after that peace. The war gate works
 as designed.
 
-## [High · Confirmed] No known verb releases a city-attached tile
+## [Closed 2026-10-16] No known verb releases a city-attached tile
 
 **Sites:** [ui/cd-recede.js](../ui/cd-recede.js) (`releaseToNoOne`), [ui/cd-pass.js](../ui/cd-pass.js)
 (`releaseInnerClaims`, `repairOrphans`)
@@ -369,9 +479,26 @@ a claimed tile leaves ([`wont-build-with-justifications.md`](wont-build-with-jus
 **Still open:** `releaseInnerClaims` still calls `unclaim` on inner-ring claims and then forgets them. On the real
 engine the call does nothing (harness run 3 dropped a ring-3 claim this way while the tile stayed attached), so it
 cannot heal a save damaged by 1.0.6. A heal needs a different verb, for example re-buying the tile with the city whose
-ring it sits in; that re-parent between our own cities is untested.
+ring it sits in; that re-parent between our own cities is untested. The probe for it is written and hasn't run:
+`devtools/harness/cdh-game-run4.js` (`devtools/harness/README.md`).
+**Re-parent probe (2026-10-16, 1.5.0, lab seed 4242):** re-buying works. In a lab game with Heian-Kyo at (65,13)
+and the town Ise at (65,17), `Ise.purchasePlot` on the capital's ring-1 tile (65,14) moved it to Ise: the owner stayed
+us, `getOwningCityFromXY` and `MapCities.getCity` still read Heian-Kyo on the same tick and read Ise within 4 s, and
+the tile left the capital's `getPurchasedPlots` for Ise's. It was still Ise's one turn and five turns later. The
+same tile with a Farm moved back to Heian-Kyo by teardown, `purchasePlot`, then rebuild with Heian-Kyo as the
+parent: the Farm's +1 Production and +1 Gold left Ise's yields for Heian-Kyo's, the district resolved, and nothing
+dangled for five turns. Same readings with Cultural Diffusion alone and with the usual set. Script
+`devtools/harness/cdh-lab-reparent.js`, logs `devtools/harness/lab-reparent-vanilla.json` and
+`lab-reparent-usual-set.json`. So the self-heal has a verb (entry "1.0.7 inner-ring self-heal is claim-record
+dependent" below).
+**Closed (2026-10-16):** `releaseInnerClaims` no longer sends `unclaim`, and `ui/cd-reparent.js` moves stuck tiles
+by re-buying them. Watched on both sides (entry "1.0.7 inner-ring self-heal is claim-record dependent" below).
 
-## [Medium · Confirmed] Ring 4 takes a very long time to reach the ownership bar
+## [Closed · Decided: documented] Ring 4 takes a very long time to reach the ownership bar
+
+**Decided (2026-10-15):** documented rather than retuned. `README.md` ("Why growth is slow") tells players to expect
+nothing early: a capital making 8 Culture claims no tiles in 70 turns, and the mod matters most from the mid-game
+onward. The analysis below is kept for a future retune.
 
 **Symptom:** since 1.0.7 the mod claims only ring 4 and beyond. Each ring holds at most 40% of the ring inside it, so a
 ring-4 tile reaches the default bar of 300 only once the city center holds roughly 12,000. In harness run 1 London
@@ -407,11 +534,15 @@ open terrain at pace 0.8 as:
 
 Below a strength of about 13, injection and decay balance before the center can push 300 out to ring 4, so a young
 empire's cities claim nothing until their culture grows. That is most of the early game.
-**Needs a decision:** retune so early cities claim something, or document that the mod starts working mid-game. Options
-include a lower ownership bar on the first ring the mod may claim, a higher `injectBase`, or a ring share (`normalMax`)
-that carries more culture outward.
+**The decision this asked for** (taken: document it): retune so early cities claim something, or document that the
+mod starts working mid-game. A retune could use a lower ownership bar on the first ring the mod may claim, a higher
+`injectBase`, or a ring share (`normalMax`) that carries more culture outward.
 
-## [Medium · Confirmed] Culture never gains land for the AI
+## [Closed · Built in 1.3.0] Culture never gains land for the AI
+
+**Closed (2026-10-15):** built as "Every civilization gains land by culture" (`aiCultureFlips`, `ui/cd-ai-flips.js`),
+opt-in in 1.3.0 and on by default since 1.4.0. Rivals claim through their nearest city under the same gates as yours,
+with their own per-turn cap, inside the simulated region. The original entry follows.
 
 **Symptom:** the mod is one-sided. Rival settlements near our cities do inject into the field (`buildInjectors`), so
 their culture defends their tiles and slows ours. But only the local player ever gains a tile: `tryFlipCandidate`
@@ -444,7 +575,13 @@ In harness run 12 (`devtools/harness/run12-cede-and-lens-UI.log`), over four tur
 seven AI-led tiles the old rule would have painted, and none showed a progress line. The seeded rival-led claim, with
 recede on, was painted and showed one.
 
-## [High · Confirmed] Default flip verb `setOwnership` records phantom claims
+## [Closed · Superseded by `purchasePlot` and pending bookings] Default flip verb `setOwnership` records phantom claims
+
+**Closed (2026-10-15):** the default verb has been `purchasePlot` since 1.0.6/1.0.7, and `setOwnership` is only
+reachable by editing `flipVerb` in code. The guard this entry designed is in place in a stronger form: `commitFlip`
+(`ui/cd-flip.js`) books nothing until the map shows the new owner, and a buy that hasn't landed is held in
+`state.pending` (`ui/cd-pending.js`) and dropped if it never does. The line numbers below are from July. The original
+entry follows.
 
 **Sites:** [ui/cd-ownership.js:40-49](../ui/cd-ownership.js) (`flipViaSetOwnership`),
 [ui/cd-pass.js:337-353](../ui/cd-pass.js) (`commitFlip`)
@@ -493,61 +630,13 @@ the real fix was the verb switch to `purchasePlot`/`claimPlot` (shipped,
 `dlog`/state inspection) that no claim, lock, seed, or toast is recorded when
 `GameplayMap.getOwner` still returns the rival after the attempt.
 
-## [Low · Confirmed] Documented features and gathered signals that are never consumed
-
-**Sites:** [ui/cd-config.js:104](../ui/cd-config.js) (`preventForwardSettle`, default
-`true`), [ui/cd-config.js:124](../ui/cd-config.js) (`minimalOwnedCulture`),
-[ui/cd-pass.js:66](../ui/cd-pass.js) (`s.prosperity`), `ui/cd-pressure.js`
-(`happinessFactor`/`wonderFactor`/`prosperityFactor`)
-**Symptom:** `preventForwardSettle` and `minimalOwnedCulture` are defined and documented
-("prioritize claiming open buffer plots between rivals") but referenced nowhere in `ui/`:
-a promised behavior that does nothing. `prosperityOf(city)` is read into `s.prosperity`
-every pass but `fusedBase` only uses `s.vitality`; the three `*Factor` helpers are exported
-but never called by `projectionOf`.
-**Failure scenario:** not a crash. Dead code, wasted per-pass computation and a stated
-model input (prosperity) with no effect on behavior.
-**Fix:** either wire prosperity/forward-settle into the pressure model as documented, or
-remove the dead config + exports and update the docs.
-
-Implemented, scaled back from "remove all four". Only the two config flags were
-dead. The three `*Factor` helpers turned out to be tested API
-(`tests/pressure.mjs` + `tests/pressure-branches.mjs` exercise `happinessFactor`,
-`wonderFactor`, `prosperityFactor`), an intended but unwired utility library. Deleting
-them would drop test coverage, so they were kept. The `prosperityOf`/
-`s.prosperity` row field is the data source for that same (tested) prosperity factor, so it
-was kept too for coherence (its per-pass cost is one function call per settlement).
-**Removed:** `preventForwardSettle` and `minimalOwnedCulture` (config + JSDoc), unread and
-untested. If the tested-but-unwired factors are ever to be retired, that's a separate change
-that must also remove their tests.
-
-**Original design (superseded, see above):**
-- `minimalOwnedCulture` (`cd-config.js:124`), the unused `s.prosperity` row field
-  (`cd-pass.js:66` `prosperity: fused ? prosperityOf(city) : 0`; `prosperityOf` at
-  `cd-polity.js:111`), and the exported-but-uncalled `happinessFactor`/`wonderFactor`/
-  `prosperityFactor` (`cd-pressure.js:47/59/70`) → delete. The JSDoc at
-  `cd-pressure.js:115` already states wonders/happiness/prosperity were folded into
-  CPI/`vitality` by the fused model, so these are superseded dead code. Drop the
-  `prosperity` field from the settlement row (nothing reads it; `fusedBase`/`projectionOf`
-  use only `culture`+`vitality`), remove the three factor exports, and delete the config key
-  + its JSDoc.
-- `preventForwardSettle` (`cd-config.js:104`) → delete as misaligned with the organic
-  model. The mod is organic reaction-diffusion pacing (its Civ V CultureDiffusion lineage);
-  denying rival forward-settlement is meant to emerge from natural cultural pressure
-  owning the buffer, not from a special-cased flag that targets/prioritizes the
-  plots between rivals. A targeting knob would contradict the organic model, so there is no
-  real feature to wire in: the emergent behavior already covers the intent. Remove the dead
-  flag + its JSDoc, and add a one-line note (in the config doc or spec) that anti-forward-
-  settling is an emergent property of the diffusion pass, not a discrete mechanic.
-**Verify:** grep confirms zero read sites for each removed symbol; the mod's field pass and
-options screen build/behave identically after removal (pure dead-code deletion).
-
 ## 2026-07-13 full hostile audit addendum
 
 Findings from the post-1.0.7 "anything could be wrong" sweep. Verification baseline was green
 (`npm run verify` passed), so items below are runtime-risk and behavior-consistency findings,
 not syntax/lint/test breakage.
 
-## [Medium · High] Buffer trigger can silently miss valid completion events
+## [Fixed 2026-10-15] Buffer trigger can silently miss valid completion events
 
 **Sites:** [ui/cd-bootstrap.js](../ui/cd-bootstrap.js) (onConstructibleAdded, around lines 75-82)
 **Symptom:** the growth-buffer event gate accepts completion only when `percentComplete === 100`
@@ -559,8 +648,12 @@ in some contexts, the handler returns early and no buffer claim runs despite a r
 already-finalized), then add test coverage for event payload variants.
 **Verify:** simulate/observe `ConstructibleAddedToMap` payload variants and confirm
 `claimBufferAt(...)` runs once for each completed rural improvement.
+**Done (2026-10-15):** `buildComplete` in `ui/cd-bootstrap.js` reads the field the way the base game does (`== 100`
+in `tutorial-items-antiquity.js`, the one base-game read of it): a missing field, 100, 100.0 and "100" all count.
+1 doesn't: the field is a 0-100 percentage, so 1 is a build at 1%. `tests/bootstrap.mjs` drives the real handler with
+each form. Not watched in game; what the engine sends wasn't logged.
 
-## [Medium · Medium] Per-turn pass depends on narrow `PlayerTurnActivated` payload shape
+## [Fixed 2026-10-15] Per-turn pass depends on narrow `PlayerTurnActivated` payload shape
 
 **Sites:** [ui/cd-bootstrap.js](../ui/cd-bootstrap.js) (onTurnActivated, lines around 134-142)
 **Symptom:** pass execution is gated on `data.player ?? data.Player` matching local id exactly.
@@ -571,8 +664,12 @@ console.
 **Fix:** harden player extraction (support known alternate shapes), and add a conservative fallback
 path that still honors single-player/local-turn constraints.
 **Verify:** replay with synthetic payload variants and confirm exactly one pass per local turn.
+**Done (2026-10-15):** `turnPlayerOf` reads `player` (or `Player`) and takes a numeric string as that id, as the base
+game's loose `==` does (`unit-selection.js`). A payload with no readable player still runs the pass when
+`Players.get(local).isTurnActive` is true, and the per-turn check keeps it to one pass a turn. `tests/bootstrap.mjs`
+covers each shape, the fallback, and `turnInterval`. Not watched in game.
 
-## [Medium · Medium] 1.0.7 inner-ring self-heal is claim-record dependent
+## [Fixed 2026-10-16] 1.0.7 inner-ring self-heal is claim-record dependent
 
 **Sites:** [ui/cd-pass.js](../ui/cd-pass.js) (`releaseInnerClaims`),
 [ui/cd-state.js](../ui/cd-state.js) (claim normalization/caps)
@@ -581,12 +678,59 @@ path that still honors single-player/local-turn constraints.
 from `state.claims` (cap truncation, stale/missing state, prior state loss) are not revisited by
 `releaseInnerClaims` and may remain misassigned.
 **Impact:** rare "1.0.7 did not fully heal this save" reports.
+**Waits on a probe (2026-10-15):** a map scan can't heal anything while `unclaim` does nothing on a city-attached
+tile (entry "No known verb releases a city-attached tile" above). Run the re-parent probe
+(`devtools/harness/cdh-game-run4.js`) first; build this only if re-buying heals a tile.
+**Probe result (2026-10-16):** re-buying with the right settlement moves the tile, bare or improved, on 1.5.0, with
+Cultural Diffusion alone and with the usual set (entry "No known verb releases a city-attached tile" above). Three
+things the build has to respect:
+- An improved tile has to go through the teardown route (`cd-teardown.js`); a plain buy of a tile with a rural
+  district damages the save (the 2026-10-06 entry above).
+- `flipWithTeardown` counts the buy as landed once the owner is the buyer. Between two of our own settlements the
+  owner never changes, so it would count as landed at once and rebuild for the buyer before the tile has moved. The
+  probe waited on `MapCities.getCity` instead; the heal needs that check.
+- No age transition was crossed after a move, so keep the transition guard around it like any other district move.
 **Fix:** add a secondary map-scan reconciliation for owned inner-ring tiles that does not rely
 solely on claim bookkeeping, or explicitly document this as a best-effort constraint.
 **Verify:** load crafted state with missing claim records and confirm inner-ring tiles still
 release/recover.
+**Was there anything to heal? (2026-10-16):** yes, and not only in 1.0.6 saves. In a seed 4242 lab game the
+capital bought a tile at distance 4, the shape of a frontier claim, and a town founded 2 from it couldn't use it:
+the tile was missing from the town's `EXPAND` list, `canStart` on it said no, and a direct `EXPAND` placed nothing.
+The control, a listed tile, expanded at once, and a turn later the game still hadn't moved the tile. The other check
+(count such tiles in a real save) found nothing to count: the only loadable long save with the mod,
+`embark-check-t75`, held no claims at turn 75, and the soak saves need two mods that aren't installed now. Script
+`devtools/harness/cdh-lab-reparent-need.js`.
+**Done (2026-10-16):** `ui/cd-reparent.js` runs each pass, local player only, after the inner-record step. It walks
+each of your settlements' `getPurchasedPlots`, not `state.claims`, and finds tiles attached to a settlement more
+than `baseGrowthRadius` away while another of yours is within it. Each goes to the nearest such settlement (lowest id
+on a tie), up to `maxFlipsPerTurn` a pass, the same per-step cap recede, conquest and the AI flips use. It skips a
+settlement's plots while that settlement may flip, tiles with a claim in flight, and district tiles inside the
+age-transition window. A bare tile is re-bought; an improved one goes through
+`cd-ownership.js` `moveBetweenOwnSettlements`, which tears down, buys and rebuilds, and passes `flipWithTeardown` a
+new `landed` test on the owning city (the owner test stays the default for every other flip). `releaseInnerClaims`
+no longer sends the `setOwnership` call; it only drops the records. `tests/reparent.mjs` fails without the module and
+fails with the owner-based landed test ("nothing is rebuilt before the tile has moved"); `tests/repair.mjs`,
+`tests/pass.mjs` and `tests/city-flip.mjs` now expect no release call.
+**Watched (2026-10-16, 1.5.0, seed 4242):** Heian-Kyo at (65,13), the town Heijo at (68,18); Heijo bought two of the
+capital's ring-1 tiles, 6 from it, and (66,12) got a rural district and a Farm for Heijo. One `runNow()` reported
+`reparented: 2`. Within a second both tiles read Heian-Kyo and sat in its `getPurchasedPlots`. (66,12) came back
+with a new rural district that resolves and its Farm, and UI.log said `torn=2 cleared=true landed=true rebuilt=true`.
+Both held through turn 6. Same readings with Cultural Diffusion alone and with the usual set, and no mod error in
+UI.log. Script `devtools/harness/cdh-lab-reparent-heal.js`, logs `lab-reparent-heal-vanilla.json` and
+`lab-reparent-heal-usual-set.json`. Not watched: an age transition after a move (`WATCH_LIST.md` group 5).
+**AI civilizations too (2026-10-16, owner's call):** an AI's culture claims get stuck the same way, so `reparentAll`
+runs the heal for every living major civilization (`allSettlements(false)`, so city-states and independents are
+left out), each with its own `maxFlipsPerTurn` cap and its own claims in flight. `tests/reparent.mjs` case 5 covers
+an AI's bare and improved tiles, a city-state's tile left alone, the per-civilization cap, and an AI claim in flight.
+Watched the same day, seed 4242, with Cultural Diffusion alone and with the usual set: after one turn, AI player 5's
+capital at (49,24), a town placed for it at (44,24), and two of the capital's ring-1 tiles bought by the town, (48,24)
+with a Farm. One `runNow()` reported `reparented: 4` (two of ours, two of the AI's). Within a second the AI's tiles
+were on its capital, still player 5's. (48,24) was rebuilt with a resolving district and its Farm. Both held
+through turn 7, after the AI's own turns, and UI.log had no mod error. Logs `lab-reparent-heal-ai-vanilla.json` and
+`lab-reparent-heal-ai-usual-set.json`.
 
-## [Low · Confirmed] Internal docs/comments disagree on buffer land-vs-water rule
+## [Fixed 2026-10-15] Internal docs/comments disagree on buffer land-vs-water rule
 
 **Sites:** [ui/cd-pass.js](../ui/cd-pass.js) (`claimBufferAt`/`bufferTarget` comments),
 [tests/buffer.mjs](../tests/buffer.mjs)
@@ -595,8 +739,11 @@ explicitly allow adjacent unowned water claims.
 **Impact:** maintenance confusion; easy future regression if someone "fixes" to the wrong doc.
 **Fix:** make wording consistent everywhere (CHANGELOG/docs/code comments/tests).
 **Verify:** docs and comments align with tested behavior.
+**Done:** the code comments (`claimBufferAt`, `bufferTarget`) and the README already said the buffer claims unowned
+water too. The last holdout, the header of `tests/buffer.mjs`, said "never ... water" against its own section 2; it
+was reworded on 2026-10-15.
 
-## [Low · Medium] Core-protection check is potentially expensive inside hot candidate loop
+## [Done 2026-10-15, cost unmeasured] Core-protection check is potentially expensive inside hot candidate loop
 
 **Sites:** [ui/cd-borders.js](../ui/cd-borders.js) (`isCoreProtected`/`_cityCenterWithin`),
 [ui/cd-pass.js](../ui/cd-pass.js) (`flipEligible`)
@@ -607,8 +754,13 @@ players/cities per tile.
 **Fix:** precompute/memoize protected-center influence per pass (or owner-scoped cache), then
 query O(1)-ish in `flipEligible`.
 **Verify:** profile pass time before/after on a large late-game save.
+**Done (2026-10-15):** `withCentreCache` (`ui/cd-borders.js`) reads the city lists once and each plot's center once
+for a whole pass (`runPass`) or lens paint (`pressureTiles`); outside one, every read goes to the engine as before.
+Centers don't move inside a pass: tile flips never take one, and a settlement flip starts after the pass has saved.
+`tests/borders.mjs` shows the same answers with and without the cache and one city-list walk per sweep. The in-game
+gain wasn't profiled; the profile above is still the way to measure it.
 
-## [Low · Confirmed] Test harness gap around bootstrap/event wiring
+## [Fixed 2026-10-15] Test harness gap around bootstrap/event wiring
 
 **Sites:** [package.json](../package.json) (test scripts), [tests/](../tests)
 **Symptom:** strong unit coverage exists for pure/near-pure modules, but no dedicated harness for
@@ -621,42 +773,16 @@ payload variants.
 `runPass` orchestration against a stub engine (guards, step order, flip gates, bookkeeping, state
 bounds), and `cd-pass.js` joined the c8 and Stryker scopes. `cd-bootstrap`'s event wiring remains
 uncovered, so this item stays open as originally written.
+**Done (2026-10-15):** `tests/bootstrap.mjs` loads the real `cd-bootstrap.js` against a stub engine: the three events
+it subscribes to, the turn payload shapes, one pass per turn, `turnInterval`, the buffer's completion forms and its
+gates (setting, master switch, a rival's farm), and `stop()` draining every handler.
 
 ## 2026-07-16 addendum (found while building `tests/pass.mjs`)
 
-## [Low · Confirmed] `commitFlip`'s post-flip "seed stock" line is a provable no-op
+The `commitFlip` and `commitBuffer` seed-stock entries from this addendum were decided and moved to
+[`wont-fix-with-justifications.md`](wont-fix-with-justifications.md).
 
-**Site:** [ui/cd-pass.js](../ui/cd-pass.js) (`commitFlip`, the line
-`next[k][String(me)] = Math.max(next[k][String(me)] || 0, ageCfg.minimumOwner);`)
-**Symptom:** the comment says it seeds "a stable stock so the tile doesn't immediately fail the
-ownership test", but the `Math.max` can never raise anything. `tryFlipCandidate` only reaches
-`commitFlip` when `resolveOwner` returned `flip:true`, which requires `value > ageCfg.minimumOwner`,
-and when `verdict.owner === me`, that `value` is `next[k][String(me)]`. So the operand is already
-strictly greater than the floor being applied.
-**Evidence:** instrumented across the whole `tests/pass.mjs` suite: 14 flips, 14 no-ops, 0 raises.
-Stocks at flip time ranged 379–5000 against a bar of 300.
-**Impact:** none at runtime; it is dead code in the hot flip path that reads as load-bearing. It
-also can't be pinned by any test, so it will keep surfacing as an unkillable mutant.
-**Fix:** either delete the line or, if the intent was a floor for a path that does not come
-through `resolveOwner` (a future direct-claim route, or protection against `resolveOwner`'s
-bar changing independently), keep it and correct the comment to say so.
-**Not auto-removed:** unlike the dead constructs cleaned out of `cd-state.js` on the
-same day, this sits in the flip path and turns on design intent. Author's call.
-**Verify:** the instrumentation above; or delete the line and confirm `tests/pass.mjs` still passes
-(it does, which is the point).
-
-## [Low · Confirmed] `commitBuffer` repeats the same dead seed-stock line
-
-**Site:** [ui/cd-pass.js](../ui/cd-pass.js) (`commitBuffer`:
-`state.field[k][String(me)] = Math.max(state.field[k][String(me)] || 0, CONFIG.minimumOwner);`)
-**Symptom:** the twin of the `commitFlip` item above, reached by the buffer path instead. Here the
-tile is freshly claimed and usually has no prior stock, so the `Math.max` collapses to
-`= CONFIG.minimumOwner`: the `|| 0` and the `Math.max` are both doing nothing. Whatever is
-decided for `commitFlip`'s line should be applied here for consistency.
-**Impact:** none at runtime; dead-ish code in the buffer claim path.
-**Fix:** resolve alongside the `commitFlip` item; they are the same decision.
-
-## [Low · Confirmed] `tests/buffer.mjs` asserts tiles but never state
+## [Fixed 2026-10-15] `tests/buffer.mjs` asserts tiles but never state
 
 **Sites:** [tests/buffer.mjs](../tests/buffer.mjs), [ui/cd-pass.js](../ui/cd-pass.js)
 (`commitBuffer` / `claimBufferAt`)
@@ -670,8 +796,13 @@ than `pass.mjs`.
 **Fix:** extend `buffer.mjs` with a `purchaseNoOps`-style stub (copy the pattern from
 `tests/pass.mjs`) plus claim/lock/field assertions after a successful buffer claim.
 **Verify:** those survivors die; buffer-path mutation stops trailing the rest of `cd-pass.js`.
+**Done (2026-10-15):** `tests/buffer.mjs` now checks the saved claim, lock and seed after a buy that landed, that a
+refused buy records and saves nothing, and that a buy still landing is held as pending, not booked, and isn't sent
+twice. The `!res.ok || ownerAt(T) !== me` guard this entry quoted is now two paths: a refused verb books nothing, and
+a buy the map doesn't show yet goes to `state.pending`. Hand mutations of `commitBuffer` (drop the lock, drop the seed,
+book a refused buy, book a pending one) each fail the suite; Stryker wasn't rerun.
 
-## [Low · Confirmed] `runPass`'s JSDoc claims a multiplayer bail it does not do
+## [Fixed 2026-10-15] `runPass`'s JSDoc claims a multiplayer bail it does not do
 
 **Site:** [ui/cd-pass.js](../ui/cd-pass.js) (`runPass` doc comment: "bails cleanly when disabled,
 in multiplayer, or with no local cities")
@@ -683,11 +814,14 @@ and still writes state each turn.
 `tests/pass.mjs` pins that safety property directly.
 **Fix:** either add an early `if (isMultiplayer()) return { flips: 0, tiles: 0 };` to `runPass`
 (cheap, and makes the doc true), or reword the comment to say the guard lives in the verbs.
+**Done (2026-10-15):** the bail is in, so the JSDoc is true; `guardSP()` still blocks every verb behind it.
+`tests/pass.mjs` checks that a multiplayer pass returns a zero summary and leaves the saved state untouched.
 
 ## Suggested implementation order
 
-1. Harden `cd-bootstrap` event parsing (`percentComplete` + turn payload extraction).
-2. Add bootstrap/event compatibility tests so those regressions cannot re-ship.
-3. Add state-independent inner-ring reconciliation fallback (or downgrade release claim wording).
-4. Align docs/comments on buffer water behavior.
-5. Optimize/memoize core-protection checks if profiling confirms measurable cost.
+1. Harden `cd-bootstrap` event parsing (`percentComplete` + turn payload extraction). Done 2026-10-15.
+2. Add bootstrap/event compatibility tests so those regressions cannot re-ship. Done 2026-10-15.
+3. Add state-independent inner-ring reconciliation fallback (or downgrade release claim wording). Done
+   2026-10-16 (`ui/cd-reparent.js`), watched on both sides.
+4. Align docs/comments on buffer water behavior. Done 2026-10-15.
+5. Optimize/memoize core-protection checks if profiling confirms measurable cost. Done 2026-10-15; not profiled.

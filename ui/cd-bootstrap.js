@@ -70,6 +70,17 @@ function lookupConstructible(typeId) {
 }
 
 /**
+ * Whether a build is finished. No `percentComplete` means the engine sent a finished build. The field is a 0-100
+ * percentage (the base game reads it with `== 100`, tutorial-items-antiquity.js), so read it the same loose way:
+ * 100, 100.0 and "100" all count. 1 isn't taken as a fraction, because on that scale it's a build at 1%.
+ * @param {*} pc The payload's percentComplete.
+ * @returns {boolean} True when the build is complete.
+ */
+function buildComplete(pc) {
+  return pc == null || Number(pc) >= 100;
+}
+
+/**
  * Whether a ConstructibleAddedToMap payload is a completed rural development on the local player's own land.
  * @param {*} data Event payload: { location:{x,y}, constructibleType, percentComplete }.
  * @returns {boolean} True when the +1 buffer could apply.
@@ -77,9 +88,9 @@ function lookupConstructible(typeId) {
 function isOwnRuralCompletion(data) {
   const loc = data && data.location;
   if (!loc || typeof loc.x !== "number" || typeof loc.y !== "number") return false;
-  if (data.percentComplete != null && data.percentComplete !== 100) return false; // only completed builds
-  if (!isRuralConstructible(data.constructibleType)) return false;                 // rural growth only
-  return ownerAt(loc) === localId();                                                // only our own development
+  if (!buildComplete(data.percentComplete)) return false;            // only completed builds
+  if (!isRuralConstructible(data.constructibleType)) return false;   // rural growth only
+  return ownerAt(loc) === localId();                                 // only our own development
 }
 
 /**
@@ -93,7 +104,7 @@ function onConstructibleAdded(data) {
     // reads and parses the shared localStorage blob about fifteen times.
     if (!isOwnRuralCompletion(data)) return;
     applyTunableOverrides(); // pick up an Options change made since the last pass, e.g. the buffer just switched off
-    if (!CONFIG.growthBuffer) return;
+    if (!CONFIG.diffusionEnabled || !CONFIG.growthBuffer) return; // the master switch stops the buffer too
     claimBufferAt({ x: data.location.x, y: data.location.y });
   } catch (e) {
     dlog(`onConstructibleAdded threw ${String(e)}`);
@@ -141,14 +152,37 @@ function doPass(why) {
 }
 
 /**
- * PlayerTurnActivated handler: run the pass once per local-player turn.
+ * The player a PlayerTurnActivated payload names, or null when it names none this can read. The base game compares
+ * `data.player` with a loose `==` (unit-selection.js), so a numeric string counts as that id.
+ * @param {*} data Event payload.
+ * @returns {number|null} Player id.
+ */
+function turnPlayerOf(data) {
+  const raw = data && typeof data === "object" ? (data.player ?? data.Player) : data;
+  const n = typeof raw === "string" && raw.trim() !== "" ? Number(raw) : raw;
+  return typeof n === "number" && Number.isInteger(n) ? n : null;
+}
+
+/** @param {number} local @returns {boolean} Whether the engine says the local player's turn is active now. */
+function localTurnActive(local) {
+  try {
+    return local >= 0 && Players?.get?.(local)?.isTurnActive === true;
+  } catch (_) {
+    return false;
+  }
+}
+
+/**
+ * PlayerTurnActivated handler: run the pass once per local-player turn. A payload this can't read a player from
+ * still counts when the engine reports the local player's turn active, so a change in the payload's shape can't
+ * leave the mod loaded but idle. The per-turn check below keeps it to one pass a turn either way.
  * @param {*} data Event payload (carries the activating player).
  */
 function onTurnActivated(data) {
   try {
     const local = localId();
-    const who = data && (data.player ?? data.Player);
-    if (who !== local) return;
+    const who = turnPlayerOf(data);
+    if (who == null ? !localTurnActive(local) : who !== local) return;
     const turn = gameTurn();
     if (turn - _lastLocalTurnRun < Math.max(1, CONFIG.turnInterval)) return;
     _lastLocalTurnRun = turn;
