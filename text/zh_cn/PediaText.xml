@@ -178,10 +178,10 @@
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_TITLE" Language="zh_Hans_CN"><Text>定居点易手</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_CONTENT_PARA_1" Language="zh_Hans_CN"><Text>开启“整个定居点因文化易手”（默认）时，人民已被邻国文化明显赢得的定居点会整体加入该文明。其建筑、区域、奇观和地块一次性随之转移。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_RULES_TITLE" Language="zh_Hans_CN"><Text>何时发生</Text></Replace>
-        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_RULES_PARA_1" Language="zh_Hans_CN"><Text>[BLIST][LI]邻国在定居点市中心的文化超过所有者文化的两倍。[LI]它也超过获取地块所需数值的两倍：中等强度下为600（探索时代750，现代960）。[LI]邻国文化在定居点至少60%的地块上领先。[LI]以上条件连续保持3回合。当定居点属于你或将归你所有时，第一回合会向你发出警告。[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_RULES_PARA_1" Language="zh_Hans_CN"><Text>[BLIST][LI]邻国在定居点市中心的文化超过所有者文化的两倍。[LI]它也超过获取地块所需数值的两倍：中等强度下为600（探索时代750，现代960）。[LI]邻国文化在定居点至少60%的地块上领先。[LI]邻国已持有市中心周边至少60%的土地：以其在那里的地块对所有者的乡村地块计算。定居点随其土地而去，先是一块块地，市中心最后；因此在不会易主任何敌方地块的“低”强度下，定居点也不会易主。[LI]以上条件连续保持5回合。当定居点属于你或将归你所有时，每一回合都会向你发出警告。[/LIST]</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_AFTER_TITLE" Language="zh_Hans_CN"><Text>易手的内容</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_AFTER_PARA_1" Language="zh_Hans_CN"><Text>定居点以城镇身份转移，人口通常减少1。其地块锁定15回合，失去它的文明对新所有者怀有30点不满。</Text></Replace>
-        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_AFTER_PARA_2" Language="zh_Hans_CN"><Text>在文化压力透镜中，人心浮动的定居点的市中心会显示邻国的颜色，悬停读数会显示已有多少回合明显文化优势，或是什么让它暂缓。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_AFTER_PARA_2" Language="zh_Hans_CN"><Text>在文化压力透镜中，人心浮动的定居点的市中心会显示邻国的颜色，悬停读数会显示已有多少回合明显文化优势，或是什么让它暂缓。城市详情面板中本模组的部分会为所选定居点显示同样的内容，以及市中心的文化和周边土地的持有者。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_LIMITS_TITLE" Language="zh_Hans_CN"><Text>限制</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_LIMITS_PARA_1" Language="zh_Hans_CN"><Text>[BLIST][LI]仅在和平相处的主要文明之间发生。城邦和独立民族不会以此方式易手。[LI]除非开启相应选项，首都和文明的最后一个定居点不会易手。[LI]时代结束倒计时期间以及新时代的前两回合内，不会有任何易手。[LI]探索时代之前，文明不会获得位于其远方土地的定居点。[LI]每回合最多一个定居点易手，且仅限你的城市附近。[/LIST]</Text></Replace>
         <Replace Tag="LOC_PEDIA_CD_TERM_SETTLEMENT_FLIP" Language="zh_Hans_CN"><Text>定居点易手</Text></Replace>

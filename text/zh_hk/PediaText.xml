@@ -178,10 +178,10 @@
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_TITLE" Language="zh_Hant_HK"><Text>聚落易手</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_CONTENT_PARA_1" Language="zh_Hant_HK"><Text>開啟「整個聚落因文化易手」（預設）時，人民已被鄰國文化明顯贏得的聚落會整體加入該文明。其建築、區域、奇觀與格位一次隨之轉移。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_RULES_TITLE" Language="zh_Hant_HK"><Text>何時發生</Text></Replace>
-        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_RULES_PARA_1" Language="zh_Hant_HK"><Text>[BLIST][LI]鄰國在聚落市中心的文化超過所有者文化的兩倍。[LI]它也超過取得格位所需數值的兩倍：中等強度下為600（探索時代750，現代960）。[LI]鄰國文化在聚落至少60%的格位上領先。[LI]以上條件連續保持3回合。當聚落屬於你或將歸你所有時，第一回合會向你發出警告。[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_RULES_PARA_1" Language="zh_Hant_HK"><Text>[BLIST][LI]鄰國在聚落市中心的文化超過所有者文化的兩倍。[LI]它也超過取得格位所需數值的兩倍：中等強度下為600（探索時代750，現代960）。[LI]鄰國文化在聚落至少60%的格位上領先。[LI]鄰國已持有市中心周邊至少60%的土地：以其在那裡的格位對所有者的鄉村格位計算。聚落隨其土地而去，先是一格格地，市中心最後；因此在不會易主任何敵方格位的「低」強度下，聚落也不會易主。[LI]以上條件連續保持5回合。當聚落屬於你或將歸你所有時，每一回合都會向你發出警告。[/LIST]</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_AFTER_TITLE" Language="zh_Hant_HK"><Text>易手的內容</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_AFTER_PARA_1" Language="zh_Hant_HK"><Text>聚落以城鎮身分轉移，人口通常減少1。其格位鎖定15回合，失去它的文明對新所有者懷有30點不滿。</Text></Replace>
-        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_AFTER_PARA_2" Language="zh_Hant_HK"><Text>在文化壓力透鏡中，人心浮動的聚落的市中心會顯示鄰國的顏色，懸停讀數會顯示已有多少回合明顯文化優勢，或是什麼讓它暫緩。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_AFTER_PARA_2" Language="zh_Hant_HK"><Text>在文化壓力透鏡中，人心浮動的聚落的市中心會顯示鄰國的顏色，懸停讀數會顯示已有多少回合明顯文化優勢，或是什麼讓它暫緩。城市詳情面板中本模組的部分會為所選聚落顯示同樣的內容，以及市中心的文化和周邊土地的持有者。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_LIMITS_TITLE" Language="zh_Hant_HK"><Text>限制</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CITYFLIP_CHAPTER_LIMITS_PARA_1" Language="zh_Hant_HK"><Text>[BLIST][LI]僅在和平相處的主要文明之間發生。城邦與獨立民族不會以此方式易手。[LI]除非開啟相應選項，首都與文明的最後一個聚落不會易手。[LI]時代結束倒數期間以及新時代的前兩回合內，不會有任何易手。[LI]探索時代之前，文明不會獲得位於其遠方土地的聚落。[LI]每回合最多一個聚落易手，且僅限你的城市附近。[/LIST]</Text></Replace>
         <Replace Tag="LOC_PEDIA_CD_TERM_SETTLEMENT_FLIP" Language="zh_Hant_HK"><Text>聚落易手</Text></Replace>

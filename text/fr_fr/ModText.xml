@@ -62,7 +62,14 @@
         <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_30" Language="fr_FR"><Text>30</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_60" Language="fr_FR"><Text>60</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD" Language="fr_FR"><Text>Diffusion culturelle - tours de culture nette avant qu'une colonie change de mains</Text></Replace>
-        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_DESCRIPTION" Language="fr_FR"><Text>Combien de tours de suite la culture d'un voisin doit nettement tenir une colonie avant qu'elle le rejoigne (3 par défaut). Vous êtes prévenu dès le premier.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_DESCRIPTION" Language="fr_FR"><Text>Combien de tours de suite la culture d'un voisin doit nettement tenir une colonie avant qu'elle le rejoigne (5 par défaut). Vous êtes prévenu à chacun.</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_LAND" Language="fr_FR"><Text>retenue : la campagne est encore à son propriétaire</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_COUNTDOWN" Language="fr_FR"><Text>{1_City} rejoindra {2_Civ} dans {3_Count} tours si personne ne regagne sa population.</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_COUNTDOWN_LAST" Language="fr_FR"><Text>{1_City} rejoindra {2_Civ} au prochain tour si personne ne regagne sa population.</Text></Replace>
+        <Replace Tag="LOC_CD_PANEL_OFF" Language="fr_FR"><Text>Les colonies ne changent pas de mains par la culture (désactivé dans les Options).</Text></Replace>
+        <Replace Tag="LOC_CD_PANEL_CALM" Language="fr_FR"><Text>La propre culture de {1_Civ} domine ici.</Text></Replace>
+        <Replace Tag="LOC_CD_PANEL_CENTRE" Language="fr_FR"><Text>Culture sur le centre : {1_Civ} {2_Amount}, {3_Civ} {4_Amount}</Text></Replace>
+        <Replace Tag="LOC_CD_PANEL_LAND" Language="fr_FR"><Text>Cases de la campagne : {1_Civ} {2_Count}, {3_Civ} {4_Count}</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_2" Language="fr_FR"><Text>2</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_3" Language="fr_FR"><Text>3</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_5" Language="fr_FR"><Text>5</Text></Replace>

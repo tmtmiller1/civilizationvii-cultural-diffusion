@@ -41,18 +41,25 @@ assert.equal(districtTypeNameAt({ x: 6, y: 5 }), "DISTRICT_URBAN", "getDistrictT
 assert.equal(districtTypeNameAt({ x: 5, y: 5 }), "DISTRICT_URBAN", "falls through to Districts when it returns null");
 
 // 4. Cities.getAtLocation, the first city-center route, gets one location, the way every base-game call passes it.
-// Called as (x, y) it got a bare number and missed every center (automissionary audit m7).
+// Called as (x, y) it got a bare number and missed every center (automissionary audit m7). It answers with the city
+// that OWNS the plot, for every plot in its territory (watched 2026-10-16: 62,15 returned Thêbai at 61,15), so only
+// the city's location says whether the plot is the center. 1.6.0 took any city as a center and refused every owned
+// tile.
 const seen = [];
+const CITY_30_4 = { id: 7, location: { x: 30, y: 4 } };
 globalThis.Cities = {
   getAtLocation: (loc, extra) => {
     seen.push({ loc, extra });
-    return loc && typeof loc === "object" && loc.x === 30 && loc.y === 4 ? { id: 7 } : null;
+    if (!loc || typeof loc !== "object") return null;
+    return loc.y === 4 && loc.x >= 28 && loc.x <= 32 ? CITY_30_4 : null; // the city and its two-tile strip
   },
   get: () => null
 };
 assert.equal(isCityCenterAt({ x: 30, y: 4 }), true, "a center Cities.getAtLocation reports is found");
 assert.deepEqual(seen[0], { loc: { x: 30, y: 4 }, extra: undefined }, "called with one location");
-assert.equal(isCityCenterAt({ x: 31, y: 4 }), false, "an empty plot is not a center");
+assert.equal(isCityCenterAt({ x: 31, y: 4 }), false, "an owned tile beside the center is not a center");
+assert.equal(isCityCenterAt({ x: 28, y: 4 }), false, "an owned tile two out is not a center");
+assert.equal(isCityCenterAt({ x: 33, y: 4 }), false, "an empty plot is not a center");
 globalThis.Cities = { getAtLocation: () => null, get: () => null };
 
 // 5. Neither API: null, never a throw.

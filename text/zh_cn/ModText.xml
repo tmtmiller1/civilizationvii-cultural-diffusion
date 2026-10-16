@@ -62,7 +62,14 @@
         <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_30" Language="zh_Hans_CN"><Text>30</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_60" Language="zh_Hans_CN"><Text>60</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD" Language="zh_Hans_CN"><Text>文化扩散 - 定居点易手前所需的明显文化优势回合数</Text></Replace>
-        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_DESCRIPTION" Language="zh_Hans_CN"><Text>邻国文化需要连续多少回合明显占优，定居点才会加入（默认3）。第一回合会发出警告。</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_DESCRIPTION" Language="zh_Hans_CN"><Text>邻国文化需要连续多少回合明显占优，定居点才会加入（默认5）。每一回合都会发出警告。</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_LAND" Language="zh_Hans_CN"><Text>暂缓：周边土地仍属于所有者</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_COUNTDOWN" Language="zh_Hans_CN"><Text>若无人夺回{1_City}的人心，{3_Count}回合后它将加入{2_Civ}。</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_COUNTDOWN_LAST" Language="zh_Hans_CN"><Text>若无人夺回{1_City}的人心，下回合它将加入{2_Civ}。</Text></Replace>
+        <Replace Tag="LOC_CD_PANEL_OFF" Language="zh_Hans_CN"><Text>定居点不会因文化而易主（已在选项中关闭）。</Text></Replace>
+        <Replace Tag="LOC_CD_PANEL_CALM" Language="zh_Hans_CN"><Text>此处由{1_Civ}自己的文化领先。</Text></Replace>
+        <Replace Tag="LOC_CD_PANEL_CENTRE" Language="zh_Hans_CN"><Text>市中心文化：{1_Civ} {2_Amount}，{3_Civ} {4_Amount}</Text></Replace>
+        <Replace Tag="LOC_CD_PANEL_LAND" Language="zh_Hans_CN"><Text>周边地块：{1_Civ} {2_Count}，{3_Civ} {4_Count}</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_2" Language="zh_Hans_CN"><Text>2</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_3" Language="zh_Hans_CN"><Text>3</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_5" Language="zh_Hans_CN"><Text>5</Text></Replace>

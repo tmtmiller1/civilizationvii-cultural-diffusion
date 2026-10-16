@@ -49,10 +49,17 @@
  * @property {boolean} cityFlipEliminates A flip may take a civilization's last settlement, which defeats it.
  * @property {number}  cityFlipGrievances Grievances the civ that lost the settlement holds against the receiver
  *   (0 = none).
- * @property {number}  cityFlipHoldPasses Consecutive passes of clear culture before the settlement flips.
+ * @property {number}  cityFlipHoldPasses Consecutive passes of clear culture before the settlement flips. The
+ *   player is told on each of them.
  * @property {number}  cityFlipRatio The center is won when leader x this > owner (0.5 = twice the owner's stock).
  * @property {number}  cityFlipBar The leader's center stock must also pass minimumOwner (age-adjusted) x this.
  * @property {number}  cityFlipPlotShare Share of the settlement's plots the leader must lead.
+ * @property {number}  cityFlipLandShare Share of the countryside around the center the leader must already OWN:
+ *   its plots within cityFlipLandRadius against the owner's rural ones there. The settlement is the last step of
+ *   erosion: the land goes tile by tile first. On Low (claim empty land only) no rival tile moves, so no settlement
+ *   does either. 0 = the culture field alone decides, as in 1.6.
+ * @property {number}  cityFlipLandRadius Rings around the center that count as its countryside (3 = the working
+ *   reach).
  * @property {number}  maxCityFlipsPerPass Settlements flipped per pass at most.
  * @property {number}  cityFlipWaitMs How long to wait for the engine's transfer before giving up.
  * @property {number}  cityFlipNoticeDelayMs Delay between the transfer and the notice, so Partisans has rolled.
@@ -187,18 +194,21 @@ export const CONFIG = {
 
   // Whole-settlement flips (cd-city-flip.js, mod_ideas_tested/liberation/cd-city-flip/SPEC.md). When a neighbor's
   // culture has clearly won a settlement's center (twice the owner's stock, and past twice the age's ownership bar)
-  // and leads on 60% of its plots for three passes running, the settlement joins that civilization: a marker
-  // building fires the engine's own transfer, which moves the center, every plot, the districts and the buildings in
-  // one step. Majors only, never at war, never a city-state or independent. The settlement path doesn't go through
-  // the tile gates above; those keep protecting the center and urban tiles from tile flips.
+  // and leads on 60% of its plots, and that neighbor already owns 60% of the countryside around the center, for five
+  // passes running, the settlement joins that civilization: a marker building fires the engine's own transfer, which
+  // moves the center, every plot, the districts and the buildings in one step. Majors only, never at war, never a
+  // city-state or independent. The settlement path doesn't go through the tile gates above; those keep protecting
+  // the center and urban tiles from tile flips.
   cityFlips: true,
   cityFlipCapitals: false,
   cityFlipEliminates: false,
   cityFlipGrievances: 30,
-  cityFlipHoldPasses: 3,
+  cityFlipHoldPasses: 5,
   cityFlipRatio: 0.5,
   cityFlipBar: 2,
   cityFlipPlotShare: 0.6,
+  cityFlipLandShare: 0.6,
+  cityFlipLandRadius: 3,
   maxCityFlipsPerPass: 1,
   cityFlipWaitMs: 4000,
   cityFlipNoticeDelayMs: 500,

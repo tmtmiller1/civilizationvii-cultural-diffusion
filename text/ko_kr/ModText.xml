@@ -62,7 +62,14 @@
         <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_30" Language="ko_KR"><Text>30</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_60" Language="ko_KR"><Text>60</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD" Language="ko_KR"><Text>문화 확산 - 정착지가 주인을 바꾸기까지 확실한 문화 우위 턴 수</Text></Replace>
-        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_DESCRIPTION" Language="ko_KR"><Text>이웃 문명의 문화가 몇 턴 연속으로 정착지를 확실히 차지해야 합류하는지 정합니다(기본값 3). 첫 턴에 경고가 표시됩니다.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_DESCRIPTION" Language="ko_KR"><Text>이웃 문명의 문화가 몇 턴 연속으로 정착지를 확실히 차지해야 합류하는지 정합니다(기본값 5). 매 턴 경고가 표시됩니다.</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_LAND" Language="ko_KR"><Text>보류: 주변 땅이 아직 소유자의 것</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_COUNTDOWN" Language="ko_KR"><Text>{1_City}의 주민을 되찾지 못하면 {3_Count}턴 뒤 {2_Civ}에 합류합니다.</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_COUNTDOWN_LAST" Language="ko_KR"><Text>{1_City}의 주민을 되찾지 못하면 다음 턴에 {2_Civ}에 합류합니다.</Text></Replace>
+        <Replace Tag="LOC_CD_PANEL_OFF" Language="ko_KR"><Text>정착지는 문화로 주인이 바뀌지 않습니다(옵션에서 꺼짐).</Text></Replace>
+        <Replace Tag="LOC_CD_PANEL_CALM" Language="ko_KR"><Text>여기서는 {1_Civ}의 문화가 선두입니다.</Text></Replace>
+        <Replace Tag="LOC_CD_PANEL_CENTRE" Language="ko_KR"><Text>도심부 문화: {1_Civ} {2_Amount}, {3_Civ} {4_Amount}</Text></Replace>
+        <Replace Tag="LOC_CD_PANEL_LAND" Language="ko_KR"><Text>주변 타일: {1_Civ} {2_Count}, {3_Civ} {4_Count}</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_2" Language="ko_KR"><Text>2</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_3" Language="ko_KR"><Text>3</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_5" Language="ko_KR"><Text>5</Text></Replace>

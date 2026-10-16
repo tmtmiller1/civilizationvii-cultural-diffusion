@@ -77,6 +77,20 @@ export function plotShareLed(rows, leader, dead) {
 }
 
 /**
+ * How much of a settlement's countryside the leader already holds: its own plots within the settlement's reach
+ * against the owner's rural plots there. A settlement goes the way its land does, tile by tile first and the center
+ * last, so this is what keeps the whole-settlement flip the last step of erosion rather than a short cut past it.
+ * @param {number} leaderOwned Plots the leader owns within reach of the center.
+ * @param {number} ownerRural The owner's rural plots there (the ones tile flips can take).
+ * @returns {number} In [0,1]; 0 when neither holds any.
+ */
+export function landShareOf(leaderOwned, ownerRural) {
+  const a = Math.max(0, num(leaderOwned));
+  const b = Math.max(0, num(ownerRural));
+  return a + b > 0 ? a / (a + b) : 0;
+}
+
+/**
  * @typedef {Object} SettlementFacts What the caller read about one settlement and its center's leader.
  * @property {number} owner The settlement's owner.
  * @property {number} leader The strongest living culture on the center (-1 = none).

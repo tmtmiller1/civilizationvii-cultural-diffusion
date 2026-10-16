@@ -4,6 +4,33 @@ All notable changes to Cultural Diffusion are recorded here. The format follows
 [Keep a Changelog](https://keepachangelog.com/), and the mod uses
 [Semantic Versioning](https://semver.org/).
 
+## [1.7.0] - 2026-10-16
+
+A settlement now goes the way its land does, and you watch it coming.
+
+### Fixed
+- Culture can take a rival's or an independent's tiles again, and an army can take owned tiles again. In 1.6.0 the
+  mod asked the game which settlement stands on a tile and the game answered with the settlement that owns it, so
+  every owned tile looked like a city center and was protected. Only unowned land could change hands. Settlement
+  flips, the +1 ring and the lens weren't affected.
+
+### Changed
+- A settlement only changes hands once its countryside has: the neighbor has to already own 60% of the land around
+  the center (its tiles there against the owner's rural ones) as well as lead the culture. So the land goes tile by
+  tile first and the center last, the way Civ V's Cultural Diffusion felt, instead of a settlement jumping whole
+  while it still held its fields. On Low intensity, where no rival tile ever moves, settlements don't either.
+  `cityFlipLandShare` (0 brings back the 1.6 rule) and `cityFlipLandRadius` in the config.
+- Five turns of clear culture before a settlement joins, not three. The option still offers 2, 3, 5 and 8.
+- You hear about it every turn of those five, not only the first: "Kamakura joins Greece in 3 turns unless its
+  people are won back", then "next turn".
+
+### Added
+- A Cultural Diffusion section in the City Details panel (Citizen Growth tab): whose culture the settlement's people
+  lean to and how many turns it has held, or what holds it; the culture on the center for both sides; and how many
+  countryside tiles each holds. The same numbers the lens readout shows, without opening the lens.
+- The readout and the panel say "held: the countryside is still theirs" while the culture has won but the land
+  hasn't gone yet.
+
 ## [1.6.0] - 2026-10-16
 
 Whole settlements can now change hands by culture.

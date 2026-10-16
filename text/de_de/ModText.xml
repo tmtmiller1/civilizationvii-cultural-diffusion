@@ -77,7 +77,14 @@
         <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_30" Language="de_DE"><Text>30</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_GRIEVANCES_60" Language="de_DE"><Text>60</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD" Language="de_DE"><Text>Kulturelle Diffusion - Runden klarer Kultur, bevor eine Siedlung wechselt</Text></Replace>
-        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_DESCRIPTION" Language="de_DE"><Text>Wie viele Runden in Folge die Kultur eines Nachbarn eine Siedlung klar halten muss, bevor sie sich anschließt (Standard 3). In der ersten wirst du gewarnt.</Text></Replace>
+        <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_DESCRIPTION" Language="de_DE"><Text>Wie viele Runden in Folge die Kultur eines Nachbarn eine Siedlung klar halten muss, bevor sie sich anschließt (Standard 5). In jeder davon wirst du gewarnt.</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_HELD_LAND" Language="de_DE"><Text>gehalten: das Umland gehört noch dem Besitzer</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_COUNTDOWN" Language="de_DE"><Text>{1_City} schließt sich in {3_Count} Runden {2_Civ} an, wenn seine Bevölkerung nicht zurückgewonnen wird.</Text></Replace>
+        <Replace Tag="LOC_CD_CITY_FLIP_COUNTDOWN_LAST" Language="de_DE"><Text>{1_City} schließt sich nächste Runde {2_Civ} an, wenn seine Bevölkerung nicht zurückgewonnen wird.</Text></Replace>
+        <Replace Tag="LOC_CD_PANEL_OFF" Language="de_DE"><Text>Siedlungen wechseln nicht durch Kultur den Besitzer (in den Optionen ausgeschaltet).</Text></Replace>
+        <Replace Tag="LOC_CD_PANEL_CALM" Language="de_DE"><Text>Die eigene Kultur von {1_Civ} führt hier.</Text></Replace>
+        <Replace Tag="LOC_CD_PANEL_CENTRE" Language="de_DE"><Text>Kultur im Zentrum: {1_Civ} {2_Amount}, {3_Civ} {4_Amount}</Text></Replace>
+        <Replace Tag="LOC_CD_PANEL_LAND" Language="de_DE"><Text>Felder im Umland: {1_Civ} {2_Count}, {3_Civ} {4_Count}</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_2" Language="de_DE"><Text>2</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_3" Language="de_DE"><Text>3</Text></Replace>
         <Replace Tag="LOC_OPTIONS_CD_CITY_FLIP_HOLD_5" Language="de_DE"><Text>5</Text></Replace>

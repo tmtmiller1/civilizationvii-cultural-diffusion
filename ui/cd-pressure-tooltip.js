@@ -110,15 +110,32 @@ const HELD_BY = Object.freeze({
  */
 function settlementRow(o) {
   if (!o || o.leader < 0 || o.leader === o.owner) return null;
-  const held = o.refusal ? HELD_BY[o.refusal] : null;
-  if (o.refusal && !held) return null; // a city-state's or independent's culture, multiplayer, or the feature off
+  const value = settlementValueText(o);
+  if (value === null) return null;
   const civ = civLabel(o.leader, "#" + o.leader);
   const name = tArgs("LOC_CD_CITY_FLIP_ROW", civ, civ);
-  let value;
-  if (held) value = t(held, o.refusal);
-  else if (o.n > 0) value = tArgs("LOC_CD_CITY_FLIP_PROGRESS", `${o.n} / ${o.need}`, o.n, o.need);
-  else value = t("LOC_CD_CITY_FLIP_NOT_YET", "culture not yet clear");
   return { color: civDisplayColor(o.leader, FALLBACK_HEX), name, value };
+}
+
+/**
+ * How far a leaning settlement is, in words: the gate that holds it, the passes of clear culture so far, the
+ * countryside still being the owner's, or culture not yet clear. Shared with the City Details section.
+ * @param {*} o settlementOutlookAt's answer, with a leader other than the owner.
+ * @returns {string|null} Null when the lead is nothing the readout shows: a city-state's or independent's culture,
+ *   multiplayer, or the feature off.
+ */
+export function settlementValueText(o) {
+  const held = o.refusal ? HELD_BY[o.refusal] : null;
+  if (o.refusal && !held) return null;
+  if (held) return t(held, o.refusal);
+  if (o.n > 0) return tArgs("LOC_CD_CITY_FLIP_PROGRESS", `${o.n} / ${o.need}`, o.n, o.need);
+  if (o.landShort) return t("LOC_CD_CITY_FLIP_HELD_LAND", "held: the countryside is still theirs");
+  return t("LOC_CD_CITY_FLIP_NOT_YET", "culture not yet clear");
+}
+
+/** The readout's snapshot (field, state, age config), for the City Details section. */
+export function readoutSnapshot() {
+  return snapshot();
 }
 
 /** On a settlement's center, add the settlement row under the stocks. */

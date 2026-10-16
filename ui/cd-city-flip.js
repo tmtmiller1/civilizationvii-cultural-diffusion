@@ -19,7 +19,8 @@
 import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
 import { log, dlog } from "/cultural-diffusion/ui/cd-log.js";
 import {
-  allSettlements, cityLoc, cityIdOf, isMultiplayer, isDistantLands, ownerAt, localPlayerId
+  allSettlements, cityLoc, cityIdOf, isMultiplayer, isDistantLands, ownerAt, localPlayerId, plotsInRadius,
+  districtTypeNameAt
 } from "/cultural-diffusion/ui/cd-plots.js";
 import { currentAgeKey } from "/cultural-diffusion/ui/cd-polity.js";
 import { atWar, isMajorPlayer } from "/cultural-diffusion/ui/cd-borders.js";
@@ -28,7 +29,8 @@ import { cityPlots, transferCityCulture } from "/cultural-diffusion/ui/cd-captur
 import { loadState, saveState } from "/cultural-diffusion/ui/cd-state.js";
 import { notifySettlement } from "/cultural-diffusion/ui/cd-notifications.js";
 import {
-  markerFor, isFlipMarker, strongestOn, centreWon, plotShareLed, cityFlipRefusal, nextHold, flipDue, pickFlips
+  markerFor, isFlipMarker, strongestOn, centreWon, plotShareLed, landShareOf, cityFlipRefusal, nextHold, flipDue,
+  pickFlips
 } from "/cultural-diffusion/ui/cd-city-flip-rule.js";
 
 /** @param {()=>*} fn @param {*} fallback */
@@ -86,8 +88,42 @@ export function settlementStatus(city, owner, ctx) {
   const refusal = cityFlipRefusal(readFacts(city, owner, leader, centre, ctx.env), ctx.cfg);
   const centreClear = centreWon(row, leader, owner, ctx.cfg);
   const share = centreClear ? plotShareLed(cityPlots(city).map((p) => ctx.field[key(p)]), leader, ctx.dead) : 0;
-  const won = centreClear && share >= Math.max(0, ctx.cfg.cityFlipPlotShare);
-  return { key: k, centre, owner, leader, lead: value, share, won, refusal };
+  const plotsWon = centreClear && share >= Math.max(0, ctx.cfg.cityFlipPlotShare);
+  const land = plotsWon ? countryside(centre, owner, leader, ctx.cfg) : { leaderOwned: 0, ownerRural: 0, share: 0 };
+  const landNeed = Math.max(0, n0(ctx.cfg.cityFlipLandShare, 0.6));
+  const won = plotsWon && land.share >= landNeed;
+  const ownerStock = row ? n0(row[String(owner)]) : 0;
+  return { key: k, centre, owner, leader, lead: value, ownerStock, share, land, won, refusal,
+    landShort: plotsWon && !won };
+}
+
+/** @param {*} v @param {number} [d] @returns {number} */
+function n0(v, d = 0) {
+  return typeof v === "number" && isFinite(v) ? v : d;
+}
+
+/**
+ * What the leader already holds of the settlement's countryside: its plots within cityFlipLandRadius of the center
+ * against the owner's rural plots there, the ones tile flips can take. Urban districts and the center itself don't
+ * count either way: they only ever move with the settlement.
+ * @param {{x:number,y:number}} centre The center. @param {number} owner Its owner. @param {number} leader The leader.
+ * @param {{cityFlipLandRadius:number}} cfg Config.
+ * @returns {{leaderOwned:number, ownerRural:number, share:number}}
+ */
+function countryside(centre, owner, leader, cfg) {
+  const r = Math.max(1, Math.floor(n0(cfg.cityFlipLandRadius, 3)));
+  let leaderOwned = 0;
+  let ownerRural = 0;
+  for (const p of plotsInRadius(centre, r)) {
+    if (p.x === centre.x && p.y === centre.y) continue;
+    const o = ownerAt(p);
+    if (o === leader) leaderOwned++;
+    else if (o === owner) {
+      const d = districtTypeNameAt(p);
+      if (!d || /RURAL|WILDERNESS/.test(d)) ownerRural++;
+    }
+  }
+  return { leaderOwned, ownerRural, share: landShareOf(leaderOwned, ownerRural) };
 }
 
 /** The facts the rule's gates ask about (cd-city-flip-rule.js SettlementFacts). */
@@ -170,6 +206,21 @@ function warn(city, owner, leader, at) {
 }
 
 /**
+ * Every later pass of a hold: how many turns are left before the settlement joins, when either side is the local
+ * player's. The last one says "next turn". Nothing on the pass the flip happens; the joined notice follows it.
+ */
+function countdown(city, owner, leader, n) {
+  const me = localPlayerId();
+  if (me !== owner && me !== leader) return;
+  const left = Math.max(1, Math.floor(CONFIG.cityFlipHoldPasses)) - n;
+  if (left <= 0) return;
+  const line = left === 1
+    ? compose("LOC_CD_CITY_FLIP_COUNTDOWN_LAST", cityName(city), civName(leader))
+    : compose("LOC_CD_CITY_FLIP_COUNTDOWN", cityName(city), civName(leader), left);
+  notifySettlement("warn", line, compose("LOC_CD_CITY_FLIP_WARNING_TITLE"));
+}
+
+/**
  * The settlement flip step of a pass: advance every hold counter in the field, warn on a first pass, and pick the
  * settlements to flip. Counters wait unchanged through an age-transition window and in a network game.
  * @param {{state:*, next:Record<string, Record<string, number>>, region:Set<string>, ageCfg:*, deadOwners:number[]}} p
@@ -222,7 +273,9 @@ function advance(state, s, city) {
   }
   state.cityHold[s.key] = hold;
   if (hold.n === 1) warn(city, s.owner, s.leader, s.centre);
-  dlog(`city flip: ${s.key} held ${hold.n} pass(es) by player ${s.leader} (share ${s.share.toFixed(2)})`);
+  else countdown(city, s.owner, s.leader, hold.n);
+  dlog(`city flip: ${s.key} held ${hold.n} pass(es) by player ${s.leader} (share ${s.share.toFixed(2)}, `
+    + `land ${s.land.leaderOwned}:${s.land.ownerRural})`);
   return hold;
 }
 
@@ -536,8 +589,10 @@ export function launchCityFlips(list) {
  * gate that holds it.
  * @param {{x:number,y:number}} loc Hovered plot.
  * @param {{field:*, dead:number[], cfg:*, state:*}} snap The readout's snapshot (saved field, age-adjusted config).
- * @returns {{leader:number, owner:number, n:number, need:number, won:boolean, refusal:string|null}|null} Null when no
- *   major's settlement stands there or the feature is off.
+ * @returns {{leader:number, owner:number, n:number, need:number, won:boolean, refusal:string|null,
+ *   landShort:boolean, lead:number, ownerStock:number, land:{leaderOwned:number, ownerRural:number,
+ *   share:number}}|null} Null when no major's settlement stands there or the feature is off. `landShort`: the
+ *   culture has won the center and the plots but the leader doesn't hold enough of the countryside yet.
  */
 export function settlementOutlookAt(loc, snap) {
   if (!CONFIG.cityFlips) return null;
@@ -547,6 +602,7 @@ export function settlementOutlookAt(loc, snap) {
   const st = settlementStatus(s.city, s.owner, ctx);
   if (!st) return null;
   return { leader: st.leader, owner: s.owner, n: heldPasses(snap.state, st), won: st.won, refusal: st.refusal,
+    landShort: st.landShort, lead: st.lead, ownerStock: st.ownerStock, land: st.land,
     need: Math.max(1, Math.floor(CONFIG.cityFlipHoldPasses)) };
 }
 

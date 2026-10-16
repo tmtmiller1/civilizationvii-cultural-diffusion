@@ -157,14 +157,21 @@ only through the game's own capture. Other civilizations' armies do the same onl
 
 ### 10. Whole settlements change hands by culture
 On by default (`cityFlips`). When a neighbor's culture has clearly won a settlement, the whole
-settlement joins that civilization, the way loyalty flips worked in Civ VI. Clearly won means
-three things at once: the neighbor's culture on the center tile is more than twice the owner's
-(`cityFlipRatio`), it's more than twice what claiming a tile takes (`cityFlipBar`, so 600 on
-Medium in Antiquity), and it leads on at least 60% of the settlement's tiles
-(`cityFlipPlotShare`). That has to hold for three passes running (`cityFlipHoldPasses`); the
-count starts over the moment it slips. You're warned on the first pass when the settlement is
-yours or would become yours, and the hover readout on its center shows "2 of 3 turns of clear
-culture", or what's holding it.
+settlement joins that civilization, the way a city whose land had all gone over did in Civ V's
+Cultural Diffusion. Clearly won means four things at once: the neighbor's culture on the center
+tile is more than twice the owner's (`cityFlipRatio`), it's more than twice what claiming a tile
+takes (`cityFlipBar`, so 600 on Medium in Antiquity), it leads on at least 60% of the
+settlement's tiles (`cityFlipPlotShare`), and the neighbor already owns at least 60% of the
+countryside around the center, its tiles within three rings against the owner's rural ones there
+(`cityFlipLandShare`, `cityFlipLandRadius`). That last one is what makes a settlement the last
+step of erosion rather than a jump past it: the land goes tile by tile first, the center last,
+and on Low intensity, where no rival tile moves, no settlement does either. All of it has to
+hold for five passes running (`cityFlipHoldPasses`); the count starts over the moment it slips.
+You're told on each of those passes when the settlement is yours or would become yours ("Kamakura
+joins Greece in 3 turns unless its people are won back"), the hover readout on its center shows
+"2 of 5 turns of clear culture" or what's holding it, and the Cultural Diffusion section of the
+City Details panel shows the same with the culture on the center and the countryside count for
+both sides.
 
 On the last pass the mod places a hidden marker building in the center, and the game's own
 transfer hands the settlement over in one step: the center, every tile, the districts, the
@@ -287,10 +294,10 @@ needs less culture to own a tile, so borders reach farther, sooner.
   by culture.
 - Armies hold the ground they occupy: off by default; a combat unit holding an enemy
   tile through a war takes it after five turns (step 9 above).
-- Whole settlements change hands by culture: on by default; a settlement whose culture a
-  neighbor has clearly won for three turns joins it (step 10). Capitals can change hands, and
-  culture can take a civilization's last settlement: both off by default. Grievances when a
-  settlement changes hands: 30 (0, 15, 30 or 60). Turns of clear culture before it does: 3
+- Whole settlements change hands by culture: on by default; a settlement whose culture and
+  countryside a neighbor has clearly won for five turns joins it (step 10). Capitals can change
+  hands, and culture can take a civilization's last settlement: both off by default. Grievances
+  when a settlement changes hands: 30 (0, 15, 30 or 60). Turns of clear culture before it does: 5
   (2, 3, 5 or 8).
 - Cities carry every culture living in them: on by default; a city produces culture for
   every people present on its tile and slowly converts foreign culture to its own (step 6).
