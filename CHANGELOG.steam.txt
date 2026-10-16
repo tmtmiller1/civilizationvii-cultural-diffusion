@@ -3,6 +3,31 @@ Generated from CHANGELOG.md by scripts/steam-changelog.mjs; release.sh uploads t
 To fix an old Workshop entry, paste the text under its ==== line into that entry's Edit box on the change-notes page.
 A block edited by hand is kept as-is. Delete a block to regenerate it from CHANGELOG.md.
 
+==== 1.6.0 | 2026-10-16 | src 76740a55e148 | gen b65b6957d8f5 ====
+[b]Version 1.6.0 · 16 October 2026[/b]
+Whole settlements can now change hands by culture.
+
+[b]Added[/b]
+• A settlement whose people a neighbor's culture has clearly won joins that civilization, the way loyalty worked in Civ VI. Clearly won means more than twice the owner's culture on the center tile, more than twice what claiming a tile takes, and the lead on at least 60% of its tiles, three turns running. You're warned on the first turn when the settlement is yours or would become yours, and the Cultural Pressure lens colors its center and shows “2 of 3 turns of clear culture” on hover, or what's holding it.
+• The game's own transfer moves the settlement in one step: the center, every tile, the districts, the buildings and the wonders together. It arrives as a town, its tiles are locked for 15 turns, and the civilization that lost it holds 30 grievances against the one that gained it. The game records the civilization that gained the settlement as the one who did the wrong. You get one notice, “Kamakura has joined Greece.”
+• It only happens between major civilizations at peace, never to a city-state or an independent people, never during the Age Ending countdown or the first two turns of an age, and at most once a turn. Capitals and a civilization's last settlement stay put unless you switch that on.
+• New options: whole settlements change hands by culture (on), capitals can change hands (off), culture can take a civilization's last settlement (off), grievances when a settlement changes hands (30), and turns of clear culture before it does (3). A new Civilopedia page, Settlement Flips, explains the rules.
+• With the Partisans mod installed, the “has joined” notice also says when the settlement's people are arming, and Partisans doesn't send a second notice for that flip.
+
+[b]Changed[/b]
+• A rival's city center no longer stays out of reach for good. It still never changes hands as a single tile, and the Rival city protection option still protects the ring around it from tile claims; the center now goes only with its whole settlement.
+• The turn hook and the +1 buffer read the game's events the way the base game reads them, so a small change in what a game update sends can't leave the mod loaded but idle.
+• Each turn's pass reads where the settlement centers are once, instead of once for every contested tile it checks.
+• In a multiplayer game the turn's pass now stops before it starts. It couldn't move a tile there anyway, but it still worked through the whole culture field every turn.
+
+[b]Fixed[/b]
+• Switching Cultural Diffusion off now stops the +1 ring too. Before, with [i]Claim land beside new improvements[/i] on, an improvement on the edge of a city's three-tile reach still took the unowned tiles just past it while the mod was switched off. Tiles inside the reach were never the mod's: the game takes the ones beside a new improvement itself.
+• Typing a capital C in a text box, such as the chat or a city's name, leaves the Cultural Pressure lens alone now. Holding Shift+C down doesn't flicker the lens, and Ctrl+Shift+C and the like are left for other uses.
+• The hover readout sets its own text size. It used one from the Demographics mod, which only exists inside Demographics' own screen.
+• The Civilopedia's Limits say how the caps really work, in every language: your claims, other civilizations' claims, receding borders and armies holding ground each move up to 8 tiles a turn, and a city holds up to 140 claimed tiles on High.
+• The mod asks the game for the settlement on a tile the way the game itself does. It used to miss and fall back on its two other reads.
+• A tile stuck on a settlement too far away to work it now moves to the same civilization's settlement beside it, with its improvement. That happened when a settlement was founded next to a tile culture had claimed for another one, and in saves from 1.0.6. Neither settlement could work the tile before. It works the same for the AI's civilizations as for yours; city-states and independents are left alone. The 1.0.7 fix for those saves never moved a tile.
+
 ==== 1.5.3 | 2026-10-14 | src 84de36922ce8 | gen 970b185e10f9 ====
 [b]Version 1.5.3 · 14 October 2026[/b]
 
