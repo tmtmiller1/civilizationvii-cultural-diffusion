@@ -3,6 +3,12 @@ Generated from CHANGELOG.md by scripts/steam-changelog.mjs; release.sh uploads t
 To fix an old Workshop entry, paste the text under its ==== line into that entry's Edit box on the change-notes page.
 A block edited by hand is kept as-is. Delete a block to regenerate it from CHANGELOG.md.
 
+==== 1.7.2 | 2026-10-24 | src 1417da1e9e79 | gen 370f5c3c271d ====
+[b]Version 1.7.2 · 24 October 2026[/b]
+
+[b]Fixed[/b]
+• City-states and independents keep all their land again. Since 1.7.0, culture could take everything around a city-state's center except the first ring, and it could take an independent's camp itself, because the game doesn't count a camp as a settlement center. Culture now leaves every tile a city-state or independent owns alone, the way it did before 1.7.0. Land between major civilizations still changes hands as it did in 1.7.0.
+
 ==== 1.7.1 | 2026-10-17 | src f6c71f5450f3 | gen 8ccdee312e65 ====
 [b]Version 1.7.1 · 17 October 2026[/b]
 

@@ -323,10 +323,10 @@ seedState({ field: { [tk(VILLAGE.x, VILLAGE.y)]: { [String(ME)]: 5000, [String(I
 r = runPass();
 assert.equal(r.flips, 1, "without the map center read the same village tile flips (pins the new route)");
 
-// A minor's ring-1 is protected too, not just its center plot. Watched in harness run 13: with
+// A minor's land never moves by culture, not just its center plot. Watched in harness run 13: with
 // coreProtectRadius 0 the pass took 89,41 and 90,42, both ring-1 of city-state 33's center at 89,42,
 // which strips a minor to the single plot it stands on and reads as the settlement being absorbed.
-// minorProtectRadius (1) is the floor that stops it; a major's ring-1 is still claimable.
+// A major's ring-1 is still claimable.
 const MINOR = 18;
 const MINOR_CENTRE = { x: 16, y: 10 };
 const MINOR_RING1 = { x: 15, y: 10 };                  // ring-1 of the minor center, ring-5 of ours
@@ -344,15 +344,26 @@ function seedMinorNeighbour(ownerId, isMajorFlag) {
 
 seedMinorNeighbour(MINOR, false);
 r = runPass();
-assert.equal(r.flips, 0, "a minor's ring-1 tile is protected by minorProtectRadius");
+assert.equal(r.flips, 0, "a minor's ring-1 tile is protected");
 assert.equal(getTile(MINOR_RING1.x, MINOR_RING1.y).owner, MINOR, "...the city-state keeps its last land");
 
-// The same fixture with the floor off: the tile flips, so the test pins the floor and not another gate.
+// With every core ring off the minor's tile still holds, so the test pins the minor rule and not the ring.
 seedMinorNeighbour(MINOR, false);
-CONFIG.minorProtectRadius = -1;
+CONFIG.coreProtectRadius = -1;
 r = runPass();
-assert.equal(r.flips, 1, "floor off -> the minor's ring-1 flips again (pins minorProtectRadius)");
-CONFIG.minorProtectRadius = 1;
+assert.equal(r.flips, 0, "a minor's tile holds with coreProtectRadius -1");
+CONFIG.coreProtectRadius = 0;
+
+// An independent's camp: the engine reports no city and no city-center district on it (a WILDERNESS district,
+// watched 2026-10-24 when culture took Haudenosaunee's camp at 39,19), so no center read finds it. It holds anyway.
+reset();
+minorPlayers.add(INDEP);
+const camp = getTileMut(VILLAGE.x, VILLAGE.y); camp.owner = INDEP; camp.city = -1;
+for (let x = 11; x <= 15; x++) { const t = getTileMut(x, 10); t.owner = ME; t.city = CITY_ID; }
+seedState({ field: { [tk(VILLAGE.x, VILLAGE.y)]: { [String(ME)]: 5000, [String(INDEP)]: 10 } } });
+r = runPass();
+assert.equal(r.flips, 0, "an independent's camp holds though no center read finds it");
+assert.equal(getTile(VILLAGE.x, VILLAGE.y).owner, INDEP, "...the camp stays the independent's");
 
 // A major's ring-1 is still claimable: the floor must not quietly protect everyone.
 seedMinorNeighbour(7, true);

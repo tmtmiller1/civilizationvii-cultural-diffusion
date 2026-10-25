@@ -38,10 +38,6 @@
  *   civ we are at peace with: trespass then leaves it with no legal move until a war ejects it.
  *   Refused only when this claim takes its last legal destination; a unit
  *   that can still move, even inside a small pocket, is fine.
- * @property {number}  minorProtectRadius Minimum rings of core protection around a minor settlement
- *   (city-state or Independent Power) regardless of coreProtectRadius. A minor's whole territory is a
- *   ring or two, so the major-civ default of 0 stripped it to its center plot, which reads to the
- *   player as the settlement being absorbed. -1 disables the floor. Minor settlements never flip whole.
  * @property {boolean} cityFlips Whole-settlement flips: a settlement whose center and most of whose tiles a
  *   neighbor's culture has clearly won for `cityFlipHoldPasses` passes joins that civilization, buildings,
  *   districts and tiles included (cd-city-flip.js). Majors only, never at war.
@@ -148,9 +144,6 @@ export const CONFIG = {
   // plot. Units at war with us (which includes every Independent Power) cross our land freely and are
   // never protected. A refused claim costs one frontier tile for one turn.
   protectTrappedUnits: true,
-  // A minor settlement is a ring or two of territory in total, so coreProtectRadius 0, fine against a
-  // major, takes everything a city-state or village has except the plot it stands on.
-  minorProtectRadius: 1,
   // The integrated verb (current-model.md §4): `purchasePlot` attaches the flipped tile to the
   // nearest city so it is a real, workable plot, not the orphan `setOwnership` produces (which blocks
   // base-game border growth). Code-only; `setOwnership` survives for `unclaim` and as a testing escape hatch.

@@ -49,7 +49,7 @@
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_RULES_PARA_1" Language="zh_Hant_HK"><Text>[BLIST][LI]你的文化在該格位上最高。[LI]至少為300（探索時代375，近代480）。[LI]如果該格位屬於對手，其文化低於你的三分之二。[LI]該格位距你的城市不超過六格，且在其第三環以外。[LI]該格位與你的土地相鄰（「僅限相連邊境」選項）。[/LIST]</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_TITLE" Language="zh_Hant_HK"><Text>受保護的格位</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_1" Language="zh_Hant_HK"><Text>「對手城市保護」選項決定對手城市有多少部分不會被取得格位：市中心與其第一環、僅市中心（預設），或不保護任何環。市中心從不作為格位易手，只會隨整個聚落一起轉移。參見[B]聚落易手[/B]。</Text></Replace>
-        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_2" Language="zh_Hant_HK"><Text>城邦與獨立軍勢力一律保有其市中心與第一環。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_2" Language="zh_Hant_HK"><Text>城邦與獨立軍勢力一律保有其全部領土。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_3" Language="zh_Hant_HK"><Text>開啟「僅取得無主土地」時（低強度時預設為開啟），文化絕不會奪取有主的格位。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_4" Language="zh_Hant_HK"><Text>在時代交替前後，有改良設施、都會區域或奇觀的有主格位，會在時代即將結束的倒數期間與下一個時代的前兩回合保持不變。未改良的格位不受影響。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_SAFE_TITLE" Language="zh_Hant_HK"><Text>限制</Text></Replace>

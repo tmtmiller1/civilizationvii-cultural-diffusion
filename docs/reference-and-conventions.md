@@ -161,8 +161,8 @@ All mod-prefixed; ship all 11 locales (or English + fallback) per the mod's exis
   peace are protected; blocked = our land, water, impassable; claims sent earlier in the same pass count as ours
   (`cd-pending.js` `pendingClaimKeys`), because `purchasePlot` lands seconds late. Claiming the ground a unit stands
   on is always allowed. Moving the unit instead is engine-closed (`engine-closed.md`).
-- A non-major owner gets at least `minorProtectRadius` rings of core protection (default 1), because a city-state or
-  village owns only a ring or two and `coreProtectRadius: 0` stripped it to its center plot.
+- A non-major owner's tiles never change hands by culture (`rivalClaimAllowed`), because a city-state or village owns
+  only a ring or two and an independent's camp reads as no center at all.
 - Conquest flips (Phase 4) intentionally bypass the peaceful gates (war is the point) but still exclude
   city-center/district plots and require continuous occupation; precedence over the `locked` map, conquest wins.
 - Affordability: the shipped refund makes `purchasePlot` net-zero; if a future path spends real gold, never spend

@@ -49,7 +49,7 @@
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_RULES_PARA_1" Language="ja_JP"><Text>[BLIST][LI]そのタイルで自文化が最も多い。[LI]自文化が300以上ある（探検の時代は375、近代は480）。[LI]他文明が所有するタイルの場合、その文明の文化が自文化の3分の2未満。[LI]タイルが自分の都市から6タイル以内で、第3リングより外にある。[LI]タイルが自領に接している（オプション「隣接タイルのみ」）。[/LIST]</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_TITLE" Language="ja_JP"><Text>保護されたタイル</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_1" Language="ja_JP"><Text>オプション「他文明の都市の保護」で、他文明の都市のどこまでをタイル獲得から守るかを設定します。都心とその第1リング、都心のみ（デフォルト）、またはリングなしです。都心はタイルとして帰属を変えることはなく、居住地が丸ごと移るときだけ一緒に移ります。[B]居住地の帰属変更[/B]を参照。</Text></Replace>
-        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_2" Language="ja_JP"><Text>都市国家と独立勢力は、常に都心と第1リングを保持します。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_2" Language="ja_JP"><Text>都市国家と独立勢力は、常にすべての領土を保持します。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_3" Language="ja_JP"><Text>「空き地のみ獲得」がオンのとき（「低」ではデフォルトでオン）、文化が所有済みのタイルを奪うことはありません。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_4" Language="ja_JP"><Text>時代の移行の前後では、施設、市街区域、遺産のある所有済みのタイルは、時代の終了までのカウントダウン中と次の時代の最初の2ターンの間、所有者が変わりません。施設のないタイルは影響を受けません。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_SAFE_TITLE" Language="ja_JP"><Text>制限</Text></Replace>

@@ -136,11 +136,11 @@ neighboring tile follows the same path.
   that is itself the cause counts, and claims already sent this pass count as ours because `purchasePlot` lands seconds
   late. Every occupant of a stack is judged separately. Applies to the +1 buffer, runs last in `flipEligible`, fails
   open. Moving the unit instead is engine-closed (`engine-closed.md`).
-- A minor's territory is not stripped: `minorProtectRadius` (default 1) floors core protection for any non-major
-  owner. `coreProtectRadius: 0` protects only the center plot, which is fine against a major but takes everything a
-  city-state or village has (the pass had flipped both ring-1 tiles of a city-state's center). Centers are found by
-  the city list and by a map read ([`ui/cd-plots.js`](../ui/cd-plots.js) `isCityCenterAt`), because `getCities()`
-  reports nothing for an Independent Power.
+- A minor's land never moves by culture: `rivalClaimAllowed` refuses any tile a non-major owns. A ring rule can't
+  cover an independent, because its camp isn't a center to the engine: no city and a `WILDERNESS` district (watched
+  2026-10-24, when culture had taken Haudenosaunee's camp at 39,19). Centers are still found
+  by the city list and by a map read ([`ui/cd-plots.js`](../ui/cd-plots.js) `isCityCenterAt`) for majors'
+  `coreProtectRadius`.
 - War: `atWar` tiles pause peaceful flips (borders don't diffuse across an active front).
 - Beyond the city maximum: diffusion is not gated on the pending-growth gate; a diffusion tile does not consume a
   growth event. Bounded by `fieldRadius` + `maxFlipsPerTurn` so a runaway leader can't paint the map.

@@ -141,7 +141,6 @@ CONFIG.flipVerb = "purchasePlot";
 CONFIG.claimOnlyUnowned = false;
 CONFIG.requireAdjacency = true;
 CONFIG.coreProtectRadius = 0;
-CONFIG.minorProtectRadius = 1;
 CONFIG.protectTrappedUnits = true;
 CONFIG.maxFlipsPerTurn = 8;
 CONFIG.maxDiffusionPlots = 80;
@@ -182,7 +181,7 @@ function tipShowsProgress(loc) {
 // Knobs a fixture sets. Reading the LENS calls applyTunableOverrides(), which pulls saved settings into the
 // shared CONFIG, in game the lens runs in the HUD isolate with its own copy, but in one test process it
 // clobbers the fixture. So snapshot these around the lens/tooltip reads.
-const KNOBS = ["claimOnlyUnowned", "requireAdjacency", "coreProtectRadius", "minorProtectRadius",
+const KNOBS = ["claimOnlyUnowned", "requireAdjacency", "coreProtectRadius",
   "protectTrappedUnits", "flipMaxDistance", "baseGrowthRadius", "maxDiffusionPlots", "maxFlipsPerTurn",
   "flipCooldownTurns", "minimumOwner", "recedeBorders", "growthBuffer", "repairOrphans", "fusedModel",
   "calibrateToGameSettings", "diffusionEnabled"];
@@ -238,7 +237,7 @@ atWarWith = new Set([RIVAL]);
 seed({ field: { [tk(RIVAL_TILE.x, RIVAL_TILE.y)]: { [String(ME)]: 5000, [String(RIVAL)]: 10 } } });
 assertParity("at war with the owner", RIVAL_TILE, false);
 
-// 6. A minor's ring-1, protected by minorProtectRadius.
+// 6. A minor's ring-1: a minor's land never moves by culture.
 reset();
 const MINOR_CENTRE = { x: 16, y: 10 };
 const MINOR_RING1 = { x: 15, y: 10 };

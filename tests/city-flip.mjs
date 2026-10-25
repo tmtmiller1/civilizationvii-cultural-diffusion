@@ -451,6 +451,7 @@ test("flip: one at a time, and the sweep leaves a waiting flip's marker alone", 
   assert.equal(pending.length, 1, "a second flip waits for the first");
   assert.equal(flip.sweepFlipMarkers(), 0, "no sweep mid-flip");
   await pending[0];
+  await sleep(40); // let its delayed joined notice land here, not in the next test's notices
 });
 
 test("notices: a second settlement of a kind joins the live notice instead of being dropped", async () => {
@@ -517,7 +518,7 @@ test("claims: a joined settlement's plots never count toward a cap and keep thei
 });
 
 // ── The settlement path never goes through a tile gate ───────────────────────────────────────────────────────────
-const TILE_GATES = ["rivalClaimAllowed", "isCoreProtected", "protectRadiusFor", "flipRefusedFor", "plotInventory",
+const TILE_GATES = ["rivalClaimAllowed", "isCoreProtected", "flipRefusedFor", "plotInventory",
   "claimGateBlocked", "claimInScope", "flipEligible", "commitFlip", "claimCountsFor", "performFlip", "purchasePlot",
   "markPending", "withinOwnNaturalRing", "adjacentToMe", "wouldStrandForeignUnit", "districtTransferPaused",
   "distantLandsGated", "conquerable"];

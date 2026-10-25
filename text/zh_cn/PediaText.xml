@@ -49,7 +49,7 @@
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_RULES_PARA_1" Language="zh_Hans_CN"><Text>[BLIST][LI]你的文化在该地块上最高。[LI]至少为300（探索时代375，近世时代480）。[LI]如果该地块属于对手，其文化低于你的三分之二。[LI]该地块距你的城市不超过六格，且在其第三环以外。[LI]该地块与你的土地相邻（“仅限相连边界”选项）。[/LIST]</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_TITLE" Language="zh_Hans_CN"><Text>受保护的地块</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_1" Language="zh_Hans_CN"><Text>“对手城市保护”选项决定对手城市有多少部分不会被获取地块：市中心及其第一环、仅市中心（默认），或不保护任何环。市中心从不作为地块易手，只会随整个定居点一起转移。参见[B]定居点易手[/B]。</Text></Replace>
-        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_2" Language="zh_Hans_CN"><Text>城邦和独立势力始终保留其市中心和第一环。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_2" Language="zh_Hans_CN"><Text>城邦和独立势力始终保留其全部领土。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_3" Language="zh_Hans_CN"><Text>开启“仅获取无主土地”时（低强度时默认开启），文化绝不会夺取有主的地块。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_4" Language="zh_Hans_CN"><Text>在时代更替前后，有改良设施、市区区块或奇观的有主地块会在时代结束倒计时期间和下一个时代的前两回合保持不变。未改良的地块不受影响。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_SAFE_TITLE" Language="zh_Hans_CN"><Text>限制</Text></Replace>

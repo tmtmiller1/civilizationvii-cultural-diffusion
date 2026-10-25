@@ -62,7 +62,7 @@ ageType = "AGE_EXPLORATION";
 globalThis.Players = { get: (id) => ({ id, isMajor: true, isAlive: true, Diplomacy: { isAtWarWith: () => false }, Cities: { getCities: () => [] } }), getAlive: () => [] };
 globalThis.GameplayMap = { getOwner: () => 3, getOwningCityFromXY: () => null, getPlotIndicesInRadius: () => [], getLocationFromIndex: () => ({ x: 0, y: 0 }) };
 globalThis.Cities = { getAtLocation: () => null, get: () => null };
-const cfg = { claimOnlyUnowned: false, coreProtectRadius: 0, minorProtectRadius: -1, requireAdjacency: false, blockDistantLandsBeforeExploration: false };
+const cfg = { claimOnlyUnowned: false, coreProtectRadius: 0, requireAdjacency: false, blockDistantLandsBeforeExploration: false };
 assert.equal(claimGateBlocked({ x: 5, y: 5 }, 3, 0, cfg, null), "age-transition");
 
 console.log("age-guard.mjs OK");

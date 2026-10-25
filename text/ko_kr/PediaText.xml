@@ -49,7 +49,7 @@
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_RULES_PARA_1" Language="ko_KR"><Text>[BLIST][LI]그 타일에서 우리 문화가 가장 많습니다.[LI]우리 문화가 300 이상입니다(대항해시대 375, 근대 480).[LI]경쟁 문명이 소유한 타일이라면, 그 문명의 문화가 우리 문화의 3분의 2 미만입니다.[LI]타일이 우리 도시에서 6타일 이내이고 3번째 링 바깥에 있습니다.[LI]타일이 우리 영토에 닿아 있습니다('인접 타일만' 옵션).[/LIST]</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_TITLE" Language="ko_KR"><Text>보호되는 타일</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_1" Language="ko_KR"><Text>'경쟁 문명 도시 보호' 옵션으로 경쟁 문명 도시의 어디까지가 타일 획득으로부터 안전한지 정합니다. 도심부와 그 첫 번째 링, 도심부만(기본값), 또는 링 없음 중에서 고릅니다. 도심부는 타일로서 주인이 바뀌지 않으며, 정착지 전체와 함께만 넘어갑니다. [B]정착지 귀속 변경[/B] 참조.</Text></Replace>
-        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_2" Language="ko_KR"><Text>도시 국가와 독립 세력은 항상 도심부와 첫 번째 링을 지킵니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_2" Language="ko_KR"><Text>도시 국가와 독립 세력은 항상 모든 영토를 지킵니다.</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_3" Language="ko_KR"><Text>'빈 땅만 획득'이 켜져 있으면(낮음에서는 기본적으로 켜짐), 문화는 주인이 있는 타일을 절대 차지하지 않습니다.</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_4" Language="ko_KR"><Text>시대가 바뀌는 전후에는 시설, 시가지 특수지구, 불가사의가 있는 소유 타일이 시대의 끝 카운트다운 동안과 다음 시대의 첫 2턴 동안 주인이 바뀌지 않습니다. 시설이 없는 타일은 영향을 받지 않습니다.</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_SAFE_TITLE" Language="ko_KR"><Text>제한</Text></Replace>

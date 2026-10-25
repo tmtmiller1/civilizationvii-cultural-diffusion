@@ -165,8 +165,8 @@ export function atWar(a, b) {
 }
 
 /**
- * Whether a plot owned by another player may be taken at all: safety mode off, no active war with
- * the owner (borders do not diffuse across a front), and outside that owner's protected city core.
+ * Whether a plot owned by another player may be taken at all: safety mode off, not a minor's land, no active war
+ * with the owner (borders do not diffuse across a front), and outside that owner's protected city core.
  * Unowned plots never reach this test: the caller gates on `owner >= 0`.
  * @param {{x:number,y:number}} loc Target plot.
  * @param {number} owner Current owner player id.
@@ -176,26 +176,14 @@ export function atWar(a, b) {
  */
 export function rivalClaimAllowed(loc, owner, me, cfg) {
   if (cfg.claimOnlyUnowned) return false;          // safety mode: empty land only
+  // A city-state's or independent's land never moves by culture. An independent's camp isn't a city center to the
+  // engine (a WILDERNESS district with no city, watched 2026-10-24), so no ring around a center can shield it: a
+  // ring rule let culture take the camp plot itself.
+  if (isMinorOwner(owner)) return false;
   if (atWar(me, owner)) return false;              // no peaceful diffusion across an active front
   // Protect within coreProtectRadius rings of the owner's city center (0 = just the center plot, so
-  // culture bites a major's ring-1+ inward; -1 = protect nothing); a minor gets at least
-  // minorProtectRadius, because its whole territory is that small.
-  return !isCoreProtected(loc, owner, protectRadiusFor(owner, cfg));
-}
-
-/**
- * The core-protection radius to use against this owner: `coreProtectRadius`, raised to
- * `minorProtectRadius` when the owner is a minor (city-state or Independent Power). Fails toward the
- * plain radius when the player kind is unreadable.
- * @param {number} owner Owner player id.
- * @param {import("/cultural-diffusion/ui/cd-config.js").CdConfig} cfg Live config.
- * @returns {number} Rings to protect.
- */
-export function protectRadiusFor(owner, cfg) {
-  const base = typeof cfg.coreProtectRadius === "number" ? cfg.coreProtectRadius : 1;
-  const floor = typeof cfg.minorProtectRadius === "number" ? cfg.minorProtectRadius : -1;
-  if (floor < 0 || !isMinorOwner(owner)) return base;
-  return Math.max(base, floor);
+  // culture bites a major's ring-1+ inward; -1 = protect nothing).
+  return !isCoreProtected(loc, owner, typeof cfg.coreProtectRadius === "number" ? cfg.coreProtectRadius : 1);
 }
 
 /**

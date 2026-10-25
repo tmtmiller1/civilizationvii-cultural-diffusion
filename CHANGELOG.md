@@ -4,6 +4,14 @@ All notable changes to Cultural Diffusion are recorded here. The format follows
 [Keep a Changelog](https://keepachangelog.com/), and the mod uses
 [Semantic Versioning](https://semver.org/).
 
+## [1.7.2] - 2026-10-24
+
+### Fixed
+- City-states and independents keep all their land again. Since 1.7.0, culture could take everything around a
+  city-state's center except the first ring, and it could take an independent's camp itself, because the game doesn't
+  count a camp as a settlement center. Culture now leaves every tile a city-state or independent owns alone, the way
+  it did before 1.7.0. Land between major civilizations still changes hands as it did in 1.7.0.
+
 ## [1.7.1] - 2026-10-17
 
 ### Changed

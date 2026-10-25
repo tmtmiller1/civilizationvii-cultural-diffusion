@@ -61,7 +61,7 @@ settlement's plots after the transfer. Every hit and its decision:
 
 | Where | What it does | Decision |
 | --- | --- | --- |
-| `cd-borders.js` `rivalClaimAllowed`, `isCoreProtected`, `protectRadiusFor`, `_centerOnMapWithin`, `_cityCenterWithin` | Protects plots within `coreProtectRadius` of a rival center, `minorProtectRadius` around minors | Kept for tile flips. Never called by the settlement path |
+| `cd-borders.js` `rivalClaimAllowed`, `isCoreProtected`, `_centerOnMapWithin`, `_cityCenterWithin` | Protects plots within `coreProtectRadius` of a rival center, and every plot a minor owns | Kept for tile flips. Never called by the settlement path |
 | `cd-teardown.js` `flipRefusedFor` | Refuses urban districts, centers and wonders as tile flips | Kept for tile flips. The settlement carries them; never called |
 | `cd-eligibility.js` `claimGateBlocked` (calls the two above, `distantLandsGated`, `districtTransferPaused`, `adjacentToMe`, `wouldStrandForeignUnit`) | The tile gates the pass, lens and readout share | Kept for tile flips. The settlement path has its own war, age-transition and distant-lands gates in the rule |
 | `cd-flip.js` `flipEligible`, `commitFlip`, `claimCountsFor` | Tile gates, the commit, the per-city cap | Kept. `claimCountsFor` now skips `settlement` claims, so a joined settlement never counts toward a cap |
