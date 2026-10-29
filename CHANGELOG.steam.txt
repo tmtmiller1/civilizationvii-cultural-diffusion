@@ -3,6 +3,21 @@ Generated from CHANGELOG.md by scripts/steam-changelog.mjs; release.sh uploads t
 To fix an old Workshop entry, paste the text under its ==== line into that entry's Edit box on the change-notes page.
 A block edited by hand is kept as-is. Delete a block to regenerate it from CHANGELOG.md.
 
+==== 1.8.0 | 2026-10-29 | src a34209a3d44a | gen b81490e82696 ====
+[b]Version 1.8.0 · 29 October 2026[/b]
+
+[b]Changed[/b]
+• A mountain is claimed only once the land around it is yours, however strong your culture is there. Land past your reach, or land culture can't take, doesn't hold it back. A range can stay a gap in your border or end up split with a neighbor.
+• The Civilopedia describes the new claim rules (ring 3, the tiles between a claim and its city, mountains) in all twelve languages.
+
+[b]Fixed[/b]
+• Borders grow outward as one solid shape. Before, culture could take most of a city's fourth ring while ring-3 tiles in front of it sat unowned or stayed with a rival, leaving gaps and thin arms of land. Two things changed:
+ ◦ Culture now claims inside your rings too. An unowned ring-3 tile, or a rival's, can be won like any other tile and goes to the city it sits around. An unowned tile shared by two of your settlements' rings is still left to the game, which knows which of them should get it.
+ ◦ A tile is only claimed once the one or two tiles between it and your city are yours. Tiles culture won't take, or only takes after the land around them, don't hold it back: water, mountains, natural wonders, marsh, rainforest and desert, a city-state's land, a rival's city or district, and a rival's land while you're at war. Strong culture still reaches further first: a strong fourth-ring tile can go before a weak third-ring tile on the other side of the city, but never ahead of the land behind it. This is part of the Contiguous border only option.
+• The hover's “At current pace” line says “stalled” when a tile's culture has leveled off under the bar. Before, a tile on rough ground could sit at half the bar for many turns while the line said “~1 turn”. The estimate now plays the culture spread forward on the tiles around the one you're hovering, with their terrain, rivers and roads and how fast the land behind them is still rising, so a tile behind a growing border counts down and a tile that's leveled off says so.
+• The hover and the Cultural Pressure lens read the same age settings the culture spread runs on. Before, they took the age's ownership bar but not its pace or how far water crossings had eased, so the hover's turn counts could run faster or slower than the game.
+• The strongest culture is claimed first each turn, where before the nearest tile went first. The same rules apply when AI culture claims land, and the Cultural Pressure lens and hover text follow them.
+
 ==== 1.7.2 | 2026-10-24 | src 1417da1e9e79 | gen 370f5c3c271d ====
 [b]Version 1.7.2 · 24 October 2026[/b]
 

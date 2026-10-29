@@ -9,12 +9,12 @@
         <Replace Tag="LOC_PEDIA_CD_GROUP_INTERFACE_TITLE" Language="ja_JP"><Text>画面とオプション</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_TITLE" Language="ja_JP"><Text>文化の伝播</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>都市の近くの各タイルには、それぞれの文明の [icon:YIELD_CULTURE] 文化力がどれだけあるかが蓄えられます。毎ターン、都市は自身のタイルに文化を加え、文化は隣のタイルへ広がり、すべてのタイルは文化の一部を失います。</Text></Replace>
-        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_CONTENT_PARA_2" Language="ja_JP"><Text>都市の第3リングより外のタイルで自文化が十分に大きくなると、そのタイルを獲得します。境界は主にゲーム中盤以降にゆっくりと広がり、そこでの文化がはるかに弱い他文明から辺境のタイルを奪うこともあります。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_CONTENT_PARA_2" Language="ja_JP"><Text>タイルで自文化が十分に大きくなると、そのタイルを獲得します。境界は主にゲーム中盤以降に都市から外へゆっくりと広がり、そこでの文化がはるかに弱い他文明から辺境のタイルを奪うこともあります。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_WHERE_TITLE" Language="ja_JP"><Text>ゲーム内</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_WHERE_PARA_1" Language="ja_JP"><Text>[BLIST][LI][B]「文化圧力」レンズ[/B]（レンズメニューまたはShift+C）: 所有者が変わりそうなタイルに色を付けます。[B]文化圧力レンズ[/B]を参照。[LI][B]通知[/B]: 領土を獲得したとき、または他文明にタイルを奪われたとき。[LI][B]オプション、追加コンテンツ、文化の伝播[/B]: 強度とすべてのスイッチ。[B]オプションとプリセット[/B]を参照。[/LIST]</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_TITLE" Language="ja_JP"><Text>よくある質問</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_NOTHING_TITLE" Language="ja_JP"><Text>境界が広がらないのはなぜ?</Text></Replace>
-        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_NOTHING_PARA_1" Language="ja_JP"><Text>都市が第4リングに届くには、大きく安定した文化が必要です。序盤の都市はたいてい何も獲得しません。レンズで、優勢なタイルとそれぞれに必要なターン数を確認できます。[B]拡大の速さと獲得地[/B]を参照。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_NOTHING_PARA_1" Language="ja_JP"><Text>ゲームがまだ与えていない土地を都市が獲得するには、大きく安定した文化が必要です。序盤の都市はたいてい何も獲得しません。レンズで、優勢なタイルとそれぞれに必要なターン数を確認できます。[B]拡大の速さと獲得地[/B]を参照。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_WORK_TITLE" Language="ja_JP"><Text>獲得したタイルで働ける?</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_WORK_PARA_1" Language="ja_JP"><Text>いいえ。都市が働けるのは3リング以内のタイルだけで、獲得したタイルはそれより外にあります。獲得したタイルは自国の領土として扱われ、他文明の開拓者を阻みます。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_AILAND_TITLE" Language="ja_JP"><Text>AIに土地を奪われる?</Text></Replace>
@@ -36,7 +36,7 @@
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_TITLE" Language="ja_JP"><Text>地形と河川</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>文化がどれだけうまく広がるかは、移り先のタイルで決まります。同じタイルの効果は累積します。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROUGH_TITLE" Language="ja_JP"><Text>険しい地形</Text></Replace>
-        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROUGH_PARA_1" Language="ja_JP"><Text>通りやすい順に:[BLIST][LI][B]森林、タイガ[/B]: わずかに遅くなります。[LI][B]荒地[/B]: 中程度に遅くなります。[LI][B]ツンドラ[/B]: 中程度に遅くなり、越えるにはより強い発生源が必要です。[LI][B]砂漠[/B]: 大きく遅くなります。[LI][B]熱帯雨林、湿原[/B]: 大きく遅くなり、強い発生源だけが越えられます。[LI][B]山岳[/B]: ほぼ通れません。山頂の文化がそこから広がるには、通常の7.5倍の量が必要です。[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROUGH_PARA_1" Language="ja_JP"><Text>通りやすい順に:[BLIST][LI][B]森林、タイガ[/B]: わずかに遅くなります。[LI][B]荒地[/B]: 中程度に遅くなります。[LI][B]ツンドラ[/B]: 中程度に遅くなり、越えるにはより強い発生源が必要です。[LI][B]砂漠[/B]: 大きく遅くなります。[LI][B]熱帯雨林、湿原[/B]: 大きく遅くなり、強い発生源だけが越えられます。[LI][B]山岳[/B]: ほぼ通れません。山頂の文化がそこから広がるには、通常の7.5倍の量が必要です。山岳は周囲の土地がすべて自領になってから獲得されるため、山脈が境界の穴として残ったり、隣国と分け合う形になったりします。[/LIST]</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROADS_TITLE" Language="ja_JP"><Text>道路</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROADS_PARA_1" Language="ja_JP"><Text>道路のあるタイル同士の間では、文化は2倍の速さで、より遠くまで広がります。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_RIVERS_TITLE" Language="ja_JP"><Text>河川</Text></Replace>
@@ -46,7 +46,7 @@
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_TITLE" Language="ja_JP"><Text>タイルの獲得</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>獲得したタイルは最も近い自分の都市に加わります。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_RULES_TITLE" Language="ja_JP"><Text>条件</Text></Replace>
-        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_RULES_PARA_1" Language="ja_JP"><Text>[BLIST][LI]そのタイルで自文化が最も多い。[LI]自文化が300以上ある（探検の時代は375、近代は480）。[LI]他文明が所有するタイルの場合、その文明の文化が自文化の3分の2未満。[LI]タイルが自分の都市から6タイル以内で、第3リングより外にある。[LI]タイルが自領に接している（オプション「隣接タイルのみ」）。[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_RULES_PARA_1" Language="ja_JP"><Text>[BLIST][LI]そのタイルで自文化が最も多い。[LI]自文化が300以上ある（探検の時代は375、近代は480）。[LI]他文明が所有するタイルの場合、その文明の文化が自文化の3分の2未満。[LI]タイルが自分の都市から6タイル以内にある。自分の2つの居住地からそれぞれ3タイル以内にある所有者のいないタイルは、ゲームが割り当てます。[LI]タイルが自領に接し、そのタイルと都市の間のタイルがすでに自領である（オプション「隣接タイルのみ」）。水域、山岳、湿原、熱帯雨林、砂漠、文化では奪えない土地は妨げになりません。[LI]山岳は周囲の土地が自領になってから獲得される。[/LIST]</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_TITLE" Language="ja_JP"><Text>保護されたタイル</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_1" Language="ja_JP"><Text>オプション「他文明の都市の保護」で、他文明の都市のどこまでをタイル獲得から守るかを設定します。都心とその第1リング、都心のみ（デフォルト）、またはリングなしです。都心はタイルとして帰属を変えることはなく、居住地が丸ごと移るときだけ一緒に移ります。[B]居住地の帰属変更[/B]を参照。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_2" Language="ja_JP"><Text>都市国家と独立勢力は、常にすべての領土を保持します。</Text></Replace>
@@ -135,7 +135,7 @@
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_ABOUT_CHAPTER_CREDITS_TITLE" Language="ja_JP"><Text>クレジット</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_ABOUT_CHAPTER_CREDITS_PARA_1" Language="ja_JP"><Text>制作: Tower。GedemonによるCivilization V用の「Cultural Diffusion」（v18）を基にしており、文化フィールドと、ここにある次のルールの元になっています: 河川、都市内の外国文化、占領時の移転、他文明と軍による獲得、山岳のしきい値、所有者の最低文化。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_CD_CULTURAL_BORDERS_TITLE" Language="ja_JP"><Text>文化による境界（MOD）</Text></Replace>
-        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_CD_CULTURAL_BORDERS_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>文化の伝播MODでは、文化は都市からタイルごとに広がり、都市の第3リングを越えて、他文明の辺境のタイルにまで境界を広げることがあります。ルールは[B]文化の伝播[/B]タブにあります。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_CD_CULTURAL_BORDERS_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>文化の伝播MODでは、文化は都市からタイルごとに広がり、境界を外へ広げ、他文明の辺境のタイルにまで及ぶことがあります。ルールは[B]文化の伝播[/B]タブにあります。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CD_TERM_CULTURAL_DIFFUSION" Language="ja_JP"><Text>文化の伝播</Text></Replace>
         <Replace Tag="LOC_PEDIA_CD_TERM_BORDERS" Language="ja_JP"><Text>境界</Text></Replace>
         <Replace Tag="LOC_PEDIA_CD_TERM_FORWARD_SETTLING" Language="ja_JP"><Text>前線入植</Text></Replace>

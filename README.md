@@ -83,7 +83,13 @@ A tile becomes yours once your culture there is the largest, passes an absolute 
 (`minimumOwner`, 300), and, if you are taking it from a rival, beats their culture on that
 tile by a decisive ratio (`flipRatio`, 0.65). It must also be within `flipMaxDistance` (6) of
 one of your cities and, while `requireAdjacency` is on (the default), adjacent to land you
-already own, so borders grow contiguously. Freshly claimed tiles are locked briefly
+already own, with the one or two tiles between it and the city already yours, so borders fill in
+as one solid shape instead of reaching out in arms. Water, mountains, marsh, rainforest, desert
+and land culture can't take don't hold a tile back. Whatever that option says, a mountain is
+claimed only once the land around it is yours, so a range can stay a gap in your border or end
+up split with a neighbor. The strongest culture is claimed first each turn. Inside a city's own
+three rings, culture can take an unowned tile or a rival's; an unowned tile in the rings of two
+of your settlements is left for the game to hand out. Freshly claimed tiles are locked briefly
 (`flipCooldownTurns`) so they do not flicker between owners. A rival's city-center plot never
 changes hands as a tile, though culture can press inward through the surrounding tiles ring by
 ring; the center goes only when the whole settlement does (step 10). The *rival city
@@ -231,8 +237,9 @@ barely creeps past its border.
 Civilization VII lets a city work and develop tiles only within three rings of its center,
 and that limit lives in the engine, where no mod data can change it (see
 [`docs/civ7-tile-range-investigation.md`](docs/civ7-tile-range-investigation.md)). Every tile
-this mod claims lies beyond ring 3, so it is territory without yield: it is attached to your
-nearest city and shows as yours, but no citizen can work it and nothing can be built on it.
+this mod claims beyond ring 3 is territory without yield: it is attached to your nearest city
+and shows as yours, but no citizen can work it and nothing can be built on it. A tile claimed
+inside a city's own third ring joins the city it sits around.
 Its value is strategic. It is a buffer against rivals settling next to you, and it includes
 frontier tiles taken from a rival. A settler can found on an empty plot, but not on one beside
 another civilization's land.
@@ -284,7 +291,8 @@ needs less culture to own a tile, so borders reach farther, sooner.
 - Rival city protection: how deep tile claims may push into a rival's city (full downtown
   ring, center tile only, or no ring). The center itself only ever moves with its whole
   settlement.
-- Contiguous border only: only claim tiles touching your land.
+- Contiguous border only: only claim tiles touching your land, once the tiles between them and
+  the city are yours.
 - Claim land beside new improvements (+1 ring): off by default; when on, finishing a rural
   improvement near your border also claims the unowned tiles right next to it.
 - Borders recede (experimental): off by default; claimed tiles can be ceded to a rival
@@ -389,6 +397,7 @@ The runtime is a set of small UI-script modules in `ui/`:
 | `cd-civ-tuning.js` | Bounded per-leader, civilization and memento injection nudges. |
 | `cd-civ-roster.js` | The full game leader, civilization and memento type rosters (data only). |
 | `cd-calibration.js` | Age-length (field pace) and map-size (injection) calibration from game settings. |
+| `cd-age-config.js` | The config the field runs on this turn: the age's ownership bar, paced rates and eased water crossings, read by the pass, the lens and the hover alike. |
 | `cd-plots.js` | GameplayMap reads (owners, radii, water, dimensions). |
 | `cd-borders.js` | City-core protection and war checks. |
 | `cd-ownership.js` | The one place that changes ownership (`purchasePlot`, with any gold cost restored through `Players.grantYield`; `setOwnership` only to un-claim). |
@@ -491,8 +500,8 @@ This mod reimagines and extends Gedemon's work.
   region, and two AI empires far from your lands keep the borders the base game gives them.
 - Claims cost no gold. If a future game update charges for them, the mod refunds the cost
   (`refundGold`).
-- Claimed tiles are beyond ring 3, so they cannot be worked or developed. This is an engine
-  limit that no mod setting changes; see "What claimed land does" above.
+- Tiles claimed beyond ring 3 can't be worked or developed. This is an engine limit that no
+  mod setting changes; see "What claimed land does" above.
 - Ownership changes land a moment after the mod asks for them, so a claim appears in the
   mod's state one turn after the tile changes color. If a game update breaks the ownership
   calls, debug logging shows `pending ... NOT APPLIED` lines.

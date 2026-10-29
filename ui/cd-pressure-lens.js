@@ -7,11 +7,10 @@
 // ownership. Self-registers from its own <UIScripts> entry in the HUD context (LensManager/WorldUI).
 
 import LensManager from "/core/ui/lenses/lens-manager.js";
-import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
 import { loadState, tileClaimBy } from "/cultural-diffusion/ui/cd-state.js";
 import { pressureVerdict, passCanAct } from "/cultural-diffusion/ui/cd-field.js";
 import { ownerAt, localPlayerId } from "/cultural-diffusion/ui/cd-plots.js";
-import { currentAgeKey } from "/cultural-diffusion/ui/cd-polity.js";
+import { ageContext } from "/cultural-diffusion/ui/cd-age-config.js";
 import { applyTunableOverrides, getPressureLensEnabled } from "/cultural-diffusion/ui/cd-settings.js";
 import { localCityList, cityListOf, claimInScope, claimGateBlocked } from "/cultural-diffusion/ui/cd-eligibility.js";
 import { isMajorPlayer, withCentreCache } from "/cultural-diffusion/ui/cd-borders.js";
@@ -44,14 +43,7 @@ function ageAdjustedCfg() {
   } catch (_) {
     /* Options layer unavailable in this context; fall back to CONFIG defaults. */
   }
-  let bar = 1;
-  try {
-    const age = CONFIG.byAge && CONFIG.byAge[currentAgeKey()];
-    if (age && typeof age.ownerBar === "number") bar = age.ownerBar;
-  } catch (_) {
-    /* ignore */
-  }
-  return { ...CONFIG, minimumOwner: CONFIG.minimumOwner * Math.max(0.1, bar) };
+  return ageContext().ageCfg;
 }
 
 function aliveIds() {

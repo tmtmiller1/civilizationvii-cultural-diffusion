@@ -19,7 +19,7 @@ import {
   plotsInRadius, ownerAt, isDistantLands, isWater, isImpassable, cityLoc, cityIdOf, allSettlements
 } from "/cultural-diffusion/ui/cd-plots.js";
 import { hexDistance } from "/cultural-diffusion/ui/cd-pressure.js";
-import { terrainCap } from "/cultural-diffusion/ui/cd-terrain.js";
+import { terrainCap, isMountainAt } from "/cultural-diffusion/ui/cd-terrain.js";
 import { currentAgeKey } from "/cultural-diffusion/ui/cd-polity.js";
 import { rivalClaimAllowed } from "/cultural-diffusion/ui/cd-borders.js";
 import { wouldStrandForeignUnit } from "/cultural-diffusion/ui/cd-units.js";
@@ -154,11 +154,46 @@ export function leavesGapBehind(loc, me, cities, inFlight, cfg) {
  * @returns {boolean} True when it isn't a gap.
  */
 function filledBehind(n, me, ctx) {
+  return terrainCap(n, ctx.cfg) < ctx.cfg.normalMax || nothingToClaim(n, me, ctx);
+}
+
+/**
+ * Whether culture has nothing left to take on a plot: it's the claimant's or claimed this pass, open water, impassable,
+ * an unowned tile left to the base game, or another owner's tile the claim gates refuse.
+ * @param {{x:number,y:number}} n Plot.
+ * @param {number} me Claimant id.
+ * @param {{cities:*[], inFlight:Set<string>|null, cfg:*}} ctx Claimant's cities, this pass's claims, live config.
+ * @returns {boolean} True when there's nothing to claim there.
+ */
+function nothingToClaim(n, me, ctx) {
   const owner = ownerAt(n);
   if (owner === me || (ctx.inFlight && ctx.inFlight.has(key(n.x, n.y)))) return true;
-  if (isWater(n) || isImpassable(n) || terrainCap(n, ctx.cfg) < ctx.cfg.normalMax) return true;
+  if (isWater(n) || isImpassable(n)) return true;
   if (owner < 0) return leftToBaseGame(n, owner, ctx.cities);
   return !rivalClaimAllowed(n, owner, me, ctx.cfg) || !!flipRefusedFor(plotInventory(n));
+}
+
+/**
+ * True when a mountain still has land around it that culture could claim first. A mountain goes after every
+ * neighbouring tile within the claimant's reach (flipMaxDistance) that culture can still take, marsh and desert
+ * included, so a range can end up as a hole in a border or split between two neighbours.
+ * @param {{x:number,y:number}} loc Plot.
+ * @param {number} me Claimant id.
+ * @param {{loc:{x:number,y:number}}[]} cities The claimant's cities.
+ * @param {Set<string>|null} inFlight Plot keys already claimed this pass.
+ * @param {*} cfg Live (age-adjusted) config.
+ * @returns {boolean} True when the mountain has to wait.
+ */
+export function mountainWaits(loc, me, cities, inFlight, cfg) {
+  if (!isMountainAt(loc.x, loc.y)) return false;
+  const reach = Math.max(1, cfg.flipMaxDistance);
+  for (const n of plotsInRadius(loc, 1)) {
+    if (n.x === loc.x && n.y === loc.y) continue;
+    const near = nearestCity(n, cities);
+    if (!near || near.d > reach) continue;
+    if (!nothingToClaim(n, me, { cities, inFlight, cfg })) return true;
+  }
+  return false;
 }
 
 /**
@@ -196,14 +231,14 @@ export function claimInScope(loc, ctx) {
 /**
  * Whether a plot our culture has won is nevertheless blocked from being claimed: distant lands, the owner's
  * protection (safety mode, war, core protection including the minor-settlement floor), adjacency, a gap it would
- * leave behind, or a foreign unit this claim would strand. The per-city `maxDiffusionPlots` cap is the caller's,
- * because only the pass tracks claims in flight per city.
+ * leave behind, a mountain with land still to take around it, or a foreign unit this claim would strand. The per-city
+ * `maxDiffusionPlots` cap is the caller's, because only the pass tracks claims in flight per city.
  * @param {{x:number,y:number}} loc Plot.
  * @param {number} owner Current owner (-1 = unowned).
  * @param {number} me Local player id.
  * @param {*} cfg Live (age-adjusted) config.
  * @param {{inFlight?:Set<string>|null, cities?:*[]}|null} [around] Plot keys already claimed this pass, and the
- *   claimant's cities; without the cities the gap test is skipped.
+ *   claimant's cities; without the cities the gap and mountain tests are skipped.
  * @returns {string|null} A short reason, or null when the claim may go ahead.
  */
 export function claimGateBlocked(loc, owner, me, cfg, around) {
@@ -216,20 +251,24 @@ export function claimGateBlocked(loc, owner, me, cfg, around) {
     if (refused) return refused;
   }
   if (districtTransferPaused(loc, owner)) return "age-transition";
-  const apart = contiguityBlocked(loc, me, cfg, around);
-  if (apart) return apart;
+  const shape = shapeBlocked(loc, me, cfg, around);
+  if (shape) return shape;
   if (wouldStrandForeignUnit(loc, me, around ? around.inFlight : null)) return "would-strand-a-unit";
   return null;
 }
 
 /**
- * The Contiguous border gates: the tile touches the claimant's land and leaves no gap behind it (leavesGapBehind).
+ * The gates on the border's shape. With Contiguous border on, the tile touches the claimant's land and leaves no gap
+ * behind it (leavesGapBehind). Always, a mountain waits for the land around it (mountainWaits).
  * @returns {string|null} A short reason, or null.
  */
-function contiguityBlocked(loc, me, cfg, around) {
-  if (!cfg.requireAdjacency) return null;
-  if (!adjacentToMe(loc, me)) return "not-adjacent";
+function shapeBlocked(loc, me, cfg, around) {
   const cities = around && around.cities;
-  if (cities && leavesGapBehind(loc, me, cities, around.inFlight || null, cfg)) return "gap-behind";
+  const inFlight = (around && around.inFlight) || null;
+  if (cfg.requireAdjacency) {
+    if (!adjacentToMe(loc, me)) return "not-adjacent";
+    if (cities && leavesGapBehind(loc, me, cities, inFlight, cfg)) return "gap-behind";
+  }
+  if (cities && mountainWaits(loc, me, cities, inFlight, cfg)) return "mountain-waits";
   return null;
 }

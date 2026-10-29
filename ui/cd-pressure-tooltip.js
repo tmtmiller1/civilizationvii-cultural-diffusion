@@ -8,13 +8,13 @@
 
 import LensManager from "/core/ui/lenses/lens-manager.js";
 import PlotCursor from "/core/ui/input/plot-cursor.js";
-import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
 import { loadState, tileClaimBy } from "/cultural-diffusion/ui/cd-state.js";
 import { pressureVerdict, estimateTurnsToFlip, passCanAct } from "/cultural-diffusion/ui/cd-field.js";
 import { localCityList, cityListOf, claimInScope, claimGateBlocked } from "/cultural-diffusion/ui/cd-eligibility.js";
 import { isMajorPlayer } from "/cultural-diffusion/ui/cd-borders.js";
 import { ownerAt, plotsInRadius, localPlayerId } from "/cultural-diffusion/ui/cd-plots.js";
-import { currentAgeKey } from "/cultural-diffusion/ui/cd-polity.js";
+import { stepMods, stepGate, sourceThreshold } from "/cultural-diffusion/ui/cd-terrain.js";
+import { ageContext } from "/cultural-diffusion/ui/cd-age-config.js";
 import { applyTunableOverrides } from "/cultural-diffusion/ui/cd-settings.js";
 import { civDisplayColor, civLabel } from "/cultural-diffusion/ui/cd-lens-colors.js";
 import { LENS } from "/cultural-diffusion/ui/cd-pressure-lens.js";
@@ -40,6 +40,10 @@ let _wired = false;
 let _curKey = /** @type {string|null} */ (null);
 /** @type {{at:number, field:Record<string, Record<string, number>>, cfg:*, dead:number[]}|null} */
 let _snap = null;
+// The field as it was a pass ago (and how many passes ago), kept across snapshots so the turns estimate can read how
+// fast the tiles beyond its patch are still rising; without it a tile levelling off a hair under the bar while the
+// border behind it fills in would read "stalled" and then flip a few turns later.
+let _trend = null;
 
 function esc(s) {
   return String(s == null ? "" : s)
@@ -167,16 +171,22 @@ function ageAdjustedCfg() {
   try {
     applyTunableOverrides();
   } catch (_) {
-    /* Options layer unavailable; fall back to CONFIG defaults. */
+    /* Options layer unavailable in this context; fall back to CONFIG defaults. */
   }
-  let bar = 1;
-  try {
-    const age = CONFIG.byAge && CONFIG.byAge[currentAgeKey()];
-    if (age && typeof age.ownerBar === "number") bar = age.ownerBar;
-  } catch (_) {
-    /* ignore */
-  }
-  return { ...CONFIG, minimumOwner: CONFIG.minimumOwner * Math.max(0.1, bar) };
+  return ageContext().ageCfg;
+}
+
+/**
+ * The pass before this one's field, for the rise of a tile per pass. Shifts when the state's pass counter moves.
+ * @returns {{field:Record<string, Record<string, number>>, passes:number}|null} The earlier field and how many
+ *   passes ago it was, or null before a second pass has been seen.
+ */
+function rememberTrend(field, state) {
+  const mono = state && typeof state.monoTurn === "number" ? state.monoTurn : null;
+  if (mono == null) return null;
+  if (!_trend || _trend.mono !== mono) _trend = { mono, field, prev: _trend ? _trend : null };
+  const prev = _trend.prev;
+  return prev && mono > prev.mono ? { field: prev.field, passes: mono - prev.mono } : null;
 }
 
 function aliveIds() {
@@ -223,7 +233,7 @@ function snapshot() {
   const cfg = ageAdjustedCfg();
   const me = localPlayerId();
   _snap = { at: now, field, claims, me, cfg, state, dead: deadOwnersOf(field, aliveIds()),
-    ctx: { me, cities: localCityList(me), state, cfg } };
+    ctx: { me, cities: localCityList(me), state, cfg }, trend: rememberTrend(field, state) };
   return _snap;
 }
 
@@ -245,25 +255,51 @@ function lensActive() {
   }
 }
 
-/** The leader's largest stock among a plot's neighbors (for the turns estimate). */
-function strongestNeighborStock(field, plot, leader) {
-  let best = 0;
+/**
+ * The patch of field the turns estimate projects (cd-field estimateTurnsToFlip): the leader's stock on the plot (node
+ * 0) and every tile within two of it, the ring beyond held but for its rise over the last pass, and each step onto a
+ * moving tile with its terrain, river and road modifiers and its crossing gate.
+ */
+function patchAround(field, plot, leader, cfg, trend) {
   const civ = String(leader);
-  for (const n of plotsInRadius(plot, 1)) {
-    if (n.x === plot.x && n.y === plot.y) continue;
-    const row = field[n.x + "," + n.y];
-    const v = row && row[civ];
-    if (typeof v === "number" && v > best) best = v;
+  const index = new Map();
+  const nodes = [];
+  const locs = [];
+  const stockOf = (f, k) => { const v = f && f[k] && f[k][civ]; return typeof v === "number" ? v : 0; };
+  const add = (l, fixed) => {
+    const k = l.x + "," + l.y;
+    if (index.has(k)) return;
+    index.set(k, nodes.length);
+    locs.push(l);
+    const value = stockOf(field, k);
+    // A held tile keeps rising at the rate it rose over the last pass(es), the way the field behind a frontier does
+    // while it fills in; a tile that fell, or has no earlier reading, is held where it is.
+    const rise = fixed && trend ? Math.max(0, (value - stockOf(trend.field, k)) / Math.max(1, trend.passes)) : 0;
+    nodes.push({ value, threshold: sourceThreshold(l, cfg), fixed, rise });
+  };
+  add(plot, false);
+  for (const l of plotsInRadius(plot, 2)) add(l, false);
+  for (const l of plotsInRadius(plot, 3)) add(l, true);
+  const links = [];
+  for (let to = 0; to < nodes.length; to++) {
+    if (nodes[to].fixed) continue;
+    for (const n of plotsInRadius(locs[to], 1)) {
+      const from = index.get(n.x + "," + n.y);
+      if (from === undefined || from === to) continue;
+      // The step as it is once the source clears its crossing gate, and the gate: a neighbour rising past a coast or
+      // desert gate starts feeding the tile partway through the projection, as it will in the field.
+      links.push({ from, to, mods: stepMods(n, locs[to], Infinity, cfg), gate: stepGate(n, locs[to], cfg) });
+    }
   }
-  return best;
+  return { nodes, links, locs };
 }
 
 function amt(v) {
   return String(Math.round(v));
 }
 
-function turnsText(verdict, field, plot, cfg) {
-  const turns = estimateTurnsToFlip(verdict, strongestNeighborStock(field, plot, verdict.leader), cfg);
+function turnsText(verdict, field, plot, cfg, trend) {
+  const turns = estimateTurnsToFlip(verdict, patchAround(field, plot, verdict.leader, cfg, trend), cfg);
   if (turns == null) return null;
   if (turns === 0) return t("LOC_CD_PRESSURE_READY", "ready to flip");
   if (!isFinite(turns)) return t("LOC_CD_PRESSURE_STALLED", "stalled");
@@ -343,7 +379,7 @@ function resolve(plot) {
       name: t("LOC_CD_PRESSURE_PROGRESS", "Capture progress"),
       value: Math.round(v.progress * 100) + "%"
     });
-    const turns = turnsText(v, snap.field, plot, snap.cfg);
+    const turns = turnsText(v, snap.field, plot, snap.cfg, snap.trend);
     if (turns) rows.push({ color: "transparent", name: t("LOC_CD_PRESSURE_TURNS", "At current pace"), value: turns });
   }
   return { title: t("LOC_CD_PRESSURE_TITLE", "Cultural Pressure"), rows };
@@ -452,7 +488,9 @@ function wire() {
 }
 
 /** Introspection for the in-game harness (devtools/harness), which checks the shipped logic directly. */
-export const __test = { resolve, css, clearSnapshot: () => { _snap = null; } };
+export const __test = {
+  resolve, css, patchAround, lastTrend: () => (_snap && _snap.trend) || null, clearSnapshot: () => { _snap = null; }
+};
 
 // self-registration (runs on UIScript load, in the HUD context)
 try {

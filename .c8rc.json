@@ -11,6 +11,7 @@
     "ui/cd-field.js",
     "ui/cd-civ-tuning.js",
     "ui/cd-calibration.js",
+    "ui/cd-age-config.js",
     "ui/cd-pass.js",
     "ui/cd-recede.js",
     "ui/cd-diagnostics.js",

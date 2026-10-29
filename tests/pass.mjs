@@ -375,6 +375,57 @@ seedState({ field: cornerField });
 for (let i = 0; i < 3; i++) runPass();
 assert.equal(getTile(TARGET.x, TARGET.y).owner, ME, "a ring-4 corner behind a mountain is claimed after its neighbours");
 
+// A mountain goes after the land around it. With strong culture on the peak and nothing around it yet, it waits; once
+// its neighbours are won it follows them. Neighbours past flipMaxDistance, or that culture can't take, don't hold it.
+{
+  const peaks = new Set();
+  GameplayMap.isMountain = (x, y) => peaks.has(tk(x, y));
+  const mountainAt = (p) => { impassable.add(tk(p.x, p.y)); peaks.add(tk(p.x, p.y)); };
+  const around = neighborsOf(TARGET).filter((n) => hexDistance(CENTER, n) >= 4);
+  const ring5 = around.filter((n) => hexDistance(CENTER, n) === 5);
+  assert.ok(ring5.length >= 1, "fixture: the ring-4 peak has ring-5 land behind it");
+
+  reset(); mountainAt(TARGET);
+  seedState({ field: { [tk(TARGET.x, TARGET.y)]: mature() } });
+  runPass();
+  assert.equal(getTile(TARGET.x, TARGET.y).owner, -1, "a mountain with open land around it waits, however strong");
+
+  reset(); mountainAt(TARGET);
+  const field = { [tk(TARGET.x, TARGET.y)]: mature() };
+  for (const n of around) field[tk(n.x, n.y)] = mature();
+  seedState({ field });
+  runPass();
+  assert.equal(getTile(TARGET.x, TARGET.y).owner, -1, "...and still waits while the land behind it is going");
+  assert.ok(around.every((n) => getTile(n.x, n.y).owner === ME), "...which is claimed past the peak");
+  runPass();
+  assert.equal(getTile(TARGET.x, TARGET.y).owner, ME, "the mountain follows once the land around it is ours");
+
+  reset(); mountainAt(TARGET);
+  const near = { [tk(TARGET.x, TARGET.y)]: mature() };
+  for (const n of around) if (hexDistance(CENTER, n) === 4) near[tk(n.x, n.y)] = mature();
+  seedState({ field: near });
+  CONFIG.flipMaxDistance = 4;
+  runPass(); runPass();
+  CONFIG.flipMaxDistance = 6;
+  assert.equal(getTile(TARGET.x, TARGET.y).owner, ME, "land past flipMaxDistance doesn't hold a mountain back");
+
+  reset(); mountainAt(TARGET);
+  for (const n of around) { const t = getTileMut(n.x, n.y); t.owner = RIVAL; t.city = RIVAL_CITY_ID; }
+  atWarWithRival = true;
+  seedState({ field: { [tk(TARGET.x, TARGET.y)]: mature() } });
+  runPass();
+  assert.equal(getTile(TARGET.x, TARGET.y).owner, ME, "nor does a rival's land culture can't take");
+
+  reset(); mountainAt(TARGET);
+  const { claimGateBlocked } = await import("/cultural-diffusion/ui/cd-eligibility.js");
+  assert.equal(claimGateBlocked(TARGET, -1, ME, CONFIG, { cities: [{ loc: CENTER }] }), "mountain-waits",
+    "the lens and hover readout get the same answer");
+  impassable.add(tk(HOLE.x, HOLE.y));
+  assert.equal(claimGateBlocked(HOLE, -1, ME, CONFIG, { cities: [{ loc: CENTER }] }), null,
+    "an impassable tile that isn't a mountain (a natural wonder) isn't held by this rule");
+  delete GameplayMap.isMountain;
+}
+
 // Culture, not distance, decides the order: a strong ring-4 tile goes before a weak ring-3 tile in another direction.
 const WEST3 = { x: 7, y: 10 };
 assert.equal(hexDistance(CENTER, WEST3), 3, "fixture: WEST3 is ring-3");

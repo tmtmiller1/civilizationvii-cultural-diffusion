@@ -26,14 +26,14 @@
         <!-- Overview (section front page) -->
         <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_TITLE"><Text>Cultural Diffusion</Text></Row>
         <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_CONTENT_PARA_1"><Text>Each tile near your cities stores how much [icon:YIELD_CULTURE] Culture every civilization has on it. Each turn, cities add culture to their own tile, culture spreads to neighboring tiles, and every tile loses some.</Text></Row>
-        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_CONTENT_PARA_2"><Text>When your culture on a tile beyond a city's third ring is large enough, you claim the tile. Borders grow slowly, mostly from the mid-game on, and can take frontier tiles from rivals whose culture there is much weaker.</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_CONTENT_PARA_2"><Text>When your culture on a tile is large enough, you claim the tile. Borders grow slowly outward from your cities, mostly from the mid-game on, and can take frontier tiles from rivals whose culture there is much weaker.</Text></Row>
         <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_WHERE_TITLE"><Text>In Game</Text></Row>
         <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_WHERE_PARA_1"><Text>[BLIST][LI][B]Cultural Pressure lens[/B] (lens menu or Shift+C): shades tiles about to change hands. See [B]Cultural Pressure Lens[/B].[LI][B]Notifications[/B]: when you claim territory, or lose a tile to another civilization.[LI][B]Options, Add-ons, Cultural Diffusion[/B]: intensity and all switches. See [B]Options &amp; Presets[/B].[/LIST]</Text></Row>
 
         <!-- Questions & Answers -->
         <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_TITLE"><Text>Questions &amp; Answers</Text></Row>
         <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_NOTHING_TITLE"><Text>Why haven't my borders grown?</Text></Row>
-        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_NOTHING_PARA_1"><Text>A city needs a large, steady culture before it reaches its fourth ring. Early-game cities usually claim nothing. The lens shows which tiles you are winning and how many turns each needs. See [B]Pace &amp; Claimed Land[/B].</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_NOTHING_PARA_1"><Text>A city needs a large, steady culture before it claims land the game hasn't given it. Early-game cities usually claim nothing. The lens shows which tiles you are winning and how many turns each needs. See [B]Pace &amp; Claimed Land[/B].</Text></Row>
         <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_WORK_TITLE"><Text>Can my cities work claimed tiles?</Text></Row>
         <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_WORK_PARA_1"><Text>No. Cities work tiles only within three rings, and claimed tiles are farther out. They count as your territory and block rival settlers.</Text></Row>
         <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_AILAND_TITLE"><Text>Can the AI take my land?</Text></Row>
@@ -59,7 +59,7 @@
         <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_TITLE"><Text>Terrain &amp; Rivers</Text></Row>
         <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_CONTENT_PARA_1"><Text>The tile culture moves onto decides how well it spreads. Effects on the same tile stack.</Text></Row>
         <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROUGH_TITLE"><Text>Rough Ground</Text></Row>
-        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROUGH_PARA_1"><Text>From easiest to hardest:[BLIST][LI][B]Forest, taiga[/B]: slight slowdown.[LI][B]Hills[/B]: moderate slowdown.[LI][B]Tundra[/B]: moderate slowdown; needs a stronger source to cross.[LI][B]Desert[/B]: heavy slowdown.[LI][B]Rainforest, marsh[/B]: heavy slowdown; only a strong source crosses.[LI][B]Mountains[/B]: almost impassable. Culture on a peak needs 7.5 times the usual amount to spread off it.[/LIST]</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROUGH_PARA_1"><Text>From easiest to hardest:[BLIST][LI][B]Forest, taiga[/B]: slight slowdown.[LI][B]Hills[/B]: moderate slowdown.[LI][B]Tundra[/B]: moderate slowdown; needs a stronger source to cross.[LI][B]Desert[/B]: heavy slowdown.[LI][B]Rainforest, marsh[/B]: heavy slowdown; only a strong source crosses.[LI][B]Mountains[/B]: almost impassable. Culture on a peak needs 7.5 times the usual amount to spread off it. A mountain is claimed only once the land around it is yours, so a range can stay a gap in your border or end up split with a neighbor.[/LIST]</Text></Row>
         <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROADS_TITLE"><Text>Roads</Text></Row>
         <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROADS_PARA_1"><Text>Between two road tiles, culture spreads twice as fast and farther.</Text></Row>
         <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_RIVERS_TITLE"><Text>Rivers</Text></Row>
@@ -71,7 +71,7 @@
         <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_TITLE"><Text>Claiming Tiles</Text></Row>
         <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_CONTENT_PARA_1"><Text>A claimed tile joins your nearest city.</Text></Row>
         <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_RULES_TITLE"><Text>Requirements</Text></Row>
-        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_RULES_PARA_1"><Text>[BLIST][LI]Your culture is the highest on the tile.[LI]It is at least 300 (375 in Exploration, 480 in Modern).[LI]If a rival owns the tile, their culture is below two thirds of yours.[LI]The tile is within six tiles of your city and beyond its third ring.[LI]The tile touches your land (Contiguous border only option).[/LIST]</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_RULES_PARA_1"><Text>[BLIST][LI]Your culture is the highest on the tile.[LI]It is at least 300 (375 in Exploration, 480 in Modern).[LI]If a rival owns the tile, their culture is below two thirds of yours.[LI]The tile is within six tiles of your city. An unowned tile within three tiles of two of your settlements is left for the game to hand out.[LI]The tile touches your land, and the tiles between it and your city are already yours (Contiguous border only option). Water, mountains, marsh, rainforest, desert and land culture can't take don't hold it back.[LI]A mountain is claimed only once the land around it is yours.[/LIST]</Text></Row>
         <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_TITLE"><Text>Protected Tiles</Text></Row>
         <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_1"><Text>The Rival city protection option sets how much of a rival city is safe from tile claims: the center and its first ring, the center only (default), or no ring. A center never changes hands as a tile; it goes only with its whole settlement. See [B]Settlement Flips[/B].</Text></Row>
         <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_2"><Text>City-states and independent peoples always keep all their land.</Text></Row>
@@ -184,7 +184,7 @@
 
         <!-- Game Concepts bridge page -->
         <Row Tag="LOC_PEDIA_CONCEPTS_PAGE_CD_CULTURAL_BORDERS_TITLE"><Text>Cultural Borders (Mod)</Text></Row>
-        <Row Tag="LOC_PEDIA_CONCEPTS_PAGE_CD_CULTURAL_BORDERS_CHAPTER_CONTENT_PARA_1"><Text>With the Cultural Diffusion mod, culture spreads from cities tile by tile and can extend borders past a city's third ring, including into rival frontier tiles. Rules are in the [B]Cultural Diffusion[/B] tab.</Text></Row>
+        <Row Tag="LOC_PEDIA_CONCEPTS_PAGE_CD_CULTURAL_BORDERS_CHAPTER_CONTENT_PARA_1"><Text>With the Cultural Diffusion mod, culture spreads from cities tile by tile and grows borders outward, including into rival frontier tiles. Rules are in the [B]Cultural Diffusion[/B] tab.</Text></Row>
 
         <!-- Search terms -->
         <Row Tag="LOC_PEDIA_CD_TERM_CULTURAL_DIFFUSION"><Text>Cultural Diffusion</Text></Row>

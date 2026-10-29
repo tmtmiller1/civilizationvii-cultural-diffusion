@@ -68,26 +68,100 @@ const cfg = {
 
 // estimateTurnsToFlip
 {
+  const open = { blocked: false, bonus: 0, malus: 0, maxFactor: 1 };
+  // A patch of the plot (node 0) and held neighbours feeding it, one per [value, maxFactor].
+  const patchOf = (...feeds) => ({
+    nodes: [{ value: 0 }, ...feeds.map(([value, , threshold = 100]) => ({ value, threshold, fixed: true }))],
+    links: feeds.map(([, maxFactor = 1], i) => ({ from: i + 1, to: 0, mods: { ...open, maxFactor } }))
+  });
+  const feed = (value, maxFactor = 1) => patchOf([value, maxFactor]);
+
   // Already decisive => 0 turns.
   const ready = pressureVerdict({ "7": 700, "3": 400 }, 3, [], cfg);
-  assert.equal(estimateTurnsToFlip(ready, 700, cfg), 0, "a ready flip is 0 turns");
+  assert.equal(estimateTurnsToFlip(ready, feed(700), cfg), 0, "a ready flip is 0 turns");
 
   // No pending flip => null.
   const none = pressureVerdict({ "3": 900 }, 3, [], cfg);
-  assert.equal(estimateTurnsToFlip(none, 900, cfg), null, "no pending flip => null");
+  assert.equal(estimateTurnsToFlip(none, feed(900), cfg), null, "no pending flip => null");
 
   // Growing: a strong neighbor feeds the tile, so it should flip in a finite, positive number of turns.
   const growing = pressureVerdict({ "5": 150 }, -1, [], cfg); // needs to reach 300
-  const turns = estimateTurnsToFlip(growing, 6000, cfg);      // strong neighbor delivering culture
+  const turns = estimateTurnsToFlip(growing, feed(6000), cfg);
   assert.ok(Number.isFinite(turns) && turns > 0, "a fed frontier tile flips in finite turns");
 
   // Stalled: no neighbor support, decay dominates => Infinity.
-  const stalled = estimateTurnsToFlip(growing, 0, cfg);
-  assert.equal(stalled, Infinity, "no neighbor support => stalled (Infinity)");
+  assert.equal(estimateTurnsToFlip(growing, { nodes: [{ value: 150 }], links: [] }, cfg), Infinity,
+    "no neighbor support => stalled (Infinity)");
+  assert.equal(estimateTurnsToFlip(growing, patchOf([6000, 1, 7500]), cfg), Infinity,
+    "a neighbour under its source threshold (a mountain) feeds nothing");
+
+  // Levelling off: 2400 next door across a river onto a hill (step maxFactor 0.21) holds the tile at ~202, under the
+  // 300 bar. The estimate has to say so, and agree turn by turn with the field's own step.
+  const { diffusionDelivered, decayValue } = await import("/cultural-diffusion/ui/cd-field.js");
+  let v = 0;
+  for (let t = 0; t < 6; t++) { v = decayValue(v, cfg); v += diffusionDelivered(2400, v, { ...open, maxFactor: 0.21 }, cfg); }
+  assert.ok(v > 195 && v < 210, `fixture: the field levels off at ${v}`);
+  const levelled = pressureVerdict({ "5": v }, -1, [], cfg);
+  assert.equal(estimateTurnsToFlip(levelled, feed(2400, 0.21), cfg), Infinity, "a tile levelled off under the bar is stalled");
+  assert.equal(estimateTurnsToFlip(levelled, feed(2400, 1), cfg), 1, "...where open ground from the same neighbour flips next turn");
+
+  // The projection matches the field step: count the field's own turns from 0 on open ground.
+  let w = 0, fieldTurns = 0;
+  while (w < 300) { w = decayValue(w, cfg); w += diffusionDelivered(1000, w, open, cfg); fieldTurns++; }
+  assert.equal(estimateTurnsToFlip(pressureVerdict({ "5": 0.001 }, -1, [], cfg), feed(1000), cfg), fieldTurns,
+    "the estimate counts the same turns the field takes");
+
+  // The field takes the best cap among the neighbours: an open neighbour with less culture can still carry it over.
+  const two = pressureVerdict({ "5": 200 }, -1, [], cfg);
+  assert.equal(estimateTurnsToFlip(two, feed(2400, 0.21), cfg), Infinity, "fixture: one hill-across-river feed stalls");
+  assert.ok(Number.isFinite(estimateTurnsToFlip(two, patchOf([2400, 0.21], [800, 1]), cfg)),
+    "a second, open neighbour lifts it over");
+
+  // A front still rising carries the plot over. The neighbour holds 200, whose cap alone would level the plot at 80;
+  // a held 20000 behind it lifts the neighbour, and the neighbour the plot (the mountain at 35% in the 2026-10-29 lab
+  // run read "stalled" one pass before it was claimed).
+  const front = {
+    nodes: [{ value: 0 }, { value: 200, threshold: 100 }, { value: 20000, threshold: 100, fixed: true }],
+    links: [{ from: 1, to: 0, mods: open }, { from: 2, to: 1, mods: open }]
+  };
+  const behind = pressureVerdict({ "5": 80 }, -1, [], cfg);
+  assert.equal(estimateTurnsToFlip(behind, { nodes: front.nodes.slice(0, 2).map((n) => ({ ...n, fixed: true })),
+    links: front.links.slice(0, 1) }, cfg), Infinity, "fixture: with the neighbour held, the plot stalls");
+  const carried = estimateTurnsToFlip(behind, front, cfg);
+  assert.ok(Number.isFinite(carried) && carried > 1, `a rising front carries the plot over (${carried} turns)`);
+
+  // A step opens once its source rises past the crossing gate. The neighbour holds 200, under a coast gate of 350, so
+  // the plot gets nothing yet; a held 20000 behind it lifts it past the gate (coast tiles and a desert oasis read
+  // "stalled" for 1-4 passes before flipping in the 2026-10-29 lab run, when the gate was read once at today's stock).
+  const gated = {
+    nodes: [{ value: 0 }, { value: 200, threshold: 100 }, { value: 20000, threshold: 100, fixed: true }],
+    links: [{ from: 1, to: 0, mods: open, gate: 350 }, { from: 2, to: 1, mods: open }]
+  };
+  const shut = { nodes: gated.nodes.map((n) => ({ ...n, fixed: n.fixed || false })), links: gated.links.slice(0, 1) };
+  shut.nodes[1] = { ...shut.nodes[1], fixed: true };
+  assert.equal(estimateTurnsToFlip(behind, shut, cfg), Infinity, "fixture: a neighbour held under its gate feeds nothing");
+  assert.equal(estimateTurnsToFlip(behind, { nodes: [{ value: 0 }, { value: 800, threshold: 100, fixed: true }],
+    links: [{ from: 1, to: 0, mods: open, gate: 1000 }] }, cfg), Infinity,
+  "a held 800 under a gate of 1000 feeds nothing, though its open cap (320) would clear the bar");
+  const opened = estimateTurnsToFlip(behind, gated, cfg);
+  assert.ok(Number.isFinite(opened) && opened > 1, `a neighbour rising past its gate carries the plot over (${opened} turns)`);
+
+  // A held tile carries its rise. 2458 next door on desert (cap 0.3) levels the plot at 295, five under the bar, and
+  // held still that's "stalled"; rising 60 a pass, as a border filling in behind the plot does, it lifts the plot
+  // over ((63,10) in the 2026-10-29 lab run sat at 295 reading "stalled" and was claimed two passes later).
+  const nearBar = pressureVerdict({ "5": 290 }, -1, [], cfg);
+  const desert = { ...open, maxFactor: 0.3 };
+  assert.equal(estimateTurnsToFlip(nearBar, { nodes: [{ value: 0 }, { value: 2458, threshold: 100, fixed: true }],
+    links: [{ from: 1, to: 0, mods: desert }] }, cfg), Infinity, "fixture: held at 2458 the plot levels off under the bar");
+  const lifted = estimateTurnsToFlip(nearBar, { nodes: [{ value: 0 }, { value: 2458, threshold: 100, fixed: true, rise: 60 }],
+    links: [{ from: 1, to: 0, mods: desert }] }, cfg);
+  assert.ok(Number.isFinite(lifted) && lifted >= 1 && lifted <= 5, `a feeder still rising carries it over (${lifted} turns)`);
+  assert.equal(estimateTurnsToFlip(nearBar, { nodes: [{ value: 0 }, { value: 2458, threshold: 100, fixed: true, rise: -60 }],
+    links: [{ from: 1, to: 0, mods: desert }] }, cfg), Infinity, "a feeder that fell is held, not carried down");
 
   // Null verdict guard.
-  assert.equal(estimateTurnsToFlip(null, 100, cfg), null, "null verdict => null");
-  assert.equal(estimateTurnsToFlip({ leader: -1 }, 100, cfg), null, "no leader => null");
+  assert.equal(estimateTurnsToFlip(null, feed(100), cfg), null, "null verdict => null");
+  assert.equal(estimateTurnsToFlip({ leader: -1 }, feed(100), cfg), null, "no leader => null");
 }
 
 // passCanAct: the lens, readout, pass and recede share one "can the pass act here" test

@@ -256,25 +256,60 @@ function clamp01(v) {
 }
 
 /**
- * A rough one-step-ahead estimate of turns until a tile flips to its leader: net gain next turn =
- * diffusion from the leader's strongest neighbor on open ground minus this tile's decay (terrain
- * mods, injection and the cap approach are ignored). Pure. Returns null when there is no pending
- * flip, 0 when already over the bar, and Infinity when the front is stalled (net gain <= 0).
+ * Turns until a tile flips to its leader, projected on the patch of field around it. The field's own turn is repeated
+ * on the plot and the tiles near it (decay, then each neighbour adds up to its cap on that tile: its stock x normalMax
+ * x the step's maxFactor), with the edge of the patch held where it is and no tile but the plot allowed to fall. So a
+ * plot behind a front that's still rising is carried over by it, and a plot whose neighbours have stopped levels off
+ * where the field does; a hill in the desert sitting at half the bar reads as stalled, not "~1 turn". A held tile
+ * carries its `rise` each turn (how fast it has been rising), so a border still filling in behind the plot lifts
+ * it the way the field will. Injection and the diaspora bonus are left out. Pure. Returns null when there is no
+ * pending flip, 0 when already over the bar, and Infinity when the patch stops moving with the plot under the bar
+ * or it doesn't get there within `horizon` turns.
  * @param {{leader:number, leaderValue:number, target:number, willFlip:boolean}} verdict A pressureVerdict.
- * @param {number} strongestNeighborLeaderStock The leader's largest stock among the tile's neighbors.
+ * @param {{nodes:{value:number, threshold?:number, fixed?:boolean, rise?:number}[],
+ *   links:{from:number, to:number, mods:StepMods, gate?:number}[]}} patch The leader's stock on the plot (node 0) and
+ *   the tiles around it, each tile's source threshold and whether it's held, and the steps between them with their
+ *   modifiers and the source stock each needs to cross.
  * @param {import("/cultural-diffusion/ui/cd-config.js").CdConfig} cfg Live config.
+ * @param {number} [horizon] Turns projected before calling it stalled.
  * @returns {number|null} Estimated turns, 0 (ready), Infinity (stalled), or null (no pending flip).
  */
-export function estimateTurnsToFlip(verdict, strongestNeighborLeaderStock, cfg) {
+export function estimateTurnsToFlip(verdict, patch, cfg, horizon = 50) {
   if (!verdict || verdict.leader < 0 || verdict.leader === verdict.incumbentOwner) return null;
-  const remaining = verdict.target - verdict.leaderValue;
-  if (verdict.willFlip || remaining <= 0) return 0;
-  const open = { blocked: false, bonus: 0, malus: 0, maxFactor: 1 };
-  const delivered = diffusionDelivered(Math.max(0, num(strongestNeighborLeaderStock)), verdict.leaderValue, open, cfg);
-  const decayLoss = verdict.leaderValue - decayValue(verdict.leaderValue, cfg);
-  const net = delivered - decayLoss;
-  if (net <= 0) return Infinity;
-  return Math.ceil(remaining / net);
+  if (verdict.willFlip || verdict.target - verdict.leaderValue <= 0) return 0;
+  const { nodes, links } = patchParts(patch);
+  let v = nodes.map((n) => Math.max(0, num(n.value)));
+  v[0] = Math.max(0, num(verdict.leaderValue));
+  for (let turn = 1; turn <= horizon; turn++) {
+    const next = patchStep(v, nodes, links, cfg);
+    if (next[0] >= verdict.target) return turn;
+    if (!moved(v, next)) return Infinity;
+    v = next;
+  }
+  return Infinity;
+}
+
+/** A patch's nodes and links, with a lone plot standing in for a missing one. */
+function patchParts(patch) {
+  const nodes = patch && Array.isArray(patch.nodes) && patch.nodes.length ? patch.nodes : [{ value: 0 }];
+  return { nodes, links: patch && Array.isArray(patch.links) ? patch.links : [] };
+}
+
+/** One field turn on the patch: decay, deliver along each link from last turn's stock, then hold the floors. */
+function patchStep(v, nodes, links, cfg) {
+  const next = v.map((x, i) => (nodes[i].fixed ? x + Math.max(0, num(nodes[i].rise, 0)) : decayValue(x, cfg)));
+  for (const l of links) {
+    if (nodes[l.to].fixed || !(v[l.from] > Math.max(num(nodes[l.from].threshold, 0), num(l.gate, 0)))) continue;
+    next[l.to] += diffusionDelivered(v[l.from], next[l.to], l.mods, cfg);
+  }
+  for (let i = 1; i < next.length; i++) if (next[i] < v[i]) next[i] = v[i];
+  return next;
+}
+
+/** Whether any tile in the patch moved by half a point or more. */
+function moved(a, b) {
+  for (let i = 0; i < a.length; i++) if (Math.abs(b[i] - a[i]) >= 0.5) return true;
+  return false;
 }
 
 /** Test/introspection helpers. */

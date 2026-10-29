@@ -65,7 +65,7 @@ function num(v, d) {
 }
 
 /** Whether a plot is a mountain (isMountain, else the terrain type name). @param {number} x @param {number} y */
-function isMountainAt(x, y) {
+export function isMountainAt(x, y) {
   if (safe(() => GameplayMap?.isMountain?.(x, y), null) === true) return true;
   return terrainType(x, y).includes("MOUNTAIN");
 }
@@ -207,6 +207,36 @@ export function stepMods(src, dst, sourceValue, cfg) {
   return landStep(src, dst, dstRiver, sourceValue, cfg);
 }
 
+/** The crossing gates on a land step: the river crossing, then the destination's terrain, biome and feature. */
+function landGates(dst, dstRiver, river, cfg) {
+  return [river.cross].concat(dstRiver === "navigable" ? [] : crossingMods(dst.x, dst.y, cfg)).filter(Boolean);
+}
+
+/**
+ * The culture a source needs before a step from it carries anything: the highest crossing gate on the way in (the
+ * water gate onto open water, else the river crossing and the destination's terrain, biome and feature), 0 with none,
+ * Infinity when culture never crosses (open water without diffuseAcrossWater). Above it, stepMods is the same
+ * whatever the source holds, so a projection can open the step once the source rises past it.
+ * @param {{x:number,y:number}} src Source plot.
+ * @param {{x:number,y:number}} dst Neighbor plot.
+ * @param {import("/cultural-diffusion/ui/cd-config.js").CdConfig} cfg Live config.
+ * @returns {number} The source stock the step needs to be over.
+ */
+export function stepGate(src, dst, cfg) {
+  const base = Math.max(0, cfg.cultureThreshold);
+  const dstRiver = riverKind(dst.x, dst.y);
+  if (dstRiver !== "navigable" && isWater(dst)) {
+    if (!cfg.diffuseAcrossWater) return Infinity;
+    const wm = terrainType(dst.x, dst.y).includes("OCEAN") ? cfg.terrainOcean : cfg.terrainCoast;
+    return base * Math.max(0, wm.threshold);
+  }
+  let gate = 0;
+  for (const mod of landGates(dst, dstRiver, riverStep(src, dst, dstRiver, cfg), cfg)) {
+    gate = Math.max(gate, base * Math.max(0, mod.threshold));
+  }
+  return gate;
+}
+
 /**
  * Crossing result for a land or river destination: road and river-follow carry bonus, then the stacked
  * gates (a river crossing, plus the destination's terrain, biome and feature; a navigable channel has
@@ -219,9 +249,8 @@ function landStep(src, dst, dstRiver, sourceValue, cfg) {
   let malus = 0;
   let maxFactor = road.maxFactor * river.maxFactor;
 
-  const gates = [river.cross].concat(dstRiver === "navigable" ? [] : crossingMods(dst.x, dst.y, cfg));
   const gateBase = Math.max(0, cfg.cultureThreshold);
-  for (const mod of gates.filter(Boolean)) {
+  for (const mod of landGates(dst, dstRiver, river, cfg)) {
     if (sourceValue <= gateBase * Math.max(0, mod.threshold)) {
       // Below this terrain's crossing gate: culture cannot enter it yet.
       return { blocked: true, bonus: 0, malus: 0, maxFactor: 0 };

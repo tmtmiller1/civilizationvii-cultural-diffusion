@@ -16,7 +16,7 @@ globalThis.GameplayMap = {
 globalThis.GameInfo = { Terrains: { lookup: (k) => ({ TerrainType: terrainAt.get(k) || "" }) } };
 globalThis.RiverTypes = { NO_RIVER: 0 };
 
-const { stepMods } = await import("/cultural-diffusion/ui/cd-terrain.js");
+const { stepMods, stepGate } = await import("/cultural-diffusion/ui/cd-terrain.js");
 
 const cfg = {
   diffuseAcrossWater: true,
@@ -24,7 +24,8 @@ const cfg = {
   terrainCoast: { malus: 0.55, max: 0.30, threshold: 3.5 }, // gate = 350
   terrainOcean: { malus: 0.80, max: 0.12, threshold: 6.5 }, // gate = 650
   // land knobs (unused by the water path, present so a land step wouldn't throw)
-  roadBonus: 1, roadMax: 2.5, riverFollowBonus: 0.65, riverFollowMax: 1.8
+  roadBonus: 1, roadMax: 2.5, riverFollowBonus: 0.65, riverFollowMax: 1.8,
+  terrainHills: { malus: 0.15, max: 0.60, threshold: 1.5 } // gate = 150
 };
 
 const SRC = { x: 0, y: 0 };
@@ -49,6 +50,18 @@ assert.equal(oceanOpen.malus, 0.80, "ocean malus applied");
 // diffuseAcrossWater off => water is hard-blocked regardless of culture strength (legacy).
 const landOnly = { ...cfg, diffuseAcrossWater: false };
 assert.equal(stepMods(SRC, COAST, 100000, landOnly).blocked, true, "water blocked when diffuseAcrossWater is off");
+
+// stepGate names the stock each step opens at: blocked at the gate, open just over it, and never on water with
+// diffuseAcrossWater off. The hover's turns estimate opens a projected step there.
+const HILL = { x: 3, y: 0 }, FLAT = { x: 4, y: 0 };
+terrainAt.set(tk(HILL.x, HILL.y), "TERRAIN_HILL");
+for (const [dst, gate] of [[COAST, 350], [OCEAN, 650], [HILL, 150]]) {
+  assert.equal(stepGate(SRC, dst, cfg), gate, `gate onto ${terrainAt.get(tk(dst.x, dst.y))}`);
+  assert.equal(stepMods(SRC, dst, gate, cfg).blocked, true, `blocked at the gate (${gate})`);
+  assert.equal(stepMods(SRC, dst, gate + 1, cfg).blocked, false, `open just over the gate (${gate})`);
+}
+assert.equal(stepGate(SRC, FLAT, cfg), 0, "open ground has no gate");
+assert.equal(stepGate(SRC, COAST, landOnly), Infinity, "water never opens with diffuseAcrossWater off");
 
 // per-age water easing (waterEase)
 // Age stubs for the ramp: currentAgeKey reads Game.age; ageProgress reads Game.turn/maxTurns.

@@ -557,3 +557,54 @@ Scripts `cdh-lab-reparent-need.js` and `cdh-lab-reparent-heal.js`, seed 4242 lab
 | The heal, usual set | Same readings. Log `lab-reparent-heal-usual-set.json` |
 | The heal on an AI's tiles, both sides | AI player 5: capital (49,24), a town placed for it at (44,24), two capital ring-1 tiles bought by the town, (48,24) with a Farm. With ours set up the same way, one `runNow()` moved all four (`reparented: 4`); the AI's stayed player 5's, the Farm tile was rebuilt with a resolving district, and all four held through turn 7 after the AI's own turns. Logs `lab-reparent-heal-ai-vanilla.json`, `lab-reparent-heal-ai-usual-set.json` |
 | One pass per local turn, both sides | Yes. With `debug` saved through `cd-settings.js` `setDebug(true)`, UI.log had exactly one `pass (turn N)` line for each of turns 2 to 6 |
+
+## Blob growth: ring 3 before ring 4, no gaps behind, 2026-10-29
+
+Script `cdh-lab-blob.js`, seed 4242 lab games, 1.5.0, the repo build (637a1b0) copied into the deployed folder. Each
+pass seeds our culture at the capital (65,13) and its ring 1, calls `runNow()` and reads the map; a turn ends every
+second pass. Run 1 left the terrain alone; run 2 made (67,10) a mountain and (68,12) a marsh first, both ring 3. Each
+run once with Cultural Diffusion alone and once with the usual set (15 community mods); the two sides read the same.
+Logs `lab-blob-vanilla.json`, `lab-blob-usual.json`, `lab-blob-rough-vanilla.json`, `lab-blob-rough-usual.json`.
+
+| Test | Result |
+| --- | --- |
+| Ring 3 is claimed, and before ring 4 | Yes. Pass 1 took 8 ring-2 tiles, pass 2 the other 4, passes 3-6 every ring-3 land tile but one held by an independent (player 63). Ring 4 started on pass 7, after ring 3 was full (run 1, alone) |
+| The city each tile joins | Every claimed ring-2 to ring-4 tile's owning city was the capital (65536), its nearest settlement |
+| Gaps behind a claim | None of open land, either side, both runs. The one inward tile not ours was (62,13), the independent's, which the rule passes over on purpose; (62,12) behind it was claimed |
+| Lens and hover on a tile waiting on the land in front | (65,18), (66,18), (67,18), ring 5, blocked as `gap-behind`: not in the lens's tiles, and the hover showed our stock only, with no capture or turns rows. A claimable tile next to them showed "Capture progress" and "At current pace" |
+| Mountain and marsh go after the land around them | No, with this much culture. The marsh went on pass 2 at 447, ahead of the plain ring-3 tiles beside it, (68,13) and (68,14), on pass 3; the mountain went on pass 3 at 370 with the rest of ring 3. The land behind both went on passes 4-5. The terrain caps cut what reaches them, but the seed (24,000-60,000 at ring 1) is far above a normal game's, so both cleared the 300 bar anyway |
+| Rival-held ring 3 and 4, two settlements' shared tiles, AI claims, strong side reaching further | Not reached. The town placements (an AI town 4 east, ours 5 west) didn't land from the debugger, so neither rival tiles nor shared tiles existed and no AI claimed anything. Both sides stopped at ring 4 (ring 5 is mostly water here), so reach couldn't differ |
+
+The window captures in `working_screenshots/cd-blob-2026-10-28/` show the advisor picker over the map and aren't usable.
+A hover readout seen on the way: (65,17) sat at 68% with "~1 turn" from pass 9 to pass 16 while our culture there held
+steady, so the pace line can promise a turn that never comes once culture stops rising.
+
+## Mountain waits, and the pace line, 2026-10-29
+
+Same script and seed as "Blob growth", with (67,10) made a mountain and (68,12) a marsh, 14 passes, Cultural Diffusion
+alone and the usual set; the two sides read the same. Each read logs every tile the lens tints for us with its stock,
+terrain and pace line, and (65,17) with its neighbours. Logs `lab-pace-mountain-vanilla.json`,
+`lab-pace-mountain-usual.json` (the second build below).
+
+| Test | Result |
+| --- | --- |
+| The mountain waits for the land around it | The gate read `mountain-waits` on pass 1, with (67,11) and (66,10) open beside it; both went on pass 2, the gate cleared, and the mountain went on pass 3 at 370. Its stock was under the bar while it waited, and only water lies behind it, so this map doesn't show it held back over the bar |
+| Why (65,17) stood still | It's a hill on desert, whose caps let in a small share of a neighbour's culture: with (65,16) at 2016 it levelled at 161-169 |
+| Pace line, first build (neighbours held where they are) | (65,17) read "stalled" from pass 3 on. But tiles behind a rising front read "stalled" too: the mountain at 35% on pass 2, claimed on pass 3; (62,12), (64,17), (64,9), (65,9), (66,9) the same |
+| Pace line, second build (the tiles two out projected, the ring beyond held) | The mountain read "~2 turns" and went the next pass; (62,12) counted 5, 4, 2, 1 and went. 122 (alone) and 173 (usual set) "stalled" readings were on tiles that never reached the bar. Wrong: a few early readings on coast tiles (63,9), (63,10) and the oasis (63,14), which read "stalled" for 1-4 passes before counting down and going |
+| Hover cost | 0.7-1.8 ms a tile with the second build |
+| Captures | `lab popups clear` before and after moving the camera: no pop-up on any capture in `working_screenshots/cd-blob-2026-10-29-r2/`. The camera didn't move to the mountain (`Camera.lookAtPlot` returned nothing), so they show the capital's south coast |
+
+## The pace line on a tile levelling off just under the bar, 2026-10-29
+
+Same seeded game, 14 passes, Cultural Diffusion alone. The probe records, for (63,9), (63,10) and (63,14), the patch
+the estimate projects (`cd-pressure-tooltip.js` `__test.patchAround`), so a reading can be replayed offline with the
+real `estimateTurnsToFlip`. Log `lab-pace-rise-vanilla.json`; the replay script is in the session scratchpad.
+
+| Test | Result |
+| --- | --- |
+| Why the three tiles read "stalled" then flipped | Replayed: the estimate held every tile beyond its two-tile window at today's value, so (63,10)'s feeder (64,10) levelled at 2458 and the plot at 2458 x 0.4 x 0.3 = 294.9, five under the 300 bar, with nothing moving after turn 8. In the game the tiles beyond the window kept rising (here from the probe's seed; in a real game from the city's injection), so the real plot crept past 300 two passes later. The crossing gates, opened in the estimate the pass before, were not the cause |
+| Held tiles carried at their rise | The hover keeps the field from a pass ago; a held tile rises in the projection at the rate it rose. (63,9) and (63,10) read ~6, 6, 4, 3, 2, 1 and went on pass 11; (63,14) ~17, 16, 20, 5, 4, 2, 1 and went on pass 9; the mountain ~2 and went. No "stalled" reading on a tile that later flipped, 167 on tiles that never did |
+| Readings this run can't check | Long counts (~14 to ~44 turns) on far tiles in a 14-pass run, and one ~21 on (65,17) at pass 5 while a neighbour was briefly rising, back to "stalled" from pass 6 |
+| Age config | The hover and lens now read the pass's own age config (`cd-age-config.js`): bar, paced rates, eased water. Before, they adjusted the bar only |
+| Natural game, no seeding, 40 turns | Nothing to read: the idle human capital never tinted a tile. A real save with claims under way is the remaining check |

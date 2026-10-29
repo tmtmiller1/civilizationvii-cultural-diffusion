@@ -12,13 +12,13 @@ import {
   localPlayerId, mapDims, allSettlements, plotsInRadius, cityLoc,
   ownerAt, owningCityIdAt, isWater, isMultiplayer
 } from "/cultural-diffusion/ui/cd-plots.js";
-import { cultureOf, happinessOf, wonderCountOf, isCelebrating, currentAgeKey, prosperityOf, vitalityOf, populationOf } from "/cultural-diffusion/ui/cd-polity.js";
+import { cultureOf, happinessOf, wonderCountOf, isCelebrating, prosperityOf, vitalityOf, populationOf } from "/cultural-diffusion/ui/cd-polity.js";
 import { projectionOf, ethnicFactor } from "/cultural-diffusion/ui/cd-pressure.js";
 import { gatherCivMetrics } from "/cultural-diffusion/ui/cd-metrics.js";
 import { powerMultipliers } from "/cultural-diffusion/ui/cd-cpi.js";
 import { buildEthnicContext } from "/cultural-diffusion/ui/cd-ethnicity.js";
 import { civTuning } from "/cultural-diffusion/ui/cd-civ-tuning.js";
-import { agePace, mapSizeScale, ageProgress } from "/cultural-diffusion/ui/cd-calibration.js";
+import { ageContext, easeCrossing, effectiveWaterEase } from "/cultural-diffusion/ui/cd-age-config.js";
 import { stepMods, sourceThreshold } from "/cultural-diffusion/ui/cd-terrain.js";
 import { decayValue, diffusionDelivered, resolveOwner, passCanAct } from "/cultural-diffusion/ui/cd-field.js";
 import { injectStep, convertStep, ownerFloorStep } from "/cultural-diffusion/ui/cd-inject.js";
@@ -105,72 +105,6 @@ function buildRegion(cities, radius, inBounds) {
     }
   }
   return region;
-}
-
-const AGE_ORDER = ["ANTIQUITY", "EXPLORATION", "MODERN"];
-
-function ageWaterEase(ageKey) {
-  const a = CONFIG.byAge && CONFIG.byAge[ageKey];
-  return a && a.waterEase != null ? a.waterEase : 0;
-}
-
-/**
- * The waterEase to use right now: this age's anchor, optionally ramped continuously toward the
- * next age's anchor by progress through the current age (Game.turn / Game.maxTurns). So water
- * crossing improves smoothly across an age instead of stepping at the boundary.
- * @param {string} ageKey Current age key.
- * @returns {number} Effective waterEase in [0,1].
- */
-function effectiveWaterEase(ageKey) {
-  const cur = ageWaterEase(ageKey);
-  if (!CONFIG.waterEaseRamp) return cur;
-  const idx = AGE_ORDER.indexOf(ageKey);
-  const nextKey = (idx >= 0 && idx < AGE_ORDER.length - 1) ? AGE_ORDER[idx + 1] : ageKey;
-  const nxt = ageWaterEase(nextKey);
-  const t = Math.min(1, Math.max(0, ageProgress()));
-  return cur + (nxt - cur) * t;
-}
-
-/**
- * Per-age injection scaling + a time-re-paced copy of CONFIG. Diffusion/decay scale together, so
- * the reach extent is unchanged and only the speed of approach is re-timed.
- * @returns {{ageInject:number, pace:number, ageCfg:import("/cultural-diffusion/ui/cd-config.js").CdConfig}}
- */
-function ageContext() {
-  const ageKey = currentAgeKey();
-  const age = (CONFIG.byAge && CONFIG.byAge[ageKey]) || { injectionScale: 1, ownerBar: 1 };
-  const pace = agePace();
-  const mapScale = mapSizeScale();
-  const ageInject = Math.max(0, age.injectionScale != null ? age.injectionScale : 1) * mapScale;
-  const waterEase = effectiveWaterEase(ageKey);
-  const ageCfg = {
-    ...CONFIG,
-    minimumOwner: CONFIG.minimumOwner * Math.max(0.1, age.ownerBar != null ? age.ownerBar : 1),
-    diffusionRate: CONFIG.diffusionRate * pace,
-    decayRate: CONFIG.decayRate * pace,
-    decayFlat: CONFIG.decayFlat * pace,
-    // Water crossing eases as sea travel matures (0 = full malus, 1 = no water penalty).
-    terrainCoast: easeCrossing(CONFIG.terrainCoast, waterEase),
-    terrainOcean: easeCrossing(CONFIG.terrainOcean, waterEase)
-  };
-  return { ageInject, pace, ageCfg };
-}
-
-/**
- * Ease a water crossing modifier toward "free" by `ease` in [0,1]: 0 returns the modifier
- * unchanged (full malus), 1 returns {malus:0, max:1, threshold:0} (no water penalty at all).
- * @param {import("/cultural-diffusion/ui/cd-config.js").CrossMod} m Base crossing modifier.
- * @param {number} ease Easing fraction.
- * @returns {import("/cultural-diffusion/ui/cd-config.js").CrossMod} Eased modifier.
- */
-function easeCrossing(m, ease) {
-  const e = Math.max(0, Math.min(1, ease));
-  if (!m) return m;
-  return {
-    malus: m.malus * (1 - e),
-    max: m.max + (1 - m.max) * e,   // toward 1.0 = no neighbor-cap reduction
-    threshold: m.threshold * (1 - e) // toward 0 = culture crosses at any strength
-  };
 }
 
 /**

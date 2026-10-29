@@ -9,12 +9,12 @@
         <Replace Tag="LOC_PEDIA_CD_GROUP_INTERFACE_TITLE" Language="zh_Hans_CN"><Text>界面与选项</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_TITLE" Language="zh_Hans_CN"><Text>文化扩散</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_CONTENT_PARA_1" Language="zh_Hans_CN"><Text>你的城市附近的每个地块都会记录每个文明在其上拥有多少[icon:YIELD_CULTURE]文化值。每回合，城市会向自己的地块添加文化，文化会传播到相邻地块，而每个地块都会损失一部分文化。</Text></Replace>
-        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_CONTENT_PARA_2" Language="zh_Hans_CN"><Text>当你在城市第三环以外某个地块上的文化足够多时，你就会获取该地块。边界扩展缓慢，主要从游戏中期开始，并可能从在该处文化弱得多的对手手中夺取边境地块。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_CONTENT_PARA_2" Language="zh_Hans_CN"><Text>当你在某个地块上的文化足够多时，你就会获取该地块。边界从你的城市向外缓慢扩展，主要从游戏中期开始，并可能从在该处文化弱得多的对手手中夺取边境地块。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_WHERE_TITLE" Language="zh_Hans_CN"><Text>游戏中</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_WHERE_PARA_1" Language="zh_Hans_CN"><Text>[BLIST][LI][B]文化压力滤镜[/B]（滤镜菜单或Shift+C）：为即将易手的地块着色。见[B]文化压力滤镜[/B]。[LI][B]通知[/B]：在你获取领土或被其他文明夺走地块时。[LI][B]选项 &gt; 附加内容 &gt; 文化扩散[/B]：强度和所有开关。见[B]选项与预设[/B]。[/LIST]</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_TITLE" Language="zh_Hans_CN"><Text>问与答</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_NOTHING_TITLE" Language="zh_Hans_CN"><Text>为什么我的边界没有扩展？</Text></Replace>
-        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_NOTHING_PARA_1" Language="zh_Hans_CN"><Text>城市需要大量且稳定的文化才能延伸到第四环。游戏早期的城市通常什么也获取不到。滤镜会显示你在哪些地块上占优，以及每个地块还需要多少回合。见[B]节奏与所获土地[/B]。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_NOTHING_PARA_1" Language="zh_Hans_CN"><Text>城市需要大量且稳定的文化，才能获取游戏尚未给它的土地。游戏早期的城市通常什么也获取不到。滤镜会显示你在哪些地块上占优，以及每个地块还需要多少回合。见[B]节奏与所获土地[/B]。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_WORK_TITLE" Language="zh_Hans_CN"><Text>我的城市能开发所获取的地块吗？</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_WORK_PARA_1" Language="zh_Hans_CN"><Text>不能。城市只能开发三环以内的地块，而获取的地块更远。它们算作你的领土，并会阻挡对手的开拓者。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_AILAND_TITLE" Language="zh_Hans_CN"><Text>AI会夺取我的土地吗？</Text></Replace>
@@ -36,7 +36,7 @@
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_TITLE" Language="zh_Hans_CN"><Text>地形与河流</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_CONTENT_PARA_1" Language="zh_Hans_CN"><Text>文化进入的地块决定其传播的难易。同一地块上的效果会叠加。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROUGH_TITLE" Language="zh_Hans_CN"><Text>崎岖地带</Text></Replace>
-        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROUGH_PARA_1" Language="zh_Hans_CN"><Text>从易到难：[BLIST][LI][B]森林、针叶林[/B]：略微减缓。[LI][B]崎岖[/B]：中度减缓。[LI][B]苔原[/B]：中度减缓；需要更强的来源才能越过。[LI][B]沙漠[/B]：大幅减缓。[LI][B]雨林、湿地[/B]：大幅减缓；只有强大的来源才能越过。[LI][B]山脉[/B]：几乎无法通过。山峰上的文化需要通常数量的7.5倍才能从该处传出。[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROUGH_PARA_1" Language="zh_Hans_CN"><Text>从易到难：[BLIST][LI][B]森林、针叶林[/B]：略微减缓。[LI][B]崎岖[/B]：中度减缓。[LI][B]苔原[/B]：中度减缓；需要更强的来源才能越过。[LI][B]沙漠[/B]：大幅减缓。[LI][B]雨林、湿地[/B]：大幅减缓；只有强大的来源才能越过。[LI][B]山脉[/B]：几乎无法通过。山峰上的文化需要通常数量的7.5倍才能从该处传出。山脉要等周围的土地都归你后才会被获取，因此山脉可能在你的边界上留下缺口，或与邻国分割。[/LIST]</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROADS_TITLE" Language="zh_Hans_CN"><Text>道路</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROADS_PARA_1" Language="zh_Hans_CN"><Text>在两个道路地块之间，文化传播速度加倍，且传得更远。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_RIVERS_TITLE" Language="zh_Hans_CN"><Text>河流</Text></Replace>
@@ -46,7 +46,7 @@
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_TITLE" Language="zh_Hans_CN"><Text>获取地块</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_CONTENT_PARA_1" Language="zh_Hans_CN"><Text>获取的地块会并入你最近的城市。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_RULES_TITLE" Language="zh_Hans_CN"><Text>条件</Text></Replace>
-        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_RULES_PARA_1" Language="zh_Hans_CN"><Text>[BLIST][LI]你的文化在该地块上最高。[LI]至少为300（探索时代375，近世时代480）。[LI]如果该地块属于对手，其文化低于你的三分之二。[LI]该地块距你的城市不超过六格，且在其第三环以外。[LI]该地块与你的土地相邻（“仅限相连边界”选项）。[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_RULES_PARA_1" Language="zh_Hans_CN"><Text>[BLIST][LI]你的文化在该地块上最高。[LI]至少为300（探索时代375，近世时代480）。[LI]如果该地块属于对手，其文化低于你的三分之二。[LI]该地块距你的城市不超过六格。距你的两个定居点都不超过三格的无主地块由游戏自行分配。[LI]该地块与你的土地相邻，且它与你的城市之间的地块已经归你（“仅限相连边界”选项）。水域、山脉、湿地、雨林、沙漠以及文化无法夺取的土地不会阻挡它。[LI]山脉要等周围的土地归你后才会被获取。[/LIST]</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_TITLE" Language="zh_Hans_CN"><Text>受保护的地块</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_1" Language="zh_Hans_CN"><Text>“对手城市保护”选项决定对手城市有多少部分不会被获取地块：市中心及其第一环、仅市中心（默认），或不保护任何环。市中心从不作为地块易手，只会随整个定居点一起转移。参见[B]定居点易手[/B]。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_2" Language="zh_Hans_CN"><Text>城邦和独立势力始终保留其全部领土。</Text></Replace>
@@ -135,7 +135,7 @@
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_ABOUT_CHAPTER_CREDITS_TITLE" Language="zh_Hans_CN"><Text>制作团队</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_ABOUT_CHAPTER_CREDITS_PARA_1" Language="zh_Hans_CN"><Text>由Tower制作。基于Gedemon为《文明V》制作的“文化扩散”（v18），本模组的文化场及以下多条规则均源自该模组：河流、城市中的外来文化、占领时的文化转移、对手与军队夺取地块、山脉门槛，以及拥有者的最低文化。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_CD_CULTURAL_BORDERS_TITLE" Language="zh_Hans_CN"><Text>文化边界（模组）</Text></Replace>
-        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_CD_CULTURAL_BORDERS_CHAPTER_CONTENT_PARA_1" Language="zh_Hans_CN"><Text>使用文化扩散模组时，文化会从城市逐格传播，并能将边界扩展到城市第三环以外，包括对手的边境地块。规则见[B]文化扩散[/B]标签页。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_CD_CULTURAL_BORDERS_CHAPTER_CONTENT_PARA_1" Language="zh_Hans_CN"><Text>使用文化扩散模组时，文化会从城市逐格传播，并会将边界向外扩展，包括对手的边境地块。规则见[B]文化扩散[/B]标签页。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CD_TERM_CULTURAL_DIFFUSION" Language="zh_Hans_CN"><Text>文化扩散</Text></Replace>
         <Replace Tag="LOC_PEDIA_CD_TERM_BORDERS" Language="zh_Hans_CN"><Text>边界</Text></Replace>
         <Replace Tag="LOC_PEDIA_CD_TERM_FORWARD_SETTLING" Language="zh_Hans_CN"><Text>抢先定居</Text></Replace>

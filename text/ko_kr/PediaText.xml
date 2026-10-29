@@ -9,12 +9,12 @@
         <Replace Tag="LOC_PEDIA_CD_GROUP_INTERFACE_TITLE" Language="ko_KR"><Text>인터페이스 및 옵션</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_TITLE" Language="ko_KR"><Text>문화 확산</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_CONTENT_PARA_1" Language="ko_KR"><Text>도시 근처의 각 타일에는 문명마다 [icon:YIELD_CULTURE] 문화가 얼마나 있는지 저장됩니다. 매 턴 도시는 자기 타일에 문화를 더하고, 문화는 이웃 타일로 퍼지며, 모든 타일은 문화를 일부 잃습니다.</Text></Replace>
-        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_CONTENT_PARA_2" Language="ko_KR"><Text>도시의 3번째 링 바깥 타일에서 우리 문화가 충분히 커지면 그 타일을 획득합니다. 국경은 주로 게임 중반부터 천천히 넓어지며, 그곳의 문화가 훨씬 약한 경쟁 문명에게서 변경 타일을 빼앗을 수도 있습니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_CONTENT_PARA_2" Language="ko_KR"><Text>한 타일에서 우리 문화가 충분히 커지면 그 타일을 획득합니다. 국경은 주로 게임 중반부터 도시에서 바깥으로 천천히 넓어지며, 그곳의 문화가 훨씬 약한 경쟁 문명에게서 변경 타일을 빼앗을 수도 있습니다.</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_WHERE_TITLE" Language="ko_KR"><Text>게임 내</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_OVERVIEW_CHAPTER_WHERE_PARA_1" Language="ko_KR"><Text>[BLIST][LI][B]문화 압력 렌즈[/B](렌즈 메뉴 또는 Shift+C): 곧 주인이 바뀔 타일에 색을 칠합니다. [B]문화 압력 렌즈[/B]를 참조하십시오.[LI][B]알림[/B]: 영토를 획득했을 때, 또는 다른 문명에게 타일을 잃었을 때.[LI][B]옵션, 추가 콘텐츠, 문화 확산[/B]: 강도와 모든 스위치. [B]옵션 및 프리셋[/B]을 참조하십시오.[/LIST]</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_TITLE" Language="ko_KR"><Text>자주 묻는 질문</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_NOTHING_TITLE" Language="ko_KR"><Text>국경이 왜 안 넓어지나요?</Text></Replace>
-        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_NOTHING_PARA_1" Language="ko_KR"><Text>도시가 4번째 링에 닿으려면 크고 꾸준한 문화가 필요합니다. 게임 초반의 도시는 대개 아무것도 획득하지 못합니다. 렌즈에서 우리가 앞서는 타일과 각 타일에 필요한 턴 수를 볼 수 있습니다. [B]속도와 획득한 땅[/B]을 참조하십시오.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_NOTHING_PARA_1" Language="ko_KR"><Text>게임이 아직 주지 않은 땅을 도시가 획득하려면 크고 꾸준한 문화가 필요합니다. 게임 초반의 도시는 대개 아무것도 획득하지 못합니다. 렌즈에서 우리가 앞서는 타일과 각 타일에 필요한 턴 수를 볼 수 있습니다. [B]속도와 획득한 땅[/B]을 참조하십시오.</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_WORK_TITLE" Language="ko_KR"><Text>획득한 타일에서 일할 수 있나요?</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_WORK_PARA_1" Language="ko_KR"><Text>아니요. 도시는 3링 이내의 타일에서만 일할 수 있고, 획득한 타일은 그보다 바깥에 있습니다. 획득한 타일은 우리 영토로 취급되며 경쟁 문명의 개척자를 막습니다.</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_FAQ_CHAPTER_AILAND_TITLE" Language="ko_KR"><Text>AI가 내 땅을 빼앗을 수 있나요?</Text></Replace>
@@ -36,7 +36,7 @@
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_TITLE" Language="ko_KR"><Text>지형과 강</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_CONTENT_PARA_1" Language="ko_KR"><Text>문화가 얼마나 잘 퍼지는지는 문화가 옮겨 가는 타일이 결정합니다. 같은 타일의 효과는 중첩됩니다.</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROUGH_TITLE" Language="ko_KR"><Text>험한 지형</Text></Replace>
-        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROUGH_PARA_1" Language="ko_KR"><Text>쉬운 것부터 어려운 순으로:[BLIST][LI][B]숲, 타이가[/B]: 약간 느려집니다.[LI][B]거친 지형[/B]: 보통 정도로 느려집니다.[LI][B]툰드라[/B]: 보통 정도로 느려지며, 건너려면 더 강한 원천이 필요합니다.[LI][B]사막[/B]: 크게 느려집니다.[LI][B]열대우림, 습지[/B]: 크게 느려지며, 강한 원천만 건널 수 있습니다.[LI][B]산[/B]: 거의 지나갈 수 없습니다. 산 정상의 문화가 그곳에서 퍼지려면 평소의 7.5배가 필요합니다.[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROUGH_PARA_1" Language="ko_KR"><Text>쉬운 것부터 어려운 순으로:[BLIST][LI][B]숲, 타이가[/B]: 약간 느려집니다.[LI][B]거친 지형[/B]: 보통 정도로 느려집니다.[LI][B]툰드라[/B]: 보통 정도로 느려지며, 건너려면 더 강한 원천이 필요합니다.[LI][B]사막[/B]: 크게 느려집니다.[LI][B]열대우림, 습지[/B]: 크게 느려지며, 강한 원천만 건널 수 있습니다.[LI][B]산[/B]: 거의 지나갈 수 없습니다. 산 정상의 문화가 그곳에서 퍼지려면 평소의 7.5배가 필요합니다. 산은 주변 땅이 모두 우리 영토가 된 뒤에야 획득되므로, 산맥이 국경의 빈틈으로 남거나 이웃과 나뉠 수 있습니다.[/LIST]</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROADS_TITLE" Language="ko_KR"><Text>도로</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_ROADS_PARA_1" Language="ko_KR"><Text>도로가 있는 두 타일 사이에서는 문화가 두 배 빠르게, 더 멀리 퍼집니다.</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_TERRAIN_CHAPTER_RIVERS_TITLE" Language="ko_KR"><Text>강</Text></Replace>
@@ -46,7 +46,7 @@
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_TITLE" Language="ko_KR"><Text>타일 획득</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_CONTENT_PARA_1" Language="ko_KR"><Text>획득한 타일은 가장 가까운 우리 도시에 편입됩니다.</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_RULES_TITLE" Language="ko_KR"><Text>조건</Text></Replace>
-        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_RULES_PARA_1" Language="ko_KR"><Text>[BLIST][LI]그 타일에서 우리 문화가 가장 많습니다.[LI]우리 문화가 300 이상입니다(대항해시대 375, 근대 480).[LI]경쟁 문명이 소유한 타일이라면, 그 문명의 문화가 우리 문화의 3분의 2 미만입니다.[LI]타일이 우리 도시에서 6타일 이내이고 3번째 링 바깥에 있습니다.[LI]타일이 우리 영토에 닿아 있습니다('인접 타일만' 옵션).[/LIST]</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_RULES_PARA_1" Language="ko_KR"><Text>[BLIST][LI]그 타일에서 우리 문화가 가장 많습니다.[LI]우리 문화가 300 이상입니다(대항해시대 375, 근대 480).[LI]경쟁 문명이 소유한 타일이라면, 그 문명의 문화가 우리 문화의 3분의 2 미만입니다.[LI]타일이 우리 도시에서 6타일 이내에 있습니다. 우리 정착지 두 곳에서 각각 3타일 이내인 주인 없는 타일은 게임이 직접 배정합니다.[LI]타일이 우리 영토에 닿아 있고, 그 타일과 도시 사이의 타일이 이미 우리 영토입니다('인접 타일만' 옵션). 물, 산, 습지, 열대우림, 사막, 문화로 가져올 수 없는 땅은 걸림돌이 되지 않습니다.[LI]산은 주변 땅이 우리 영토가 된 뒤에 획득됩니다.[/LIST]</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_TITLE" Language="ko_KR"><Text>보호되는 타일</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_1" Language="ko_KR"><Text>'경쟁 문명 도시 보호' 옵션으로 경쟁 문명 도시의 어디까지가 타일 획득으로부터 안전한지 정합니다. 도심부와 그 첫 번째 링, 도심부만(기본값), 또는 링 없음 중에서 고릅니다. 도심부는 타일로서 주인이 바뀌지 않으며, 정착지 전체와 함께만 넘어갑니다. [B]정착지 귀속 변경[/B] 참조.</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_CLAIMS_CHAPTER_PROTECT_PARA_2" Language="ko_KR"><Text>도시 국가와 독립 세력은 항상 모든 영토를 지킵니다.</Text></Replace>
@@ -135,7 +135,7 @@
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_ABOUT_CHAPTER_CREDITS_TITLE" Language="ko_KR"><Text>제작진</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_ABOUT_CHAPTER_CREDITS_PARA_1" Language="ko_KR"><Text>제작: Tower. Gedemon의 Civilization V용 Cultural Diffusion(v18)을 바탕으로 했으며, 문화 필드와 여기 있는 여러 규칙의 출처입니다: 강, 도시 안의 외래 문화, 점령 시 이전, 경쟁 문명과 군대의 획득, 산 문턱값, 소유자의 최소 문화.</Text></Replace>
         <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_CD_CULTURAL_BORDERS_TITLE" Language="ko_KR"><Text>문화적 국경(모드)</Text></Replace>
-        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_CD_CULTURAL_BORDERS_CHAPTER_CONTENT_PARA_1" Language="ko_KR"><Text>문화 확산 모드를 사용하면 문화가 도시에서 타일 단위로 퍼지고, 도시의 3번째 링 너머로, 경쟁 문명의 변경 타일까지 국경을 넓힐 수 있습니다. 규칙은 [B]문화 확산[/B] 탭에 있습니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CONCEPTS_PAGE_CD_CULTURAL_BORDERS_CHAPTER_CONTENT_PARA_1" Language="ko_KR"><Text>문화 확산 모드를 사용하면 문화가 도시에서 타일 단위로 퍼지고, 국경을 바깥으로 넓히며, 경쟁 문명의 변경 타일까지 미칠 수 있습니다. 규칙은 [B]문화 확산[/B] 탭에 있습니다.</Text></Replace>
         <Replace Tag="LOC_PEDIA_CD_TERM_CULTURAL_DIFFUSION" Language="ko_KR"><Text>문화 확산</Text></Replace>
         <Replace Tag="LOC_PEDIA_CD_TERM_BORDERS" Language="ko_KR"><Text>국경</Text></Replace>
         <Replace Tag="LOC_PEDIA_CD_TERM_FORWARD_SETTLING" Language="ko_KR"><Text>전진 정착</Text></Replace>
