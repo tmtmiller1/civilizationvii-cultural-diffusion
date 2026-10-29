@@ -33,11 +33,11 @@ export function claimCountsFor(state, me) {
  * Whether a won tile passes every eligibility gate (safety mode, war, core protection,
  * adjacency, per-city cap). Kept as pure predicates so the flip loop stays flat.
  */
-export function flipEligible(cand, owner, me, claimCount, inFlight) {
+export function flipEligible(cand, owner, me, claimCount, around) {
   const { k, near } = cand;
   // Every gate except the per-city cap is shared with the lens and the hover readout (cd-eligibility.js),
   // so what the map promises and what the pass does cannot drift.
-  const blocked = claimGateBlocked(cand.loc, owner, me, CONFIG, inFlight);
+  const blocked = claimGateBlocked(cand.loc, owner, me, CONFIG, around);
   if (blocked) {
     if (blocked === "would-strand-a-unit") dlog(`skip flip ${k}: would strand a foreign unit`);
     return false;

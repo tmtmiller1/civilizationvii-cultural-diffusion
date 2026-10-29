@@ -175,7 +175,7 @@ function leaderContexts(state, cfg) {
  */
 function claimable(loc, owner, ctx) {
   if (!claimInScope(loc, ctx)) return false;
-  return !claimGateBlocked(loc, owner, ctx.me, ctx.cfg, null);
+  return !claimGateBlocked(loc, owner, ctx.me, ctx.cfg, { cities: ctx.cities });
 }
 
 /** Quantize a leader + progress into a small key so near-identical fills share one addPlots batch. */

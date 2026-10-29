@@ -176,6 +176,20 @@ function crossingMods(x, y, cfg) {
 }
 
 /**
+ * How much of a neighbour's culture this land plot's terrain, biome and feature let in, as a multiple of open ground
+ * (1 on open ground, 0.2 on a marsh, 0.1 on a mountain). The same caps the field applies; rivers aren't read, since
+ * they belong to the step and not the plot.
+ * @param {{x:number,y:number}} loc Plot.
+ * @param {import("/cultural-diffusion/ui/cd-config.js").CdConfig} cfg Live config.
+ * @returns {number} The plot's terrain cap.
+ */
+export function terrainCap(loc, cfg) {
+  let cap = 1;
+  for (const mod of crossingMods(loc.x, loc.y, cfg)) cap *= Math.max(0, mod.max);
+  return cap;
+}
+
+/**
  * Compute the diffusion modifiers for a single source->neighbor step.
  * @param {{x:number,y:number}} src Source plot.
  * @param {{x:number,y:number}} dst Neighbor plot.

@@ -15,6 +15,7 @@ import { hexDistance } from "/cultural-diffusion/ui/cd-pressure.js";
 // controllable engine stub over an (x,y) -> {owner, city} tile map
 const tiles = new Map();
 const water = new Set();
+const impassable = new Set(); // mountains, volcanoes, natural wonders
 let savedState = null;
 let multiplayer = false;
 let purchaseNoOps = false; // simulate purchasePlot reporting ok but not actually changing owner
@@ -56,6 +57,7 @@ globalThis.GameplayMap = {
   getOwner: (x, y) => getTile(x, y).owner,
   getOwningCityFromXY: (x, y) => ({ id: getTile(x, y).city }),
   isWater: (x, y) => water.has(tk(x, y)),
+  isImpassable: (x, y) => impassable.has(tk(x, y)),
   getGridWidth: () => gridW, getGridHeight: () => gridH,
   getPlotIndicesInRadius: (cx, cy, r) => {
     const out = [];
@@ -163,7 +165,7 @@ assert.equal(hexDistance(CENTER, INNER), 2, "fixture: INNER is ring-2");
 
 /** Reset the world: we own rings 0..3 around CENTER; everything else is empty land. */
 function reset() {
-  tiles.clear(); water.clear();
+  tiles.clear(); water.clear(); impassable.clear();
   savedState = null; multiplayer = false; purchaseNoOps = false;
   deferWrites = false; writeQueue.length = 0;
   localId = ME; atWarWithRival = false; unclaimed = [];
@@ -247,16 +249,143 @@ r = runPass();
 assert.equal(r.flips, 0, "culture below minimumOwner does not flip the tile");
 assert.equal(getTile(TARGET.x, TARGET.y).owner, -1, "...and the tile stays unowned");
 
-// 3. The base game's inner rings are never claimed.
-// An inner (ring-2) tile with a huge stock must not be claimed by the mod, even though its culture
-// dwarfs the bar: the base game owns and assigns those tiles (the "can't work my 3-ring" regression).
+// 3. Inside our rings. Culture claims there too, so ring 3 goes before the ring-4 tile behind it; only an unowned tile
+// two of our settlements share is left to the base game, which knows which of them should have it (the "can't work my
+// 3-ring" regression, 1.0.7).
 reset();
 const innerT = getTileMut(INNER.x, INNER.y); innerT.owner = -1; innerT.city = -1; // pretend it is not yet grown
 seedState({ field: { [tk(INNER.x, INNER.y)]: mature() } });
 r = runPass();
-assert.equal(r.flips, 0, "a tile inside our own natural growth ring is never flipped by the mod");
-assert.equal(getTile(INNER.x, INNER.y).owner, -1, "...the base game keeps it");
+assert.equal(r.flips, 1, "an unowned tile inside one settlement's ring is claimed by culture");
+assert.deepEqual(getTile(INNER.x, INNER.y), { owner: ME, city: CITY_ID }, "...attached to that settlement");
+
+reset();
+myCities = [myCity, makeCity(43, { x: 15, y: 10 }, ME, 40)]; // INNER is ring 2 of ours and ring 3 of this one
+const sharedT = getTileMut(INNER.x, INNER.y); sharedT.owner = -1; sharedT.city = -1;
+seedState({ field: { [tk(INNER.x, INNER.y)]: mature() } });
+r = runPass();
+assert.equal(getTile(INNER.x, INNER.y).owner, -1, "an unowned tile two of our settlements share stays with the base game");
 assert.equal(savedState.claims[tk(INNER.x, INNER.y)], undefined, "...and no claim is recorded for it");
+
+// A rival holds ring 3 and the ring-4 tile behind it, our culture leads on both, and one flip is allowed: ring 3 goes.
+const RING3 = { x: 13, y: 10 };
+assert.equal(hexDistance(CENTER, RING3), 3, "fixture: RING3 is ring-3");
+reset();
+for (const p of [RING3, TARGET]) { const t = getTileMut(p.x, p.y); t.owner = RIVAL; t.city = RIVAL_CITY_ID; }
+seedState({ field: {
+  [tk(RING3.x, RING3.y)]: { [String(ME)]: 5000, [String(RIVAL)]: 10 },
+  [tk(TARGET.x, TARGET.y)]: { [String(ME)]: 5000, [String(RIVAL)]: 10 }
+} });
+CONFIG.maxFlipsPerTurn = 1;
+r = runPass();
+CONFIG.maxFlipsPerTurn = 8;
+assert.deepEqual(getTile(RING3.x, RING3.y), { owner: ME, city: CITY_ID }, "a rival's tile on our ring 3 flips first");
+assert.equal(getTile(TARGET.x, TARGET.y).owner, RIVAL, "...before the ring-4 tile behind it");
+
+// Borders grow as a blob. A ring-4 tile with open land behind it waits, however strong its culture, until the ring-3
+// tile in front of it is ours; both can go in one pass when both are won.
+reset();
+const gapT = getTileMut(RING3.x, RING3.y); gapT.owner = -1; gapT.city = -1;
+seedState({ field: {
+  [tk(RING3.x, RING3.y)]: { [String(ME)]: 100, [String(RIVAL)]: 9000 }, [tk(TARGET.x, TARGET.y)]: mature()
+} });
+r = runPass();
+assert.equal(getTile(TARGET.x, TARGET.y).owner, -1, "a ring-4 tile with unclaimed ring-3 land behind it waits");
+assert.equal(getTile(RING3.x, RING3.y).owner, -1, "...while another culture leads that ring-3 tile");
+
+reset();
+const bothT = getTileMut(RING3.x, RING3.y); bothT.owner = -1; bothT.city = -1;
+seedState({ field: { [tk(RING3.x, RING3.y)]: { [String(ME)]: 9000 }, [tk(TARGET.x, TARGET.y)]: mature() } });
+r = runPass();
+assert.equal(getTile(RING3.x, RING3.y).owner, ME, "a won ring-3 tile is claimed");
+assert.equal(getTile(TARGET.x, TARGET.y).owner, ME, "...and the ring-4 tile behind it goes in the same pass");
+
+// The gap test reads only the tiles between a plot and the city: the one or two neighbours closer to the nearest
+// settlement, never all six. Checked on every ring out to 6 around one city, and with a second city whose rings overlap.
+const { leavesGapBehind } = await import("/cultural-diffusion/ui/cd-eligibility.js");
+const { neighborsOf } = await import("/cultural-diffusion/ui/cd-units.js");
+const minD = (p, locs) => Math.min(...locs.map((c) => hexDistance(c, p)));
+for (const locs of [[CENTER], [CENTER, { x: 14, y: 12 }]]) {
+  for (let y = 2; y <= 20; y++) for (let x = 2; x <= 22; x++) {
+    const d = minD({ x, y }, locs);
+    if (d < 1 || d > 6) continue;
+    const inward = neighborsOf({ x, y }).filter((n) => minD(n, locs) < d).length;
+    assert.ok(inward >= 1 && inward <= (locs.length === 1 ? 2 : 3),
+      `${x},${y} (ring ${d}, ${locs.length} city) has ${inward} inward neighbour(s)`);
+  }
+}
+// Everything we own out to ring 3 leaves no gap behind any ring-4 tile.
+reset();
+for (let y = 4; y <= 16; y++) for (let x = 4; x <= 16; x++) {
+  if (hexDistance(CENTER, { x, y }) !== 4) continue;
+  assert.equal(leavesGapBehind({ x, y }, ME, [{ loc: CENTER }], null, CONFIG), false, `${x},${y} ring 4 has no gap behind`);
+}
+
+// A tile culture won't ever fill doesn't hold back the land behind it, or one mountain would freeze a widening wedge.
+// EDGE4 sits on an edge of ring 4, with two ring-3 tiles in front of it; HOLE is one of them, the other stays ours.
+let EDGE4 = null;
+for (let y = 4; y <= 16 && !EDGE4; y++) for (let x = 4; x <= 16 && !EDGE4; x++) {
+  if (hexDistance(CENTER, { x, y }) !== 4) continue;
+  if (neighborsOf({ x, y }).filter((n) => hexDistance(CENTER, n) === 3).length === 2) EDGE4 = { x, y };
+}
+const HOLE = neighborsOf(EDGE4).find((n) => hexDistance(CENTER, n) === 3);
+const behindOf = (holeSetup) => {
+  reset();
+  const h = getTileMut(HOLE.x, HOLE.y); h.owner = -1; h.city = -1;
+  holeSetup(h);
+  seedState({ field: { [tk(EDGE4.x, EDGE4.y)]: mature() } });
+  runPass();
+  return getTile(EDGE4.x, EDGE4.y).owner;
+};
+assert.equal(behindOf(() => {}), -1, "open ring-3 land in front of a ring-4 tile holds it back");
+assert.equal(behindOf(() => impassable.add(tk(HOLE.x, HOLE.y))), ME, "a mountain on ring 3 doesn't hold back ring 4");
+assert.equal(behindOf(() => water.add(tk(HOLE.x, HOLE.y))), ME, "a lake on ring 3 doesn't hold back ring 4");
+const CS = 30;
+assert.equal(behindOf((h) => { minorPlayers.add(CS); h.owner = CS; h.city = 88; }), ME,
+  "a city-state's ring-3 tile, which culture never takes, doesn't hold back ring 4");
+assert.equal(behindOf((h) => { h.owner = RIVAL; h.city = RIVAL_CITY_ID; }), -1,
+  "a rival's ring-3 tile that culture can still win holds back the ring-4 tile behind it");
+assert.equal(behindOf((h) => { h.owner = RIVAL; h.city = RIVAL_CITY_ID; atWarWithRival = true; }), ME,
+  "...but not while a war stops culture taking it");
+
+// Rough ground that lets in less culture than open ground carries a ring further out (a marsh, cap 0.2 under
+// normalMax 0.4) fills after the land behind it, so it doesn't hold that land back. A forest (0.8) fills first and does.
+{
+  const keepInfo = globalThis.GameInfo;
+  let feature = "";
+  GameplayMap.getFeatureType = (x, y) => (x === HOLE.x && y === HOLE.y && feature ? 1 : -1);
+  globalThis.GameInfo = { Features: { lookup: () => ({ FeatureType: feature }) } };
+  feature = "FEATURE_MARSH";
+  assert.equal(behindOf(() => {}), ME, "a marsh on ring 3 doesn't hold back ring 4");
+  feature = "FEATURE_RAINFOREST";
+  assert.equal(behindOf(() => {}), ME, "...nor does a rainforest");
+  feature = "FEATURE_FOREST";
+  assert.equal(behindOf(() => {}), -1, "a forest on ring 3 still goes before the ring-4 tile behind it");
+  delete GameplayMap.getFeatureType;
+  globalThis.GameInfo = keepInfo;
+}
+
+// A ring-4 corner whose only tile in front is a mountain touches none of our land at first. The ring-4 tiles beside
+// it each have ring 3 of ours in front, so they go first, and the corner follows once it touches them.
+reset();
+impassable.add(tk(RING3.x, RING3.y)); getTileMut(RING3.x, RING3.y).owner = -1; getTileMut(RING3.x, RING3.y).city = -1;
+const cornerField = { [tk(TARGET.x, TARGET.y)]: mature() };
+for (const n of neighborsOf(TARGET)) if (hexDistance(CENTER, n) === 4) cornerField[tk(n.x, n.y)] = mature();
+seedState({ field: cornerField });
+for (let i = 0; i < 3; i++) runPass();
+assert.equal(getTile(TARGET.x, TARGET.y).owner, ME, "a ring-4 corner behind a mountain is claimed after its neighbours");
+
+// Culture, not distance, decides the order: a strong ring-4 tile goes before a weak ring-3 tile in another direction.
+const WEST3 = { x: 7, y: 10 };
+assert.equal(hexDistance(CENTER, WEST3), 3, "fixture: WEST3 is ring-3");
+reset();
+const westT = getTileMut(WEST3.x, WEST3.y); westT.owner = -1; westT.city = -1;
+seedState({ field: { [tk(WEST3.x, WEST3.y)]: { [String(ME)]: 400 }, [tk(TARGET.x, TARGET.y)]: { [String(ME)]: 9000 } } });
+CONFIG.maxFlipsPerTurn = 1;
+r = runPass();
+CONFIG.maxFlipsPerTurn = 8;
+assert.equal(getTile(TARGET.x, TARGET.y).owner, ME, "the strongest culture goes first, even one ring further out");
+assert.equal(getTile(WEST3.x, WEST3.y).owner, -1, "...and the weaker ring-3 tile waits its turn");
 
 // 4. Eligibility gates on a rival-owned tile.
 /** Make TARGET a rival-owned tile with our culture dominant over theirs. */

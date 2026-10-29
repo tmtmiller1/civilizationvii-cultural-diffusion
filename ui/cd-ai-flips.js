@@ -4,9 +4,9 @@
 // simulated region, a tile whose culture leader is a living major other than the local player and other than its
 // owner flips to that leader through the leader's nearest city, under exactly the gates our own flips pass (peace
 // with the incumbent, the incumbent's core protection, adjacency to the leader's land, flipMaxDistance from one of
-// the leader's cities, the strand guard, the leader's per-city cap) and with the same commit (cd-flip.js). The
-// leader's own natural ring is left to the base game, as ours is. Independent Powers and city-states never lead a
-// flip. A rival city's purchasePlot lands like ours and charges nothing.
+// the leader's cities, the strand guard, the leader's per-city cap) and with the same commit (cd-flip.js). An
+// unowned tile two of the leader's settlements share is left to the base game, as ours is. Independent Powers and
+// city-states never lead a flip. A rival city's purchasePlot lands like ours and charges nothing.
 //
 // Only tiles within the field region can move, so AI-versus-AI borders far from the player stay as the base game
 // leaves them; that asymmetry is documented in the README. No import from cd-pass.js.
@@ -15,7 +15,7 @@ import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
 import { ownerAt } from "/cultural-diffusion/ui/cd-plots.js";
 import { resolveOwner, passCanAct } from "/cultural-diffusion/ui/cd-field.js";
 import { isMajorPlayer } from "/cultural-diffusion/ui/cd-borders.js";
-import { cityListOf, nearestCity, withinOwnNaturalRing } from "/cultural-diffusion/ui/cd-eligibility.js";
+import { cityListOf, nearestCity, leftToBaseGame } from "/cultural-diffusion/ui/cd-eligibility.js";
 import { isPending, pendingClaimKeys } from "/cultural-diffusion/ui/cd-pending.js";
 import { claimCountsFor, flipEligible, commitFlip } from "/cultural-diffusion/ui/cd-flip.js";
 
@@ -27,7 +27,7 @@ function unkey(k) {
 
 /**
  * One region tile as an AI flip candidate, or null: its culture leader must be a living major other than us and
- * other than its owner, the tile outside that leader's own natural ring and within flipMaxDistance of one of the
+ * other than its owner, the tile not left to the base game (leftToBaseGame) and within flipMaxDistance of one of the
  * leader's cities. Independent Powers and city-states never lead a flip.
  */
 function aiCandidateAt(k, p, cityList) {
@@ -43,22 +43,22 @@ function aiCandidateAt(k, p, cityList) {
   return placeForLeader({ k, loc, owner, leader, verdict }, cityList(leader));
 }
 
-/** Attach a candidate to the leader's nearest city, or drop it (inside the leader's natural ring, or too far). */
+/** Attach a candidate to the leader's nearest city, or drop it (left to the base game, or too far). */
 function placeForLeader(cand, cities) {
-  if (!cities.length || withinOwnNaturalRing(cand.loc, cities)) return null; // the base game grows the inner rings
+  if (!cities.length || leftToBaseGame(cand.loc, cand.owner, cities)) return null;
   const near = nearestCity(cand.loc, cities);
   if (!near || near.d > Math.max(1, CONFIG.flipMaxDistance)) return null;
   return { ...cand, near };
 }
 
-/** Every AI flip candidate in the region, sorted nearest to its leader's city first. */
+/** Every AI flip candidate in the region, the leader's strongest culture first (ties nearest first), as ours are. */
 function aiFlipCandidates(p, cityList) {
   const out = [];
   for (const k of p.region) {
     const cand = aiCandidateAt(k, p, cityList);
     if (cand) out.push(cand);
   }
-  out.sort((a, b) => a.near.d - b.near.d);
+  out.sort((a, b) => (b.verdict.value - a.verdict.value) || (a.near.d - b.near.d));
   return out;
 }
 
@@ -90,7 +90,8 @@ export function resolveAiOwnership(p) {
   for (const cand of aiFlipCandidates(p, cityList)) {
     if (flips + pending >= maxFlips) break;
     const books = bookFor(cand.leader);
-    if (!flipEligible(cand, cand.owner, cand.leader, books.claimCount, books.inFlight)) continue;
+    const around = { inFlight: books.inFlight, cities: cityList(cand.leader) };
+    if (!flipEligible(cand, cand.owner, cand.leader, books.claimCount, around)) continue;
     const fx = { state, next, me: cand.leader, ageCfg, claimCount: books.claimCount };
     const result = commitFlip(cand, cand.owner, cand.verdict, fx);
     if (result) books.inFlight.add(cand.k);

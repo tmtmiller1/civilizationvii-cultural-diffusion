@@ -314,7 +314,7 @@ function actionableHere(plot, owner, v, snap, k) {
     ? snap.ctx
     : { me: v.leader, cities: cityListOf(v.leader), state: snap.state, cfg: snap.cfg };
   if (!claimInScope(plot, ctx)) return false;
-  return !claimGateBlocked(plot, owner, v.leader, snap.cfg, null);
+  return !claimGateBlocked(plot, owner, v.leader, snap.cfg, { cities: ctx.cities });
 }
 
 /**

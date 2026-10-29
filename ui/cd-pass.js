@@ -28,7 +28,7 @@ import { resolveAiOwnership } from "/cultural-diffusion/ui/cd-ai-flips.js";
 import { conquestSweep } from "/cultural-diffusion/ui/cd-conquest.js";
 import { neighborsOf } from "/cultural-diffusion/ui/cd-units.js";
 import {
-  localCityList, nearestCity, withinOwnNaturalRing, adjacentToMe, distantLandsGated, claimGateBlocked
+  localCityList, nearestCity, withinOwnNaturalRing, leftToBaseGame, adjacentToMe, distantLandsGated, claimGateBlocked
 } from "/cultural-diffusion/ui/cd-eligibility.js";
 import { performFlip, unclaim } from "/cultural-diffusion/ui/cd-ownership.js";
 import { loadState, saveState, prepareState, pruneState } from "/cultural-diffusion/ui/cd-state.js";
@@ -285,18 +285,24 @@ function findDeadOwners(region, next, alive) {
   return deadOwners;
 }
 
-/** Flip candidates (nearest local city within flipMaxDistance), sorted nearest-first. */
-function flipCandidates(region, next, cities, maxDist) {
+/**
+ * Flip candidates (nearest local city within flipMaxDistance), strongest culture first: a strong ring-5 tile can go
+ * before a weak ring-3 tile in another direction, and the gap gate (leavesGapBehind) keeps either from leaving open
+ * land behind it. Ties go nearest-first.
+ */
+function flipCandidates(region, next, cities, maxDist, me) {
   const candidates = [];
   for (const k of region) {
     if (!next[k]) continue;
     const loc = unkey(k);
-    if (withinOwnNaturalRing(loc, cities)) continue; // base game owns/works your inner rings: never claim them
+    // Inside the rings too, so a ring-3 tile goes before the ring-4 tile behind it; only an unowned tile two of our
+    // settlements share is left for the base game to assign.
+    if (withinOwnNaturalRing(loc, cities) && leftToBaseGame(loc, ownerAt(loc), cities)) continue;
     const near = nearestCity(loc, cities);
     if (!near || near.d > maxDist) continue;
-    candidates.push({ k, loc, near });
+    candidates.push({ k, loc, near, stock: next[k][String(me)] || 0 });
   }
-  candidates.sort((a, b) => a.near.d - b.near.d);
+  candidates.sort((a, b) => (b.stock - a.stock) || (a.near.d - b.near.d));
   return candidates;
 }
 
@@ -310,7 +316,7 @@ function tryFlipCandidate(cand, fx) {
   if (fx.busy && fx.busy.has(cand.k)) return false;     // its settlement may change hands whole this pass
   const verdict = resolveOwner(next[cand.k], owner, deadOwners, ageCfg);
   if (!verdict.flip || !passCanAct(verdict.owner, owner, me, false, false)) return false; // only tiles our culture won
-  if (!flipEligible(cand, owner, me, claimCount, fx.inFlight)) return false;
+  if (!flipEligible(cand, owner, me, claimCount, { inFlight: fx.inFlight, cities: fx.cities })) return false;
   return commitFlip(cand, owner, verdict, fx);
 }
 
@@ -326,8 +332,8 @@ function resolveOwnership({ state, region, next, cities, me, ageCfg, alive, busy
   const claimCount = claimCountsFor(state, me);
   const maxFlips = Math.max(0, CONFIG.maxFlipsPerTurn);
   const maxDist = Math.max(1, CONFIG.flipMaxDistance);
-  const candidates = flipCandidates(region, next, cities, maxDist);
-  const fx = { state, next, me, ageCfg, claimCount, deadOwners, busy, inFlight: pendingClaimKeys(state, me) };
+  const candidates = flipCandidates(region, next, cities, maxDist, me);
+  const fx = { state, next, me, ageCfg, claimCount, deadOwners, busy, cities, inFlight: pendingClaimKeys(state, me) };
 
   let flips = 0;
   let pending = 0;
@@ -406,7 +412,9 @@ function bufferTarget(n, state, ctx) {
   if (isPending(state, key(n.x, n.y))) return null; // a verb on this tile is still landing
   if (distantLandsGated(n, ctx.me)) return null;    // no distant-lands claims before Exploration
   if (withinOwnNaturalRing(n, ctx.cities)) return null; // base game owns inner rings; buffer only beyond them
-  if (claimGateBlocked(n, ownerAt(n), ctx.me, CONFIG, ctx.inFlight)) return null; // same gates as the flip path
+  // The flip path's gates, less the gap test: placing the population already takes every unowned tile next to it out
+  // to ring 3, so the land between this ring-4 tile and the city is the game's to fill, possibly a moment after us.
+  if (claimGateBlocked(n, ownerAt(n), ctx.me, CONFIG, { inFlight: ctx.inFlight })) return null;
   const nc = nearestCity(n, ctx.cities);
   return (nc && nc.d <= ctx.maxR) ? nc : null;
 }

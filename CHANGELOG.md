@@ -4,6 +4,23 @@ All notable changes to Cultural Diffusion are recorded here. The format follows
 [Keep a Changelog](https://keepachangelog.com/), and the mod uses
 [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Fixed
+- Borders grow outward as one solid shape. Before, culture could take most of a city's fourth ring while ring-3 tiles
+  in front of it sat unowned or stayed with a rival, leaving gaps and thin arms of land. Two things changed:
+  - Culture now claims inside your rings too. An unowned ring-3 tile, or a rival's, can be won like any other tile
+    and goes to the city it sits around. An unowned tile shared by two of your settlements' rings is still left to
+    the game, which knows which of them should get it.
+  - A tile is only claimed once the one or two tiles between it and your city are yours. Tiles culture won't take,
+    or only takes after the land around them, don't hold it back: water, mountains, natural wonders, marsh,
+    rainforest and desert, a city-state's land, a rival's city or district, and a rival's land while you're at war.
+    Rough ground is claimed last, so mountains and marshes can be left as holes or split between neighbours. Strong culture still reaches further first: a strong fourth-ring tile can go
+    before a weak third-ring tile on the other side of the city, but never ahead of the land behind it. This is part
+    of the Contiguous border only option.
+- The strongest culture is claimed first each turn, where before the nearest tile went first. The same rules apply
+  when AI culture claims land, and the Cultural Pressure lens and hover text follow them.
+
 ## [1.7.2] - 2026-10-24
 
 ### Fixed
