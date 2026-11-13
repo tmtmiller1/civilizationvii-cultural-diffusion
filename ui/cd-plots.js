@@ -23,9 +23,47 @@ export function localPlayerId() {
   }, NO_OWNER);
 }
 
-/** @returns {boolean} True when this is any multiplayer game (diffusion is single-player only). */
+/**
+ * True when this is a network game (LAN or internet), where diffusion stays off: every machine would make its own
+ * ownership writes and the games would go out of step. A hotseat game is one machine, so it runs there; each human
+ * seat gets its own pass (cd-bootstrap.js) over one shared field (cd-pass.js).
+ * @returns {boolean} Whether the pass has to stay off.
+ */
 export function isMultiplayer() {
-  return safe(() => !!Configuration?.getGame?.()?.isAnyMultiplayer, false);
+  return safe(() => !!Configuration?.getGame?.()?.isNetworkMultiplayer, false);
+}
+
+/** @returns {boolean} True in a hotseat game (several humans taking turns on this machine). */
+export function isHotseat() {
+  return safe(() => !!Configuration?.getGame?.()?.isHotseat, false);
+}
+
+/**
+ * Whether a player is a human. Under Autoplay the game reads the human seat as an AI, so the local player always
+ * counts.
+ * @param {number} pid Player id. @returns {boolean}
+ */
+export function isHumanPlayer(pid) {
+  if (pid < 0) return false;
+  if (pid === localPlayerId()) return true;
+  return safe(() => Players?.get?.(pid)?.isHuman === true, false);
+}
+
+/**
+ * Every living human player's id, the local player first. One entry in single player; one per seat in hotseat.
+ * @returns {number[]} Player ids.
+ */
+export function humanPlayerIds() {
+  const out = [];
+  const me = localPlayerId();
+  if (me >= 0) out.push(me);
+  const alive = safe(() => Players?.getAlive?.(), null);
+  if (!Array.isArray(alive)) return out;
+  for (const p of alive) {
+    const id = p && typeof p.id === "number" ? p.id : NO_OWNER;
+    if (id >= 0 && id !== me && p.isAlive !== false && isHumanPlayer(id)) out.push(id);
+  }
+  return out;
 }
 
 /** @returns {{w:number, h:number}} Map grid dimensions (0x0 if unavailable). */

@@ -1,10 +1,10 @@
 [h1]Cultural Diffusion[/h1]
-For Civilization VII 1.5.0.
+For Civilization VII 1.5.1.
 Cultural Diffusion lets culture move your borders. Every turn, your cities put culture onto the tiles around them. It spreads outward one tile at a time, faster along roads and rivers and slower through rough terrain. When your culture is the strongest on a tile, that tile becomes yours, including tiles past the three rings a city normally reaches. It's slow, it follows the shape of the map, and it gives you a way to push back when the AI settles four tiles from your capital.
 Based on Gedemon's [b]Cultural Diffusion[/b] mod for Civ V, rebuilt for Civ VII.
 [h2]Mechanics[/h2]
 [list]
-[*][b]Works with game version 1.5.0.[/b]
+[*][b]Works with game version 1.5.1.[/b]
 [*][b]Culture spreads tile by tile.[/b] Each city adds culture to its own tile every turn. It spreads to the tiles next to it, and fades a little everywhere. Your save keeps track of how much culture each civ has on each tile, so borders move forward gradually instead of jumping out in rings.
 [*][b]Terrain matters.[/b] Culture moves easily along roads and rivers, slowly through hills, tundra, desert, forest, jungle and marsh, and barely crosses mountains.
 [*][b]Helps against forward settling.[/b] Land around your cities fills in over time. If your culture is clearly stronger on a rival's border tile, it can become yours without a war.
@@ -38,9 +38,9 @@ Intensity: [b]Low[/b] only claims empty land, [b]Medium[/b] (the default) can al
 [list]
 [*]If you also use the [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3750554030]Emigration[/url] mod, culture spreads faster toward tiles where your people have moved, so your borders grow toward them. Without Emigration installed, this part does nothing.
 [/list]
-[h2]Two limits of the game engine[/h2]
+[h2]Good to know[/h2]
 [list]
-[*][b]Tiles past a city's third ring can't be worked.[/b] The game won't let a city work or build there, so these tiles give you territory, not yields. They still matter: nobody can settle on land you own.
+[*][b]Tiles past a city's third ring arrive bare.[/b] When the city grows, its claimed tiles out there that touch land it has already developed light up on the growth screen; pick one and it's worked, with its yields going to that city. The AI does the same where it's the better tile. The build queue still stops at ring 3.
 [*][b]Mods can't move other civs' units.[/b] So the mod never takes the last tile a unit could escape to. It waits until the unit moves.
 [/list]
 [h2]Languages[/h2]

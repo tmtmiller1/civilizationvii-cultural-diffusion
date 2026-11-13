@@ -63,7 +63,7 @@
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_EARLY_TITLE" Language="zh_Hans_CN"><Text>游戏早期</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_EARLY_PARA_1" Language="zh_Hans_CN"><Text>[icon:YIELD_CULTURE]文化值很少的新城市什么也获取不到。城市变强后才会开始获取。高强度预设能更早延伸得更远。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_VALUE_TITLE" Language="zh_Hans_CN"><Text>获取的地块</Text></Replace>
-        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_VALUE_PARA_1" Language="zh_Hans_CN"><Text>获取的地块归你所有，但无法开发或在上面建造，因为城市只开发前三环。它们能阻止对手在你旁边定居：开拓者无法在其他文明的土地上或其旁边建立定居点。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_VALUE_PARA_1" Language="zh_Hans_CN"><Text>第三环以外获取的地块到手时是未开发的。定居点成长时，成长界面也会列出它在那里、与已开发土地相邻的获取地块；选择其中一块即可开发，产出归该定居点。获取的地块还能阻止对手在你旁边定居：开拓者无法在其他文明的土地上或其旁边建立定居点。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_TITLE" Language="zh_Hans_CN"><Text>文化实力</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_CONTENT_PARA_1" Language="zh_Hans_CN"><Text>城市的实力决定其每回合添加多少文化。开启“丰富文化模型”选项时（默认），实力来自下列因素。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_BLEND_TITLE" Language="zh_Hans_CN"><Text>城市实力</Text></Replace>

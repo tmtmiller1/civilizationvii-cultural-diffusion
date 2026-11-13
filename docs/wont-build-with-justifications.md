@@ -152,6 +152,13 @@ user-visible gain.
 
 ## Usable outer-ring tiles / an extended work radius: won't build (proven non-functional: native)
 
+**Status: overturned, built as growth onto outer tiles (Unreleased, 2026-11-12).** The two routes below really don't
+work, but a third one does: a rural district created on the tile with the city as its Parent makes a ring-4+ tile one
+the city works, with its improvement and yields (engine-closed.md, the workable-range entry, first watched 2026-09-30
+in the National Parks ring test, and again for this mod 2026-11-12 in probe-history.md, "Outer tiles a settlement can
+work"). The growth screen now offers claimed outer tiles beside developed land (`ui/cd-outer-growth.js`,
+`ui/cd-outer-place.js`). What follows is kept as the record of the routes that failed.
+
 **Reason: proven non-functional.**
 
 **Proposed / partly shipped, then withdrawn:** two routes to turning the frontier the mod claims (beyond ring 3) into

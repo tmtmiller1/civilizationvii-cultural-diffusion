@@ -88,8 +88,9 @@ globalThis.UI = { getGameLoadingState: () => 8 };
 globalThis.UIGameLoadingState = { GameStarted: 8 };
 // Options the bootstrap reads before every pass and every buffer claim (cd-settings.js).
 const modSettings = { "cultural-diffusion": {} };
+let settingReads = 0;
 globalThis.localStorage = {
-  getItem: (k) => (k === "modSettings" ? JSON.stringify(modSettings) : null),
+  getItem: (k) => { settingReads++; return k === "modSettings" ? JSON.stringify(modSettings) : null; },
   setItem: () => {}, removeItem: () => {}, clear: () => {}
 };
 const setSetting = (k, on) => { modSettings["cultural-diffusion"][k] = on ? 1 : 0; };
@@ -144,6 +145,22 @@ CONFIG.turnInterval = 3;
 assert.equal(passOn(16, { player: ME }), false, "turnInterval 3: one turn after a pass runs nothing");
 assert.equal(passOn(18, { player: ME }), true, "turnInterval 3: three turns after a pass runs one");
 CONFIG.turnInterval = 1;
+
+// Hotseat: the gate is per player. Seat 1's turn, in the same game turn seat 0 already had its pass, runs a pass for
+// seat 1. Seat 1 has no cities in this stub, so the pass saves nothing; what shows it ran is the options refresh every
+// pass starts with (a localStorage read).
+Game.turn = 30;
+GameContext.localPlayerID = ME;
+assert.equal(passOn(30, { player: ME }), true, "hotseat: seat 0's turn runs seat 0's pass");
+GameContext.localPlayerID = 1;
+let readsBefore = settingReads;
+turn({ player: 1 });
+assert.ok(settingReads > readsBefore, "seat 1's turn, the same game turn, runs a pass for seat 1");
+readsBefore = settingReads;
+turn({ player: 1 });
+assert.equal(settingReads, readsBefore, "a second event for seat 1 the same turn runs nothing");
+GameContext.localPlayerID = ME;
+assert.equal(passOn(30, { player: ME }), false, "...and seat 0's gate still says this turn is done for seat 0");
 
 // 3. A finished rural improvement of ours claims the free tiles beside it (the +1 buffer, when it's on).
 const added = handlers.ConstructibleAddedToMap;

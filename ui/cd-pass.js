@@ -1,16 +1,18 @@
 // cd-pass.js
 //
-// The per-turn pass: over a bounded region around the local player's cities it injects culture
-// into each city tile (fused CPI/prosperity strength), diffuses and decays the persisted per-tile
-// stock, then flips a tile to the local player once its culture there passes the ownership bar.
-// Ownership is mutated for the local player, and, with aiCultureFlips on, for any living major whose culture
-// leads a tile inside the region, under the same gates. See docs/current-model.md and docs/civ-v-parity-spec.md.
+// The per-turn pass: over a bounded region around every human's cities it injects culture into each city tile
+// (fused CPI/prosperity strength), diffuses and decays the persisted per-tile stock, then flips a tile to the player
+// at the screen once their culture there passes the ownership bar. Ownership is mutated for that player, and, with
+// aiCultureFlips on, for any living major whose culture leads a tile inside the region, under the same gates. In
+// hotseat each seat's turn runs its own pass: the field, the cooldowns, the AI flips, the conquest counters and the
+// settlement counters move on the first pass of a game turn (state.fieldKey); a later seat resolves its own tiles on
+// the field as it stands. See docs/current-model.md and docs/civ-v-parity-spec.md.
 
 import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
 import { dlog, log } from "/cultural-diffusion/ui/cd-log.js";
 import {
   localPlayerId, mapDims, allSettlements, plotsInRadius, cityLoc,
-  ownerAt, owningCityIdAt, isWater, isMultiplayer
+  ownerAt, owningCityIdAt, isWater, isMultiplayer, humanPlayerIds
 } from "/cultural-diffusion/ui/cd-plots.js";
 import { cultureOf, happinessOf, wonderCountOf, isCelebrating, prosperityOf, vitalityOf, populationOf } from "/cultural-diffusion/ui/cd-polity.js";
 import { projectionOf, ethnicFactor } from "/cultural-diffusion/ui/cd-pressure.js";
@@ -31,7 +33,7 @@ import {
   localCityList, nearestCity, withinOwnNaturalRing, leftToBaseGame, adjacentToMe, distantLandsGated, claimGateBlocked
 } from "/cultural-diffusion/ui/cd-eligibility.js";
 import { performFlip, unclaim } from "/cultural-diffusion/ui/cd-ownership.js";
-import { loadState, saveState, prepareState, pruneState } from "/cultural-diffusion/ui/cd-state.js";
+import { loadState, saveState, prepareState, pruneState, turnKey } from "/cultural-diffusion/ui/cd-state.js";
 import { notifyFlip } from "/cultural-diffusion/ui/cd-notifications.js";
 import { recedeOwnership } from "/cultural-diffusion/ui/cd-recede.js";
 import { logFieldDiagnostics, logStateSize } from "/cultural-diffusion/ui/cd-diagnostics.js";
@@ -89,8 +91,9 @@ function aliveOwners(me) {
 }
 
 /**
- * The bounded simulation region: every non-water in-bounds tile within `radius` of a local city.
- * @param {{city:*, id:number, loc:{x:number,y:number}}[]} cities Local cities.
+ * The bounded simulation region: every non-water in-bounds tile within `radius` of a human's city (every seat's in
+ * hotseat, so one field serves them all).
+ * @param {{city:*, id:number, loc:{x:number,y:number}}[]} cities The humans' cities.
  * @param {number} radius Field radius.
  * @param {(p:{x:number,y:number})=>boolean} inBounds Bounds test.
  * @returns {Set<string>} Region plot keys.
@@ -261,7 +264,7 @@ function tryFlipCandidate(cand, fx) {
  * @returns {{flips:number, pending:number, tiles:number, deadOwners:number[], aiFlips:number, aiPending:number}}
  *   Summary.
  */
-function resolveOwnership({ state, region, next, cities, me, ageCfg, alive, busy }) {
+function resolveOwnership({ state, region, next, cities, me, ageCfg, alive, busy, first }) {
   const deadOwners = findDeadOwners(region, next, alive);
   const claimCount = claimCountsFor(state, me);
   const maxFlips = Math.max(0, CONFIG.maxFlipsPerTurn);
@@ -280,7 +283,8 @@ function resolveOwnership({ state, region, next, cities, me, ageCfg, alive, busy
     if (result === "booked") flips++;
     else if (result === "pending") pending++;
   }
-  const ai = CONFIG.aiCultureFlips
+  // The AI's flips once a game turn, with the field step; a later seat's pass in the same turn leaves them.
+  const ai = CONFIG.aiCultureFlips && first
     ? resolveAiOwnership({ state, region, next, me, ageCfg, deadOwners, busy })
     : { flips: 0, pending: 0 };
   return { flips, pending, tiles, deadOwners, aiFlips: ai.flips, aiPending: ai.pending };
@@ -308,16 +312,16 @@ function commitBuffer(state, c, T, me) {
 }
 
 /**
- * Event-driven "+1 ring" cultural buffer: when the local player completes a rural improvement on
- * `devLoc`, claim the unowned tiles adjacent to it for the nearest city via the integrated verb.
- * Never takes another player's tile; capped to baseGrowthRadius+1 rings from the nearest city center.
+ * Event-driven "+1 ring" cultural buffer: when a human completes a rural improvement on `devLoc`, claim the unowned
+ * tiles adjacent to it for their nearest city via the integrated verb. Never takes another player's tile; capped to
+ * baseGrowthRadius+1 rings from the nearest city center.
  * @param {{x:number,y:number}} devLoc The just-developed tile.
+ * @param {number} [owner] The human who built it (default: the player at the screen).
  * @returns {number} Buffer tiles claimed.
  */
-export function claimBufferAt(devLoc) {
-  if (!CONFIG.diffusionEnabled || !CONFIG.growthBuffer) return 0; // the master switch stops the buffer too
-  const me = localPlayerId();
-  if (me < 0 || ownerAt(devLoc) !== me) return 0;   // only our own development
+export function claimBufferAt(devLoc, owner) {
+  const me = bufferClaimant(devLoc, owner);
+  if (me < 0) return 0;
   const cities = localCityList(me);
   if (!cities.length) return 0;
   const state = loadState();
@@ -333,6 +337,19 @@ export function claimBufferAt(devLoc) {
     log(`buffer: +${claimed} tile(s) adjacent to rural growth at ${devLoc.x},${devLoc.y}`);
   }
   return claimed;
+}
+
+/**
+ * The player a buffer claim is for, or -1 when there's none to make: the buffer or the mod is off, this is a network
+ * game, or the developed tile isn't that player's.
+ * @param {{x:number,y:number}} devLoc The just-developed tile. @param {number|undefined} owner The builder, if known.
+ * @returns {number} Player id, or -1.
+ */
+function bufferClaimant(devLoc, owner) {
+  // The master switch stops the buffer too.
+  if (!CONFIG.diffusionEnabled || !CONFIG.growthBuffer || isMultiplayer()) return -1;
+  const me = typeof owner === "number" && owner >= 0 ? owner : localPlayerId();
+  return me >= 0 && ownerAt(devLoc) === me ? me : -1; // only that player's own development
 }
 
 /**
@@ -431,11 +448,11 @@ function releaseInnerClaims(state, cities, me) {
  * every major civilization's tiles stuck on a settlement that can't work them moved to one that can (cd-reparent.js).
  * @returns {{healed:number, released:number, reparented:number}} Counts for the pass summary.
  */
-function repairStep(state, region, cities, me, busy) {
+function repairStep(state, region, cities, me, { busy, first }) {
   return {
     healed: repairOrphans(state, region, cities, me),
     released: releaseInnerClaims(state, cities, me),
-    reparented: reparentAll(state, busy)
+    reparented: first ? reparentAll(state, busy) : 0 // every civ's tiles, once a game turn
   };
 }
 
@@ -476,6 +493,7 @@ function buildInjectors(settlements, region, strengthOf) {
 function finishPass(state, region, cities, radius, { t0, cityLaunch }) {
   pruneFarField(state, region, cities, radius);
   pruneState(state);
+  state.fieldKey = turnKey();
   const bytes = saveState(state);
   logStateSize(state, bytes, Date.now() - t0);
   launchCityFlips(cityLaunch);
@@ -488,11 +506,16 @@ function withoutKeys(region, drop) {
   return out;
 }
 
-/** The tile changes after the culture flips: recede, then conquest (occupation is the final word on tiles). */
-function tileTail({ state, region, next, me, ageCfg, deadOwners, busy }) {
+/**
+ * The tile changes after the culture flips: recede (this player's claims), then conquest (occupation is the final
+ * word on tiles; its counters advance once a game turn, so only the first pass of the turn sweeps).
+ */
+function tileTail({ state, region, next, me, ageCfg, deadOwners, busy, first }) {
   const recede = recedeOwnership({ state, region, next, me, ageCfg, deadOwners, busy });
   // The plots of a settlement that may change hands whole this pass sit the sweep out (their counters restart).
-  const conquest = conquestSweep({ state, region: busy.size ? withoutKeys(region, busy) : region, me });
+  const conquest = first
+    ? conquestSweep({ state, region: busy.size ? withoutKeys(region, busy) : region, me })
+    : { flips: 0, pending: 0, held: 0 };
   return { ceded: recede.ceded, cedePending: recede.pending, conquest };
 }
 
@@ -513,21 +536,35 @@ function logPassSummary(state, c) {
 }
 
 /**
- * Prepare everything a pass needs before the field update: loaded state, the bounded region, the
- * per-age config/pace, and the region injectors. Keeps runPass at a readable statement count.
- * @returns {{state:*, region:Set<string>, radius:number, injectors:Map<string,*>, threshold:number,
- *   ethCtx:*, ageCfg:*, pace:number}} Prepared pass context.
+ * The cities the field is built around: every human's (one seat's in single player, every seat's in hotseat), so
+ * the field covers all of them and steps once a game turn.
+ * @returns {{city:*, id:number, loc:{x:number,y:number}}[]} City rows.
  */
-function preparePass(cities) {
+function fieldCityList() {
+  const out = [];
+  for (const pid of humanPlayerIds()) for (const c of localCityList(pid)) out.push(c);
+  return out;
+}
+
+/**
+ * Prepare everything a pass needs before the field update: loaded state, the bounded region, the
+ * per-age config/pace, and the region injectors. Keeps runPass at a readable statement count. `first` is true on
+ * the first pass of a game turn, which is the one that steps the field and the cooldowns.
+ * @returns {{state:*, region:Set<string>, radius:number, injectors:Map<string,*>, threshold:number,
+ *   ethCtx:*, ageCfg:*, pace:number, first:boolean, fieldCities:*[]}} Prepared pass context.
+ */
+function preparePass() {
   const state = loadState();
-  prepareState(state);
+  const first = state.fieldKey !== turnKey();
+  if (first) prepareState(state);           // the monotonic turn and the cooldowns move once a game turn
   const confirmed = confirmPending(state); // book last pass's in-flight verbs from the live map before anything else
   const busy = settlementBusyKeys(state);  // plots of settlements that may change hands whole this pass
 
   const { w, h } = mapDims();
   const inBounds = (p) => (!w || (p.x >= 0 && p.x < w)) && (!h || (p.y >= 0 && p.y < h));
   const radius = Math.max(2, CONFIG.fieldRadius);
-  const region = buildRegion(cities, radius, inBounds);
+  const fieldCities = fieldCityList();
+  const region = buildRegion(fieldCities, radius, inBounds);
 
   const { ageInject, pace, ageCfg } = ageContext();
   const settlements = gatherSettlements();
@@ -535,12 +572,12 @@ function preparePass(cities) {
   const injectors = buildInjectors(settlements, region, strengthOf);
   // The Emigration composition (who lives in each city) weights foreign groups' injection; null without the mod.
   const comp = CONFIG.foreignCultureInCities && CONFIG.useEmigration ? loadComposition() : null;
-  return { state, region, radius, injectors, ethCtx, ageCfg, pace, confirmed, comp, busy };
+  return { state, region, radius, injectors, ethCtx, ageCfg, pace, confirmed, comp, busy, first, fieldCities };
 }
 
 /**
- * Run one reaction-diffusion pass. Idempotent-safe: bails cleanly when disabled, in
- * multiplayer, or with no local cities. Settlement centers are read once for the whole pass (cd-borders.js), since
+ * Run one reaction-diffusion pass for the player at the screen. Idempotent-safe: bails cleanly when disabled, in a
+ * network game, or with no local cities. Settlement centers are read once for the whole pass (cd-borders.js), since
  * every rival tile the pass and the AI flips consider asks whether it sits in a protected core.
  * @returns {{flips:number, tiles:number}} Pass summary.
  */
@@ -557,19 +594,23 @@ function passBody() {
   if (!cities.length) return { flips: 0, tiles: 0 };
 
   const t0 = Date.now();
-  const { state, region, radius, injectors, ethCtx, ageCfg, pace, confirmed, comp, busy } = preparePass(cities);
+  const { state, region, radius, injectors, ethCtx, ageCfg, pace, confirmed, comp, busy, first, fieldCities } =
+    preparePass();
   const alive = aliveOwners(me);
-  const { healed, released, reparented } = repairStep(state, region, cities, me, busy);
-  const next = updateField(state, region, injectors, { ethCtx, ageCfg, pace, alive, comp });
-  logFieldDiagnostics(injectors, cities, next, me, ageCfg);
+  const { healed, released, reparented } = repairStep(state, region, cities, me, { busy, first });
+  // The field steps once a game turn; a later seat's pass in the same turn reads it as it stands.
+  const next = first ? updateField(state, region, injectors, { ethCtx, ageCfg, pace, alive, comp }) : state.field;
+  if (first) logFieldDiagnostics(injectors, cities, next, me, ageCfg);
+  else dlog(`turn ${state.fieldKey} already stepped the field; resolving player ${me}'s tiles on it`);
   const { flips, pending, tiles, deadOwners, aiFlips, aiPending } =
-    resolveOwnership({ state, region, next, cities, me, ageCfg, alive, busy });
-  const { ceded, cedePending, conquest } = tileTail({ state, region, next, me, ageCfg, deadOwners, busy });
+    resolveOwnership({ state, region, next, cities, me, ageCfg, alive, busy, first });
+  const { ceded, cedePending, conquest } = tileTail({ state, region, next, me, ageCfg, deadOwners, busy, first });
   // Whole settlements after every tile change: score them on this pass's field and pick the ones to flip. The flips
-  // themselves start once the state is saved, since the transfer lands after the request (cd-city-flip.js).
-  const city = cityFlipStep({ state, next, region, ageCfg, deadOwners });
+  // themselves start once the state is saved, since the transfer lands after the request (cd-city-flip.js). Their
+  // counters advance once a game turn.
+  const city = first ? cityFlipStep({ state, next, region, ageCfg, deadOwners }) : { tracked: 0, launch: [] };
 
-  finishPass(state, region, cities, radius, { t0, cityLaunch: city.launch });
+  finishPass(state, region, fieldCities, radius, { t0, cityLaunch: city.launch });
   logPassSummary(state, {
     flips, pending, ceded, cedePending, healed, released, reparented, confirmed, aiFlips, aiPending,
     conquests: conquest.flips, conquestPending: conquest.pending, cityHolds: city.tracked, cityFlips: city.launch.length

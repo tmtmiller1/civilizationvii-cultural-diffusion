@@ -14,7 +14,7 @@ import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
 import { dlog, log } from "/cultural-diffusion/ui/cd-log.js";
 import { loadState, saveState } from "/cultural-diffusion/ui/cd-state.js";
 import { applyCaptureTransfer } from "/cultural-diffusion/ui/cd-field.js";
-import { plotsInRadius, owningCityIdAt, cityIdOf, cityLoc } from "/cultural-diffusion/ui/cd-plots.js";
+import { plotsInRadius, owningCityIdAt, cityIdOf, cityLoc, isMultiplayer } from "/cultural-diffusion/ui/cd-plots.js";
 
 /** @param {()=>*} fn Thunk. @param {*} fallback @returns {*} fn() or fallback. */
 function safe(fn, fallback) {
@@ -90,7 +90,7 @@ export function transferCityCulture(state, plots, newOwner, cfg) {
  */
 export function onCityTransfered(data) {
   try {
-    if (!CONFIG.captureTransfer) return 0;
+    if (!CONFIG.captureTransfer || isMultiplayer()) return 0; // the field isn't used in a network game
     const cid = data && data.cityID;
     const newOwner = cid && typeof cid.owner === "number" ? cid.owner : -1;
     const city = newOwner >= 0 ? safe(() => Cities?.get?.(cid), null) : null;

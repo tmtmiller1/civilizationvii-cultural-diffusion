@@ -8,10 +8,13 @@ and the outstanding phases ([`potential-future-features.md`](potential-future-fe
 
 ## 1. House rules and guardrails
 
-- Single-player only. `setOwnership`/`WorldBuilder` + local-player-turn model almost certainly excludes MP. Guard every
-  mutation with `guardSP()` (`Configuration.getGame().isAnyMultiplayer`). `runPass` itself has no MP check; MP safety
-  comes from the verbs' `guardSP()`. A MP pass still simulates the field and writes state each turn, but no ownership
-  changes.
+- Single machine only. `setOwnership`/`WorldBuilder` and `purchasePlot` are direct writes, so a network game (LAN or
+  online) would go out of step. `guardSP()` (`Configuration.getGame().isNetworkMultiplayer`) blocks every mutation
+  there and `runPass` returns at once. Hotseat is one machine and runs: each seat's `PlayerTurnActivated` runs a pass
+  for that player (`cd-bootstrap.js`, gate per player), the field, the cooldowns, the AI flips, the conquest counters
+  and the settlement counters move on the first pass of a game turn (`state.fieldKey`, `cd-pass.js preparePass`), and
+  a later seat's pass resolves its own tiles on the field as it stands. Notices for a seat not at the screen wait in
+  `cd-notifications.js` until its turn.
 - `GameConfiguration` writes: an unresolved conflict, recorded as it stands. An older note (still carried in
   `devtools/probe/ui/cd-probe-store.js`) says a runtime `Configuration.editGame().setValue` corrupts the persisted config and
   crashes the next launch. The shipped mod does exactly that every pass (`cd-state.js` `saveState`), as do nine
@@ -150,8 +153,8 @@ All mod-prefixed; ship all 11 locales (or English + fallback) per the mod's exis
 
 ## 8. Edge cases, guards and invariants
 
-- Never mutate in multiplayer (`guardSP()`), when `!diffusionEnabled`, or with no local cities. Once per turn,
-  idempotent (the phase machine).
+- Never mutate in a network game (`guardSP()`), when `!diffusionEnabled`, or with no local cities. Once per human
+  turn, idempotent (the phase machine); the field once per game turn.
 - Never target: water (`isWater`), a city-center / district plot (city capture is Phase 5, not a tile flip), the local
   player's own tiles (invisible to the scan by design).
 - Cultural flips honor: `claimOnlyUnowned`, `atWar` (no peaceful diffusion across a front), `coreProtectRadius`,

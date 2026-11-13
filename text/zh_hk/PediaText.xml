@@ -63,7 +63,7 @@
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_EARLY_TITLE" Language="zh_Hant_HK"><Text>遊戲早期</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_EARLY_PARA_1" Language="zh_Hant_HK"><Text>[icon:YIELD_CULTURE]文化值很少的新城市什麼也取得不到。城市變強後才會開始取得。高強度預設能更早延伸得更遠。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_VALUE_TITLE" Language="zh_Hant_HK"><Text>取得的格位</Text></Replace>
-        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_VALUE_PARA_1" Language="zh_Hant_HK"><Text>取得的格位歸你所有，但無法開發或在上面建造，因為城市只開發前三環。它們能阻止對手在你旁邊建立聚落：開拓者無法在其他文明的土地上或其旁邊建立聚落。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_VALUE_PARA_1" Language="zh_Hant_HK"><Text>第三環以外取得的格位到手時是未開發的。聚落成長時，成長畫面也會列出它在那裡、與已開發土地相鄰的取得格位；選擇其中一格即可開發，產出歸該聚落。取得的格位還能阻止對手在你旁邊建立聚落：開拓者無法在其他文明的土地上或其旁邊建立聚落。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_TITLE" Language="zh_Hant_HK"><Text>文化實力</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_CONTENT_PARA_1" Language="zh_Hant_HK"><Text>城市的實力決定其每回合新增多少文化。開啟「豐富文化模型」選項時（預設），實力來自下列因素。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_BLEND_TITLE" Language="zh_Hant_HK"><Text>城市實力</Text></Replace>

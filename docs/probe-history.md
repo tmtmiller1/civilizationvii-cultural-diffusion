@@ -337,3 +337,54 @@ Verdicts, all on 1.5.0:
   of a late charge. The July "spends gold" verdict in §2 came from a build where the tuner's purchase was priced; it is
   not the case now. The dead refund verb therefore costs the player nothing today; if the engine ever prices script
   purchases again, `grantGold` must reach for `grantYield` first.
+
+## Outer tiles a settlement can work (2026-11-12, game 1.5.1)
+
+Three lab games, Antiquity seed 4242, Cultural Diffusion alone. Probes in
+`tools/plans/cd-outer-tiles/probes/` (`cd-outer.probe.js`, `cd-ring3.probe.js`), logs in
+`tools/plans/cd-outer-tiles/logs/run1-3.txt`, captures in `working_screenshots/cd-outer-tiles/`.
+
+| Question | Answer |
+| --- | --- |
+| Does the growth screen offer an owned bare ring-4 tile? | No. At population 2 it offered 6 tiles, all ring 1 |
+| A waiting citizen spent on a claimed ring-4 tile: rural district (Parent = the city), the tile's own improvement from `Districts.getFreeConstructible`, then `addRuralPopulation(-1)` | Works. Counts 2/1/1 (population, rural, waiting) before; 3/2/1 after the district; 2/1/0 after the -1, the same as a citizen the game places itself, and the growth screen closed. A woodcutter at 10,11 and a farm at 4,7 |
+| Do that tile's yields reach the city? | Yes, after a turn: city Food 5→7, Production 5→6, Culture 0→2, Happiness 5→7, the woodcutter's own 2/1/2/2 |
+| A rival's camp past our ring 3 (ring 8 from our capital) taken through `flipWithTeardown` | Lands as a camp, district held by our capital, owning city ours. Its citizen moves with it: ours 2→3 population, the rival town 3→2. Still ours a turn later |
+| A citizen placed on a claimed ring-3 tile | Works when the tile touches something the city has developed: 5,7 beside the ring-4 farm was offered and the game's `EXPAND` put a farm on it (waiting 1→0). A claimed ring-3 tile with nothing developed beside it (8,10) was not offered, the base game's adjacency rule |
+| Does a script-made ring-4 district count as developed land for that rule? | Yes: the ring-3 tile was offered only because of it |
+
+### The built feature and the AI's timing (2026-11-12, run 5)
+
+Working copy with `ui/cd-outer-growth.js` and `ui/cd-outer-place.js`, Cultural Diffusion alone, Antiquity 4242
+(`tools/plans/cd-outer-tiles/probes/cd-build.probe.js`, `logs/run5.txt`, captures in
+`working_screenshots/cd-outer-tiles/build/`).
+
+| Question | Answer |
+| --- | --- |
+| Does the growth screen offer a claimed ring-4 tile beside ring-3 development? | Yes: 4,7 in the screen's own list and highlight, and it was the only outer candidate |
+| Picked through the screen's own `commitPlot` | A farm on 4,7, waiting citizens 1 to 0, and the screen went back to the default view |
+| What does `GameplayMap.getYieldsWithCity` give for that tile before the pick? | [yieldHash, amount] pairs of 1, 3 and 2; a turn later the city had Production +1, Culture +3, Happiness +2. It's the hover preview now (`outerYieldPreview`) |
+| Is an AI settlement's waiting citizen still waiting when its turn starts? | No. At `PlayerTurnActivated` for the AI the citizen was already placed natively (a district at 64,33 in the same millisecond), so a script can't steer that choice at turn start |
+
+### Moving the AI's new citizen to an outer tile (2026-11-12, runs 6-8)
+
+`tools/plans/cd-outer-tiles/probes/cd-ai-swap.probe.js`, Cultural Diffusion alone, Antiquity 4242; captures in
+`working_screenshots/cd-outer-tiles/ai-swap3/` (map revealed). Pārsa (player 1, 65,34) claimed 66,38 in ring 4 and was
+given a waiting citizen; it placed it natively on a farm at 64,33 during its own turn.
+
+| Question | Answer |
+| --- | --- |
+| Move made during the AI's own turn (run 6) | Refused in half: the teardown of the AI's farm was ignored (the farm stayed), the new district and farm on 66,38 landed, so the AI ended with an extra citizen (2/1/0 to 4/3/1). Not usable |
+| Move made at the start of the local player's next turn (runs 7, 8) | Works. Teardown of 64,33 took its citizen (3/2/1 to 2/1/1), the district and farm on 66,38 gave it back (3/2/1); 64,33 stayed Pārsa's land, bare. Four turns later 3/2/0 with the farm still on 66,38. Captures 03 (the ring-4 farm) and 03b (Pārsa's rings, no farm on 64,33) |
+
+### The built AI module and the hover preview (2026-11-12, runs 9-11)
+
+`tools/plans/cd-outer-tiles/probes/cd-ai-build.probe.js`, the working copy with `ui/cd-outer-ai.js`, Cultural Diffusion
+alone, map revealed; captures in `working_screenshots/cd-outer-tiles/ai-build3/`.
+
+| Question | Answer |
+| --- | --- |
+| Does the growth panel show the outer tile's yields on hover? | Yes: Results +1 Production, +3 Culture, +2 Happiness on the ring-4 farm tile (capture 02), the city's real gain |
+| Does the module note an AI's growth? | Not while it also required the AI's turn to read as active (run 9 and 10: no verdicts). The AI's placement lands before that; noting on "an AI major's district outside the local turn" fixed it (run 11) |
+| Does it move the AI's citizen to the better outer tile? | Yes: Pārsa grew onto a 2-yield farm at 64,33; at the start of our turn it went to 66,38, worth 5, population 6 before and after (UI.log `outer AI: player 1 ... moved`, capture 05). Pārsa's picks on resources (66,36, 65,37) were kept. Still held three turns later |
+

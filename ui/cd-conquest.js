@@ -22,7 +22,7 @@
 import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
 import { dlog } from "/cultural-diffusion/ui/cd-log.js";
 import {
-  ownerAt, plotsInRadius, districtTypeNameAt, isCityCenterAt, allSettlements, cityLoc, cityIdOf
+  ownerAt, plotsInRadius, districtTypeNameAt, isCityCenterAt, allSettlements, cityLoc, cityIdOf, isHumanPlayer
 } from "/cultural-diffusion/ui/cd-plots.js";
 import { atWar, isMajorPlayer } from "/cultural-diffusion/ui/cd-borders.js";
 import { hexDistance } from "/cultural-diffusion/ui/cd-pressure.js";
@@ -165,7 +165,9 @@ function sweepTile(k, ctx) {
     return null;
   }
   if (isPending(state, k)) return null;
-  const occupants = hostileCombatOccupants(loc, owner).filter((u) => u === me || CONFIG.aiCultureFlips);
+  // Our units always count; another human seat's do too (its army in hotseat); a civ's only with aiCultureFlips.
+  const occupants = hostileCombatOccupants(loc, owner)
+    .filter((u) => u === me || isHumanPlayer(u) || CONFIG.aiCultureFlips);
   const winner = tickOccupation(state.occupation, k, occupants, buffer);
   if (winner < 0) return state.occupation[k] ? "held" : null;
   if (out.flips + out.pending >= Math.max(0, CONFIG.maxFlipsPerTurn)) return "held";

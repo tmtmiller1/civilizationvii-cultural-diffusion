@@ -12,7 +12,7 @@
 // leaves them; that asymmetry is documented in the README. No import from cd-pass.js.
 
 import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
-import { ownerAt } from "/cultural-diffusion/ui/cd-plots.js";
+import { ownerAt, isHumanPlayer } from "/cultural-diffusion/ui/cd-plots.js";
 import { resolveOwner, passCanAct } from "/cultural-diffusion/ui/cd-field.js";
 import { isMajorPlayer } from "/cultural-diffusion/ui/cd-borders.js";
 import { cityListOf, nearestCity, leftToBaseGame } from "/cultural-diffusion/ui/cd-eligibility.js";
@@ -28,7 +28,8 @@ function unkey(k) {
 /**
  * One region tile as an AI flip candidate, or null: its culture leader must be a living major other than us and
  * other than its owner, the tile not left to the base game (leftToBaseGame) and within flipMaxDistance of one of the
- * leader's cities. Independent Powers and city-states never lead a flip.
+ * leader's cities. Independent Powers and city-states never lead a flip, and neither does another human: in hotseat
+ * each seat claims its own land in its own pass.
  */
 function aiCandidateAt(k, p, cityList) {
   const { state, next, me, ageCfg, deadOwners } = p;
@@ -38,9 +39,18 @@ function aiCandidateAt(k, p, cityList) {
   const owner = ownerAt(loc);
   const verdict = resolveOwner(next[k], owner, deadOwners, ageCfg);
   const leader = verdict.owner;
-  if (!verdict.flip || leader === me || !isMajorPlayer(leader)) return null;
+  if (!verdict.flip || !aiLeader(leader, me)) return null;
   if (!passCanAct(leader, owner, me, false, { aiFlips: true })) return null;
   return placeForLeader({ k, loc, owner, leader, verdict }, cityList(leader));
+}
+
+/**
+ * Whether a culture leader is one the AI step moves land for: a living major that isn't us and isn't another human
+ * (a hotseat seat claims its own land in its own pass).
+ * @param {number} leader @param {number} me @returns {boolean}
+ */
+function aiLeader(leader, me) {
+  return leader !== me && isMajorPlayer(leader) && !isHumanPlayer(leader);
 }
 
 /** Attach a candidate to the leader's nearest city, or drop it (left to the base game, or too far). */

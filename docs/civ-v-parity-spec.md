@@ -153,8 +153,8 @@ notices: AI borders never move by culture.
   `purchasePlot` charges nobody on 1.5.0, `Treasury.changeGoldBalance` is a no-op for every player, and
   `Players.grantYield(pid, YIELD_GOLD, n)` is the verb that moves gold, for an AI as for us. An AI flip therefore needs
   no refund; if one is ever needed, `grantGold` must use `grantYield` first.
-- Multiplayer. `guardSP()` blocks every mutating verb in multiplayer, so this stays single-player like the rest of
-  the mod.
+- Multiplayer. `guardSP()` blocks every mutating verb in a network game, so this stays off there like the rest of
+  the mod; in hotseat the AI step runs once a game turn and never moves land for another human seat.
 - Region. The field is simulated only within `fieldRadius` (8) of the local player's cities, because a whole-map
   sweep each turn is too slow in Gameface. AI flips can therefore only happen inside that region.
 

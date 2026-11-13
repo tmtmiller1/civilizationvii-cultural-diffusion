@@ -1,8 +1,8 @@
 // cd-bootstrap.js, game scope.
 //
-// Boot the Cultural Diffusion engine: run one diffusion pass per local-player turn (honoring
-// CONFIG.turnInterval), refresh settings before each pass, and expose a small console surface.
-// All engine wiring is defensive. Results reach UI.log under the [CulturalDiffusion] prefix.
+// Boot the Cultural Diffusion engine: run one diffusion pass per human turn (honoring CONFIG.turnInterval; in hotseat
+// one per seat, over a field that steps once a game turn), refresh settings before each pass, and expose a small
+// console surface. All engine wiring is defensive. Results reach UI.log under the [CulturalDiffusion] prefix.
 
 import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
 import { setDebug as setLogDebug, log, dlog } from "/cultural-diffusion/ui/cd-log.js";
@@ -10,10 +10,12 @@ import { applyTunableOverrides } from "/cultural-diffusion/ui/cd-settings.js";
 import { runPass, claimBufferAt } from "/cultural-diffusion/ui/cd-pass.js";
 import { loadState, saveState } from "/cultural-diffusion/ui/cd-state.js";
 import { onCityTransfered } from "/cultural-diffusion/ui/cd-capture.js";
-import { ownerAt } from "/cultural-diffusion/ui/cd-plots.js";
+import { ownerAt, isHumanPlayer, isMultiplayer } from "/cultural-diffusion/ui/cd-plots.js";
 import { onSettlementTransfer, sweepFlipMarkers, sweepWhenStarted } from "/cultural-diffusion/ui/cd-city-flip.js";
+import { deliverQueued } from "/cultural-diffusion/ui/cd-notifications.js";
 
-let _lastLocalTurnRun = -999;
+/** The game turn each human last had a pass, by player id (one entry per seat in hotseat). */
+const _lastRunByPlayer = new Map();
 
 // Keep handles to our own engine listeners so a re-boot (e.g. a save/reload re-running this
 // script) can drain the previous subscription instead of stacking a second handler.
@@ -81,31 +83,34 @@ function buildComplete(pc) {
 }
 
 /**
- * Whether a ConstructibleAddedToMap payload is a completed rural development on the local player's own land.
+ * The human whose completed rural development a ConstructibleAddedToMap payload reports, or -1: the local player
+ * in single player, any seat in hotseat (a build can finish while another seat is at the screen).
  * @param {*} data Event payload: { location:{x,y}, constructibleType, percentComplete }.
- * @returns {boolean} True when the +1 buffer could apply.
+ * @returns {number} The owner the +1 buffer could apply to, or -1.
  */
-function isOwnRuralCompletion(data) {
+function humanRuralCompletionOwner(data) {
   const loc = data && data.location;
-  if (!loc || typeof loc.x !== "number" || typeof loc.y !== "number") return false;
-  if (!buildComplete(data.percentComplete)) return false;            // only completed builds
-  if (!isRuralConstructible(data.constructibleType)) return false;   // rural growth only
-  return ownerAt(loc) === localId();                                 // only our own development
+  if (!loc || typeof loc.x !== "number" || typeof loc.y !== "number") return -1;
+  if (!buildComplete(data.percentComplete)) return -1;            // only completed builds
+  if (!isRuralConstructible(data.constructibleType)) return -1;   // rural growth only
+  const owner = ownerAt(loc);
+  return isHumanPlayer(owner) ? owner : -1;                       // a human's own development
 }
 
 /**
- * ConstructibleAddedToMap handler: when the local player finishes a rural improvement, push the
- * "+1 ring" cultural buffer onto the unowned tiles adjacent to it.
+ * ConstructibleAddedToMap handler: when a human finishes a rural improvement, push the "+1 ring" cultural buffer
+ * onto the unowned tiles adjacent to it, for that player.
  * @param {*} data Event payload: { location:{x,y}, constructibleType, percentComplete }.
  */
 function onConstructibleAdded(data) {
   try {
     // Cheap checks first: this event fires for every player's every build, and the settings refresh below
     // reads and parses the shared localStorage blob about fifteen times.
-    if (!isOwnRuralCompletion(data)) return;
+    const owner = humanRuralCompletionOwner(data);
+    if (owner < 0) return;
     applyTunableOverrides(); // pick up an Options change made since the last pass, e.g. the buffer just switched off
     if (!CONFIG.diffusionEnabled || !CONFIG.growthBuffer) return; // the master switch stops the buffer too
-    claimBufferAt({ x: data.location.x, y: data.location.y });
+    claimBufferAt({ x: data.location.x, y: data.location.y }, owner);
   } catch (e) {
     dlog(`onConstructibleAdded threw ${String(e)}`);
   }
@@ -173,9 +178,10 @@ function localTurnActive(local) {
 }
 
 /**
- * PlayerTurnActivated handler: run the pass once per local-player turn. A payload this can't read a player from
- * still counts when the engine reports the local player's turn active, so a change in the payload's shape can't
- * leave the mod loaded but idle. The per-turn check below keeps it to one pass a turn either way.
+ * PlayerTurnActivated handler: run the pass once per human turn, for the player at the screen. In hotseat the local
+ * player changes with the seat, so each seat gets its own pass in its own turn. A payload this can't read a player
+ * from still counts when the engine reports the local player's turn active, so a change in the payload's shape can't
+ * leave the mod loaded but idle. The per-player turn check keeps it to one pass a turn either way.
  * @param {*} data Event payload (carries the activating player).
  */
 function onTurnActivated(data) {
@@ -183,10 +189,12 @@ function onTurnActivated(data) {
     const local = localId();
     const who = turnPlayerOf(data);
     if (who == null ? !localTurnActive(local) : who !== local) return;
+    deliverQueued(local); // notices that waited for this seat (another seat's pass took or warned about its land)
     const turn = gameTurn();
-    if (turn - _lastLocalTurnRun < Math.max(1, CONFIG.turnInterval)) return;
-    _lastLocalTurnRun = turn;
-    doPass(`turn ${turn}`);
+    const last = _lastRunByPlayer.has(local) ? _lastRunByPlayer.get(local) : -999;
+    if (turn - last < Math.max(1, CONFIG.turnInterval)) return;
+    _lastRunByPlayer.set(local, turn);
+    doPass(`turn ${turn}, player ${local}`);
   } catch (e) {
     dlog(`onTurnActivated threw ${String(e)}`);
   }
@@ -207,7 +215,7 @@ function installConsole() {
       sweepFlipMarkers: () => sweepFlipMarkers(),
       state: () => loadState(),
       clear: () => {
-        saveState({ field: {}, claims: {}, locked: {}, cityHold: {}, monoTurn: 0 });
+        saveState({ field: {}, claims: {}, locked: {}, cityHold: {}, monoTurn: 0, fieldKey: "" });
         return "cleared";
       },
       enable: (/** @type {boolean} */ on) => {
@@ -249,7 +257,9 @@ function boot() {
   }
   // A flip marker left in a city carries over a save and an age change (each loads the game's scripts again), and
   // would hand the city back to that leader if it ever changed hands again; clear any stray once the game has started.
-  sweepWhenStarted().catch(() => 0);
+  // In a network game the mod makes no flips and sends nothing: every machine would send the removal.
+  if (isMultiplayer()) log("network game: the pass and every write stay off");
+  else sweepWhenStarted().catch(() => 0);
 }
 
 boot();

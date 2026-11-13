@@ -4,6 +4,22 @@ All notable changes to Cultural Diffusion are recorded here. The format follows
 [Keep a Changelog](https://keepachangelog.com/), and the mod uses
 [Semantic Versioning](https://semver.org/).
 
+## [2.0.0] - 2026-11-12
+
+### Added
+- Your settlements can grow onto the land culture claims for them past ring 3. When a settlement grows, the growth
+  screen also lights up its claimed tiles farther out that touch land it has already developed, so it spreads outward
+  one tile at a time the way it does inside ring 3. Picking one builds the improvement the game would put there and
+  spends the new citizen, and the tile's yields go to that settlement. A tile culture claims still arrives as bare
+  territory; it only gets worked once you grow onto it. A farm or mine you take from a rival keeps working for you,
+  however far out it is. Hovering one of those tiles shows what it'll add, the same as any other tile.
+- AI civilizations grow onto their claimed land too, when it's the better tile. The game places an AI's new citizen
+  itself, inside ring 3; at the start of your next turn the mod looks at it again, and if one of that settlement's
+  claimed tiles past ring 3 yields more in total, the citizen moves there. The AI keeps its own pick when it's on a
+  resource, when the outer tile would sit beside an enemy at war with it, or when nothing out there is better.
+- Hotseat games run the mod. Each seat's turn runs its own pass, over one culture field that moves once a game turn;
+  a seat's notices wait for its own turn. LAN and online games still leave the mod off.
+
 ## [1.8.0] - 2026-10-29
 
 ### Changed

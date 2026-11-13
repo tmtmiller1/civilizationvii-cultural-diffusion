@@ -20,6 +20,7 @@ CREATE TABLE Constructibles (ConstructibleType TEXT PRIMARY KEY, Name TEXT NOT N
   CanBeHidden INTEGER);
 CREATE TABLE Buildings (ConstructibleType TEXT PRIMARY KEY, Movable INTEGER NOT NULL, Purchasable INTEGER, Town INTEGER,
   TraitType TEXT);
+CREATE TABLE Tags (Tag TEXT PRIMARY KEY, Category TEXT NOT NULL, Hash INTEGER NOT NULL DEFAULT 0);
 CREATE TABLE TypeTags (Type TEXT, Tag TEXT);
 CREATE TABLE Constructible_ValidDistricts (ConstructibleType TEXT, DistrictType TEXT);
 CREATE TABLE DynamicModifiers (ModifierType TEXT PRIMARY KEY, CollectionType TEXT, EffectType TEXT);
@@ -98,4 +99,7 @@ test("data: markers exist only for major leaders, are never offered, and stand o
   assert.equal(c.ExistingDistrictOnly, 1);
   const d = db.prepare("SELECT DistrictType FROM Constructible_ValidDistricts WHERE ConstructibleType = 'BUILDING_CD_FLIP_LEADER_PERICLES'").all();
   assert.deepEqual(d.map((r) => r.DistrictType), ["DISTRICT_CITY_CENTER"]);
+  const tagged = db.prepare("SELECT COUNT(*) AS n FROM TypeTags WHERE Tag = 'TOWER_MARKER' AND Type LIKE 'BUILDING_CD_FLIP_%'");
+  assert.equal(tagged.get().n, 3, "every marker carries the Tower mods' shared marker tag");
+  assert.ok(db.prepare("SELECT 1 FROM Tags WHERE Tag = 'TOWER_MARKER'").get());
 });

@@ -103,10 +103,9 @@ land) and [`wont-build-with-justifications.md`](wont-build-with-justifications.m
 `setOwnership` survives only as the `unclaim` verb.
 
 Ownership is really mutated (not cosmetic): the integrated verb attaches the tile to a city (`owningCity` set,
-`inCityPlots` true). That does not make it workable. Civ VII computes the workable/developable set natively and caps it
-at ring 3, and since 1.0.7 the mod only claims beyond ring 3, so every claimed tile is territory without yield: no
-citizen can work it and nothing can be built on it. See §5 and
-[`civ7-tile-range-investigation.md`](civ7-tile-range-investigation.md).
+`inCityPlots` true). That alone doesn't make it workable: the game's own growth list stops at ring 3. A rural
+district created on the tile with the city as Parent does, which is how the growth screen offers claimed outer tiles
+(§5). [`civ7-tile-range-investigation.md`](civ7-tile-range-investigation.md) has the routes that don't work.
 
 Writes land after the call. On game 1.4.2 ([`probe-history.md`](probe-history.md) §5), after `purchasePlot` the owner
 read on the same tick still shows the old owner, and the new owner appears about three seconds later. The pass
@@ -144,13 +143,17 @@ neighboring tile follows the same path.
 - War: `atWar` tiles pause peaceful flips (borders don't diffuse across an active front).
 - Beyond the city maximum: diffusion is not gated on the pending-growth gate; a diffusion tile does not consume a
   growth event. Bounded by `fieldRadius` + `maxFlipsPerTurn` so a runaway leader can't paint the map.
-- Outer-ring tiles are territory, not workable land. A claimed tile beyond ring 3 is city-attached but outside the
-  native ring-3 work radius, so it yields nothing and cannot be developed. Its value is strategic: frontier tiles
-  taken from a rival, and a buffer that blocks foreign founding. In game a settler could found on an unowned plot four
-  tiles from any settlement, and could not found on the neighboring plot once a rival owned it ("This Unit has no
-  valid constructions for this location"). Making outer tiles workable is engine-blocked; recorded in
-  [`wont-build-with-justifications.md`](wont-build-with-justifications.md). Founding a new city on an outer tile is
-  base-game min-city-range territory, not a mod feature.
+- Outer-ring tiles arrive as territory and become worked land when the settlement grows onto them. A claimed tile
+  beyond ring 3 is city-attached but bare; the claim doesn't develop it. When the settlement grows, the growth screen
+  also offers its claimed outer tiles that touch land it has developed (`ui/cd-outer-growth.js`), and picking one
+  creates the rural district with the city as Parent, the game's own improvement for the tile, then
+  `addRuralPopulation(-1)` to spend the waiting citizen (`ui/cd-outer-place.js`). The counts end as a native placement
+  leaves them and the yields reach the city (watched 2026-11-12, [`probe-history.md`](probe-history.md), "Outer tiles
+  a settlement can work"). A rival's improved tile taken past ring 3 keeps its improvement and is worked by the
+  taking city, its citizen moving with it (the teardown and rebuild in `ui/cd-teardown.js`, watched the same day).
+  Bare claimed land also works as a buffer: a settler could found on an unowned plot four tiles from any settlement,
+  and could not found on the neighboring plot once a rival owned it ("This Unit has no valid constructions for this
+  location"). Founding a new city on an outer tile is base-game min-city-range territory, not a mod feature.
 - Recede (opt-in, `recedeBorders`, default off). `recedeOwnership` ([`ui/cd-recede.js`](../ui/cd-recede.js)) walks
   only `state.claims`. A claim a rival out-cultures past `resolveOwner`'s gates is ceded to that rival's nearest city
   via refunded `purchasePlot` (peace, `flipMaxDistance`, `requireAdjacency` apply), locked for `flipCooldownTurns`, and

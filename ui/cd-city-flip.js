@@ -20,7 +20,7 @@ import { CONFIG } from "/cultural-diffusion/ui/cd-config.js";
 import { log, dlog } from "/cultural-diffusion/ui/cd-log.js";
 import {
   allSettlements, cityLoc, cityIdOf, isMultiplayer, isDistantLands, ownerAt, localPlayerId, plotsInRadius,
-  districtTypeNameAt
+  districtTypeNameAt, isHumanPlayer
 } from "/cultural-diffusion/ui/cd-plots.js";
 import { currentAgeKey } from "/cultural-diffusion/ui/cd-polity.js";
 import { atWar, isMajorPlayer } from "/cultural-diffusion/ui/cd-borders.js";
@@ -196,28 +196,39 @@ function cityName(city) {
   return (n && compose(n)) || "?";
 }
 
-/** Tell the local player a settlement is wavering, when either side is theirs. */
+/**
+ * The humans a settlement flip concerns: its owner and the civ it leans to, when either is a human (the player at
+ * the screen, or another hotseat seat, told on its own turn).
+ * @param {number} owner @param {number} leader @returns {number[]} Players to tell; empty when neither is human.
+ */
+function humanSides(owner, leader) {
+  const out = [];
+  for (const pid of [owner, leader]) if (pid >= 0 && isHumanPlayer(pid) && out.indexOf(pid) < 0) out.push(pid);
+  return out;
+}
+
+/** Tell a human a settlement is wavering, when either side is theirs. */
 function warn(city, owner, leader, at) {
-  const me = localPlayerId();
   log(`city flip: ${cityName(city)} (${at.x},${at.y}) of player ${owner} leans to player ${leader}`);
-  if (me !== owner && me !== leader) return;
+  const to = humanSides(owner, leader);
+  if (!to.length) return;
   notifySettlement("warn", compose("LOC_CD_CITY_FLIP_WARNING", cityName(city), civName(leader)),
-    compose("LOC_CD_CITY_FLIP_WARNING_TITLE"));
+    compose("LOC_CD_CITY_FLIP_WARNING_TITLE"), to);
 }
 
 /**
- * Every later pass of a hold: how many turns are left before the settlement joins, when either side is the local
- * player's. The last one says "next turn". Nothing on the pass the flip happens; the joined notice follows it.
+ * Every later pass of a hold: how many turns are left before the settlement joins, when either side is a human's.
+ * The last one says "next turn". Nothing on the pass the flip happens; the joined notice follows it.
  */
 function countdown(city, owner, leader, n) {
-  const me = localPlayerId();
-  if (me !== owner && me !== leader) return;
+  const to = humanSides(owner, leader);
+  if (!to.length) return;
   const left = Math.max(1, Math.floor(CONFIG.cityFlipHoldPasses)) - n;
   if (left <= 0) return;
   const line = left === 1
     ? compose("LOC_CD_CITY_FLIP_COUNTDOWN_LAST", cityName(city), civName(leader))
     : compose("LOC_CD_CITY_FLIP_COUNTDOWN", cityName(city), civName(leader), left);
-  notifySettlement("warn", line, compose("LOC_CD_CITY_FLIP_WARNING_TITLE"));
+  notifySettlement("warn", line, compose("LOC_CD_CITY_FLIP_WARNING_TITLE"), to);
 }
 
 /**
@@ -492,15 +503,15 @@ function penalise(owner, leader) {
  * own CityTransfered handler. When Partisans says this settlement's people are arming, its line closes the notice.
  */
 function announce(f, grievances) {
-  const me = localPlayerId();
-  if (me !== f.owner && me !== f.leader) return;
+  const to = humanSides(f.owner, f.leader);
+  if (!to.length) return;
   setTimeout(() => {
     const lines = [compose("LOC_CD_CITY_FLIP_JOINED", f.name, civName(f.leader))];
     if (grievances > 0) {
       lines.push(compose("LOC_CD_CITY_FLIP_GRIEVANCES", civName(f.owner), civName(f.leader), grievances));
     }
     lines.push(partisansLine(f.key));
-    notifySettlement("joined", lines.filter(Boolean).join("[N]"), compose("LOC_CD_CITY_FLIP_JOINED_TITLE"));
+    notifySettlement("joined", lines.filter(Boolean).join("[N]"), compose("LOC_CD_CITY_FLIP_JOINED_TITLE"), to);
   }, Math.max(0, CONFIG.cityFlipNoticeDelayMs));
 }
 

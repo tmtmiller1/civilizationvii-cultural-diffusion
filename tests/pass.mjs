@@ -48,6 +48,7 @@ globalThis.YieldTypes = { YIELD_CULTURE: 1, YIELD_HAPPINESS: 2, YIELD_FOOD: 3, Y
 globalThis.Configuration = {
   getGame: () => ({
     get isAnyMultiplayer() { return multiplayer; },
+    get isNetworkMultiplayer() { return multiplayer; },
     getValue: () => (savedState ? JSON.stringify({ v: 2, data: savedState }) : null)
   }),
   editGame: () => ({ setValue: (_k, v) => { savedState = JSON.parse(v).data; } })
@@ -98,6 +99,7 @@ let rivalCity = makeCity(RIVAL_CITY_ID, RIVAL_CENTER, RIVAL, 30);
 let myCities = [myCity];
 
 const extraAlive = [];  // additional alive players a section needs (e.g. a city-state with a settlement)
+const humans = new Set(); // player ids besides the local player the stub reports as human (hotseat seats)
 globalThis.Players = {
   getAlive: () => [
     { id: ME, isAlive: true, isMajor: true, Cities: { getCities: () => myCities } },
@@ -107,6 +109,7 @@ globalThis.Players = {
   get: (pid) => ({
     id: pid,
     isMajor: !minorPlayers.has(pid),
+    isHuman: pid === ME || humans.has(pid),
     Treasury: { goldBalance: 100000, changeGoldBalance: () => {} },
     Happiness: { isInGoldenAge: () => false },
     Diplomacy: { isAtWarWith: (o) => atWarWithRival && ((pid === ME && o === RIVAL) || (pid === RIVAL && o === ME)) },
@@ -136,8 +139,12 @@ const mapUnits = new Map(); // "x,y" -> [{owner}]
 globalThis.MapUnits = { getUnits: (x, y) => (mapUnits.get(tk(x, y)) || []).map((_u, i) => ({ x, y, i })) };
 globalThis.Units = { get: (cid) => (mapUnits.get(tk(cid.x, cid.y)) || [])[cid.i] };
 
-const { runPass } = await import("/cultural-diffusion/ui/cd-pass.js");
+const { runPass: runPassRaw } = await import("/cultural-diffusion/ui/cd-pass.js");
 const { CONFIG } = await import("/cultural-diffusion/ui/cd-config.js");
+// The engine runs one pass per human turn: each call here is a new game turn. The field, the cooldowns and the AI
+// move once a game turn; a second pass in the SAME turn (another hotseat seat) is the hotseat section's subject and
+// calls runPassRaw.
+const runPass = () => { Game.turn++; return runPassRaw(); };
 
 // A deterministic, calibration-neutral baseline.
 CONFIG.diffusionEnabled = true;
@@ -169,7 +176,7 @@ function reset() {
   savedState = null; multiplayer = false; purchaseNoOps = false;
   deferWrites = false; writeQueue.length = 0;
   localId = ME; atWarWithRival = false; unclaimed = [];
-  mapUnits.clear(); centresOnMap.clear(); minorPlayers.clear(); extraAlive.length = 0;
+  mapUnits.clear(); centresOnMap.clear(); minorPlayers.clear(); extraAlive.length = 0; humans.clear();
   gridW = 200; gridH = 200;
   myCity = makeCity(CITY_ID, CENTER, ME, 40);
   rivalCity = makeCity(RIVAL_CITY_ID, RIVAL_CENTER, RIVAL, 30);
@@ -1411,5 +1418,90 @@ CONFIG.conquestFlip = false;
 CONFIG.requireAdjacency = true;
 atWarWithRival = false;
 mapUnits.clear();
+
+// 22. Hotseat: a second human seat, far enough that the two regions overlap but the rings don't. Each seat's turn
+// runs its own pass; the field, the cooldowns and the AI move once a game turn.
+const SEAT1 = 1, SEAT1_CITY_ID = 91;
+const SEAT1_CENTER = { x: 10, y: 18 };
+const SEAT1_TARGET = { x: 14, y: 18 };
+assert.equal(hexDistance(SEAT1_CENTER, SEAT1_TARGET), 4, "fixture: SEAT1_TARGET is ring-4 of seat 1's city");
+let seat1City = null;
+/** Seat 1 as a second human with its own rings 0..3 owned. */
+function seatTwo() {
+  reset();
+  humans.add(SEAT1);
+  seat1City = makeCity(SEAT1_CITY_ID, SEAT1_CENTER, SEAT1, 40);
+  extraAlive.push({ id: SEAT1, isAlive: true, isMajor: true, Cities: { getCities: () => [seat1City] } });
+  for (let y = 10; y <= 26; y++) for (let x = 0; x <= 20; x++) {
+    if (hexDistance(SEAT1_CENTER, { x, y }) <= CONFIG.baseGrowthRadius) { const t = getTileMut(x, y); t.owner = SEAT1; t.city = SEAT1_CITY_ID; }
+  }
+}
+seatTwo();
+seedState({
+  field: { [tk(TARGET.x, TARGET.y)]: mature(), [tk(SEAT1_TARGET.x, SEAT1_TARGET.y)]: mature(SEAT1) },
+  locked: { "0,0": 3 }
+});
+Game.turn++;
+localId = ME;
+r = runPassRaw();
+assert.equal(r.flips, 1, "seat 0's pass flips seat 0's won tile");
+assert.deepEqual(getTile(TARGET.x, TARGET.y), { owner: ME, city: CITY_ID }, "...to seat 0's city");
+assert.equal(getTile(SEAT1_TARGET.x, SEAT1_TARGET.y).owner, -1, "seat 1's won tile waits for seat 1's own pass");
+assert.equal(savedState.locked["0,0"], 2, "the first pass of the turn ticks the cooldowns");
+assert.equal(savedState.fieldKey, `AGE_ANTIQUITY:${Game.turn}`, "the first pass records the turn it stepped the field");
+const fieldAfterSeat0 = JSON.stringify(savedState.field);
+const monoAfterSeat0 = savedState.monoTurn;
+localId = SEAT1;
+r = runPassRaw();
+assert.equal(r.flips, 1, "seat 1's pass, the same game turn, flips seat 1's won tile");
+assert.deepEqual(getTile(SEAT1_TARGET.x, SEAT1_TARGET.y), { owner: SEAT1, city: SEAT1_CITY_ID }, "...to seat 1's city");
+assert.equal(getTile(TARGET.x, TARGET.y).owner, ME, "seat 0's tile is untouched by seat 1's pass");
+assert.equal(savedState.locked["0,0"], 2, "a second pass in the same turn leaves the cooldowns");
+assert.equal(savedState.monoTurn, monoAfterSeat0, "...and the monotonic turn");
+const seeded = { ...JSON.parse(fieldAfterSeat0) };
+seeded[tk(SEAT1_TARGET.x, SEAT1_TARGET.y)][String(SEAT1)] = savedState.field[tk(SEAT1_TARGET.x, SEAT1_TARGET.y)][String(SEAT1)];
+assert.equal(JSON.stringify(savedState.field), JSON.stringify(seeded),
+  "...and the field, apart from the flipped tile's owner seed: it stepped once this turn");
+localId = ME;
+Game.turn++;
+r = runPassRaw();
+assert.equal(savedState.locked["0,0"], 1, "the next game turn ticks the cooldowns again");
+
+// With AI flips on, another human never leads a flip: seat 1's land is seat 1's own pass to take, and the AI step
+// runs only with the field step.
+CONFIG.aiCultureFlips = true;
+seatTwo();
+seedState({ field: { [tk(SEAT1_TARGET.x, SEAT1_TARGET.y)]: mature(SEAT1) } });
+Game.turn++;
+localId = ME;
+r = runPassRaw();
+assert.equal(r.aiFlips + r.aiPending, 0, "AI flips on: seat 0's pass doesn't flip seat 1's tile for it");
+assert.equal(getTile(SEAT1_TARGET.x, SEAT1_TARGET.y).owner, -1, "...the tile waits");
+localId = SEAT1;
+r = runPassRaw();
+assert.equal(r.flips, 1, "seat 1 takes it in its own pass");
+CONFIG.aiCultureFlips = false;
+
+// A flip sent by seat 0 that hasn't landed when seat 1's pass runs a moment later stays pending; it's booked the next
+// game turn, once it shows on the map.
+seatTwo();
+seedState({ field: { [tk(TARGET.x, TARGET.y)]: mature() } });
+deferWrites = true;
+Game.turn++;
+localId = ME;
+r = runPassRaw();
+assert.equal(r.pending, 1, "seat 0's flip is in flight");
+localId = SEAT1;
+r = runPassRaw();
+assert.ok(savedState.pending[tk(TARGET.x, TARGET.y)], "seat 1's pass in the same turn keeps seat 0's in-flight flip");
+assert.equal(r.confirmed, 0, "...and books nothing for it");
+flushWrites();
+localId = ME;
+Game.turn++;
+r = runPassRaw();
+assert.equal(r.confirmed, 1, "the next game turn books it from the map");
+assert.equal(savedState.claims[tk(TARGET.x, TARGET.y)].by, ME, "...as seat 0's claim");
+deferWrites = false;
+localId = ME;
 
 console.log("pass.mjs OK");

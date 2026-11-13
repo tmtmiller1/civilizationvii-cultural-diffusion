@@ -90,7 +90,7 @@
         <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_EARLY_TITLE"><Text>Early Game</Text></Row>
         <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_EARLY_PARA_1"><Text>A young city making little [icon:YIELD_CULTURE] Culture claims nothing. Claims start as cities grow stronger. The High preset reaches farther sooner.</Text></Row>
         <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_VALUE_TITLE"><Text>Claimed Tiles</Text></Row>
-        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_VALUE_PARA_1"><Text>Claimed tiles are yours but cannot be worked or built on, since cities work only the first three rings. They stop rivals from settling next to you: settlers cannot found on or beside another civilization's land.</Text></Row>
+        <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_VALUE_PARA_1"><Text>Claimed tiles past the third ring arrive bare. When a settlement grows, the growth screen also offers its claimed tiles out there that touch land it has already developed; pick one and it is worked, with its yields going to that settlement. Claimed tiles also stop rivals from settling next to you: settlers cannot found on or beside another civilization's land.</Text></Row>
 
         <!-- Cultural Strength -->
         <Row Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_TITLE"><Text>Cultural Strength</Text></Row>

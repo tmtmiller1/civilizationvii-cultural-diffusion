@@ -50,6 +50,9 @@ const PENDING_KINDS = ["claim", "cede"];
  *   which player's combat unit has held the tile, and for how many consecutive passes.
  * @property {Record<string, CityHoldEntry>} cityHold Whole-settlement flip counters, keyed by the center "x,y".
  * @property {number} monoTurn Monotonic turn (never resets at age boundaries).
+ * @property {string} fieldKey The age and game turn the field was last stepped ("age:turn"). The field, the
+ *   cooldowns, the AI flips, the conquest counters and the settlement counters move once a game turn; a later pass
+ *   in the same turn (another hotseat seat, or a reload) resolves its own player's tiles on the field as it stands.
  */
 
 /**
@@ -63,7 +66,7 @@ export function tileClaimBy(claim, me) {
 
 /** @returns {CdState} A fresh empty state. */
 function defaultState() {
-  return { field: {}, claims: {}, locked: {}, pending: {}, occupation: {}, cityHold: {}, monoTurn: 0 };
+  return { field: {}, claims: {}, locked: {}, pending: {}, occupation: {}, cityHold: {}, monoTurn: 0, fieldKey: "" };
 }
 
 /** @param {*} v @returns {{by:number, turns:number}|null} */
@@ -170,6 +173,7 @@ export function normalizeState(s) {
   const out = defaultState();
   if (!payload || typeof payload !== "object") return out;
   out.monoTurn = Math.max(0, Math.floor(num(payload.monoTurn, 0)));
+  out.fieldKey = typeof payload.fieldKey === "string" ? payload.fieldKey.slice(0, 64) : "";
   out.field = normalizeMap(payload.field, normalizeFieldRow, MAX_FIELD_ENTRIES);
   out.claims = normalizeMap(payload.claims, normalizeClaim, MAX_CLAIM_ENTRIES);
   out.locked = normalizeMap(
@@ -236,7 +240,18 @@ export function saveState(state) {
 }
 
 /**
- * Advance the monotonic turn and tick every locked tile's cooldown down by one.
+ * The key of the current game turn for `fieldKey`: the age and the turn, since the turn count starts over with
+ * each age.
+ * @returns {string} "age:turn".
+ */
+export function turnKey() {
+  const age = (() => { try { return typeof Game !== "undefined" && Game.age != null ? String(Game.age) : ""; } catch (_) { return ""; } })();
+  return `${age}:${gameTurn()}`;
+}
+
+/**
+ * Advance the monotonic turn and tick every locked tile's cooldown down by one. Once a game turn: the first pass of
+ * the turn calls it, a later seat's pass in the same turn doesn't.
  * @param {CdState} state Loaded state.
  */
 export function prepareState(state) {

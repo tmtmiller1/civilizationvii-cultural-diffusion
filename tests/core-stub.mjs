@@ -45,3 +45,9 @@ export const OptionType = { Editor: 0, Checkbox: 1, Dropdown: 2, Slider: 3, Step
 export const Options = new OptionsModelStub();
 export const CategoryData = {};
 export default new Proxy(() => {}, handler);
+
+// The growth screen's pieces (cd-outer-growth.js). Plain objects, so the patches install on them and a suite can drive
+// them; InterfaceMode has no handler registered off-engine, so the commitPlot patch waits for engine.whenReady.
+export const PlacePopulation = { expandPlots: [], isResettling: false, updateExpandPlots() {}, ExpandPlotDataUpdatedEvent: { trigger() {} } };
+export const BuildingPlacementManager = { getImprovementYieldChanges() { return undefined; } };
+export const InterfaceMode = { getInterfaceModeHandler: () => null, getCurrent: () => "", switchToDefault: () => true };

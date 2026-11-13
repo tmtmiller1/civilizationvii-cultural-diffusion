@@ -26,6 +26,9 @@ FROM Leaders WHERE IsMajorLeader = 1;
 INSERT INTO Buildings (ConstructibleType, Movable, Purchasable, Town, TraitType)
 SELECT 'BUILDING_CD_FLIP_' || LeaderType, 0, 0, 1, 'TRAIT_CD_FLIP_NONE' FROM Leaders WHERE IsMajorLeader = 1;
 INSERT INTO TypeTags (Type, Tag) SELECT 'BUILDING_CD_FLIP_' || LeaderType, 'IGNORE_DISTRICT_PLACEMENT_CAP' FROM Leaders WHERE IsMajorLeader = 1;
+-- TOWER_MARKER: the Tower mods' shared marker tag; their screens and counts skip a building that carries it.
+INSERT OR IGNORE INTO Tags (Tag, Category) VALUES ('TOWER_MARKER', 'CONSTRUCTIBLE_TAG');
+INSERT OR IGNORE INTO TypeTags (Type, Tag) SELECT 'BUILDING_CD_FLIP_' || LeaderType, 'TOWER_MARKER' FROM Leaders WHERE IsMajorLeader = 1;
 INSERT INTO Constructible_ValidDistricts (ConstructibleType, DistrictType)
 SELECT 'BUILDING_CD_FLIP_' || LeaderType, 'DISTRICT_CITY_CENTER' FROM Leaders WHERE IsMajorLeader = 1;
 

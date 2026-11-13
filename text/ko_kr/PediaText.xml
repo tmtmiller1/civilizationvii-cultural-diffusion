@@ -63,7 +63,7 @@
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_EARLY_TITLE" Language="ko_KR"><Text>게임 초반</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_EARLY_PARA_1" Language="ko_KR"><Text>[icon:YIELD_CULTURE] 문화를 적게 만드는 신생 도시는 아무것도 획득하지 못합니다. 획득은 도시가 강해지면서 시작됩니다. 높음 프리셋은 더 일찍 더 멀리 닿습니다.</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_VALUE_TITLE" Language="ko_KR"><Text>획득한 타일</Text></Replace>
-        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_VALUE_PARA_1" Language="ko_KR"><Text>획득한 타일은 우리 것이지만, 도시는 처음 3링에서만 일하므로 그곳에서 일하거나 건설할 수 없습니다. 획득한 타일은 경쟁 문명이 우리 바로 옆에 정착하는 것을 막습니다. 개척자는 다른 문명의 땅 위나 그 옆에 정착지를 세울 수 없습니다.</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_VALUE_PARA_1" Language="ko_KR"><Text>3링 바깥에서 획득한 타일은 개발되지 않은 상태로 들어옵니다. 정착지가 성장하면 성장 화면에 이미 개발한 땅에 닿아 있는 그 바깥의 획득 타일도 표시됩니다. 하나를 고르면 그 타일에서 일하게 되고, 산출량은 그 정착지로 갑니다. 획득한 타일은 경쟁 문명이 우리 바로 옆에 정착하는 것도 막습니다. 개척자는 다른 문명의 땅 위나 그 옆에 정착지를 세울 수 없습니다.</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_TITLE" Language="ko_KR"><Text>문화 역량</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_CONTENT_PARA_1" Language="ko_KR"><Text>도시의 역량에 따라 매 턴 더하는 문화의 양이 정해집니다. '종합 문화 모델' 옵션이 켜져 있으면(기본값) 역량은 아래 요소로 정해집니다.</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_BLEND_TITLE" Language="ko_KR"><Text>도시 역량</Text></Replace>

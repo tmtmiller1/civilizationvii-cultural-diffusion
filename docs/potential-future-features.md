@@ -225,13 +225,16 @@ flip after (toggle on only), reset on leaving mid-buffer, integrated verb, survi
 
 ---
 
-## 3. Usable outer-ring tiles (closed, engine-blocked)
+## 3. Usable outer-ring tiles (built, Unreleased 2026-11-12)
 
-*Status: closed. Moved to [`wont-build-with-justifications.md`](wont-build-with-justifications.md).*
+*Status: built as growth onto claimed outer tiles (`ui/cd-outer-growth.js`, `ui/cd-outer-place.js`), through a rural
+district created with the city as Parent. The routes this section and
+[`wont-build-with-justifications.md`](wont-build-with-justifications.md) record still don't work; that one does.*
 
 This section used to say integration made claimed beyond-ring-3 tiles workable and only a yield check remained. That
-was wrong. Civ VII's work radius is native and capped at ring 3, and since 1.0.7 the mod only claims beyond ring 3, so
-every claimed tile is territory without yield. Evidence: [`civ7-tile-range-investigation.md`](civ7-tile-range-investigation.md).
+was wrong: `purchasePlot` alone leaves the tile as territory without yield, and the game's growth list stops at ring 3.
+Evidence: [`civ7-tile-range-investigation.md`](civ7-tile-range-investigation.md). The district-first route above is
+what makes the tile workable.
 
 > Related, still open: organic rival-tile capture polish. `flipEligible` ([`ui/cd-pass.js`](../ui/cd-pass.js))
 > flips rival-owned tiles; see [`current-model.md`](current-model.md) §5. Remaining: a clearer capture notification.

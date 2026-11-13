@@ -129,7 +129,9 @@ Still open:
 - The log line naming the transfer type (`BY_CULTURAL_IDENTITY` instead of the enum's number) was added after the
   runs; it was seen in `UI.log` on 2026-10-16: "city flip: Mutsu (68,17) joined player 2 from player 0 in 313 ms
   (BY_CULTURAL_IDENTITY); 7 of 7 plot(s) show the new owner".
-- The Civilopedia page and the marker building's Civilopedia entry weren't opened in game; `tests/pedia-pages.mjs`
+- The Civilopedia page and the marker building's Civilopedia entry were opened in game on 2026-11-12 (night lab run
+  misc-3, game 1.5.1, usual set, `tools/plans/night-2026-11-11/RESULTS.md`): the Settlement Flips page opens with no
+  raw keys, and the marker building's entry "Changing Allegiance" is listed under Buildings. `tests/pedia-pages.mjs`
   checks the page resolves.
 
 ### 1.7.0: the land gate, the countdown and the City Details section (2026-10-16)

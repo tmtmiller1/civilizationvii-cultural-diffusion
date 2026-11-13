@@ -71,25 +71,31 @@ function confirmOne(state, k, p) {
 }
 
 /**
- * Confirm or drop every pending entry against the live map. Call at the start of a pass.
- * @param {*} state Persisted state (mutated: claims/locked updated, pending emptied).
- * @returns {{claim:number, cede:number, dropped:number}} What resolved.
+ * Confirm or drop every pending entry against the live map. Call at the start of a pass. An entry sent in this
+ * same monotonic turn (another hotseat seat's pass a moment ago) that hasn't landed yet stays pending rather than
+ * being dropped; in single player every pass is a new turn, so nothing waits.
+ * @param {*} state Persisted state (mutated: claims/locked updated, pending emptied of what resolved).
+ * @returns {{claim:number, cede:number, dropped:number, waiting:number}} What resolved.
  */
 export function confirmPending(state) {
-  const out = { claim: 0, cede: 0, dropped: 0 };
+  const out = { claim: 0, cede: 0, dropped: 0, waiting: 0 };
   const pending = state.pending || {};
+  const keep = {};
   for (const k of Object.keys(pending)) {
     const p = pending[k];
     const kind = confirmOne(state, k, p);
     if (kind) {
       out[kind]++;
       dlog(`pending ${k} ${p.kind} confirmed on the live map`);
+    } else if (p.turn >= (state.monoTurn || 0)) {
+      out.waiting++;
+      keep[k] = p;
     } else {
       out.dropped++;
       dlog(`pending ${k} ${p.kind} NOT APPLIED on the live map - dropped`);
     }
   }
-  state.pending = {};
+  state.pending = keep;
   return out;
 }
 

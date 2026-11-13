@@ -63,7 +63,7 @@
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_EARLY_TITLE" Language="ja_JP"><Text>序盤</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_EARLY_PARA_1" Language="ja_JP"><Text>[icon:YIELD_CULTURE] 文化力をあまり生まない若い都市は何も獲得しません。獲得は都市が強くなるにつれて始まります。プリセット「高」ではより早く、より遠くまで届きます。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_VALUE_TITLE" Language="ja_JP"><Text>獲得したタイル</Text></Replace>
-        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_VALUE_PARA_1" Language="ja_JP"><Text>獲得したタイルは自分のものですが、都市が働けるのは最初の3リングだけなので、そこで働いたり建設したりはできません。獲得したタイルは他文明がすぐ隣に入植するのを防ぎます。開拓者は他文明の土地の上やその隣には居住地を建設できません。</Text></Replace>
+        <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_GROWTH_CHAPTER_VALUE_PARA_1" Language="ja_JP"><Text>第3リングより外で獲得したタイルは未開発のまま手に入ります。居住地が成長すると、成長画面には、すでに開発した土地に接するその外側の獲得タイルも表示されます。選ぶとそのタイルが働かれ、産出はその居住地に入ります。獲得したタイルは他文明がすぐ隣に入植するのも防ぎます。開拓者は他文明の土地の上やその隣には居住地を建設できません。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_TITLE" Language="ja_JP"><Text>文化の強さ</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_CONTENT_PARA_1" Language="ja_JP"><Text>都市の強さによって、毎ターン加える文化の量が決まります。オプション「総合文化モデル」がオン（デフォルト）のとき、強さは以下の要素から決まります。</Text></Replace>
         <Replace Tag="LOC_PEDIA_CULTURAL_DIFFUSION_PAGE_CD_STRENGTH_CHAPTER_BLEND_TITLE" Language="ja_JP"><Text>都市の強さ</Text></Replace>

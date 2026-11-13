@@ -63,6 +63,7 @@ globalThis.GameContext = { localPlayerID: ME };
 globalThis.Configuration = {
   getGame: () => ({
     get isAnyMultiplayer() { return multiplayer; },
+    get isNetworkMultiplayer() { return multiplayer; },
     getValue: () => (savedState ? JSON.stringify({ v: 2, data: savedState }) : null)
   }),
   editGame: () => ({ setValue: (_k, v) => { savedState = JSON.parse(v).data; } })

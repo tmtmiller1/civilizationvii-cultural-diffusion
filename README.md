@@ -25,7 +25,7 @@ their tiles and slows yours, and their cities keep producing the culture of ever
 living in them. Turn off "every civilization gains land by culture" in Options to have culture
 gain land only for you.
 
-It runs in single-player only and sits behind an enable flag. Turning it off stops all new
+It runs in single-player and hotseat games and sits behind an enable flag. Turning it off stops all new
 claims, but tiles it already claimed stay yours, because the game cannot hand a city's tile
 back to no one. It works standalone, and reads extra data from the
 [Emigration](../emigration/) mod when that is also installed.
@@ -197,7 +197,7 @@ civilization's last settlement" is on (`cityFlipEliminates`). Nothing changes ha
 Age Ending countdown or the first two turns of an age, a civilization doesn't gain a settlement
 in its distant lands before the Exploration age, and at most one settlement changes hands per
 pass (`maxCityFlipsPerPass`). Like the rest of the field, it only runs near your cities, and only
-in single-player. The details and the in-game checks are in [docs/DESIGN.md](docs/DESIGN.md).
+in single-player and hotseat games. The details and the in-game checks are in [docs/DESIGN.md](docs/DESIGN.md).
 
 Two smaller rules carried over from the original complete the model. Culture on a mountain
 needs 7.5 times the usual stock before it spreads off the peak (`sourceThresholdMountain`),
@@ -234,13 +234,22 @@ and farther, with no special rule for the leading civilization. A weak or stagna
 barely creeps past its border.
 
 ### What claimed land does
-Civilization VII lets a city work and develop tiles only within three rings of its center,
-and that limit lives in the engine, where no mod data can change it (see
-[`docs/civ7-tile-range-investigation.md`](docs/civ7-tile-range-investigation.md)). Every tile
-this mod claims beyond ring 3 is territory without yield: it is attached to your nearest city
-and shows as yours, but no citizen can work it and nothing can be built on it. A tile claimed
-inside a city's own third ring joins the city it sits around.
-Its value is strategic. It is a buffer against rivals settling next to you, and it includes
+A tile claimed inside a city's own third ring joins the city it sits around. A tile claimed
+beyond ring 3 is attached to your nearest city and arrives as bare territory. Civilization VII
+only grows a city within three rings of its center (see
+[`docs/civ7-tile-range-investigation.md`](docs/civ7-tile-range-investigation.md)), so the mod
+adds the rest: when the city grows, the growth screen also lights up its claimed tiles farther
+out that touch land it has already developed. Picking one builds the improvement the game would
+put there and spends the new citizen, and the tile's yields go to that city. It spreads outward
+one tile at a time, the same as inside ring 3, and hovering such a tile shows what it'll add. A
+farm or mine you take from a rival keeps working for you, however far out it is.
+
+AI civilizations do the same where it pays: the game places an AI's new citizen inside ring 3,
+and at the start of your next turn the mod moves it onto a claimed tile past ring 3 if that tile
+yields more in total. The AI keeps its own pick when it's on a resource or when the outer tile
+would sit beside an enemy at war with it.
+
+Claimed land is also strategic. It is a buffer against rivals settling next to you, and it includes
 frontier tiles taken from a rival. A settler can found on an empty plot, but not on one beside
 another civilization's land.
 
@@ -500,8 +509,9 @@ This mod reimagines and extends Gedemon's work.
   region, and two AI empires far from your lands keep the borders the base game gives them.
 - Claims cost no gold. If a future game update charges for them, the mod refunds the cost
   (`refundGold`).
-- Tiles claimed beyond ring 3 can't be worked or developed. This is an engine limit that no
-  mod setting changes; see "What claimed land does" above.
+- Tiles claimed beyond ring 3 are developed only through growth, one tile at a time next to land
+  the city has already developed; the build queue still stops at ring 3. In a LAN or online game
+  they stay bare. See "What claimed land does" above.
 - Ownership changes land a moment after the mod asks for them, so a claim appears in the
   mod's state one turn after the tile changes color. If a game update breaks the ownership
   calls, debug logging shows `pending ... NOT APPLIED` lines.
@@ -509,6 +519,12 @@ This mod reimagines and extends Gedemon's work.
   damage that 1.5.1 cannot repair: the engine keeps a broken record of each such tile for its
   owner, and no scripting verb clears it. Such a game can crash while an age ends. Games started
   on 1.5.1 are not affected.
+- Hotseat games run the mod. Each seat's turn runs its own pass for that player, and the culture
+  field, the cooldowns, the AI's claims and the settlement counts move once a game turn, in
+  whichever seat's turn comes first. A notice about another seat's land (a tile lost to an
+  army, a settlement leaning away) waits for that seat's turn. The Options are the machine's,
+  so both seats play the same rules. In a LAN or online game the mod stays off: every machine
+  would make its own ownership changes and the games would go out of step.
 - The mod must be enabled when a game starts. A save keeps the mod list it was started with,
   so enabling the mod later has no effect on that save. When developing, redeploy by
   overwriting the folder in place rather than deleting it.
